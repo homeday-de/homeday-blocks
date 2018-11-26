@@ -20,7 +20,7 @@ export default {
 
 <style scoped lang="scss">
 .button {
-  outline: 2px solid red;
+  outline: 2px solid $vivid-blue;
   width: 200px;
 }
 </style>
