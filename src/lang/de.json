@@ -1,0 +1,24 @@
+{
+  "FORM": {
+    "EMAIL": {
+      "PLACEHOLDER": "z.b. michael.schmidt@gmail.com",
+      "LABEL": "Ihre E-Mail-Adresse"
+    },
+    "PASSWORD": {
+      "LABEL": "Ihr Passwort",
+      "LABEL_CONFIRM": "Bestätigen Sie Ihr Passwort"
+    },
+    "VALIDATION": {
+      "REQUIRED": "Dies ist ein Pflichtfeld.",
+      "INVALID_EMAIL": "Bitte geben Sie eine korrekte E-Mail-Adresse ein.",
+      "PASSWORD_MISMATCH": "Dies stimmt nicht mit dem obigen Passwort überein",
+      "PASSWORD_SHORT": "Dieses Passwort ist zu kurz",
+      "PASSWORD_STRENGTH": [
+        "Strength level: <span style='color: orange'>Weak</span>",
+        "Strength level: <span style='color: GoldenRod'>Average</span>",
+        "Strength level: <span style='color: LimeGreen'>Strong</span>",
+        "Strength level: <span style='color: green'>Very Strong</span>"
+      ]
+    }
+  }
+}
