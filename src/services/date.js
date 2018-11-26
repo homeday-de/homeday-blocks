@@ -1,0 +1,66 @@
+/* eslint-disable max-len */
+import { getRandomInt } from './utils';
+
+// Sets date time to midnight for unifying purposes
+export const resetDateTime = (date) => {
+  const clonedDate = new Date(date);
+  clonedDate.setHours(0, 0, 0, 0);
+
+  return clonedDate;
+};
+
+// Returns date which is amountOfDays from the initialDate
+export const getNDaysFromDate = (initialDate, amountOfDays) => {
+  // Create a clone of initialDate in order not to edit it
+  const startDate = new Date(initialDate);
+  return resetDateTime(new Date(startDate.setDate(initialDate.getDate() + amountOfDays)));
+};
+
+export const convertMsToDays = ms => Math.round(ms / 1000 / 60 / 60 / 24);
+
+export const getDaysDateRange = (startDate, endDate) => {
+  const dateDiffDays = convertMsToDays(endDate.getTime() - startDate.getTime());
+  const datesArray = [];
+
+  /* eslint-disable no-plusplus  */
+  for (let day = 0; day < dateDiffDays; day++) {
+    datesArray.push(getNDaysFromDate(startDate, day));
+  }
+
+  return datesArray;
+};
+
+// Returns array of unique date strings from original array
+export const getIntlDateString = (locale, datesArray, localStringArgs) => datesArray.reduce((accumulator, currentItem) => {
+  const currentDay = new Date(currentItem).toLocaleString(
+    locale,
+    localStringArgs,
+  );
+  if (accumulator.indexOf(currentDay) === -1) accumulator.push(currentDay);
+
+  return accumulator;
+}, []);
+
+
+// Returns list of random integers
+export const generateRandomIndexes = (amount, min, max) => {
+  const indexes = [];
+
+  while (indexes.length < amount) {
+    const randomInt = getRandomInt(min, max);
+    /* eslint-disable no-continue  */
+    if (indexes.indexOf(randomInt) > -1) continue;
+    indexes.push(getRandomInt(min, max));
+  }
+
+  return indexes;
+};
+
+export const generateDateCycles = (cycleLengthWeeks, amountOfCycles, startDateOffset) => {
+  const WEEK_DAYS = 7;
+  const cycleLengthDays = cycleLengthWeeks * WEEK_DAYS;
+  const startDate = getNDaysFromDate(new Date(), startDateOffset);
+  const endDate = getNDaysFromDate(new Date(), (cycleLengthDays * amountOfCycles) + startDateOffset);
+
+  return getDaysDateRange(startDate, endDate);
+};
