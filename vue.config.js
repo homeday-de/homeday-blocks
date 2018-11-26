@@ -1,3 +1,8 @@
+const path = require('path');
+
+function resolve(p) {
+  return path.join(__dirname, p);
+}
 
 module.exports = {
   assetsDir: 'static',
@@ -10,6 +15,8 @@ module.exports = {
       .options({
         fix: true,
       });
+    const { alias } = config.resolve;
+    alias.set('styleguideIcons', resolve('node_modules/styleguide/icons'));
   },
   css: {
     loaderOptions: {
