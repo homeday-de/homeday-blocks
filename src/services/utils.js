@@ -65,8 +65,12 @@ export function getPasswordStrength(password, levelsCount) {
   return Math.floor((passedRules / MAX_POINTS) * (levelsCount - 1));
 }
 
+// Generates random integer based on provided min and max
+export const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
 export default {
   populateTemplate,
   getPasswordStrength,
   formatFormData,
+  getRandomInt,
 };

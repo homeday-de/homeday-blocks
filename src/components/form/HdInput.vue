@@ -121,8 +121,18 @@ export default {
 @import '~styleguide/src/inputs.scss';
 
 .field {
-  font-family: 'Source Sans Pro', arial, sans-serif;
   &__input {
+    font-family: 'Source Sans Pro', sans-serif;
+    background: $wild-sand !important; // (to be fixed in the styleguide)
+    &:required {
+      box-shadow: none;
+    }
+    &::-ms-clear {
+      display: none;
+    }
+    &::-ms-reveal {
+      display: none;
+    }
   }
   &__label {
     left: 0;

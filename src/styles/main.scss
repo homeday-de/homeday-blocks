@@ -1,19 +1,2 @@
 @import "reset-css/sass/_reset.scss";
 @import "styleguide/src/main.scss";
-
-.field__input {
-  background: $wild-sand !important; // to have that color in all the stats (to be fixed in the styleguide)
-}
-
-input {
-  font-family: 'Source Sans Pro', sans-serif;
-  &:required {
-    box-shadow: none;
-  }
-  &::-ms-clear {
-    display: none;
-  }
-  &::-ms-reveal {
-    display: none;
-  }
-}

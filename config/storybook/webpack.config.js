@@ -15,5 +15,15 @@ module.exports = (baseConfig, env, defaultConfig) => {
     components: resolve('../../src/components'),
     styleguideIcons: resolve('../../node_modules/styleguide/icons'),
   };
+  defaultConfig.module.rules.push({
+    test: /\.md$/,
+    use: [
+      {
+        loader: 'html-loader',
+      }, {
+        loader: 'markdown-loader',
+      },
+    ],
+  });
   return defaultConfig;
 };

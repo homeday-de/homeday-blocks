@@ -41,11 +41,26 @@ export default {
   name: 'hdRadioButton',
   props: {
     label: String,
-    value: [String, Number],
-    name: String,
-    desktopIcon: String,
-    desktopIconHover: String,
-    mobileIcon: String,
+    value: {
+      type: [String, Number],
+      required: true,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    desktopIcon: {
+      type: String,
+      required: true,
+    },
+    desktopIconHover: {
+      type: String,
+      required: true,
+    },
+    mobileIcon: {
+      type: String,
+      required: true,
+    },
   },
   methods: {
     setBackgroundImage: path => ({ 'background-image': `url(${path})` }),
