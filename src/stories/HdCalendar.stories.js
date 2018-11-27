@@ -2,6 +2,7 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import { generateDateCycles } from 'services/date';
+
 import HdCalendar from '../components/HdCalendar.vue';
 
 storiesOf('HdCalendar', module)
