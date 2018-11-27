@@ -3,6 +3,7 @@ import 'styleguide/src/main.scss';
 import { configure, addDecorator } from '@storybook/vue';
 import { withNotes } from '@storybook/addon-notes';
 import { withKnobs } from '@storybook/addon-knobs';
+import '@storybook/addon-console';
 
 addDecorator(withNotes);
 addDecorator(withKnobs);

@@ -2,11 +2,11 @@
   <div class="confirm-password">
     <hd-input ref="passwordMain" name="passwordMain"
     @dataChange="fieldDataChange" class="confirm-password__input"
-    type="password" :label="$t('FORM.PASSWORD.LABEL')" :required="true"/>
+    type="password" :label="t.FORM.PASSWORD.LABEL" :required="true"/>
 
     <hd-input ref="passwordConfirm" name="passwordConfirm"
     @dataChange="fieldDataChange" class="confirm-password__input"
-    type="password" :label="$t('FORM.PASSWORD.LABEL_CONFIRM')" :required="true"/>
+    type="password" :label="t.FORM.PASSWORD.LABEL_CONFIRM" :required="true"/>
   </div>
 </template>
 
@@ -14,6 +14,7 @@
 import some from 'lodash/some';
 import { getPasswordStrength } from '@/services/utils';
 import HdInput from '@/components/form/HdInput.vue';
+import { getMessages } from '@/lang';
 
 export default {
   name: 'hd-confirm-password',
@@ -29,6 +30,7 @@ export default {
   },
   data() {
     return {
+      t: {},
       formData: {
         passwordMain: {
           value: '',
@@ -40,6 +42,9 @@ export default {
         },
       },
     };
+  },
+  created() {
+    this.t = getMessages(this.lang);
   },
   methods: {
     fieldDataChange({ name, value, error }) {
@@ -53,21 +58,21 @@ export default {
         this.checkPasswordStrength(this.formData.passwordMain.value);
       }
       if (this.min > this.formData.passwordMain.value.length && !this.formData.passwordMain.error) {
-        this.$refs.passwordMain.showError(this.$t('FORM.VALIDATION.PASSWORD_SHORT'));
+        this.$refs.passwordMain.showError(this.t.FORM.VALIDATION.PASSWORD_SHORT);
       }
     },
     checkPasswordMatching(passwordMainData, passwordConfirmData) {
       if (passwordConfirmData.value !== '' && passwordMainData.value !== passwordConfirmData.value) {
         // eslint-disable-next-line
-        passwordConfirmData.error = this.$t('FORM.VALIDATION.PASSWORD_MISMATCH');
+        passwordConfirmData.error = this.t.FORM.VALIDATION.PASSWORD_MISMATCH;
         this.$refs.passwordConfirm.showError(passwordConfirmData.error);
-      } else if (passwordConfirmData.error === this.$t('FORM.VALIDATION.PASSWORD_MISMATCH')) {
+      } else if (passwordConfirmData.error === this.t.FORM.VALIDATION.PASSWORD_MISMATCH) {
         this.$refs.passwordConfirm.validate();
       }
     },
     checkPasswordStrength(password) {
       const strengthIndex = getPasswordStrength(password, 4);
-      const msg = this.$t(`FORM.VALIDATION.PASSWORD_STRENGTH[${strengthIndex}]`);
+      const msg = this.t.FORM.VALIDATION.PASSWORD_STRENGTH[strengthIndex];
       this.$refs.passwordMain.showHelper(msg);
     },
     emitData() {

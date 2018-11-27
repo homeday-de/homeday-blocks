@@ -6,7 +6,6 @@ import { text } from '@storybook/addon-knobs';
 import HdRadioButton from '../components/HdRadioButton.vue';
 import HdRadioButtonNote from '../notes/HdRadioButton.md';
 
-console.log(HdRadioButtonNote);
 storiesOf('HdRadioButton', module)
   .add('with label', () => ({
     components: { HdRadioButton },
@@ -19,11 +18,11 @@ storiesOf('HdRadioButton', module)
       name: text('name', 'Name'),
     }),
     template: `<HdRadioButton
-      @select="action" 
+      @select="action"
       :desktopIcon="desktopIcon"
       :desktopIconHover="desktopIconHover"
       :mobileIcon="mobileIcon"
-      :label="label" 
+      :label="label"
       :value="value"
       :name="name"
     />`,
