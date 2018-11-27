@@ -64,12 +64,16 @@ export default {
 @import '@/styles/variables.scss';
 
 .radio {
+  $r: &;
   display: flex;
   align-items: center;
   position: relative;
   flex: 1;
   cursor: default;
-  margin: 0 0 0 $inline-s;
+  margin-left: $inline-m;
+  &:first-of-type {
+    margin-left: 0;
+  }
   &__wrapper {
     display: flex;
     flex-direction: row;
@@ -77,6 +81,9 @@ export default {
     flex: 1;
     &--vertical {
       flex-direction: column;
+      #{$r} {
+        margin-left: 0;
+      }
     }
   }
   &__input {
@@ -110,7 +117,7 @@ export default {
   }
   &__label {
     flex: 1;
-    margin: 0 0 0 $inline-s;
+    margin-left: $inline-s;
     text-align: left;
     @include font('text-small');
   }

@@ -92,7 +92,7 @@ export default {
       top:0; left:0;
       width: 100%;
       height: 100%;
-      background-image: url('../../assets/img/icons/ic_checkmark-white.svg');
+      background-image: url('~assets/icons/ic_checkmark-white.svg');
       background-repeat: no-repeat;
       background-position: center;
       background-size: 20px;

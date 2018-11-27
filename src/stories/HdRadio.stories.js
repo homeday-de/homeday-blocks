@@ -6,12 +6,20 @@ import HdRadio from '../components/form/HdRadio.vue';
 
 const items = [
   {
-    label: 'Frau',
-    value: 'female',
+    label: 'Green',
+    value: 'green',
   },
   {
-    label: 'Herr',
-    value: 'male',
+    label: 'Blue',
+    value: 'blue',
+  },
+  {
+    label: 'Red',
+    value: 'red',
+  },
+  {
+    label: 'Yellow',
+    value: 'yellow',
   },
 ];
 
@@ -28,7 +36,7 @@ storiesOf('HdRadio', module)
   }))
   .add('preselected', () => ({
     components: { HdRadio },
-    template: '<hd-radio @dataChange="onDataChange" :items="items" selected="male" value="Your default value goes here" label="Label..." />',
+    template: '<hd-radio @dataChange="onDataChange" :items="items" selected="blue" label="Label..." />',
     methods: { onDataChange: action('dataChange') },
     data() {
       return {
@@ -38,7 +46,7 @@ storiesOf('HdRadio', module)
   }))
   .add('vertical', () => ({
     components: { HdRadio },
-    template: '<hd-radio @dataChange="onDataChange" :items="items" required="true" label="Label" vertical="true"/>',
+    template: '<hd-radio @dataChange="onDataChange" :items="items" vertical="true" required="true" label="Label"/>',
     methods: { onDataChange: action('dataChange') },
     data() {
       return {

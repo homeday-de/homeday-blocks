@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { configure } from '@storybook/vue';
-import 'styleguide/src/main.scss';
+import '@storybook/addon-console';
+import '@/styles/main.scss';
 
 const req = require.context('../../src/stories', true, /.stories.js$/);
 

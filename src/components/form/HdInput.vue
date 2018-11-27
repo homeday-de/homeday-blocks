@@ -30,13 +30,12 @@
 import { getMessages } from '@/lang';
 import validate from '@/services/formValidation';
 
-let t = {};
-
 export default {
   name: 'hdInput',
   props: ['name', 'type', 'label', 'value', 'placeholder', 'required', 'autocomplete', 'autofocus', 'lang'],
   data() {
     return {
+      t: {},
       currentValue: this.value || '',
       currentType: this.type || 'text',
       isActive: undefined,
@@ -46,7 +45,7 @@ export default {
     };
   },
   created() {
-    t = getMessages(this.lang);
+    this.t = getMessages(this.lang);
   },
   methods: {
     handleChange() {
@@ -79,9 +78,9 @@ export default {
     },
     validate() {
       if (this.required && this.currentValue === '') {
-        this.showError(t.FORM.VALIDATION.REQUIRED);
+        this.showError(this.t.FORM.VALIDATION.REQUIRED);
       } else if (this.currentValue !== '' && this.type === 'email' && !validate.email(this.currentValue)) {
-        this.showError(t.FORM.VALIDATION.INVALID_EMAIL);
+        this.showError(this.t.FORM.VALIDATION.INVALID_EMAIL);
       } else {
         this.hideError();
       }
@@ -140,7 +139,7 @@ export default {
     position: absolute;
     right: $inline-s;
     bottom: $stack-m;
-    background-image: url('../../assets/icons/ic_visibility-on.svg');
+    background-image: url('~assets/icons/ic_visibility-on.svg');
     background-repeat: no-repeat;
     width: 24px;
     height: 24px;
