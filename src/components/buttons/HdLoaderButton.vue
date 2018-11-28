@@ -1,5 +1,4 @@
 <template>
-  <!-- eslint-disable max-len -->
   <div class="loaderButton" :class="progressClass">
       <button
         class="btn btn--primary loaderButton__button"
@@ -10,7 +9,6 @@
         @transitionend="runTransitionQue"
       >
         <span class="loaderButton__button__label">{{ label }}</span>
-        <!-- <span class="loaderButton__button__label loaderButton__button__label--fail">Fail</span> -->
       </button>
 
       <!-- Loading circle -->
@@ -45,7 +43,6 @@
 import { getRandomInt, circleToPath } from 'services/utils';
 import debounce from 'lodash/debounce';
 
-/* eslint-disable max-len */
 export default {
   name: 'hdLoaderButton',
   props: {

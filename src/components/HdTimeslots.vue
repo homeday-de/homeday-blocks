@@ -1,5 +1,4 @@
 <template>
-  <!-- eslint-disable max-len -->
   <section class="timeslots">
     <div class="timeslots__controls" v-if="timeslotsPages.length > 1">
       <HdArrowButton @click.native="flipPage(-1)" direction="left" :isDisabled="prevPageDisabled" />
