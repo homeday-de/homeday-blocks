@@ -1,4 +1,4 @@
-/* eslint-disable no-use-before-define, prefer-destructuring, max-len */
+/* eslint-disable no-use-before-define, prefer-destructuring */
 
 function getFormattedBinding(binding) {
   // in case of: v-tooltip.left="'test'"

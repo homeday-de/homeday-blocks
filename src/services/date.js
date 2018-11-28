@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import { getRandomInt } from './utils';
 
 // Sets date time to midnight for unifying purposes

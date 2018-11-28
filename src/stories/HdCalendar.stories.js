@@ -13,4 +13,13 @@ storiesOf('HdCalendar', module)
     }),
     template: '<hd-calendar  @dateSelected="dateSelected" :dates=dates />',
     methods: { dateSelected: action('onDateSelected') },
+  }))
+  .add('with disabled indexes', () => ({
+    components: { HdCalendar },
+    data: () => ({
+      dates: generateDateCycles(2, 2, 2),
+      disabledIndexes: [1, 6, 2, 5],
+    }),
+    template: '<hd-calendar  @dateSelected="dateSelected" :disabledIndexes="disabledIndexes" :dates="dates" />',
+    methods: { dateSelected: action('onDateSelected') },
   }));

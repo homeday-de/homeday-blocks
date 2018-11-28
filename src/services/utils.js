@@ -1,4 +1,4 @@
-/* eslint-disable no-useless-escape, no-confusing-arrow, no-param-reassign, max-len */
+/* eslint-disable no-useless-escape, no-confusing-arrow, no-param-reassign */
 import merge from 'lodash/merge';
 
 
@@ -67,6 +67,8 @@ export function getPasswordStrength(password, levelsCount) {
 
 // Generates random integer based on provided min and max
 export const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+
+export const circleToPath = (cx, cy, r) => `M ${cx} ${cy} m -${r}, 0 a ${r},${r} 0 1,0 ${r * 2},0 a ${r},${r} 0 1,0 -${r * 2},0`;
 
 export default {
   populateTemplate,

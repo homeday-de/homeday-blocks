@@ -1,5 +1,4 @@
 <template>
-<!-- eslint-disable max-len -->
   <div class="calendar">
     <header class="calendar__header">
       <button
@@ -50,7 +49,6 @@
 
 
 <script>
-/* eslint-disable max-len */
 import flatten from 'lodash/flatten';
 import chunk from 'lodash/chunk';
 import { getIntlDateString } from 'services/date';
@@ -156,7 +154,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 // Transitions
 .calendar {
   &-left {

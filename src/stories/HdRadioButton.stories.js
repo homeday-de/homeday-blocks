@@ -3,11 +3,11 @@ import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import { text } from '@storybook/addon-knobs';
 
-import HdRadioButton from '../components/HdRadioButton.vue';
+import HdRadioButton from 'components/buttons/HdRadioButton.vue';
 import HdRadioButtonNote from '../notes/HdRadioButton.md';
 
 storiesOf('HdRadioButton', module)
-  .add('with label', () => ({
+  .add('base', () => ({
     components: { HdRadioButton },
     data: () => ({
       label: text('label', 'Test Label'),
