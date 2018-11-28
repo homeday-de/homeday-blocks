@@ -5,6 +5,10 @@ import { withNotes } from '@storybook/addon-notes';
 import { withKnobs } from '@storybook/addon-knobs';
 import '@storybook/addon-console';
 
+import tooltipInstall from '@/components/tooltip/installer';
+
+tooltipInstall();
+
 addDecorator(withNotes);
 addDecorator(withKnobs);
 

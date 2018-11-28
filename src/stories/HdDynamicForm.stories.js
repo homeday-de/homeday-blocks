@@ -10,14 +10,14 @@ storiesOf('HdDynamicForm', module)
   .addDecorator(FormWrapper)
   .add('profile', () => ({
     components: { HdDynamicForm },
-    template: '<hd-dynamic-form slot="content" :items="config" submitLabel="Submit Label" @submit="submit"/>',
+    template: '<hd-dynamic-form slot="content" :items="config" submitLabel="Submit Label" @submit="onSubmit"/>',
     data() {
       return {
         config: CONFIG.PROFILE,
       };
     },
     methods: {
-      submit(formData) {
+      onSubmit(formData) {
         console.log('formData', formData);
         console.log('Formatted formData (nesting enabled)', formatFormData(formData, { nestingEnabled: true }));
       },

@@ -117,7 +117,7 @@ export default {
   }
   &__label {
     flex: 1;
-    margin-left: $inline-s;
+    margin: 0 0 0 $inline-s;
     text-align: left;
     @include font('text-small');
   }
