@@ -161,7 +161,7 @@ export default {
       this.addToTransitionQue(this.draw.bind(this, this.$refs.cross));
       this.addToTransitionQue(this.setIdleState);
     },
-    runTransitionQue: debounce(function debouncedQue() {
+    runTransitionQue: debounce(function debouncedQueMethod() {
       if (this.transitionsQue.length > 0) {
         const nextInQueMethod = this.transitionsQue.shift();
         nextInQueMethod();
@@ -190,8 +190,8 @@ export default {
     undrawAll() {
       this.draw(this.$el, 0);
     },
-    draw(svgContainer, val = 1) {
-      const paths = Array.from(svgContainer.querySelectorAll('path'));
+    draw(container, val = 1) {
+      const paths = Array.from(container.querySelectorAll('path'));
       // Do not overdraw
       const drawValue = val > 1 ? 1 : val;
       /* eslint-disable no-param-reassign */
@@ -268,6 +268,7 @@ export default {
       #{$lB}--loading &,
       #{$lB}--success &,
       #{$lB}--error & {
+        position: absolute;
         opacity: 0;
       }
     }
