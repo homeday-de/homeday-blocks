@@ -6,19 +6,22 @@
     },
     "PASSWORD": {
       "LABEL": "Password",
-      "LABEL_CONFIRM": "Enter your password"
+      "LABEL_CONFIRM": "Confirm password"
     },
     "VALIDATION": {
       "REQUIRED": "This field is required",
       "INVALID_EMAIL": "Please enter a valid email address",
       "PASSWORD_MISMATCH": "The entered passwords are not matching",
       "PASSWORD_SHORT": "This password is too short",
-      "PASSWORD_STRENGTH": [
-        "Strength level: <span style='color: orange'>Weak</span>",
-        "Strength level: <span style='color: GoldenRod'>Average</span>",
-        "Strength level: <span style='color: LimeGreen'>Strong</span>",
-        "Strength level: <span style='color: green'>Very Strong</span>"
-      ]
+      "PASSWORD_STRENGTH": {
+        "TITLE": "Strength Level",
+        "LEVELS": [
+          "Weak",
+          "Average",
+          "Strong",
+          "Very strong"
+        ]
+      }
     }
   }
 }

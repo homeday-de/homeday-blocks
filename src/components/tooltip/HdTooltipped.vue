@@ -11,7 +11,12 @@
 <script>
 export default {
   name: 'hd-tooltipped',
-  props: ['value', 'direction', 'component', 'props'],
+  props: {
+    value: String,
+    direction: String,
+    component: Object,
+    props: Object,
+  },
   computed: {
   },
 };

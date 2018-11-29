@@ -4,9 +4,9 @@ export default [
     name: 'email',
     props: {
       required: true,
-      value: 'kontakt@homeday.de',
+      value: 'contact@homeday.de',
       type: 'email',
-      label: 'E-Mail-Adresse',
+      label: 'Email Address',
       placeholder: 'Email...',
     },
   },
@@ -16,7 +16,7 @@ export default [
     props: {
       required: true,
       type: 'password',
-      label: 'Passwort',
+      label: 'Password',
       placeholder: '',
     },
   },

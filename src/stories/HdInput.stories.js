@@ -5,11 +5,11 @@ import { action } from '@storybook/addon-actions';
 import HdInput from '../components/form/HdInput.vue';
 import FormWrapper from '@/storiesWrappers/FormWrapper';
 
-storiesOf('HdInput', module)
+storiesOf('Form/HdInput', module)
   .addDecorator(FormWrapper)
   .add('required', () => ({
     components: { HdInput },
-    template: '<hd-input @dataChange="onDataChange" required="true" label="Label" placeholder="Placeholder..." />',
+    template: '<hd-input @dataChange="onDataChange" :required="true" label="Label" placeholder="Placeholder..." />',
     methods: { onDataChange: action('dataChange') },
   }))
   .add('prefilled', () => ({
@@ -19,7 +19,7 @@ storiesOf('HdInput', module)
   }))
   .add('password', () => ({
     components: { HdInput },
-    template: '<hd-input @dataChange="onDataChange" type="password" required="true" label="Password" />',
+    template: '<hd-input @dataChange="onDataChange" type="password" :required="true" label="Password" />',
     methods: { onDataChange: action('dataChange') },
   }))
   .add('email', () => ({

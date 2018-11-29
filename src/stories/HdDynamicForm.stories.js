@@ -6,11 +6,11 @@ import FormWrapper from '@/storiesWrappers/FormWrapper';
 import CONFIG from './mocks/forms';
 import { formatFormData } from '@/services/utils';
 
-storiesOf('HdDynamicForm', module)
+storiesOf('Form/HdDynamicForm', module)
   .addDecorator(FormWrapper)
   .add('profile', () => ({
     components: { HdDynamicForm },
-    template: '<hd-dynamic-form slot="content" :items="config" submitLabel="Submit Label" @submit="onSubmit"/>',
+    template: '<hd-dynamic-form :items="config" submitLabel="Submit Label" @submit="onSubmit"/>',
     data() {
       return {
         config: CONFIG.PROFILE,
@@ -25,7 +25,7 @@ storiesOf('HdDynamicForm', module)
   }))
   .add('signup', () => ({
     components: { HdDynamicForm },
-    template: '<hd-dynamic-form slot="content" :items="config" submitLabel="Submit Label" @submit="submit"/>',
+    template: '<hd-dynamic-form :items="config" submitLabel="Submit Label" @submit="submit"/>',
     data() {
       return {
         config: CONFIG.SIGNUP,
@@ -40,10 +40,25 @@ storiesOf('HdDynamicForm', module)
   }))
   .add('login', () => ({
     components: { HdDynamicForm },
-    template: '<hd-dynamic-form slot="content" :items="config" submitLabel="Submit Label" @submit="submit"/>',
+    template: '<hd-dynamic-form :items="config" submitLabel="Submit Label" @submit="submit"/>',
     data() {
       return {
         config: CONFIG.LOGIN,
+      };
+    },
+    methods: {
+      submit(formData) {
+        console.log('formData', formData);
+        console.log('Formatted formData (nesting enabled)', formatFormData(formData, { nestingEnabled: true }));
+      },
+    },
+  }))
+  .add('specified language', () => ({
+    components: { HdDynamicForm },
+    template: '<hd-dynamic-form :items="config" submitLabel="Submit Label" lang="en" @submit="submit"/>',
+    data() {
+      return {
+        config: CONFIG.LOGIN_EN,
       };
     },
     methods: {

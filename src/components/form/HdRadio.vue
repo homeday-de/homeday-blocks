@@ -16,13 +16,24 @@
 </template>
 
 <script>
+import { getMessages } from '@/lang';
+
 export default {
   name: 'hdCheckbox',
-  props: ['label', 'items', 'selected', 'name', 'required', 'vertical'],
+  props: {
+    name: String,
+    label: String,
+    items: Array,
+    selected: String,
+    required: Boolean,
+    vertical: Boolean,
+    lang: String,
+  },
   data() {
     return {
       selectedRadio: this.selected,
       error: null,
+      t: {},
     };
   },
   computed: {
@@ -33,6 +44,7 @@ export default {
     },
   },
   created() {
+    this.t = getMessages(this.lang);
     this.$emit('dataChange', { name: this.name, value: this.selectedRadio, error: this.error });
   },
   methods: {
@@ -46,7 +58,7 @@ export default {
     },
     validate() {
       if (this.required && this.selectedRadio === undefined) {
-        this.error = this.$t('FORM.VALIDATION.REQUIRED');
+        this.error = this.t.FORM.VALIDATION.REQUIRED;
       } else {
         this.error = null;
       }

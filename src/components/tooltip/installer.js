@@ -1,5 +1,4 @@
 /* eslint-disable no-new */
-
 import Vue from 'vue';
 import tooltipDirective from './tooltipDirective';
 import HdTooltip from './HdTooltip.vue';

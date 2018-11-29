@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/vue';
 import HdTable from '@/components/HdTable.vue';
 import HdInput from '@/components/form/HdInput.vue';
 import TableWrapper from '@/storiesWrappers/TableWrapper';
-import moviesTable from '@/stories/mocks/tables/movies';
+import MOVIES_TABLE from '@/stories/mocks/tables/MOVIES';
 
 storiesOf('HdTable', module)
   .addDecorator(TableWrapper)
@@ -13,16 +13,16 @@ storiesOf('HdTable', module)
     template: '<hd-table :header="header" :body="body"></hd-table>',
     data() {
       return {
-        ...moviesTable,
+        ...MOVIES_TABLE,
       };
     },
   }))
   .add('fixed', () => ({
     components: { HdTable },
-    template: '<hd-table :header="header" :body="body" fixed="true"></hd-table>',
+    template: '<hd-table :header="header" :body="body" :fixed="true"></hd-table>',
     data() {
       return {
-        ...moviesTable,
+        ...MOVIES_TABLE,
       };
     },
   }))
@@ -31,16 +31,16 @@ storiesOf('HdTable', module)
     template: '<hd-table :header="header" :body="body" align="left"></hd-table>',
     data() {
       return {
-        ...moviesTable,
+        ...MOVIES_TABLE,
       };
     },
   }))
   .add('no-wrap (fixed, left-aligned)', () => ({
     components: { HdTable },
-    template: '<hd-table :header="header" :body="body" align="left" fixed="true" no-wrap="true"></hd-table>',
+    template: '<hd-table :header="header" :body="body" align="left" :fixed="true" :no-wrap="true"></hd-table>',
     data() {
       return {
-        ...moviesTable,
+        ...MOVIES_TABLE,
       };
     },
   }))
@@ -49,8 +49,8 @@ storiesOf('HdTable', module)
     template: '<hd-table :header="header" :body="body"></hd-table>',
     data() {
       return {
-        header: moviesTable.header,
-        body: moviesTable.body.map(({
+        header: MOVIES_TABLE.header,
+        body: MOVIES_TABLE.body.map(({
           title, year, rating, stars,
         }) => ({
           title,

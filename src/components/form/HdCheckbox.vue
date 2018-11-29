@@ -12,16 +12,26 @@
 </template>
 
 <script>
+import { getMessages } from '@/lang';
+
 export default {
   name: 'hdCheckbox',
-  props: ['label', 'checked', 'name', 'required'],
+  props: {
+    name: String,
+    label: String,
+    checked: Boolean,
+    required: Boolean,
+    lang: String,
+  },
   data() {
     return {
       isChecked: !!this.checked,
       error: null,
+      t: {},
     };
   },
   created() {
+    this.t = getMessages(this.lang);
     this.$emit('dataChange', { name: this.name, value: this.isChecked, error: this.error });
   },
   methods: {
@@ -36,7 +46,7 @@ export default {
     },
     validate() {
       if (this.required && !this.isChecked) {
-        this.error = this.$t('FORM.VALIDATION.REQUIRED');
+        this.error = this.t.FORM.VALIDATION.REQUIRED;
       } else {
         this.error = null;
       }

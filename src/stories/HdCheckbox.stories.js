@@ -4,14 +4,14 @@ import { action } from '@storybook/addon-actions';
 
 import HdCheckbox from '../components/form/HdCheckbox.vue';
 
-storiesOf('HdCheckbox', module)
+storiesOf('Form/HdCheckbox', module)
   .add('required', () => ({
     components: { HdCheckbox },
-    template: '<hd-checkbox @dataChange="onDataChange" required="true" label="Label..." />',
+    template: '<hd-checkbox @dataChange="onDataChange" :required="true" label="Label..." />',
     methods: { onDataChange: action('dataChange') },
   }))
-  .add('selected', () => ({
+  .add('checked', () => ({
     components: { HdCheckbox },
-    template: '<hd-checkbox @dataChange="onDataChange" checked="true" label="Label..." />',
+    template: '<hd-checkbox @dataChange="onDataChange" :checked="true" label="Label..." />',
     methods: { onDataChange: action('dataChange') },
   }));

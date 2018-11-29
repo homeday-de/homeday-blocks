@@ -1,5 +1,5 @@
 <template>
-  <table class="hd-table" :class="{ [align || 'center']: true, noWrap, fixed }">
+  <table class="hd-table" :class="{ [align]: true, noWrap, fixed }">
     <thead>
       <tr>
         <th v-for="(th, i) in header" :key="`header-${i}`">{{ th }}</th>
@@ -19,7 +19,16 @@
 <script>
 export default {
   name: 'hd-table',
-  props: ['header', 'body', 'align', 'noWrap', 'fixed'],
+  props: {
+    header: Array,
+    body: Array,
+    align: {
+      type: String,
+      default: 'center',
+    },
+    noWrap: Boolean,
+    fixed: Boolean,
+  },
   methods: {
     isComponent(value) {
       return typeof value === 'object' && value.component !== undefined;

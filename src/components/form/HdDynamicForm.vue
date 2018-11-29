@@ -1,6 +1,6 @@
 <template>
-  <form class="dynamic-form" @submit.prevent="submit" novalidate>
-    <div v-for="(line, i) in lines" class="dynamic-form__line" :key="`line-${i}`">
+  <form class="dynamicForm" @submit.prevent="submit" novalidate>
+    <div v-for="(line, i) in lines" class="dynamicForm__line" :key="`line-${i}`">
       <component
       v-for="item in getItemsArray(line)"
       :is="getComponent(item.type)"
@@ -8,10 +8,11 @@
       v-bind="item.props"
       :name="item.name"
       @dataChange="dataChange"
-      class="dynamic-form__line__item"
+      class="dynamicForm__line__item"
+      :lang="lang"
       />
     </div>
-    <button class="btn btn--primary dynamic-form__submit">{{ submitLabel }}</button>
+    <button class="btn btn--primary dynamicForm__submit">{{ submitLabel }}</button>
   </form>
 </template>
 
@@ -23,10 +24,11 @@ import HdRadio from '@/components/form/HdRadio.vue';
 import HdPasswordConfirm from '@/components/form/HdPasswordConfirm.vue';
 
 export default {
-  name: 'hd-dynamic-form',
+  name: 'hdDynamicForm',
   props: {
     submitLabel: String,
     items: Array,
+    lang: String,
   },
   components: {
     HdInput,
@@ -88,7 +90,7 @@ export default {
 <style lang="scss" scoped>
 @import '@/styles/variables.scss';
 
-.dynamic-form {
+.dynamicForm {
   &__line {
     display: flex;
     &__item {

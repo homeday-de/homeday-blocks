@@ -13,12 +13,15 @@
       "INVALID_EMAIL": "Bitte geben Sie eine korrekte E-Mail-Adresse ein.",
       "PASSWORD_MISMATCH": "Dies stimmt nicht mit dem obigen Passwort überein",
       "PASSWORD_SHORT": "Dieses Passwort ist zu kurz",
-      "PASSWORD_STRENGTH": [
-        "Strength level: <span style='color: orange'>Weak</span>",
-        "Strength level: <span style='color: GoldenRod'>Average</span>",
-        "Strength level: <span style='color: LimeGreen'>Strong</span>",
-        "Strength level: <span style='color: green'>Very Strong</span>"
-      ]
+      "PASSWORD_STRENGTH": {
+        "TITLE": "Stärke",
+        "LEVELS": [
+          "Schwach",
+          "Mittlere",
+          "Stark",
+          "Sehr stark"
+        ]
+      }
     }
   }
 }

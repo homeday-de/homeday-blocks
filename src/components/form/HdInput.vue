@@ -2,7 +2,7 @@
   <div class="field field--input" :class="fieldClasses">
     <input
       class="field__input"
-      :autocomplete="autocomplete !== undefined ? autocomplete : true"
+      :autocomplete="autocomplete"
       v-model.trim="currentValue"
       ref="input"
       :type="currentType"
@@ -19,8 +19,8 @@
     <p class="field__error field__error--helper" v-else-if="helper" v-html="helper"></p>
     <span v-if="false" class="field__error-clear" @click="clearInput"></span>
     <span v-if="showVisibilityToggle"
-      class="field__visibility-toggle"
-      :class="{'field__visibility-toggle--visible': currentType === 'text'}"
+      class="field__visibilityToggle"
+      :class="{'field__visibilityToggle--visible': currentType === 'text'}"
       @click="togglePasswordVisibility"></span>
     <span class="field__border"></span>
   </div>
@@ -32,7 +32,20 @@ import validate from '@/services/formValidation';
 
 export default {
   name: 'hdInput',
-  props: ['name', 'type', 'label', 'value', 'placeholder', 'required', 'autocomplete', 'autofocus', 'lang'],
+  props: {
+    name: String,
+    type: String,
+    label: String,
+    value: [String, Number],
+    placeholder: String,
+    required: Boolean,
+    autocomplete: {
+      type: Boolean,
+      default: true,
+    },
+    autofocus: Boolean,
+    lang: String,
+  },
   data() {
     return {
       t: {},
@@ -145,7 +158,7 @@ export default {
       color: $regent-gray;
     }
   }
-  &__visibility-toggle {
+  &__visibilityToggle {
     position: absolute;
     right: $inline-s;
     bottom: $stack-m;
