@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/vue';
 import HdTable from '@/components/HdTable.vue';
 import HdInput from '@/components/form/HdInput.vue';
 import TableWrapper from '@/storiesWrappers/TableWrapper';
-import MOVIES_TABLE from '@/stories/mocks/tables/MOVIES';
+import MOVIES_TABLE from '@/stories/mocks/tables/movies';
 
 storiesOf('HdTable', module)
   .addDecorator(TableWrapper)

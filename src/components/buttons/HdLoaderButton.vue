@@ -12,7 +12,7 @@
       </button>
 
       <!-- Loading circle -->
-      <svg class="loaderButton__svg loaderButton__svg--progressCircle" :width="`${buttonHeight}px`" :height="`${buttonHeight}px`" ref="circle">
+      <svg class="loaderButton__svg loaderButton__svg--progressCircle" v-show="state == 'loading'" :width="`${buttonHeight}px`" :height="`${buttonHeight}px`" ref="circle">
         <path
           :d="circlePath"
           :style="{strokeWidth: `${loadingCircleStrokeWidth}px`}"
@@ -150,16 +150,16 @@ export default {
       }, this.idleResetTime);
     },
     setSuccessState() {
-      this.state = 'success';
       this.addToTransitionQue(this.draw.bind(this, this.$refs.check));
       if (this.resetOnSuccess) {
         this.addToTransitionQue(this.setIdleState);
       }
+      this.state = 'success';
     },
     setErrorState() {
-      this.state = 'error';
       this.addToTransitionQue(this.draw.bind(this, this.$refs.cross));
       this.addToTransitionQue(this.setIdleState);
+      this.state = 'error';
     },
     runTransitionQue: debounce(function debouncedQueMethod() {
       if (this.transitionsQue.length > 0) {
@@ -220,6 +220,7 @@ export default {
     max-width: 100%;
     width: 100%;
     height: 46px;
+    padding: 0;
     transition: background-color 0.3s, color 0.3s, width 0.3s cubic-bezier(0.25, 0.25, 0.4, 1.6),  border-width 0.3s, border-color 0.3s;
 
     #{$lB}--loading & {

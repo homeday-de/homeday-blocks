@@ -16,10 +16,6 @@
 export default {
   name: 'HdToast',
   props: {
-    text: {
-      type: String,
-      required: true,
-    },
     secondaryLabel: String,
     primaryLabel: String,
   },

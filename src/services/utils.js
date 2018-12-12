@@ -1,5 +1,17 @@
-/* eslint-disable no-useless-escape, no-confusing-arrow, no-param-reassign */
+/* eslint-disable */
 import merge from 'lodash/merge';
+
+const accentMap = {
+  'ä': 'a',
+  'ö': 'o',
+  'ü': 'u',
+  'ß': 'ss'
+};
+
+// Replaces all occurances of accents from the accentMap
+export const accentFold = string => string.split('').map(char => {
+  return accentMap[char] ? accentMap[char] : char;
+}).join('');
 
 
 /** Replace all the occurrences in a string */
@@ -70,9 +82,23 @@ export const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min 
 
 export const circleToPath = (cx, cy, r) => `M ${cx} ${cy} m -${r}, 0 a ${r},${r} 0 1,0 ${r * 2},0 a ${r},${r} 0 1,0 -${r * 2},0`;
 
+export const loadJSAsync = (e, n, o) => {
+  const t = document,
+    a = "script",
+    i = t.createElement(a),
+    r = t.getElementsByTagName(a)[0];
+  i.src = "//" + e, n && i.addEventListener("load", function (e) {
+    n(null, e)
+  }, !1), o && i.addEventListener("error", function (e) {
+    o(e)
+  }, !1), r.parentNode.insertBefore(i, r)
+};
+
 export default {
   populateTemplate,
   getPasswordStrength,
   formatFormData,
   getRandomInt,
+  loadJSAsync,
+  accentFold,
 };
