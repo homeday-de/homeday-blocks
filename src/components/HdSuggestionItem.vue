@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { accentFold } from 'services/utils';
+import { accentFold } from 'hd-blocks-services/utils';
 
 const containsSharpS = text => text.match(/ß/) !== null;
 export default {
@@ -37,8 +37,6 @@ export default {
       const accentFoldedMatch = accentFoldedText.match(normalizedHighlight);
       const regularMatch = normalizedText.match(normalizedHighlight);
       const matchedText = regularMatch || accentFoldedMatch;
-      console.log('​highlightText -> matchedText', matchedText);
-
 
       if (matchedText) {
         const startIndex = matchedText ? matchedText.index : 0;

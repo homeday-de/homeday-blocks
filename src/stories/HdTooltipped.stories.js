@@ -1,9 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
 
-import HdTooltipped from '../components/tooltip/HdTooltipped.vue';
-import HdInput from '../components/form/HdInput.vue';
-import FormWrapper from '@/storiesWrappers/FormWrapper';
+import HdTooltipped from 'hd-blocks-components/tooltip/HdTooltipped.vue';
+import HdInput from 'hd-blocks-components/form/HdInput.vue';
+import FormWrapper from 'hd-blocks-src/storiesWrappers/FormWrapper';
 
 storiesOf('Tooltipped', module)
   .addDecorator(FormWrapper)

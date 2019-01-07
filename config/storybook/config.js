@@ -5,7 +5,7 @@ import { withNotes } from '@storybook/addon-notes';
 import { withKnobs } from '@storybook/addon-knobs';
 import '@storybook/addon-console';
 
-import tooltipInstall from '@/components/tooltip/installer';
+import tooltipInstall from 'hd-blocks-src/components/tooltip/installer';
 
 tooltipInstall();
 

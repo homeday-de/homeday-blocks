@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import HdInput from 'components/form/HdInput.vue';
-import { populateTemplate } from 'services/utils';
+import HdInput from 'hd-blocks-components/form/HdInput.vue';
+import { populateTemplate } from 'hd-blocks-services/utils';
 // import debounce from 'lodash/debounce';
 
 export default {
@@ -101,12 +101,8 @@ export default {
         this.selectSuggestion(this.suggestions[this.previousSuggestionIndex]);
       }
     },
-    onEnter() {
-      console.log('Hello from: onEnter');
-    },
     hide() {
       this.suggestionsHidden = true;
-      console.log('Hello from: hide');
     },
     updateQuery({ value }) {
       this.query = value;

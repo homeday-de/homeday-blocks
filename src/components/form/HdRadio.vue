@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { getMessages } from '@/lang';
+import { getMessages } from 'hd-blocks-src/lang';
 
 export default {
   name: 'hdCheckbox',
@@ -73,7 +73,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
+@import 'hd-blocks-src/styles/variables.scss';
 
 .radio {
   $r: &;
