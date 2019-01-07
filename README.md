@@ -45,7 +45,7 @@ Homeday Blocks makes use of the Webpack Alias feature, which need to be set up i
 To help with that, a helper function is provided inside this project which should be included in the parent project as in the following example:
 ```js
 // vue.config.js
- getHdBlockWebpackAlias = require('../homeday-blocks/webpack-alias');
+ getHdBlockWebpackAlias = require('homeday-blocks/webpack-alias');
 
 module.exports = {
   // ...
