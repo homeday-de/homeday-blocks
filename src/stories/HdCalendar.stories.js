@@ -1,9 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
-import { generateDateCycles } from 'services/date';
+import { generateDateCycles } from 'hd-blocks-services/date';
 
-import HdCalendar from '../components/HdCalendar.vue';
+import HdCalendar from 'hd-blocks-components/HdCalendar.vue';
 
 storiesOf('HdCalendar', module)
   .add('base', () => ({

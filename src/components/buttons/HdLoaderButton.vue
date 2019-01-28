@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { getRandomInt, circleToPath } from 'services/utils';
+import { getRandomInt, circleToPath } from 'hd-blocks-services/utils';
 import debounce from 'lodash/debounce';
 
 export default {

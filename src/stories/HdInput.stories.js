@@ -2,8 +2,8 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 
-import HdInput from '../components/form/HdInput.vue';
-import FormWrapper from '@/storiesWrappers/FormWrapper';
+import HdInput from 'hd-blocks-components/form/HdInput.vue';
+import FormWrapper from 'hd-blocks-src/storiesWrappers/FormWrapper';
 
 storiesOf('Form/HdInput', module)
   .addDecorator(FormWrapper)

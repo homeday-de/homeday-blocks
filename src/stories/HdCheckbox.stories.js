@@ -2,7 +2,7 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 
-import HdCheckbox from '../components/form/HdCheckbox.vue';
+import HdCheckbox from 'hd-blocks-components/form/HdCheckbox.vue';
 
 storiesOf('Form/HdCheckbox', module)
   .add('required', () => ({

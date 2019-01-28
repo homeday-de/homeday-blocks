@@ -18,10 +18,10 @@
 
 <script>
 import some from 'lodash/some';
-import HdInput from '@/components/form/HdInput.vue';
-import HdCheckbox from '@/components/form/HdCheckbox.vue';
-import HdRadio from '@/components/form/HdRadio.vue';
-import HdPasswordConfirm from '@/components/form/HdPasswordConfirm.vue';
+import HdInput from 'hd-blocks-src/components/form/HdInput.vue';
+import HdCheckbox from 'hd-blocks-src/components/form/HdCheckbox.vue';
+import HdRadio from 'hd-blocks-src/components/form/HdRadio.vue';
+import HdPasswordConfirm from 'hd-blocks-src/components/form/HdPasswordConfirm.vue';
 
 export default {
   name: 'hdDynamicForm',
@@ -88,7 +88,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/variables.scss';
+@import 'hd-blocks-src/styles/variables.scss';
 
 .dynamicForm {
   &__line {

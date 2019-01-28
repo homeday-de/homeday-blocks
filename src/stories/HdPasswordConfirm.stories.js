@@ -3,8 +3,8 @@ import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import { number, boolean } from '@storybook/addon-knobs';
 
-import HdPasswordConfirm from '../components/form/HdPasswordConfirm.vue';
-import FormWrapper from '@/storiesWrappers/FormWrapper';
+import HdPasswordConfirm from 'hd-blocks-components/form/HdPasswordConfirm.vue';
+import FormWrapper from 'hd-blocks-src/storiesWrappers/FormWrapper';
 
 storiesOf('Form/HdPasswordConfirm', module)
   .addDecorator(FormWrapper)
