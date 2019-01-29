@@ -27,8 +27,8 @@
 </template>
 
 <script>
-import { getMessages } from 'hd-blocks-src/lang';
-import validate from 'hd-blocks-src/services/formValidation';
+import { getMessages } from 'hd-blocks/lang';
+import validate from 'hd-blocks/services/formValidation';
 
 export default {
   name: 'hdInput',
@@ -131,8 +131,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-@import 'hd-blocks-src/styles/variables.scss';
-@import '~styleguide/src/inputs.scss';
+@import 'hd-blocks/styles/variables.scss';
+@import 'hd-blocks/styles/inputs.scss';
 
 .field {
   &__input {
@@ -163,7 +163,7 @@ export default {
     position: absolute;
     right: $inline-s;
     bottom: $stack-m;
-    background-image: url('~hd-blocks-assets/icons/ic_visibility-on.svg');
+    background-image: url('~hd-blocks/assets/icons/ic_visibility-on.svg');
     background-repeat: no-repeat;
     width: 24px;
     height: 24px;

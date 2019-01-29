@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import { text, boolean, number } from '@storybook/addon-knobs';
 
-import HdLoaderButton from 'hd-blocks-components/buttons/HdLoaderButton.vue';
+import HdLoaderButton from 'hd-blocks/components/buttons/HdLoaderButton.vue';
 
 storiesOf('HdLoaderButton', module)
   .add('with label', () => ({

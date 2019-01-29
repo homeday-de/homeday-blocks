@@ -1,0 +1,443 @@
+$labelHeight: 18px;
+$iconDimension: 24px;
+$innerIconDimension: 18px;
+$inputLeftPadding: $inline-s;
+$inputBackground: #f4f5f6;
+$inputFilledBackground: #e8eaee;
+
+.field {
+  $f: &;
+  position: relative;
+  margin-bottom: $labelHeight + $stack-s;
+  width: 100%;
+
+  &:after {
+    content: "";
+    position: absolute;
+    right: $inline-s;
+    bottom: $stack-m;
+    display: block;
+    width: $iconDimension;
+    height: $iconDimension;
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  &--minimal {
+    margin-bottom: 0;
+  }
+
+  &--hasIcon {
+    padding-left: $iconDimension + $inline-m;
+
+    &--right {
+      padding-left: $inline-xs;
+    }
+  }
+
+  &--empty {
+    &:not(#{$f}--active):after {
+      background-image: url('~hd-blocks/assets/icons/ic-error.svg');
+      border-radius: 100%;
+    }
+  }
+
+  &--valid:not(#{$f}--disabled):not(#{$f}--select):not(#{$f}--double) {
+    &:after {
+      background-image: url('~hd-blocks/assets/icons/ic-checkmark.svg');
+      border-radius: 100%;
+    }
+  }
+
+  &--textarea {
+    // Icons is differently positioned for textarea
+    &:after {
+      content: "";
+      top: $stack-m;
+      bottom: initial;
+      top: $labelHeight;
+    }
+    // Fake top padding
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: $labelHeight + $stack-s;
+      background: $inputBackground;
+      display: block;
+      z-index: 1;
+    }
+
+    &#{$f}--filled:not(#{$f}--active):not(#{$f}--invalid):before {
+      background: $inputFilledBackground;
+    }
+
+    &#{$f}--hasIcon:before {
+      left: $iconDimension + $inline-m;
+    }
+  }
+
+  &--disabled {
+    &, &:hover{
+      color: rgba($regent-gray, 0.8);
+    }
+  }
+
+  &__icon {
+    width: $iconDimension;
+    height: $iconDimension;
+    pointer-events: none;
+    display: block;
+
+    position: absolute;
+    left: 0;
+    bottom: $stack-m;
+
+    #{$f}--textarea & {
+      top: $stack-m;
+    }
+
+    #{$f}--minimal &  {
+      bottom: 8px;
+    }
+
+    &--right {
+      right: $inline-s;
+      left: auto;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+    }
+  }
+
+  &__label {
+    font-size: 18px;
+    line-height: 28px;
+    position: absolute;
+    margin-left: $inputLeftPadding;
+    bottom: $stack-s;
+    color: $nevada;
+    transition: all 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+    z-index: 9;
+    pointer-events: none;
+
+    #{$f}--filled &, #{$f}--active &, #{$f}--select &, #{$f}--double & {
+      font-size: 14px;
+      line-height: 18px;
+      bottom: calc(100% - #{$labelHeight + $stack-s});
+    }
+
+    #{$f}--active & {
+      color: $vivid-blue;
+    }
+
+    #{$f}--empty &, #{$f}--invalid:not(#{$f}--active) & {
+      color: $torch-red;
+    }
+
+    #{$f}:not(#{$f}--disabled):hover & {
+      color: $vivid-blue;
+    }
+
+    #{$f}--textarea & {
+      top: $stack-s;
+
+      #{$f}--filled &, #{$f}--active & {
+        bottom: initial;
+      }
+    }
+
+    #{$f}--required & {
+      &:after {
+        content: "*";
+      }
+    }
+
+    #{$f}--disabled & {
+      color: rgba($regent-gray, 0.8);
+    }
+  }
+
+  &__error-clear {
+    position: absolute;
+    right: $inline-s;
+    bottom: $stack-m;
+    display: block;
+    width: $iconDimension;
+    height: $iconDimension;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('~hd-blocks/assets/icons/ic-invalid--transparent.svg');
+    border-radius: 100%;
+    z-index: 10;
+    cursor: pointer;
+
+    &:hover {
+      background-image: url('~hd-blocks/assets/icons/ic-invalid--filled.svg');
+    }
+  }
+
+  &__error {
+    @include font('text-xxsmall');
+    margin: 0;
+    position: absolute;
+    top: calc(100% + #{$inline-xs});
+    margin-left: $inputLeftPadding;
+    color: $torch-red;
+    display: none;
+
+    #{$f}--empty &, #{$f}--invalid & {
+      display: block;
+    }
+
+    #{$f}--active & {
+      color: $regent-gray;
+    }
+  }
+
+  &__validation-loading {
+    position: absolute;
+    z-index: 1;
+    width: $iconDimension;
+    height: $iconDimension;
+    right: $inline-s;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: none;
+
+    #{$f}--validating & {
+      display: block;
+    }
+  }
+
+  &__border {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border: 1px solid $heather;
+    z-index: 1;
+    transition: all 200ms ease;
+
+    #{$f}--hasIcon & {
+      width: calc(100% - #{$iconDimension + $inline-m});
+    }
+
+    #{$f}--hasIcon--right & {
+      width: calc(100% - #{$inline-xs});
+    }
+
+    #{$f}:hover & {
+      border-color: $regent-gray;
+    }
+
+
+    &:after, &:before {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      height: 2px;
+      background: $heather;
+      width: 0;
+      transition: all 200ms ease;
+
+      #{$f}--active & {
+        background: $vivid-blue;
+        width: calc(50% + 1px);
+      }
+
+      #{$f}--empty &, #{$f}--invalid:not(#{$f}--active) & {
+        width: calc(50% + 1px);
+        background: $torch-red;
+      }
+    }
+    &:before {
+      right: 50%;
+    }
+    &:after {
+      left: 50%;
+    }
+
+    #{$f}--disabled & {
+      border-style: dashed;
+      border-color: $regent-gray;
+    }
+  }
+
+  &__input {
+    font-size: 18px;
+    line-height: 28px;
+    color: $cello;
+    border: none;
+    outline: none;
+    border-radius: $default-border-radius;
+
+    padding-top: $labelHeight + $stack-s;
+    padding-left: $inputLeftPadding;
+    padding-right: $inline-s;
+    padding-bottom: $stack-s;
+    -webkit-appearance: none;
+
+    background: $inputBackground;
+    display: block;
+    width: 100%;
+
+    overflow: hidden;
+
+    #{$f}--select & {
+      padding-right: $inline-l;
+    }
+    
+    #{$f}--hasTooltip &,
+    &[type=email],
+    &[type=number],
+    &[type=text] {
+      padding-right: $inline-m + $iconDimension;
+    }
+
+    #{$f}--minimal & {
+      padding-top: $stack-s;
+    }
+
+    #{$f}--double & {
+      width: calc(50% - 8px);
+      position: relative;
+      padding-right: $inline-xs;
+
+      &:nth-child(2) {
+        padding-right: $inline-s;
+      }
+    }
+    &::-ms-expand {
+      display: none;
+    }
+    &::-ms-clear {
+      display: none;
+    }
+    #{$f}--filled:not(#{$f}--active):not(#{$f}--invalid) & {
+      background: $inputFilledBackground;
+    }
+
+    #{$f}--disabled & {
+      color: rgba($regent-gray, 0.8);
+    }
+  }
+
+  &__tooltip {
+    position: absolute;
+    font-size: 0;
+    border: none;
+    width: $iconDimension;
+    height: $iconDimension;
+    right: $inline-s;
+    bottom: $stack-m;
+    background-color: transparent;
+    background-image: url('~hd-blocks/assets/icons/ic-tooltip_info--transparent.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &:hover {
+      cursor: pointer;
+      background-image: url('~hd-blocks/assets/icons/ic-tooltip_info--filled.svg');
+    }
+
+    &--question {
+      background-image: url('~hd-blocks/assets/icons/ic-tooltip_question--transparent.svg');
+
+      &:hover {
+        background-image: url('~hd-blocks/assets/icons/ic-tooltip_question--filled.svg');
+      }
+    }
+    &:focus {
+      outline: none;
+    }
+    #{$f}--invalid &, #{$f}--filled & {
+      display: none;
+    }
+
+    #{$f}--textarea & {
+      top: $stack-m;
+    }
+  }
+
+  &__reset {
+    display: none;
+    border: none;
+    position: absolute;
+    background-color: transparent;
+    background-image: url('~hd-blocks/assets/icons/ic-input--reset.svg');
+    width: 24px;
+    height: 24px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    right: $inline-s;
+    z-index: 99;
+    cursor: pointer;
+
+    #{$f}--filled#{$f}--active & {
+      display: block;
+    }
+
+    #{$f}--filled &:hover, #{$f}--filled &:focus {
+      display: block;
+    }
+  }
+
+  &--select {
+    cursor: pointer;
+    &:after {
+      background-image: url('~hd-blocks/assets/icons/ic-arrow_down.svg');
+    }
+  }
+
+  &__double-input {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    border-radius: 2px;
+    background: $inputBackground;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 16px;
+      height: 100%;
+      z-index: 2;
+      background: $inputBackground;
+      left: calc(50% - 8px);
+    }
+    #{$f}--filled:not(#{$f}--active):not(#{$f}--invalid) &:before {
+      background: $inputFilledBackground;
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 2px;
+      background-color: #8290A1;
+      left: calc(50% - 4px);
+      bottom: 20px;
+      z-index: 3;
+    }
+  }
+
+  input[type="number"] {
+    -moz-appearance:textfield;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+}

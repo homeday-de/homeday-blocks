@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import HdInput from 'hd-blocks-components/form/HdInput.vue';
-import { populateTemplate } from 'hd-blocks-services/utils';
+import HdInput from 'hd-blocks/components/form/HdInput.vue';
+import { populateTemplate } from 'hd-blocks/services/utils';
 // import debounce from 'lodash/debounce';
 
 export default {

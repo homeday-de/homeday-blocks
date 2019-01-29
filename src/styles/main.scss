@@ -1,2 +1,177 @@
-@import "reset-css/sass/_reset.scss";
-@import "styleguide/src/main.scss";
+@import './mixins';
+@import './buttons';
+@import './inputs';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-primary;
+  color: $cello;
+}
+
+
+
+/* CLASSES UTILITIES GENERATION */
+
+/** COLORS **/
+$colors-palette : (picton, $picton),
+(cello, $cello),
+(vivid-blue, $vivid-blue),
+(white, $white),
+(nevada, $nevada),
+(mercury, $mercury),
+(charlotte, $charlotte),
+(polar, $polar),
+(blue, $blue),
+(light-orange, $light-orange),
+(cherokee, $cherokee),
+(regent-gray, $regent-gray),
+(heather, $heather),
+(ebb, $ebb),
+(ebb2, $ebb2),
+(wild-sand, $wild-sand);
+
+$colors-properties: 'background-color',
+'color',
+'border-color';
+@each $property in $colors-properties {
+  @each $name, $color in $colors-palette {
+    .#{$property}-#{$name} {
+      #{$property}: $color;
+    }
+  }
+}
+
+
+/* MIX-IN WITH SAME PURPOSE THAN CLASSES UTILITIES */
+
+@mixin background-color($value) {
+  @each $name, $color in $colors-palette {
+    @if $value==$name {
+      background-color: $color;
+    }
+  }
+}
+
+@mixin color($value) {
+  @each $name,
+  $color in $colors-palette {
+    @if $value==$name {
+      color: $color;
+    }
+  }
+}
+
+@mixin border-color($value) {
+  @each $name,
+  $color in $colors-palette {
+    @if $value==$name {
+      border-color: $color;
+    }
+  }
+}
+
+/** SPACING **/
+/* CLASSES UTILITIES GENERATION */
+$spacing-properties : 'margin', 'padding';
+
+@each $property in $spacing-properties {
+  @each $name, $size in $standards {
+    .#{$property}-top-#{$name} {
+      #{$property}-top: $size;
+    }
+    .#{$property}-right-#{$name} {
+      #{$property}-right: $size;
+    }
+    .#{$property}-bottom-#{$name} {
+      #{$property}-bottom: $size;
+    }
+    .#{$property}-left-#{$name} {
+      #{$property}-left: $size;
+    }
+    .#{$property}-#{$name} {
+      #{$property}: $size;
+    }
+  }
+}
+
+/* MIX-IN WITH SAME PURPOSE THAN CLASSES UTILITIES */
+$list-position: 'top', 'bottom', 'right', 'left';
+@mixin margin($postion, $value) {
+  //Check if position exist
+  @if $postion != '' {
+    //First level position compare
+    @each $pos in $list-position {
+      @if $pos == $postion {
+        //Second level standards check
+        @each $name, $size in $standards {
+          @if $value == $name {
+            margin-#{$pos}: $size;
+          }
+        }
+      }
+    }
+  } @else {
+    //Second level standards check for all side
+    @each $name, $size in $standards {
+      @if $value == $name {
+        margin: $size;
+      }
+    }
+  }
+}
+@mixin padding($postion, $value) {
+  //Check if position exist
+  @if $postion != '' {
+    //First level position compare
+    @each $pos in $list-position {
+      @if $pos == $postion {
+        //Second level standards check
+        @each $name, $size in $standards {
+          @if $value == $name {
+            padding-#{$pos}: $size;
+          }
+        }
+      }
+    }
+  } @else {
+    //Second level standards check for all side
+    @each $name, $size in $standards {
+      @if $value == $name {
+        padding: $size;
+      }
+    }
+  }
+}
+
+
+/** FONTS **/
+
+/* GENERATION OF UTILITIES CLASSES */
+
+$font-list: ('headline', 'headline'),
+('subhead', 'subhead'),
+('title', 'title'),
+('subtitle', 'subtitle'),
+('xsheadline', 'xsheadline'),
+('body', 'body'),
+('body--primary', 'body--primary'),
+('body--secondary', 'body--secondary'),
+('text-small', 'text-small'),
+('text-xsmall', 'text-xsmall'),
+('text-xxsmall', 'text-xxsmall'),
+('showcase-link', 'showcase-link'),
+('link', 'link'),
+('link--primary', 'link--primary'),
+('link--secondary', 'link--secondary'),
+('quote', 'quote'),
+('number', 'number'),
+('table', 'table'),
+('code', 'code');
+@each $class-name, $font-name in $font-list {
+  .#{$class-name} {
+    @include font($font-name);
+  }
+}
