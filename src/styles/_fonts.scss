@@ -1,0 +1,165 @@
+@mixin font($style) {
+  @if ($style == 'headline') {
+    font-family: $font-primary;
+    color: inherit;
+    font-size: 26px;
+    line-height: 30px;
+    font-weight: 900;
+
+    @media (min-width: $break-tablet) {
+      font-size: 34px;
+      line-height: 42px;
+    }
+  }
+  @elseif ($style == 'subhead') {
+    font-family: $font-primary;
+    color: inherit;
+    font-size: 23px;
+    line-height: 30px;
+    font-weight: 900;
+
+    @media (min-width: $break-tablet) {
+      font-size: 31px;
+      line-height: 40px;
+    }
+  }
+  @elseif ($style == 'title') {
+    font-family: $font-primary;
+    color: inherit;
+    font-size: 21px;
+    line-height: 28px;
+    font-weight: 900;
+  }
+
+  @elseif ($style == 'subtitle') {
+    font-family: $font-primary;
+    color: inherit;
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: bold;
+  }
+
+  @elseif ($style == 'xsheadline') {
+    font-family: $font-primary;
+    color: $nevada;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 600;
+  }
+
+  @elseif ($style == 'body') {
+    font-family: $font-primary;
+    color: inherit;
+    font-size: 18px;
+    line-height: 28px;
+
+    @media (min-width: $break-tablet) {
+      font-size: 21px;
+      line-height: 32px;
+    }
+  }
+
+  @elseif ($style == 'body--primary') {
+    font-family: $font-primary;
+  }
+
+  @elseif ($style == 'body--secondary') {
+    font-family: $font-secondary;
+  }
+
+  @elseif ($style == 'text-small') {
+    font-family: $font-primary;
+    color: inherit;
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  @elseif ($style == 'text-xsmall') { // check in kirby for xs-small
+    font-family: $font-primary;
+    color: inherit;
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  @elseif ($style == 'text-xxsmall') { // check in kirby for xxs-tiny
+    font-family: $font-primary;
+    color: inherit;
+    font-size: 11px;
+    line-height: 14px;
+  }
+
+  @else if ($style == 'link') {
+    font-family: $font-primary;
+    text-decoration: none;
+    color: $cello;
+    font-size: 18px;
+    position: relative;
+    transition: all $time-s ease-in-out;
+    // Link underline
+    box-shadow: inset 0 0px 0 white, inset 0 -1px 0 $vivid-blue;
+    &:hover {
+      color: $vivid-blue;
+    }
+  }
+
+  @else if ($style == 'link--primary') {
+    font-family: $font-primary;
+  }
+
+  @else if ($style == 'link--secondary') {
+    box-shadow: none;
+  }
+
+  @elseif ($style == 'quote') {
+    font-family: $font-primary;
+    font-style: italic;
+    color: inherit;
+    font-size: 23px;
+    line-height: 32px;
+    font-weight: 600;
+    @media (min-width: $break-tablet) {
+      font-size: 34px;
+      line-height: 44px;
+      font-weight: 600;
+    }
+  }
+
+  @elseif ($style == 'code') {
+    font-family: monospace;
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  @elseif ($style=='number') {
+    font-family: $font-primary;
+    color: inherit;
+    font-size: 21px;
+    line-height: 24px;
+    font-weight: 700;
+  }
+
+  @elseif ($style=='showcase-link') {
+    font-family: $font-primary;
+    color: $vivid-blue;
+    font-size: 21px;
+    font-weight: 600;
+    line-height: 33px;
+    text-decoration: underline;
+  }
+
+  @elseif ($style=='table') {
+    font-family: $font-secondary;
+    font-size: 16px;
+    line-height: 28px;
+
+    @media (min-width: $break-tablet) {
+      font-size: 18px;
+      line-height: 32px;
+    }
+
+    th {
+      font-family: $font-primary;
+      font-weight: 600;
+    }
+  }
+}

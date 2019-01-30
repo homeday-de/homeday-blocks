@@ -1,9 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies, no-console */
 import { storiesOf } from '@storybook/vue';
 
-import HdDynamicForm from 'hd-blocks-src/components/form/HdDynamicForm.vue';
-import FormWrapper from 'hd-blocks-src/storiesWrappers/FormWrapper';
-import { formatFormData } from 'hd-blocks-src/services/utils';
+import HdDynamicForm from 'hd-blocks/components/form/HdDynamicForm.vue';
+import FormWrapper from 'hd-blocks/storiesWrappers/FormWrapper';
+import { formatFormData } from 'hd-blocks/services/utils';
 import CONFIG from './mocks/forms';
 
 storiesOf('Form/HdDynamicForm', module)

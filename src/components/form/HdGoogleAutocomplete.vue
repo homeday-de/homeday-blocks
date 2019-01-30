@@ -14,7 +14,7 @@
           :line2="suggestion.line2"
           :isSelected="isSelected"
           :highlightString="query"
-          :icon="require('hd-blocks-assets/icons/ic_location--grey.svg')"
+          :icon="require('hd-blocks/assets/icons/ic_location--grey.svg')"
         />
       </template>
     </HdAutocomplete>
@@ -22,9 +22,9 @@
 </template>
 
 <script>
-import HdAutocomplete from 'hd-blocks-components/form/HdAutocomplete.vue';
-import HdSuggestionItem from 'hd-blocks-components/HdSuggestionItem.vue';
-import { loadJSAsync } from 'hd-blocks-services/utils';
+import HdAutocomplete from 'hd-blocks/components/form/HdAutocomplete.vue';
+import HdSuggestionItem from 'hd-blocks/components/HdSuggestionItem.vue';
+import { loadJSAsync } from 'hd-blocks/services/utils';
 
 function get() {
   const key = 'AIzaSyDY98a4vRvZnPpX7Fy7fXso4JDFbiLhi8I';

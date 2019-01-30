@@ -17,7 +17,7 @@ module.exports = {
     loaderOptions: {
       sass: {
         data: `
-          @import "~styleguide/src/mixins.scss";
+          @import "hd-blocks/styles/mixins.scss";
         `,
       },
     },

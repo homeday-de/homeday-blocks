@@ -60,10 +60,10 @@ module.exports = {
 };
 ```
 
-We can then include the components from Homeday Blocks by using the `hd-blocks-components` alias, like so:
+We can then include the components from Homeday Blocks by using the `hd-blocks` alias, like so:
 
 ```js
-import HdDynamicForm from 'hd-blocks-components/form/HdDynamicForm.vue';
+import HdDynamicForm from 'hd-blocks/components/form/HdDynamicForm.vue';
 ```
 
 ## Customize configuration
