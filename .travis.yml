@@ -19,6 +19,7 @@ deploy:
   skip_cleanup: true
   local-dir: storybook-static
   acl: public_read
+  upload-dir: develop
   on:
     branch: develop
 branches:
