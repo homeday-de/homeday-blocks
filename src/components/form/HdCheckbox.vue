@@ -56,7 +56,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'hd-blocks/styles/variables.scss';
 
 .checkbox {
   display: flex;

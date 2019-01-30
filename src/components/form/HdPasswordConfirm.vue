@@ -136,7 +136,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'hd-blocks/styles/variables.scss';
 .confirmPassword {
   width: 100%;
   position: relative;

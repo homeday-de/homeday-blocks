@@ -88,7 +88,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'hd-blocks/styles/variables.scss';
 
 .dynamicForm {
   &__line {
