@@ -22,7 +22,7 @@ jobs:
           name: Build Storybook
           command: | 
             npm run build
-            npm run build:storybook
+            npm run storybook:build
       - persist_to_workspace:
           root: ~/homeday-blocks
           paths: 
