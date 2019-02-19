@@ -32,7 +32,7 @@
 
 <script>
 import chunk from 'lodash/chunk';
-import HdArrowButton from 'hd-blocks-components/buttons/HdArrowButton.vue';
+import HdArrowButton from 'hd-blocks/components/buttons/HdArrowButton.vue';
 
 export default {
   name: 'HdTimeslots',

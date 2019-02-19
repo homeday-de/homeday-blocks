@@ -87,7 +87,7 @@ $iconWidth: 48px;
   transition: transform .2s ease-in-out, box-shadow .2s ease-in-out;
   &:after {
     content: "";
-    background: url('~hd-blocks-assets/icons/ic_arrow_forward--idle-24px.svg');
+    background: url('~hd-blocks/assets/icons/ic_arrow_forward--idle-24px.svg');
     display: block;
     width: 24px;
     height: 24px;

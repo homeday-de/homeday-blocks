@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import { text } from '@storybook/addon-knobs';
 
-import HdRadioButton from 'hd-blocks-components/buttons/HdRadioButton.vue';
+import HdRadioButton from 'hd-blocks/components/buttons/HdRadioButton.vue';
 import HdRadioButtonNote from '../notes/HdRadioButton.md';
 
 storiesOf('HdRadioButton', module)

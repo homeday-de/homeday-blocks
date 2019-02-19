@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { getMessages } from 'hd-blocks-src/lang';
+import { getMessages } from 'hd-blocks/lang';
 
 export default {
   name: 'hdCheckbox',
@@ -56,7 +56,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'hd-blocks-src/styles/variables.scss';
 
 .checkbox {
   display: flex;
@@ -102,7 +101,7 @@ export default {
       top:0; left:0;
       width: 100%;
       height: 100%;
-      background-image: url('~hd-blocks-assets/icons/ic_checkmark-white.svg');
+      background-image: url('~hd-blocks/assets/icons/ic_checkmark-white.svg');
       background-repeat: no-repeat;
       background-position: center;
       background-size: 20px;

@@ -51,7 +51,7 @@
 <script>
 import flatten from 'lodash/flatten';
 import chunk from 'lodash/chunk';
-import { getIntlDateString } from 'hd-blocks-services/date';
+import { getIntlDateString } from 'hd-blocks/services/date';
 
 const WEEK_DAYS = 7;
 export default {
@@ -306,10 +306,10 @@ export default {
       cursor: not-allowed;
     }
     &--prev {
-      background: url('~hd-blocks-assets/icons/ic_arrow_backwards--idle-24px.svg') no-repeat center;
+      background: url('~hd-blocks/assets/icons/ic_arrow_backwards--idle-24px.svg') no-repeat center;
     }
     &--next {
-      background: url('~hd-blocks-assets/icons/ic_arrow_forward--idle-24px.svg') no-repeat center;
+      background: url('~hd-blocks/assets/icons/ic_arrow_forward--idle-24px.svg') no-repeat center;
     }
 
     &--mobile {

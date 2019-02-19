@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import { text } from '@storybook/addon-knobs';
 
-import HdToast from 'hd-blocks-components/HdToast.vue';
+import HdToast from 'hd-blocks/components/HdToast.vue';
 
 storiesOf('HdToast', module)
   .add('required', () => ({

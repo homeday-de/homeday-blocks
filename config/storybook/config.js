@@ -1,11 +1,11 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import 'styleguide/src/main.scss';
+import 'hd-blocks/styles/main.scss';
 import { configure, addDecorator } from '@storybook/vue';
 import { withNotes } from '@storybook/addon-notes';
 import { withKnobs } from '@storybook/addon-knobs';
 import '@storybook/addon-console';
 
-import tooltipInstall from 'hd-blocks-src/components/tooltip/installer';
+import tooltipInstall from 'hd-blocks/components/tooltip/installer';
 
 tooltipInstall();
 

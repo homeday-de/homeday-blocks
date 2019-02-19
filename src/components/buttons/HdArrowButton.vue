@@ -48,10 +48,10 @@ export default {
     cursor: not-allowed;
   }
   &--left {
-    background: url('~hd-blocks-assets/icons/ic_arrow_backwards--idle-24px.svg') no-repeat center;
+    background: url('~hd-blocks/assets/icons/ic_arrow_backwards--idle-24px.svg') no-repeat center;
   }
   &--right {
-    background: url('~hd-blocks-assets/icons/ic_arrow_forward--idle-24px.svg') no-repeat center;
+    background: url('~hd-blocks/assets/icons/ic_arrow_forward--idle-24px.svg') no-repeat center;
   }
 }
 </style>

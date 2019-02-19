@@ -19,9 +19,9 @@
 
 <script>
 import some from 'lodash/some';
-import { getPasswordStrength } from 'hd-blocks-src/services/utils';
-import HdInput from 'hd-blocks-src/components/form/HdInput.vue';
-import { getMessages } from 'hd-blocks-src/lang';
+import { getPasswordStrength } from 'hd-blocks/services/utils';
+import HdInput from 'hd-blocks/components/form/HdInput.vue';
+import { getMessages } from 'hd-blocks/lang';
 
 export default {
   name: 'hd-confirm-password',
@@ -136,7 +136,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'hd-blocks-src/styles/variables.scss';
 .confirmPassword {
   width: 100%;
   position: relative;
