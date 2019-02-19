@@ -67,5 +67,5 @@ uploader.on('progress', () => {
 
 uploader.on('end', () => {
   console.log('Eureka!');
-  console.log(`You can visit you're deployed version at ${BUCKET_URL}${getPath()}`);
+  console.log(`You can visit your deployed version at ${BUCKET_URL}${getPath()}`);
 });
