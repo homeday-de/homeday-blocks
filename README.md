@@ -1,5 +1,5 @@
 # Homeday Blocks
-A library of Vue components used across Homeday projects
+A library of Vue components used across Homeday projects - [here](http://hd-storybook.s3-website.eu-central-1.amazonaws.com/develop/)
 
 ## Local setup
 
@@ -41,7 +41,7 @@ npm run build:lib
 
 ## Deployment
 
-The [CI](https://travis-ci.com/homeday-de/homeday-blocks) will deploy storybook automatically, once PR is merged to `develop` branch. Additionally, you can deploy your current working branch locally, by running 
+The [CI](https://travis-ci.com/homeday-de/homeday-blocks) will deploy storybook automatically to our [showcase env](http://hd-storybook.s3-website.eu-central-1.amazonaws.com/develop/), once PR is merged to `develop` branch. Additionally, you can deploy your current working branch locally, by running 
 
 ```
 npm run deploy
@@ -53,8 +53,9 @@ for your local build by passing it as argument
 ```
 $ FOLDER=test npm run deploy
 ```
+This will deploy your branch to http://hd-storybook.s3-website.eu-central-1.amazonaws.com/test/ .
 
-If no folder is specified, timestamp will be used as folder prefix.
+**If no folder is specified, timestamp will be used as folder prefix.** This is to avoid collision with other working branches.
 
 For this to work, you have to all add your `AWS` credentials to the project. You can create JSON file in root folder, with following structure:
 
