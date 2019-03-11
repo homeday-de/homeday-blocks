@@ -13,13 +13,25 @@ storiesOf('Form/HdPasswordConfirm', module)
     template: '<hd-password-confirm @dataChange="onDataChange"/>',
     methods: { onDataChange: action('dataChange') },
   }))
-  .add('min characters (10)', () => ({
+  .add('with validity check', () => ({
     components: { HdPasswordConfirm },
-    template: '<hd-password-confirm @dataChange="onDataChange" :min="min"/>',
-    methods: { onDataChange: action('dataChange') },
+    template: `
+    <div style="text-align: center">
+      <hd-password-confirm ref="password" v-model="password" :min="min"/>
+      <button class="btn btn--primary" @click="check">Check Validity</button>
+      <p style="margin-top: 8px">Is valid: {{ valid }}</p>
+    </div>
+    `,
+    methods: {
+      check() {
+        this.valid = this.$refs.password.validate();
+      },
+    },
     data() {
       return {
-        min: number('min', 6),
+        min: number('min', 10),
+        password: '',
+        valid: false,
       };
     },
   }))
