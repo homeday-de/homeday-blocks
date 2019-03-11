@@ -5,8 +5,9 @@ cache: npm
 before_install:
 - npm i -g npm@5.6.0
 install:
-- npm ci
-#script:
+- npm i
+script:
+- npm run test:unit:ci
 #- npm run build
 #- npm run build:storybook
 #deploy:
