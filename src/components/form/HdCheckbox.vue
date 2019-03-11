@@ -27,37 +27,51 @@
 </template>
 
 <script>
+import merge from 'lodash/merge';
 import { getMessages } from 'hd-blocks/lang';
 
 export default {
   name: 'hdCheckbox',
   props: {
-    name: String,
-    label: String,
-    checked: Boolean,
-    required: Boolean,
+    name: {
+      type: String,
+      default: '',
+    },
+    label: {
+      type: String,
+      default: '',
+    },
+    value: {
+      type: Boolean,
+      default: false,
+    },
+    required: {
+      type: Boolean,
+      default: false,
+    },
     lang: String,
+    texts: {
+      type: Object,
+      default: () => ({}),
+    },
   },
   data() {
     return {
-      isChecked: !!this.checked,
       error: null,
-      t: {},
     };
   },
-  created() {
-    this.t = getMessages(this.lang);
-    this.$emit('dataChange', { name: this.name, value: this.isChecked, error: this.error });
+  computed: {
+    t() {
+      return merge(getMessages(this.lang), this.texts);
+    },
+    isChecked() {
+      return this.value;
+    },
   },
   methods: {
     toggle() {
-      this.isChecked = !this.isChecked;
-      this.error = null;
-      this.$emit('dataChange', { name: this.name, value: this.isChecked, error: this.error });
-    },
-    validityCheck() {
-      this.validate();
-      this.$emit('dataChange', { name: this.name, value: this.isChecked, error: this.error });
+      this.$emit('input', !this.isChecked);
+      this.$nextTick(this.validate);
     },
     validate() {
       if (this.required && !this.isChecked) {
@@ -65,6 +79,7 @@ export default {
       } else {
         this.error = null;
       }
+      return !!this.error;
     },
   },
 };
