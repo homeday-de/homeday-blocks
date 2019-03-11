@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HdTooltip renders component 1`] = `<span class="hd-tooltip"></span>`;
