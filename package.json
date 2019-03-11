@@ -11,8 +11,7 @@
     "serve:storybook": "vue-cli-service storybook:serve -p 6006 -c config/storybook",
     "test:unit": "vue-cli-service test:unit",
     "test:unit:watch": "npm run test:unit -- --watch",
-    "test:unit:coverage": "npm run test:unit -- --coverage",
-    "test:unit:ci": "npm run test:unit:coverage -- --ci && codecov",
+    "test:unit:ci": "npm run test:unit -- --ci --coverage --coverageReporters=text-lcov | coveralls",
     "deploy": "npm run build:storybook && node ./deploy/deploy.js $FOLDER"
   },
   "dependencies": {
@@ -38,7 +37,7 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "10.0.1",
     "babel-jest": "23.6.0",
-    "codecov": "^3.2.0",
+    "coveralls": "^3.0.3",
     "eslint": "5.8.0",
     "eslint-plugin-vue": "5.0.0",
     "html-loader": "0.5.5",
