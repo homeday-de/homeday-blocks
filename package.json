@@ -11,6 +11,7 @@
     "serve:storybook": "vue-cli-service storybook:serve -p 6006 -c config/storybook",
     "test:unit": "vue-cli-service test:unit",
     "test:unit:watch": "vue-cli-service test:unit --watch",
+    "test:unit:coverage": "vue-cli-service test:unit --coverage",
     "deploy": "npm run build:storybook && node ./deploy/deploy.js $FOLDER"
   },
   "dependencies": {
