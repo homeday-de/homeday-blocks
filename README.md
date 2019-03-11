@@ -39,6 +39,18 @@ npm run build:storybook
 npm run build:lib
 ```
 
+## Testing
+
+To just run all unit tests:
+```bash
+npm run test:unit
+```
+
+To watch for changes while writing tests:
+```bash
+npm run test:unit:watch
+```
+
 ## Deployment
 
 The [CI](https://travis-ci.com/homeday-de/homeday-blocks) will deploy storybook automatically to our [showcase env](http://hd-storybook.s3-website.eu-central-1.amazonaws.com/develop/), once PR is merged to `develop` branch. Additionally, you can deploy your current working branch locally, by running 
