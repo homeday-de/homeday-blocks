@@ -296,10 +296,12 @@ $inputFilledBackground: #e8eaee;
       padding-right: $inline-l;
     }
     
-    #{$f}--hasTooltip &,
-    &[type=email],
-    &[type=number],
-    &[type=text] {
+    #{$f}--hasControl &[type="email"],
+    #{$f}--hasControl &[type="number"],
+    #{$f}--hasControl &[type="text"],
+    #{$f}--hasControl &[type="password"],
+    #{$f}--hasControl &[type="date"],
+    #{$f}--hasControl &[type="url"] {
       padding-right: $inline-m + $iconDimension;
     }
 
