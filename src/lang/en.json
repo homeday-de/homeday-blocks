@@ -11,6 +11,7 @@
     "VALIDATION": {
       "REQUIRED": "This field is required",
       "INVALID_EMAIL": "Please enter a valid email address",
+      "INVALID_DATE": "Please enter a date in this format: YYYY-MM-DD",
       "PASSWORD_MISMATCH": "The entered passwords are not matching",
       "PASSWORD_SHORT": "This password is too short",
       "PASSWORD_STRENGTH": {
