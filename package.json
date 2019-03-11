@@ -10,8 +10,9 @@
     "build:storybook": "vue-cli-service storybook:build -c config/storybook",
     "serve:storybook": "vue-cli-service storybook:serve -p 6006 -c config/storybook",
     "test:unit": "vue-cli-service test:unit",
-    "test:unit:watch": "vue-cli-service test:unit --watch",
-    "test:unit:coverage": "vue-cli-service test:unit --coverage",
+    "test:unit:watch": "npm run test:unit -- --watch",
+    "test:unit:coverage": "npm run test:unit -- --coverage",
+    "test:unit:ci": "npm run test:unit:coverage -- --ci",
     "deploy": "npm run build:storybook && node ./deploy/deploy.js $FOLDER"
   },
   "dependencies": {
