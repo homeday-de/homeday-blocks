@@ -90,6 +90,10 @@ export default {
       type: Number,
       default: undefined,
     },
+    lang: {
+      type: String,
+      default: 'de',
+    },
     texts: {
       type: Object,
       default: () => {},
