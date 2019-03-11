@@ -23,3 +23,6 @@ yarn-error.log*
 
 # AWS credentials
 aws.json
+
+# Coverage reports
+/coverage
