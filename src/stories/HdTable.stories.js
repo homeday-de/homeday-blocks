@@ -2,7 +2,7 @@
 import { storiesOf } from '@storybook/vue';
 
 import HdTable from 'hd-blocks/components/HdTable.vue';
-import HdInput from 'hd-blocks/components/form/HdInput.vue';
+import HdTagsList from 'hd-blocks/components/HdTagsList.vue';
 import TableWrapper from 'hd-blocks/storiesWrappers/TableWrapper';
 import MOVIES_TABLE from 'hd-blocks/stories/mocks/tables/movies';
 
@@ -45,7 +45,10 @@ storiesOf('HdTable', module)
     },
   }))
   .add('with components', () => ({
-    components: { HdTable, HdInput },
+    components: {
+      HdTable,
+      HdTagsList,
+    },
     template: '<hd-table :header="header" :body="body"></hd-table>',
     data() {
       return {
@@ -54,15 +57,14 @@ storiesOf('HdTable', module)
           title, year, rating, stars,
         }) => ({
           title,
+          year,
+          rating,
           theNameDoesntMatter: {
-            component: HdInput,
+            component: HdTagsList,
             props: {
-              value: year,
-              required: true,
+              items: stars.split(','),
             },
           },
-          rating,
-          stars,
         })),
       };
     },
