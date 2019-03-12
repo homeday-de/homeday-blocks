@@ -20,13 +20,13 @@
         v-for="(item, i) in items"
         :key="`radio-${item.value}`"
         ref="items"
+        :aria-checked="item.value === value ? 'true' : 'false'"
         :class="{
           'isSelected': item.value === value,
         }"
         :tabindex="getTabindex(item, i)"
         class="radio"
         role="radio"
-        aria-checked="item.value === value"
         @keydown.space.enter.prevent="radioSelect(item.value)"
         @keyup="maybeRadioSelect"
         @click="radioSelect(item.value)"
