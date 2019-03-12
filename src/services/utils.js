@@ -94,6 +94,11 @@ export const loadJSAsync = (e, n, o) => {
   }, !1), r.parentNode.insertBefore(i, r)
 };
 
+// Returns an array of the desired length filled with indexes as values
+export function getArrayOfSize(size = 0) {
+  return Array.from(Array(size), (_, x) => x);
+}
+
 export default {
   populateTemplate,
   getPasswordStrength,
@@ -101,4 +106,5 @@ export default {
   getRandomInt,
   loadJSAsync,
   accentFold,
+  getArrayOfSize,
 };
