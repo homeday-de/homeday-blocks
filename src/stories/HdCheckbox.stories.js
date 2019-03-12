@@ -6,7 +6,15 @@ import HdCheckbox from 'hd-blocks/components/form/HdCheckbox.vue';
 storiesOf('Form/HdCheckbox', module)
   .add('required', () => ({
     components: { HdCheckbox },
-    template: '<hd-checkbox v-model="isChecked" :required="true" label="Label..." />',
+    template: `
+      <hd-checkbox
+        v-model="isChecked"
+        :required="true"
+        name="test"
+        label="T&C"
+        inner-label="I agree"
+      />
+    `,
     data() {
       return {
         isChecked: false,
@@ -15,10 +23,17 @@ storiesOf('Form/HdCheckbox', module)
   }))
   .add('checked', () => ({
     components: { HdCheckbox },
-    template: '<hd-checkbox v-model="isChecked" :checked="true" label="Label..." />',
+    template: `
+      <hd-checkbox
+        v-model="isChecked"
+        name="test"
+        label="T&C"
+        inner-label="I agree"
+      />
+    `,
     data() {
       return {
-        isChecked: false,
+        isChecked: true,
       };
     },
   }));
