@@ -54,7 +54,7 @@ import merge from 'lodash/merge';
 import { getMessages } from 'hd-blocks/lang';
 
 export default {
-  name: 'hdCheckbox',
+  name: 'HdCheckbox',
   props: {
     name: {
       type: String,
