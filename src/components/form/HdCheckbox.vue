@@ -117,7 +117,7 @@ export default {
       } else {
         this.error = null;
       }
-      return !!this.error;
+      return !this.error;
     },
   },
 };

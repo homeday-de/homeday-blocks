@@ -138,7 +138,7 @@ export default {
       this.$emit('input', value);
     },
     maybeRadioSelect(e) {
-      if (['ArrowDown', 'ArrowRight'].includes(e.key)) {
+      if (['ArrowDown', 'Down', 'ArrowRight', 'Right'].includes(e.key)) {
         if (!this.value) {
           this.$emit('input', this.items[0].value);
           this.$refs.items[0].focus();
@@ -155,7 +155,7 @@ export default {
 
         this.$emit('input', this.items[currentIndex + 1].value);
         this.$refs.items[currentIndex + 1].focus();
-      } else if (['ArrowUp', 'ArrowLeft'].includes(e.key)) {
+      } else if (['ArrowUp', 'Up', 'ArrowLeft', 'Left'].includes(e.key)) {
         if (!this.value) {
           this.$emit('input', this.items[0].value);
           this.$refs.items[0].focus();
