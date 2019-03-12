@@ -53,9 +53,6 @@ export default {
     font-weight: 600;
     vertical-align: middle;
     position: relative;
-    > * {
-      display: inline-block;
-    }
   }
   th {
     border-top: none;
