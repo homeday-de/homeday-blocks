@@ -2,6 +2,8 @@
   <section
     :class="wrapperClasses"
     class="radio-wrapper"
+    @keydown="setUsingMouse(false)"
+    @mousedown="setUsingMouse(true)"
   >
     <label
       v-if="label"
@@ -28,7 +30,7 @@
         class="radio"
         role="radio"
         @keydown.space.enter.prevent="radioSelect(item.value)"
-        @keyup="maybeRadioSelect"
+        @keydown.exact="maybeRadioSelect"
         @click="radioSelect(item.value)"
         @focus="handleFocus"
         @blur="handleBlur"
@@ -96,6 +98,7 @@ export default {
     return {
       error: null,
       isActive: false,
+      isUsingMouse: false,
     };
   },
   computed: {
@@ -110,6 +113,7 @@ export default {
         'radio-wrapper--active': this.isActive,
         'radio-wrapper--vertical': this.vertical,
         hasError: !!this.error,
+        isUsingMouse: this.isUsingMouse,
       };
     },
   },
@@ -199,6 +203,9 @@ export default {
 
       return !this.error;
     },
+    setUsingMouse(usingMouse) {
+      this.isUsingMouse = usingMouse;
+    },
   },
 };
 </script>
@@ -215,6 +222,7 @@ export default {
   flex: 1;
   cursor: pointer;
   margin-left: $inline-m;
+  transition: outline 0.1s ease-in-out;
   &:first-of-type {
     margin-left: 0;
   }
@@ -334,6 +342,10 @@ export default {
     .radio__error {
       color: $regent-gray;
     }
+  }
+
+  &.isUsingMouse .radio {
+    outline: 0;
   }
 }
 </style>
