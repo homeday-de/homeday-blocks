@@ -20,26 +20,22 @@ export function populateTemplate(template, map) {
   return template.replace(regex, match => map[match.slice(1)]);
 }
 
-/** Takes a formData object and returns a formatted object, supports nesting
+/** Takes a data object and returns a nested object based on the keys and the nestingString
 */
-export function formatFormData(formData, { nestingEnabled = false, nestingString = '.' } = {}) {
+export function formatNestedData(data, nestingString = '.') {
   const formattedObj = {};
-  Object.keys(formData).forEach((fieldKey) => {
-    const { value } = formData[fieldKey];
-    if (!nestingEnabled) {
-      formattedObj[fieldKey] = value;
-    } else {
-      const keys = fieldKey.split(nestingString);
-      const nestedSubObj = keys.reverse().reduce((acc, currentKey, index) => {
-        if (index === 0) {
-          acc[currentKey] = value;
-          return acc;
-        }
-        acc = merge({}, { [currentKey]: acc });
+  Object.keys(data).forEach((fieldKey) => {
+    const value = data[fieldKey];
+    const keys = fieldKey.split(nestingString);
+    const nestedSubObj = keys.reverse().reduce((acc, currentKey, index) => {
+      if (index === 0) {
+        acc[currentKey] = value;
         return acc;
-      }, {});
-      merge(formattedObj, nestedSubObj);
-    }
+      }
+      acc = merge({}, { [currentKey]: acc });
+      return acc;
+    }, {});
+    merge(formattedObj, nestedSubObj);
   });
   return formattedObj;
 }
@@ -97,7 +93,7 @@ export const loadJSAsync = (e, n, o) => {
 export default {
   populateTemplate,
   getPasswordStrength,
-  formatFormData,
+  formatNestedData,
   getRandomInt,
   loadJSAsync,
   accentFold,

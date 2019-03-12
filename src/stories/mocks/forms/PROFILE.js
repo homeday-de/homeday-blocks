@@ -2,9 +2,9 @@ export default [
   {
     type: 'radio',
     name: 'gender',
+    initialValue: 'male',
     props: {
       required: true,
-      selected: 'male',
       items: [
         {
           label: 'Female',
@@ -20,9 +20,9 @@ export default [
   {
     type: 'input',
     name: 'first_name',
+    initialValue: 'First name',
     props: {
       required: true,
-      value: 'First name',
       label: 'Vorname',
       placeholder: 'First name...',
     },
@@ -30,9 +30,9 @@ export default [
   {
     type: 'input',
     name: 'last_name',
+    initialValue: 'Last name',
     props: {
       required: true,
-      value: 'Last name',
       label: 'Nachname',
       placeholder: 'Last name...',
     },
@@ -40,9 +40,9 @@ export default [
   {
     type: 'input',
     name: 'email',
+    initialValue: 'kontakt@homeday.de',
     props: {
       required: true,
-      value: 'kontakt@homeday.de',
       type: 'email',
       label: 'E-Mail-Adresse',
       placeholder: 'Email...',
@@ -51,9 +51,9 @@ export default [
   {
     type: 'input',
     name: 'landline_number',
+    initialValue: '',
     props: {
       required: false,
-      value: '',
       type: 'tel',
       label: 'Telefonnummer',
       placeholder: 'Lanline number...',
@@ -62,9 +62,9 @@ export default [
   {
     type: 'input',
     name: 'mobile_number',
+    initialValue: '030 120 849 110',
     props: {
       required: true,
-      value: '030 120 849 110',
       type: 'tel',
       label: 'Handynummer',
       placeholder: 'Phone number...',
@@ -73,9 +73,9 @@ export default [
   {
     type: 'input',
     name: 'address.street',
+    initialValue: 'Prinzessinnenstraße',
     props: {
       required: false,
-      value: 'Prinzessinnenstraße',
       type: 'text',
       label: 'Straße',
       placeholder: 'Street...',
@@ -85,9 +85,9 @@ export default [
     {
       type: 'input',
       name: 'address.house_number',
+      initialValue: '26',
       props: {
         required: false,
-        value: '26',
         type: 'text',
         label: 'Hausnummer',
         placeholder: 'House number...',
@@ -96,9 +96,9 @@ export default [
     {
       type: 'input',
       name: 'address.zip_code',
+      initialValue: '10969',
       props: {
         required: false,
-        value: '10969',
         type: 'text',
         label: 'PLZ',
         placeholder: 'Zip code...',
@@ -108,9 +108,9 @@ export default [
   {
     type: 'input',
     name: 'address.city',
+    initialValue: 'Berlin',
     props: {
       required: false,
-      value: 'Berlin',
       type: 'text',
       label: 'Ort',
       placeholder: 'City...',
