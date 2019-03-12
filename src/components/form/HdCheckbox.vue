@@ -2,27 +2,50 @@
   <div
     :class="{
       'checkbox': true,
+      'checkbox--active': isActive,
       isChecked,
       hasError: !!error,
     }">
+    <label
+      v-if="label"
+      :id="`${name}--label`"
+      class="checkbox__label"
+      tabindex="-1"
+    >{{ label }}</label>
     <input
       class="checkbox__input"
       type="checkbox"
       :name="name"
       v-model="isChecked"/>
     <div
+      :aria-checked="isChecked ? 'true' : 'false'"
+      :aria-labelledby="label ? `${name}--label` : null"
       class="checkbox__inner"
       tabindex="0"
+      role="checkbox"
       @click="toggle"
-      @keydown.space.enter.prevent="toggle">
+      @keydown.space.enter.prevent="toggle"
+      @focus="handleFocus"
+      @blur="handleBlur"
+    >
       <div class="checkbox__inner__box">
         <div class="checkbox__inner__box__overlay"></div>
         <div class="checkbox__inner__box__border"></div>
         <div class="checkbox__inner__box__tick"></div>
       </div>
-      <p class="checkbox__inner__label">{{ label }}</p>
+      <p
+        v-if="innerLabel"
+        class="checkbox__inner__label"
+      >
+        {{ innerLabel }}
+      </p>
     </div>
-    <p class="field__error checkbox__error">{{ error }}</p>
+    <p
+      v-if="error"
+      class="field__error checkbox__error"
+    >
+      {{ error }}
+    </p>
   </div>
 </template>
 
@@ -31,13 +54,17 @@ import merge from 'lodash/merge';
 import { getMessages } from 'hd-blocks/lang';
 
 export default {
-  name: 'hdCheckbox',
+  name: 'HdCheckbox',
   props: {
     name: {
       type: String,
-      default: '',
+      required: true,
     },
     label: {
+      type: String,
+      default: '',
+    },
+    innerLabel: {
       type: String,
       default: '',
     },
@@ -49,7 +76,10 @@ export default {
       type: Boolean,
       default: false,
     },
-    lang: String,
+    lang: {
+      type: String,
+      default: 'de',
+    },
     texts: {
       type: Object,
       default: () => ({}),
@@ -58,6 +88,7 @@ export default {
   data() {
     return {
       error: null,
+      isActive: false,
     };
   },
   computed: {
@@ -72,6 +103,13 @@ export default {
     toggle() {
       this.$emit('input', !this.isChecked);
       this.$nextTick(this.validate);
+    },
+    handleFocus() {
+      this.isActive = true;
+    },
+    handleBlur() {
+      this.isActive = false;
+      this.validate();
     },
     validate() {
       if (this.required && !this.isChecked) {
@@ -88,7 +126,7 @@ export default {
 <style lang="scss" scoped>
 
 .checkbox {
-  $_c: &;
+  $c: &;
   position: relative;
   margin-bottom: 26px;
   cursor: default;
@@ -132,11 +170,17 @@ export default {
         border-radius: 3px;
         border: 2px solid $nevada;
         transition: border-color .3s;
-        #{$_c}.isChecked & {
+        #{$c}:hover & {
+          border-color: $regent-gray;
+        }
+        #{$c}.isChecked & {
           border-color: transparent;
         }
-        #{$_c}.hasError & {
+        #{$c}:not(#{$c}--active).hasError & {
           border-color: $torch-red;
+        }
+        #{$c}--active & {
+          border-color: $vivid-blue;
         }
       }
       &__tick {
@@ -150,7 +194,7 @@ export default {
         background-size: 20px;
         opacity: 0;
         transition: opacity .2s;
-        #{$_c}.isChecked & {
+        #{$c}.isChecked & {
           opacity: 1;
         }
       }
@@ -163,8 +207,31 @@ export default {
     }
   }
   &__error {
-    #{$_c}.hasError & {
+    #{$c}.hasError & {
       display: block;
+    }
+
+    #{$c}--active & {
+      color: $regent-gray;
+    }
+  }
+  &__label {
+    display: block;
+    margin-bottom: 3px;
+    font-size: 14px;
+    line-height: 18px;
+    color: $nevada;
+    transition: color 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+    pointer-events: none;
+
+    #{$c}.hasError & {
+      color: $torch-red;
+    }
+
+    #{$c}:hover &,
+    #{$c}--active &,
+    #{$c}--active.hasError & {
+      color: $vivid-blue;
     }
   }
 }

@@ -48,7 +48,7 @@ import {
 } from 'hd-blocks/services/formValidation';
 
 export default {
-  name: 'hdInput',
+  name: 'HdInput',
   props: {
     label: {
       type: String,
