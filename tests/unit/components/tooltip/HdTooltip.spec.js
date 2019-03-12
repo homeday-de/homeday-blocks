@@ -11,10 +11,4 @@ describe('HdTooltip', () => {
   test('renders component', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
-
-  test('renders a span', () => {
-    const span = wrapper.find('span');
-
-    expect(span.exists()).toBe(true);
-  });
 });
