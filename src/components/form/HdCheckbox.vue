@@ -3,9 +3,13 @@
     :class="{
       'checkbox': true,
       'checkbox--active': isActive,
-      isChecked,
-      hasError: !!error,
-    }">
+      'isChecked': isChecked,
+      'hasError': !!error,
+      'isUsingMouse': isUsingMouse,
+    }"
+    @keydown="setUsingMouse(false)"
+    @mousedown="setUsingMouse(true)"
+  >
     <label
       v-if="label"
       :id="`${name}--label`"
@@ -89,6 +93,7 @@ export default {
     return {
       error: null,
       isActive: false,
+      isUsingMouse: false,
     };
   },
   computed: {
@@ -119,6 +124,9 @@ export default {
       }
       return !this.error;
     },
+    setUsingMouse(usingMouse) {
+      this.isUsingMouse = usingMouse;
+    },
   },
 };
 </script>
@@ -136,6 +144,10 @@ export default {
   &__inner {
     display: flex;
     align-items: center;
+    transition: outline 0.1s ease-in-out;
+    #{$c}.isUsingMouse & {
+      outline: 0;
+    }
     &__box {
       position: relative;
       flex: 0 0 20px;
