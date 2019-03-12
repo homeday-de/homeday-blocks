@@ -50,10 +50,12 @@ describe('HdArrowButton', () => {
         const button = wrapper.find('button');
 
         expect(button.attributes().disabled).toBeUndefined();
+        expect(wrapper.html()).toMatchSnapshot();
 
         wrapper.setProps({ disabled: true });
 
         expect(button.attributes().disabled).toBeTruthy();
+        expect(wrapper.html()).toMatchSnapshot();
       });
     });
 
