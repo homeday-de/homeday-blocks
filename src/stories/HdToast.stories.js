@@ -13,7 +13,7 @@ storiesOf('HdToast', module)
     }),
     template: `
       <div>
-        <hd-toast :text=text primaryLabel="Primary" @close="onClose" @primaryClick="primaryClick" @secondaryClick="secondaryClick" secondaryLabel="Secondary" ref="toast">{{text}}</hd-toast>
+        <hd-toast primaryLabel="Primary" @close="onClose" @primaryClick="primaryClick" @secondaryClick="secondaryClick" secondaryLabel="Secondary" ref="toast">{{text}}</hd-toast>
         <button @click="$refs.toast.$emit('open')" class="btn btn--primary">Show Toast!</button>
       </div>
     `,
