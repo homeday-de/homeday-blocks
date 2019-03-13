@@ -22,20 +22,26 @@
       v-if="label"
       :for="name"
       class="field__label"
-    >{{ label }}
+    >
+      {{ label }}
     </label>
     <p
       v-if="error"
-      class="field__error">{{ error }}</p>
+      class="field__error"
+    >
+      {{ error }}
+    </p>
     <p
       v-else-if="helper"
       class="field__error field__error--helper"
-      v-html="helper"/>
+      v-html="helper"
+    />
     <span v-if="showVisibilityToggle"
       :class="{'field__visibilityToggle--visible': currentType === 'text'}"
       class="field__visibilityToggle"
-      @click="togglePasswordVisibility"></span>
-    <span class="field__border"></span>
+      @click="togglePasswordVisibility"
+    />
+    <span class="field__border"/>
   </div>
 </template>
 
