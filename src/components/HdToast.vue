@@ -1,15 +1,21 @@
 <template>
-  <div class="toast" :class="stateClasses" v-if="text">
-
-    <p class="toast__text" >
-      <slot></slot>
-    </p>
-    <section class="toast__controls" v-if="secondaryLabel || primaryLabel">
-      <button class="toast__control toast__control--secondary" @click="secondaryClick" v-text="secondaryLabel" />
-      <button class="toast__control toast__control--primary" @click="$emit('primaryClick')" v-text="primaryLabel" />
-    </section>
-
-  </div>
+<div class="toast" :class="computedClasses">
+  <p class="toast__text" >
+    <slot></slot>
+  </p>
+  <section v-if="hasLabels" class="toast__controls">
+    <button
+      class="toast__control toast__control--secondary"
+      @click="secondaryClick"
+      v-text="secondaryLabel"
+    />
+    <button
+      class="toast__control toast__control--primary"
+      @click="primaryClick"
+      v-text="primaryLabel"
+    />
+  </section>
+</div>
 </template>
 
 <script>
@@ -27,7 +33,10 @@ export default {
     this.$on('open', this.open);
   },
   computed: {
-    stateClasses() {
+    hasLabels() {
+      return Boolean(this.primaryLabel || this.secondaryLabel);
+    },
+    computedClasses() {
       return {
         'toast--isOpen': this.isOpen,
         'toast--isClosing': this.isClosing,
@@ -45,6 +54,9 @@ export default {
         this.isClosing = false;
         this.$emit('close');
       }, 500);
+    },
+    primaryClick() {
+      this.$emit('primaryClick');
     },
     secondaryClick() {
       this.$emit('secondaryClick');
