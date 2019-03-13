@@ -1,4 +1,10 @@
 {
+  "GENERAL": {
+    "EDIT": "Edit",
+    "SAVE": "Save",
+    "CANCEL": "Cancel",
+    "SAVING": "Saving"
+  },
   "FORM": {
     "EMAIL": {
       "PLACEHOLDER": "e.g. will.smith@gmail.com",

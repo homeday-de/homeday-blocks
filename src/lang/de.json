@@ -1,4 +1,10 @@
 {
+  "GENERAL": {
+    "EDIT": "Bearbeiten",
+    "SAVE": "Speichern",
+    "CANCEL": "Abbrechen",
+    "SAVING": "Speichern"
+  },
   "FORM": {
     "EMAIL": {
       "PLACEHOLDER": "z.b. michael.schmidt@gmail.com",
