@@ -9,14 +9,6 @@ import HdRadioButtonNote from '../notes/HdRadioButton.md';
 storiesOf('HdRadioButton', module)
   .add('base', () => ({
     components: { HdRadioButton },
-    data: () => ({
-      label: text('label', 'Test Label'),
-      desktopIcon: text('desktopIcon', 'https://via.placeholder.com/96'),
-      desktopIconHover: text('desktopIconHover', 'https://via.placeholder.com/96?text=Hover'),
-      mobileIcon: text('mobileIcon', 'https://via.placeholder.com/96'),
-      value: text('value', 'Value'),
-      name: text('name', 'Name'),
-    }),
     template: `<HdRadioButton
       @select="action"
       :desktopIcon="desktopIcon"
@@ -26,5 +18,31 @@ storiesOf('HdRadioButton', module)
       :value="value"
       :name="name"
     />`,
+    props: {
+      label: {
+        type: String,
+        default: text('label', 'Test Label'),
+      },
+      desktopIcon: {
+        type: String,
+        default: text('desktopIcon', 'https://via.placeholder.com/96'),
+      },
+      desktopIconHover: {
+        type: String,
+        default: text('desktopIconHover', 'https://via.placeholder.com/96?text=Hover'),
+      },
+      mobileIcon: {
+        type: String,
+        default: text('mobileIcon', 'https://via.placeholder.com/96'),
+      },
+      value: {
+        type: String,
+        default: text('value', 'Value'),
+      },
+      name: {
+        type: String,
+        default: text('name', 'Name'),
+      },
+    },
     methods: { action: action('clicked') },
   }), { notes: { markdown: HdRadioButtonNote } });
