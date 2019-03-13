@@ -7,7 +7,7 @@ storiesOf('Form/HdCheckbox', module)
   .add('required', () => ({
     components: { HdCheckbox },
     template: `
-      <hd-checkbox
+      <HdCheckbox
         v-model="isChecked"
         :required="true"
         name="test"
@@ -24,7 +24,7 @@ storiesOf('Form/HdCheckbox', module)
   .add('checked', () => ({
     components: { HdCheckbox },
     template: `
-      <hd-checkbox
+      <HdCheckbox
         v-model="isChecked"
         name="test"
         label="T&C"

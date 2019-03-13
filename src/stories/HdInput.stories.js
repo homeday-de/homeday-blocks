@@ -10,7 +10,7 @@ storiesOf('Form/HdInput', module)
   .add('required', () => ({
     components: { HdInput },
     template: `
-      <hd-input
+      <HdInput
         v-model="value"
         :required="true"
         name="test"
@@ -30,10 +30,9 @@ storiesOf('Form/HdInput', module)
     },
   }))
   .add('prefilled', () => ({
-    methods: { onDataChange: action('dataChange') },
     components: { HdInput },
     template: `
-      <hd-input
+      <HdInput
         v-model="value"
         name="test"
         label="Label"
@@ -54,7 +53,7 @@ storiesOf('Form/HdInput', module)
   .add('password', () => ({
     components: { HdInput },
     template: `
-      <hd-input
+      <HdInput
         v-model="value"
         name="password"
         label="Password"
@@ -75,7 +74,7 @@ storiesOf('Form/HdInput', module)
   .add('email', () => ({
     components: { HdInput },
     template: `
-      <hd-input
+      <HdInput
         v-model="value"
         name="email"
         label="Email"
@@ -97,7 +96,7 @@ storiesOf('Form/HdInput', module)
   .add('number', () => ({
     components: { HdInput },
     template: `
-      <hd-input
+      <HdInput
         v-model="value"
         :min="0"
         :max="99"
@@ -121,7 +120,7 @@ storiesOf('Form/HdInput', module)
   .add('custom translation', () => ({
     components: { HdInput },
     template: `
-      <hd-input
+      <HdInput
         v-model="value"
         :required="true"
         :texts="texts"

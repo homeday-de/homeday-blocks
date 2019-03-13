@@ -10,7 +10,7 @@ storiesOf('Form/HdRadio', module)
     components: { HdRadio },
     template: `
       <div>
-        <hd-radio
+        <HdRadio
           v-model="value"
           ref="myRadio"
           :items="ITEMS"
@@ -50,7 +50,7 @@ storiesOf('Form/HdRadio', module)
     components: { HdRadio },
     template: `
       <div>
-        <hd-radio
+        <HdRadio
           v-model="value"
           ref="myRadio"
           :items="ITEMS"
@@ -75,7 +75,7 @@ storiesOf('Form/HdRadio', module)
     components: { HdRadio },
     template: `
       <div>
-        <hd-radio
+        <HdRadio
           v-model="value"
           ref="myRadio"
           :items="ITEMS"
