@@ -155,6 +155,10 @@ export default {
         return 'regular';
       }
 
+      if (this.maxVisible === 3) {
+        return 'small';
+      }
+
       const offset = position * DOT_SIZE;
       const isFirstVisible = (offset + this.trackOffset) === 0;
       const isLastVisible = (offset + this.trackOffset)
@@ -172,12 +176,12 @@ export default {
       const isImmediatelyBeforeLastVisible = (offset + this.trackOffset)
         - ((this.maxVisible - 1) * DOT_SIZE) === DOT_SIZE * -1;
 
-      if (isImmediatelyAfterFirstVisible || isImmediatelyBeforeLastVisible) {
-        return 'small';
-      }
-
       if (this.isOutOfBoundsLeft(position) || this.isOutOfBoundsRight(position)) {
         return 'tiny';
+      }
+
+      if (isImmediatelyAfterFirstVisible || isImmediatelyBeforeLastVisible) {
+        return 'small';
       }
 
       return 'regular';
