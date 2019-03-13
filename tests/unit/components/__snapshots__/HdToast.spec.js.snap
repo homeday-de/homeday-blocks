@@ -3,14 +3,17 @@
 exports[`HdToast 'primaryLabel' text binds to primary <button> 1`] = `
 <div class="toast">
   <p class="toast__text"></p>
-  <section class="toast__controls"><button class="toast__control toast__control--secondary"></button> <button class="toast__control toast__control--primary">random-text</button></section>
+  <section class="toast__controls">
+    <!----> <button class="toast__control toast__control--primary">random-text</button></section>
 </div>
 `;
 
 exports[`HdToast 'secondaryLabel' text binds to secondary <button> 1`] = `
 <div class="toast">
   <p class="toast__text"></p>
-  <section class="toast__controls"><button class="toast__control toast__control--secondary">random-text</button> <button class="toast__control toast__control--primary"></button></section>
+  <section class="toast__controls"><button class="toast__control toast__control--secondary">random-text</button>
+    <!---->
+  </section>
 </div>
 `;
 
@@ -39,6 +42,38 @@ exports[`HdToast computed computedClasses 'toast--isOpen' when isOpen is true 2`
 <div class="toast toast--isOpen">
   <p class="toast__text"></p>
   <!---->
+</div>
+`;
+
+exports[`HdToast renders button primary when 'primaryLabel' 1`] = `
+<div class="toast">
+  <p class="toast__text"></p>
+  <section class="toast__controls">
+    <!----> <button class="toast__control toast__control--primary">random-text</button></section>
+</div>
+`;
+
+exports[`HdToast renders button secondary when 'secondaryLabel' 1`] = `
+<div class="toast">
+  <p class="toast__text"></p>
+  <section class="toast__controls"><button class="toast__control toast__control--secondary">random-text</button>
+    <!---->
+  </section>
+</div>
+`;
+
+exports[`HdToast renders buttons when 'hasLabels' 1`] = `
+<div class="toast">
+  <p class="toast__text"></p>
+  <!---->
+</div>
+`;
+
+exports[`HdToast renders buttons when 'hasLabels' 2`] = `
+<div class="toast">
+  <p class="toast__text"></p>
+  <section class="toast__controls">
+    <!----> <button class="toast__control toast__control--primary">random-text</button></section>
 </div>
 `;
 

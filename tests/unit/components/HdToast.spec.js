@@ -57,7 +57,7 @@ describe('HdToast', () => {
     const text = 'random-text';
     const secondaryClickMock = jest.fn();
 
-    wrapper.setProps({ primaryLabel: text });
+    wrapper.setProps({ secondaryLabel: text });
     wrapper.setMethods({ secondaryClick: secondaryClickMock });
 
     const button = wrapper.find('.toast__control--secondary');
@@ -77,6 +77,38 @@ describe('HdToast', () => {
 
     expect(innerWrapper.html()).toMatchSnapshot();
     expect(slot.exists()).toBe(true);
+  });
+
+  test("renders buttons when 'hasLabels'", () => {
+    const className = '.toast__controls';
+
+    expect(wrapper.find(className).exists()).toBe(false);
+    expect(wrapper.html()).toMatchSnapshot();
+
+    wrapper.setProps({ primaryLabel: 'random-text' });
+
+    expect(wrapper.find(className).exists()).toBe(true);
+    expect(wrapper.html()).toMatchSnapshot();
+  });
+
+  test("renders button primary when 'primaryLabel'", () => {
+    wrapper.setProps({ primaryLabel: 'random-text' });
+
+    const className = '.toast__control';
+
+    expect(wrapper.find(`${className}--primary`).exists()).toBe(true);
+    expect(wrapper.find(`${className}--secondary`).exists()).toBe(false);
+    expect(wrapper.html()).toMatchSnapshot();
+  });
+
+  test("renders button secondary when 'secondaryLabel'", () => {
+    wrapper.setProps({ secondaryLabel: 'random-text' });
+
+    const className = '.toast__control';
+
+    expect(wrapper.find(`${className}--primary`).exists()).toBe(false);
+    expect(wrapper.find(`${className}--secondary`).exists()).toBe(true);
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
   describe('props', () => {
