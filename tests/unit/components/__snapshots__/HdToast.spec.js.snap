@@ -14,15 +14,6 @@ exports[`HdToast 'secondaryLabel' text binds to secondary <button> 1`] = `
 </div>
 `;
 
-exports[`HdToast <slot> renders inside .toast__text 1`] = `
-<div class="toast">
-  <p class="toast__text">
-    <div id="slot"></div>
-  </p>
-  <!---->
-</div>
-`;
-
 exports[`HdToast computed computedClasses 'toast--isClosing' when isClosing is true 1`] = `
 <div class="toast">
   <p class="toast__text"></p>
