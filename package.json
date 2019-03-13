@@ -16,7 +16,8 @@
     "lodash": "4.17.11",
     "register-service-worker": "1.0.0",
     "reset-css": "4.0.1",
-    "vue": "2.5.17"
+    "vue": "2.5.17",
+    "vue-flickity": "^1.1.2"
   },
   "devDependencies": {
     "@storybook/addon-actions": "4.1.0",

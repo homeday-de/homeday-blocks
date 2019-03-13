@@ -2,15 +2,15 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 
-import HdInput from 'hd-blocks/components/form/HdInput.vue';
+import HdTextarea from 'hd-blocks/components/form/HdTextarea.vue';
 import FormWrapper from 'hd-blocks/storiesWrappers/FormWrapper';
 
-storiesOf('Form/HdInput', module)
+storiesOf('Form/HdTextarea', module)
   .addDecorator(FormWrapper)
   .add('required', () => ({
-    components: { HdInput },
+    components: { HdTextarea },
     template: `
-      <HdInput
+      <HdTextarea
         v-model="value"
         :required="true"
         name="test"
@@ -30,9 +30,9 @@ storiesOf('Form/HdInput', module)
     },
   }))
   .add('prefilled', () => ({
-    components: { HdInput },
+    components: { HdTextarea },
     template: `
-      <HdInput
+      <HdTextarea
         v-model="value"
         name="test"
         label="Label"
@@ -50,77 +50,10 @@ storiesOf('Form/HdInput', module)
       },
     },
   }))
-  .add('password', () => ({
-    components: { HdInput },
-    template: `
-      <HdInput
-        v-model="value"
-        name="password"
-        label="Password"
-        type="password"
-      />
-    `,
-    data() {
-      return {
-        value: '',
-      };
-    },
-    watch: {
-      value(value) {
-        action('input')(value);
-      },
-    },
-  }))
-  .add('email', () => ({
-    components: { HdInput },
-    template: `
-      <HdInput
-        v-model="value"
-        name="email"
-        label="Email"
-        placeholder="jane.doe@homeday.de"
-        type="email"
-      />
-    `,
-    data() {
-      return {
-        value: '',
-      };
-    },
-    watch: {
-      value(value) {
-        action('input')(value);
-      },
-    },
-  }))
-  .add('number', () => ({
-    components: { HdInput },
-    template: `
-      <HdInput
-        v-model="value"
-        :min="0"
-        :max="99"
-        name="number"
-        label="Number"
-        placeholder=">= 0, < 100"
-        type="number"
-      />
-    `,
-    data() {
-      return {
-        value: '',
-      };
-    },
-    watch: {
-      value(value) {
-        action('input')(value);
-      },
-    },
-  }))
   .add('custom translation', () => ({
-    components: { HdInput },
+    components: { HdTextarea },
     template: `
-      <HdInput
+      <HdTextarea
         v-model="value"
         :required="true"
         :texts="texts"

@@ -1,22 +1,21 @@
 <template>
   <div
     :class="fieldClasses"
-    class="field field--input"
-  >
-    <input
+    class="field field--textarea">
+    <textarea
+      ref="input"
       :autocomplete="autocomplete"
       :value="value"
-      :type="currentType"
       :id="name"
       :name="name"
-      :placeholder="isActive && placeholder !== undefined ? placeholder : ''"
+      :placeholder="placeholderAttr"
       :required="required"
       :autofocus="autofocus"
+      :style="{ height }"
       class="field__input"
-      ref="input"
-      @input="handleInput"
       @focus="handleFocus"
       @blur="handleBlur"
+      @input="handleInput"
     />
     <label
       v-if="label"
@@ -36,11 +35,6 @@
       class="field__error field__error--helper"
       v-html="helper"
     />
-    <span v-if="showVisibilityToggle"
-      :class="{'field__visibilityToggle--visible': currentType === 'text'}"
-      class="field__visibilityToggle"
-      @click="togglePasswordVisibility"
-    />
     <span class="field__border"/>
   </div>
 </template>
@@ -48,13 +42,9 @@
 <script>
 import merge from 'lodash/merge';
 import { getMessages } from 'hd-blocks/lang';
-import {
-  email as validateEmail,
-  date as validateDate,
-} from 'hd-blocks/services/formValidation';
 
 export default {
-  name: 'HdInput',
+  name: 'HdTextarea',
   props: {
     label: {
       type: String,
@@ -63,10 +53,6 @@ export default {
     name: {
       type: String,
       required: true,
-    },
-    type: {
-      type: String,
-      default: 'text',
     },
     value: {
       type: [String, Number],
@@ -88,13 +74,13 @@ export default {
       type: Boolean,
       default: false,
     },
-    min: {
-      type: Number,
-      default: undefined,
+    dataChange: {
+      type: Function,
+      default: () => {},
     },
-    max: {
-      type: Number,
-      default: undefined,
+    height: {
+      type: String,
+      default: '100px',
     },
     lang: {
       type: String,
@@ -107,7 +93,6 @@ export default {
   },
   data() {
     return {
-      currentType: this.type || 'text',
       isActive: undefined,
       isValid: undefined,
       error: null,
@@ -121,16 +106,24 @@ export default {
     isEmpty() {
       return this.value == null || this.value === '';
     },
-    showVisibilityToggle() {
-      return this.type === 'password' && this.value.length !== 0;
-    },
     fieldClasses() {
       return {
         'field--active': this.isActive,
         'field--filled': !this.isEmpty,
         'field--invalid': this.isValid === false,
-        'field--hasControl': this.showVisibilityToggle,
+        'field--no-label': this.label === '',
       };
+    },
+    placeholderAttr() {
+      if (!this.placeholder) {
+        return '';
+      }
+
+      if (!this.label || this.isActive) {
+        return this.placeholder;
+      }
+
+      return '';
     },
   },
   watch: {
@@ -152,23 +145,7 @@ export default {
       this.validate();
     },
     handleInput(e) {
-      let newValue = e.target.value;
-
-      if (this.currentType === 'number' && newValue !== '') {
-        newValue = parseFloat(newValue);
-
-        if (typeof this.min === 'number' && newValue < this.min) {
-          newValue = this.min;
-        } else if (typeof this.max === 'number' && newValue > this.max) {
-          newValue = this.max;
-        }
-
-        if (newValue === this.value) {
-          this.$nextTick(this.$forceUpdate);
-        }
-      }
-
-      this.$emit('input', newValue);
+      this.$emit('input', e.target.value);
     },
     showError(errorMessage) {
       this.error = errorMessage;
@@ -184,18 +161,9 @@ export default {
     validate() {
       if (this.required && this.isEmpty) {
         this.showError(this.t.FORM.VALIDATION.REQUIRED);
-      } else if (this.currentType === 'email' && !validateEmail(this.value)) {
-        this.showError(this.t.FORM.VALIDATION.INVALID_EMAIL);
-      } else if (this.currentType === 'date' && !validateDate(this.value)) {
-        this.showError(this.t.FORM.VALIDATION.INVALID_DATE);
       } else {
         this.hideError();
       }
-
-      return !this.error;
-    },
-    togglePasswordVisibility() {
-      this.currentType = this.currentType === 'password' ? 'text' : 'password';
     },
   },
 };
@@ -206,8 +174,24 @@ export default {
 @import 'hd-blocks/styles/inputs.scss';
 
 .field {
+  $_root: &;
+
+  &--no-label {
+
+    &::before {
+      display: none;
+    }
+
+    & #{$_root}__input {
+      padding-top: $stack-s;
+    }
+  }
+
   &__label {
     left: 0;
+  }
+  &__input {
+    resize: vertical;
   }
   &__error {
     width: 100%;
@@ -215,36 +199,6 @@ export default {
     &--helper {
       display: block;
       color: $regent-gray;
-    }
-  }
-  &__visibilityToggle {
-    position: absolute;
-    right: $inline-s;
-    bottom: $stack-m;
-    background-image: url('~hd-blocks/assets/icons/ic_visibility-on.svg');
-    background-repeat: no-repeat;
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-    &:after {
-      display: block;
-      content: '';
-      position: absolute;
-      opacity: 1;
-      top: 2px;
-      left: 3px;
-      width: 24px;
-      height: 0px;
-      border-bottom: 2px solid $regent-gray;
-      border-top: 1px solid $wild-sand;
-      transform-origin: left;
-      transform: rotateZ(45deg) scaleX(1);
-      transition: transform .3s;
-    }
-    &--visible {
-      &:after {
-        transform: rotateZ(45deg) scaleX(0);
-      }
     }
   }
 }

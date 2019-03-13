@@ -30,5 +30,11 @@
         ]
       }
     }
+  },
+  "EXPAND_TEXT": {
+    "TOGGLE": {
+      "SHOW_MORE": "weiterlesen",
+      "SHOW_LESS": "zuklappen"
+    }
   }
 }
