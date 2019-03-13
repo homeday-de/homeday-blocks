@@ -9,7 +9,7 @@
       :label="t.FORM.PASSWORD.LABEL"
       :required="required"/>
 
-    <div class="confirmPassword__strengthMeter" :class="{isVisible: strengthUIVisible}">
+    <div class="confirmPassword__strengthMeter" :class="{isVisible: strengthBarVisible}">
       <div class="confirmPassword__strengthMeter__text"
       >{{ t.FORM.VALIDATION.PASSWORD_STRENGTH.LEVELS[strengthIndex] }}</div>
       <div class="confirmPassword__strengthMeter__gauge">
@@ -60,7 +60,7 @@ export default {
       type: Boolean,
       default: true,
     },
-    strengthUI: {
+    strengthBarStyle: {
       type: Boolean,
       default: false,
     },
@@ -75,7 +75,7 @@ export default {
       passwordMain: this.value,
       passwordConfirm: '',
       strengthIndex: null,
-      strengthUIVisible: false,
+      strengthBarVisible: false,
     };
   },
   watch: {
@@ -95,7 +95,7 @@ export default {
     },
     barClasses() {
       return {
-        [`level--${this.strengthIndex}`]: this.strengthUIVisible && this.strengthIndex >= 0,
+        [`level--${this.strengthIndex}`]: this.strengthBarVisible && this.strengthIndex >= 0,
       };
     },
   },
@@ -105,15 +105,15 @@ export default {
       this.$nextTick(this.validate);
     },
     validate() {
-      if (!this.withStrength) {
-        this.updatePasswordStrength();
-      }
       const inputsAreMatching = this.checkPasswordMatching();
       const passwordIsLongEnough = this.checkPasswordLength();
 
       const isValid = inputsAreMatching && passwordIsLongEnough;
-      if (isValid) {
-        this.strengthUIVisible = false;
+
+      if (this.withStrength && passwordIsLongEnough) {
+        this.updatePasswordStrength();
+      } else {
+        this.strengthBarVisible = false;
       }
       return isValid;
     },
@@ -142,8 +142,8 @@ export default {
     },
     updatePasswordStrength() {
       this.strengthIndex = getPasswordStrength(this.passwordMain, 4);
-      if (this.strengthUI) {
-        this.strengthUIVisible = true;
+      if (this.strengthBarStyle) {
+        this.strengthBarVisible = true;
       } else {
         const COLORS = [
           'orange',
