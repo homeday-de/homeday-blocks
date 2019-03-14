@@ -7,21 +7,23 @@ before_install:
 install:
 - npm i
 script:
-- npm run build
-- npm run build:storybook
-deploy:
-  provider: s3
-  access_key_id: AKIAJ32SPOKYID5HUHBQ
-  secret_access_key:
-    secure: l2tCmKIKixPDzeXU57s0KgUEsuo6LhyKQCw3JmRc7Zhmy0uHPLUYHelFFr6RmnmNLm+Y938JxEqfnGZo36j1m3lrm/ZKPXGt9yO12mfe6qlQ2uxzVrxnU6Pw7BQ1NoHh/f3qM8lnEFrO0coEeQ6Du6FeUotSOtgBDYnZmpBw8hMxy33AqpodQyp1Hla0cvNfcBMUKGFvS5F5iEc+SqQmbkFTSlqcjuGIogiWrwELOJ/PRmChLTL+4b4zwE/lCxMHbqTuNnQB9bvrY+rueM4dhzQIxNjK8AWO8zpVwPqL7maqtQn6HCrR8Xa+r4J05e2lWw8VOsPPQ1nJiHV1i9vhHTdZOL+UK1HcpjYMyeT8tp87QRDtrnzrqw9zY/y7ngcTTNO9gsMPGSTVEvuOhRE4ByC/zeb7jT/ymOrrJFCjgw5ZLK5rCEdLyTRAJJJgk/L1sxDPtpZmricTVvZE4rR7ZOi0LttnbMLWFFbVsX3u32djIsoyTzz3pil35MJG22HE86pwVjJDkfTzE8ZBThANa1CaZVYyM3twLPUXo6qYmz6BeCLZ22HtQQzXmDMhOiA9oh67vJsFEJefmJB/XUcEI/ePNBT0KuX/yEYPhxaWDLb54NIgjQtv+GVoa4jgD2GpQowqCNur9AS3F3KvmgBibsp6ogj7A/iXuyQ4W/W7hIs=
-  bucket: hd-storybook
-  region: eu-central-1
-  skip_cleanup: true
-  local-dir: storybook-static
-  acl: public_read
-  upload-dir: develop
-  on:
-    branch: develop
+- npm run test:unit:ci
+#- npm run build
+#- npm run build:storybook
+#deploy:
+#  provider: s3
+#  access_key_id: AKIAJ32SPOKYID5HUHBQ
+#  secret_access_key:
+#    secure: l2tCmKIKixPDzeXU57s0KgUEsuo6LhyKQCw3JmRc7Zhmy0uHPLUYHelFFr6RmnmNLm+Y938JxEqfnGZo36j1m3lrm/ZKPXGt9yO12mfe6qlQ2uxzVrxnU6Pw7BQ1NoHh/f3qM8lnEFrO0coEeQ6Du6FeUotSOtgBDYnZmpBw8hMxy33AqpodQyp1Hla0cvNfcBMUKGFvS5F5iEc+SqQmbkFTSlqcjuGIogiWrwELOJ/PRmChLTL+4b4zwE/lCxMHbqTuNnQB9bvrY+rueM4dhzQIxNjK8AWO8zpVwPqL7maqtQn6HCrR8Xa+r4J05e2lWw8VOsPPQ1nJiHV1i9vhHTdZOL+UK1HcpjYMyeT8tp87QRDtrnzrqw9zY/y7ngcTTNO9gsMPGSTVEvuOhRE4ByC/zeb7jT/ymOrrJFCjgw5ZLK5rCEdLyTRAJJJgk/L1sxDPtpZmricTVvZE4rR7ZOi0LttnbMLWFFbVsX3u32djIsoyTzz3pil35MJG22HE86pwVjJDkfTzE8ZBThANa1CaZVYyM3twLPUXo6qYmz6BeCLZ22HtQQzXmDMhOiA9oh67vJsFEJefmJB/XUcEI/ePNBT0KuX/yEYPhxaWDLb54NIgjQtv+GVoa4jgD2GpQowqCNur9AS3F3KvmgBibsp6ogj7A/iXuyQ4W/W7hIs=
+#  bucket: hd-storybook
+#  region: eu-central-1
+#  skip_cleanup: true
+#  local-dir: storybook-static
+#  acl: public_read
+#  upload-dir: develop
+#  on:
+#    branch: develop
 branches:
   only:
   - develop
+  - feature/tests
