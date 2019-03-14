@@ -15,7 +15,6 @@
   "dependencies": {
     "lodash": "4.17.11",
     "register-service-worker": "1.0.0",
-    "reset-css": "4.0.1",
     "vue": "2.5.17",
     "vue-flickity": "^1.1.2"
   },
@@ -39,10 +38,9 @@
     "babel-jest": "23.6.0",
     "eslint": "5.8.0",
     "eslint-plugin-vue": "5.0.0",
-    "html-loader": "0.5.5",
     "lint-staged": "7.2.2",
-    "markdown-loader": "4.0.0",
     "node-sass": "^4.11.0",
+    "raw-loader": "1.0.0",
     "s3-node-client": "^4.4.4",
     "sass-loader": "7.0.1",
     "vue-cli-plugin-storybook": "0.6.0",
