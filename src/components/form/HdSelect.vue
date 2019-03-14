@@ -117,6 +117,7 @@ export default {
     },
     handleBlur() {
       this.isActive = false;
+      this.validate();
     },
     showError(errorMessage) {
       this.error = errorMessage;
