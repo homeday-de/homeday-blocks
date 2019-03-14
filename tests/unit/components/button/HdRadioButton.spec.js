@@ -1,5 +1,9 @@
-import { shallowMount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import HdRadioButton from '@/components/buttons/HdRadioButton.vue';
+
+const desktopIcon = 'desktop-icon-url';
+const desktopIconHover = 'desktop-icon-hover-url';
+const mobileIcon = 'mobile-icon-url';
 
 describe('HdRadioButton', () => {
   let wrapper;
@@ -10,8 +14,15 @@ describe('HdRadioButton', () => {
   const mockedSelect = jest.fn();
 
   beforeEach(() => {
-    wrapper = shallowMount(HdRadioButton, {
-      propsData: { name, value, label },
+    wrapper = mount(HdRadioButton, {
+      propsData: {
+        name,
+        value,
+        label,
+        desktopIcon,
+        desktopIconHover,
+        mobileIcon,
+      },
     });
 
     wrapper.setMethods({ select: mockedSelect });
