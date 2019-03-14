@@ -20,11 +20,11 @@
     "vue-flickity": "^1.1.2"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "4.1.0",
+    "@storybook/addon-actions": "5.0.1",
     "@storybook/addon-console": "1.1.0",
-    "@storybook/addon-knobs": "4.0.9",
-    "@storybook/addon-links": "4.1.0",
-    "@storybook/addon-notes": "4.0.8",
+    "@storybook/addon-knobs": "5.0.1",
+    "@storybook/addon-links": "5.0.1",
+    "@storybook/addon-notes": "5.0.1",
     "@vue/cli-plugin-babel": "3.1.1",
     "@vue/cli-plugin-eslint": "3.1.5",
     "@vue/cli-plugin-pwa": "3.1.2",
@@ -44,7 +44,7 @@
     "node-sass": "^4.11.0",
     "s3-node-client": "^4.4.4",
     "sass-loader": "7.0.1",
-    "vue-cli-plugin-storybook": "0.5.0",
+    "vue-cli-plugin-storybook": "0.6.0",
     "vue-template-compiler": "2.5.17"
   },
   "files": [
