@@ -1,6 +1,6 @@
 module.exports = {
   collectCoverageFrom: [
-    'src/**/*.vue',
+    'src/components/**/*.vue',
   ],
   moduleFileExtensions: [
     'js',
