@@ -13,6 +13,7 @@
     "deploy": "npm run build:storybook && node ./deploy/deploy.js $FOLDER"
   },
   "dependencies": {
+    "imagesloaded": "^4.1.4",
     "lodash": "4.17.11",
     "register-service-worker": "1.0.0",
     "reset-css": "4.0.1",
