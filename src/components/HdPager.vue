@@ -16,7 +16,7 @@
       }"
       class="pager__items"
       tabindex="0"
-      @keydown="maybeSelectItem"
+      @keydown.self="maybeSelectItem"
       @blur="setUsingMouse(false)"
     >
       <ul
