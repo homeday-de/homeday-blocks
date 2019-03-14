@@ -1,4 +1,7 @@
 module.exports = {
+  collectCoverageFrom: [
+    'src/components/**/*.{js,vue}',
+  ],
   moduleFileExtensions: [
     'js',
     'jsx',
@@ -12,6 +15,7 @@ module.exports = {
   },
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
+    '^hd-blocks/(.*)$': '<rootDir>/src/$1',
   },
   snapshotSerializers: [
     'jest-serializer-vue',
@@ -21,3 +25,5 @@ module.exports = {
   ],
   testURL: 'http://localhost/',
 };
+
+// hd-block name mapper is needed to solve import in vue components

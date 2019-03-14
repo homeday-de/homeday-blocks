@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/homeday-de/homeday-blocks.svg?token=rxKqgsBkMR5FqNpvxBcx&branch=feature/tests)](https://travis-ci.com/homeday-de/homeday-blocks) [![Coverage Status](https://coveralls.io/repos/github/homeday-de/homeday-blocks/badge.svg?branch=feature%2Ftests&t=Kbz7Vb)](https://coveralls.io/github/homeday-de/homeday-blocks?branch=feature%2Ftests)
+
 # Homeday Blocks
 A library of Vue components used across Homeday projects - [here](http://hd-storybook.s3-website.eu-central-1.amazonaws.com/develop/)
 
@@ -37,6 +39,18 @@ npm run build:storybook
 ### Build as a library
 ```
 npm run build:lib
+```
+
+## Testing
+
+To just run all unit tests:
+```bash
+npm run test:unit
+```
+
+To watch for changes while writing tests:
+```bash
+npm run test:unit:watch
 ```
 
 ## Deployment
