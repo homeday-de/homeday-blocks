@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`HdTooltip the component is rendered 1`] = `<span class="hd-tooltip"></span>`;
