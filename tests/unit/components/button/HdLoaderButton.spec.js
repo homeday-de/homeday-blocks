@@ -1,24 +1,23 @@
 import { shallowMount } from '@vue/test-utils';
-import Vue from 'vue';
 import HdLoaderButton from '@/components/buttons/HdLoaderButton.vue';
 
-Vue.use(HdLoaderButton);
-// JSDOM API issue.
+// FIXME: JSDOM API issue.
 // querySelectorAll('paths') returns SVGElement instead of the DOM API SVGPathElement
 SVGElement.prototype.getTotalLength = () => 42;
 
 describe('HdLoaderButton', () => {
   let wrapper;
   const testLabel = 'Lorem';
-
   const mockedClick = jest.fn();
-  HdLoaderButton.methods.clicked = mockedClick;
+
   beforeEach(() => {
     wrapper = shallowMount(HdLoaderButton, {
       propsData: {
         label: testLabel,
       },
     });
+
+    wrapper.setMethods({ clicked: mockedClick });
   });
 
   test('the component is rendered', () => {
@@ -33,6 +32,7 @@ describe('HdLoaderButton', () => {
 
   test('clicking on the button, calls the proper method', () => {
     wrapper.find('.btn--primary').trigger('click');
+
     expect(mockedClick).toHaveBeenCalled();
   });
 });

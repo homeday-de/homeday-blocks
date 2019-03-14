@@ -7,8 +7,6 @@ import tooltipDirective from '@/components/tooltip/tooltipDirective';
 // required to properly solve HDTooltipped
 Vue.directive('hd-tooltip', tooltipDirective);
 
-Vue.use(HdInput);
-
 describe('HDTooltipped', () => {
   let emptyWrapper;
   let wrapper;
