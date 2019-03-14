@@ -6,54 +6,14 @@ import { text } from '@storybook/addon-knobs';
 import HdToast from 'hd-blocks/components/HdToast.vue';
 
 storiesOf('HdToast', module)
-  .add('Primary only', () => ({
+  .add('required', () => ({
     components: { HdToast },
     data: () => ({
-      text: text('Toast text', 'Random text'),
+      text: text('Toast text', 'textfafafsasf'),
     }),
     template: `
       <div>
-        <hd-toast primaryLabel="Primary" @primaryClick="primaryClick" ref="toast">{{text}}</hd-toast>
-        <button @click="$refs.toast.$emit('open')" class="btn btn--primary">Show Toast!</button>
-      </div>
-    `,
-    methods: {
-      primaryClick: action('primaryClick'),
-    },
-  }), {
-    knobs: {
-      escapeHTML: false,
-    },
-  })
-  .add('Secondary only', () => ({
-    components: { HdToast },
-    data: () => ({
-      text: text('Toast text', 'Random text'),
-    }),
-    template: `
-      <div>
-        <hd-toast @close="onClose" @secondaryClick="secondaryClick" secondaryLabel="Secondary" ref="toast">{{text}}</hd-toast>
-        <button @click="$refs.toast.$emit('open')" class="btn btn--primary">Show Toast!</button>
-      </div>
-    `,
-    methods: {
-      onClose: action('closed'),
-      primaryClick: action('primaryClick'),
-      secondaryClick: action('secondaryClick'),
-    },
-  }), {
-    knobs: {
-      escapeHTML: false,
-    },
-  })
-  .add('Complete', () => ({
-    components: { HdToast },
-    data: () => ({
-      text: text('Toast text', 'Random text'),
-    }),
-    template: `
-      <div>
-        <hd-toast primaryLabel="Primary" @close="onClose" @primaryClick="primaryClick" @secondaryClick="secondaryClick" secondaryLabel="Secondary" ref="toast">{{text}}</hd-toast>
+        <hd-toast :text=text primaryLabel="Primary" @close="onClose" @primaryClick="primaryClick" @secondaryClick="secondaryClick" secondaryLabel="Secondary" ref="toast">{{text}}</hd-toast>
         <button @click="$refs.toast.$emit('open')" class="btn btn--primary">Show Toast!</button>
       </div>
     `,
