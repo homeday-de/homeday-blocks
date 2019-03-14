@@ -36,11 +36,16 @@ export default {
   height: 16px;
   cursor: pointer;
   z-index: 2;
+  opacity: 0.8;
 
   @media (min-width: $break-mobile) {
     display: block;
     width: 24px;
     height: 24px;
+  }
+
+  &:hover {
+    opacity: 1;
   }
 
   &:disabled {
