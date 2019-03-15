@@ -103,6 +103,7 @@ export default {
   &__line {
     display: flex;
     &__item {
+      flex: 1;
       margin-left: $inline-xs;
       margin-right: $inline-xs;
       &:first-of-type {
