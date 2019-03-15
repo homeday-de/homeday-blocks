@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HdTimeslots renders component 1`] = `
+<section class="timeslots">
+  <div class="timeslots__controls"><button autocomplete="off" class="arrowButton arrowButton--left" isdisabled="true"></button> <button autocomplete="off" class="arrowButton arrowButton--right"></button></div>
+  <div class="timeslots__inner">
+    <div class="timeslots__slots" name="timeslots-transition-right"><span class="timeslots__slot timeslots__slot--isSelected">
+          10:20
+        </span><span class="timeslots__slot">
+          10:40
+        </span><span class="timeslots__slot">
+          11:00
+        </span><span class="timeslots__slot">
+          11:20
+        </span><span class="timeslots__slot">
+          11:40
+        </span><span class="timeslots__slot">
+          12:00
+        </span><span class="timeslots__slot">
+          12:20
+        </span><span class="timeslots__slot">
+          12:40
+        </span><span class="timeslots__slot">
+          13:00
+        </span><span class="timeslots__slot">
+          13:20
+        </span></div>
+    <div class="timeslots__legend">
+      <p class="timeslots__legend__indicator timeslots__legend__indicator--isUnavailable">
+        NOT_AVAILABLE
+      </p>
+      <p class="timeslots__legend__indicator  timeslots__legend__indicator--isAvailable">
+        AVAILABLE
+      </p>
+    </div>
+  </div>
+</section>
+`;

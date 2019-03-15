@@ -1,11 +1,11 @@
 import { mount } from '@vue/test-utils';
-import HdTooltip from '@/components/buttons/HdArrowButton.vue';
+import HdArrowButton from '@/components/buttons/HdArrowButton.vue';
 
 describe('HdArrowButton', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = mount(HdTooltip);
+    wrapper = mount(HdArrowButton);
   });
 
   test('renders component', () => {

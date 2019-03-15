@@ -1,3 +1,6 @@
+/**
+ * NOTE: hd-blocks mapper is needed to solve hd-blocks path in the components
+ */
 module.exports = {
   collectCoverageFrom: [
     'src/components/**/*.vue',
@@ -25,5 +28,3 @@ module.exports = {
   ],
   testURL: 'http://localhost/',
 };
-
-// hd-block name mapper is needed to solve import in vue components
