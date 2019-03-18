@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/homeday-de/homeday-blocks.svg?token=rxKqgsBkMR5FqNpvxBcx&branch=pew-tests)](https://travis-ci.com/homeday-de/homeday-blocks) [![Coverage Status](https://coveralls.io/repos/github/homeday-de/homeday-blocks/badge.svg?branch=pew-tests&t=Kbz7Vb)](https://coveralls.io/github/homeday-de/homeday-blocks?branch=pew-tests)
+[![Build Status](https://travis-ci.com/homeday-de/homeday-blocks.svg?token=rxKqgsBkMR5FqNpvxBcx&branch=pew-tests)](https://travis-ci.com/homeday-de/homeday-blocks) [![Coverage Status](https://coveralls.io/repos/github/homeday-de/homeday-blocks/badge.svg?t=Kbz7Vb)](https://coveralls.io/github/homeday-de/homeday-blocks)
 
 # Homeday Blocks
 A library of Vue components used across Homeday projects - [here](http://hd-storybook.s3-website.eu-central-1.amazonaws.com/develop/)
