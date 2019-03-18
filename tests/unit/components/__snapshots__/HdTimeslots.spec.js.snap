@@ -5,6 +5,12 @@ exports[`HdTimeslots renders component 1`] = `
   <div class="timeslots__controls"><button autocomplete="off" class="arrowButton arrowButton--left" isdisabled="true"></button> <button autocomplete="off" class="arrowButton arrowButton--right"></button></div>
   <div class="timeslots__inner">
     <div class="timeslots__slots" name="timeslots-transition-right"><span class="timeslots__slot timeslots__slot--isSelected">
+          10:20
+        </span><span class="timeslots__slot">
+          10:40
+        </span><span class="timeslots__slot">
+          11:00
+        </span><span class="timeslots__slot">
           11:20
         </span><span class="timeslots__slot">
           11:40
@@ -18,12 +24,6 @@ exports[`HdTimeslots renders component 1`] = `
           13:00
         </span><span class="timeslots__slot">
           13:20
-        </span><span class="timeslots__slot">
-          13:40
-        </span><span class="timeslots__slot">
-          14:00
-        </span><span class="timeslots__slot">
-          14:20
         </span></div>
     <div class="timeslots__legend">
       <p class="timeslots__legend__indicator timeslots__legend__indicator--isUnavailable">
