@@ -28,4 +28,3 @@ deploy:
 branches:
   only:
   - develop
-  - pew-tests
