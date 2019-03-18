@@ -5,6 +5,9 @@ module.exports = {
   collectCoverageFrom: [
     'src/components/**/*.vue',
   ],
+  coverageReporters: [
+    'text-lcov',
+  ],
   moduleFileExtensions: [
     'js',
     'jsx',

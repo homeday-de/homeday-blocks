@@ -10,6 +10,8 @@ script:
 - npm run test:unit:ci
 #- npm run build
 #- npm run build:storybook
+after_success:
+- npm run coverage
 #deploy:
 #  provider: s3
 #  access_key_id: AKIAJ32SPOKYID5HUHBQ
