@@ -19,7 +19,7 @@ describe('HdTimeslots', () => {
     });
   });
 
-  test('renders component', () => {
+  test.skip('renders component', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 

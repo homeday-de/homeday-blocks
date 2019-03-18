@@ -6,7 +6,7 @@ module.exports = {
     'src/components/**/*.vue',
   ],
   coverageReporters: [
-    'text-lcov',
+    'lcov',
   ],
   moduleFileExtensions: [
     'js',
