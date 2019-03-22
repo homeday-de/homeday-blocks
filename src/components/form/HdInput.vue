@@ -119,7 +119,7 @@ export default {
       return merge(getMessages(this.lang), this.texts);
     },
     isEmpty() {
-      return this.value == null || this.value === '';
+      return this.value === null || this.value === undefined || this.value === '';
     },
     showVisibilityToggle() {
       return this.type === 'password' && this.value.length !== 0;

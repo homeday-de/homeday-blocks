@@ -88,7 +88,7 @@ export default {
       return merge(getMessages(this.lang), this.texts);
     },
     isEmpty() {
-      return !this.currentValue;
+      return this.value === null || this.value === undefined || this.value === '';
     },
     fieldClasses() {
       return {
