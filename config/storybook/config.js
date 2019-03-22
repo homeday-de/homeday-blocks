@@ -1,15 +1,20 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import 'hd-blocks/styles/main.scss';
-import { configure, addDecorator } from '@storybook/vue';
-import { withNotes } from '@storybook/addon-notes';
+import { configure, addParameters, addDecorator } from '@storybook/vue';
 import { withKnobs } from '@storybook/addon-knobs';
 import '@storybook/addon-console';
 
 import tooltipInstall from 'hd-blocks/components/tooltip/installer';
+import HdTheme from './themes/HdTheme';
 
 tooltipInstall();
 
-addDecorator(withNotes);
+addParameters({
+  options: {
+    theme: HdTheme,
+  },
+});
+
 addDecorator(withKnobs);
 
 const req = require.context('../../src/stories', true, /.stories.js$/);

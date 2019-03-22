@@ -1,27 +1,38 @@
 <template>
   <div class="confirmPassword">
-    <hd-input ref="passwordMain" name="passwordMain"
-    @dataChange="fieldDataChange" class="confirm-password__input"
-    type="password" :label="t.FORM.PASSWORD.LABEL" :required="true"/>
+    <hd-input
+      ref="passwordMain"
+      v-model="passwordMain"
+      name="passwordMain"
+      class="confirm-password__input"
+      type="password"
+      :label="t.FORM.PASSWORD.LABEL"
+      :required="required"/>
 
-    <div class="confirmPassword__strengthMeter" :class="{isVisible: strengthUIVisible}">
-      <div class="confirmPassword__strengthMeter__text">{{ t.FORM.VALIDATION.PASSWORD_STRENGTH.LEVELS[strengthIndex] }}</div>
+    <div class="confirmPassword__strengthMeter" :class="{isVisible: strengthBarVisible}">
+      <div class="confirmPassword__strengthMeter__text"
+      >{{ t.FORM.VALIDATION.PASSWORD_STRENGTH.LEVELS[strengthIndex] }}</div>
       <div class="confirmPassword__strengthMeter__gauge">
         <div class="confirmPassword__strengthMeter__gauge__bar" :class="barClasses"></div>
       </div>
     </div>
 
-    <hd-input ref="passwordConfirm" name="passwordConfirm"
-    @dataChange="fieldDataChange" class="confirmPassword__input"
-    type="password" :label="t.FORM.PASSWORD.LABEL_CONFIRM" :required="true"/>
+    <hd-input
+      ref="passwordConfirm"
+      v-model="passwordConfirm"
+      name="passwordConfirm"
+      class="confirmPassword__input"
+      type="password"
+      :label="t.FORM.PASSWORD.LABEL_CONFIRM"
+      :required="required"/>
   </div>
 </template>
 
 <script>
-import some from 'lodash/some';
+import merge from 'lodash/merge';
+import { getMessages } from 'hd-blocks/lang';
 import { getPasswordStrength } from 'hd-blocks/services/utils';
 import HdInput from 'hd-blocks/components/form/HdInput.vue';
-import { getMessages } from 'hd-blocks/lang';
 
 export default {
   name: 'hd-confirm-password',
@@ -29,7 +40,18 @@ export default {
     HdInput,
   },
   props: {
-    name: String,
+    value: {
+      type: String,
+      default: '',
+    },
+    name: {
+      type: String,
+      default: '',
+    },
+    required: {
+      type: Boolean,
+      default: true,
+    },
     min: {
       type: Number,
       default: 0,
@@ -38,98 +60,102 @@ export default {
       type: Boolean,
       default: true,
     },
-    strengthUI: {
+    strengthBarStyle: {
       type: Boolean,
       default: false,
     },
     lang: String,
+    texts: {
+      type: Object,
+      default: () => ({}),
+    },
   },
   data() {
     return {
-      t: {},
-      formData: {
-        passwordMain: {
-          value: '',
-          error: true,
-        },
-        passwordConfirm: {
-          value: '',
-          error: true,
-        },
-      },
+      passwordMain: this.value,
+      passwordConfirm: '',
       strengthIndex: null,
-      strengthUIVisible: false,
+      strengthBarVisible: false,
     };
   },
-  created() {
-    this.t = getMessages(this.lang);
+  watch: {
+    value() {
+      this.passwordMain = this.value;
+    },
+    passwordMain() {
+      this.$nextTick(this.validate);
+    },
+    passwordConfirm() {
+      this.$nextTick(this.validate);
+    },
   },
   computed: {
+    t() {
+      return merge(getMessages(this.lang), this.texts);
+    },
     barClasses() {
       return {
-        [`level--${this.strengthIndex}`]: this.strengthUIVisible && this.strengthIndex >= 0,
+        [`level--${this.strengthIndex}`]: this.strengthBarVisible && this.strengthIndex >= 0,
       };
     },
   },
   methods: {
-    fieldDataChange({ name, value, error }) {
-      this.formData[name] = { value, error };
-      this.checkPasswordValidity();
-      this.emitData();
+    fieldDataChange() {
+      this.$emit('input', this.passwordMain);
+      this.$nextTick(this.validate);
     },
-    checkPasswordValidity() {
-      if (this.formData.passwordMain.value.length > 0) {
-        this.checkPasswordMatching(this.formData.passwordMain, this.formData.passwordConfirm);
-        if (this.withStrength) {
-          this.checkPasswordStrength(this.formData.passwordMain.value);
-        }
+    validate() {
+      const inputsAreMatching = this.checkPasswordMatching();
+      const passwordIsLongEnough = this.checkPasswordLength();
+
+      const isValid = inputsAreMatching && passwordIsLongEnough;
+
+      if (this.withStrength && passwordIsLongEnough) {
+        this.updatePasswordStrength();
+      } else {
+        this.strengthBarVisible = false;
       }
-      if (this.min > this.formData.passwordMain.value.length && !this.formData.passwordMain.error) {
+      return isValid;
+    },
+    checkPasswordLength() {
+      if (this.passwordMain.length === 0 && this.required) {
+        this.$refs.passwordMain.showError(this.t.FORM.VALIDATION.REQUIRED);
+        return false;
+      }
+      if (this.min > this.passwordMain.length) {
         this.$refs.passwordMain.showError(this.t.FORM.VALIDATION.PASSWORD_SHORT);
+        return false;
       }
-      if (this.$refs.passwordMain.error !== null) {
-        this.strengthUIVisible = false;
-      }
+      this.$refs.passwordMain.hideError();
+      return true;
     },
-    checkPasswordMatching(passwordMainData, passwordConfirmData) {
-      if (passwordConfirmData.value !== '' && passwordMainData.value !== passwordConfirmData.value) {
-        // eslint-disable-next-line
-        passwordConfirmData.error = this.t.FORM.VALIDATION.PASSWORD_MISMATCH;
-        this.$refs.passwordConfirm.showError(passwordConfirmData.error);
-      } else if (passwordConfirmData.error === this.t.FORM.VALIDATION.PASSWORD_MISMATCH) {
-        this.$refs.passwordConfirm.validate();
+    checkPasswordMatching() {
+      if (this.passwordConfirm.length === 0) {
+        return false;
       }
+      if (this.passwordMain !== this.passwordConfirm) {
+        this.$refs.passwordConfirm.showError(this.t.FORM.VALIDATION.PASSWORD_MISMATCH);
+        return false;
+      }
+      this.$refs.passwordConfirm.hideError();
+      return true;
     },
-    checkPasswordStrength(password) {
-      this.strengthIndex = getPasswordStrength(password, 4);
-      if (this.strengthUI) {
-        this.strengthUIVisible = true;
+    updatePasswordStrength() {
+      this.strengthIndex = getPasswordStrength(this.passwordMain, 4);
+      if (this.strengthBarStyle) {
+        this.strengthBarVisible = true;
       } else {
         const COLORS = [
           'orange',
-          'GoldenRod',
-          'LimeGreen',
+          'goldenRod',
+          'limeGreen',
           'green',
         ];
         const { TITLE, LEVELS } = this.t.FORM.VALIDATION.PASSWORD_STRENGTH;
-        const msg = `${TITLE}: <span style='color: ${COLORS[this.strengthIndex]}'>${LEVELS[this.strengthIndex]}</span>`;
+        const msg = `${TITLE}: <span style='color: ${COLORS[this.strengthIndex]}'
+        >${LEVELS[this.strengthIndex]}</span>`;
         this.$refs.passwordMain.showHelper(msg);
       }
-    },
-    emitData() {
-      this.$emit('dataChange', {
-        name: this.name,
-        value: this.formData.passwordMain.value,
-        error: this.formData.passwordMain.error || this.formData.passwordConfirm.error,
-      });
-    },
-    hasErrors(formData) {
-      return some(formData, field => field.error !== null);
-    },
-    validityCheck() {
-      this.$refs.passwordMain.validityCheck();
-      this.$refs.passwordConfirm.validityCheck();
-      this.emitData();
     },
   },
 };

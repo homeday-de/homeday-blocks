@@ -3,32 +3,44 @@
     <div v-for="(line, i) in lines" class="dynamicForm__line" :key="`line-${i}`">
       <component
       v-for="item in getItemsArray(line)"
+      ref="fields"
       :is="getComponent(item.type)"
       :key="`input-${item.name}`"
+      v-model="formData[item.name]"
       v-bind="item.props"
       :name="item.name"
-      @dataChange="dataChange"
       class="dynamicForm__line__item"
       :lang="lang"
       />
     </div>
-    <button class="btn btn--primary dynamicForm__submit">{{ submitLabel }}</button>
+    <button
+      v-if="submitLabel"
+      class="btn btn--primary dynamicForm__submit"
+    >{{ submitLabel }}</button>
   </form>
 </template>
 
 <script>
-import some from 'lodash/some';
 import HdInput from 'hd-blocks/components/form/HdInput.vue';
 import HdCheckbox from 'hd-blocks/components/form/HdCheckbox.vue';
 import HdRadio from 'hd-blocks/components/form/HdRadio.vue';
 import HdPasswordConfirm from 'hd-blocks/components/form/HdPasswordConfirm.vue';
 
 export default {
-  name: 'hdDynamicForm',
+  name: 'HdDynamicForm',
   props: {
-    submitLabel: String,
-    items: Array,
-    lang: String,
+    submitLabel: {
+      type: String,
+      default: '',
+    },
+    items: {
+      type: Array,
+      default: () => [],
+    },
+    lang: {
+      type: String,
+      default: '',
+    },
   },
   components: {
     HdInput,
@@ -40,27 +52,37 @@ export default {
       formData: {},
     };
   },
+  created() {
+    this.initializeFormData(this.items);
+  },
   computed: {
     lines() {
       return this.items;
     },
   },
   methods: {
-    dataChange({ name, value, error }) {
-      this.formData[name] = { value, error };
-    },
-    hasErrors(formData) {
-      return some(formData, field => field.error !== null);
+    initializeFormData(array) {
+      const flattenedArray = array.reduce((flatArray, item) => [
+        ...flatArray,
+        ...this.getItemsArray(item),
+      ], []);
+      flattenedArray.forEach((item) => {
+        this.$set(this.formData, item.name, item.initialValue);
+      });
     },
     submit() {
-      this.$children.forEach((child) => {
-        if (child.validityCheck !== undefined) {
-          child.validityCheck();
+      const invalidFields = this.$refs.fields.filter((field) => {
+        if (field.validate) {
+          return !field.validate();
         }
+        return false;
       });
-      if (!this.hasErrors(this.formData)) {
-        this.$emit('submit', this.formData);
-      }
+
+      this.$emit('submit', {
+        data: this.formData,
+        isValid: invalidFields.length === 0,
+        invalidFields,
+      });
     },
     // Return an array with one item if the current line is an object and not an array
     getItemsArray(line) {
@@ -93,6 +115,7 @@ export default {
   &__line {
     display: flex;
     &__item {
+      flex: 1;
       margin-left: $inline-xs;
       margin-right: $inline-xs;
       &:first-of-type {

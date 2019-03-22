@@ -1,4 +1,10 @@
 {
+  "GENERAL": {
+    "EDIT": "Edit",
+    "SAVE": "Save",
+    "CANCEL": "Cancel",
+    "SAVING": "Saving"
+  },
   "FORM": {
     "EMAIL": {
       "PLACEHOLDER": "e.g. will.smith@gmail.com",
@@ -11,6 +17,7 @@
     "VALIDATION": {
       "REQUIRED": "This field is required",
       "INVALID_EMAIL": "Please enter a valid email address",
+      "INVALID_DATE": "Please enter a date in this format: YYYY-MM-DD",
       "PASSWORD_MISMATCH": "The entered passwords are not matching",
       "PASSWORD_SHORT": "This password is too short",
       "PASSWORD_STRENGTH": {
@@ -22,6 +29,12 @@
           "Very strong"
         ]
       }
+    }
+  },
+  "EXPAND_TEXT": {
+    "TOGGLE": {
+      "SHOW_MORE": "show more",
+      "SHOW_LESS": "show less"
     }
   }
 }

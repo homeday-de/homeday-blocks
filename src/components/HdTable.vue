@@ -8,7 +8,7 @@
     <tbody>
       <tr v-for="(tr, i) in body" :key="`row-${i}`">
         <td v-for="(value, i) in tr" :key="`cell-${i}`">
-          <span v-if="isComponent(value)" :is="value.component" v-bind="value.props"></span>
+          <component v-if="isComponent(value)" :is="value.component" v-bind="value.props"></component>
           <span v-else>{{ value }}</span>
         </td>
       </tr>
@@ -18,10 +18,22 @@
 
 <script>
 export default {
-  name: 'hd-table',
+  name: 'HdTable',
   props: {
-    header: Array,
-    body: Array,
+    header: {
+      type: Array,
+      required: true,
+      validator(value) {
+        return value.length > 0;
+      },
+    },
+    body: {
+      type: Array,
+      required: true,
+      validator(value) {
+        return value.length > 0;
+      },
+    },
     align: {
       type: String,
       default: 'center',
@@ -53,9 +65,6 @@ export default {
     font-weight: 600;
     vertical-align: middle;
     position: relative;
-    > * {
-      display: inline-block;
-    }
   }
   th {
     border-top: none;
