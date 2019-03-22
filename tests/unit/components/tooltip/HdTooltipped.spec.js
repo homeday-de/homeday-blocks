@@ -22,6 +22,7 @@ describe('HDTooltipped', () => {
         props: {
           label: 'dolor sit ammet',
           type: 'text',
+          name: 'testInput',
         },
       },
     });
