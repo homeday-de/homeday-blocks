@@ -37,3 +37,6 @@ storiesOf('HdTimeslots', module)
     />`,
     methods: { action: action('timeSelected') },
   }));
+
+
+export default generateSlots;
