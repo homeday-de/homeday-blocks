@@ -13,7 +13,10 @@
       :lang="lang"
       />
     </div>
-    <button class="btn btn--primary dynamicForm__submit">{{ submitLabel }}</button>
+    <button
+      v-if="submitLabel"
+      class="btn btn--primary dynamicForm__submit"
+    >{{ submitLabel }}</button>
   </form>
 </template>
 
@@ -24,11 +27,20 @@ import HdRadio from 'hd-blocks/components/form/HdRadio.vue';
 import HdPasswordConfirm from 'hd-blocks/components/form/HdPasswordConfirm.vue';
 
 export default {
-  name: 'hdDynamicForm',
+  name: 'HdDynamicForm',
   props: {
-    submitLabel: String,
-    items: Array,
-    lang: String,
+    submitLabel: {
+      type: String,
+      default: '',
+    },
+    items: {
+      type: Array,
+      default: () => [],
+    },
+    lang: {
+      type: String,
+      default: '',
+    },
   },
   components: {
     HdInput,
