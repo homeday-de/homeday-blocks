@@ -16,17 +16,30 @@ storiesOf('HdDetailsTable', module)
         type: Boolean,
         default: boolean('With Divider', true),
       },
+      forceSingleColumn: {
+        type: Boolean,
+        default: boolean('Single Column', false),
+      },
     },
     template: `
       <div style="max-width: 800px; margin: auto;">
         <HdDetailsTable :with-divider="withDivider">
-          <HdDetailsTableRow label="First Name">
+          <HdDetailsTableRow
+            :force-single-column="forceSingleColumn"
+            label="First Name"
+          >
             Chuck
           </HdDetailsTableRow>
-          <HdDetailsTableRow label="Last Name">
+          <HdDetailsTableRow
+            :force-single-column="forceSingleColumn"
+            label="Last Name"
+          >
             Norris
           </HdDetailsTableRow>
-          <HdDetailsTableRow label="Age">
+          <HdDetailsTableRow
+            :force-single-column="forceSingleColumn"
+            label="Age"
+          >
             79
           </HdDetailsTableRow>
         </HdDetailsTable>

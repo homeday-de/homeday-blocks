@@ -1,5 +1,10 @@
 <template>
-  <div class="details-table__row">
+  <div
+    :class="{
+      'details-table__row': true,
+      'details-table__row--single-column': forceSingleColumn,
+    }"
+  >
     <dt class="details-table__row__label">
       {{ label }}:
     </dt>
@@ -13,11 +18,15 @@
 
 <script>
 export default {
-  name: 'DetailsTableRow',
+  name: 'HdDetailsTableRow',
   props: {
     label: {
       type: String,
       default: '',
+    },
+    forceSingleColumn: {
+      type: Boolean,
+      default: false,
     },
   },
 };
@@ -34,9 +43,13 @@ export default {
   word-wrap: break-word;
 
   @media (min-width: $break-desktop) {
-    flex: 0 0 50%;
     margin-top: 0;
     min-width: 0;
+    flex: 0 0 100%;
+
+    &:not(&--single-column) {
+      flex: 0 0 50%;
+    }
   }
 
   &__label {
@@ -73,14 +86,14 @@ export default {
     }
   }
 
-  &:nth-child(odd) #{&}__content {
+  &:not(&--single-column):nth-child(odd) #{&}__content {
 
     @media (min-width: $break-desktop) {
       margin-right: $inline-xs;
     }
   }
 
-  &:nth-child(even) #{&}__label {
+  &:not(&--single-column):nth-child(even) #{&}__label {
 
     @media (min-width: $break-desktop) {
       margin-left: $inline-xs;

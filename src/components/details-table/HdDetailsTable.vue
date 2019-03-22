@@ -3,7 +3,10 @@
     <dl
       :class="{ withDivider }"
       class="details-table">
-      <div class="details-table__before">
+      <div
+        v-if="$slots.before"
+        class="details-table__before"
+      >
         <slot name="before"/>
       </div>
       <div class="details-table__rows">
@@ -15,7 +18,7 @@
 
 <script>
 export default {
-  name: 'DetailsTable',
+  name: 'HdDetailsTable',
   props: {
     withDivider: {
       type: Boolean,
