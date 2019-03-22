@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HdRadioButton the component is rendered 1`] = `
+<div role="button" tabindex="0" class="radioButton"><input type="radio" name="lorem" class="radioButton__input" value="ipsum">
+  <div class="radioButton__iconWrapper radioButton__iconWrapper--desktop">
+    <div class="radioButton__icon" style="background-image: url(desktop-icon-url);"></div>
+    <div class="radioButton__icon--isHover radioButton__icon" style="background-image: url(desktop-icon-hover-url);"></div>
+  </div>
+  <div class="radioButton__iconWrapper radioButton__iconWrapper--mobile">
+    <div class="radioButton__icon" style="background-image: url(mobile-icon-url);"></div>
+  </div> <label for="lorem" class="radioButton__label">dolor</label>
+</div>
+`;

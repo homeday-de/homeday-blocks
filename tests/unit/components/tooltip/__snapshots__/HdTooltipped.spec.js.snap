@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HDTooltipped the component is rendered 1`] = `<span></span>`;
+
+exports[`HDTooltipped the component is rendered 2`] = `
+<div class="field field--input"><input autocomplete="true" type="text" placeholder="" class="field__input"> <label class="field__label">dolor sit ammet</label>
+  <!---->
+  <!---->
+  <!----> <span class="field__border"></span></div>
+`;
