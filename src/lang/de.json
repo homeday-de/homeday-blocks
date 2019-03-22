@@ -1,4 +1,10 @@
 {
+  "GENERAL": {
+    "EDIT": "Bearbeiten",
+    "SAVE": "Speichern",
+    "CANCEL": "Abbrechen",
+    "SAVING": "Speichern"
+  },
   "FORM": {
     "EMAIL": {
       "PLACEHOLDER": "z.b. michael.schmidt@gmail.com",
@@ -11,6 +17,7 @@
     "VALIDATION": {
       "REQUIRED": "Dies ist ein Pflichtfeld.",
       "INVALID_EMAIL": "Bitte geben Sie eine korrekte E-Mail-Adresse ein.",
+      "INVALID_DATE": "Bitte geben Sie ein Datum in diesem Format ein: JJJJ-MM-TT",
       "PASSWORD_MISMATCH": "Dies stimmt nicht mit dem obigen Passwort überein",
       "PASSWORD_SHORT": "Dieses Passwort ist zu kurz",
       "PASSWORD_STRENGTH": {
@@ -22,6 +29,12 @@
           "Sehr stark"
         ]
       }
+    }
+  },
+  "EXPAND_TEXT": {
+    "TOGGLE": {
+      "SHOW_MORE": "weiterlesen",
+      "SHOW_LESS": "zuklappen"
     }
   }
 }

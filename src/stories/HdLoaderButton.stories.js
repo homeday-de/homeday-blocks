@@ -8,14 +8,32 @@ import HdLoaderButton from 'hd-blocks/components/buttons/HdLoaderButton.vue';
 storiesOf('HdLoaderButton', module)
   .add('with label', () => ({
     components: { HdLoaderButton },
-    data: () => ({
-      label: text('Label', 'Loader Button Label'),
-      isStatic: boolean('Static?', true),
-      resetOnSuccess: boolean('Reset on success state?', true),
-      idleResetTime: number('Reset time?', 200),
-      height: number('Height', 46),
-      loadingCircleStrokeWidth: number('Loading circle stroke width', 4),
-    }),
+    props: {
+      label: {
+        type: String,
+        default: text('Label', 'Loader Button Label'),
+      },
+      isStatic: {
+        type: Boolean,
+        default: boolean('Static?', true),
+      },
+      resetOnSuccess: {
+        type: Boolean,
+        default: boolean('Reset on success state?', true),
+      },
+      idleResetTime: {
+        type: Number,
+        default: number('Reset time?', 200),
+      },
+      height: {
+        type: Number,
+        default: number('Height', 46),
+      },
+      loadingCircleStrokeWidth: {
+        type: Number,
+        default: number('Loading circle stroke width', 4),
+      },
+    },
     template: `<HdLoaderButton
       @click="clicked"
       @success="success"

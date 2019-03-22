@@ -1,55 +1,112 @@
 <template>
-  <div class="field field--input" :class="fieldClasses">
+  <div
+    :class="fieldClasses"
+    class="field field--input"
+  >
     <input
-      class="field__input"
       :autocomplete="autocomplete"
-      v-model.trim="currentValue"
-      ref="input"
+      :value="value"
       :type="currentType"
       :id="name"
       :name="name"
       :placeholder="isActive && placeholder !== undefined ? placeholder : ''"
       :required="required"
       :autofocus="autofocus"
+      class="field__input"
+      ref="input"
+      @input="handleInput"
       @focus="handleFocus"
       @blur="handleBlur"
     />
-    <label :for="name" v-if="label" class="field__label">{{ label }}</label>
-    <p class="field__error" v-if="error">{{ error }}</p>
-    <p class="field__error field__error--helper" v-else-if="helper" v-html="helper"></p>
-    <span v-if="false" class="field__error-clear" @click="clearInput"></span>
+    <label
+      v-if="label"
+      :for="name"
+      class="field__label"
+    >
+      {{ label }}
+    </label>
+    <p
+      v-if="error"
+      class="field__error"
+    >
+      {{ error }}
+    </p>
+    <p
+      v-else-if="helper"
+      class="field__error field__error--helper"
+      v-html="helper"
+    />
     <span v-if="showVisibilityToggle"
-      class="field__visibilityToggle"
       :class="{'field__visibilityToggle--visible': currentType === 'text'}"
-      @click="togglePasswordVisibility"></span>
-    <span class="field__border"></span>
+      class="field__visibilityToggle"
+      @click="togglePasswordVisibility"
+    />
+    <span class="field__border"/>
   </div>
 </template>
 
 <script>
+import merge from 'lodash/merge';
 import { getMessages } from 'hd-blocks/lang';
-import validate from 'hd-blocks/services/formValidation';
+import {
+  email as validateEmail,
+  date as validateDate,
+} from 'hd-blocks/services/formValidation';
 
 export default {
-  name: 'hdInput',
+  name: 'HdInput',
   props: {
-    name: String,
-    type: String,
-    label: String,
-    value: [String, Number],
-    placeholder: String,
-    required: Boolean,
-    autocomplete: {
-      type: Boolean,
-      default: true,
+    label: {
+      type: String,
+      default: '',
     },
-    autofocus: Boolean,
-    lang: String,
+    name: {
+      type: String,
+      required: true,
+    },
+    type: {
+      type: String,
+      default: 'text',
+    },
+    value: {
+      type: [String, Number],
+      default: '',
+    },
+    placeholder: {
+      type: String,
+      default: '',
+    },
+    required: {
+      type: Boolean,
+      default: false,
+    },
+    autocomplete: {
+      type: String,
+      default: 'on',
+    },
+    autofocus: {
+      type: Boolean,
+      default: false,
+    },
+    min: {
+      type: Number,
+      default: undefined,
+    },
+    max: {
+      type: Number,
+      default: undefined,
+    },
+    lang: {
+      type: String,
+      default: 'de',
+    },
+    texts: {
+      type: Object,
+      default: () => {},
+    },
   },
   data() {
     return {
-      t: {},
-      currentValue: this.value || '',
       currentType: this.type || 'text',
       isActive: undefined,
       isValid: undefined,
@@ -57,26 +114,61 @@ export default {
       helper: null,
     };
   },
-  created() {
-    this.t = getMessages(this.lang);
+  computed: {
+    t() {
+      return merge(getMessages(this.lang), this.texts);
+    },
+    isEmpty() {
+      return this.value === null || this.value === undefined || this.value === '';
+    },
+    showVisibilityToggle() {
+      return this.type === 'password' && this.value.length !== 0;
+    },
+    fieldClasses() {
+      return {
+        'field--active': this.isActive,
+        'field--filled': !this.isEmpty,
+        'field--invalid': this.isValid === false,
+        'field--hasControl': this.showVisibilityToggle,
+      };
+    },
+  },
+  watch: {
+    value() {
+      this.validate();
+    },
   },
   methods: {
-    handleChange() {
-      this.validate();
-      this.$emit('dataChange', { name: this.name, value: this.currentValue, error: this.error });
-    },
     clearInput() {
       this.$refs.input.focus();
-      this.currentValue = '';
       this.hideError();
+      this.$emit('input', '');
     },
     handleFocus() {
-      // this.error = '';
       this.isActive = true;
     },
     handleBlur() {
       this.isActive = false;
-      this.handleChange();
+      this.validate();
+    },
+    handleInput(e) {
+      let newValue = e.target.value;
+
+      if (this.currentType === 'number' && newValue !== '') {
+        newValue = parseFloat(newValue);
+
+        if (typeof this.min === 'number' && newValue < this.min) {
+          newValue = this.min;
+        } else if (typeof this.max === 'number' && newValue > this.max) {
+          newValue = this.max;
+        }
+
+        if (newValue === this.value) {
+          this.$nextTick(this.$forceUpdate);
+        }
+      }
+
+      this.$emit('input', newValue);
     },
     showError(errorMessage) {
       this.error = errorMessage;
@@ -90,40 +182,20 @@ export default {
       this.error = null;
     },
     validate() {
-      if (this.required && this.currentValue === '') {
+      if (this.required && this.isEmpty) {
         this.showError(this.t.FORM.VALIDATION.REQUIRED);
-      } else if (this.currentValue !== '' && this.type === 'email' && !validate.email(this.currentValue)) {
+      } else if (this.currentType === 'email' && !validateEmail(this.value)) {
         this.showError(this.t.FORM.VALIDATION.INVALID_EMAIL);
+      } else if (this.currentType === 'date' && !validateDate(this.value)) {
+        this.showError(this.t.FORM.VALIDATION.INVALID_DATE);
       } else {
         this.hideError();
       }
-    },
-    validityCheck() {
-      this.handleChange();
+
+      return !this.error;
     },
     togglePasswordVisibility() {
       this.currentType = this.currentType === 'password' ? 'text' : 'password';
-    },
-  },
-  computed: {
-    showVisibilityToggle() {
-      return this.type === 'password' && this.currentValue.length !== 0;
-    },
-    fieldClasses() {
-      return {
-        'field--active': this.isActive,
-        'field--filled': this.currentValue.length !== 0,
-        'field--valid': false,
-        'field--invalid': this.isValid === false,
-      };
-    },
-  },
-  watch: {
-    currentValue() {
-      this.handleChange();
-    },
-    value() {
-      this.currentValue = this.value || '';
     },
   },
 };
@@ -134,19 +206,6 @@ export default {
 @import 'hd-blocks/styles/inputs.scss';
 
 .field {
-  &__input {
-    font-family: 'Source Sans Pro', sans-serif;
-    background: $wild-sand !important; // (to be fixed in the styleguide)
-    &:required {
-      box-shadow: none;
-    }
-    &::-ms-clear {
-      display: none;
-    }
-    &::-ms-reveal {
-      display: none;
-    }
-  }
   &__label {
     left: 0;
   }

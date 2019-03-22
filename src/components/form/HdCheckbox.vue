@@ -1,48 +1,120 @@
 <template>
-  <div class="checkbox" :class="{isChecked, error}"
-    @keydown.space.enter.prevent="toggle" @click="toggle" tabindex="0">
-    <input class="checkbox__input" type="checkbox" :name="name || ''" v-model="isChecked"/>
-    <div class="checkbox__box">
-      <div class="checkbox__box__overlay"></div>
-      <div class="checkbox__box__border"></div>
-      <div class="checkbox__box__tick"></div>
+  <div
+    :class="{
+      'checkbox': true,
+      'checkbox--active': isActive,
+      'isChecked': isChecked,
+      'hasError': !!error,
+      'isUsingMouse': isUsingMouse,
+    }"
+    @keydown="setUsingMouse(false)"
+    @mousedown="setUsingMouse(true)"
+  >
+    <label
+      v-if="label"
+      :id="`${name}--label`"
+      class="checkbox__label"
+      tabindex="-1"
+    >{{ label }}</label>
+    <input
+      class="checkbox__input"
+      type="checkbox"
+      :name="name"
+      v-model="isChecked"/>
+    <div
+      :aria-checked="isChecked ? 'true' : 'false'"
+      :aria-labelledby="label ? `${name}--label` : null"
+      class="checkbox__inner"
+      tabindex="0"
+      role="checkbox"
+      @click="toggle"
+      @keydown.space.enter.prevent="toggle"
+      @focus="handleFocus"
+      @blur="handleBlur"
+    >
+      <div class="checkbox__inner__box">
+        <div class="checkbox__inner__box__overlay"></div>
+        <div class="checkbox__inner__box__border"></div>
+        <div class="checkbox__inner__box__tick"></div>
+      </div>
+      <p
+        v-if="innerLabel"
+        class="checkbox__inner__label"
+      >
+        {{ innerLabel }}
+      </p>
     </div>
-    <p class="checkbox__label">{{ label }}</p>
+    <p
+      v-if="error"
+      class="field__error checkbox__error"
+    >
+      {{ error }}
+    </p>
   </div>
 </template>
 
 <script>
+import merge from 'lodash/merge';
 import { getMessages } from 'hd-blocks/lang';
 
 export default {
-  name: 'hdCheckbox',
+  name: 'HdCheckbox',
   props: {
-    name: String,
-    label: String,
-    checked: Boolean,
-    required: Boolean,
-    lang: String,
+    name: {
+      type: String,
+      required: true,
+    },
+    label: {
+      type: String,
+      default: '',
+    },
+    innerLabel: {
+      type: String,
+      default: '',
+    },
+    value: {
+      type: Boolean,
+      default: false,
+    },
+    required: {
+      type: Boolean,
+      default: false,
+    },
+    lang: {
+      type: String,
+      default: 'de',
+    },
+    texts: {
+      type: Object,
+      default: () => ({}),
+    },
   },
   data() {
     return {
-      isChecked: !!this.checked,
       error: null,
-      t: {},
+      isActive: false,
+      isUsingMouse: false,
     };
   },
-  created() {
-    this.t = getMessages(this.lang);
-    this.$emit('dataChange', { name: this.name, value: this.isChecked, error: this.error });
+  computed: {
+    t() {
+      return merge(getMessages(this.lang), this.texts);
+    },
+    isChecked() {
+      return this.value;
+    },
   },
   methods: {
     toggle() {
-      this.isChecked = !this.isChecked;
-      this.error = null;
-      this.$emit('dataChange', { name: this.name, value: this.isChecked, error: this.error });
+      this.$emit('input', !this.isChecked);
+      this.$nextTick(this.validate);
     },
-    validityCheck() {
+    handleFocus() {
+      this.isActive = true;
+    },
+    handleBlur() {
+      this.isActive = false;
       this.validate();
-      this.$emit('dataChange', { name: this.name, value: this.isChecked, error: this.error });
     },
     validate() {
       if (this.required && !this.isChecked) {
@@ -50,6 +122,10 @@ export default {
       } else {
         this.error = null;
       }
+      return !this.error;
+    },
+    setUsingMouse(usingMouse) {
+      this.isUsingMouse = usingMouse;
     },
   },
 };
@@ -58,82 +134,116 @@ export default {
 <style lang="scss" scoped>
 
 .checkbox {
-  display: flex;
-  align-items: center;
+  $c: &;
   position: relative;
+  margin-bottom: 26px;
   cursor: default;
   &__input {
     display: none;
   }
-  &__box {
-    position: relative;
-    flex: 0 0 20px;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    border-radius: 3px;
-    overflow: hidden;
-    outline-width: 0;
-    &__overlay {
-      display: block;
-      position: absolute;
-      top:0; left:0;
-      width: 100%;
-      height: 100%;
-      background-color: $vivid-blue;
-      border-radius: 50%;
-      transform: scale(0);
-      opacity: 0;
-      transition: transform .3s, opacity .2s;
+  &__inner {
+    display: flex;
+    align-items: center;
+    transition: outline 0.1s ease-in-out;
+    #{$c}.isUsingMouse & {
+      outline: 0;
     }
-    &__border {
-      display: block;
-      position: absolute;
-      top:0; left:0;
-      width: 100%;
-      height: 100%;
+    &__box {
+      position: relative;
+      flex: 0 0 20px;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
       border-radius: 3px;
-      border: 2px solid $nevada;
-      transition: border-color .3s;
+      overflow: hidden;
+      outline-width: 0;
+      &__overlay {
+        display: block;
+        position: absolute;
+        top:0; left:0;
+        width: 100%;
+        height: 100%;
+        background-color: $vivid-blue;
+        border-radius: 50%;
+        transform: scale(0);
+        opacity: 0;
+        transition: transform .3s, opacity .2s;
+        .isChecked & {
+          transform: scale(1.3);
+          opacity: 1;
+        }
+      }
+      &__border {
+        display: block;
+        position: absolute;
+        top:0; left:0;
+        width: 100%;
+        height: 100%;
+        border-radius: 3px;
+        border: 2px solid $nevada;
+        transition: border-color .3s;
+        #{$c}:hover & {
+          border-color: $regent-gray;
+        }
+        #{$c}.isChecked & {
+          border-color: transparent;
+        }
+        #{$c}:not(#{$c}--active).hasError & {
+          border-color: $torch-red;
+        }
+        #{$c}--active & {
+          border-color: $vivid-blue;
+        }
+      }
+      &__tick {
+        position: absolute;
+        top:0; left:0;
+        width: 100%;
+        height: 100%;
+        background-image: url('~hd-blocks/assets/icons/ic_checkmark-white.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 20px;
+        opacity: 0;
+        transition: opacity .2s;
+        #{$c}.isChecked & {
+          opacity: 1;
+        }
+      }
     }
-    &__tick {
-      position: absolute;
-      top:0; left:0;
-      width: 100%;
-      height: 100%;
-      background-image: url('~hd-blocks/assets/icons/ic_checkmark-white.svg');
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: 20px;
-      opacity: 0;
-      transition: opacity .2s;
+    &__label {
+      flex: 1;
+      margin: 0 0 0 $inline-s;
+      text-align: left;
+      @include font('text-small');
+    }
+  }
+  &__error {
+    #{$c}.hasError & {
+      display: block;
+    }
+
+    #{$c}--active & {
+      color: $regent-gray;
     }
   }
   &__label {
-    flex: 1;
-    margin: 0 0 0 $inline-s;
-    text-align: left;
-    @include font('text-small');
-  }
-  &.isChecked {
-    .checkbox__box {
-      &__overlay {
-        transform: scale(1.3);
-        opacity: 1;
-      }
-      &__border {
-        border-color: transparent;
-      }
-      &__tick {
-        opacity: 1;
-      }
+    display: block;
+    margin-bottom: 3px;
+    font-size: 14px;
+    line-height: 18px;
+    color: $nevada;
+    transition: color 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+    pointer-events: none;
+
+    #{$c}.hasError & {
+      color: $torch-red;
     }
-  }
-  &.error {
-    .checkbox__box {
-      &__border {
-        border-color: $torch-red;
-      }
+
+    #{$c}:hover &,
+    #{$c}--active &,
+    #{$c}--active.hasError & {
+      color: $vivid-blue;
     }
   }
 }
