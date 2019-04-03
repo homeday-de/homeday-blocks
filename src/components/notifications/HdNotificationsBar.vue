@@ -7,6 +7,7 @@
     }"
     :style="{
       'top': `${offsetTop}px`,
+      'right': `${offsetRight}px`,
       'left': `${offsetLeft}px`,
     }"
   >
@@ -58,6 +59,10 @@ export default {
       type: Number,
       default: 0,
     },
+    offsetRight: {
+      type: Number,
+      default: 0,
+    },
     offsetLeft: {
       type: Number,
       default: 0,
@@ -95,7 +100,6 @@ export default {
 .notifications-bar {
   display: flex;
   position: fixed;
-  right: 0;
   justify-content: center;
   opacity: 0;
   padding: $stack-m $inline-s;

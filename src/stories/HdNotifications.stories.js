@@ -25,8 +25,9 @@ storiesOf('HdNotifications', module)
       },
     },
     template: `
-      <div style="max-width: 800px; margin: auto;">
+      <div>
         <HdNotifications
+          style="margin: -8px"
           :notifications="transformedNotifications"
           @heightChange="onHeightChange"
           @route="onRoute"
@@ -82,8 +83,9 @@ storiesOf('HdNotifications', module)
       },
     },
     template: `
-      <div style="max-width: 800px; margin: auto;">
+      <div>
         <HdNotifications
+          style="margin: -8px"
           :notifications="transformedNotifications"
           @heightChange="onHeightChange"
           @route="onRoute"

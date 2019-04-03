@@ -12,6 +12,9 @@
         :type="notification.type"
         :custom-icon="notification.customIcon || ''"
         :visible="i === notifications.length - 1"
+        :offsetTop="offsetTop"
+        :offsetRight="offsetRight"
+        :offsetLeft="offsetLeft"
       />
     </transition-group>
     <div
@@ -42,6 +45,9 @@ export default {
   data() {
     return {
       sizerHeight: 0,
+      offsetTop: 0,
+      offsetRight: 0,
+      offsetLeft: 0,
     };
   },
   watch: {
@@ -56,6 +62,7 @@ export default {
     this.resizeNotifications();
     this.addResizeEvents();
     this.addRoutingEvents();
+    this.calculateOffset();
   },
   beforeDestroy() {
     this.removeResizeEvents();
@@ -72,7 +79,6 @@ export default {
         this.sizerHeight = 0;
         return;
       }
-
       // Go through all the notifications and get the max height in order to
       // resize the sizer (since notification bars are position: fixed)
       const maxSize = this.$refs.notifications.reduce((maxHeight, { $el }) => {
@@ -85,6 +91,13 @@ export default {
         return elHeight;
       }, 0);
       this.sizerHeight = maxSize;
+    },
+    calculateOffset() {
+      const elRect = this.$el.getBoundingClientRect();
+      const bodyRect = document.body.getBoundingClientRect();
+      this.offsetTop = elRect.top - bodyRect.top;
+      this.offsetRight = bodyRect.right - elRect.right;
+      this.offsetLeft = elRect.left - bodyRect.left;
     },
     addRoutingEvents() {
       this.$el.addEventListener('click', this.routeOnClick, false);
@@ -103,11 +116,15 @@ export default {
       e.preventDefault();
       this.$emit('route', { path: e.target.pathname });
     },
+    resizeHandler() {
+      this.resizeNotifications();
+      this.calculateOffset();
+    },
     addResizeEvents() {
-      onResize.onThrottled(this.resizeNotifications);
+      onResize.onDebounced(this.resizeHandler);
     },
     removeResizeEvents() {
-      onResize.offThrottled(this.resizeNotifications);
+      onResize.offDebounced(this.resizeHandler);
     },
     removeRoutingEvents() {
       this.$el.removeEventListener('click', this.routeOnClick, false);
