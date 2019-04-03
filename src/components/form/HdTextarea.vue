@@ -164,6 +164,7 @@ export default {
       } else {
         this.hideError();
       }
+      return !this.error;
     },
   },
 };
