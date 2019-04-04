@@ -25,6 +25,9 @@ import HdInput from 'hd-blocks/components/form/HdInput.vue';
 import HdCheckbox from 'hd-blocks/components/form/HdCheckbox.vue';
 import HdRadio from 'hd-blocks/components/form/HdRadio.vue';
 import HdPasswordConfirm from 'hd-blocks/components/form/HdPasswordConfirm.vue';
+import HdTextarea from 'hd-blocks/components/form/HdTextarea.vue';
+import HdSelect from 'hd-blocks/components/form/HdSelect.vue';
+import HdTagsSelector from 'hd-blocks/components/form/HdTagsSelector.vue';
 
 export default {
   name: 'HdDynamicForm',
@@ -101,6 +104,12 @@ export default {
           return HdRadio;
         case 'passwordConfirm':
           return HdPasswordConfirm;
+        case 'textarea':
+          return HdTextarea;
+        case 'select':
+          return HdSelect;
+        case 'tagsSelector':
+          return HdTagsSelector;
         default:
           return null;
       }
