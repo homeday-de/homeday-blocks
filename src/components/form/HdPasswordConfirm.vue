@@ -79,10 +79,11 @@ export default {
     };
   },
   watch: {
-    value() {
-      this.passwordMain = this.value;
+    value(value) {
+      this.passwordMain = value;
     },
-    passwordMain() {
+    passwordMain(value) {
+      this.$emit('input', value);
       this.$nextTick(this.validate);
     },
     passwordConfirm() {
@@ -100,10 +101,6 @@ export default {
     },
   },
   methods: {
-    fieldDataChange() {
-      this.$emit('input', this.passwordMain);
-      this.$nextTick(this.validate);
-    },
     validate() {
       const inputsAreMatching = this.checkPasswordMatching();
       const passwordIsLongEnough = this.checkPasswordLength();
