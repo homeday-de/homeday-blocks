@@ -100,8 +100,8 @@ export default {
     },
   },
   watch: {
-    value() {
-      this.currentValue = this.value;
+    value(value) {
+      this.currentValue = value;
     },
     currentValue() {
       this.handleChange();

@@ -116,8 +116,8 @@ export default {
     };
   },
   watch: {
-    editing() {
-      this.isEditMode = this.editing;
+    editing(value) {
+      this.isEditMode = value;
     },
   },
   computed: {
