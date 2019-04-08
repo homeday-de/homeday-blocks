@@ -79,8 +79,8 @@ export default {
     };
   },
   watch: {
-    value() {
-      this.passwordMain = this.value;
+    value(value) {
+      this.passwordMain = value;
     },
     passwordMain(value) {
       this.$emit('input', value);

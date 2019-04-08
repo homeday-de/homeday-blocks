@@ -71,8 +71,8 @@ export default {
     },
   },
   watch: {
-    value() {
-      this.selectedTags = this.value;
+    value(value) {
+      this.selectedTags = value;
     },
   },
   mounted() {
