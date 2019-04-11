@@ -170,14 +170,10 @@ $_red: #E00016;
         color: $_red;
       }
       &__label {
-        display: none;
         font-size: 18px;
         font-weight: 400;
         line-height: 26px;
         margin-left: $inline-xs;
-        @media (min-width: $break-tablet) {
-          display: block;
-        }
       }
     }
   }
