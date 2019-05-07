@@ -10,6 +10,7 @@
     "build:storybook": "vue-cli-service storybook:build -c config/storybook",
     "serve:storybook": "vue-cli-service storybook:serve -p 6006 -c config/storybook",
     "test:unit": "vue-cli-service test:unit",
+    "test:unit:snapshot": "vue-cli-service test:unit -u",
     "test:unit:watch": "npm run test:unit -- --watch",
     "test:unit:ci": "npm run test:unit -- --ci --coverage",
     "coverage": "cat ./coverage/lcov.info | coveralls -v",

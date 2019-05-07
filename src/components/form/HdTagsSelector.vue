@@ -90,7 +90,9 @@ export default {
       }
     },
     onEscPress(e) {
-      if (['Escape', 'Esc'].includes(e.key)) {
+      // 27 is keyCode for escape button. This is added,
+      // so we can test this part of code
+      if (['Escape', 'Esc'].includes(e.key) || e.keyCode === 27) {
         this.hidePanel();
       }
     },
