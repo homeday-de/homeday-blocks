@@ -331,6 +331,11 @@ $inputFilledBackground: #e8eaee;
     #{$f}--disabled & {
       color: rgba($regent-gray, 0.8);
     }
+
+    &::placeholder {
+      color: $regent-gray;
+      opacity: 0.5;
+    }
   }
 
   &__tooltip {
