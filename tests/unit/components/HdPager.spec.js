@@ -10,18 +10,12 @@ describe('HdPager', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = mount(HdPager, {
-      // this is needed to trigger window events
-      // when mounting to document, we need to call wrapper.destroy after
-      // every test - https://vue-test-utils.vuejs.org/api/options.html#attachtodocument
-      attachToDocument: true,
-    });
+    wrapper = mount(HdPager);
   });
 
   test('The component is rendered', () => {
     wrapper.setProps({ count: 10 });
     expect(wrapper.html()).toMatchSnapshot();
-    wrapper.destroy();
   });
 
   test('Pre-selecting the active item should work', () => {
@@ -29,7 +23,6 @@ describe('HdPager', () => {
     // We increment the nth-child by 1 because there is always a sizer item
     // before the pager items
     expect(wrapper.findAll(`${ACTIVE_PAGER_ITEM_SELECTOR}:nth-child(5)`).length).toBe(1);
-    wrapper.destroy();
   });
 
   test('By default, first item is selected', () => {
@@ -37,7 +30,6 @@ describe('HdPager', () => {
     // We increment the nth-child by 1 because there is always a sizer item
     // before the pager items
     expect(wrapper.findAll(`${ACTIVE_PAGER_ITEM_SELECTOR}:nth-child(2)`).length).toBe(1);
-    wrapper.destroy();
   });
 
   test('Pager item can be selected', () => {
@@ -49,7 +41,6 @@ describe('HdPager', () => {
     // And that expected payload is passed with the event
     const payload = wrapper.emitted('input')[0][0];
     expect(payload).toBe(3);
-    wrapper.destroy();
   });
 
   test('Pager supports keyboard navigation', () => {
