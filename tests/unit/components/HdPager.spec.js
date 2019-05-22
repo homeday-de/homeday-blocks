@@ -73,4 +73,48 @@ describe('HdPager', () => {
     payload = wrapper.emitted('input')[3][0];
     expect(payload).toBe(4);
   });
+
+  describe('props', () => {
+    describe('value', () => {
+      test('only accepts Number', () => {
+        const { value } = wrapper.vm.$options.props;
+
+        expect(value.type).toBe(Number);
+      });
+
+      test('defaults to 0', () => {
+        const { value } = wrapper.props();
+
+        expect(value).toBe(0);
+      });
+    });
+
+    describe('count', () => {
+      test('only accepts Number', () => {
+        const { count } = wrapper.vm.$options.props;
+
+        expect(count.type).toBe(Number);
+      });
+
+      test('defaults to 1', () => {
+        const { count } = wrapper.props();
+
+        expect(count).toBe(1);
+      });
+    });
+
+    describe('maxVisible', () => {
+      test('only accepts Number', () => {
+        const { maxVisible } = wrapper.vm.$options.props;
+
+        expect(maxVisible.type).toBe(Number);
+      });
+
+      test('defaults to 7', () => {
+        const { maxVisible } = wrapper.props();
+
+        expect(maxVisible).toBe(7);
+      });
+    });
+  });
 });
