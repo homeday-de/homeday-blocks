@@ -74,10 +74,6 @@ export default {
       type: Boolean,
       default: false,
     },
-    dataChange: {
-      type: Function,
-      default: () => {},
-    },
     height: {
       type: String,
       default: '100px',
