@@ -1,86 +1,265 @@
 <template>
-  <div id="app">
-    <HdAutocomplete
-      name="test"
-      label="Label 123"
-      placeholder="Placeholder"
-      :suggestions="suggestions"
-      @querySuggestions="updateSuggestions"
-      formatter=":line1"
+  <div
+    :class="fieldClasses"
+    class="field field--input"
+  >
+    <input
+      ref="input"
+      :value="value"
+      :id="name"
+      :name="name"
+      :placeholder="isActive && placeholder !== undefined ? placeholder : ''"
+      :required="required"
+      :autofocus="autofocus"
+      autocomplete="off"
+      class="field__input"
+      type="text"
+      @input="handleInput"
+      @focus="handleFocus"
+      @blur="handleBlur"
     >
-      <template slot-scope="{ suggestion, isSelected }">
-        <HdSuggestionItem
-          :line1="suggestion.line1"
-          :line2="suggestion.line2"
-          :isSelected="isSelected"
-          :highlightString="query"
-          :icon="require('hd-blocks/assets/icons/ic_location--grey.svg')"
-        />
-      </template>
-    </HdAutocomplete>
+    <label
+      v-if="label"
+      :for="name"
+      class="field__label"
+    >
+      {{ label }}
+    </label>
+    <p
+      v-if="error"
+      class="field__error"
+    >
+      {{ error }}
+    </p>
+    <p
+      v-else-if="helper"
+      class="field__error field__error--helper"
+      v-html="helper"
+    />
+    <span class="field__border"/>
   </div>
 </template>
 
 <script>
-import HdAutocomplete from 'hd-blocks/components/form/HdAutocomplete.vue';
-import HdSuggestionItem from 'hd-blocks/components/HdSuggestionItem.vue';
-import { loadJSAsync } from 'hd-blocks/services/utils';
-
-function get() {
-  const key = 'AIzaSyDY98a4vRvZnPpX7Fy7fXso4JDFbiLhi8I';
-  return new Promise((resolve, reject) => {
-    loadJSAsync(`maps.googleapis.com/maps/api/js?v=3&libraries=places&key=${key}`,
-      () => resolve(window.google),
-      () => reject());
-  });
-}
+import merge from 'lodash/merge';
+import { getMessages } from 'hd-blocks/lang';
+import { getGoogleAPI } from '@/services/googleAPI';
 
 export default {
   name: 'HdGoogleAutocomplete',
-  components: {
-    HdAutocomplete,
-    HdSuggestionItem,
-  },
-  data: () => ({
-    query: '',
-    autocompleteService: null,
-    queryConfig: {
-      components: 'country:de',
+  props: {
+    apiKey: {
+      type: String,
+      default: '',
     },
-    suggestions: [],
-  }),
-  mounted() {
-    get().then((google) => {
-      this.autocompleteService = new google.maps.places.AutocompleteService();
-    });
+    label: {
+      type: String,
+      default: '',
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    value: {
+      type: String,
+      default: '',
+    },
+    placeholder: {
+      type: String,
+      default: '',
+    },
+    required: {
+      type: Boolean,
+      default: false,
+    },
+    autofocus: {
+      type: Boolean,
+      default: false,
+    },
+    lang: {
+      type: String,
+      default: 'de',
+    },
+    texts: {
+      type: Object,
+      default: () => {},
+    },
+  },
+  data() {
+    return {
+      autocompleteInstance: null,
+      geocoderInstance: null,
+      lastLocation: null,
+      isActive: undefined,
+      isValid: undefined,
+      error: null,
+      helper: null,
+    };
+  },
+  computed: {
+    t() {
+      return merge(getMessages(this.lang), this.texts);
+    },
+    isEmpty() {
+      return this.value === null || this.value === undefined || this.value === '';
+    },
+    fieldClasses() {
+      return {
+        'field--active': this.isActive,
+        'field--filled': !this.isEmpty,
+        'field--invalid': this.isValid === false,
+      };
+    },
+  },
+  watch: {
+    value() {
+      this.validate();
+    },
+  },
+  created() {
+    this.initAutocomplete();
   },
   methods: {
-    async updateSuggestions(query) {
-      this.query = query;
+    async initAutocomplete() {
+      await getGoogleAPI(this.apiKey);
 
-      const params = {
-        components: 'country:de',
-        input: this.query,
-        componentRestrictions: {
-          country: 'de',
-        },
+      const autocompleteOptions = {
+        componentRestrictions: { country: 'de' },
+        types: ['(regions)'],
       };
-      const test = await new Promise((resolve) => {
-        this.autocompleteService.getPlacePredictions(params, (predictions) => {
-          resolve(predictions);
+
+      this.autocompleteInstance = new window.google.maps.places.Autocomplete(
+        this.$refs.input,
+        autocompleteOptions,
+      );
+
+      window.google.maps.event.addListener(this.autocompleteInstance, 'place_changed', () => {
+        const place = this.autocompleteInstance.getPlace();
+
+        this.$emit('input', place.name);
+
+        if (!place.geometry) {
+          return;
+        }
+
+        // If the selected the whole Germany, we ignore the lat and lng
+        if (place.address_components[0].short_name === 'DE') {
+          this.emitLocation({
+            lat: null,
+            lng: null,
+            name: place.name,
+          });
+          return;
+        }
+
+        this.emitLocation({
+          lat: place.geometry.location.lat(),
+          lng: place.geometry.location.lng(),
+          name: place.name,
         });
       });
-
-      this.suggestions = this.parsePlacesResponse(test);
     },
-    parsePlacesResponse: response => response.map((item) => {
-      const line1 = item.structured_formatting.main_text;
-      const line2 = (item.structured_formatting.secondary_text) ? item.structured_formatting.secondary_text : undefined;
-      return { line1, line2 };
-    }),
+    emitLocation({ lat = null, lng = null, name = '' }) {
+      this.lastLocation = {
+        lat,
+        lng,
+        name,
+      };
+
+      this.$emit('locationChanged', {
+        lat,
+        lng,
+        name,
+      });
+    },
+    async getLocation() {
+      if (!this.value) {
+        return {
+          lat: null,
+          lng: null,
+          name: '',
+        };
+      }
+
+      if (this.lastLocation && this.lastLocation.name === this.value) {
+        return this.lastLocation;
+      }
+
+      if (!this.geocoderInstance) {
+        this.geocoderInstance = new window.google.maps.Geocoder();
+      }
+
+      return new Promise((resolve) => {
+        this.geocoderInstance.geocode({ address: this.value }, (results, status) => {
+          if (status !== window.google.maps.GeocoderStatus.OK) {
+            resolve({
+              lat: null,
+              lng: null,
+              name: this.value,
+            });
+          }
+
+          this.lastLocation = {
+            lat: results[0].geometry.location.lat(),
+            lng: results[0].geometry.location.lng(),
+            name: this.value,
+          };
+
+          resolve(this.lastLocation);
+        });
+      });
+    },
+    clearInput() {
+      this.$refs.input.focus();
+      this.hideError();
+      this.$emit('input', '');
+    },
+    handleFocus() {
+      this.isActive = true;
+    },
+    handleBlur() {
+      this.isActive = false;
+      this.validate();
+    },
+    handleInput(e) {
+      this.$emit('input', e.target.value);
+    },
+    showError(errorMessage) {
+      this.error = errorMessage;
+      this.isValid = false;
+    },
+    showHelper(message) {
+      this.helper = message;
+    },
+    hideError() {
+      this.isValid = true;
+      this.error = null;
+    },
+    validate() {
+      if (this.required && this.isEmpty) {
+        this.showError(this.t.FORM.VALIDATION.REQUIRED);
+      } else {
+        this.hideError();
+      }
+      return !this.error;
+    },
   },
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
+@import 'hd-blocks/styles/inputs.scss';
+.field {
+  &__label {
+    left: 0;
+  }
+  &__error {
+    width: 100%;
+    text-align: left;
+    &--helper {
+      display: block;
+      color: $regent-gray;
+    }
+  }
+}
 </style>
