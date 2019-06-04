@@ -1,9 +1,11 @@
 import { mount } from '@vue/test-utils';
 import HdCheckbox from '@/components/form/HdCheckbox.vue';
 import { getMessages } from 'hd-blocks/lang';
+import Vue from 'vue';
 
 describe('HdCheckbox', () => {
   let wrapper;
+  let checkboxInner;
   const activeClass = 'checkbox--active';
   const usingMouseClass = 'isUsingMouse';
   const errorClass = 'hasError';
@@ -14,25 +16,29 @@ describe('HdCheckbox', () => {
         name: 'Test checkbox',
       },
     });
+
+    checkboxInner = wrapper.find('.checkbox__inner');
   });
 
-  test('focus out (blur) the input element, fires the validation method and sets the proper style', () => {
+  test('renders component', () => {
+    expect(wrapper.html()).toMatchSnapshot();
+  });
+
+  test('At blur, the validation method is fired and the input element is not styled as active', () => {
     const mockedValidate = jest.fn();
     wrapper.setMethods({ validate: mockedValidate });
-    const checkboxInner = wrapper.find('.checkbox__inner');
     checkboxInner.trigger('blur');
 
     expect(mockedValidate).toHaveBeenCalledTimes(1);
     expect(wrapper.classes()).not.toContain(activeClass);
   });
 
-  test('the input is properly validated and styled', () => {
+  test('At blur, the input is styled as error if not valid, not as error if is valid. The proper error message is also displayed', () => {
     wrapper.setProps({
       required: true,
       value: false,
     });
 
-    const checkboxInner = wrapper.find('.checkbox__inner');
     checkboxInner.trigger('blur');
 
     expect(wrapper.vm.error).toBe(getMessages('de').FORM.VALIDATION.REQUIRED);
@@ -47,22 +53,36 @@ describe('HdCheckbox', () => {
     expect(wrapper.classes()).not.toContain(errorClass);
   });
 
-  test('focus on the input element, sets the proper style', () => {
-    const checkboxInner = wrapper.find('.checkbox__inner');
+  test('At focus, the input element is styled as active', () => {
     checkboxInner.trigger('focus');
 
     expect(wrapper.classes()).toContain(activeClass);
   });
 
-  test('mouse usage is detected on keydown', () => {
-    wrapper.trigger('keydown');
+  test('On user input interaction, the proper kind of input device is detected', () => {
+    wrapper.trigger('mousedown');
+    expect(wrapper.classes()).toContain(usingMouseClass);
 
+    wrapper.trigger('keydown');
     expect(wrapper.classes()).not.toContain(usingMouseClass);
   });
 
-  test('mouse usage is detected on mousedown', () => {
-    wrapper.trigger('mousedown');
+  test('A click on the checkboxes, emits the input event with the proper value and validates it right after', () => {
+    const value = true;
+    wrapper.setProps({ value });
+    const mockedValidate = jest.fn();
+    wrapper.setMethods({ validate: mockedValidate });
 
-    expect(wrapper.classes()).toContain(usingMouseClass);
+    checkboxInner.trigger('click');
+
+    // that's why https://vue-test-utils.vuejs.org/guides/#what-about-nexttick
+    return Vue.nextTick().then(() => {
+      expect(wrapper.emitted('input')).toBeTruthy();
+
+      const payload = wrapper.emitted('input')[0][0];
+      expect(payload).toBe(!value);
+
+      expect(mockedValidate).toHaveBeenCalledTimes(1);
+    });
   });
 });
