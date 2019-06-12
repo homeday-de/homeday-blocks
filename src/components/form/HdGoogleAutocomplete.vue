@@ -43,7 +43,7 @@
 <script>
 import merge from 'lodash/merge';
 import { getMessages } from 'hd-blocks/lang';
-import { getGoogleAPI } from '@/services/googleAPI';
+import { getGoogleAPI } from 'hd-blocks/services/googleAPI';
 
 export default {
   name: 'HdGoogleAutocomplete',

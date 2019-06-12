@@ -1,4 +1,4 @@
-import { loadScript } from '@/services/utils';
+import { loadScript } from 'hd-blocks/services/utils';
 
 let mapsApiPromise = null;
 
