@@ -1,5 +1,6 @@
 <template>
   <form class="dynamicForm" @submit.prevent="submit" novalidate>
+    <slot name="before"/>
     <div v-for="(line, i) in lines" class="dynamicForm__line" :key="`line-${i}`">
       <component
       v-for="item in getItemsArray(line)"
@@ -13,10 +14,12 @@
       :lang="lang"
       />
     </div>
+    <slot name="before-button"/>
     <button
       v-if="submitLabel"
       class="btn btn--primary dynamicForm__submit"
     >{{ submitLabel }}</button>
+    <slot name="after"/>
   </form>
 </template>
 
