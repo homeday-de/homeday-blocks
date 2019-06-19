@@ -11,7 +11,7 @@
       :placeholder="isActive && placeholder !== undefined ? placeholder : ''"
       :required="required"
       :autofocus="autofocus"
-      :disabled="disabled ? 'disabled' : null"
+      :disabled="disabled"
       autocomplete="off"
       class="field__input"
       type="text"
