@@ -9,6 +9,7 @@
       :name="name"
       :required="required"
       :autofocus="autofocus"
+      :disabled="disabled ? 'disabled' : null"
       class="field__input"
       @focus="handleFocus"
       @blur="handleBlur"
@@ -73,6 +74,10 @@ export default {
       type: Object,
       default: () => {},
     },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -96,6 +101,7 @@ export default {
         'field--filled': !this.isEmpty,
         'field--valid': false,
         'field--invalid': this.isValid === false,
+        'field--disabled': this.disabled,
       };
     },
   },

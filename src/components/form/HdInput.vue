@@ -12,6 +12,7 @@
       :placeholder="isActive && placeholder !== undefined ? placeholder : ''"
       :required="required"
       :autofocus="autofocus"
+      :disabled="disabled ? 'disabled' : null"
       class="field__input"
       ref="input"
       @input="handleInput"
@@ -104,6 +105,10 @@ export default {
       type: Object,
       default: () => {},
     },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -130,6 +135,7 @@ export default {
         'field--filled': !this.isEmpty,
         'field--invalid': this.isValid === false,
         'field--hasControl': this.showVisibilityToggle,
+        'field--disabled': this.disabled,
       };
     },
   },
