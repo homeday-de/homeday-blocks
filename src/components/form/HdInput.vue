@@ -12,7 +12,7 @@
       :placeholder="isActive && placeholder !== undefined ? placeholder : ''"
       :required="required"
       :autofocus="autofocus"
-      :disabled="disabled ? 'disabled' : null"
+      :disabled="disabled"
       class="field__input"
       ref="input"
       @input="handleInput"

@@ -9,7 +9,7 @@
       :name="name"
       :required="required"
       :autofocus="autofocus"
-      :disabled="disabled ? 'disabled' : null"
+      :disabled="disabled"
       class="field__input"
       @focus="handleFocus"
       @blur="handleBlur"

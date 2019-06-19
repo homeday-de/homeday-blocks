@@ -12,7 +12,7 @@
       :required="required"
       :autofocus="autofocus"
       :style="{ height }"
-      :disabled="disabled ? 'disabled' : null"
+      :disabled="disabled"
       class="field__input"
       @focus="handleFocus"
       @blur="handleBlur"

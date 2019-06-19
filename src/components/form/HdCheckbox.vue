@@ -21,7 +21,7 @@
       class="checkbox__input"
       type="checkbox"
       :name="name"
-      :disabled="disabled ? 'disabled' : null"
+      :disabled="disabled"
       v-model="isChecked"/>
     <div
       :aria-checked="isChecked ? 'true' : 'false'"

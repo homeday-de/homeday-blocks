@@ -40,7 +40,7 @@
           :name="name"
           :value="item.value"
           :checked="item.value === value"
-          :disabled="disabled ? 'disabled' : null"
+          :disabled="disabled"
           class="radio__input"
           type="radio"
         />
