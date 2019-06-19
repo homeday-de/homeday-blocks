@@ -11,6 +11,7 @@
       :placeholder="isActive && placeholder !== undefined ? placeholder : ''"
       :required="required"
       :autofocus="autofocus"
+      :disabled="disabled ? 'disabled' : null"
       autocomplete="off"
       class="field__input"
       type="text"
@@ -84,6 +85,10 @@ export default {
       type: Object,
       default: () => {},
     },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -108,6 +113,7 @@ export default {
         'field--active': this.isActive,
         'field--filled': !this.isEmpty,
         'field--invalid': this.isValid === false,
+        'field--disabled': this.disabled,
       };
     },
   },

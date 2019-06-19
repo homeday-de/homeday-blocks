@@ -59,4 +59,12 @@ describe('HdGoogleAutocomplete', () => {
 
     expect(payload).toBe('');
   });
+
+  test('Supports disabling of the input', () => {
+    wrapper.setProps({
+      disabled: true,
+    });
+
+    expect(wrapper.find('input').attributes().disabled).toBe('disabled');
+  });
 });

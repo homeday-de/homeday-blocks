@@ -94,4 +94,33 @@ storiesOf('Form/HdGoogleAutocomplete', module)
         default: text('API Key', ''),
       },
     },
+  }))
+  .add('disabled', () => ({
+    components: { HdGoogleAutocomplete },
+    template: `
+      <p v-if="!apiKey">You have to enter a valid API key under "Knobs"</p>
+      <HdGoogleAutocomplete
+        v-else
+        :key="apiKey"
+        v-model="value"
+        :required="true"
+        :texts="texts"
+        :apiKey="apiKey"
+        :disabled="true"
+        name="test"
+        label="Label"
+        placeholder="Placeholder..."
+      />
+    `,
+    data() {
+      return {
+        value: '',
+      };
+    },
+    props: {
+      apiKey: {
+        type: String,
+        default: text('API Key', ''),
+      },
+    },
   }));
