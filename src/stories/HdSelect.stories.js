@@ -79,8 +79,8 @@ storiesOf('Form/HdSelect', module)
         <hd-select
           v-model="value"
           :options="ITEMS"
+          :disabled="true"
           name="test"
-          disabled="disabled"
           label="Label"
         />
       </div>
