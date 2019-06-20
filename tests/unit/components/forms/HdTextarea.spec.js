@@ -58,4 +58,11 @@ describe('HdTextarea', () => {
     });
     expect(wrapper.vm.validate()).toBe(true);
   });
+
+  test('Supports disabling', () => {
+    wrapper.setProps({
+      disabled: true,
+    });
+    expect(wrapper.find('textarea').attributes().disabled).toBe('disabled');
+  });
 });
