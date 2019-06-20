@@ -53,6 +53,10 @@ To watch for changes while writing tests:
 npm run test:unit:watch
 ```
 
+#### Gotchas
+- `tests/` is an alias for `<rootDir>/tests/`
+- The form components share many classes (mostly `field--*`), to avoid repeatedly defining some of them in each form test, [FIELD_CLASSES.js](https://github.com/homeday-de/homeday-blocks/blob/develop/tests/unit/forms/FIELD_CLASSES.js) contains the most common classes we need for testing. Feel free to add more classes.
+
 ## Deployment
 
 The [CI](https://travis-ci.com/homeday-de/homeday-blocks) will deploy storybook automatically to our [showcase env](http://hd-storybook.s3-website.eu-central-1.amazonaws.com/develop/), once PR is merged to `develop` branch. Additionally, you can deploy your current working branch locally, by running 
