@@ -7,7 +7,16 @@ const HELPER_SELECTOR = '.field__error--helper';
 const TEST_VALUE = 'new value';
 
 describe('HdTextarea', () => {
-  const wrapperFactory = wrapperFactoryBuilder(HdTextarea, { propsData: { name: 'test name', label: 'test label', placeholder: 'test placeholder' } });
+  const wrapperFactory = wrapperFactoryBuilder(
+    HdTextarea,
+    {
+      propsData: {
+        name: 'test name',
+        label: 'test label',
+        placeholder: 'test placeholder',
+      },
+    },
+  );
 
   let wrapper;
   beforeEach(() => {
