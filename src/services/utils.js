@@ -95,6 +95,22 @@ export function getArrayOfSize(size = 0) {
   return Array.from(Array(size), (_, x) => x);
 }
 
+export function loadScript({ url = '', first = false, head = false }) {
+  return new Promise((resolve) => {
+    const script = document.createElement('script');
+    script.onload = resolve;
+    script.type = 'text/javascript';
+    script.src = url;
+
+    const parent = document[head ? 'head' : 'body'];
+    if (first) {
+      parent.insertBefore(script, parent.firstChild);
+    } else {
+      parent.appendChild(script);
+    }
+  });
+}
+
 export default {
   populateTemplate,
   getPasswordStrength,
@@ -103,4 +119,5 @@ export default {
   loadJSAsync,
   accentFold,
   getArrayOfSize,
+  loadScript,
 };

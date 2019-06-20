@@ -146,4 +146,21 @@ storiesOf('Form/HdInput', module)
         action('input')(value);
       },
     },
+  }))
+  .add('disabled', () => ({
+    components: { HdInput },
+    template: `
+      <HdInput
+        v-model="value"
+        :disabled="true"
+        name="test"
+        label="Label"
+        placeholder="Placeholder..."
+      />
+    `,
+    data() {
+      return {
+        value: '',
+      };
+    },
   }));
