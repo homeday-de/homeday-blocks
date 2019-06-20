@@ -1,23 +1,13 @@
-import { mount } from '@vue/test-utils';
-import HdTextarea from '@/components/form/HdTextarea.vue';
+import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import FIELD_CLASSES from './FIELD_CLASSES';
+import HdTextarea from '@/components/form/HdTextarea.vue';
 
 const ERROR_SELECTOR = '.field__error';
 const HELPER_SELECTOR = '.field__error--helper';
 const TEST_VALUE = 'new value';
 
 describe('HdTextarea', () => {
-  function wrapperFactory({ propsData = {}, ...options } = {}) {
-    return mount(HdTextarea, {
-      propsData: {
-        name: 'test name',
-        label: 'test label',
-        placeholder: 'test placeholder',
-        ...propsData,
-      },
-      ...options,
-    });
-  }
+  const wrapperFactory = wrapperFactoryBuilder(HdTextarea, { propsData: { name: 'test name', label: 'test label', placeholder: 'test placeholder' } });
 
   let wrapper;
   beforeEach(() => {
