@@ -85,4 +85,12 @@ describe('HdCheckbox', () => {
       expect(mockedValidate).toHaveBeenCalledTimes(1);
     });
   });
+
+  test('Supports disabling of the input', () => {
+    wrapper.setProps({
+      disabled: true,
+    });
+
+    expect(wrapper.find('input').attributes().disabled).toBe('disabled');
+  });
 });
