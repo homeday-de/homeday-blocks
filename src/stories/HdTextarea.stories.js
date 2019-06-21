@@ -79,4 +79,21 @@ storiesOf('Form/HdTextarea', module)
         action('input')(value);
       },
     },
+  }))
+  .add('disabled', () => ({
+    components: { HdTextarea },
+    template: `
+      <HdTextarea
+        v-model="value"
+        :disabled="true"
+        name="test"
+        label="Label"
+        placeholder="Placeholder..."
+      />
+    `,
+    data() {
+      return {
+        value: '',
+      };
+    },
   }));

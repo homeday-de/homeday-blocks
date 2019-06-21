@@ -96,4 +96,25 @@ storiesOf('Form/HdRadio', module)
         action('input')(value);
       },
     },
+  }))
+  .add('disabled', () => ({
+    components: { HdRadio },
+    template: `
+      <div>
+        <HdRadio
+          v-model="value"
+          ref="myRadio"
+          :items="ITEMS"
+          :disabled="true"
+          name="test"
+          label="Label"
+        />
+      </div>
+    `,
+    data() {
+      return {
+        value: '',
+        ITEMS,
+      };
+    },
   }));
