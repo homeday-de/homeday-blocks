@@ -71,4 +71,24 @@ storiesOf('Form/HdSelect', module)
         action('input')(value);
       },
     },
+  }))
+  .add('disabled', () => ({
+    components: { HdSelect },
+    template: `
+      <div>
+        <hd-select
+          v-model="value"
+          :options="ITEMS"
+          :disabled="true"
+          name="test"
+          label="Label"
+        />
+      </div>
+    `,
+    data() {
+      return {
+        value: ITEMS[2].value,
+        ITEMS,
+      };
+    },
   }));

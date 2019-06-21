@@ -12,6 +12,7 @@
       :required="required"
       :autofocus="autofocus"
       :style="{ height }"
+      :disabled="disabled"
       class="field__input"
       @focus="handleFocus"
       @blur="handleBlur"
@@ -74,10 +75,6 @@ export default {
       type: Boolean,
       default: false,
     },
-    dataChange: {
-      type: Function,
-      default: () => {},
-    },
     height: {
       type: String,
       default: '100px',
@@ -89,6 +86,10 @@ export default {
     texts: {
       type: Object,
       default: () => {},
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {
@@ -112,6 +113,7 @@ export default {
         'field--filled': !this.isEmpty,
         'field--invalid': this.isValid === false,
         'field--no-label': this.label === '',
+        'field--disabled': this.disabled,
       };
     },
     placeholderAttr() {

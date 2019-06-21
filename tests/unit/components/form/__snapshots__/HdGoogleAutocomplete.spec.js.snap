@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HdGoogleAutocomplete The component is rendered 1`] = `
+<div class="field field--input"><input id="Test autocomplete" name="Test autocomplete" placeholder="" autocomplete="off" type="text" class="field__input">
+  <!---->
+  <!----> <span class="field__border"></span></div>
+`;
