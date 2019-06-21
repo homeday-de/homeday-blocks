@@ -21,7 +21,7 @@ export default {
   wrapperFactoryBuilder,
 };
 
-// Returns the last emitted event (of type eventName) by the wrapper
+// Returns the payload of the last emitted `eventName` by the `wrapper`
 export function getLastEventPayload({ wrapper, eventName }) {
   if (!wrapper || !eventName) {
     return undefined;
