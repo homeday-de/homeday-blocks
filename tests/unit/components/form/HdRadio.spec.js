@@ -1,4 +1,7 @@
-import { wrapperFactoryBuilder } from 'tests/unit/helpers';
+import {
+  wrapperFactoryBuilder,
+  getLastEventPayload,
+} from 'tests/unit/helpers';
 import HdRadio from '@/components/form/HdRadio.vue';
 // reusing items from the stories
 import ITEMS from '@/stories/mocks/FORM_ITEMS';
@@ -44,8 +47,7 @@ describe('HdRadio', () => {
   test('emits `input` event with the right payload on arrows keydown', () => {
     const INITIAL_ITEM_INDEX = 2;
     wrapper.setProps({ value: ITEMS[INITIAL_ITEM_INDEX].value });
-    // The returned object will be updated when new input events are emitted
-    const emitted = wrapper.emitted();
+    const getLastInputEventPayload = () => getLastEventPayload({ wrapper, eventName: 'input' });
     // The keydown event handler is the same for all the items
     // so it doesn't matter which items fires it. We pick the first one in this test
     const itemWrapper = wrapper.find(ITEMS_SELECTOR);
@@ -55,8 +57,7 @@ describe('HdRadio', () => {
       itemWrapper.trigger('keydown', {
         key,
       });
-      // We check the last emitted input event
-      expect(emitted.input[emitted.input.length - 1][0])
+      expect(getLastInputEventPayload())
         .toEqual(ITEMS[INITIAL_ITEM_INDEX + 1].value);
     });
 
@@ -65,8 +66,27 @@ describe('HdRadio', () => {
       itemWrapper.trigger('keydown', {
         key,
       });
-      expect(emitted.input[emitted.input.length - 1][0])
+      expect(getLastInputEventPayload())
         .toEqual(ITEMS[INITIAL_ITEM_INDEX - 1].value);
+    });
+
+    // We test the handling of the items' array bounds
+    wrapper.setProps({ value: ITEMS[ITEMS.length - 1].value });
+    ['Down', 'Right'].forEach((key) => {
+      itemWrapper.trigger('keydown', {
+        key,
+      });
+      expect(getLastInputEventPayload())
+        .toEqual(ITEMS[0].value);
+    });
+
+    wrapper.setProps({ value: ITEMS[0].value });
+    ['Up', 'Left'].forEach((key) => {
+      itemWrapper.trigger('keydown', {
+        key,
+      });
+      expect(getLastInputEventPayload())
+        .toEqual(ITEMS[ITEMS.length - 1].value);
     });
   });
 
