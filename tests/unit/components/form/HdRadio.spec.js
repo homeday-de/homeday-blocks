@@ -109,4 +109,11 @@ describe('HdRadio', () => {
     });
     expect(wrapper.vm.validate()).toBe(false);
   });
+
+  test('Supports disabling', () => {
+    wrapper.setProps({
+      disabled: true,
+    });
+    expect(wrapper.find('input').attributes().disabled).toBe('disabled');
+  });
 });
