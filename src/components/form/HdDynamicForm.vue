@@ -49,11 +49,6 @@ export default {
       default: '',
     },
   },
-  components: {
-    HdInput,
-    HdCheckbox,
-    HdRadio,
-  },
   data() {
     return {
       formData: {},
