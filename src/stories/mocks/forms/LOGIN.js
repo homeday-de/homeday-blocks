@@ -2,9 +2,9 @@ export default [
   {
     type: 'input',
     name: 'email',
+    initialValue: 'email@test.com',
     props: {
       required: true,
-      value: 'kontakt@homeday.de',
       type: 'email',
       label: 'E-Mail-Adresse',
       placeholder: 'Email...',
