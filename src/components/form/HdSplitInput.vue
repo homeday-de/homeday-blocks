@@ -179,6 +179,7 @@ export default {
 <style scoped lang="scss">
 @import 'hd-blocks/styles/inputs.scss';
 .field {
+  $f: &;
   &__double-input {
     &::before, &::after {
       display: none;
@@ -189,10 +190,13 @@ export default {
       justify-content: center;
       flex: 0 0 $inline-m;
       z-index: 1;
-      background-color: $wild-sand;
+      background-color: $inputBackground;
       color: $regent-gray;
       font-size: 20px;
       font-weight: 700;
+      #{$f}--filled:not(#{$f}--active):not(#{$f}--invalid) & {
+        background-color: $inputFilledBackground;
+      }
       &__symbol {
         margin-top: $stack-m;
       }
