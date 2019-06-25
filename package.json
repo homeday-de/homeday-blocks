@@ -53,9 +53,7 @@
     "vue-template-compiler": "2.5.17"
   },
   "files": [
-    "dist/*",
     "src/*",
-    "public/*",
     "*.json",
     "*.js"
   ],
@@ -72,6 +70,5 @@
       "vue-cli-service lint",
       "git add"
     ]
-  },
-  "main": "./dist/homeday-blocks.common.js"
+  }
 }
