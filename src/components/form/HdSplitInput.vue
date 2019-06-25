@@ -127,7 +127,6 @@ export default {
   watch: {
     fieldsValues: {
       deep: true,
-      immediate: true,
       handler(value) {
         this.validate();
         this.$emit('input', value);
