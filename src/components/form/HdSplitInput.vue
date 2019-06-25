@@ -14,8 +14,8 @@
           v-bind="field"
           :disabled="disabled"
           class="field__input"
-          @focus="handleFocus"
-          @blur="handleBlur">
+          @focus="handleFocus(field)"
+          @blur="handleBlur(field)">
         <div
           v-if="index < fields.length - 1"
           :key="`split-input-separator-${index}`"
@@ -139,12 +139,14 @@ export default {
     }
   },
   methods: {
-    handleFocus() {
+    handleFocus(field) {
       this.isActive = true;
+      this.$emit('fieldFocus', field);
     },
-    handleBlur() {
+    handleBlur(field) {
       this.isActive = false;
       this.validate();
+      this.$emit('fieldBlur', field);
     },
     showError(errorMessage) {
       this.error = errorMessage;
