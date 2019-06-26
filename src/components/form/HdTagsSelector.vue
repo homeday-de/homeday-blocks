@@ -125,6 +125,11 @@ export default {
       if (this.panelVisible) {
         this.$nextTick(() => {
           const { wrapper, panel, panelToggle } = this.$refs;
+
+          if (!wrapper) {
+            return;
+          }
+
           const wrapperRect = wrapper.getBoundingClientRect();
           const panelToggleRect = panelToggle.getBoundingClientRect();
           const panelRect = panel.getBoundingClientRect();
