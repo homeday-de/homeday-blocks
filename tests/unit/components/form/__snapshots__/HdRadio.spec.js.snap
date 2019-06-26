@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HdRadio is rendered as expected 1`] = `
+<section class="radio-wrapper"><label id="testRadio--label" tabindex="-1" class="radio-wrapper__label">test radio label</label>
+  <div id="testRadio" aria-labelledby="testRadio--label" role="radiogroup" class="radio-wrapper__items">
+    <div aria-checked="false" tabindex="0" role="radio" class="radio"><input name="testRadio" type="radio" class="radio__input" value="jon">
+      <div class="radio__circle"></div>
+      <p class="radio__label">Jon "Snow"</p>
+    </div>
+    <div aria-checked="false" tabindex="-1" role="radio" class="radio"><input name="testRadio" type="radio" class="radio__input" value="daenerys">
+      <div class="radio__circle"></div>
+      <p class="radio__label">Daenerys</p>
+    </div>
+    <div aria-checked="false" tabindex="-1" role="radio" class="radio"><input name="testRadio" type="radio" class="radio__input" value="nightKing">
+      <div class="radio__circle"></div>
+      <p class="radio__label">The Night King</p>
+    </div>
+    <div aria-checked="false" tabindex="-1" role="radio" class="radio"><input name="testRadio" type="radio" class="radio__input" value="arya">
+      <div class="radio__circle"></div>
+      <p class="radio__label">Arya</p>
+    </div>
+    <div aria-checked="false" tabindex="-1" role="radio" class="radio"><input name="testRadio" type="radio" class="radio__input" value="cersei">
+      <div class="radio__circle"></div>
+      <p class="radio__label">Cersei</p>
+    </div>
+  </div>
+  <!---->
+</section>
+`;

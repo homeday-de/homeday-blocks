@@ -198,9 +198,6 @@ export default {
     showError(errorMessage) {
       this.error = errorMessage;
     },
-    showHelper(message) {
-      this.helper = message;
-    },
     hideError() {
       this.error = null;
     },
