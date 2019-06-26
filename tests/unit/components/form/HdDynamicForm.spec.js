@@ -4,6 +4,7 @@ import LOGIN_FORM from '@/stories/mocks/forms/LOGIN';
 
 const LINE_SELECTOR = '.dynamicForm__line';
 const ITEM_SELECTOR = '.dynamicForm__line__item';
+const SUBMIT_SELECTOR = '.dynamicForm__submit';
 
 describe('HdDynamicForm', () => {
   const wrapperFactory = wrapperFactoryBuilder(HdDynamicForm,
@@ -21,6 +22,26 @@ describe('HdDynamicForm', () => {
 
   test('renders all the items', () => {
     expect(wrapper.findAll(LINE_SELECTOR).length).toBe(LOGIN_FORM.length);
+  });
+
+  test('does not render sumit button when `submitLabel` is empty', () => {
+    wrapper = wrapperFactory({
+      propsData: {
+        submitLabel: '',
+      },
+    });
+
+    expect(wrapper.find(SUBMIT_SELECTOR).exists()).toBe(false);
+  });
+
+  test('does not render sumit button when `submitLabel` is missing', () => {
+    wrapper = wrapperFactory({
+      propsData: {
+        submitLabel: undefined,
+      },
+    });
+
+    expect(wrapper.find(SUBMIT_SELECTOR).exists()).toBe(false);
   });
 
   test('renders nested components', () => {
