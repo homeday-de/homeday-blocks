@@ -21,12 +21,12 @@
     "vue-flickity": "^1.1.2"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "5.1.9",
+    "@storybook/addon-actions": "5.0.3",
     "@storybook/addon-console": "1.1.0",
-    "@storybook/addon-knobs": "5.1.9",
-    "@storybook/addon-links": "5.1.9",
-    "@storybook/addon-notes": "5.1.9",
-    "@storybook/theming": "5.1.9",
+    "@storybook/addon-knobs": "5.0.3",
+    "@storybook/addon-links": "5.0.3",
+    "@storybook/addon-notes": "5.0.3",
+    "@storybook/theming": "5.0.3",
     "@vue/cli-plugin-babel": "3.8.0",
     "@vue/cli-plugin-eslint": "3.8.0",
     "@vue/cli-plugin-pwa": "3.8.0",
