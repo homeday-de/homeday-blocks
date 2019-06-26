@@ -1,4 +1,4 @@
-/* eslint-disable */
+/* eslint-disable import/no-extraneous-dependencies, no-console */
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import { text } from '@storybook/addon-knobs';

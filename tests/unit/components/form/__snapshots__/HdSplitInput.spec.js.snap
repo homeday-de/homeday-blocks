@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HdSplitInput is rendered as expected 1`] = `
+<div class="field field--double" name="test name"><span class="field__border"></span>
+  <div class="field__double-input"><input placeholder="Input 1" name="input1" class="field__input">
+    <div class="field__double-input__separator">
+      <div class="field__double-input__separator__symbol">–</div>
+    </div><input placeholder="Input 2" name="input2" class="field__input">
+    <!---->
+  </div> <label class="field__label">
+    test label
+  </label>
+  <!---->
+</div>
+`;
