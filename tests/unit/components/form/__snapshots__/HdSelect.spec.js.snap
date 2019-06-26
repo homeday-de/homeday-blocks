@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HdSelect is rendered as expected 1`] = `
+<div class="field field--select"><select id="testSelect" name="testSelect" class="field__input">
+    <option value="jon">Jon "Snow"</option>
+    <option value="daenerys">Daenerys</option>
+    <option value="nightKing">The Night King</option>
+    <option value="arya">Arya</option>
+    <option value="cersei">Cersei</option>
+  </select> <label for="testSelect" class="field__label">test select label</label>
+  <!----> <span class="field__border"></span></div>
+`;
