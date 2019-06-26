@@ -3,8 +3,6 @@
   "version": "0.1.3",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "build:lib": "vue-cli-service build --target lib --name homeday-blocks ./src/components/index.js",
     "build:storybook": "vue-cli-service storybook:build -c config/storybook",

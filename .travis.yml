@@ -8,7 +8,6 @@ install:
 - npm i
 script:
 - npm run test:unit:ci
-- npm run build
 - npm run build:storybook
 after_success:
 - npm run coverage
