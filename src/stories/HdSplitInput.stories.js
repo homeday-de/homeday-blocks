@@ -1,4 +1,4 @@
-/* eslint-disable import/no-extraneous-dependencies, no-console */
+/* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import { text } from '@storybook/addon-knobs';
@@ -175,7 +175,6 @@ storiesOf('Form/HdSplitInput', module)
     },
     methods: {
       onFieldBlur({ name }) {
-        console.log('onFieldBlur', name);
         let newMin = parseInt(this.value.min, 10);
         let newMax = parseInt(this.value.max, 10);
         // We make sure we are in the allowed range
