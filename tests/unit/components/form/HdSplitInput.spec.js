@@ -59,10 +59,22 @@ describe('HdSplitInput', () => {
     expect(wrongSeparators.length).toBe(0);
   });
 
-  test('emits `input` event with the right payload on value change', () => {
-    const TEST_NAME = TEST_FIELDS[0].name;
-    wrapper.find(`[name=${TEST_NAME}]`).setValue(TEST_VALUE);
-    expect(wrapper.emitted('input')[0][0][TEST_NAME]).toBe(TEST_VALUE);
+  describe('emits events with the right payload', () => {
+    test('input', () => {
+      const TEST_NAME = TEST_FIELDS[0].name;
+      wrapper.find(`[name=${TEST_NAME}]`).setValue(TEST_VALUE);
+      expect(wrapper.emitted('input')[0][0][TEST_NAME]).toBe(TEST_VALUE);
+    });
+    test('fieldFocus', () => {
+      const TEST_FIELD = TEST_FIELDS[0];
+      wrapper.find(`[name=${TEST_FIELD.name}]`).trigger('focus');
+      expect(wrapper.emitted('fieldFocus')[0][0]).toEqual(TEST_FIELD);
+    });
+    test('fieldBlur', () => {
+      const TEST_FIELD = TEST_FIELDS[1];
+      wrapper.find(`[name=${TEST_FIELD.name}]`).trigger('blur');
+      expect(wrapper.emitted('fieldBlur')[0][0]).toEqual(TEST_FIELD);
+    });
   });
 
   test('allows setting a helper', () => {
