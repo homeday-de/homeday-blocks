@@ -83,7 +83,7 @@ export default {
     },
     texts: {
       type: Object,
-      default: () => {},
+      default: () => ({}),
     },
     disabled: {
       type: Boolean,

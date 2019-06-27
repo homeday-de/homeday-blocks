@@ -52,7 +52,7 @@ export default {
   props: {
     item: {
       type: Object,
-      default: () => {},
+      default: () => ({}),
     },
     itemCaption: {
       type: String,
