@@ -71,7 +71,7 @@ export default {
     },
     texts: {
       type: Object,
-      default: () => {},
+      default: () => ({}),
     },
   },
   data() {
@@ -114,6 +114,10 @@ export default {
     this.removeResizeEvents();
   },
   methods: {
+    // Encapsulated in a method to be able to mock it in the tests
+    getScrollHeight(el) {
+      return el.scrollHeight;
+    },
     toggleExpanded() {
       this.isExpanded = !this.isExpanded;
     },
@@ -122,7 +126,7 @@ export default {
         return;
       }
 
-      this.fullHeight = this.$refs.wrapper.scrollHeight;
+      this.fullHeight = this.getScrollHeight(this.$refs.wrapper);
     },
     resizeWrapper() {
       this.calculateFullHeight();
@@ -136,7 +140,7 @@ export default {
       // Check if component is already mounted, if not, we approximate
       // the height
       const lineHeight = this.$refs.sample
-        ? this.$refs.sample.scrollHeight
+        ? this.getScrollHeight(this.$refs.sample)
         : getApproximatedLineHeight();
       const linesHeight = (lineHeight * lines) + this.marginTop;
 

@@ -90,7 +90,9 @@ export default {
       }
     },
     onEscPress(e) {
-      if (['Escape', 'Esc'].includes(e.key)) {
+      // 27 is keyCode for escape button. This is added,
+      // so we can test this part of code
+      if (['Escape', 'Esc'].includes(e.key) || e.keyCode === 27) {
         this.hidePanel();
       }
     },
@@ -123,6 +125,11 @@ export default {
       if (this.panelVisible) {
         this.$nextTick(() => {
           const { wrapper, panel, panelToggle } = this.$refs;
+
+          if (!wrapper) {
+            return;
+          }
+
           const wrapperRect = wrapper.getBoundingClientRect();
           const panelToggleRect = panelToggle.getBoundingClientRect();
           const panelRect = panel.getBoundingClientRect();

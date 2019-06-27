@@ -1,22 +1,19 @@
 language: node_js
 node_js:
-- 8.9.4
+- 10.16.0
 cache: npm
-before_install:
-- npm i -g npm@5.6.0
 install:
-- npm i
+- npm ci
 script:
 - npm run test:unit:ci
-- npm run build
 - npm run build:storybook
 after_success:
 - npm run coverage
 deploy:
   provider: s3
-  access_key_id: AKIAJ32SPOKYID5HUHBQ
+  access_key_id: AKIAI3XOIWNY6PBLTBQQ
   secret_access_key:
-    secure: l2tCmKIKixPDzeXU57s0KgUEsuo6LhyKQCw3JmRc7Zhmy0uHPLUYHelFFr6RmnmNLm+Y938JxEqfnGZo36j1m3lrm/ZKPXGt9yO12mfe6qlQ2uxzVrxnU6Pw7BQ1NoHh/f3qM8lnEFrO0coEeQ6Du6FeUotSOtgBDYnZmpBw8hMxy33AqpodQyp1Hla0cvNfcBMUKGFvS5F5iEc+SqQmbkFTSlqcjuGIogiWrwELOJ/PRmChLTL+4b4zwE/lCxMHbqTuNnQB9bvrY+rueM4dhzQIxNjK8AWO8zpVwPqL7maqtQn6HCrR8Xa+r4J05e2lWw8VOsPPQ1nJiHV1i9vhHTdZOL+UK1HcpjYMyeT8tp87QRDtrnzrqw9zY/y7ngcTTNO9gsMPGSTVEvuOhRE4ByC/zeb7jT/ymOrrJFCjgw5ZLK5rCEdLyTRAJJJgk/L1sxDPtpZmricTVvZE4rR7ZOi0LttnbMLWFFbVsX3u32djIsoyTzz3pil35MJG22HE86pwVjJDkfTzE8ZBThANa1CaZVYyM3twLPUXo6qYmz6BeCLZ22HtQQzXmDMhOiA9oh67vJsFEJefmJB/XUcEI/ePNBT0KuX/yEYPhxaWDLb54NIgjQtv+GVoa4jgD2GpQowqCNur9AS3F3KvmgBibsp6ogj7A/iXuyQ4W/W7hIs=
+    secure: sFtXZwrIBq/dfXA72kOZTn3kkiV6CknMfTxYnC5yo+MFi7Dbqgf+S7QC6MWVERwCvZwuWFKcbz5supyPjeDKvfTBdSVPnvjsazeKX35CPreE/xyfkWcTumSTTS5Zr+Fp3w0c7M3ewcDxWiIrSjQfQdOeRrVJ0ITF6mLuQq6L/K+N/Gd7dAtgFe+vY6qy+aLAOi/jOWBsAQyrsEwNphigKU+EK2dLnKrlR7WA8UVgqO8Znx7Lh4tzKo5CCTXFT1DAihiGjA2WEcwpaOmiY/yrZ+lnQetlpmTq8fgNwrK9LngD8xkcTyNsx6alFXGDlLV/dZDgtjXSweldV8eKF7vP4rRydTIwHLw7bOIUsWyd/IOGRgef2T9n6uwzytqWKo92DsOqHedXuyUOgYfg3cUjepRK5uCL1QzduKryPqFnLZDBJCeaZmL4bAG1x3eiWI9/eSgqXgyYFdJntLfdr8nF6t6x0+YXhvny4bFY1dSRTAwhFIzQI0Z94B8liZ+wKxm8ciAVnV4J0NRs7DG6TrMwgOR/z1v3bxiX6oGWWwcZTxCOfsEe5+G6s6Ls+MjH/g82Kr+m508gifCIPJmShCIS55yU8mVZfzPqvopo2DnHSGOwfypAHZT7RQBqbgx6Oixtxrd9boFqifQsSscSCI+4P8LYIXcxay1pfGMQ+xmEr6I=
   bucket: hd-storybook
   region: eu-central-1
   skip_cleanup: true

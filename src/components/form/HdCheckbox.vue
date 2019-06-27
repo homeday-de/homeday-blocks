@@ -3,6 +3,7 @@
     :class="{
       'checkbox': true,
       'checkbox--active': isActive,
+      'checkbox--disabled': disabled,
       'isChecked': isChecked,
       'hasError': !!error,
       'isUsingMouse': isUsingMouse,
@@ -20,12 +21,13 @@
       class="checkbox__input"
       type="checkbox"
       :name="name"
+      :disabled="disabled"
       v-model="isChecked"/>
     <div
       :aria-checked="isChecked ? 'true' : 'false'"
       :aria-labelledby="label ? `${name}--label` : null"
+      :tabindex="disabled ? -1 : 0"
       class="checkbox__inner"
-      tabindex="0"
       role="checkbox"
       @click="toggle"
       @keydown.space.enter.prevent="toggle"
@@ -88,6 +90,10 @@ export default {
       type: Object,
       default: () => ({}),
     },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -138,6 +144,11 @@ export default {
   position: relative;
   margin-bottom: 26px;
   cursor: default;
+
+  &--disabled {
+    pointer-events: none;
+  }
+
   &__input {
     display: none;
   }
@@ -172,6 +183,9 @@ export default {
           transform: scale(1.3);
           opacity: 1;
         }
+        #{$c}--disabled & {
+          background-color: rgba($regent-gray, 0.8);
+        }
       }
       &__border {
         display: block;
@@ -193,6 +207,9 @@ export default {
         }
         #{$c}--active & {
           border-color: $vivid-blue;
+        }
+        #{$c}--disabled & {
+          border-color: rgba($regent-gray, 0.8);
         }
       }
       &__tick {
@@ -216,6 +233,10 @@ export default {
       margin: 0 0 0 $inline-s;
       text-align: left;
       @include font('text-small');
+
+      #{$c}--disabled & {
+        color: rgba($regent-gray, 0.8);
+      }
     }
   }
   &__error {

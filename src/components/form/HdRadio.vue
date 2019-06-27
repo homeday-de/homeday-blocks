@@ -40,6 +40,7 @@
           :name="name"
           :value="item.value"
           :checked="item.value === value"
+          :disabled="disabled"
           class="radio__input"
           type="radio"
         />
@@ -91,7 +92,11 @@ export default {
     },
     texts: {
       type: Object,
-      default: () => {},
+      default: () => ({}),
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {
@@ -112,6 +117,7 @@ export default {
       return {
         'radio-wrapper--active': this.isActive,
         'radio-wrapper--vertical': this.vertical,
+        'radio-wrapper--disabled': this.disabled,
         hasError: !!this.error,
         isUsingMouse: this.isUsingMouse,
       };
@@ -124,6 +130,10 @@ export default {
   },
   methods: {
     getTabindex(item, index) {
+      if (this.disabled === true) {
+        return -1;
+      }
+
       if (!this.value) {
         return index === 0
           ? 0
@@ -188,9 +198,6 @@ export default {
     showError(errorMessage) {
       this.error = errorMessage;
     },
-    showHelper(message) {
-      this.helper = message;
-    },
     hideError() {
       this.error = null;
     },
@@ -227,6 +234,10 @@ export default {
     margin-left: 0;
   }
 
+  .radio-wrapper--disabled & {
+    pointer-events: none;
+  }
+
   &__input {
     display: none;
   }
@@ -240,6 +251,11 @@ export default {
     overflow: hidden;
     outline-width: 0;
     border: 2px solid $nevada;
+
+    .radio-wrapper--disabled & {
+      border-color: rgba($regent-gray, 0.8);
+    }
+
     &:before {
       content: '';
       display: block;
@@ -268,6 +284,10 @@ export default {
     margin: 0 0 0 $inline-s;
     text-align: left;
     @include font('text-small');
+
+    .radio-wrapper--disabled & {
+      color: rgba($regent-gray, 0.8);
+    }
   }
   &.isSelected {
     .radio__circle {
@@ -302,9 +322,9 @@ export default {
       color: $torch-red;
     }
 
-    #{$r}:hover &,
-    #{$r}--active &,
-    #{$r}--active.hasError & {
+    #{$r}:not(#{$r}--disabled):hover &,
+    #{$r}--active:not(#{$r}--disabled) &,
+    #{$r}--active.hasError:not(#{$r}--disabled) & {
       color: $vivid-blue;
     }
   }
@@ -325,7 +345,7 @@ export default {
 
   &.hasError &__items {
 
-    .radio:not(:focus) .radio__circle {
+    .radio:not(:focus):not(#{$r}--disabled) .radio__circle {
       border-color: $torch-red;
     }
   }
@@ -334,7 +354,7 @@ export default {
 
     #{$r}__items {
 
-      .radio:not(:focus) .radio__circle {
+      .radio:not(:focus):not(#{$r}--disabled) .radio__circle {
         border-color: $regent-gray;
       }
     }

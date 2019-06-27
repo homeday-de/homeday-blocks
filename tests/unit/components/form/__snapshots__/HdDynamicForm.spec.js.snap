@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HdDynamicForm renders slots 1`] = `
+<form novalidate="novalidate" class="dynamicForm">
+  <div>The before slot</div>
+  <div class="dynamicForm__line">
+    <!---->
+  </div>
+  <div>The before button slot</div> <button class="btn btn--primary dynamicForm__submit">submit</button>
+  <div>The after slot</div>
+</form>
+`;
