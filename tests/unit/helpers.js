@@ -4,7 +4,7 @@ export function wrapperFactoryBuilder(
   component,
   {
     propsData: defaultProps = {},
-    options: defaultOptions = {},
+    ...defaultOptions
   } = {},
 ) {
   return ({ propsData = {}, ...options } = {}) => mount(component, {
