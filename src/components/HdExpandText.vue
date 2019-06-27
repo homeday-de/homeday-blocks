@@ -71,7 +71,7 @@ export default {
     },
     texts: {
       type: Object,
-      default: () => {},
+      default: () => ({}),
     },
   },
   data() {
