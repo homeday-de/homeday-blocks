@@ -31,6 +31,7 @@ import HdPasswordConfirm from 'hd-blocks/components/form/HdPasswordConfirm.vue';
 import HdTextarea from 'hd-blocks/components/form/HdTextarea.vue';
 import HdSelect from 'hd-blocks/components/form/HdSelect.vue';
 import HdTagsSelector from 'hd-blocks/components/form/HdTagsSelector.vue';
+import HdSplitInput from 'hd-blocks/components/form/HdSplitInput.vue';
 import HdGoogleAutocomplete from 'hd-blocks/components/form/HdGoogleAutocomplete.vue';
 
 export default {
@@ -117,6 +118,8 @@ export default {
           return HdSelect;
         case 'tagsSelector':
           return HdTagsSelector;
+        case 'splitInput':
+          return HdSplitInput;
         case 'googleAutocomplete':
           return HdGoogleAutocomplete;
         default:
