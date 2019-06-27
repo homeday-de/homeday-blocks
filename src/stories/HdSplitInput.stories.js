@@ -101,21 +101,21 @@ storiesOf('Form/HdSplitInput', module)
         return [
           {
             placeholder: 'Day',
-            name: 'min',
+            name: 'day',
             type: 'number',
             min: 0,
             max: 31,
           },
           {
             placeholder: 'Month',
-            name: 'min',
+            name: 'month',
             type: 'number',
             min: 0,
             max: 12,
           },
           {
             placeholder: 'Year',
-            name: 'min',
+            name: 'year',
             type: 'number',
             min: 1900,
             max: 2019,
