@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "imagesloaded": "^4.1.4",
-    "lodash": "4.17.11",
+    "lodash": "4.17.13",
     "vue": "2.6.10",
     "vue-flickity": "^1.1.2"
   },
