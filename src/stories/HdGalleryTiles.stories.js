@@ -23,7 +23,7 @@ storiesOf('HdGalleryTiles', module)
     },
     methods: {
       onItemClick(itemIndex) {
-        action('itemClicked', itemIndex);
+        action('itemClicked')(itemIndex);
       },
     },
   }));
