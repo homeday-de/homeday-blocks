@@ -4,7 +4,8 @@ $innerIconDimension: 18px;
 $inputLeftPadding: $inline-s;
 $inputBackground: #f4f5f6;
 $inputFilledBackground: #e8eaee;
-$inputPaddingTop: $labelHeight + $stack-s;
+$inputPaddingTop: $labelHeight + $stack-xs;
+$focusedLabelTop: 5px;
 
 .field {
   $f: &;
@@ -124,7 +125,7 @@ $inputPaddingTop: $labelHeight + $stack-s;
     line-height: 28px;
     position: absolute;
     margin-left: $inputLeftPadding;
-    bottom: $stack-s;
+    top: $inputPaddingTop;
     color: $nevada;
     transition: all 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940);
     z-index: 9;
@@ -133,7 +134,7 @@ $inputPaddingTop: $labelHeight + $stack-s;
     #{$f}--filled &, #{$f}--active &, #{$f}--select &, #{$f}--double & {
       font-size: 14px;
       line-height: 18px;
-      bottom: calc(100% - #{$labelHeight + $stack-s});
+      top: $focusedLabelTop;
     }
 
     #{$f}--active & {
@@ -153,7 +154,7 @@ $inputPaddingTop: $labelHeight + $stack-s;
     }
 
     #{$f}--textarea#{$f}--filled &, #{$f}--textarea#{$f}--active &{
-      top: $stack-s;
+      top: $focusedLabelTop;
       bottom: initial;
     }
 
@@ -286,7 +287,7 @@ $inputPaddingTop: $labelHeight + $stack-s;
     padding-top: $inputPaddingTop;
     padding-left: $inputLeftPadding;
     padding-right: $inline-s;
-    padding-bottom: $stack-s;
+    padding-bottom: $stack-s - $stack-xxs;
     -webkit-appearance: none;
 
     background: $inputBackground;
