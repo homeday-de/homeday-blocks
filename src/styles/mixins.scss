@@ -1,3 +1,10 @@
 @import './_colors';
 @import './_variables';
 @import './_fonts';
+
+
+@mixin only-ie {
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        @content;
+    }
+}
