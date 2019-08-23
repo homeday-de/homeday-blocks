@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions';
 import HdGallery from 'hd-blocks/components/gallery/HdGallery.vue';
 import ITEMS from './mocks/GALLERY_ITEMS';
 
-storiesOf('HdGallery', module)
+storiesOf('Gallery/HdGallery', module)
   .add('default', () => ({
     components: { HdGallery },
     template: `

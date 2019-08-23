@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/vue';
 import HdGalleryOverlay from 'hd-blocks/components/gallery/HdGalleryOverlay.vue';
 import ITEMS from './mocks/GALLERY_ITEMS';
 
-storiesOf('HdGalleryOverlay', module)
+storiesOf('Gallery/HdGalleryOverlay', module)
   .add('default', () => ({
     components: { HdGalleryOverlay },
     template: `
