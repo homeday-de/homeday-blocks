@@ -57,8 +57,6 @@ export default {
   methods: {
     onKeydown(e) {
       if (['Right', 'ArrowRight'].includes(e.key)) {
-        console.log('this.$refs', this.$refs);
-
         this.$refs.gallery.goNext();
       } else if (['Left', 'ArrowLeft'].includes(e.key)) {
         this.$refs.gallery.goPrev();
