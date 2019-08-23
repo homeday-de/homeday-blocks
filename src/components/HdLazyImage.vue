@@ -34,17 +34,25 @@ export default {
       imageLoaded: false,
     };
   },
+  watch: {
+    src() {
+      this.maybeLazyLoad();
+    },
+  },
   mounted() {
     this.maybeLazyLoad();
   },
   methods: {
     maybeLazyLoad() {
+      this.setImageUrl('');
+
       if (!this.srcSmall) {
         this.setImageUrl(this.src);
         this.imageLoaded = true;
         return;
       }
 
+      this.imageLoaded = false;
       this.setImageUrl(this.srcSmall);
 
       const image = new Image();
