@@ -36,5 +36,8 @@
       "SHOW_MORE": "weiterlesen",
       "SHOW_LESS": "zuklappen"
     }
+  },
+  "GALLERY_TILES": {
+    "MORE_PHOTOS": "Weitere Fotos"
   }
 }
