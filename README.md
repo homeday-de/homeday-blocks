@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.com/homeday-de/homeday-blocks.svg?token=rxKqgsBkMR5FqNpvxBcx&branch=develop)](https://travis-ci.com/homeday-de/homeday-blocks) [![Coverage Status](https://coveralls.io/repos/github/homeday-de/homeday-blocks/badge.svg?t=Kbz7Vb)](https://coveralls.io/github/homeday-de/homeday-blocks)
 
 # Homeday Blocks
-A library of Vue components used across Homeday projects - [here](http://hd-storybook.s3-website.eu-central-1.amazonaws.com/develop/)
+A library of Vue components used across Homeday projects - [here](https://blocks.homeday.dev)
 
 ## Local setup
 
@@ -59,33 +59,8 @@ npm run test:unit:watch
 
 ## Deployment
 
-The [CI](https://travis-ci.com/homeday-de/homeday-blocks) will deploy storybook automatically to our [showcase env](http://hd-storybook.s3-website.eu-central-1.amazonaws.com/develop/), once PR is merged to `develop` branch. Additionally, you can deploy your current working branch locally, by running 
+The [CI](https://travis-ci.com/homeday-de/homeday-blocks) will deploy storybook automatically to our [showcase env](https://blocks.homeday.dev), once PR is merged to `develop` branch. 
 
-```
-npm run deploy
-```
-
-this will build and deploy your local version of storybook. You can also specify subfolder you'd like to use 
-for your local build by passing it as argument
-
-```
-$ FOLDER=test npm run deploy
-```
-This will deploy your branch to http://hd-storybook.s3-website.eu-central-1.amazonaws.com/test/ .
-
-**If no folder is specified, timestamp will be used as folder prefix.** This is to avoid collision with other working branches.
-
-For this to work, you have to all add your `AWS` credentials to the project. You can create JSON file in root folder, with following structure:
-
-```
-{
-    "AWS_ACCESS_KEY_ID": "MY_ID",
-    "AWS_SECRET_ACCESS_KEY": "MY_SECRET"
-}
-```
-
-You can find/create your credentials [here](https://console.aws.amazon.com/iam/home?#security_credential).
-**This file is part of `.gitignore`, so it should never be check in to the project itself.**
 
 ## Consuming in other projects
 Homeday Blocks makes use of the Webpack Alias feature, which need to be set up in a parent project (the project that consumes this library).
