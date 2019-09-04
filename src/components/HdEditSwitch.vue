@@ -51,18 +51,21 @@
     </div>
     <div
       v-if="$slots.default"
+      ref="defaultSlot"
       class="edit-switch__view"
     >
       <slot/>
     </div>
     <div
       v-if="$slots.edit && isEditMode && editingAllowed"
+      ref="editSlot"
       class="edit-switch__edit"
     >
       <slot name="edit"/>
     </div>
     <div
       v-else-if="$slots.view"
+      ref="viewSlot"
       class="edit-switch__view"
     >
       <slot name="view"/>

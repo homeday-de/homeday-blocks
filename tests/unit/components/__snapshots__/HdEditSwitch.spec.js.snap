@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HdEditSwitch renders the component 1`] = `
+<section class="edit-switch edit-switch--editing-allowed">
+  <div class="edit-switch__actions"><button class="btn edit-switch__actions__button edit-switch__actions__button--edit"><img src="" class="edit-switch__actions__button__icon">
+      <p class="edit-switch__actions__button__label">Bearbeiten</p>
+    </button></div>
+  <div class="edit-switch__view">
+    <p>Default slot</p>
+  </div>
+  <div class="edit-switch__view">
+    <p>View slot</p>
+  </div>
+</section>
+`;
