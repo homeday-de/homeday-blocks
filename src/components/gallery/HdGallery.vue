@@ -1,5 +1,10 @@
 <template>
-  <div class="gallery">
+  <div 
+    :class="{
+      hasSingleItem,
+    }"
+    class="gallery"
+  >
     <figure>
       <figcaption
         v-if="showCaption"
@@ -99,6 +104,9 @@ export default {
     hasImages() {
       return this.items.length > 0;
     },
+    hasSingleItem() {
+      return this.items.length === 1;
+    },
     isFirstItem() {
       return this.currentItemIndex === 0;
     },
@@ -139,6 +147,7 @@ export default {
 
 <style lang="scss">
 .gallery {
+  $_root: &;
   position: relative;
 
   &__caption {
@@ -242,6 +251,14 @@ export default {
     font-weight: 600;
     color: white;
     border-radius: 2px;
+  }
+  
+  &__carousel {
+    #{$_root}.hasSingleItem & {
+      @include for('tablet') {
+        display: none;
+      }
+    }
   }
 }
 </style>
