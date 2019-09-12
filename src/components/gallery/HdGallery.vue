@@ -255,7 +255,7 @@ export default {
   
   &__carousel {
     #{$_root}.hasSingleItem & {
-      @include for('tablet') {
+      @media (min-width: $break-tablet) {
         display: none;
       }
     }
