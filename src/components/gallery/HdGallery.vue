@@ -63,7 +63,7 @@
 <script>
 import HdGalleryCarousel from 'hd-blocks/components/gallery/HdGalleryCarousel.vue';
 import HdGalleryMedia from 'hd-blocks/components/gallery/HdGalleryMedia.vue';
-import HdGalleryPlaceholder from '@/components/gallery/HdGalleryPlaceholder.vue';
+import HdGalleryPlaceholder from 'hd-blocks/components/gallery/HdGalleryPlaceholder.vue';
 
 export default {
   name: 'HdGallery',
