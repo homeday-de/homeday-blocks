@@ -1,17 +1,18 @@
 <template>
-  <div 
+  <div
     :class="{
       hasSingleItem,
     }"
     class="gallery"
   >
-    <figure>
+    <figure
+      v-if="hasImages"
+    >
       <figcaption
         v-if="showCaption"
         class="gallery__caption">{{ currentItemCaption || '&#8203;' }}</figcaption>
       <div class="gallery__main">
         <HdGalleryMedia
-          v-if="hasImages"
           :item="currentItem"
           :aspect-ratio="aspectRatio"
         />
@@ -39,6 +40,12 @@
         <p class="gallery__info">{{ `${currentItemIndex + 1}/${items.length}` }}</p>
       </div>
     </figure>
+    <HdGalleryPlaceholder
+      v-else
+      :aspect-ratio="aspectRatio"
+      :icon="placeholderIcon"
+      :text="placeholderText"
+    />
     <slot name="middle"/>
     <HdGalleryCarousel
       v-if="hasImages"
@@ -56,12 +63,14 @@
 <script>
 import HdGalleryCarousel from 'hd-blocks/components/gallery/HdGalleryCarousel.vue';
 import HdGalleryMedia from 'hd-blocks/components/gallery/HdGalleryMedia.vue';
+import HdGalleryPlaceholder from 'hd-blocks/components/gallery/HdGalleryPlaceholder.vue';
 
 export default {
   name: 'HdGallery',
   components: {
     HdGalleryCarousel,
     HdGalleryMedia,
+    HdGalleryPlaceholder,
   },
   props: {
     items: {
@@ -87,6 +96,15 @@ export default {
     showCaption: {
       type: Boolean,
       default: true,
+    },
+    placeholderIcon: {
+      type: String,
+      // eslint-disable-next-line global-require
+      default: require('hd-blocks/assets/icons/ic_photos.svg'),
+    },
+    placeholderText: {
+      type: String,
+      default: '',
     },
   },
   data() {
@@ -252,7 +270,7 @@ export default {
     color: white;
     border-radius: 2px;
   }
-  
+
   &__carousel {
     #{$_root}.hasSingleItem & {
       @media (min-width: $break-tablet) {
