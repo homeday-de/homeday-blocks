@@ -41,10 +41,9 @@
       </div>
       <p
         v-if="innerLabel"
+        v-html="innerLabel"
         class="checkbox__inner__label"
-      >
-        {{ innerLabel }}
-      </p>
+      />
     </div>
     <p
       v-if="error"
