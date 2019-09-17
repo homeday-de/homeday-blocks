@@ -1,5 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
+import { text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
 import HdGallery from 'hd-blocks/components/gallery/HdGallery.vue';
@@ -25,6 +26,23 @@ storiesOf('Gallery/HdGallery', module)
     methods: {
       onCarouselItemClick(value) {
         action('onCarouselItemClick')(value);
+      },
+    },
+  }))
+  .add('no photos', () => ({
+    components: { HdGallery },
+    template: `
+      <div style="max-width: 800px; padding-left: 16px; padding-right: 16px; margin: auto;">
+      <HdGallery
+        :items="[]"
+        :placeholder-text="placeholderText"
+      />
+      </div>
+    `,
+    props: {
+      placeholderText: {
+        type: String,
+        default: text('Placholder Text', 'No photos'),
       },
     },
   }))

@@ -24,6 +24,16 @@ describe('HdCheckbox', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
+  test('Accepts <html> code as innerLabel', () => {
+    const innerLabelHtml = 'Hello <b>World!</b>';
+    const innerLabelParsed = 'Hello World!';
+
+    wrapper.setProps({ innerLabel: innerLabelHtml });
+
+    expect(wrapper.html()).toMatchSnapshot();
+    expect(wrapper.find('.checkbox__inner__label').text()).toBe(innerLabelParsed);
+  });
+
   test('At blur, the validation method is fired and the input element is not styled as active', () => {
     const mockedValidate = jest.fn();
     wrapper.setMethods({ validate: mockedValidate });

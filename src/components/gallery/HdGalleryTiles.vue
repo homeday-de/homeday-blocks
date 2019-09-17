@@ -1,6 +1,6 @@
 <template>
-  <div class="gallery-tiles__wrapper">
-    <section class="gallery-tiles">
+  <div class="gallery-tiles">
+    <section class="gallery-tiles__container">
       <div
         v-for="(photo, i) in items.slice(0, limit)"
         :key="photo.image"
@@ -61,28 +61,28 @@ export default {
 
 <style lang="scss" scoped>
 .gallery-tiles {
-  display: -ms-grid;
-  display: grid;
-  grid-gap: $inset-s;
-  -ms-grid-columns: 1fr 1fr 1fr;
-  -ms-grid-rows: 150px 150px;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 150px);
+  position: relative;
+  height: 100%;
 
-  @media (min-width: $break-desktop) {
-    -ms-grid-columns: 1fr 1fr 1fr 1fr;
-    -ms-grid-rows: 190px 190px;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 190px);
+  &__container {
+    display: -ms-grid;
+    display: grid;
+    grid-gap: $inset-s;
+    -ms-grid-columns: 1fr 1fr 1fr;
+    -ms-grid-rows: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    height: 100%;
+
+    @media (min-width: $break-desktop) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    &:hover .gallery-tile:not(:hover)::after {
+      opacity: .4;
+    }
   }
 
-  &:hover .gallery-tile:not(:hover)::after {
-    opacity: .4;
-  }
-
-  &__wrapper {
-    position: relative;
-  }
 }
 
 .gallery-tile {
