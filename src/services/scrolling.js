@@ -65,7 +65,12 @@ export function isElVisible({ el, offset = 0 }) {
   return true;
 }
 
-export function isScrolledPastElBottom({ el }) {
+export function isScrolledPastElBottom({
+  el,
+  // The default offset will check whether we reached the bottom of the element
+  // with the bottom edge of the screen
+  offset = window.innerHeight,
+}) {
   if (el == null) {
     return false;
   }
@@ -74,7 +79,7 @@ export function isScrolledPastElBottom({ el }) {
 
   const elBottom = offsetTop + el.clientHeight;
 
-  if (elBottom > window.pageYOffset + window.innerHeight) {
+  if (elBottom > window.pageYOffset + offset) {
     return false;
   }
 
