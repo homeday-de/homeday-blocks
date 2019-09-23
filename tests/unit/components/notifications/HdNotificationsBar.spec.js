@@ -6,7 +6,7 @@ const MESSAGE_SELECTOR = '.notifications-bar__message';
 const ICON_SELECTOR = '.notifications-bar__icon__image';
 const ICON_FAKE_PATH = '/foo/bar/icon.svg';
 
-describe('HdInfoBox', () => {
+describe('HdNotificationsBar', () => {
   let wrapper;
 
   beforeEach(() => {
