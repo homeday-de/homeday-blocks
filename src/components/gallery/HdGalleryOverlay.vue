@@ -81,7 +81,7 @@ export default {
   background-color: rgba(white, .9);
   animation: fadeIn .5s;
 
-  @media (min-width: $break-tablet) {
+  @media (min-width: $break-tablet) and (min-height: 800px) {
     padding: $inset-xl;
   }
 
