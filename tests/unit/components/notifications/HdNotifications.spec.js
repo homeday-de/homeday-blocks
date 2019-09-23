@@ -28,6 +28,11 @@ describe('HdNotifications', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
+  test('renders notification bars', () => {
+    wrapper.setProps({ notifications: NOTIFICATIONS });
+    expect(wrapper.html()).toMatchSnapshot();
+  });
+
   test('fires the heightChange event when height of the notifications changes', () => {
     scrollHeightSpy = jest.spyOn(wrapper.vm, 'getScrollHeight')
       .mockImplementation(

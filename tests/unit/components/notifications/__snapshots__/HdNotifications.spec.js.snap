@@ -5,3 +5,9 @@ exports[`HdNotifications renders component 1`] = `
   <div class="notifications__sizer" style="height: 0px;"></div>
 </div>
 `;
+
+exports[`HdNotifications renders notification bars 1`] = `
+<div class="notifications"><span name="notifications-bar-" tag="div"><div class="notifications-bar notifications-bar--notification isVisible" style="top: 0px; right: 0px; left: 0px;"><div class="notifications-bar__icon"><img alt="type-" src="" class="notifications-bar__icon__image"></div> <div class="notifications-bar__message">Hello <a href="http://localhost">Homeday!</a></div></div></span>
+  <div class="notifications__sizer" style="height: 0px;"></div>
+</div>
+`;
