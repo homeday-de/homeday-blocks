@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HdNotifications renders component 1`] = `
+<div class="notifications"><span name="notifications-bar-" tag="div"></span>
+  <div class="notifications__sizer" style="height: 0px;"></div>
+</div>
+`;
