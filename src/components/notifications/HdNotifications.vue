@@ -69,6 +69,10 @@ export default {
     this.removeRoutingEvents();
   },
   methods: {
+    // Encapsulated in a method to be able to mock it in the tests
+    getScrollHeight(el) {
+      return el.scrollHeight;
+    },
     resizeNotifications() {
       if (!this.notifications.length) {
         this.sizerHeight = 0;
@@ -82,7 +86,7 @@ export default {
       // Go through all the notifications and get the max height in order to
       // resize the sizer (since notification bars are position: fixed)
       const maxSize = this.$refs.notifications.reduce((maxHeight, { $el }) => {
-        const elHeight = $el.scrollHeight;
+        const elHeight = this.getScrollHeight($el);
 
         if (maxHeight >= elHeight) {
           return maxHeight;
