@@ -7,6 +7,7 @@
   >
     <figure
       v-if="hasImages"
+      class="gallery__figure"
     >
       <figcaption
         v-if="showCaption"
@@ -167,6 +168,19 @@ export default {
 .gallery {
   $_root: &;
   position: relative;
+  pointer-events: none;
+
+  > * {
+    pointer-events: all;
+  }
+
+  &__figure {
+    pointer-events: none;
+
+    > * {
+      pointer-events: all;
+    }
+  }
 
   &__caption {
     margin-bottom: $stack-s;
