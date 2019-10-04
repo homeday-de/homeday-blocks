@@ -1,5 +1,9 @@
 module.exports = {
   presets: [
-    '@vue/app',
+    ['@vue/app', {
+      corejs: {
+        version: 2,
+      },
+    }],
   ],
 };

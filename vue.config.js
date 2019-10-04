@@ -16,7 +16,7 @@ module.exports = {
   css: {
     loaderOptions: {
       sass: {
-        data: `
+        prependData: `
           @import "hd-blocks/styles/mixins.scss";
         `,
       },
