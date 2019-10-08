@@ -28,7 +28,7 @@
     "@storybook/addon-knobs": "5.2.3",
     "@storybook/addon-links": "5.2.3",
     "@storybook/addon-notes": "5.2.3",
-    "@storybook/theming": "5.2.1",
+    "@storybook/theming": "5.2.3",
     "@vue/cli-plugin-babel": "3.11.0",
     "@vue/cli-plugin-eslint": "3.11.0",
     "@vue/cli-plugin-pwa": "3.11.0",
