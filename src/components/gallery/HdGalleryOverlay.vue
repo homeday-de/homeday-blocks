@@ -63,7 +63,7 @@ export default {
         this.$refs.gallery.goNext();
       } else if (['Left', 'ArrowLeft'].includes(e.key)) {
         this.$refs.gallery.goPrev();
-      } else if (e.key === 'Escape') {
+      } else if (['Esc', 'Escape'].includes(e.key)) {
         this.$emit('close');
       }
     },
