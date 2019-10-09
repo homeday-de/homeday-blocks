@@ -7,7 +7,7 @@ import HdNotifications from 'hd-blocks/components/notifications/HdNotifications.
 import HdNotificationsNote from '../notes/HdNotifications.md';
 
 storiesOf('HdNotifications', module)
-  .add('default 🎛', () => ({
+  .add('default 🎛📝', () => ({
     components: { HdNotifications },
     props: {
       type: {
