@@ -22,9 +22,16 @@ addParameters({
 
 addDecorator(withKnobs);
 
-const req = require.context('../../src/stories', true, /.stories.js$/);
 
 function loadStories() {
+  // We manualy import the welcome story as the first one
+  // to make sure it's always on top of the sidebar and treated as our `index`
+  // eslint-disable-next-line global-require
+  require('../../src/stories/WelcomeStory');
+
+  // Import all the stories that end with *.stories.js
+  const req = require.context('../../src/stories', true, /.stories.js$/);
+
   req.keys().forEach(filename => req(filename));
 }
 
