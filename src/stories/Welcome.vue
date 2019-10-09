@@ -38,6 +38,7 @@
 </template>
 
 <script>
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { component as VueCodeHighlight } from 'vue-code-highlight';
 
 export default {
