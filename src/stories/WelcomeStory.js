@@ -10,4 +10,10 @@ storiesOf('Welcome', module)
     template: `
     <Welcome />
     `,
-  }));
+  }),
+  {
+    options: {
+      showPanel: false,
+      isToolshown: false,
+    },
+  });

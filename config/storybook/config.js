@@ -13,6 +13,8 @@ tooltipInstall();
 addParameters({
   options: {
     theme: HdTheme,
+    showPanel: true,
+    isToolshown: true,
   },
   viewport: {
     viewports: INITIAL_VIEWPORTS,
