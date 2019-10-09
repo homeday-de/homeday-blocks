@@ -5,7 +5,7 @@ import { number } from '@storybook/addon-knobs';
 import HdExpandText from 'hd-blocks/components/HdExpandText.vue';
 
 storiesOf('HdExpandText', module)
-  .add('default', () => ({
+  .add('default 🎛', () => ({
     components: { HdExpandText },
     props: {
       lines: {
@@ -46,7 +46,7 @@ storiesOf('HdExpandText', module)
       </div>
     `,
   }))
-  .add('custom translation', () => ({
+  .add('custom translation 🎛', () => ({
     components: { HdExpandText },
     props: {
       lines: {

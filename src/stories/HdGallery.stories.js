@@ -29,7 +29,7 @@ storiesOf('Gallery/HdGallery', module)
       },
     },
   }))
-  .add('no photos', () => ({
+  .add('no photos 🎛', () => ({
     components: { HdGallery },
     template: `
       <div style="max-width: 800px; padding-left: 16px; padding-right: 16px; margin: auto;">

@@ -5,7 +5,7 @@ import { text } from '@storybook/addon-knobs';
 import HdRadioButton from 'hd-blocks/components/buttons/HdRadioButton.vue';
 
 storiesOf('HdRadioButton', module)
-  .add('base', () => ({
+  .add('base 🎛', () => ({
     components: { HdRadioButton },
     template: `<HdRadioButton
       @select="action"

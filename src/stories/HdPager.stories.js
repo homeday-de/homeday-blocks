@@ -6,7 +6,7 @@ import { number } from '@storybook/addon-knobs';
 import HdPager from 'hd-blocks/components/HdPager.vue';
 
 storiesOf('HdPager', module)
-  .add('default', () => ({
+  .add('default 🎛', () => ({
     components: { HdPager },
     props: {
       count: {
