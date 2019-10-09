@@ -1,7 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
 import Welcome from './Welcome.vue';
-import README from '../../README.md';
 
 storiesOf('Welcome', module)
   .add('Welcome', () => ({
@@ -11,9 +10,4 @@ storiesOf('Welcome', module)
     template: `
     <Welcome />
     `,
-  }),
-  {
-    notes: {
-      markdown: README,
-    },
-  });
+  }));
