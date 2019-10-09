@@ -28,7 +28,7 @@
       <h4>You don't have to check all the tabs to see if something is available. We use some suffixes in the story's title:</h4>
       <div class="text-small margin-top-s margin-left-m">
         <p>🎛 : Check the knobs tab to play around with the component's props</p>
-        <p>📝 : Check the notes tab for more informationabout the component, how to use or code snippets</p>
+        <p>📝 : Check the notes tab for more information about the component, how to use it or code snippets</p>
       </div>
     </div>
 
