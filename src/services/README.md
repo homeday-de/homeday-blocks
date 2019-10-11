@@ -21,14 +21,18 @@ setBreakpoints(breakpoints);
 
 You can now import a helper component and render contents based on your breakpoints matching or not:
 
-```js
+```vue
+<script>
 import { Responsive } from 'hd-blocks/services/breakpoints';
+</script>
 
+<template>
 <Responsive #default="{ matches, indeterminate }">
   <div v-if="indeterminate">Matching could not be reliably determined (server side rendering, unit tests environment)</div>
   <div v-else-if="matches.xl">xl breakpoint matched</div>
   <div v-else-if="matches.m">m breakpoint matched</div>
 </Responsive>
+</template>
 ```
 
 As seen in the example above, `Responsive` component exposes two arguments:
