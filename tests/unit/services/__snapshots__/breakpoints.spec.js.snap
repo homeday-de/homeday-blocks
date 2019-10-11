@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Breakpoints service Responsive component provides "indeterminate" flag as part of a scoped slot 1`] = `<div>true</div>`;
+
+exports[`Breakpoints service Responsive component provides "matches" object as part of a scoped slot 1`] = `
+<div>[
+  "s",
+  "m",
+  "l",
+  "xl"
+  ]</div>
+`;
+
+exports[`Breakpoints service Responsive component renders no markup 1`] = `undefined`;

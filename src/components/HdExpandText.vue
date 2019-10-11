@@ -33,11 +33,11 @@
 <script>
 import merge from 'lodash/merge';
 import { getMessages } from 'hd-blocks/lang';
-import { isMobile } from 'hd-blocks/services/breakpoints';
+import { mediaMatches } from 'hd-blocks/services/breakpoints';
 import onResize from 'hd-blocks/services/on-resize';
 
 const getApproximatedLineHeight = () => {
-  if (isMobile()) {
+  if (mediaMatches('s')) {
     return 28;
   }
 
@@ -133,7 +133,7 @@ export default {
       const linesMobile = this.linesMobile
         ? this.linesMobile
         : this.lines;
-      const lines = isMobile()
+      const lines = mediaMatches('s')
         ? linesMobile
         : this.lines;
 
@@ -189,6 +189,11 @@ export default {
       top: 0;
       pointer-events: none;
       z-index: -1;
+      visibility: hidden;
+
+      &::before {
+        content: '\2800'
+      }
     }
   }
 
