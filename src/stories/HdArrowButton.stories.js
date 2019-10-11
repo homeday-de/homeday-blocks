@@ -43,7 +43,7 @@ storiesOf('HdArrowButton', module)
       :disabled=disabled
     />`,
   }))
-  .add('playground', () => ({
+  .add('playground 🎛', () => ({
     components: { HdArrowButton },
     props: {
       direction: {

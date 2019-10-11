@@ -75,7 +75,7 @@ storiesOf('Form/HdSplitInput', module)
       },
     },
   }))
-  .add('Custom separator', () => ({
+  .add('Custom separator 🎛', () => ({
     components: { HdSplitInput },
     template: `
       <HdSplitInput

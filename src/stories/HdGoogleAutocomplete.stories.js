@@ -7,7 +7,7 @@ import FormWrapper from 'hd-blocks/storiesWrappers/FormWrapper';
 
 storiesOf('Form/HdGoogleAutocomplete', module)
   .addDecorator(FormWrapper)
-  .add('required', () => ({
+  .add('required 🎛', () => ({
     components: { HdGoogleAutocomplete },
     template: `
       <p v-if="!apiKey">You have to enter a valid API key under "Knobs"</p>
@@ -34,7 +34,7 @@ storiesOf('Form/HdGoogleAutocomplete', module)
       },
     },
   }))
-  .add('prefilled', () => ({
+  .add('prefilled 🎛', () => ({
     components: { HdGoogleAutocomplete },
     template: `
       <p v-if="!apiKey">You have to enter a valid API key under "Knobs"</p>
@@ -60,7 +60,7 @@ storiesOf('Form/HdGoogleAutocomplete', module)
       },
     },
   }))
-  .add('custom translation', () => ({
+  .add('custom translation 🎛', () => ({
     components: { HdGoogleAutocomplete },
     template: `
       <p v-if="!apiKey">You have to enter a valid API key under "Knobs"</p>
@@ -95,7 +95,7 @@ storiesOf('Form/HdGoogleAutocomplete', module)
       },
     },
   }))
-  .add('disabled', () => ({
+  .add('disabled 🎛', () => ({
     components: { HdGoogleAutocomplete },
     template: `
       <p v-if="!apiKey">You have to enter a valid API key under "Knobs"</p>

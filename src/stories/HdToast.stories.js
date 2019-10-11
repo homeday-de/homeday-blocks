@@ -6,7 +6,7 @@ import { text } from '@storybook/addon-knobs';
 import HdToast from 'hd-blocks/components/HdToast.vue';
 
 storiesOf('HdToast', module)
-  .add('Primary only', () => ({
+  .add('Primary only 🎛', () => ({
     components: { HdToast },
     data: () => ({
       text: text('Toast text', 'Random text'),
@@ -25,7 +25,7 @@ storiesOf('HdToast', module)
       escapeHTML: false,
     },
   })
-  .add('Secondary only', () => ({
+  .add('Secondary only 🎛', () => ({
     components: { HdToast },
     data: () => ({
       text: text('Toast text', 'Random text'),
@@ -46,7 +46,7 @@ storiesOf('HdToast', module)
       escapeHTML: false,
     },
   })
-  .add('Complete', () => ({
+  .add('Complete 🎛', () => ({
     components: { HdToast },
     data: () => ({
       text: text('Toast text', 'Random text'),
