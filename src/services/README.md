@@ -1,5 +1,9 @@
 # Services
-Homeday Blocks contains a number of services that we found ourself needing across projects. Some of them are used by Homeday Blocks components, others are here to be consumed in projects directly.
+Homeday Blocks contains a number of services that we found ourself needing across projects. Some of them are used by Homeday Blocks components, others 
+are here to be consumed in projects directly.
+
+Index:
+- [Breakpoints service](https://github.com/homeday-de/homeday-blocks/tree/develop/src/services#breakpoints) - Provides a wrapper component for conditional rendering based on viewport size
 
 ## Breakpoints
 Exposes a wrapper component that helps with conditional rendering based on viewport size. Relies on the [onResize](#on-resize) service.

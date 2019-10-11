@@ -93,8 +93,4 @@ import HdDynamicForm from 'hd-blocks/components/form/HdDynamicForm.vue';
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Services
-Together with the components, Homeday Blocks also provides useful services that can be reused across projects. They are listed and quickly explained below, with links to more detailed documentation
-
-NOTE: Documentation still in progress
-
-- [Breakpoints service](https://github.com/homeday-de/homeday-blocks/tree/develop/src/services#breakpoints) - Provides a wrapper component for conditional rendering based on viewport size
+Together with the components, Homeday Blocks also provides useful services that can be reused across projects. You can read more about them in the services [documentation](https://github.com/homeday-de/homeday-blocks/tree/develop/src/services).
