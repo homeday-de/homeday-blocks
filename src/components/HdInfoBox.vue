@@ -40,6 +40,7 @@ export default {
   color: $nevada;
 
   &__icon {
+    width: 18px;
     margin: $stack-xs $inline-s $stack-xs $stack-xs;
   }
 
