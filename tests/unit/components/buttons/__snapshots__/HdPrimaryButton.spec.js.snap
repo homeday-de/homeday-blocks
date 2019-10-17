@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`HdLoaderButton the component is rendered with mandatory label 1`] = `
-<button class="btn btn--primary">
-  label
-</button>
-`;
