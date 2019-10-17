@@ -130,7 +130,7 @@ export default {
   }
 
   &--success {
-    background-color:#63B65B;
+    background-color:$mantis;
     color: $white;
 
     a {
