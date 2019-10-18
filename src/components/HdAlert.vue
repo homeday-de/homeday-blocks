@@ -24,7 +24,7 @@ import infoIcon from '@/assets/icons/ic_info.svg';
 import warningIcon from '@/assets/icons/ic_warning.svg';
 import errorIcon from '@/assets/icons/ic_error.svg';
 
-const TYPES = {
+export const TYPES = {
   success: {
     icon: successIcon,
   },
