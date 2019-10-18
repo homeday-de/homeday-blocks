@@ -44,7 +44,6 @@ describe('HdAlert', () => {
     const ICON_URL = 'https://placeholder.pics/svg/24x24';
     wrapper.setProps({
       icon: ICON_URL,
-      noIcon: false,
     });
 
     expect(wrapper.find(ICON_SELECTOR).attributes().src).toBe(ICON_URL);
