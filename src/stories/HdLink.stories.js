@@ -21,7 +21,7 @@ storiesOf('HdLink', module)
       <HdLink
         :text=text
         :modifier=modifier
-        href="www.homeday.de"
+        href="https://www.homeday.de"
       />
     `,
   }), {
