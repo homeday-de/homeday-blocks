@@ -50,3 +50,20 @@ object {s: false, m: false, l: true, xl: false}
 > console.log(typeof indeterminate, indeterminate);
 boolean true
 ```
+
+It is worth noting that HdResponsive component takes a `breakpoints` prop as well in case you want to override global ones for a specific instance:
+```vue
+<template>
+<HdResponsive
+  #default="{ matches, indeterminate }"
+  :breakpoints="{
+    l: '(min-width:999px)',
+    gigantic: '(min-width: 2560px)',
+  }"
+>
+  <div v-if="matches.l">l breakpoint (overridden) matched</div>
+  <div v-else-if="matches.gigantic">gigantic breakpoint matched (specific to this HdResponsive instance)</div>
+  <div v-else-if="matches.m">m breakpoint matched (global breakpoints still available since objects are merged)</div>
+</HdResponsive>
+</template>
+```
