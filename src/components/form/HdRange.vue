@@ -1,22 +1,28 @@
 <template>
-  <div class='range'>
+  <div
+    :class="fieldClasses"
+    class="range field"
+  >
     <input type="range"
       :name="name"
-      :v-model="value"
+      ref="input"
+      :v-model="currentValue"
       :required="required"
       :disabled="disabled"
       :min="minValue"
       :max="maxValue"
       :step="rangeStep"
       @input="updateRangeDecoration"
-      @change="updateRangeDecoration"
+      @change="isLegacy ? updateRangeDecoration : null"
+      @focus="handleFocus"
+      @blur="handleBlur"
     >
-    <div class="range__thumb">
+    <div class="range__thumb" ref="thumb">
       <div class="range__thumb__bullet">
       </div>
     </div>
     <div class="range__decoration">
-      <div class="range__progress">
+      <div class="range__progress" ref="progress">
       </div>
     </div>
   </div>
@@ -33,7 +39,7 @@ export default {
     },
     required: {
       type: Boolean,
-      refault: false,
+      default: false,
     },
     disabled: {
       type: Boolean,
@@ -55,10 +61,26 @@ export default {
       type: Number,
       default: 1,
     },
+    isLegacy: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  data() {
+    return {
+      isActive: null,
+    };
+  },
+  computed: {
+    fieldClasses() {
+      return {
+        'field--active': this.isActive,
+        'field--disabled': this.disabled,
+      };
+    },
   },
   watch: {
-    value() {
-      this.input.value = this.value;
+    currentValue() {
       this.updateRangeDecoration();
     },
     minValue() {
@@ -67,36 +89,28 @@ export default {
     maxValue() {
       this.updateRangeDecoration();
     },
+    value(value) {
+      this.$refs.input.value = value;
+      this.updateRangeDecoration();
+    },
   },
   mounted() {
-    this.input = this.$el.querySelector('input');
-    this.progress = this.$el.querySelector('.range__progress');
+    this.input = this.$refs.input;
+    this.input.value = this.value;
+    this.progress = this.$refs.progress;
     this.progress.style.width = '1px';
-    this.thumb = this.$el.querySelector('.range__thumb');
 
-    if (this.minValue > this.maxValue) {
-      this.minValue = this.maxValue;
-      this.value = this.minValue;
-    }
+    this.thumb = this.$refs.thumb;
 
     this.updateRangeDecoration();
   },
-  computed: {
-  },
   methods: {
     updateRangeDecoration() {
-      if (this.input.value > this.maxValue) {
-        this.input.value = this.maxValue;
-      }
-
-      if (this.input.value < this.minValue) {
-        this.input.value = this.minValue;
-      }
-
-      this.displayValue = this.input.value;
+      const currentValue = this.currentValue();
+      this.$emit('input', parseFloat(currentValue));
 
       // the percentage of the value, between max and min. I.e. : 15 is the 50% between 10 and 20
-      const valuePercentage = this.input.value / ((this.$props.maxValue - this.$props.minValue) / 100);
+      const valuePercentage = currentValue / ((this.$props.maxValue - this.$props.minValue) / 100);
       const valuePercentageInputWidthPixels = this.input.offsetWidth * valuePercentage / 100;
 
       this.progress.style.transform = `scaleX(${valuePercentageInputWidthPixels})`;
@@ -104,17 +118,37 @@ export default {
       const thumbWidthOffset = this.thumb.offsetWidth * valuePercentage / 100;
       this.thumb.style.transform = `translateX(${valuePercentageInputWidthPixels - thumbWidthOffset}px)`;
     },
+    handleFocus() {
+      this.isActive = true;
+    },
+    handleBlur() {
+      this.isActive = false;
+    },
+    currentValue() {
+      const currentValue = this.input.value;
+      if (currentValue > this.maxValue) {
+        return this.maxValue;
+      }
+
+      if (currentValue < this.minValue) {
+        return 0;
+      }
+
+      return currentValue;
+    },
   },
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
   $shadow: 0 2px 4px 0 rgba(0,0,0,0.25);
   $range-thumb-size: $inset-l;
   $range-thumb-inner-bullet-size : $range-thumb-size / 2;
   $range-thumb-height: $inset-l;
   $range-bar-height: 6px;
   $range-thumb-border: 2px;
+  $activeColor: $vivid-blue;
+  $disabledColor: $heather;
 
   .range {
     $range: &;
@@ -198,21 +232,19 @@ export default {
     }
 
     &__decoration {
-      $decoration : &;
       position: absolute;
       top: 50%;
       margin-top: - 3px;
       width: 100%;
       height: $range-bar-height;
       border-radius: $range-bar-height;
-      background: $heather;
+      background: $disabledColor;
       z-index: 0;
       overflow: hidden;
 
       &:focus{
         box-shadow: none;
       }
-
     }
 
     $range-thumb-tot-size: $range-thumb-size + $range-thumb-border + $range-thumb-border;
@@ -220,8 +252,8 @@ export default {
       display: block;
       cursor: grab;
       box-shadow: $shadow;
-      border: $range-thumb-border solid $vivid-blue;
-      background: $heather;
+      border: $range-thumb-border solid $activeColor;
+      background: $disabledColor;
       height: $range-thumb-tot-size;
       width: $range-thumb-tot-size;
       border-radius: $range-thumb-size;
@@ -233,12 +265,17 @@ export default {
       margin-left: 0;
       z-index: 1;
 
+      .field--disabled & {
+        border-color: $disabledColor;
+        pointer-events: none;
+      }
+
       display: flex;
       align-items: center;
       justify-content: center;
 
       &__bullet{
-        background: $heather;
+        background: $disabledColor;
         position: absolute;
         height: $range-thumb-size;
         width: $range-thumb-size;
@@ -250,8 +287,8 @@ export default {
         transform-origin: center center;
 
 
-        #{$range}:hover &{
-          background-color: $vivid-blue;
+        #{$range}:not(.field--disabled):hover &{
+          background-color: $activeColor;
           transform: scale(1.25);
         }
 
@@ -265,9 +302,13 @@ export default {
     }
 
     &__progress {
-      background-color: $vivid-blue;
+      background-color: $activeColor;
       height: 100%;
       transform-origin: 0 center;
+
+      .field--disabled & {
+        background-color: $disabledColor;
+      }
     }
 
   }
