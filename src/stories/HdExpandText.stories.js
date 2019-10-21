@@ -17,22 +17,10 @@ storiesOf('HdExpandText', module)
           step: 1,
         }),
       },
-      linesMobile: {
-        type: Number,
-        default: number('Lines Mobile', 3, {
-          range: true,
-          min: 1,
-          max: 20,
-          step: 1,
-        }),
-      },
     },
     template: `
       <div style="max-width: 800px; margin: auto;">
-        <HdExpandText
-          :lines="lines"
-          :lines-mobile="linesMobile"
-        >
+        <HdExpandText :lines="lines">
           Ullamco. Cillum velit error, aliqua magni yet magni aute. Ad
           velitesse, for eius nesciunt eaque, et. Aute quia dolores. Quo aute.
           Minima incidunt nor in ea. Ullamco nihil, yet iste laboriosam nisi.
@@ -58,15 +46,6 @@ storiesOf('HdExpandText', module)
           step: 1,
         }),
       },
-      linesMobile: {
-        type: Number,
-        default: number('Lines Mobile', 3, {
-          range: true,
-          min: 1,
-          max: 20,
-          step: 1,
-        }),
-      },
     },
     data() {
       return {
@@ -85,7 +64,6 @@ storiesOf('HdExpandText', module)
       <div style="max-width: 800px; margin: auto;">
         <HdExpandText
           :lines="lines"
-          :lines-mobile="linesMobile"
           :texts="texts"
         >
           Ullamco. Cillum velit error, aliqua magni yet magni aute. Ad

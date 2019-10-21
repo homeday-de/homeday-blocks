@@ -1,0 +1,1 @@
+By default, `HdResponsive` component relies on global breakpoints set by the [Breakpoints service](https://github.com/homeday-de/homeday-blocks/tree/develop/src/services#breakpoints). It also supports the `breakpoints` prop which will be merged with the global breakpoints.

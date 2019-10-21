@@ -92,3 +92,6 @@ import HdDynamicForm from 'hd-blocks/components/form/HdDynamicForm.vue';
 
 ## Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## Services
+Together with the components, Homeday Blocks also provides useful services that can be reused across projects. You can read more about them in the services [documentation](https://github.com/homeday-de/homeday-blocks/tree/develop/src/services).
