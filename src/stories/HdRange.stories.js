@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/vue';
 
 import HdRange from 'hd-blocks/components/form/HdRange.vue';
 import FormWrapper from 'hd-blocks/storiesWrappers/FormWrapper';
-import { number } from '@storybook/addon-knobs';
+import { number, boolean } from '@storybook/addon-knobs';
 
 storiesOf('Form/HdRange', module)
   .addDecorator(FormWrapper)
@@ -16,6 +16,7 @@ storiesOf('Form/HdRange', module)
           :maxValue=maxValue
           :rangeStep=rangeStep
           :value="value"
+          :disabled="disabled"
         />
       </div>
     `,
@@ -30,16 +31,17 @@ storiesOf('Form/HdRange', module)
       },
       value: {
         type: Number,
-        default: number('Value', 50),
+        default: number('Value', 25),
       },
       rangeStep: {
         type: Number,
         default: number('Step', 1),
       },
-    },
-    methods: {
-      getValue() {
-        console.log('lol');
+      disabled: {
+        type: Boolean,
+        default: boolean('Disabled', false),
       },
+    },
+    watch: {
     },
   }));
