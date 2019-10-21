@@ -5,7 +5,7 @@ import { number } from '@storybook/addon-knobs';
 import HdExpandText from 'hd-blocks/components/HdExpandText.vue';
 
 storiesOf('HdExpandText', module)
-  .add('default', () => ({
+  .add('default 🎛', () => ({
     components: { HdExpandText },
     props: {
       lines: {
@@ -17,22 +17,10 @@ storiesOf('HdExpandText', module)
           step: 1,
         }),
       },
-      linesMobile: {
-        type: Number,
-        default: number('Lines Mobile', 3, {
-          range: true,
-          min: 1,
-          max: 20,
-          step: 1,
-        }),
-      },
     },
     template: `
       <div style="max-width: 800px; margin: auto;">
-        <HdExpandText
-          :lines="lines"
-          :lines-mobile="linesMobile"
-        >
+        <HdExpandText :lines="lines">
           Ullamco. Cillum velit error, aliqua magni yet magni aute. Ad
           velitesse, for eius nesciunt eaque, et. Aute quia dolores. Quo aute.
           Minima incidunt nor in ea. Ullamco nihil, yet iste laboriosam nisi.
@@ -46,21 +34,12 @@ storiesOf('HdExpandText', module)
       </div>
     `,
   }))
-  .add('custom translation', () => ({
+  .add('custom translation 🎛', () => ({
     components: { HdExpandText },
     props: {
       lines: {
         type: Number,
         default: number('Lines', 4, {
-          range: true,
-          min: 1,
-          max: 20,
-          step: 1,
-        }),
-      },
-      linesMobile: {
-        type: Number,
-        default: number('Lines Mobile', 3, {
           range: true,
           min: 1,
           max: 20,
@@ -85,7 +64,6 @@ storiesOf('HdExpandText', module)
       <div style="max-width: 800px; margin: auto;">
         <HdExpandText
           :lines="lines"
-          :lines-mobile="linesMobile"
           :texts="texts"
         >
           Ullamco. Cillum velit error, aliqua magni yet magni aute. Ad

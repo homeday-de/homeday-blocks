@@ -1,5 +1,8 @@
 <template>
-  <section class="gallery-overlay">
+  <section
+    class="gallery-overlay"
+    @click="onOverlayClick"
+  >
     <button
       ref="closeBtn"
       class="gallery-overlay__close"
@@ -60,7 +63,17 @@ export default {
         this.$refs.gallery.goNext();
       } else if (['Left', 'ArrowLeft'].includes(e.key)) {
         this.$refs.gallery.goPrev();
+      } else if (['Esc', 'Escape'].includes(e.key)) {
+        this.$emit('close');
       }
+    },
+    onOverlayClick(e) {
+      // Check if we clicked on the overlay
+      if (e.target !== this.$el) {
+        return;
+      }
+
+      this.$emit('close');
     },
   },
 };
@@ -81,7 +94,7 @@ export default {
   background-color: rgba(white, .9);
   animation: fadeIn .5s;
 
-  @media (min-width: $break-tablet) {
+  @media (min-width: $break-tablet) and (min-height: 800px) {
     padding: $inset-xl;
   }
 

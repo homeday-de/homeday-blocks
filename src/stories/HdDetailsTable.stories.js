@@ -6,7 +6,7 @@ import HdDetailsTable from 'hd-blocks/components/details-table/HdDetailsTable.vu
 import HdDetailsTableRow from 'hd-blocks/components/details-table/HdDetailsTableRow.vue';
 
 storiesOf('HdDetailsTable', module)
-  .add('default', () => ({
+  .add('default 🎛', () => ({
     components: {
       HdDetailsTable,
       HdDetailsTableRow,

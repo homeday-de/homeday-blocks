@@ -134,6 +134,10 @@ export default {
         types: ['(regions)'],
       };
 
+      if (!this.$refs.input) {
+        return;
+      }
+
       this.autocompleteInstance = new window.google.maps.places.Autocomplete(
         this.$refs.input,
         autocompleteOptions,

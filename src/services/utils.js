@@ -78,18 +78,6 @@ export const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min 
 
 export const circleToPath = (cx, cy, r) => `M ${cx} ${cy} m -${r}, 0 a ${r},${r} 0 1,0 ${r * 2},0 a ${r},${r} 0 1,0 -${r * 2},0`;
 
-export const loadJSAsync = (e, n, o) => {
-  const t = document,
-    a = "script",
-    i = t.createElement(a),
-    r = t.getElementsByTagName(a)[0];
-  i.src = "//" + e, n && i.addEventListener("load", function (e) {
-    n(null, e)
-  }, !1), o && i.addEventListener("error", function (e) {
-    o(e)
-  }, !1), r.parentNode.insertBefore(i, r)
-};
-
 // Returns an array of the desired length filled with indexes as values
 export function getArrayOfSize(size = 0) {
   return Array.from(Array(size), (_, x) => x);
@@ -116,7 +104,6 @@ export default {
   getPasswordStrength,
   formatNestedData,
   getRandomInt,
-  loadJSAsync,
   accentFold,
   getArrayOfSize,
   loadScript,

@@ -217,7 +217,7 @@ $iconWidth: 48px;
   }
   &:after {
     content: "";
-    background: url('~/assets/icons/ic_arrow_forward--idle-24px.svg');
+    background: url('~hd-blocks/assets/icons/ic_arrow_forward--idle-24px.svg');
     display: block;
     width: 24px;
     height: 24px;

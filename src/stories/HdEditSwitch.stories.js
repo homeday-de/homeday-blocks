@@ -8,7 +8,7 @@ import FormWrapper from 'hd-blocks/storiesWrappers/FormWrapper';
 
 storiesOf('HdEditSwitch', module)
   .addDecorator(FormWrapper)
-  .add('Concrete example', () => ({
+  .add('Concrete example 🎛', () => ({
     components: { HdEditSwitch, HdInput },
     template: `
     <HdEditSwitch

@@ -6,7 +6,7 @@ import { text, boolean, number } from '@storybook/addon-knobs';
 import HdLoaderButton from 'hd-blocks/components/buttons/HdLoaderButton.vue';
 
 storiesOf('HdLoaderButton', module)
-  .add('with label', () => ({
+  .add('with label 🎛', () => ({
     components: { HdLoaderButton },
     props: {
       label: {

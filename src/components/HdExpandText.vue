@@ -33,27 +33,17 @@
 <script>
 import merge from 'lodash/merge';
 import { getMessages } from 'hd-blocks/lang';
-import { isMobile } from 'hd-blocks/services/breakpoints';
+import { mediaMatches } from 'hd-blocks/services/breakpoints';
 import onResize from 'hd-blocks/services/on-resize';
-
-const getApproximatedLineHeight = () => {
-  if (isMobile()) {
-    return 28;
-  }
-
-  return 32;
-};
 
 export default {
   name: 'HdExpandText',
   props: {
+    // Can be an object with keys set to breakpoints and values the desired
+    // lines count
     lines: {
-      type: Number,
+      type: [Number, Object],
       default: 10,
-    },
-    linesMobile: {
-      type: Number,
-      default: 0,
     },
     // If a paragraph has a top margin, it should be specified here
     marginTop: {
@@ -72,6 +62,16 @@ export default {
     texts: {
       type: Object,
       default: () => ({}),
+    },
+    // Used to approximate the line height before the first mount
+    approximateLineHeight: {
+      type: Number,
+      default: 32,
+    },
+    // Used if lines is an object and no breakpoint is matched
+    linesFallback: {
+      type: Number,
+      default: 10,
     },
   },
   data() {
@@ -121,6 +121,23 @@ export default {
     toggleExpanded() {
       this.isExpanded = !this.isExpanded;
     },
+    getLinesCount() {
+      if (typeof this.lines === 'number') {
+        return this.lines;
+      }
+
+      let linesCount = this.linesFallback;
+
+      Object.keys(this.lines).forEach((breakpoint) => {
+        if (!mediaMatches(breakpoint)) {
+          return;
+        }
+
+        linesCount = this.lines[breakpoint];
+      });
+
+      return linesCount;
+    },
     calculateFullHeight() {
       if (!this.$refs.wrapper) {
         return;
@@ -130,18 +147,13 @@ export default {
     },
     resizeWrapper() {
       this.calculateFullHeight();
-      const linesMobile = this.linesMobile
-        ? this.linesMobile
-        : this.lines;
-      const lines = isMobile()
-        ? linesMobile
-        : this.lines;
+      const lines = this.getLinesCount();
 
       // Check if component is already mounted, if not, we approximate
       // the height
       const lineHeight = this.$refs.sample
         ? this.getScrollHeight(this.$refs.sample)
-        : getApproximatedLineHeight();
+        : this.approximateLineHeight;
       const linesHeight = (lineHeight * lines) + this.marginTop;
 
       if (linesHeight + this.marginBottom >= this.fullHeight) {
@@ -189,6 +201,11 @@ export default {
       top: 0;
       pointer-events: none;
       z-index: -1;
+      visibility: hidden;
+
+      &::before {
+        content: '\2800'
+      }
     }
   }
 

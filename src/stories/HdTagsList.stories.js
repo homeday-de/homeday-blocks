@@ -7,7 +7,7 @@ import ITEMS from './mocks/FORM_ITEMS';
 
 
 storiesOf('HdTagsList', module)
-  .add('default', () => ({
+  .add('default 🎛', () => ({
     components: { HdTagsList },
     template: `
       <hd-tags-list

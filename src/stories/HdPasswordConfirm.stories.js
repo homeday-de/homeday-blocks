@@ -15,7 +15,7 @@ storiesOf('Form/HdPasswordConfirm', module)
     `,
     methods: { onDataChange: action('dataChange') },
   }))
-  .add('with validity check', () => ({
+  .add('with validity check 🎛', () => ({
     components: { HdPasswordConfirm },
     props: {
       min: {
@@ -46,7 +46,7 @@ storiesOf('Form/HdPasswordConfirm', module)
       };
     },
   }))
-  .add('with strength bar style', () => ({
+  .add('with strength bar style 🎛', () => ({
     components: { HdPasswordConfirm },
     template: `
     <hd-password-confirm
@@ -67,7 +67,7 @@ storiesOf('Form/HdPasswordConfirm', module)
 
     },
   }))
-  .add('without strength', () => ({
+  .add('without strength 🎛', () => ({
     components: { HdPasswordConfirm },
     template: `
     <hd-password-confirm
