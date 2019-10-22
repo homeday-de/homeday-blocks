@@ -55,7 +55,7 @@ npm run test:unit:watch
 
 To watch for changes while writing tests for a single component:
 ```bash
-npm run test:unit:watch -- ComponentName
+npm run test:unit:watch ComponentName
 ```
 
 #### Gotchas

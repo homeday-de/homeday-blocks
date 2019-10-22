@@ -1,23 +1,29 @@
 <template>
   <button :class="computedClasses">
-    {{ text }}
+    <slot />
   </button>
 </template>
 
 <script>
-import { ALL, TYPES } from 'hd-blocks/components/buttons/TYPES';
+export const TYPES = {
+  DEFAULT: '',
+  PRIMARY: 'primary',
+  SECONDARY: 'secondary',
+  TERTIARY: 'tertiary',
+  FLAT: 'flat',
+  GHOST: 'ghost',
+};
 
 export default {
   name: 'HdButton',
   props: {
-    text: {
-      required: true,
-    },
     modifier: {
       type: String,
       default: TYPES.DEFAULT,
       validator(value) {
-        return ALL.includes(value);
+        const allTypes = Object.values(TYPES);
+
+        return allTypes.includes(value);
       },
     },
   },

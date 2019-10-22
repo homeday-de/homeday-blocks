@@ -1,16 +1,13 @@
 import { shallowMount } from '@vue/test-utils';
-import { TYPES } from 'hd-blocks/components/buttons/TYPES';
-import HdButton from '@/components/buttons/HdButton.vue';
+import HdButton, { TYPES } from '@/components/buttons/HdButton.vue';
 
 describe('HdButton', () => {
   let wrapper;
 
   beforeEach(() => {
-    const text = 'label';
-
     wrapper = shallowMount(HdButton, {
-      propsData: {
-        text,
+      slots: {
+        default: '<span>Button text</span>',
       },
     });
   });

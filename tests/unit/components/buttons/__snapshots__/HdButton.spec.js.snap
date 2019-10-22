@@ -1,37 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HdButton should render component with \`btn\` class 1`] = `
-<button class="btn">
-  label
-</button>
-`;
+exports[`HdButton should render component with \`btn\` class 1`] = `<button class="btn"><span>Button text</span></button>`;
 
-exports[`HdButton should render component with \`btn--flat\` class 1`] = `
-<button class="btn btn--flat">
-  label
-</button>
-`;
+exports[`HdButton should render component with \`btn--flat\` class 1`] = `<button class="btn btn--flat"><span>Button text</span></button>`;
 
-exports[`HdButton should render component with \`btn--ghost\` class 1`] = `
-<button class="btn btn--ghost">
-  label
-</button>
-`;
+exports[`HdButton should render component with \`btn--ghost\` class 1`] = `<button class="btn btn--ghost"><span>Button text</span></button>`;
 
-exports[`HdButton should render component with \`btn--primary\` class 1`] = `
-<button class="btn btn--primary">
-  label
-</button>
-`;
+exports[`HdButton should render component with \`btn--primary\` class 1`] = `<button class="btn btn--primary"><span>Button text</span></button>`;
 
-exports[`HdButton should render component with \`btn--secondary\` class 1`] = `
-<button class="btn btn--secondary">
-  label
-</button>
-`;
+exports[`HdButton should render component with \`btn--secondary\` class 1`] = `<button class="btn btn--secondary"><span>Button text</span></button>`;
 
-exports[`HdButton should render component with \`btn--tertiary\` class 1`] = `
-<button class="btn btn--tertiary">
-  label
-</button>
-`;
+exports[`HdButton should render component with \`btn--tertiary\` class 1`] = `<button class="btn btn--tertiary"><span>Button text</span></button>`;
