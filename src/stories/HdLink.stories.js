@@ -10,7 +10,7 @@ storiesOf('HdLink', module)
     props: {
       text: {
         type: String,
-        default: text('Text', 'Loader Button Label'),
+        default: text('Text (<slot>)', 'Awesome link'),
       },
       modifier: {
         type: String,
@@ -19,10 +19,11 @@ storiesOf('HdLink', module)
     },
     template: `
       <HdLink
-        :text=text
         :modifier=modifier
         href="https://www.homeday.de"
-      />
+      >
+        {{ text }}
+      </HdLink>
     `,
   }), {
     notes: {

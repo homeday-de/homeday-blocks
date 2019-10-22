@@ -4,7 +4,9 @@ You can also use it to render `<router-view>`, just provide the props `to` and i
 <template>
   <div>
     <h1>My component</h1>
-    <hd-link text="Click me" :to="{ name: 'login' }" />
+    <hd-link :to="{ name: 'login' }">
+      Click me
+    </hd-link>
   </div>
 </template>
 
