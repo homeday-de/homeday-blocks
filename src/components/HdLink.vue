@@ -2,9 +2,6 @@
 export default {
   name: 'HdLink',
   props: {
-    text: {
-      required: true,
-    },
     modifier: {
       type: String,
       default: 'primary',
@@ -45,7 +42,7 @@ export default {
     return createElement(
       tag,
       data,
-      this.text,
+      this.$slots.default,
     );
   },
 };

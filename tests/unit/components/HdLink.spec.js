@@ -1,15 +1,13 @@
-import { shallowMount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import HdLink from '@/components/HdLink.vue';
 
 describe('HdLink', () => {
   let wrapper;
 
   beforeEach(() => {
-    const text = 'text';
-
-    wrapper = shallowMount(HdLink, {
-      propsData: {
-        text,
+    wrapper = mount(HdLink, {
+      slots: {
+        default: '<span>Text</span>',
       },
     });
   });

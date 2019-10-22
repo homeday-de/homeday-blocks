@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HdLink should have link class 1`] = `<a class="link link--primary">text</a>`;
+exports[`HdLink should have link class 1`] = `<a class="link link--primary"><span>Text</span></a>`;
 
-exports[`HdLink should render <router-link> on :to 1`] = `<router-link class="link link--primary">text</router-link>`;
+exports[`HdLink should render <router-link> on :to 1`] = `<router-link class="link link--primary"><span>Text</span></router-link>`;
 
-exports[`HdLink should render link--secondary 1`] = `<a class="link link--secondary">text</a>`;
+exports[`HdLink should render link--secondary 1`] = `<a class="link link--secondary"><span>Text</span></a>`;
