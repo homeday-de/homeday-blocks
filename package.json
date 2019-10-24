@@ -1,6 +1,24 @@
 {
   "name": "homeday-blocks",
   "version": "2.5.0",
+  "description": "A Vue component library built by Homeday's frontend team.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/homeday-de/homeday-blocks.git"
+  },
+  "keywords": [
+    "vue",
+    "javascript",
+    "component library",
+    "storybook",
+    "homeday-blocks",
+    "services"
+  ],
+  "bugs": {
+    "url": "https://github.com/homeday-de/homeday-blocks/issues"
+  },
+  "homepage": "https://blocks.homeday.dev",
+  "license": "MIT",
   "scripts": {
     "lint": "vue-cli-service lint",
     "build:lib": "vue-cli-service build --target lib --name homeday-blocks ./src/components/index.js",
