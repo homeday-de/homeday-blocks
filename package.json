@@ -46,7 +46,7 @@
     "@storybook/addon-links": "5.2.4",
     "@storybook/addon-notes": "5.2.4",
     "@storybook/addon-viewport": "5.2.4",
-    "@storybook/theming": "5.2.4",
+    "@storybook/theming": "5.2.5",
     "@vue/cli-plugin-babel": "4.0.4",
     "@vue/cli-plugin-eslint": "4.0.4",
     "@vue/cli-plugin-pwa": "4.0.4",
