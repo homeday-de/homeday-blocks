@@ -41,7 +41,6 @@
     "babel-jest": "^23.6.0",
     "core-js": "^2.6.10",
     "coveralls": "^3.0.7",
-    "dompurify": "^2.0.6",
     "eslint": "^6.5.1",
     "eslint-plugin-vue": "5.2.3",
     "lint-staged": "9.4.2",

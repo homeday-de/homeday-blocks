@@ -1,16 +1,18 @@
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import HdAlert from '@/components/HdAlert.vue';
 
 const MESSAGE_SELECTOR = '.alert__message';
 const ICON_SELECTOR = '.alert__icon';
 
+const CONTENT = '<b>Default slot</b>';
+
 describe('HdAlert', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = mount(HdAlert, {
-      propsData: {
-        message: 'message test',
+    wrapper = shallowMount(HdAlert, {
+      slots: {
+        default: CONTENT,
       },
     });
   });
@@ -19,13 +21,8 @@ describe('HdAlert', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  test('renders a message correctly', () => {
-    const MESSAGE = 'An html <u><b><i>styled</i></b></u> message';
-    wrapper.setProps({
-      message: MESSAGE,
-    });
-
-    expect(wrapper.find(MESSAGE_SELECTOR).element.innerHTML).toBe(MESSAGE);
+  test('renders the slot correctly', () => {
+    expect(wrapper.find(MESSAGE_SELECTOR).element.innerHTML).toBe(CONTENT);
   });
 
   test('renders the right type', () => {

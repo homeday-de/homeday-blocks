@@ -13,8 +13,9 @@
     >
     <p
       class="alert__message"
-      v-html="message"
-    />
+    >
+      <slot />
+    </p>
   </div>
 </template>
 
@@ -48,10 +49,6 @@ export default {
       validator(type) {
         return TYPES[type] !== undefined;
       },
-    },
-    message: {
-      type: String,
-      default: '',
     },
     icon: {
       type: String,

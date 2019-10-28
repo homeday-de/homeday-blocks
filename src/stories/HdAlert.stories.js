@@ -1,5 +1,4 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { sanitize } from 'dompurify';
 import { storiesOf } from '@storybook/vue';
 import {
   text,
@@ -15,9 +14,9 @@ const stories = storiesOf('HdAlert', module);
 stories.add('Default', () => ({
   components: { HdAlert },
   template: `
-    <HdAlert
-      message="Karaoke means &#8220;empty orchestra&#8221; in Japanese."
-    />
+    <HdAlert>
+      Karaoke means &#8220;empty orchestra&#8221; in Japanese.
+    </HdAlert>
   `,
 }));
 
@@ -31,10 +30,9 @@ TYPES_ARRAY.forEach((type) => {
       };
     },
     template: `
-      <HdAlert
-        :type="type"
-        :message="message"
-      />
+      <HdAlert :type="type">
+        {{ message }}
+      </HdAlert>
     `,
   }));
 });
@@ -45,13 +43,6 @@ stories.add('Playground 🎛', () => ({
     type: {
       type: String,
       default: select('type', TYPES_ARRAY),
-    },
-    message: {
-      type: String,
-      default: text(
-        'message',
-        'A message with some <a class="link">html</a>',
-      ),
     },
     icon: {
       type: String,
@@ -65,17 +56,10 @@ stories.add('Playground 🎛', () => ({
   template: `
     <HdAlert
       :type="type"
-      :message="sanitize(message)"
       :icon="icon"
       :no-icon="noIcon"
-    />
+    >
+      You can play around with the knobs
+    </HdAlert>
   `,
-  methods: {
-    sanitize,
-  },
-}),
-{
-  knobs: {
-    escapeHTML: false,
-  },
-});
+}));
