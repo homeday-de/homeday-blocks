@@ -1,6 +1,24 @@
 {
   "name": "homeday-blocks",
   "version": "2.5.0",
+  "description": "A Vue component library built by Homeday's frontend team.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/homeday-de/homeday-blocks.git"
+  },
+  "keywords": [
+    "vue",
+    "javascript",
+    "component library",
+    "storybook",
+    "homeday-blocks",
+    "services"
+  ],
+  "bugs": {
+    "url": "https://github.com/homeday-de/homeday-blocks/issues"
+  },
+  "homepage": "https://blocks.homeday.dev",
+  "license": "MIT",
   "scripts": {
     "lint": "vue-cli-service lint",
     "build:lib": "vue-cli-service build --target lib --name homeday-blocks ./src/components/index.js",
@@ -29,17 +47,17 @@
     "@storybook/addon-notes": "5.2.4",
     "@storybook/addon-viewport": "5.2.4",
     "@storybook/theming": "5.2.4",
-    "@vue/cli-plugin-babel": "3.12.0",
-    "@vue/cli-plugin-eslint": "3.12.0",
-    "@vue/cli-plugin-pwa": "3.12.0",
-    "@vue/cli-plugin-unit-jest": "^3.12.0",
-    "@vue/cli-service": "4.0.0-rc.8",
+    "@vue/cli-plugin-babel": "4.0.4",
+    "@vue/cli-plugin-eslint": "4.0.4",
+    "@vue/cli-plugin-pwa": "4.0.4",
+    "@vue/cli-plugin-unit-jest": "^4.0.4",
+    "@vue/cli-service": "4.0.4",
     "@vue/eslint-config-airbnb": "4.0.1",
     "@vue/test-utils": "1.0.0-beta.22",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "10.0.3",
-    "babel-jest": "^23.6.0",
-    "core-js": "^2.6.10",
+    "babel-jest": "^24.9.0",
+    "core-js": "^3.3.2",
     "coveralls": "^3.0.7",
     "eslint": "^6.5.1",
     "eslint-plugin-vue": "5.2.3",
