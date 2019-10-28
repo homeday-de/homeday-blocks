@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HdAlert renders component 1`] = `
+<div class="alert alert--info"><img src="" class="alert__icon">
+  <p class="alert__message"><b>Default slot</b></p>
+</div>
+`;

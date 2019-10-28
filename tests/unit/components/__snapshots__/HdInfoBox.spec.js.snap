@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`HdInfoBox renders component 1`] = `
-<section class="info-box"><img src="" class="info-box__icon">
-  <p class="info-box__message">Hello, Homeday!</p>
-</section>
-`;

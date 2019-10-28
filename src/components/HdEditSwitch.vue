@@ -145,7 +145,6 @@ export default {
 </script>
 
 <style lang="scss">
-$_green: #63B65B;
 $_red: #E00016;
 
 .edit-switch {
@@ -167,7 +166,7 @@ $_red: #E00016;
         color: $vivid-blue;
       }
       &--save {
-        color: $_green;
+        color: $mantis;
       }
       &--cancel {
         color: $_red;
