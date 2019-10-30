@@ -152,10 +152,12 @@ export default {
     },
     handleFocus() {
       this.isActive = true;
+      this.$emit('focus');
     },
     handleBlur() {
       this.isActive = false;
       this.validate();
+      this.$emit('blur');
     },
     handleInput(e) {
       let newValue = e.target.value;
