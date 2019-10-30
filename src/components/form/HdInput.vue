@@ -143,6 +143,9 @@ export default {
     value() {
       this.validate();
     },
+    type(type) {
+      this.currentType = type;
+    },
   },
   methods: {
     clearInput() {
