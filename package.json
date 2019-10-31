@@ -1,6 +1,24 @@
 {
   "name": "homeday-blocks",
-  "version": "3.0.0",
+  "version": "4.0.0",
+  "description": "A Vue component library built by Homeday's frontend team.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/homeday-de/homeday-blocks.git"
+  },
+  "keywords": [
+    "vue",
+    "javascript",
+    "component library",
+    "storybook",
+    "homeday-blocks",
+    "services"
+  ],
+  "bugs": {
+    "url": "https://github.com/homeday-de/homeday-blocks/issues"
+  },
+  "homepage": "https://blocks.homeday.dev",
+  "license": "MIT",
   "scripts": {
     "lint": "vue-cli-service lint",
     "build:lib": "vue-cli-service build --target lib --name homeday-blocks ./src/components/index.js",
@@ -27,8 +45,8 @@
     "@storybook/addon-knobs": "5.2.4",
     "@storybook/addon-links": "5.2.4",
     "@storybook/addon-notes": "5.2.4",
-    "@storybook/theming": "5.2.4",
     "@storybook/addon-viewport": "5.2.4",
+    "@storybook/theming": "5.2.4",
     "@vue/cli-plugin-babel": "4.0.4",
     "@vue/cli-plugin-eslint": "4.0.4",
     "@vue/cli-plugin-pwa": "4.0.4",

@@ -19,7 +19,7 @@
       }}</vue-code-highlight>
       3- Consume the components
       <vue-code-highlight class="welcome__code">{{
-        `import HdGallery from 'hd-blocks/components/HdGallery.vue';`
+        'import HdGallery from \'hd-blocks/components/gallery/HdGallery.vue\';'
       }}</vue-code-highlight>
     </p>
 

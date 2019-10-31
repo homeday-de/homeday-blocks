@@ -250,8 +250,8 @@ export default {
     }
 
     #{$lB}--success & {
-      border-color: #63B65B;
-      background-color: #63B65B;
+      border-color: $mantis;
+      background-color: $mantis;
     }
 
     #{$lB}--error & {
@@ -311,7 +311,7 @@ export default {
 
     &--progressCircle path {
       fill: transparent;
-      stroke: #63B65B;
+      stroke: $mantis;
 
 
       #{$lB}--error & {

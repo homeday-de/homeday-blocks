@@ -143,6 +143,9 @@ export default {
     value() {
       this.validate();
     },
+    type(type) {
+      this.currentType = type;
+    },
   },
   methods: {
     clearInput() {
@@ -152,10 +155,12 @@ export default {
     },
     handleFocus() {
       this.isActive = true;
+      this.$emit('focus');
     },
     handleBlur() {
       this.isActive = false;
       this.validate();
+      this.$emit('blur');
     },
     handleInput(e) {
       let newValue = e.target.value;
