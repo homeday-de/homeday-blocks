@@ -4,9 +4,10 @@
     class="range field"
   >
     <input type="range"
-      :name="name"
       ref="input"
-      :v-model="currentValue"
+      v-model="currentValue"
+      :id="name"
+      :name="name"
       :required="required"
       :disabled="disabled"
       :min="minValue"
@@ -53,10 +54,6 @@ export default {
       type: Number,
       default: 100,
     },
-    value: {
-      type: Number,
-      default: 0,
-    },
     rangeStep: {
       type: Number,
       default: 1,
@@ -65,10 +62,15 @@ export default {
       type: Boolean,
       default: false,
     },
+    value: {
+      type: Number,
+      default: 0,
+    },
   },
   data() {
     return {
       isActive: null,
+      currentValue: this.value,
     };
   },
   computed: {
@@ -80,23 +82,21 @@ export default {
     },
   },
   watch: {
-    currentValue() {
-      this.updateRangeDecoration();
-    },
     minValue() {
       this.updateRangeDecoration();
     },
     maxValue() {
       this.updateRangeDecoration();
     },
-    value(value) {
-      this.$refs.input.value = value;
+    rangeStep() {
+      this.updateRangeDecoration();
+    },
+    value() {
+      this.currentValue = this.value;
       this.updateRangeDecoration();
     },
   },
   mounted() {
-    this.input = this.$refs.input;
-    this.input.value = this.value;
     this.progress = this.$refs.progress;
     this.progress.style.width = '1px';
 
@@ -105,13 +105,23 @@ export default {
     this.updateRangeDecoration();
   },
   methods: {
+    normalizeAndEmit() {
+      if (this.currentValue > this.maxValue) {
+        this.currentValue = this.maxValue;
+      } else if (this.currentValue < this.minValue) {
+        this.currentValue = this.minValue;
+      }
+
+      this.currentValue = this.currentValue - (this.currentValue % this.rangeStep);
+
+      this.$emit('input', parseFloat(this.currentValue));
+    },
     updateRangeDecoration() {
-      const currentValue = this.currentValue();
-      this.$emit('input', parseFloat(currentValue));
+      this.normalizeAndEmit();
 
       // the percentage of the value, between max and min. I.e. : 15 is the 50% between 10 and 20
-      const valuePercentage = currentValue / ((this.$props.maxValue - this.$props.minValue) / 100);
-      const valuePercentageInputWidthPixels = this.input.offsetWidth * valuePercentage / 100;
+      const valuePercentage = this.currentValue / ((this.$props.maxValue - this.$props.minValue) / 100);
+      const valuePercentageInputWidthPixels = this.$refs.input.offsetWidth * valuePercentage / 100;
 
       this.progress.style.transform = `scaleX(${valuePercentageInputWidthPixels})`;
 
@@ -123,18 +133,6 @@ export default {
     },
     handleBlur() {
       this.isActive = false;
-    },
-    currentValue() {
-      const currentValue = this.input.value;
-      if (currentValue > this.maxValue) {
-        return this.maxValue;
-      }
-
-      if (currentValue < this.minValue) {
-        return 0;
-      }
-
-      return currentValue;
     },
   },
 };
