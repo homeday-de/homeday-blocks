@@ -34,6 +34,7 @@ describe('HdRange', () => {
     });
 
     expect(parseFloat(wrapper.find('input').element.value)).toBe(maxValue);
+    expect(wrapper.emitted('input')[1][0]).toEqual(maxValue);
   });
 
   test('menages the min value', () => {
@@ -42,5 +43,6 @@ describe('HdRange', () => {
     });
 
     expect(parseFloat(wrapper.find('input').element.value)).toBe(minValue);
+    expect(wrapper.emitted('input')[1][0]).toEqual(minValue);
   });
 });
