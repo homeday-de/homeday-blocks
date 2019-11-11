@@ -15,9 +15,10 @@ storiesOf('Form/HdRange', module)
           :minValue=minValue
           :maxValue=maxValue
           :rangeStep=rangeStep
-          :value="value"
           :disabled="disabled"
+          v-model="value"
         />
+        <p>This values {{ value }}</p>
       </div>
     `,
     props: {
@@ -29,19 +30,18 @@ storiesOf('Form/HdRange', module)
         type: Number,
         default: number('Maximum Value', 100),
       },
-      value: {
-        type: Number,
-        default: number('Value', 25),
-      },
       rangeStep: {
         type: Number,
-        default: number('Step', 1),
+        default: number('Step', 10),
       },
       disabled: {
         type: Boolean,
         default: boolean('Disabled', false),
       },
     },
-    watch: {
+    data() {
+      return {
+        value: 33,
+      };
     },
   }));
