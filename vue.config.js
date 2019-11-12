@@ -22,4 +22,5 @@ module.exports = {
       },
     },
   },
+  transpileDependencies: ['vue-zoomer'],
 };
