@@ -20,10 +20,10 @@
 </template>
 
 <script>
-import successIcon from '@/assets/icons/ic_success.svg';
-import infoIcon from '@/assets/icons/ic_info.svg';
-import warningIcon from '@/assets/icons/ic_warning.svg';
-import errorIcon from '@/assets/icons/ic_error.svg';
+import successIcon from 'hd-blocks/assets/icons/ic_success.svg';
+import infoIcon from 'hd-blocks/assets/icons/ic_info.svg';
+import warningIcon from 'hd-blocks/assets/icons/ic_warning.svg';
+import errorIcon from 'hd-blocks/assets/icons/ic_error.svg';
 
 export const TYPES = {
   success: {
