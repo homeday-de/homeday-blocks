@@ -5,6 +5,7 @@ import FIELD_CLASSES from './FIELD_CLASSES';
 
 const ERROR_SELECTOR = '.field__error';
 const HELPER_SELECTOR = '.field__error--helper';
+const ICON_SELECTOR = '.field__icon';
 
 describe('HdSelect', () => {
   const wrapperFactory = wrapperFactoryBuilder(HdSelect, {
@@ -71,5 +72,19 @@ describe('HdSelect', () => {
       disabled: true,
     });
     expect(wrapper.find('select').attributes().disabled).toBe('disabled');
+  });
+
+  test('Can render an icon', () => {
+    const ICON_PATH = 'fake/icon.svg';
+
+    expect(wrapper.classes()).not.toContain(FIELD_CLASSES.HAS_ICON);
+    expect(wrapper.find(ICON_SELECTOR).exists()).toBe(false);
+
+    wrapper.setProps({
+      icon: ICON_PATH,
+    });
+
+    expect(wrapper.classes()).toContain(FIELD_CLASSES.HAS_ICON);
+    expect(wrapper.find(ICON_SELECTOR).exists()).toBe(true);
   });
 });

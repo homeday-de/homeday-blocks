@@ -4,6 +4,7 @@ import { action } from '@storybook/addon-actions';
 
 import HdInput from 'hd-blocks/components/form/HdInput.vue';
 import FormWrapper from 'hd-blocks/storiesWrappers/FormWrapper';
+import icon from './assets/ic_user.svg';
 
 storiesOf('Form/HdInput', module)
   .addDecorator(FormWrapper)
@@ -161,6 +162,24 @@ storiesOf('Form/HdInput', module)
     data() {
       return {
         value: '',
+      };
+    },
+  }))
+  .add('with icon', () => ({
+    components: { HdInput },
+    template: `
+      <HdInput
+        v-model="value"
+        :icon="icon"
+        name="test"
+        label="Label"
+        placeholder="Placeholder..."
+      />
+    `,
+    data() {
+      return {
+        value: '',
+        icon,
       };
     },
   }));
