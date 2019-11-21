@@ -277,6 +277,7 @@ $focusedLabelTop: 5px;
   }
 
   &__input {
+    font-family: $font-primary;
     font-size: 18px;
     line-height: 28px;
     color: $cello;
@@ -325,7 +326,13 @@ $focusedLabelTop: 5px;
     &::-ms-expand {
       display: none;
     }
+    &:required {
+      box-shadow: none;
+    }
     &::-ms-clear {
+      display: none;
+    }
+    &::-ms-reveal {
       display: none;
     }
     #{$f}--filled:not(#{$f}--active):not(#{$f}--invalid) & {
