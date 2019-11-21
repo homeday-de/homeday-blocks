@@ -76,7 +76,7 @@ storiesOf('Form/HdSplitInput', module)
       },
     },
   }))
-  .add('with icon', () => ({
+  .add('with icon 🎛', () => ({
     components: { HdSplitInput },
     template: `
       <HdSplitInput
@@ -87,10 +87,15 @@ storiesOf('Form/HdSplitInput', module)
         label="Label"
       />
     `,
+    props: {
+      icon: {
+        type: String,
+        default: text('icon', icon),
+      },
+    },
     data() {
       return {
         value: {},
-        icon,
       };
     },
     computed: {

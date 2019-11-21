@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
+import { text } from '@storybook/addon-knobs';
 
 import HdInput from 'hd-blocks/components/form/HdInput.vue';
 import FormWrapper from 'hd-blocks/storiesWrappers/FormWrapper';
@@ -165,7 +166,7 @@ storiesOf('Form/HdInput', module)
       };
     },
   }))
-  .add('with icon', () => ({
+  .add('with icon 🎛', () => ({
     components: { HdInput },
     template: `
       <HdInput
@@ -176,10 +177,15 @@ storiesOf('Form/HdInput', module)
         placeholder="Placeholder..."
       />
     `,
+    props: {
+      icon: {
+        type: String,
+        default: text('icon', icon),
+      },
+    },
     data() {
       return {
         value: '',
-        icon,
       };
     },
   }));

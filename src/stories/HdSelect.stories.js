@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies, no-console */
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
+import { text } from '@storybook/addon-knobs';
 
 import HdSelect from 'hd-blocks/components/form/HdSelect.vue';
 import FormWrapper from 'hd-blocks/storiesWrappers/FormWrapper';
@@ -93,7 +94,7 @@ storiesOf('Form/HdSelect', module)
       };
     },
   }))
-  .add('with icon', () => ({
+  .add('with icon 🎛', () => ({
     components: { HdSelect },
     template: `
       <div>
@@ -106,11 +107,16 @@ storiesOf('Form/HdSelect', module)
         />
       </div>
     `,
+    props: {
+      icon: {
+        type: String,
+        default: text('icon', icon),
+      },
+    },
     data() {
       return {
         value: ITEMS[2].value,
         ITEMS,
-        icon,
       };
     },
   }));
