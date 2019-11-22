@@ -4,6 +4,7 @@ import { action } from '@storybook/addon-actions';
 
 import HdTextarea from 'hd-blocks/components/form/HdTextarea.vue';
 import FormWrapper from 'hd-blocks/storiesWrappers/FormWrapper';
+import icon from './assets/ic_user.svg';
 
 storiesOf('Form/HdTextarea', module)
   .addDecorator(FormWrapper)
@@ -94,6 +95,24 @@ storiesOf('Form/HdTextarea', module)
     data() {
       return {
         value: '',
+      };
+    },
+  }))
+  .add('with icon', () => ({
+    components: { HdTextarea },
+    template: `
+      <HdTextarea
+        v-model="value"
+        :icon="icon"
+        name="test"
+        label="Label"
+        placeholder="Placeholder..."
+      />
+    `,
+    data() {
+      return {
+        value: '',
+        icon,
       };
     },
   }));

@@ -5,6 +5,7 @@ import HdTextarea from '@/components/form/HdTextarea.vue';
 const ERROR_SELECTOR = '.field__error';
 const HELPER_SELECTOR = '.field__error--helper';
 const TEST_VALUE = 'new value';
+const ICON_SELECTOR = '.field__icon';
 
 describe('HdTextarea', () => {
   const wrapperFactory = wrapperFactoryBuilder(
@@ -73,5 +74,19 @@ describe('HdTextarea', () => {
       disabled: true,
     });
     expect(wrapper.find('textarea').attributes().disabled).toBe('disabled');
+  });
+
+  test('Can render an icon', () => {
+    const ICON_PATH = 'fake/icon.svg';
+
+    expect(wrapper.classes()).not.toContain(FIELD_CLASSES.HAS_ICON);
+    expect(wrapper.find(ICON_SELECTOR).exists()).toBe(false);
+
+    wrapper.setProps({
+      icon: ICON_PATH,
+    });
+
+    expect(wrapper.classes()).toContain(FIELD_CLASSES.HAS_ICON);
+    expect(wrapper.find(ICON_SELECTOR).exists()).toBe(true);
   });
 });

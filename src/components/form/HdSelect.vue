@@ -2,6 +2,12 @@
   <div
     :class="fieldClasses"
     class="field field--select">
+    <img
+      v-if="icon"
+      :src="icon"
+      role="presentation"
+      class="field__icon"
+    >
     <select
       ref="input"
       v-model="currentValue"
@@ -78,6 +84,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    icon: {
+      type: String,
+      default: '',
+    },
   },
   data() {
     return {
@@ -102,6 +112,7 @@ export default {
         'field--valid': false,
         'field--invalid': this.isValid === false,
         'field--disabled': this.disabled,
+        'field--hasIcon': this.icon,
       };
     },
   },
@@ -151,9 +162,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .field {
-  &__label {
-    left: 0;
-  }
   &__error {
     width: 100%;
     text-align: left;

@@ -3,6 +3,12 @@
     :class="fieldClasses"
     class="field field--input"
   >
+    <img
+      v-if="icon"
+      :src="icon"
+      role="presentation"
+      class="field__icon"
+    >
     <input
       :autocomplete="autocomplete"
       :value="value"
@@ -109,6 +115,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    icon: {
+      type: String,
+      default: '',
+    },
   },
   data() {
     return {
@@ -136,6 +146,7 @@ export default {
         'field--invalid': this.isValid === false,
         'field--hasControl': this.showVisibilityToggle,
         'field--disabled': this.disabled,
+        'field--hasIcon': this.icon,
       };
     },
   },
@@ -217,9 +228,6 @@ export default {
 @import 'hd-blocks/styles/inputs.scss';
 
 .field {
-  &__label {
-    left: 0;
-  }
   &__error {
     width: 100%;
     text-align: left;

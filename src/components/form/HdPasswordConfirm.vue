@@ -6,6 +6,7 @@
       name="passwordMain"
       class="confirm-password__input"
       type="password"
+      :icon="icon"
       :label="t.FORM.PASSWORD.LABEL"
       :required="required"/>
 
@@ -23,6 +24,7 @@
       name="passwordConfirm"
       class="confirmPassword__input"
       type="password"
+      :icon="icon"
       :label="t.FORM.PASSWORD.LABEL_CONFIRM"
       :required="required"/>
   </div>
@@ -63,6 +65,10 @@ export default {
     strengthBarStyle: {
       type: Boolean,
       default: false,
+    },
+    icon: {
+      type: String,
+      default: '',
     },
     lang: String,
     texts: {
