@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HdInput is rendered as expected 1`] = `
+<div class="field field--input">
+  <!----> <input autocomplete="on" type="text" id="test name" name="test name" placeholder="" class="field__input"> <label for="test name" class="field__label">
+    test label
+  </label>
+  <!---->
+  <!----> <span class="field__border"></span></div>
+`;

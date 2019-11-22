@@ -5,6 +5,7 @@ import { text } from '@storybook/addon-knobs';
 
 import HdSplitInput from 'hd-blocks/components/form/HdSplitInput.vue';
 import FormWrapper from 'hd-blocks/storiesWrappers/FormWrapper';
+import icon from './assets/ic_user.svg';
 
 storiesOf('Form/HdSplitInput', module)
   .addDecorator(FormWrapper)
@@ -55,6 +56,43 @@ storiesOf('Form/HdSplitInput', module)
         label="Label"
       />
     `,
+    data() {
+      return {
+        value: {},
+      };
+    },
+    computed: {
+      fields() {
+        return [
+          {
+            placeholder: 'Input 1',
+            name: 'value1',
+          },
+          {
+            placeholder: 'Input 2',
+            name: 'value2',
+          },
+        ];
+      },
+    },
+  }))
+  .add('with icon 🎛', () => ({
+    components: { HdSplitInput },
+    template: `
+      <HdSplitInput
+        v-model="value"
+        :fields="fields"
+        :icon="icon"
+        name="test"
+        label="Label"
+      />
+    `,
+    props: {
+      icon: {
+        type: String,
+        default: text('icon', icon),
+      },
+    },
     data() {
       return {
         value: {},

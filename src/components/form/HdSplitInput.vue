@@ -3,6 +3,12 @@
     :class="fieldClasses"
     class="field field--double"
   >
+    <img
+      v-if="icon"
+      :src="icon"
+      role="presentation"
+      class="field__icon"
+    >
     <span class="field__border"/>
     <div class="field__double-input">
       <template
@@ -89,6 +95,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    icon: {
+      type: String,
+      default: '',
+    },
     lang: {
       type: String,
       default: 'de',
@@ -121,6 +131,7 @@ export default {
         'field--filled': !this.isEmpty,
         'field--invalid': this.isValid === false,
         'field--disabled': this.disabled,
+        'field--hasIcon': this.icon,
       };
     },
   },
@@ -203,9 +214,6 @@ export default {
         margin-top: $stack-m;
       }
     }
-  }
-  &__label {
-    left: 0;
   }
   &__error {
     width: 100%;

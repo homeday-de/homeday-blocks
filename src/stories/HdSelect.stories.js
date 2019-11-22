@@ -1,10 +1,12 @@
 /* eslint-disable import/no-extraneous-dependencies, no-console */
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
+import { text } from '@storybook/addon-knobs';
 
 import HdSelect from 'hd-blocks/components/form/HdSelect.vue';
 import FormWrapper from 'hd-blocks/storiesWrappers/FormWrapper';
 import ITEMS from './mocks/FORM_ITEMS';
+import icon from './assets/ic_user.svg';
 
 storiesOf('Form/HdSelect', module)
   .addDecorator(FormWrapper)
@@ -85,6 +87,32 @@ storiesOf('Form/HdSelect', module)
         />
       </div>
     `,
+    data() {
+      return {
+        value: ITEMS[2].value,
+        ITEMS,
+      };
+    },
+  }))
+  .add('with icon 🎛', () => ({
+    components: { HdSelect },
+    template: `
+      <div>
+        <hd-select
+          v-model="value"
+          :options="ITEMS"
+          :icon="icon"
+          name="test"
+          label="Label"
+        />
+      </div>
+    `,
+    props: {
+      icon: {
+        type: String,
+        default: text('icon', icon),
+      },
+    },
     data() {
       return {
         value: ITEMS[2].value,

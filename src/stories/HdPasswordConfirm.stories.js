@@ -1,10 +1,15 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
-import { number, boolean } from '@storybook/addon-knobs';
+import {
+  number,
+  boolean,
+  text,
+} from '@storybook/addon-knobs';
 
 import HdPasswordConfirm from 'hd-blocks/components/form/HdPasswordConfirm.vue';
 import FormWrapper from 'hd-blocks/storiesWrappers/FormWrapper';
+import icon from './assets/ic_lock.svg';
 
 storiesOf('Form/HdPasswordConfirm', module)
   .addDecorator(FormWrapper)
@@ -82,6 +87,20 @@ storiesOf('Form/HdPasswordConfirm', module)
       withStrength: {
         type: Boolean,
         default: boolean('withStrength', false),
+      },
+    },
+  }))
+  .add('with icon 🎛', () => ({
+    components: { HdPasswordConfirm },
+    template: `
+    <hd-password-confirm
+      :icon="icon"
+    />
+    `,
+    props: {
+      icon: {
+        type: String,
+        default: text('icon', icon),
       },
     },
   }));

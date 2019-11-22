@@ -5,6 +5,7 @@ import HdSplitInput from '@/components/form/HdSplitInput.vue';
 const ERROR_SELECTOR = '.field__error';
 const HELPER_SELECTOR = '.field__error--helper';
 const SEPARATOR_SELECTOR = '.field__double-input__separator__symbol';
+const ICON_SELECTOR = '.field__icon';
 
 const TEST_VALUE = 'new value';
 const TEST_FIELDS = [
@@ -107,5 +108,19 @@ describe('HdSplitInput', () => {
       .findAll('input')
       .filter(input => input.attributes().disabled !== 'disabled');
     expect(enabledInputs.length).toBe(0);
+  });
+
+  test('Can render an icon', () => {
+    const ICON_PATH = 'fake/icon.svg';
+
+    expect(wrapper.classes()).not.toContain(FIELD_CLASSES.HAS_ICON);
+    expect(wrapper.find(ICON_SELECTOR).exists()).toBe(false);
+
+    wrapper.setProps({
+      icon: ICON_PATH,
+    });
+
+    expect(wrapper.classes()).toContain(FIELD_CLASSES.HAS_ICON);
+    expect(wrapper.find(ICON_SELECTOR).exists()).toBe(true);
   });
 });

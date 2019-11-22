@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HdSelect is rendered as expected 1`] = `
-<div class="field field--select"><select id="testSelect" name="testSelect" class="field__input">
+<div class="field field--select">
+  <!----> <select id="testSelect" name="testSelect" class="field__input">
     <option value="jon">Jon "Snow"</option>
     <option value="daenerys">Daenerys</option>
     <option value="nightKing">The Night King</option>

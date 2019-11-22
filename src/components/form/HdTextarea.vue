@@ -2,6 +2,12 @@
   <div
     :class="fieldClasses"
     class="field field--textarea">
+    <img
+      v-if="icon"
+      :src="icon"
+      role="presentation"
+      class="field__icon"
+    >
     <textarea
       ref="input"
       :autocomplete="autocomplete"
@@ -91,6 +97,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    icon: {
+      type: String,
+      default: '',
+    },
   },
   data() {
     return {
@@ -114,6 +124,7 @@ export default {
         'field--invalid': this.isValid === false,
         'field--no-label': this.label === '',
         'field--disabled': this.disabled,
+        'field--hasIcon': this.icon,
       };
     },
     placeholderAttr() {
@@ -190,9 +201,6 @@ export default {
     }
   }
 
-  &__label {
-    left: 0;
-  }
   &__input {
     resize: vertical;
   }

@@ -25,12 +25,13 @@ import infoIcon from 'hd-blocks/assets/icons/ic_info.svg';
 import warningIcon from 'hd-blocks/assets/icons/ic_warning.svg';
 import errorIcon from 'hd-blocks/assets/icons/ic_error.svg';
 
+// The first item is the default
 export const TYPES = {
-  success: {
-    icon: successIcon,
-  },
   info: {
     icon: infoIcon,
+  },
+  success: {
+    icon: successIcon,
   },
   warning: {
     icon: warningIcon,
@@ -45,7 +46,7 @@ export default {
   props: {
     type: {
       type: String,
-      default: 'info',
+      default: Object.keys(TYPES)[0],
       validator(type) {
         return TYPES[type] !== undefined;
       },
