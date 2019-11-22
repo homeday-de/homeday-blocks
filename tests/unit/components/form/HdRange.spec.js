@@ -24,7 +24,6 @@ describe('HdRange', () => {
   });
 
   test('renders with preselected value', () => {
-    console.error(wrapper.find('input'));
     expect(parseFloat(wrapper.find('input').element.value)).toBe(initialValue);
   });
 
@@ -44,5 +43,57 @@ describe('HdRange', () => {
 
     expect(parseFloat(wrapper.find('input').element.value)).toBe(minValue);
     expect(wrapper.emitted('input')[1][0]).toEqual(minValue);
+  });
+
+  test('updates decoration at input event emit', () => {
+    const mockedUpdateRangeDecoration = jest.fn();
+    wrapper.setMethods({ updateRangeDecoration: mockedUpdateRangeDecoration });
+    wrapper.find('input').trigger('input');
+
+    expect(mockedUpdateRangeDecoration).toHaveBeenCalledTimes(1);
+  });
+
+  test('legacy browser flag on, it updates decoration at change event emit', () => {
+    const mockedUpdateRangeDecoration = jest.fn();
+    wrapper.setMethods({ updateRangeDecoration: mockedUpdateRangeDecoration });
+
+    wrapper.setProps({
+      isLegacy: true,
+    });
+
+    wrapper.find('input').trigger('change');
+
+    expect(mockedUpdateRangeDecoration).toHaveBeenCalledTimes(1);
+  });
+
+  test('legacy browser flag off, it does not updates decoration at change event emit', () => {
+    const mockedUpdateRangeDecoration = jest.fn();
+    wrapper.setMethods({ updateRangeDecoration: mockedUpdateRangeDecoration });
+
+    wrapper.setProps({
+      isLegacy: false,
+    });
+
+    wrapper.find('input').trigger('change');
+
+    expect(mockedUpdateRangeDecoration).toHaveBeenCalledTimes(0);
+  });
+
+  test('input focus emit is managed', () => {
+    const mockedHandleFocus = jest.fn();
+    wrapper.setMethods({ handleFocus: mockedHandleFocus });
+
+    wrapper.find('input').trigger('focus');
+
+    expect(mockedHandleFocus).toHaveBeenCalledTimes(1);
+  });
+
+  test('input blur emit is managed', () => {
+    const mockedHandleBlur = jest.fn();
+    wrapper.setMethods({ handleBlur: mockedHandleBlur });
+
+    wrapper.find('input').trigger('blur');
+
+    expect(mockedHandleBlur).toHaveBeenCalledTimes(1);
   });
 });
