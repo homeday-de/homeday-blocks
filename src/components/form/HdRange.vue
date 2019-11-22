@@ -14,7 +14,7 @@
       :max="maxValue"
       :step="rangeStep"
       @input="updateRangeDecoration"
-      @change="isLegacy ? updateRangeDecoration : null"
+      @change="handleChange"
       @focus="handleFocus"
       @blur="handleBlur"
     >
@@ -133,6 +133,13 @@ export default {
     },
     handleBlur() {
       this.isActive = false;
+    },
+    handleChange() {
+      if (!this.isLegacy) {
+        return;
+      }
+
+      this.updateRangeDecoration();
     },
   },
 };
