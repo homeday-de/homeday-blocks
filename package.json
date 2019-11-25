@@ -79,7 +79,7 @@
   ],
   "gitHooks": {
     "pre-commit": "lint-staged",
-    "pre-push": "npm run test:unit"
+    "pre-push": "npm run test:unit && npm run build:storybook && npm run test:percy"
   },
   "lint-staged": {
     "*.js": [
