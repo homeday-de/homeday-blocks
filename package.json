@@ -21,6 +21,7 @@
   "license": "MIT",
   "scripts": {
     "lint": "vue-cli-service lint",
+    "lint:ci": "vue-cli-service lint --no-fix",
     "build:lib": "vue-cli-service build --target lib --name homeday-blocks ./src/components/index.js",
     "build:storybook": "vue-cli-service storybook:build -c config/storybook",
     "serve:storybook": "vue-cli-service storybook:serve -p 6006 -c config/storybook",
@@ -29,6 +30,7 @@
     "test:unit:watch": "npm run test:unit -- --watch",
     "test:unit:ci": "npm run test:unit -- --ci --coverage",
     "test:percy": "npm run build:storybook && percy-storybook",
+    "test:percy:ci": "percy-storybook",
     "coverage": "cat ./coverage/lcov.info | coveralls -v"
   },
   "dependencies": {
