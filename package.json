@@ -29,8 +29,7 @@
     "test:unit:snapshot": "vue-cli-service test:unit -u",
     "test:unit:watch": "npm run test:unit -- --watch",
     "test:unit:ci": "npm run test:unit -- --ci --coverage",
-    "test:percy": "npm run build:storybook && percy-storybook",
-    "test:percy:ci": "percy-storybook",
+    "test:percy": "if [ $PERCY_TOKEN ]; then percy-storybook; else echo 'Skipping test: PERCY_TOKEN is not defined'; fi",
     "coverage": "cat ./coverage/lcov.info | coveralls -v"
   },
   "dependencies": {

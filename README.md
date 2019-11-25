@@ -62,7 +62,9 @@ npm run test:unit:watch ComponentName
 
 ### Screenshot tests on Percy
 
-Make sure you've `PERCY_TOKEN` exported first. It can be obtained from Percy dashboard if you've access to it.
+Make sure you've `PERCY_TOKEN` exported first and the [project is built](#build).
+
+*The token can be obtained from Percy dashboard if you've access to it.*
 
 ```bash
 npm run test:percy

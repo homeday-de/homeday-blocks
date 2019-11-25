@@ -13,7 +13,7 @@ before_script:
 script:
 - npm run test:unit:ci
 - npm run build:storybook
-- npm run test:percy:ci
+- npm run test:percy
 
 after_success:
 - npm run coverage
