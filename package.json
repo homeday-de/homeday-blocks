@@ -40,6 +40,7 @@
     "vue-zoomer": "homeday-de/vue-zoomer#0.4.0"
   },
   "devDependencies": {
+    "@percy/storybook": "3.2.0",
     "@storybook/addon-actions": "5.2.4",
     "@storybook/addon-console": "1.2.1",
     "@storybook/addon-knobs": "5.2.4",
