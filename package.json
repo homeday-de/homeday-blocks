@@ -28,6 +28,7 @@
     "test:unit:snapshot": "vue-cli-service test:unit -u",
     "test:unit:watch": "npm run test:unit -- --watch",
     "test:unit:ci": "npm run test:unit -- --ci --coverage",
+    "test:percy": "npm run build:storybook && percy-storybook",
     "coverage": "cat ./coverage/lcov.info | coveralls -v"
   },
   "dependencies": {

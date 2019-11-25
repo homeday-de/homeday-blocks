@@ -58,6 +58,12 @@ To watch for changes while writing tests for a single component:
 npm run test:unit:watch ComponentName
 ```
 
+### Screenshot tests on Percy
+Make sure you've `PERCY_TOKEN` exported first. It can be obtained from Percy dashboard if you've access to it.
+```bash
+npm run test:percy
+```
+
 #### Gotchas
 - `tests/` is an alias for `<rootDir>/tests/`
 - The form components share many classes (mostly `field--*`), to avoid repeatedly defining some of them in each form test, [FIELD_CLASSES.js](https://github.com/homeday-de/homeday-blocks/blob/develop/tests/unit/components/form/FIELD_CLASSES.js) contains the most common classes we need for testing. Feel free to add more classes.
