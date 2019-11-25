@@ -45,7 +45,7 @@ storiesOf('Form/HdRadio', module)
         }
       },
     },
-  }))
+  }), { percy: { skip: true } })
   .add('preselected', () => ({
     components: { HdRadio },
     template: `

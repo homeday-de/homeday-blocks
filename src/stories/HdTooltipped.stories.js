@@ -6,6 +6,7 @@ import HdInput from 'hd-blocks/components/form/HdInput.vue';
 import FormWrapper from 'hd-blocks/storiesWrappers/FormWrapper';
 
 storiesOf('Tooltipped', module)
+  .addParameters({ percy: { skip: true } })
   .addDecorator(FormWrapper)
   .add('default', () => ({
     components: { HdTooltipped, HdInput },

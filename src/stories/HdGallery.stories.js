@@ -63,4 +63,4 @@ storiesOf('Gallery/HdGallery', module)
         items: ITEMS,
       };
     },
-  }));
+  }), { percy: { widths: [375] } });

@@ -5,6 +5,7 @@ import HdGalleryOverlay from 'hd-blocks/components/gallery/HdGalleryOverlay.vue'
 import ITEMS from './mocks/GALLERY_ITEMS';
 
 storiesOf('Gallery/HdGalleryOverlay', module)
+  .addParameters({ percy: { skip: true } })
   .add('default', () => ({
     components: { HdGalleryOverlay },
     template: `

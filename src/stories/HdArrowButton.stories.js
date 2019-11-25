@@ -57,4 +57,4 @@ storiesOf('HdArrowButton', module)
       :direction="direction"
       :disabled="disabled"
     />`,
-  }));
+  }), { percy: { skip: true } });

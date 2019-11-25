@@ -29,7 +29,7 @@ storiesOf('Form/HdPasswordConfirm', module)
       },
     },
     template: `
-      <div style="text-align: center">
+      <div>
         <hd-password-confirm
           ref="password"
           v-model="password"
@@ -50,7 +50,7 @@ storiesOf('Form/HdPasswordConfirm', module)
         valid: false,
       };
     },
-  }))
+  }), { percy: { skip: true } })
   .add('with strength bar style 🎛', () => ({
     components: { HdPasswordConfirm },
     template: `
@@ -71,7 +71,7 @@ storiesOf('Form/HdPasswordConfirm', module)
     watch: {
 
     },
-  }))
+  }), { percy: { skip: true } })
   .add('without strength 🎛', () => ({
     components: { HdPasswordConfirm },
     template: `
@@ -89,7 +89,7 @@ storiesOf('Form/HdPasswordConfirm', module)
         default: boolean('withStrength', false),
       },
     },
-  }))
+  }), { percy: { skip: true } })
   .add('with icon 🎛', () => ({
     components: { HdPasswordConfirm },
     template: `
