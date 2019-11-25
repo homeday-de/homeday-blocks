@@ -4,6 +4,9 @@ node_js:
 
 cache: npm
 
+before_install:
+- source .travis.variables.sh
+
 install:
 - npm ci
 
