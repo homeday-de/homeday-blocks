@@ -50,4 +50,5 @@ stories
     notes: {
       markdown: HdLinkNote,
     },
+    percy: { skip: true },
   });
