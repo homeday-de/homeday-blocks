@@ -5,3 +5,5 @@ update_configs:
     directory: "/"
     update_schedule: "weekly"
     target_branch: "develop"
+    default_labels:
+      - "bot"
