@@ -5,7 +5,7 @@
   >
     <input type="range"
       ref="input"
-      v-model="currentValue"
+      v-model.number="currentValue"
       :id="name"
       :name="name"
       :required="required"
@@ -13,10 +13,8 @@
       :min="minValue"
       :max="maxValue"
       :step="rangeStep"
-      @input="updateRangeDecoration"
-      @change="handleChange"
-      @focus="handleFocus"
-      @blur="handleBlur"
+      @focus="focusHandler"
+      @blur="blurHandler"
     >
     <div class="range__thumb" ref="thumb">
       <div class="range__thumb__bullet">
@@ -58,10 +56,6 @@ export default {
       type: Number,
       default: 1,
     },
-    isLegacy: {
-      type: Boolean,
-      default: false,
-    },
     value: {
       type: Number,
       default: 0,
@@ -93,14 +87,14 @@ export default {
     },
     value() {
       this.currentValue = this.value;
+    },
+    currentValue() {
       this.updateRangeDecoration();
     },
   },
   mounted() {
-    this.progress = this.$refs.progress;
-    this.progress.style.width = '1px';
-
-    this.thumb = this.$refs.thumb;
+    // the progress bar needs a starting fixed width to be then transformed in updateRangeDecoration() with scaleX property
+    this.$refs.progress.style.width = '1px';
 
     this.updateRangeDecoration();
   },
@@ -114,32 +108,25 @@ export default {
 
       this.currentValue = this.currentValue - (this.currentValue % this.rangeStep);
 
-      this.$emit('input', parseFloat(this.currentValue));
+      this.$emit('input', this.currentValue);
     },
     updateRangeDecoration() {
       this.normalizeAndEmit();
 
       // the percentage of the value, between max and min. I.e. : 15 is the 50% between 10 and 20
-      const valuePercentage = this.currentValue / ((this.$props.maxValue - this.$props.minValue) / 100);
+      const valuePercentage = (this.currentValue - this.minValue) / (this.maxValue - this.minValue) * 100;
       const valuePercentageInputWidthPixels = this.$refs.input.offsetWidth * valuePercentage / 100;
 
-      this.progress.style.transform = `scaleX(${valuePercentageInputWidthPixels})`;
+      this.$refs.progress.style.transform = `scaleX(${valuePercentageInputWidthPixels})`;
 
-      const thumbWidthOffset = this.thumb.offsetWidth * valuePercentage / 100;
-      this.thumb.style.transform = `translateX(${valuePercentageInputWidthPixels - thumbWidthOffset}px)`;
+      const thumbWidthOffset = this.$refs.thumb.offsetWidth * valuePercentage / 100;
+      this.$refs.thumb.style.transform = `translateX(${valuePercentageInputWidthPixels - thumbWidthOffset}px)`;
     },
-    handleFocus() {
+    focusHandler() {
       this.isActive = true;
     },
-    handleBlur() {
+    blurHandler() {
       this.isActive = false;
-    },
-    handleChange() {
-      if (!this.isLegacy) {
-        return;
-      }
-
-      this.updateRangeDecoration();
     },
   },
 };
