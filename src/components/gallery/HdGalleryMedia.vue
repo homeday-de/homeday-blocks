@@ -4,14 +4,18 @@
       <div
         :style="sizerStyles"
         class="gallery-media__object__sizer"/>
-      <div
-        v-if="item.image"
-        ref="backgroundHolder"
-        :style="{
-          'background-image': `url('${item.image}')`,
-        }"
-        class="gallery-media__object__background"
-      />
+
+      <picture v-if="usePictureElement"
+        class="gallery-media__object__picture"
+      >
+        <source v-for="(source, media) in item.pictureSources"
+          :key="media"
+          :media="`(${media})`" :srcset="source"
+        >
+        <img ref="imageHolder" :src="item.image" :alt="item.caption" :srcset="item.imageSrcSet"/>
+      </picture>
+      <img v-else ref="imageHolder" :src="item.image" :alt="item.caption" :srcset="item.imageSrcSet" />
+
       <div
         v-if="hasThumbnail"
         :class="{
@@ -55,6 +59,9 @@ export default {
         paddingTop: `${100 / this.aspectRatio}%`,
       };
     },
+    usePictureElement() {
+      return this.item.pictureSources && this.item.pictureSources !== {};
+    },
   },
   watch: {
     item() {
@@ -72,7 +79,7 @@ export default {
       this.showThumbnail = false;
     },
     hideThumbnailOnBgLoad() {
-      imagesLoaded(this.$refs.backgroundHolder, { background: true }, () => {
+      imagesLoaded(this.$refs.imageHolder, () => {
         this.showThumbnail = false;
       });
     },
@@ -90,28 +97,41 @@ export default {
     position: relative;
     overflow: hidden;
     border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $wild-sand;
 
-    &__background {
+    &__thumbnail,
+    &__picture {
       position: absolute;
       top: 0;
       right: 0;
       bottom: 0;
       left: 0;
-      background-color: $wild-sand;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: contain;
+    }
+
+    &__picture {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     &__thumbnail {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
       background-position: center;
       background-repeat: no-repeat;
       background-size: contain;
+      @media (min-width: $break-tablet) {
+        background-size: cover;
+      }
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    &__thumbnail {
       opacity: 0;
       transition: opacity ($time-s * 2) ease-in-out;
       filter: blur(4px);
