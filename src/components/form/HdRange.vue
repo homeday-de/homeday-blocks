@@ -133,14 +133,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  $shadow: 0 2px 4px 0 rgba(0,0,0,0.25);
-  $range-thumb-size: $inset-l;
-  $range-thumb-inner-bullet-size : $range-thumb-size / 2;
-  $range-thumb-height: $inset-l;
-  $range-bar-height: 6px;
-  $range-thumb-border: 2px;
-  $activeColor: $vivid-blue;
-  $disabledColor: $heather;
+  @import 'hd-blocks/styles/range-input.scss';
 
   .range {
     $range: &;
@@ -239,7 +232,6 @@ export default {
       }
     }
 
-    $range-thumb-tot-size: $range-thumb-size + $range-thumb-border + $range-thumb-border;
     &__thumb {
       display: block;
       cursor: grab;
@@ -256,15 +248,14 @@ export default {
       margin-top: - $range-thumb-tot-size / 2;
       margin-left: 0;
       z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       .field--disabled & {
         border-color: $disabledColor;
         pointer-events: none;
       }
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
 
       &__bullet{
         background: $disabledColor;
