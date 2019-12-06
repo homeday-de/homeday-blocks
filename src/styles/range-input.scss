@@ -1,3 +1,4 @@
+  $range-height: $stack-l;
   $shadow: 0 2px 4px 0 rgba(0,0,0,0.25);
   $range-thumb-size: $inset-l;
   $range-thumb-height: $inset-l;
@@ -7,3 +8,6 @@
   $disabledColor: $heather;
   $range-thumb-inner-bullet-size : $range-thumb-size / 2;
   $range-thumb-tot-size: $range-thumb-size + $range-thumb-border + $range-thumb-border;
+  //visualy, includes the border size
+  $steps-size: 20px;
+  $steps-border-size: 2px;
