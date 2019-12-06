@@ -54,6 +54,12 @@ describe('HdRange', () => {
     expect(mockedFocusHandler).toHaveBeenCalledTimes(1);
   });
 
+  test('When the focus event is emitted, the input is in an active status', () => {
+    wrapper.find('input').trigger('focus');
+
+    expect(wrapper.vm.isActive).toBe(true);
+  });
+
   test('When the blur event is emitted, the proper method is executed', () => {
     const mockedBlurHandler = jest.fn();
     wrapper.setMethods({ blurHandler: mockedBlurHandler });
@@ -61,5 +67,33 @@ describe('HdRange', () => {
     wrapper.find('input').trigger('blur');
 
     expect(mockedBlurHandler).toHaveBeenCalledTimes(1);
+  });
+
+  test('When the blue event is emitted, the input is in an non active status', () => {
+    wrapper.find('input').trigger('blur');
+
+    expect(wrapper.vm.isActive).toBe(false);
+  });
+
+  test('On props change, decoration is updated', () => {
+    const mockUpdateRangeDecoration = jest.fn();
+    wrapper.setMethods({ updateRangeDecoration: mockUpdateRangeDecoration });
+    wrapper.setProps({
+      minValue: minValue - 1,
+    });
+
+    expect(mockUpdateRangeDecoration).toHaveBeenCalledTimes(1);
+
+    wrapper.setProps({
+      maxValue: maxValue + 1,
+    });
+
+    expect(mockUpdateRangeDecoration).toHaveBeenCalledTimes(2);
+
+    wrapper.setProps({
+      rangeStep: 14,
+    });
+
+    expect(mockUpdateRangeDecoration).toHaveBeenCalledTimes(3);
   });
 });
