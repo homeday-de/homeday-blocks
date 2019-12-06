@@ -12,10 +12,11 @@ storiesOf('Form/HdRange', module)
     template: `
       <div>
         <HdRange
-          :minValue=minValue
-          :maxValue=maxValue
-          :rangeStep=rangeStep
+          :minValue="minValue"
+          :maxValue="maxValue"
+          :rangeStep="rangeStep"
           :disabled="disabled"
+          :displayStepBullets="displayStepBullets"
           v-model="currentValue"
         />
         <p>This values {{ currentValue }}</p>
@@ -41,6 +42,10 @@ storiesOf('Form/HdRange', module)
       disabled: {
         type: Boolean,
         default: boolean('Disabled', false),
+      },
+      displayStepBullets: {
+        type: Boolean,
+        default: boolean('Display step bullets', true),
       },
     },
     watch: {
