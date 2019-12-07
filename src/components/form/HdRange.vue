@@ -140,9 +140,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  @import 'hd-blocks/styles/range-input.scss';
-  @import 'hd-blocks/styles/mixins.scss';
-
   .range {
     $range: &;
     height: $stack-l;
@@ -150,12 +147,11 @@ export default {
     display: flex;
     align-items: center;
 
-    &:focus{
+    &:focus {
       outline: none;
     }
 
     input[type=range] {
-      $ipr: &;
       -moz-appearance: none;
       -webkit-appearance: none;
       background: transparent;
@@ -201,11 +197,11 @@ export default {
         @include thumb-style;
       }
 
-      &::-moz-range-thumb{
+      &::-moz-range-thumb {
         @include thumb-style;
       }
 
-      &::-ms-thumb{
+      &::-ms-thumb {
         @include thumb-style;
       }
 
@@ -213,7 +209,7 @@ export default {
         @include track-style;
       }
 
-      &::-moz-range-track{
+      &::-moz-range-track {
         @include track-style;
       }
 
@@ -259,8 +255,8 @@ export default {
           display: block;
           margin-left: - $steps-size / 2;
           margin-top: - $steps-size / 2;
-          height: $steps-size - $steps-border-size;
-          width: $steps-size - $steps-border-size;
+          height: $steps-size - ($steps-border-size * 2);
+          width: $steps-size - ($steps-border-size * 2);
           border-radius: $steps-size / 2;
           background: #FFFFFF;
           border: $steps-border-size solid $nevada;
@@ -316,7 +312,7 @@ export default {
           transform: scale(1.25);
         }
 
-        @include only-ie{
+        @include only-ie {
           top: 50%;
           left: 50%;
           margin-left: - $range-thumb-inner-bullet-size / 2;
