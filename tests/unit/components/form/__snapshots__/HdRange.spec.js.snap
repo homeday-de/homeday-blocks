@@ -106,6 +106,7 @@ exports[`HdRange renders component 1`] = `
     <li></li>
     <li></li>
     <li></li>
+    <li></li>
   </ul>
   <div class="range__thumb" style="transform: translateX(0px);">
     <div class="range__thumb__inner">

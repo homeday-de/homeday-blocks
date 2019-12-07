@@ -155,7 +155,6 @@ export default {
     }
 
     input[type=range] {
-      $ipr: &;
       -moz-appearance: none;
       -webkit-appearance: none;
       background: transparent;
@@ -259,8 +258,8 @@ export default {
           display: block;
           margin-left: - $steps-size / 2;
           margin-top: - $steps-size / 2;
-          height: $steps-size - $steps-border-size;
-          width: $steps-size - $steps-border-size;
+          height: $steps-size - ($steps-border-size * 2);
+          width: $steps-size - ($steps-border-size * 2);
           border-radius: $steps-size / 2;
           background: #FFFFFF;
           border: $steps-border-size solid $nevada;
