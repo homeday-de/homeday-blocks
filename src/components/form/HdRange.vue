@@ -15,13 +15,31 @@
       @focus="focusHandler"
       @blur="blurHandler"
     >
-    <div class="range__decoration" ref="decoration">
-      <div class="range__progress" ref="progress" />
+    <div
+      ref="decoration"
+      :style="{
+        background: trackBackground,
+      }"
+      class="range__decoration"
+    >
+      <div
+        ref="progress"
+        :style="{
+          background: progressBackground,
+        }"
+        class="range__progress"
+      />
     </div>
     <ul v-if="displayStepBullets" class="range__steps">
       <li v-for="(steps, i) in stepsAmount" :key="i"/>
     </ul>
     <div class="range__thumb" ref="thumb">
+      <div
+        v-if="displayTooltip"
+        class="range__tooltip"
+      >
+        {{ tooltipValue }}
+      </div>
       <div class="range__thumb__inner" ref="thumbInner">
         <div class="range__thumb__bullet" />
       </div>
@@ -66,6 +84,22 @@ export default {
       type: Boolean,
       default: true,
     },
+    displayTooltip: {
+      type: Boolean,
+      default: false,
+    },
+    tooltipValue: {
+      type: [String, Number],
+      default: '',
+    },
+    trackBackground: {
+      type: String,
+      default: 'fallback to the styles',
+    },
+    progressBackground: {
+      type: String,
+      default: 'fallback to the styles',
+    },
   },
   data() {
     return {
@@ -78,6 +112,7 @@ export default {
       return {
         'field--active': this.isActive,
         'field--disabled': this.disabled,
+        hasTooltip: this.displayTooltip,
       };
     },
     stepsAmount() {
@@ -102,9 +137,6 @@ export default {
     },
   },
   mounted() {
-    // the progress bar needs a starting fixed width to be then transformed in updateRangeDecoration() with scaleX property
-    this.$refs.progress.style.width = '1px';
-
     this.updateRangeDecoration();
   },
   methods: {
@@ -122,11 +154,11 @@ export default {
     updateRangeDecoration() {
       this.normalizeAndEmit();
 
-      // the percentage of the value, between max and min. I.e. : 15 is the 50% between 10 and 20
-      const valuePercentage = (this.currentValue - this.minValue) / (this.maxValue - this.minValue) * 100;
-      const valuePercentageInputWidthPixels = this.$refs.decoration.offsetWidth * valuePercentage / 100;
+      // the percentage of the value, between max and min. I.e. : 15 is the 0.5 between 10 and 20
+      const valuePercentage = (this.currentValue - this.minValue) / (this.maxValue - this.minValue);
+      const valuePercentageInputWidthPixels = this.$refs.decoration.offsetWidth * valuePercentage;
 
-      this.$refs.progress.style.transform = `scaleX(${valuePercentageInputWidthPixels})`;
+      this.$refs.progress.style.transform = `scaleX(${valuePercentage})`;
       this.$refs.thumb.style.transform = `translateX(${valuePercentageInputWidthPixels}px)`;
     },
     focusHandler() {
@@ -152,6 +184,10 @@ export default {
 
     &:focus{
       outline: none;
+    }
+
+    &.hasTooltip {
+      margin-top: $stack-xl;
     }
 
     input[type=range] {
@@ -272,6 +308,7 @@ export default {
       display: block;
       width: 0;
       height: 0;
+      transition: transform .3s;
 
       &__inner {
         cursor: grab;
@@ -327,6 +364,7 @@ export default {
     &__progress {
       background-color: $activeColor;
       height: 100%;
+      width: 100%;
       transform-origin: 0 center;
 
       .field--disabled & {
@@ -334,5 +372,14 @@ export default {
       }
     }
 
+    &__tooltip {
+      position: absolute;
+      bottom: #{$stack-m + $stack-xs};
+      transform: translateX(-50%);
+      color: white;
+      background: url('~hd-blocks/assets/icons/tooltip.svg') no-repeat;
+      background-size: 100% 100%;
+      padding: $stack-s $inline-m #{$stack-m + $stack-s};
+    }
   }
 </style>
