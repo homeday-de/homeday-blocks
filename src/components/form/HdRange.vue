@@ -31,7 +31,13 @@
       />
     </div>
     <ul v-if="displayStepBullets" class="range__steps">
-      <li v-for="(steps, i) in stepsAmount" :key="i"/>
+      <li
+        v-for="(steps, i) in stepsAmount"
+        :key="i"
+        class="range__step"
+      >
+        <p class="range__step-label">{{ labels[i] }}</p>
+      </li>
     </ul>
     <div class="range__thumb" ref="thumb">
       <div
@@ -79,6 +85,10 @@ export default {
     value: {
       type: Number,
       default: 0,
+    },
+    labels: {
+      type: Array,
+      default: () => [],
     },
     displayStepBullets: {
       type: Boolean,
@@ -281,24 +291,32 @@ export default {
       display: flex;
       justify-content: space-between;
       align-items: center;
+    }
 
-      li {
-        height: 0;
-        width: 0;
+    &__step {
+      height: 0;
+      width: 0;
 
-        &:after {
-          content: "";
-          display: block;
-          margin-left: - $steps-size / 2;
-          margin-top: - $steps-size / 2;
-          height: $steps-size - ($steps-border-size * 2);
-          width: $steps-size - ($steps-border-size * 2);
-          border-radius: $steps-size / 2;
-          background: #FFFFFF;
-          border: $steps-border-size solid $nevada;
-          border-radius: 50%;
-        }
+      &:after {
+        content: "";
+        display: block;
+        margin-left: - $steps-size / 2;
+        margin-top: - $steps-size / 2;
+        height: $steps-size - ($steps-border-size * 2);
+        width: $steps-size - ($steps-border-size * 2);
+        border-radius: $steps-size / 2;
+        background: #FFFFFF;
+        border: $steps-border-size solid $nevada;
+        border-radius: 50%;
       }
+    }
+
+    &__step-label {
+      position: absolute;
+      top: #{$stack-l + $stack-s};
+      transform: translateX(-50%);
+      @include font('text-xsmall');
+      color: $regent-gray;
     }
 
     &__thumb {
@@ -331,7 +349,7 @@ export default {
         pointer-events: none;
       }
 
-      &__bullet{
+      &__bullet {
         background: $disabledColor;
         position: absolute;
         height: $range-thumb-size;
@@ -371,12 +389,13 @@ export default {
 
     &__tooltip {
       position: absolute;
-      bottom: #{$stack-m + $stack-xs};
+      bottom: $stack-m;
       transform: translateX(-50%);
       color: white;
       background: url('~hd-blocks/assets/icons/tooltip.svg') no-repeat;
       background-size: 100% 100%;
       padding: $stack-s $inline-m #{$stack-m + $stack-s};
+      pointer-events: none;
     }
   }
 </style>
