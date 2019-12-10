@@ -6,107 +6,309 @@ exports[`HdRange renders component 1`] = `
     <div class="range__progress" style="transform: scaleX(0.25);"></div>
   </div>
   <ul class="range__steps">
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
+    <li class="range__step">
+      <p class="range__step-label"></p>
+    </li>
   </ul>
   <div class="range__thumb" style="transform: translateX(0px);">
     <!---->
