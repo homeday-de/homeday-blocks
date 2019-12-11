@@ -142,7 +142,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import 'hd-blocks/styles/_variables.scss';
 @import 'hd-blocks/styles/mixins.scss';
 
 .range {
