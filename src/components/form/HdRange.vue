@@ -54,6 +54,7 @@
 </template>
 
 <script>
+import onResize from 'hd-blocks/services/on-resize';
 
 export default {
   name: 'HdRange',
@@ -148,6 +149,10 @@ export default {
   },
   mounted() {
     this.updateRangeDecoration();
+    onResize.onDebounced(this.updateRangeDecoration);
+  },
+  beforeDestroy() {
+    onResize.offDebounced(this.updateRangeDecoration);
   },
   methods: {
     normalizeAndEmit() {
