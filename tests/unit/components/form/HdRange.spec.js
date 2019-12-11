@@ -43,34 +43,28 @@ describe('HdRange', () => {
     expect(wrapper.emitted('input')[1][0]).toEqual(minValue);
   });
 
-  test('When the focus event is emitted, the proper method is executed', () => {
+  test('When the focus event is emitted, the proper status is set and the proper method is executed', () => {
+    wrapper.find('input').trigger('focus');
+
+    expect(wrapper.vm.isActive).toBe(true);
+
     const mockedFocusHandler = jest.fn();
     wrapper.setMethods({ focusHandler: mockedFocusHandler });
-
     wrapper.find('input').trigger('focus');
 
     expect(mockedFocusHandler).toHaveBeenCalledTimes(1);
   });
 
-  test('When the focus event is emitted, the input is in an active status', () => {
-    wrapper.find('input').trigger('focus');
-
-    expect(wrapper.vm.isActive).toBe(true);
-  });
-
-  test('When the blur event is emitted, the proper method is executed', () => {
-    const mockedBlurHandler = jest.fn();
-    wrapper.setMethods({ blurHandler: mockedBlurHandler });
-
-    wrapper.find('input').trigger('blur');
-
-    expect(mockedBlurHandler).toHaveBeenCalledTimes(1);
-  });
-
-  test('When the blue event is emitted, the input is in an non active status', () => {
+  test('When the blur event is emitted, the proper status is set and the proper method is executed', () => {
     wrapper.find('input').trigger('blur');
 
     expect(wrapper.vm.isActive).toBe(false);
+
+    const mockedBlurHandler = jest.fn();
+    wrapper.setMethods({ blurHandler: mockedBlurHandler });
+    wrapper.find('input').trigger('blur');
+
+    expect(mockedBlurHandler).toHaveBeenCalledTimes(1);
   });
 
   test('On props change, decoration is updated', () => {
@@ -96,9 +90,18 @@ describe('HdRange', () => {
   });
 
   test('Step bullets are properly displayed', () => {
-    wrapper.setProps({ rangeStep });
-    const foundStepsCount = wrapper.findAll('.range__steps li').length;
+    wrapper.setProps({
+      rangeStep,
+    });
+    let foundStepsCount = wrapper.findAll('.range__steps li').length;
 
     expect(foundStepsCount).toBe(21);
+
+    wrapper.setProps({
+      displayStepBullets: false,
+    });
+
+    foundStepsCount = wrapper.findAll('.range__steps li').length;
+    expect(foundStepsCount).toBe(0);
   });
 });
