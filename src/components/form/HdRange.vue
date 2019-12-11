@@ -16,7 +16,7 @@
     <div class="range__decoration" ref="decoration">
       <div class="range__progress" ref="progress" />
     </div>
-    <ul v-if="displayStepBullets" class="range__steps">
+    <ul v-if="displayStepBullets" class="range__steps" v-bind:style="{ paddingRight: stepOffset + '%' }">
       <li v-for="(steps, i) in stepsAmount" :key="i" />
     </ul>
     <div class="range__thumb" ref="thumb">
@@ -78,7 +78,12 @@ export default {
       };
     },
     stepsAmount() {
-      return 1 + (this.maxValue - this.minValue) / this.rangeStep;
+      const rangeSize = this.maxValue - this.minValue;
+      return 1 + Math.floor(rangeSize / this.rangeStep);
+    },
+    stepOffset() {
+      const rangeSize = this.maxValue - this.minValue;
+      return ((rangeSize % this.rangeStep) / rangeSize) * 100;
     },
   },
   watch: {
@@ -137,9 +142,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import 'hd-blocks/styles/_variables.scss';
+@import 'hd-blocks/styles/mixins.scss';
+
 .range {
   $range: &;
-  height: $stack-l;
+  height: $range-thumb-tot-size;
   position: relative;
   display: flex;
   align-items: center;
@@ -148,37 +156,36 @@ export default {
     outline: none;
   }
 
-  input[type="range"] {
+  input[type='range'] {
     -moz-appearance: none;
     -webkit-appearance: none;
     background: transparent;
+    // overflow hidden needed for Chrome. It extends the sizing of the thumb
+    overflow: hidden;
     position: absolute;
     top: 0;
     left: 0;
     z-index: 2;
-    width: 100%;
-    margin: 0;
+    width: calc(100% + #{$range-thumb-tot-size});
+    margin: 0 -#{$range-thumb-tot-size/2};
     padding: 0;
-    height: $range-thumb-size;
-
-    &:focus {
-      outline: none;
-    }
+    height: $range-thumb-tot-size;
+    cursor: pointer;
 
     // range invisible
     @mixin thumb-style {
       -webkit-appearance: none;
       background: none;
       border: none;
-      height: $range-thumb-tot-size;
-      width: $range-thumb-tot-size;
       display: block;
       -moz-appearance: none;
-      cursor: grab;
-
       height: 1px;
       width: 1px;
       transform: scale(strip-unit($range-thumb-tot-size));
+
+      &:hover {
+        cursor: grab;
+      }
     }
 
     @mixin track-style {
@@ -186,7 +193,10 @@ export default {
       border-color: transparent;
       border: 0;
       color: transparent;
-      cursor: pointer;
+      height: $range-bar-height;
+      // centers the thumb
+      display: flex;
+      align-items: center;
     }
 
     &::-webkit-slider-thumb {
@@ -247,7 +257,7 @@ export default {
       width: 0;
 
       &:after {
-        content: "";
+        content: '';
         display: block;
         margin-left: -$steps-size / 2;
         margin-top: -$steps-size / 2;
@@ -267,7 +277,6 @@ export default {
     height: 0;
 
     &__inner {
-      cursor: grab;
       box-shadow: $shadow;
       border: $range-thumb-border solid $activeColor;
       background: $disabledColor;

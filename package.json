@@ -90,5 +90,13 @@
       "vue-cli-service lint",
       "git add"
     ]
+  },
+  "prettier": {
+    "bracketSpacing": true,
+    "singleQuote": true,
+    "jsxBracketSameLine": true,
+    "trailingComma": "all",
+    "printWidth": 120,
+    "semi": true
   }
 }

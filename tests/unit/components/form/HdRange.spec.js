@@ -5,7 +5,8 @@ describe('HdRange', () => {
   let wrapper;
   const initialValue = 25;
   const maxValue = 100;
-  const minValue = 0;
+  const minValue = -100;
+  const rangeStep = 10;
   const wrapperFactory = wrapperFactoryBuilder(HdRange, {
     propsData: {
       name: 'testRange',
@@ -19,11 +20,8 @@ describe('HdRange', () => {
     wrapper = wrapperFactory();
   });
 
-  test('renders component', () => {
+  test('renders component with preselected value', () => {
     expect(wrapper.html()).toMatchSnapshot();
-  });
-
-  test('renders with preselected value', () => {
     expect(parseFloat(wrapper.find('input').element.value)).toBe(initialValue);
   });
 
@@ -95,5 +93,12 @@ describe('HdRange', () => {
     });
 
     expect(mockUpdateRangeDecoration).toHaveBeenCalledTimes(3);
+  });
+
+  test('Step bullets are properly displayed', () => {
+    wrapper.setProps({ rangeStep });
+    const foundStepsCount = wrapper.findAll('.range__steps li').length;
+
+    expect(foundStepsCount).toBe(21);
   });
 });

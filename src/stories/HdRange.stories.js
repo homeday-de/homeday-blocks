@@ -58,4 +58,25 @@ storiesOf('Form/HdRange', module)
         currentValue: this.value,
       };
     },
+  }))
+  .add('without steps', () => ({
+    components: { HdRange },
+    template: `
+      <div>
+        <HdRange
+          :minValue="0"
+          :maxValue="100"
+          :rangeStep="10"
+          :disabled="false"
+          :displayStepBullets="false"
+          v-model="currentValue"
+        />
+        <p>This values {{ currentValue }}</p>
+      </div>
+    `,
+    data() {
+      return {
+        currentValue: 50,
+      };
+    },
   }));
