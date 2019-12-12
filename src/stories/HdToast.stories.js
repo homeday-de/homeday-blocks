@@ -6,6 +6,7 @@ import { text } from '@storybook/addon-knobs';
 import HdToast from 'hd-blocks/components/HdToast.vue';
 
 storiesOf('HdToast', module)
+  .addParameters({ percy: { skip: true } })
   .add('Primary only 🎛', () => ({
     components: { HdToast },
     data: () => ({
