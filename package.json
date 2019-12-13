@@ -28,9 +28,10 @@
     "test:unit": "vue-cli-service test:unit",
     "test:unit:snapshot": "vue-cli-service test:unit -u",
     "test:unit:watch": "npm run test:unit -- --watch",
-    "test:unit:ci": "npm run test:unit -- --ci --coverage && open coverage/lcov-report/index.html",
+    "test:unit:ci": "npm run test:unit -- --ci --coverage",
     "test:percy": "if [ $PERCY_TOKEN ]; then percy-storybook; else echo 'Skipping test: PERCY_TOKEN is not defined'; fi",
-    "coverage": "cat ./coverage/lcov.info | coveralls -v"
+    "coverage": "cat ./coverage/lcov.info | coveralls -v",
+    "test:unit:coverage": "npm run test:unit --coverage && open coverage/lcov-report/index.html"
   },
   "dependencies": {
     "body-scroll-lock": "2.6.4",
