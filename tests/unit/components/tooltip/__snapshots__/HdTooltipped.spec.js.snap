@@ -7,6 +7,5 @@ exports[`HDTooltipped the component is rendered 2`] = `
   <!----> <input autocomplete="on" type="text" id="testInput" name="testInput" placeholder="" class="field__input"> <label for="testInput" class="field__label">
     dolor sit ammet
   </label>
-  <!---->
   <!----> <span class="field__border"></span></div>
 `;
