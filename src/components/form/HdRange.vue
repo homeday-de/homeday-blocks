@@ -61,7 +61,7 @@ export default {
     },
     displayStepBullets: {
       type: Boolean,
-      default: true,
+      default: false,
     },
   },
   data() {
@@ -77,9 +77,11 @@ export default {
         'field--disabled': this.disabled,
       };
     },
+    rangeSize() {
+      return this.maxValue - this.minValue;
+    },
     stepsAmount() {
-      const rangeSize = this.maxValue - this.minValue;
-      return 1 + Math.floor(rangeSize / this.rangeStep);
+      return 1 + Math.floor(this.rangeSize / this.rangeStep);
     },
     stepOffset() {
       const rangeSize = this.maxValue - this.minValue;
@@ -125,7 +127,7 @@ export default {
       this.normalizeAndEmit();
 
       // the percentage of the value, between max and min. I.e. : 15 is the 50% between 10 and 20
-      const valuePercentage = ((this.currentValue - this.minValue) / (this.maxValue - this.minValue)) * 100;
+      const valuePercentage = ((this.currentValue - this.minValue) / (this.rangeSize)) * 100;
       const valuePercentageInputWidthPixels = (this.$refs.decoration.offsetWidth * valuePercentage) / 100;
 
       this.$refs.progress.style.transform = `scaleX(${valuePercentageInputWidthPixels})`;

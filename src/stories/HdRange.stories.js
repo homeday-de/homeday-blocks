@@ -59,6 +59,27 @@ storiesOf('Form/HdRange', module)
       };
     },
   }))
+  .add('without bullets', () => ({
+    components: { HdRange },
+    template: `
+      <div>
+        <HdRange
+          :minValue="0"
+          :maxValue="100"
+          :rangeStep="20"
+          :disabled="false"
+          :displayStepBullets="false"
+          v-model="currentValue"
+        />
+        <p>This values {{ currentValue }}</p>
+      </div>
+    `,
+    data() {
+      return {
+        currentValue: 50,
+      };
+    },
+  }))
   .add('without steps', () => ({
     components: { HdRange },
     template: `
@@ -66,9 +87,7 @@ storiesOf('Form/HdRange', module)
         <HdRange
           :minValue="0"
           :maxValue="100"
-          :rangeStep="10"
           :disabled="false"
-          :displayStepBullets="false"
           v-model="currentValue"
         />
         <p>This values {{ currentValue }}</p>

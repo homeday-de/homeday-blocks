@@ -13,6 +13,7 @@ describe('HdRange', () => {
       minValue,
       maxValue,
       value: initialValue,
+      displayStepBullets: true,
     },
   });
 
