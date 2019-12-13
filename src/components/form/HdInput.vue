@@ -43,11 +43,6 @@
       class="field__error field__error--helper"
       v-html="helper"
     />
-    <span v-if="showVisibilityToggle"
-      :class="{'field__visibilityToggle--visible': currentType === 'text'}"
-      class="field__visibilityToggle"
-      @click="togglePasswordVisibility"
-    />
     <span class="field__border"/>
   </div>
 </template>
@@ -136,15 +131,11 @@ export default {
     isEmpty() {
       return this.value === null || this.value === undefined || this.value === '';
     },
-    showVisibilityToggle() {
-      return this.type === 'password' && this.value.length !== 0;
-    },
     fieldClasses() {
       return {
         'field--active': this.isActive,
         'field--filled': !this.isEmpty,
         'field--invalid': this.isValid === false,
-        'field--hasControl': this.showVisibilityToggle,
         'field--disabled': this.disabled,
         'field--hasIcon': this.icon,
       };
@@ -216,9 +207,6 @@ export default {
 
       return !this.error;
     },
-    togglePasswordVisibility() {
-      this.currentType = this.currentType === 'password' ? 'text' : 'password';
-    },
   },
 };
 </script>
@@ -234,36 +222,6 @@ export default {
     &--helper {
       display: block;
       color: $regent-gray;
-    }
-  }
-  &__visibilityToggle {
-    position: absolute;
-    right: $inline-s;
-    bottom: $stack-m;
-    background-image: url('~hd-blocks/assets/icons/ic_visibility-on.svg');
-    background-repeat: no-repeat;
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-    &:after {
-      display: block;
-      content: '';
-      position: absolute;
-      opacity: 1;
-      top: 2px;
-      left: 3px;
-      width: 24px;
-      height: 0px;
-      border-bottom: 2px solid $regent-gray;
-      border-top: 1px solid $wild-sand;
-      transform-origin: left;
-      transform: rotateZ(45deg) scaleX(1);
-      transition: transform .3s;
-    }
-    &--visible {
-      &:after {
-        transform: rotateZ(45deg) scaleX(0);
-      }
     }
   }
 }
