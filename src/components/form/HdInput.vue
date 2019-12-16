@@ -21,6 +21,7 @@
       :disabled="disabled"
       class="field__input"
       ref="input"
+      data-lpignore="true"
       @input="handleInput"
       @focus="handleFocus"
       @blur="handleBlur"

@@ -248,4 +248,11 @@ describe('HdInput', () => {
     expect(wrapper.classes()).toContain(FIELD_CLASSES.HAS_ICON);
     expect(wrapper.find(ICON_SELECTOR).exists()).toBe(true);
   });
+
+  test('ignores LastPass auto fill', () => {
+    expect(wrapper
+      .find('input')
+      .attributes()['data-lpignore'])
+      .toBe('true');
+  });
 });

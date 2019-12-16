@@ -2,7 +2,7 @@
 
 exports[`HdInput is rendered as expected 1`] = `
 <div class="field field--input">
-  <!----> <input autocomplete="on" type="text" id="test name" name="test name" placeholder="" class="field__input"> <label for="test name" class="field__label">
+  <!----> <input autocomplete="on" type="text" id="test name" name="test name" placeholder="" data-lpignore="true" class="field__input"> <label for="test name" class="field__label">
     test label
   </label>
   <!---->
