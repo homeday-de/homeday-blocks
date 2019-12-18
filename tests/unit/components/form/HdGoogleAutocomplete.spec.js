@@ -60,10 +60,12 @@ describe('HdGoogleAutocomplete', () => {
     expect(payload).toBe('');
   });
 
-  test('Supports disabling of the input', () => {
+  test('Supports disabling of the input', async () => {
     wrapper.setProps({
       disabled: true,
     });
+
+    await wrapper.vm.$nextTick();
 
     expect(wrapper.find('input').attributes().disabled).toBe('disabled');
   });
