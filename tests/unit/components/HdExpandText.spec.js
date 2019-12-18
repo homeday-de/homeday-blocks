@@ -17,10 +17,10 @@ describe('HdExpandText', () => {
 
     wrapper = mount(HdExpandText, {
       slots: {
-        default: `<p>Look, just because I don't be givin' no man a foot 
+        default: `<p>Look, just because I don't be givin' no man a foot
           massage don't make it right for Marsellus to throw Antwone into
-          a glass Muttafu' house, frickin' up the way the talks. 
-          Muttafu do that shirt to me, he better paralyze my lol, 'cause 
+          a glass Muttafu' house, frickin' up the way the talks.
+          Muttafu do that shirt to me, he better paralyze my lol, 'cause
           I'll kill the Muttafu, know what I'm sayin'?</p>`,
       },
     });
@@ -66,7 +66,7 @@ describe('HdExpandText', () => {
     expect(wrapper.vm.isToggleVisible).toBe(false);
   });
 
-  it('the content is expandable and shrinkable', () => {
+  it('the content is expandable and shrinkable', async () => {
     scrollHeightSpy = jest.spyOn(wrapper.vm, 'getScrollHeight')
       .mockImplementation((el) => {
         if (el === wrapper.vm.$refs.sample) return 32;
@@ -77,6 +77,9 @@ describe('HdExpandText', () => {
       });
 
     wrapper.vm.resizeWrapper();
+
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.vm.isExpanded).toBe(false);
 
     wrapper.find('.expand-text__toggle').trigger('click');
@@ -86,11 +89,12 @@ describe('HdExpandText', () => {
     expect(wrapper.vm.isExpanded).toBe(false);
   });
 
-  it('In the default state, it displays the desidered amount of lines. The vertical margins are considered', () => {
+  it('In the default state, it displays the desidered amount of lines. The vertical margins are considered', async () => {
     const marginTop = 72;
     const marginBottom = 61;
     const sampleHeight = 32;
     const lineCount = 3;
+
     wrapper.setProps({
       lines: lineCount,
       marginTop,
@@ -105,6 +109,8 @@ describe('HdExpandText', () => {
       });
 
     wrapper.vm.resizeWrapper();
+
+    await wrapper.vm.$nextTick();
 
     expect(wrapper.vm.$refs.wrapper.style.maxHeight).toBe(`${(sampleHeight * lineCount) + marginTop}px`);
   });
