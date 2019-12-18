@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils';
+import { shallowMount, mount } from '@vue/test-utils';
 import Vue from 'vue';
 import HDTooltipped from '@/components/tooltip/HdTooltipped.vue';
 import HdInput from '@/components/form/HdInput.vue';
@@ -14,7 +14,7 @@ describe('HDTooltipped', () => {
   beforeEach(() => {
     emptyWrapper = shallowMount(HDTooltipped);
 
-    wrapper = shallowMount(HDTooltipped, {
+    wrapper = mount(HDTooltipped, {
       propsData: {
         component: HdInput,
         value: 'Lorem ipsum',
