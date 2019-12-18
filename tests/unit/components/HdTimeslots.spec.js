@@ -39,10 +39,12 @@ describe('HdTimeslots', () => {
     expect(mockedSelectTimeslot).toHaveBeenCalled();
   });
 
-  test('clicking on a timeslot, the timeslot is selected', () => {
+  test('clicking on a timeslot, the timeslot is selected', async () => {
     const displayedTimeslots = getDisplayedTimeslots();
     const randomTimeslot = displayedTimeslots.at(Math.floor(Math.random() * displayedTimeslots.length));
     randomTimeslot.trigger('click');
+
+    await wrapper.vm.$nextTick();
 
     expect(randomTimeslot.classes()).toContain('timeslots__slot--isSelected');
   });
@@ -59,18 +61,22 @@ describe('HdTimeslots', () => {
     expect(mockedFlipPage).toHaveBeenCalledTimes(2);
   });
 
-  test('clicking on arrows, the page is changed', () => {
+  test('clicking on arrows, the page is changed', async () => {
     const initialTimeslotsListContent = getDisplayedTimeslotsHtml();
     wrapper.find('.arrowButton--right').trigger('click');
+
+    await wrapper.vm.$nextTick();
 
     expect(getDisplayedTimeslotsHtml()).not.toBe(initialTimeslotsListContent);
 
     wrapper.find('.arrowButton--left').trigger('click');
 
+    await wrapper.vm.$nextTick();
+
     expect(getDisplayedTimeslotsHtml()).toBe(initialTimeslotsListContent);
   });
 
-  test('slots are displayed in the proper quantity', () => {
+  test('slots are displayed in the proper quantity', async () => {
     const { timeslots } = wrapper.vm.$options.props;
 
     expect(timeslots.validator(Array.from(timeslots))).toBe(true);
@@ -78,6 +84,8 @@ describe('HdTimeslots', () => {
 
     // the page is now wider then the timeslots quantity
     wrapper.setProps({ timeslotsPerPage: testTimeslots.length * 2 });
+
+    await wrapper.vm.$nextTick();
 
     expect(getDisplayedTimeslots().length).toBe(testTimeslots.length);
     // data validity check
