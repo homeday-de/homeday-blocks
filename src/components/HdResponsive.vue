@@ -57,10 +57,6 @@ export default {
     },
   },
   render() {
-    if (typeof this.$scopedSlots.default === 'undefined') {
-      return null;
-    }
-
     return this.$scopedSlots.default({
       matches: this.matches,
       indeterminate: this.indeterminate,

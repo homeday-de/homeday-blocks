@@ -10,35 +10,42 @@ const BREAKPOINTS = {
 };
 
 describe('HdResponsive', () => {
-  let wrapper;
-
   afterEach(() => {
     // We reset the breakpoints after each test
     setBreakpoints({});
   });
 
   it('renders no markup', () => {
-    wrapper = mount(HdResponsive);
+    const wrapper = mount(HdResponsive, {
+      scopedSlots: {
+        default: '',
+      },
+    });
+
     expect(wrapper.html()).toMatchSnapshot();
   });
 
   it('provides "matches" object as part of a scoped slot', () => {
     setBreakpoints(BREAKPOINTS);
-    wrapper = mount(HdResponsive, {
+
+    const wrapper = mount(HdResponsive, {
       scopedSlots: {
         default: '<div>{{Object.keys(props.matches)}}</div>',
       },
     });
+
     expect(wrapper.html()).toMatchSnapshot();
   });
 
   it('provides "indeterminate" flag as part of a scoped slot', () => {
     setBreakpoints(BREAKPOINTS);
-    wrapper = mount(HdResponsive, {
+
+    const wrapper = mount(HdResponsive, {
       scopedSlots: {
         default: '<div>{{props.indeterminate}}</div>',
       },
     });
+
     expect(wrapper.html()).toMatchSnapshot();
   });
 });
