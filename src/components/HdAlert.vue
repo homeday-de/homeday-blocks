@@ -11,11 +11,11 @@
       :src="iconSrc"
       class="alert__icon"
     >
-    <p
+    <div
       class="alert__message"
     >
       <slot />
-    </p>
+    </div>
   </div>
 </template>
 
