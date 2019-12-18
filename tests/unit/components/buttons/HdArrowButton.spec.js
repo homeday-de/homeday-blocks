@@ -46,13 +46,15 @@ describe('HdArrowButton', () => {
         expect(disabled.type).toBe(Boolean);
       });
 
-      test('disables button when true', () => {
+      test('disables button when true', async () => {
         const button = wrapper.find('button');
 
         expect(button.attributes().disabled).toBeUndefined();
         expect(wrapper.html()).toMatchSnapshot();
 
         wrapper.setProps({ disabled: true });
+
+        await wrapper.vm.$nextTick();
 
         expect(button.attributes().disabled).toBeTruthy();
         expect(wrapper.html()).toMatchSnapshot();
@@ -83,14 +85,20 @@ describe('HdArrowButton', () => {
 
     describe('computed', () => {
       describe('computedClasses', () => {
-        test('direction class based on direction prop', () => {
+        test('direction class based on direction prop', async () => {
           const { vm } = wrapper;
 
           wrapper.setProps({ direction: 'right' });
+
+          await wrapper.vm.$nextTick();
+
           expect(vm.computedClasses).toBe('arrowButton--right');
           expect(wrapper.html()).toMatchSnapshot();
 
           wrapper.setProps({ direction: 'left' });
+
+          await wrapper.vm.$nextTick();
+
           expect(vm.computedClasses).toBe('arrowButton--left');
           expect(wrapper.html()).toMatchSnapshot();
         });
