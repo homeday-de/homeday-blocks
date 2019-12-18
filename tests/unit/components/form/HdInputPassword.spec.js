@@ -1,9 +1,9 @@
 import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import FIELD_CLASSES from './FIELD_CLASSES';
 import HdInputPassword from '@/components/form/HdInputPassword.vue';
+import HdInput from '@/components/form/HdInput.vue';
 
 const ERROR_SELECTOR = '.field__error';
-const HELPER_SELECTOR = '.field__error--helper';
 const ICON_SELECTOR = '.field__icon';
 const VISIBILITY_TOGGLE_SELECTOR = '.field__visibilityToggle';
 
@@ -26,8 +26,10 @@ describe('HdInputPassword', () => {
   );
 
   let wrapper;
+  let inputWrapper;
   beforeEach(() => {
     wrapper = wrapperFactory();
+    inputWrapper = wrapper.find(HdInput);
   });
 
   test('is rendered as expected', () => {
@@ -41,13 +43,7 @@ describe('HdInputPassword', () => {
 
   test('emits `input` event with the right payload', () => {
     wrapper.find('input').setValue(TEST_VALUE);
-    expect(wrapper.emitted('input')[0][0]).toEqual(TEST_VALUE);
-  });
-
-  test('allows setting a helper', () => {
-    const TEST_HTML = '<b>test</b> test';
-    wrapper.vm.showHelper(TEST_HTML);
-    expect(wrapper.find(HELPER_SELECTOR).element.innerHTML).toEqual(TEST_HTML);
+    expect(inputWrapper.emitted('input')[0][0]).toEqual(TEST_VALUE);
   });
 
   test('validates requiredness', () => {
@@ -57,12 +53,14 @@ describe('HdInputPassword', () => {
         required: true,
       },
     });
-    expect(wrapper.vm.validate()).toBe(false);
-    expect(wrapper.find(ERROR_SELECTOR).text()).toBeTruthy();
-    expect(wrapper.classes()).toContain(FIELD_CLASSES.INVALID);
+    inputWrapper = wrapper.find(HdInput);
+
+    expect(inputWrapper.vm.validate()).toBe(false);
+    expect(inputWrapper.find(ERROR_SELECTOR).text()).toBeTruthy();
+    expect(inputWrapper.classes()).toContain(FIELD_CLASSES.INVALID);
 
     wrapper.setProps({ required: false });
-    expect(wrapper.vm.validate()).toBe(true);
+    expect(inputWrapper.vm.validate()).toBe(true);
   });
 
   test('check if the input type is "password"', () => {
@@ -110,7 +108,7 @@ describe('HdInputPassword', () => {
       icon: ICON_PATH,
     });
 
-    expect(wrapper.classes()).toContain(FIELD_CLASSES.HAS_ICON);
+    expect(inputWrapper.classes()).toContain(FIELD_CLASSES.HAS_ICON);
     expect(wrapper.find(ICON_SELECTOR).exists()).toBe(true);
   });
 });

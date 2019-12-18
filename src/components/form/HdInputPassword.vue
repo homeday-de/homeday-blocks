@@ -1,187 +1,50 @@
 <template>
   <div
-    :class="fieldClasses"
-    class="field field--input"
+    class="passwordInput"
   >
-    <img
-      v-if="icon"
-      :src="icon"
-      role="presentation"
-      class="field__icon"
-    >
-    <input
-      :autocomplete="autocomplete"
-      :value="value"
-      :type="currentType"
-      :id="name"
-      :name="name"
-      :placeholder="isActive && placeholder !== undefined ? placeholder : ''"
-      :required="required"
-      :autofocus="autofocus"
-      :disabled="disabled"
-      class="field__input"
-      ref="input"
-      @input="handleInput"
-      @focus="handleFocus"
-      @blur="handleBlur"
+    <HdInput
+    :type="currentType"
+    v-model="currentValue"
+    v-bind="$props"
+    :class="{ 'field--hasControl': this.showVisibilityToggle }"
     />
-    <label
-      v-if="label"
-      :for="name"
-      class="field__label"
-    >
-      {{ label }}
-    </label>
-    <p
-      v-if="error"
-      class="field__error"
-    >
-      {{ error }}
-    </p>
-    <p
-      v-else-if="helper"
-      class="field__error field__error--helper"
-      v-html="helper"
-    />
+
     <span v-if="showVisibilityToggle"
       class="field__visibilityToggle"
       :class="{'field__visibilityToggle--visible': currentType === 'text'}"
       @click="togglePasswordVisibility"
     />
-    <span class="field__border"/>
   </div>
 </template>
 
 <script>
-import merge from 'lodash/merge';
-import { getMessages } from 'hd-blocks/lang';
+import HdInput from 'hd-blocks/components/form/HdInput.vue';
 
 export default {
   name: 'HdInputPassword',
+  components: {
+    HdInput,
+  },
   props: {
-    label: {
-      type: String,
-      default: '',
-    },
-    name: {
-      type: String,
-      required: true,
-    },
-    value: {
-      type: [String, Number],
-      default: '',
-    },
-    placeholder: {
-      type: String,
-      default: '',
-    },
-    required: {
-      type: Boolean,
-      default: false,
-    },
-    autocomplete: {
-      type: String,
-      default: 'on',
-    },
-    autofocus: {
-      type: Boolean,
-      default: false,
-    },
-    lang: {
-      type: String,
-      default: 'de',
-    },
-    texts: {
-      type: Object,
-      default: () => ({}),
-    },
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
-    icon: {
-      type: String,
-      default: '',
-    },
+    ...HdInput.props,
   },
   data() {
     return {
+      currentValue: this.value,
       currentType: 'password',
-      isActive: undefined,
-      isValid: undefined,
-      error: null,
-      helper: null,
     };
   },
   computed: {
-    t() {
-      return merge(getMessages(this.lang), this.texts);
-    },
-    isEmpty() {
-      return this.value === null || this.value === undefined || this.value === '';
-    },
     showVisibilityToggle() {
-      return this.value.length !== 0;
-    },
-    fieldClasses() {
-      return {
-        'field--active': this.isActive,
-        'field--filled': !this.isEmpty,
-        'field--invalid': this.isValid === false,
-        'field--hasControl': this.showVisibilityToggle,
-        'field--disabled': this.disabled,
-        'field--hasIcon': this.icon,
-      };
+      return this.currentValue.length !== 0;
     },
   },
   watch: {
     value() {
-      this.validate();
-    },
-    type(type) {
-      this.currentType = type;
+      this.currentValue = this.value;
     },
   },
   methods: {
-    clearInput() {
-      this.$refs.input.focus();
-      this.hideError();
-      this.$emit('input', '');
-    },
-    handleFocus() {
-      this.isActive = true;
-      this.$emit('focus');
-    },
-    handleBlur() {
-      this.isActive = false;
-      this.validate();
-      this.$emit('blur');
-    },
-    handleInput(e) {
-      const newValue = e.target.value;
-
-      this.$emit('input', newValue);
-    },
-    showError(errorMessage) {
-      this.error = errorMessage;
-      this.isValid = false;
-    },
-    showHelper(message) {
-      this.helper = message;
-    },
-    hideError() {
-      this.isValid = true;
-      this.error = null;
-    },
-    validate() {
-      if (this.required && this.isEmpty) {
-        this.showError(this.t.FORM.VALIDATION.REQUIRED);
-      } else {
-        this.hideError();
-      }
-
-      return !this.error;
-    },
     togglePasswordVisibility() {
       this.currentType = this.currentType === 'password' ? 'text' : 'password';
     },
@@ -191,18 +54,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-@import 'hd-blocks/styles/inputs.scss';
 
-.field {
-  &__error {
-    width: 100%;
-    text-align: left;
-    &--helper {
-      display: block;
-      color: $regent-gray;
-    }
-  }
-  &__visibilityToggle {
+.passwordInput {
+  position: relative;
+
+  .field__visibilityToggle {
     position: absolute;
     right: $inline-s;
     bottom: $stack-m;
