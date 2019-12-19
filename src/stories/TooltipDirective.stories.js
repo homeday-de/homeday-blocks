@@ -2,6 +2,7 @@
 import { storiesOf } from '@storybook/vue';
 
 storiesOf('v-hd-tooltip', module)
+  .addParameters({ percy: { skip: true } })
   .add('default', () => ({
     template: `
     <div>

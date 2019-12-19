@@ -6,6 +6,7 @@ import HdGoogleAutocomplete from 'hd-blocks/components/form/HdGoogleAutocomplete
 import FormWrapper from 'hd-blocks/storiesWrappers/FormWrapper';
 
 storiesOf('Form/HdGoogleAutocomplete', module)
+  .addParameters({ percy: { skip: true } })
   .addDecorator(FormWrapper)
   .add('required 🎛', () => ({
     components: { HdGoogleAutocomplete },

@@ -1,4 +1,9 @@
 <script>
+export const TYPES = [
+  'primary',
+  'secondary',
+];
+
 export default {
   name: 'HdLink',
   props: {
@@ -6,10 +11,7 @@ export default {
       type: String,
       default: 'primary',
       validator(value) {
-        return [
-          'primary',
-          'secondary',
-        ].includes(value);
+        return TYPES.includes(value);
       },
     },
     to: {
@@ -47,6 +49,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-</style>

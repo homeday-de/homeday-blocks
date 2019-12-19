@@ -1,4 +1,6 @@
-[![Build Status](https://travis-ci.com/homeday-de/homeday-blocks.svg?token=rxKqgsBkMR5FqNpvxBcx&branch=develop)](https://travis-ci.com/homeday-de/homeday-blocks) [![Coverage Status](https://coveralls.io/repos/github/homeday-de/homeday-blocks/badge.svg?t=Kbz7Vb)](https://coveralls.io/github/homeday-de/homeday-blocks)
+[![Build Status](https://travis-ci.com/homeday-de/homeday-blocks.svg?token=rxKqgsBkMR5FqNpvxBcx&branch=develop)](https://travis-ci.com/homeday-de/homeday-blocks)
+[![Coverage Status](https://coveralls.io/repos/github/homeday-de/homeday-blocks/badge.svg?t=Kbz7Vb)](https://coveralls.io/github/homeday-de/homeday-blocks)
+[![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/Homeday/homeday-blocks)
 
 # Homeday Blocks
 A library of Vue components used across Homeday projects - [here](https://blocks.homeday.dev)
@@ -57,6 +59,18 @@ To watch for changes while writing tests for a single component:
 ```bash
 npm run test:unit:watch ComponentName
 ```
+
+### Screenshot tests on Percy
+
+Make sure you've `PERCY_TOKEN` exported first and the [project is built](#build).
+
+*The token can be obtained from Percy dashboard if you've access to it.*
+
+```bash
+npm run test:percy
+```
+
+You can also follow build statuses in https://percy.io/Homeday/homeday-blocks
 
 #### Gotchas
 - `tests/` is an alias for `<rootDir>/tests/`

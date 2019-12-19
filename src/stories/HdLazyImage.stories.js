@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/vue';
 import HdLazyImage from 'hd-blocks/components/HdLazyImage.vue';
 
 storiesOf('HdLazyImage', module)
+  .addParameters({ percy: { skip: true } })
   .add('default', () => ({
     components: { HdLazyImage },
     template: `

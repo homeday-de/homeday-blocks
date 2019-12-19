@@ -1,67 +1,79 @@
 export default [
   {
-    image: 'https://homeday.imgix.net/https%3A%2F%2Fpictures.immobilienscout24.de%2Flistings%2Fadc5cc05-4b0c-4b85-b324-a115358e405e-1262338255.jpg%2FORIG%2Fformat%2Fjpg%2Fquality%2F80?w=1600&h=900&fit=crop&crop=focalpoint&ixlib=js-1.2.0&s=c6f8884b2baee1486134be70817b4a65',
-    thumbnail: 'https://homeday.imgix.net/https%3A%2F%2Fpictures.immobilienscout24.de%2Flistings%2Fadc5cc05-4b0c-4b85-b324-a115358e405e-1262338255.jpg%2FORIG%2Fformat%2Fjpg%2Fquality%2F80?w=372&h=210&fit=crop&crop=focalpoint&ixlib=js-1.2.0&s=ffc3431ee910b43c98c8c0b2128dd52d',
-    caption: 'Some title',
+    caption: 'Picture Sources Test',
+    image: 'https://dummyimage.com/1536x364?text=1+Picture+Sources+Test',
+    thumbnail: 'https://dummyimage.com/154x86?text=1+thumb+TL+to+D',
+    pictureSources: {
+      'max-width: 600px': 'https://dummyimage.com/306x172?text=1+M',
+      'max-width: 900px': 'https://dummyimage.com/768x432?text=1+TP',
+      'max-width: 1200px': 'https://dummyimage.com/768x432?text=1+TL',
+    },
+    thumbnailPictureSources: {
+      'max-width: 900px': 'https://dummyimage.com/768x432?text=1+thumb+M+to+TP',
+    },
   }, {
-    image: 'https://homeday.imgix.net/https%3A%2F%2Fpictures.immobilienscout24.de%2Flistings%2F9ce77ae5-f5cb-4529-a828-4e60b4fe179a-1262338250.jpg%2FORIG%2Fformat%2Fjpg%2Fquality%2F80?w=1600&h=900&fit=crop&crop=focalpoint&ixlib=js-1.2.0&s=b14e660c69dcde4ec7785765bca30f19',
-    thumbnail: 'https://homeday.imgix.net/https%3A%2F%2Fpictures.immobilienscout24.de%2Flistings%2F9ce77ae5-f5cb-4529-a828-4e60b4fe179a-1262338250.jpg%2FORIG%2Fformat%2Fjpg%2Fquality%2F80?w=372&h=210&fit=crop&crop=focalpoint&ixlib=js-1.2.0&s=8f172444a4ab72d28988eb38733aae07',
-    caption: '__vue_devtool_undefined__',
+    caption: 'Picture Sources Test',
+    image: 'https://dummyimage.com/1536x864?text=2+Picture+Sources+Test',
+    thumbnail: 'https://dummyimage.com/154x86?text=2+thumb+TL+to+D',
+    pictureSources: {
+      'max-width: 600px': 'https://dummyimage.com/306x172?text=2+M',
+      'max-width: 900px': 'https://dummyimage.com/768x432?text=2+TP',
+      'max-width: 1200px': 'https://dummyimage.com/768x432?text=2+TL',
+    },
+    thumbnailPictureSources: {
+      'max-width: 900px': 'https://dummyimage.com/768x432?text=2+thumb+M+to+TP',
+    },
   }, {
-    image: 'https://homeday.imgix.net/https%3A%2F%2Fpictures.immobilienscout24.de%2Flistings%2F744996e5-fec2-4a02-98e7-c2ce1e722946-1262338252.jpg%2FORIG%2Fformat%2Fjpg%2Fquality%2F80?w=900&h=1600&fit=crop&crop=focalpoint&ixlib=js-1.2.0&s=62f7a5210386e4bb7d6f5fe82a126126',
-    thumbnail: 'https://homeday.imgix.net/https%3A%2F%2Fpictures.immobilienscout24.de%2Flistings%2F744996e5-fec2-4a02-98e7-c2ce1e722946-1262338252.jpg%2FORIG%2Fformat%2Fjpg%2Fquality%2F80?w=210&h=372&fit=crop&crop=focalpoint&ixlib=js-1.2.0&s=a999b86e7d7e3122bb7a633296d57e81',
-    caption: 'Some other title',
+    caption: 'Image Source Set test',
+    image: 'https://dummyimage.com/1536x364?text=3+Image+Source+Set+test',
+    imageSrcSet: 'https://dummyimage.com/3072x726?text=3+DPR2x 2x, https://dummyimage.com/4608x1092?text=3+DPR3x 3x',
+    thumbnail: 'https://dummyimage.com/154x86?text=3+thumb+default+density',
+    thumbnailSrcSet: 'https://dummyimage.com/308x172?text=3+thumb+DPR2x 2x, https://dummyimage.com/462x258?text=3+thumb+DPR3x 3x',
   }, {
-    image: 'https://homeday.imgix.net/https%3A%2F%2Fpictures.immobilienscout24.de%2Flistings%2F2c7d0043-4dd3-4172-aefa-a42b048dde14-1262338251.jpg%2FORIG%2Fformat%2Fjpg%2Fquality%2F80?w=1600&h=900&fit=crop&crop=focalpoint&ixlib=js-1.2.0&s=1c4c05d190155b19ad26a4bd98d8b84b',
-    thumbnail: 'https://homeday.imgix.net/https%3A%2F%2Fpictures.immobilienscout24.de%2Flistings%2F2c7d0043-4dd3-4172-aefa-a42b048dde14-1262338251.jpg%2FORIG%2Fformat%2Fjpg%2Fquality%2F80?w=372&h=210&fit=crop&crop=focalpoint&ixlib=js-1.2.0&s=27c8ed1fd9215cbdc1d243992cf803c2',
-    caption: 'Kitchen',
+    caption: 'Image and Picture Source Sets test',
+    image: 'https://dummyimage.com/1536x864?text=4+Picture+Source+Sets+Test',
+    imageSrcSet: 'https://dummyimage.com/3072x726?text=4+DPR2x 2x, https://dummyimage.com/4608x1092?text=4+DPR3x 3x',
+    thumbnail: 'https://dummyimage.com/306x172?text=4+thumb+default+density',
+    pictureSources: {
+      'max-width: 600px': 'https://dummyimage.com/306x172?text=4+M 1x, https://dummyimage.com/306x172?text=4+M+DPI2x 2x, https://dummyimage.com/306x172?text=4+M+DPI3x 3x',
+      'max-width: 900px': 'https://dummyimage.com/768x432?text=4+TP 1x, https://dummyimage.com/1536x864?text=4+TP+DPI2x 2x, https://dummyimage.com/2304x1296?text=4+TP3x 3x',
+      'max-width: 1200px': 'https://dummyimage.com/768x432?text=4+TL 1x, https://dummyimage.com/1536x864?text=4+TL+DPI2x 2x, https://dummyimage.com/2304x1296?text=4+TL3x 3x',
+    },
+    thumbnailPictureSources: {
+      'max-width: 900px': 'https://dummyimage.com/768x432?text=4+thumb+M+to+TP+DPR1x 1x, https://dummyimage.com/1536x864?text=4+thumb+TP+DPI2x 2x, https://dummyimage.com/2304x1296?text=4+thumb+TP3x 3x',
+    },
+    thumbnailSrcSet: 'https://dummyimage.com/612x344?text=4+thumb+DPR2x 2x, https://dummyimage.com/918x516?text=4+thumb+DPR3x 3x',
   }, {
-    image: 'https://homeday.imgix.net/https%3A%2F%2Fpictures.immobilienscout24.de%2Flistings%2F048ef2e1-c561-4eff-8a6b-b74b4af3ad18-1262338249.jpg%2FORIG%2Fformat%2Fjpg%2Fquality%2F80?w=900&h=1600&fit=crop&crop=focalpoint&ixlib=js-1.2.0&s=54d18d6e993067e33c54c40b8d4eff5a',
-    thumbnail: 'https://homeday.imgix.net/https%3A%2F%2Fpictures.immobilienscout24.de%2Flistings%2F048ef2e1-c561-4eff-8a6b-b74b4af3ad18-1262338249.jpg%2FORIG%2Fformat%2Fjpg%2Fquality%2F80?w=210&h=372&fit=crop&crop=focalpoint&ixlib=js-1.2.0&s=eec9caf224545e117240263010004cd9',
-    caption: 'Living room',
+    caption: 'Uneven image',
+    image: 'https://dummyimage.com/1536x2864?text=5+uneven+image',
+    thumbnail: 'https://dummyimage.com/2306x3172?text=5+thumb+uneven+image',
   }, {
-    image: 'https://homeday.imgix.net/https%3A%2F%2Fpictures.immobilienscout24.de%2Flistings%2Fae1c317a-5fc2-48da-9bd5-20fb1d9e22a9-1262338256.jpg%2FORIG%2Fformat%2Fjpg%2Fquality%2F80?w=1600&h=900&fit=crop&crop=focalpoint&ixlib=js-1.2.0&s=29c732eb84f4ad7143931e294d477709',
-    thumbnail: 'https://homeday.imgix.net/https%3A%2F%2Fpictures.immobilienscout24.de%2Flistings%2Fae1c317a-5fc2-48da-9bd5-20fb1d9e22a9-1262338256.jpg%2FORIG%2Fformat%2Fjpg%2Fquality%2F80?w=372&h=210&fit=crop&crop=focalpoint&ixlib=js-1.2.0&s=f9b31e5c5c4a6a9b23b3a45ab48b7a25',
+    image: 'https://dummyimage.com/1536x864?text=6',
+    thumbnail: 'https://dummyimage.com/306x172?text=6',
     caption: 'Cellar',
   }, {
-    image: 'https://homeday.imgix.net/https%3A%2F%2Fpictures.immobilienscout24.de%2Flistings%2F63d89792-c618-4af3-a402-701e7fe8e050-1262338258.jpg%2FORIG%2Fformat%2Fjpg%2Fquality%2F80?w=1600&h=900&fit=crop&crop=focalpoint&ixlib=js-1.2.0&s=9be8bccda6af948f3dc808aa3b3d9a7d',
-    thumbnail: 'https://homeday.imgix.net/https%3A%2F%2Fpictures.immobilienscout24.de%2Flistings%2F63d89792-c618-4af3-a402-701e7fe8e050-1262338258.jpg%2FORIG%2Fformat%2Fjpg%2Fquality%2F80?w=372&h=210&fit=crop&crop=focalpoint&ixlib=js-1.2.0&s=fe3904552f03982c10763b5e0fc54d96',
+    image: 'https://dummyimage.com/1536x864?text=7',
+    thumbnail: 'https://dummyimage.com/306x172?text=7',
     caption: '__vue_devtool_undefined__',
   }, {
-    image: 'https://homeday.imgix.net/https%3A%2F%2Fpictures.immobilienscout24.de%2Flistings%2Fa1e235f4-2a42-4242-9a8e-2a3eeca6268b-1262338261.jpg%2FORIG%2Fformat%2Fjpg%2Fquality%2F80?w=900&h=1600&fit=crop&crop=focalpoint&ixlib=js-1.2.0&s=233c9ca90ddf8d0c01a5ed8f512dfff4',
-    thumbnail: 'https://homeday.imgix.net/https%3A%2F%2Fpictures.immobilienscout24.de%2Flistings%2Fa1e235f4-2a42-4242-9a8e-2a3eeca6268b-1262338261.jpg%2FORIG%2Fformat%2Fjpg%2Fquality%2F80?w=210&h=372&fit=crop&crop=focalpoint&ixlib=js-1.2.0&s=bcb0e01b67e67e038b23e0fd6ba7c2b9',
+    image: 'https://dummyimage.com/1536x864?text=8',
+    thumbnail: 'https://dummyimage.com/306x172?text=8',
     caption: '__vue_devtool_undefined__',
   }, {
-    image: 'https://homeday.imgix.net/https%3A%2F%2Fpictures.immobilienscout24.de%2Flistings%2Fadc5cc05-4b0c-4b85-b324-a115358e405e-1262338255.jpg%2FORIG%2Fformat%2Fjpg%2Fquality%2F80?w=1600&h=900&fit=crop&crop=focalpoint&ixlib=js-1.2.0&s=c6f8884b2baee1486134be70817b4a65',
-    thumbnail: 'https://homeday.imgix.net/https%3A%2F%2Fpictures.immobilienscout24.de%2Flistings%2Fadc5cc05-4b0c-4b85-b324-a115358e405e-1262338255.jpg%2FORIG%2Fformat%2Fjpg%2Fquality%2F80?w=372&h=210&fit=crop&crop=focalpoint&ixlib=js-1.2.0&s=ffc3431ee910b43c98c8c0b2128dd52d',
+    image: 'https://dummyimage.com/1536x864?text=9',
+    thumbnail: 'https://dummyimage.com/306x172?text=9',
     caption: 'Some title',
   }, {
-    image: 'https://homeday.imgix.net/https%3A%2F%2Fpictures.immobilienscout24.de%2Flistings%2F9ce77ae5-f5cb-4529-a828-4e60b4fe179a-1262338250.jpg%2FORIG%2Fformat%2Fjpg%2Fquality%2F80?w=1600&h=900&fit=crop&crop=focalpoint&ixlib=js-1.2.0&s=b14e660c69dcde4ec7785765bca30f19',
-    thumbnail: 'https://homeday.imgix.net/https%3A%2F%2Fpictures.immobilienscout24.de%2Flistings%2F9ce77ae5-f5cb-4529-a828-4e60b4fe179a-1262338250.jpg%2FORIG%2Fformat%2Fjpg%2Fquality%2F80?w=372&h=210&fit=crop&crop=focalpoint&ixlib=js-1.2.0&s=8f172444a4ab72d28988eb38733aae07',
+    image: 'https://dummyimage.com/1536x864?text=10',
+    thumbnail: 'https://dummyimage.com/306x172?text=10',
     caption: 'Some title',
   }, {
-    image: 'https://homeday.imgix.net/https%3A%2F%2Fpictures.immobilienscout24.de%2Flistings%2F744996e5-fec2-4a02-98e7-c2ce1e722946-1262338252.jpg%2FORIG%2Fformat%2Fjpg%2Fquality%2F80?w=900&h=1600&fit=crop&crop=focalpoint&ixlib=js-1.2.0&s=62f7a5210386e4bb7d6f5fe82a126126',
-    thumbnail: 'https://homeday.imgix.net/https%3A%2F%2Fpictures.immobilienscout24.de%2Flistings%2F744996e5-fec2-4a02-98e7-c2ce1e722946-1262338252.jpg%2FORIG%2Fformat%2Fjpg%2Fquality%2F80?w=210&h=372&fit=crop&crop=focalpoint&ixlib=js-1.2.0&s=a999b86e7d7e3122bb7a633296d57e81',
+    image: 'https://dummyimage.com/1536x864?text=11',
+    thumbnail: 'https://dummyimage.com/306x172?text=11',
     caption: 'Some title',
   }, {
-    image: 'https://homeday.imgix.net/https%3A%2F%2Fpictures.immobilienscout24.de%2Flistings%2F2c7d0043-4dd3-4172-aefa-a42b048dde14-1262338251.jpg%2FORIG%2Fformat%2Fjpg%2Fquality%2F80?w=1600&h=900&fit=crop&crop=focalpoint&ixlib=js-1.2.0&s=1c4c05d190155b19ad26a4bd98d8b84b',
-    thumbnail: 'https://homeday.imgix.net/https%3A%2F%2Fpictures.immobilienscout24.de%2Flistings%2F2c7d0043-4dd3-4172-aefa-a42b048dde14-1262338251.jpg%2FORIG%2Fformat%2Fjpg%2Fquality%2F80?w=372&h=210&fit=crop&crop=focalpoint&ixlib=js-1.2.0&s=27c8ed1fd9215cbdc1d243992cf803c2',
-    caption: 'Some title',
-  }, {
-    image: 'https://homeday.imgix.net/https%3A%2F%2Fpictures.immobilienscout24.de%2Flistings%2F048ef2e1-c561-4eff-8a6b-b74b4af3ad18-1262338249.jpg%2FORIG%2Fformat%2Fjpg%2Fquality%2F80?w=900&h=1600&fit=crop&crop=focalpoint&ixlib=js-1.2.0&s=54d18d6e993067e33c54c40b8d4eff5a',
-    thumbnail: 'https://homeday.imgix.net/https%3A%2F%2Fpictures.immobilienscout24.de%2Flistings%2F048ef2e1-c561-4eff-8a6b-b74b4af3ad18-1262338249.jpg%2FORIG%2Fformat%2Fjpg%2Fquality%2F80?w=210&h=372&fit=crop&crop=focalpoint&ixlib=js-1.2.0&s=eec9caf224545e117240263010004cd9',
-    caption: 'Some title',
-  }, {
-    image: 'https://homeday.imgix.net/https%3A%2F%2Fpictures.immobilienscout24.de%2Flistings%2Fae1c317a-5fc2-48da-9bd5-20fb1d9e22a9-1262338256.jpg%2FORIG%2Fformat%2Fjpg%2Fquality%2F80?w=1600&h=900&fit=crop&crop=focalpoint&ixlib=js-1.2.0&s=29c732eb84f4ad7143931e294d477709',
-    thumbnail: 'https://homeday.imgix.net/https%3A%2F%2Fpictures.immobilienscout24.de%2Flistings%2Fae1c317a-5fc2-48da-9bd5-20fb1d9e22a9-1262338256.jpg%2FORIG%2Fformat%2Fjpg%2Fquality%2F80?w=372&h=210&fit=crop&crop=focalpoint&ixlib=js-1.2.0&s=f9b31e5c5c4a6a9b23b3a45ab48b7a25',
-    caption: 'Some title',
-  }, {
-    image: 'https://homeday.imgix.net/https%3A%2F%2Fpictures.immobilienscout24.de%2Flistings%2F63d89792-c618-4af3-a402-701e7fe8e050-1262338258.jpg%2FORIG%2Fformat%2Fjpg%2Fquality%2F80?w=1600&h=900&fit=crop&crop=focalpoint&ixlib=js-1.2.0&s=9be8bccda6af948f3dc808aa3b3d9a7d',
-    thumbnail: 'https://homeday.imgix.net/https%3A%2F%2Fpictures.immobilienscout24.de%2Flistings%2F63d89792-c618-4af3-a402-701e7fe8e050-1262338258.jpg%2FORIG%2Fformat%2Fjpg%2Fquality%2F80?w=372&h=210&fit=crop&crop=focalpoint&ixlib=js-1.2.0&s=fe3904552f03982c10763b5e0fc54d96',
-    caption: 'Some title',
-  }, {
-    image: 'https://homeday.imgix.net/https%3A%2F%2Fpictures.immobilienscout24.de%2Flistings%2Fa1e235f4-2a42-4242-9a8e-2a3eeca6268b-1262338261.jpg%2FORIG%2Fformat%2Fjpg%2Fquality%2F80?w=900&h=1600&fit=crop&crop=focalpoint&ixlib=js-1.2.0&s=233c9ca90ddf8d0c01a5ed8f512dfff4',
-    thumbnail: 'https://homeday.imgix.net/https%3A%2F%2Fpictures.immobilienscout24.de%2Flistings%2Fa1e235f4-2a42-4242-9a8e-2a3eeca6268b-1262338261.jpg%2FORIG%2Fformat%2Fjpg%2Fquality%2F80?w=210&h=372&fit=crop&crop=focalpoint&ixlib=js-1.2.0&s=bcb0e01b67e67e038b23e0fd6ba7c2b9',
+    image: 'https://dummyimage.com/1536x864?text=12',
+    thumbnail: 'https://dummyimage.com/306x172?text=12',
     caption: 'Some title',
   },
 ];

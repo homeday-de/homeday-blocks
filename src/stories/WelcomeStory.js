@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/vue';
 import Welcome from './Welcome.vue';
 
 storiesOf('Welcome', module)
+  .addParameters({ percy: { skip: true } })
   .add('Welcome', () => ({
     components: {
       Welcome,
