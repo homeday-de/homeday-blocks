@@ -44,7 +44,7 @@ export default [
     },
     thumbnailSrcSet: 'https://dummyimage.com/612x344?text=4+thumb+DPR2x 2x, https://dummyimage.com/918x516?text=4+thumb+DPR3x 3x',
   }, {
-    caption: 'Unevent image',
+    caption: 'Uneven image',
     image: 'https://dummyimage.com/1536x2864?text=5+uneven+image',
     thumbnail: 'https://dummyimage.com/2306x3172?text=5+thumb+uneven+image',
   }, {

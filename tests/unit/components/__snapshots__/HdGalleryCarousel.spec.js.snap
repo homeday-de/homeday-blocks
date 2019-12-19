@@ -27,7 +27,7 @@ exports[`HdGalleryCarousel renders component 1`] = `
           </div>
           <div class="gallery-carousel__item is-selected" style="position: absolute;">
             <div class="gallery-carousel__item__sizer" style="padding-top: 56.25%;"></div>
-            <picture class="gallery-carousel__item__picture"> <img src="https://dummyimage.com/2306x3172?text=5+thumb+uneven+image" alt="Unevent image"></picture>
+            <picture class="gallery-carousel__item__picture"> <img src="https://dummyimage.com/2306x3172?text=5+thumb+uneven+image" alt="Uneven image"></picture>
           </div>
           <div class="gallery-carousel__item is-selected" style="position: absolute;">
             <div class="gallery-carousel__item__sizer" style="padding-top: 56.25%;"></div>

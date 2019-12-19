@@ -31,14 +31,15 @@
             class="gallery-carousel__item__sizer"
           />
 
-          <picture v-if="usePictureElement" class="gallery-carousel__item__picture">
+          <!-- the item.thumbnail field is used as default value for the item image -->
+          <!-- IE11 uses this value only because do not support the picture element -->
+          <picture class="gallery-carousel__item__picture">
               <source v-for="(source, media) in item.thumbnailPictureSources"
                 :key="media"
                 :media="`(${media})`" :srcset="source"
               >
             <img :src="item.thumbnail" :alt="item.caption" :srcset="item.thumbnailSrcSet">
           </picture>
-          <img v-else class="gallery-carousel__item__picture" :src="item.thumbnail" :alt="item.caption" :srcset="item.thumbnailSrcSet">
 
         </div>
       </flickity>
@@ -108,10 +109,6 @@ export default {
       return {
         paddingTop: `${100 / this.aspectRatio}%`,
       };
-    },
-    usePictureElement() {
-      const currentItem = this.items[this.currentIndex];
-      return currentItem.thumbnailPictureSources && currentItem.thumbnailPictureSources !== {};
     },
   },
   watch: {

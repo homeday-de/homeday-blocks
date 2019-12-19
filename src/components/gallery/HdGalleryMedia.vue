@@ -5,16 +5,15 @@
         :style="sizerStyles"
         class="gallery-media__object__sizer"/>
 
-      <picture v-if="usePictureElement"
-        class="gallery-media__object__picture"
-      >
+      <!-- the item.image field is used as default value for the item image -->
+      <!-- IE11 uses this value only because do not support the picture element -->
+      <picture class="gallery-media__object__picture">
         <source v-for="(source, media) in item.pictureSources"
           :key="media"
           :media="`(${media})`" :srcset="source"
         >
         <img ref="imageHolder" :src="item.image" :alt="item.caption" :srcset="item.imageSrcSet"/>
       </picture>
-      <img v-else ref="imageHolder" :src="item.image" :alt="item.caption" :srcset="item.imageSrcSet" />
 
       <div
         v-if="hasThumbnail"
@@ -58,9 +57,6 @@ export default {
       return {
         paddingTop: `${100 / this.aspectRatio}%`,
       };
-    },
-    usePictureElement() {
-      return this.item.pictureSources && this.item.pictureSources !== {};
     },
   },
   watch: {
