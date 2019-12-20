@@ -5,11 +5,16 @@
     :class="{ isLoaded: imageLoaded }"
     class="lazy-image"
   />
-  <img
-    v-else
-    ref="imageHolder"
-    :class="{ isLoaded: imageLoaded }"
-    class="lazy-image">
+
+  <!-- the src field is used as default value for the item image -->
+  <!-- IE11 uses this value only because do not support the picture element -->
+  <picture v-else>
+      <source v-for="(source, media) in pictureSources"
+        :key="media"
+        :media="`(${media})`" :srcset="source"
+      >
+    <img ref="imageHolder" class="lazy-image" :class="{ isLoaded: imageLoaded }" :alt="alt">
+  </picture>
 </template>
 
 <script>
@@ -20,13 +25,25 @@ export default {
       type: String,
       default: '',
     },
+    srcset: {
+      type: String,
+      default: '',
+    },
     srcSmall: {
       type: String,
       default: '',
     },
+    alt: {
+      type: String,
+      default: null,
+    },
     background: {
       type: Boolean,
       default: false,
+    },
+    pictureSources: {
+      type: Array,
+      default: null,
     },
   },
   data() {
@@ -60,6 +77,7 @@ export default {
       image.onload = () => {
         this.imageLoaded = true;
         this.setImageUrl(this.src);
+        this.setImageSrcset();
       };
 
       image.src = this.src;
@@ -74,6 +92,13 @@ export default {
       } else {
         this.$refs.imageHolder.src = url;
       }
+    },
+    setImageSrcset() {
+      if (!this.srcset) {
+        return;
+      }
+
+      this.$refs.imageHolder.srcset = this.srcset;
     },
   },
 };

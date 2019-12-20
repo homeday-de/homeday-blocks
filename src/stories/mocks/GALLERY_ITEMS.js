@@ -33,7 +33,7 @@ export default [
     caption: 'Image and Picture Source Sets test',
     image: 'https://dummyimage.com/1536x864?text=4+Picture+Source+Sets+Test',
     imageSrcSet: 'https://dummyimage.com/3072x726?text=4+DPR2x 2x, https://dummyimage.com/4608x1092?text=4+DPR3x 3x',
-    thumbnail: 'https://dummyimage.com/306x172?text=4+thumb+default+density',
+    thumbnail: 'https://dummyimage.com/256x61?text=4+thumb+thumbnail',
     pictureSources: {
       'max-width: 600px': 'https://dummyimage.com/306x172?text=4+M 1x, https://dummyimage.com/306x172?text=4+M+DPI2x 2x, https://dummyimage.com/306x172?text=4+M+DPI3x 3x',
       'max-width: 900px': 'https://dummyimage.com/768x432?text=4+TP 1x, https://dummyimage.com/1536x864?text=4+TP+DPI2x 2x, https://dummyimage.com/2304x1296?text=4+TP3x 3x',
