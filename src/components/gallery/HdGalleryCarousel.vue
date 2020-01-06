@@ -143,8 +143,9 @@ export default {
         this.updateCurrentIndex();
       });
     },
-    updateCurrentIndex() {
-      this.currentIndex = this.$refs.flickity.selectedIndex();
+    updateCurrentIndex(itemIndex) {
+      this.currentIndex = itemIndex;
+      this.$emit('input', itemIndex);
     },
     onStaticClick(event, pointer, cellElement, cellIndex) {
       if (typeof cellIndex === 'undefined') {
