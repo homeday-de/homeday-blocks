@@ -119,7 +119,7 @@ export default {
         this.currentValue = this.minValue;
       }
 
-      this.currentValue = this.currentValue - (this.currentValue % this.rangeStep);
+      this.currentValue -= (this.currentValue % this.rangeStep);
 
       this.$emit('input', this.currentValue);
     },
