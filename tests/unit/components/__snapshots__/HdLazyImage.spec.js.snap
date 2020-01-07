@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HdLazyImage renders with the image as background 1`] = `<picture> <img class="lazy-image" src=""></picture>`;
+
+exports[`HdLazyImage renders with the image as picture element, sources and source set 1`] = `<picture> <img class="lazy-image" src=""></picture>`;

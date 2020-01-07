@@ -42,7 +42,7 @@ export default {
       default: false,
     },
     pictureSources: {
-      type: Array,
+      type: Object,
       default: null,
     },
   },
