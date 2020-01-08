@@ -20,6 +20,10 @@ export default {
       type: String,
       default: '',
     },
+    srcset: {
+      type: String,
+      default: '',
+    },
     srcSmall: {
       type: String,
       default: '',
@@ -59,12 +63,12 @@ export default {
 
       image.onload = () => {
         this.imageLoaded = true;
-        this.setImageUrl(this.src);
+        this.setImageUrl(this.src, this.srcset);
       };
 
       image.src = this.src;
     },
-    setImageUrl(url) {
+    setImageUrl(url, srcset) {
       if (!this.$refs.imageHolder) {
         return;
       }
@@ -73,6 +77,10 @@ export default {
         this.$refs.imageHolder.style.backgroundImage = `url('${url}')`;
       } else {
         this.$refs.imageHolder.src = url;
+
+        if (srcset) {
+          this.$refs.imageHolder.srcset = srcset;
+        }
       }
     },
   },

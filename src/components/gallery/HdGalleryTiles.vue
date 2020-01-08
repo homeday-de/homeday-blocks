@@ -11,6 +11,7 @@
         @click="$emit('itemClick', i)">
         <HdLazyImage
           :src="photo.image"
+          :srcset="photo.imageSrcSet"
           :src-small="photo.thumbnail"
           :background="background"
           class="gallery-tile__image"
