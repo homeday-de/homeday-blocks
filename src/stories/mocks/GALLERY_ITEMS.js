@@ -44,13 +44,13 @@ export default [
     },
     thumbnailSrcSet: 'https://dummyimage.com/612x344?text=4+thumb+DPR2x 2x, https://dummyimage.com/918x516?text=4+thumb+DPR3x 3x',
   }, {
-    caption: 'Uneven image',
-    image: 'https://dummyimage.com/1536x2864?text=5+uneven+image',
-    thumbnail: 'https://dummyimage.com/2306x3172?text=5+thumb+uneven+image',
-  }, {
     image: 'https://dummyimage.com/1536x864?text=6',
     thumbnail: 'https://dummyimage.com/306x172?text=6',
     caption: 'Cellar',
+  }, {
+    caption: 'Uneven image',
+    image: 'https://dummyimage.com/1536x2864?text=5+uneven+image',
+    thumbnail: 'https://dummyimage.com/2306x3172?text=5+thumb+uneven+image',
   }, {
     image: 'https://dummyimage.com/1536x864?text=7',
     thumbnail: 'https://dummyimage.com/306x172?text=7',
