@@ -4,7 +4,7 @@ exports[`HDTooltipped the component is rendered 1`] = `<span></span>`;
 
 exports[`HDTooltipped the component is rendered 2`] = `
 <div class="field field--input">
-  <!----> <input autocomplete="on" type="text" id="testInput" name="testInput" placeholder="" class="field__input"> <label for="testInput" class="field__label">
+  <!----> <input autocomplete="on" type="text" id="testInput" name="testInput" placeholder="" data-lpignore="true" class="field__input"> <label for="testInput" class="field__label">
     dolor sit ammet
   </label>
   <!---->
