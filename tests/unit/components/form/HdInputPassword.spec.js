@@ -1,10 +1,7 @@
 import { wrapperFactoryBuilder } from 'tests/unit/helpers';
-import FIELD_CLASSES from './FIELD_CLASSES';
 import HdInputPassword from '@/components/form/HdInputPassword.vue';
 import HdInput from '@/components/form/HdInput.vue';
 
-const ERROR_SELECTOR = '.field__error';
-const ICON_SELECTOR = '.field__icon';
 const VISIBILITY_TOGGLE_SELECTOR = '.field__visibilityToggle';
 
 const PASSWORD_VISIBLE_CLASS = 'field__visibilityToggle--visible';
@@ -46,23 +43,6 @@ describe('HdInputPassword', () => {
     expect(inputWrapper.emitted('input')[0][0]).toEqual(TEST_VALUE);
   });
 
-  test('validates requiredness', () => {
-    wrapper = wrapperFactory({
-      propsData: {
-        value: '',
-        required: true,
-      },
-    });
-    inputWrapper = wrapper.find(HdInput);
-
-    expect(inputWrapper.vm.validate()).toBe(false);
-    expect(inputWrapper.find(ERROR_SELECTOR).text()).toBeTruthy();
-    expect(inputWrapper.classes()).toContain(FIELD_CLASSES.INVALID);
-
-    wrapper.setProps({ required: false });
-    expect(inputWrapper.vm.validate()).toBe(true);
-  });
-
   test('check if the input type is "password"', () => {
     expect(wrapper
       .find('input')
@@ -89,26 +69,5 @@ describe('HdInputPassword', () => {
   test('doesn\'t show visibility toggle if empty', () => {
     wrapper.setProps({ value: '' });
     expect(wrapper.find(VISIBILITY_TOGGLE_SELECTOR).exists()).toBe(false);
-  });
-
-  test('Supports disabling', () => {
-    wrapper.setProps({
-      disabled: true,
-    });
-    expect(wrapper.find('input').attributes().disabled).toBe('disabled');
-  });
-
-  test('Can render an icon', () => {
-    const ICON_PATH = 'fake/icon.svg';
-
-    expect(wrapper.classes()).not.toContain(FIELD_CLASSES.HAS_ICON);
-    expect(wrapper.find(ICON_SELECTOR).exists()).toBe(false);
-
-    wrapper.setProps({
-      icon: ICON_PATH,
-    });
-
-    expect(inputWrapper.classes()).toContain(FIELD_CLASSES.HAS_ICON);
-    expect(wrapper.find(ICON_SELECTOR).exists()).toBe(true);
   });
 });
