@@ -38,7 +38,7 @@
     "imagesloaded": "4.1.4",
     "lodash": "4.17.15",
     "natural-scroll": "0.2.2",
-    "vue": "2.6.10",
+    "vue": "2.6.11",
     "vue-flickity": "1.2.1",
     "vue-zoomer": "homeday-de/vue-zoomer#0.4.0"
   },
@@ -70,7 +70,7 @@
     "sass-loader": "8.0.0",
     "vue-cli-plugin-storybook": "homeday-de/vue-cli-plugin-storybook#master",
     "vue-code-highlight": "^0.7.2",
-    "vue-template-compiler": "2.6.10"
+    "vue-template-compiler": "2.6.11"
   },
   "files": [
     "src/*",
