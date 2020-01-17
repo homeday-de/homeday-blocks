@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HdGalleryCarousel should render as expected 1`] = `
+<div class="gallery-carousel">
+  <div tabindex="0" class="gallery-carousel__wrap">
+    <div class="flickity-enabled">
+      <div class="flickity-viewport" style="height: 0px;">
+        <div class="flickity-slider" style="left: 0px; transform: translateX(NaN%);">
+          <div class="gallery-carousel__item is-selected" style="position: absolute;">
+            <div class="gallery-carousel__item__sizer" style="padding-top: 56.25%;"></div>
+            <picture class="gallery-carousel__item__picture"> <img src="http://placehold.it/10x10" alt="test"></picture>
+          </div>
+          <div class="gallery-carousel__item is-selected" style="position: absolute;">
+            <div class="gallery-carousel__item__sizer" style="padding-top: 56.25%;"></div>
+            <picture class="gallery-carousel__item__picture"> <img src="http://placehold.it/10x10" alt="test"></picture>
+          </div>
+          <div class="gallery-carousel__item is-selected" style="position: absolute;">
+            <div class="gallery-carousel__item__sizer" style="padding-top: 56.25%;"></div>
+            <picture class="gallery-carousel__item__picture"> <img src="http://placehold.it/10x10" alt="test"></picture>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-carousel__pager">
+      <!---->
+    </div>
+  </div>
+</div>
+`;
