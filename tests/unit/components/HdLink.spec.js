@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import HdLink from '@/components/HdLink.vue';
+import HdLink, { TYPES } from '@/components/HdLink.vue';
 
 describe('HdLink', () => {
   let wrapper;
@@ -18,14 +18,17 @@ describe('HdLink', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  it('should render link--secondary', () => {
-    wrapper.setProps({
-      modifier: 'secondary',
-    });
+  TYPES.forEach((modifier) => {
+    it(`should render link--${modifier}`, () => {
+      wrapper.setProps({
+        modifier,
+      });
 
-    expect(wrapper.classes()).toContain('link--secondary');
-    expect(wrapper.html()).toMatchSnapshot();
+      expect(wrapper.classes()).toContain(`link--${modifier}`);
+      expect(wrapper.html()).toMatchSnapshot();
+    });
   });
+
 
   it('should render <router-link> on :to', () => {
     const to = 'www.homeday.de';

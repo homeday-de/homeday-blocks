@@ -4,10 +4,9 @@ import { action } from '@storybook/addon-actions';
 import { text } from '@storybook/addon-knobs';
 import HdRadioButton from 'hd-blocks/components/buttons/HdRadioButton.vue';
 
-storiesOf('HdRadioButton', module)
-  .add('base 🎛', () => ({
-    components: { HdRadioButton },
-    template: `<HdRadioButton
+storiesOf('HdRadioButton', module).add('base 🎛', () => ({
+  components: { HdRadioButton },
+  template: `<HdRadioButton
       @select="action"
       :desktopIcon="desktopIcon"
       :desktopIconHover="desktopIconHover"
@@ -16,31 +15,31 @@ storiesOf('HdRadioButton', module)
       :value="value"
       :name="name"
     />`,
-    props: {
-      label: {
-        type: String,
-        default: text('label', 'Test Label'),
-      },
-      desktopIcon: {
-        type: String,
-        default: text('desktopIcon', 'https://via.placeholder.com/96'),
-      },
-      desktopIconHover: {
-        type: String,
-        default: text('desktopIconHover', 'https://via.placeholder.com/96?text=Hover'),
-      },
-      mobileIcon: {
-        type: String,
-        default: text('mobileIcon', 'https://via.placeholder.com/96'),
-      },
-      value: {
-        type: String,
-        default: text('value', 'Value'),
-      },
-      name: {
-        type: String,
-        default: text('name', 'Name'),
-      },
+  props: {
+    label: {
+      type: String,
+      default: text('label', 'Test Label'),
     },
-    methods: { action: action('clicked') },
-  }));
+    desktopIcon: {
+      type: String,
+      default: text('desktopIcon', 'https://via.placeholder.com/96'),
+    },
+    desktopIconHover: {
+      type: String,
+      default: text('desktopIconHover', 'https://via.placeholder.com/96?text=Hover'),
+    },
+    mobileIcon: {
+      type: String,
+      default: text('mobileIcon', 'https://via.placeholder.com/96'),
+    },
+    value: {
+      type: String,
+      default: text('value', 'Value'),
+    },
+    name: {
+      type: String,
+      default: text('name', 'Name'),
+    },
+  },
+  methods: { action: action('clicked') },
+}));

@@ -49,7 +49,7 @@ storiesOf('Form/HdSelect', module)
         }
       },
     },
-  }))
+  }), { percy: { skip: true } })
   .add('preselected', () => ({
     components: { HdSelect },
     template: `

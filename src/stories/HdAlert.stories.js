@@ -37,29 +37,30 @@ TYPES_ARRAY.forEach((type) => {
   }));
 });
 
-stories.add('Playground 🎛', () => ({
-  components: { HdAlert },
-  props: {
-    type: {
-      type: String,
-      default: select('type', TYPES_ARRAY),
+stories
+  .add('Playground 🎛', () => ({
+    components: { HdAlert },
+    props: {
+      type: {
+        type: String,
+        default: select('type', TYPES_ARRAY),
+      },
+      icon: {
+        type: String,
+        default: text('icon (url)'),
+      },
+      noIcon: {
+        type: Boolean,
+        default: boolean('no-icon', false),
+      },
     },
-    icon: {
-      type: String,
-      default: text('icon (url)'),
-    },
-    noIcon: {
-      type: Boolean,
-      default: boolean('no-icon', false),
-    },
-  },
-  template: `
-    <HdAlert
-      :type="type"
-      :icon="icon"
-      :no-icon="noIcon"
-    >
-      You can play around with the knobs
-    </HdAlert>
-  `,
-}));
+    template: `
+      <HdAlert
+        :type="type"
+        :icon="icon"
+        :no-icon="noIcon"
+      >
+        You can play around with the knobs
+      </HdAlert>
+    `,
+  }), { percy: { skip: true } });

@@ -80,7 +80,7 @@ storiesOf('Form/HdTextarea', module)
         action('input')(value);
       },
     },
-  }))
+  }), { percy: { skip: true } })
   .add('disabled', () => ({
     components: { HdTextarea },
     template: `

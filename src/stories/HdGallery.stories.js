@@ -50,12 +50,12 @@ storiesOf('Gallery/HdGallery', module)
     components: { HdGallery },
     template: `
       <div style="max-width: 800px; padding-left: 16px; padding-right: 16px; margin: auto;">
-      <h3>Check on mobile viewport</h3>
-      <HdGallery
-        :items="items"
-        :show-caption="false"
-        :pager-inside="true"
-      />
+        <h3 class='hide-in-percy'>Check on mobile viewport</h3>
+        <HdGallery
+          :items="items"
+          :show-caption="false"
+          :pager-inside="true"
+        />
       </div>
     `,
     data() {
@@ -63,4 +63,4 @@ storiesOf('Gallery/HdGallery', module)
         items: ITEMS,
       };
     },
-  }));
+  }), { percy: { widths: [375] } });

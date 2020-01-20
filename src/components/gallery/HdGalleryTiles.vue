@@ -77,6 +77,7 @@ export default {
     height: 100%;
 
     @media (min-width: $break-desktop) {
+      -ms-grid-columns: 1fr 1fr 1fr 1fr;
       grid-template-columns: repeat(4, 1fr);
     }
 
@@ -105,15 +106,78 @@ export default {
     -ms-grid-row-span: 2;
     grid-column: 1 / 3;
     grid-row: 1 / 3;
+
+    // first of 3 elements
+    &:nth-last-child(3) {
+      @media (min-width: $break-desktop) and (max-width: $break-desktop-wide) {
+        -ms-grid-column-span: 3;
+        grid-column: 1 / 4;
+      }
+
+      @media (min-width: $break-desktop-wide) {
+        -ms-grid-column-span: 2;
+        grid-column: 1 / 3;
+      }
+    }
+
+    // first of 2 elements
+    &:nth-last-child(2) {
+      @media (min-width: $break-desktop) {
+        -ms-grid-column-span: 3;
+        grid-column: 1 / 4;
+      }
+    }
   }
 
   // To support IE11 :(
   &:nth-child(2) {
     -ms-grid-column: 3;
+
+    // second of 3 elements
+    &:nth-last-child(2) {
+      -ms-grid-row: 1;
+
+      @media (min-width: $break-desktop) {
+        -ms-grid-column: 4;
+        }
+
+      @media (min-width: $break-desktop-wide) {
+        -ms-grid-column: 3;
+        -ms-grid-row-span: 2;
+        grid-row: 1 / 3;
+      }
+    }
+
+    // second of 2 elements
+    &:last-child {
+      -ms-grid-row-span: 2;
+      grid-row: 1 / 3;
+
+      @media (min-width: $break-desktop) {
+        -ms-grid-column: 4;
+      }
+    }
   }
 
   &:nth-child(3) {
     -ms-grid-column: 4;
+
+    // third of 3 elements
+    &:last-child {
+      -ms-grid-column: 3;
+      -ms-grid-row: 2;
+
+      @media (min-width: $break-desktop) {
+        -ms-grid-column: 4;
+      }
+
+      @media (min-width: $break-desktop-wide) {
+        -ms-grid-row: 1;
+        -ms-grid-row-span: 2;
+        grid-row: 1 / 3;
+      }
+    }
+
   }
 
   &:nth-child(4) {

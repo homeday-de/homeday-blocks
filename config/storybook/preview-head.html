@@ -6,7 +6,14 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.sb-show-main {
+
+.sb-show-main { /* Storybook class */
   padding: 8px;
+}
+
+@media only percy {
+  .hide-in-percy {
+    display: none;
+  }
 }
 </style>

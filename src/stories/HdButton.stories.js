@@ -3,7 +3,22 @@ import { storiesOf } from '@storybook/vue';
 import { text, select } from '@storybook/addon-knobs';
 import HdButton, { TYPES } from 'hd-blocks/components/buttons/HdButton.vue';
 
-storiesOf('HdButton', module)
+const stories = storiesOf('HdButton', module);
+
+Object.entries(TYPES)
+  .forEach(([type, modifier]) => stories.add(type, () => ({
+    components: { HdButton },
+    data() {
+      return { type, modifier };
+    },
+    template: `
+      <HdButton
+        :modifier=modifier
+      >{{ type }}</HdButton>
+    `,
+  })));
+
+stories
   .add('Playground 🎛', () => ({
     components: { HdButton },
     props: {
@@ -21,4 +36,4 @@ storiesOf('HdButton', module)
         :modifier=modifier
       >{{ text }}</HdButton>
     `,
-  }));
+  }), { percy: { skip: true } });

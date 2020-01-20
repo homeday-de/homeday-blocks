@@ -24,7 +24,6 @@ $button-transition: all $time-s ease-in-out;
 
 .btn--primary,
 .btn--secondary {
-
   background-color: $vivid-blue;
   color: $white;
   font-family: $font-primary;
@@ -35,6 +34,7 @@ $button-transition: all $time-s ease-in-out;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.3);
   transition: $button-transition;
   &:hover {
+    color: $white;
     box-shadow: 0 3px 2px 0 rgba(0,0,0,0.3);
     background-color: darken($vivid-blue, 15);
     transform: translateY(-1px);

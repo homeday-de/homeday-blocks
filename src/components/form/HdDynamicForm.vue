@@ -15,10 +15,13 @@
       />
     </div>
     <slot name="before-button"/>
-    <button
-      v-if="submitLabel"
-      class="btn btn--primary dynamicForm__submit"
-    >{{ submitLabel }}</button>
+    <HdButton
+    v-if="submitLabel"
+    modifier="primary"
+    class="dynamicForm__submit"
+    >
+    {{ submitLabel }}
+    </HdButton>
     <slot name="after"/>
   </form>
 </template>
@@ -33,6 +36,8 @@ import HdSelect from 'hd-blocks/components/form/HdSelect.vue';
 import HdTagsSelector from 'hd-blocks/components/form/HdTagsSelector.vue';
 import HdSplitInput from 'hd-blocks/components/form/HdSplitInput.vue';
 import HdGoogleAutocomplete from 'hd-blocks/components/form/HdGoogleAutocomplete.vue';
+import HdButton from 'hd-blocks/components/buttons/HdButton.vue';
+
 
 export default {
   name: 'HdDynamicForm',
@@ -49,6 +54,9 @@ export default {
       type: String,
       default: '',
     },
+  },
+  components: {
+    HdButton,
   },
   data() {
     return {
