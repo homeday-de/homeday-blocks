@@ -1,18 +1,16 @@
 <template>
-  <div
-    class="passwordInput"
-  >
+  <div class="passwordInput">
     <HdInput
-    :type="currentType"
-    v-model="currentValue"
-    v-bind="$props"
+    :type="type"
+    v-model="computedValue"
+    v-bind="$attrs"
     :class="{ 'field--hasControl': this.showVisibilityToggle }"
     />
 
     <span v-if="showVisibilityToggle"
       class="field__visibilityToggle"
-      :class="{'field__visibilityToggle--visible': currentType === 'text'}"
-      @click="togglePasswordVisibility"
+      :class="{'field__visibilityToggle--visible': type === 'text'}"
+      @click="toggleVisibility"
     />
   </div>
 </template>
@@ -22,31 +20,35 @@ import HdInput from 'hd-blocks/components/form/HdInput.vue';
 
 export default {
   name: 'HdInputPassword',
+  inheritAttrs: false,
   components: {
     HdInput,
   },
   props: {
-    ...HdInput.props,
+    value: {
+      type: String,
+      required: true,
+    },
   },
   data() {
     return {
-      currentValue: this.value,
-      currentType: 'password',
+      type: 'password',
     };
   },
   computed: {
-    showVisibilityToggle() {
-      return this.currentValue.length !== 0;
+    computedValue: {
+      get() { return this.value; },
+      set(value) {
+        this.$emit('input', value);
+      },
     },
-  },
-  watch: {
-    value() {
-      this.currentValue = this.value;
+    showVisibilityToggle() {
+      return this.value.length !== 0;
     },
   },
   methods: {
-    togglePasswordVisibility() {
-      this.currentType = this.currentType === 'password' ? 'text' : 'password';
+    toggleVisibility() {
+      this.type = this.type === 'password' ? 'text' : 'password';
     },
   },
 };
