@@ -124,9 +124,9 @@ export default {
       &::after{
         content: ' ';
         display: none;
-        background: url('~hd-blocks/assets/icons/ic_chevron-down--small.svg');
-        width: 12px;
-        height: 7px;
+        background: url('~hd-blocks/assets/icons/ic_chevron-down.svg') no-repeat;
+        width: 16px;
+        height: 16px;
         margin-left: $inline-m;
         margin-right: $inline-s;
       }
@@ -204,7 +204,7 @@ export default {
       border-bottom-right-radius: 0;
 
       &::after{
-        background: url('~hd-blocks/assets/icons/ic_chevron-up.svg');
+        transform: rotateZ(180deg);
       }
     }
 
