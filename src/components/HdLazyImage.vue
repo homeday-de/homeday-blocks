@@ -80,6 +80,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import 'hd-blocks/styles/mixins.scss';
+
 .lazy-image {
   width: 100%;
   filter: blur(4px);

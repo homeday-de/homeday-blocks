@@ -106,6 +106,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import 'hd-blocks/styles/mixins.scss';
+
 .timeslots-transition {
   &-left, &-right {
     &-leave-active, &-enter-active {

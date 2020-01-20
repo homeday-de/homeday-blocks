@@ -13,14 +13,15 @@ module.exports = {
         fix: true,
       });
   },
-  css: {
-    loaderOptions: {
-      sass: {
-        prependData: `
-          @import "hd-blocks/styles/mixins.scss";
-        `,
-      },
-    },
-  },
+  // uncomment below block to import mixins sass file in all components
+  // css: {
+  //   loaderOptions: {
+  //     sass: {
+  //       prependData: `
+  //         @import "hd-blocks/styles/mixins.scss";
+  //       `,
+  //     },
+  //   },
+  // },
   transpileDependencies: ['vue-zoomer'],
 };

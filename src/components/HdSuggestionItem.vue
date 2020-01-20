@@ -64,6 +64,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import 'hd-blocks/styles/mixins.scss';
+
 .suggestionItem {
   $sI: &;
   @include font('text-xsmall');

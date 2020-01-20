@@ -30,6 +30,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import 'hd-blocks/styles/mixins.scss';
+
 .arrowButton {
   border: none;
   width: 16px;

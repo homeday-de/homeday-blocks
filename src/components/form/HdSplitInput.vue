@@ -190,6 +190,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+@import 'hd-blocks/styles/mixins.scss';
 @import 'hd-blocks/styles/inputs.scss';
 .field {
   $f: &;

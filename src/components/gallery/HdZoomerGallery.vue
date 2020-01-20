@@ -63,6 +63,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import 'hd-blocks/styles/mixins.scss';
+
 .zoomer-gallery {
   $_root: &;
 
