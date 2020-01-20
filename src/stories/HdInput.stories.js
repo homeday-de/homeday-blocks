@@ -52,27 +52,6 @@ storiesOf('Form/HdInput', module)
       },
     },
   }))
-  .add('password', () => ({
-    components: { HdInput },
-    template: `
-      <HdInput
-        v-model="value"
-        name="password"
-        label="Password"
-        type="password"
-      />
-    `,
-    data() {
-      return {
-        value: '',
-      };
-    },
-    watch: {
-      value(value) {
-        action('input')(value);
-      },
-    },
-  }))
   .add('email', () => ({
     components: { HdInput },
     template: `
