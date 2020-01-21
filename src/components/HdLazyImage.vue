@@ -55,6 +55,9 @@ export default {
     src() {
       this.maybeLazyLoad();
     },
+    background() {
+      this.setPictureProperties();
+    },
   },
   mounted() {
     this.maybeLazyLoad();
@@ -75,12 +78,15 @@ export default {
       const image = new Image();
 
       image.onload = () => {
-        this.imageLoaded = true;
-        this.setImageUrl(this.src);
-        this.setImageSrcset();
+        this.setPictureProperties();
       };
 
       image.src = this.src;
+    },
+    setPictureProperties() {
+      this.imageLoaded = true;
+      this.setImageUrl(this.src);
+      this.setImageSrcset();
     },
     setImageUrl(url) {
       if (!this.$refs.imageHolder) {
@@ -94,7 +100,11 @@ export default {
       }
     },
     setImageSrcset() {
-      if (!this.srcset) {
+      if (!this.$refs.imageHolder) {
+        return;
+      }
+
+      if (!this.srcset || this.background) {
         return;
       }
 
