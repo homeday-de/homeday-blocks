@@ -13,14 +13,5 @@ module.exports = {
         fix: true,
       });
   },
-  css: {
-    loaderOptions: {
-      sass: {
-        prependData: `
-          @import "hd-blocks/styles/mixins.scss";
-        `,
-      },
-    },
-  },
   transpileDependencies: ['vue-zoomer'],
 };

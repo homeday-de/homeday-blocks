@@ -258,6 +258,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import 'hd-blocks/styles/mixins.scss';
 @import 'hd-blocks/styles/inputs.scss';
 .field {
   &__label {
