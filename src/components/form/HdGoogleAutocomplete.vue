@@ -89,6 +89,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    customValidators: {
+      type: Array,
+      default: () => [],
+    },
   },
   data() {
     return {
@@ -249,7 +253,15 @@ export default {
       if (this.required && this.isEmpty) {
         this.showError(this.t.FORM.VALIDATION.REQUIRED);
       } else {
-        this.hideError();
+        const [firstFailingValidation] = this.customValidators
+          .map(validator => validator(this.value))
+          .filter(validationResult => !validationResult.isValid);
+
+        if (firstFailingValidation) {
+          this.showError(firstFailingValidation.errorMessage);
+        } else {
+          this.hideError();
+        }
       }
       return !this.error;
     },
