@@ -3,7 +3,11 @@ import { storiesOf } from '@storybook/vue';
 
 import HdRange from 'hd-blocks/components/form/HdRange.vue';
 import FormWrapper from 'hd-blocks/storiesWrappers/FormWrapper';
-import { number, boolean } from '@storybook/addon-knobs';
+import {
+  number,
+  boolean,
+  text,
+} from '@storybook/addon-knobs';
 
 storiesOf('Form/HdRange', module)
   .addDecorator(FormWrapper)
@@ -97,6 +101,99 @@ storiesOf('Form/HdRange', module)
     data() {
       return {
         currentValue: 50,
+      };
+    },
+  }))
+  .add('with custom tooltip value', () => ({
+    components: { HdRange },
+    template: `
+      <div>
+        <HdRange
+          v-model="currentValue"
+          :min="0"
+          :max="6"
+          displayTooltip
+          :tooltipValue="tooltipValue"
+        />
+        <p>Value: {{ currentValue }}</p>
+      </div>
+    `,
+    data() {
+      return {
+        currentValue: 0,
+      };
+    },
+    computed: {
+      tooltipValue() {
+        return [
+          'Monday',
+          'Tuesday',
+          'Wednesday',
+          'Thursday',
+          'Friday',
+          'Saturday',
+          'Sunday',
+        ][this.currentValue];
+      },
+    },
+  }))
+  .add('with labels', () => ({
+    components: { HdRange },
+    template: `
+      <div>
+        <HdRange
+          v-model="currentValue"
+          :min="0"
+          :max="6"
+          displayStepBullets
+          :labels="labels"
+        />
+        <p>Value: {{ currentValue }}</p>
+      </div>
+    `,
+    data() {
+      return {
+        currentValue: 0,
+        labels: [
+          'Mon.',
+          'Tue.',
+          'Wed.',
+          'Thu.',
+          'Fri.',
+          'Sat.',
+          'Sun.',
+        ],
+      };
+    },
+  }))
+  .add('custom backgrounds 🎛', () => ({
+    components: { HdRange },
+    template: `
+      <div>
+        <HdRange
+          v-model="currentValue"
+          :min="0"
+          :max="4"
+          :track-background="trackBackground"
+          :progress-background="progressBackground"
+          :labels="labels"
+        />
+        <p>Value: {{ currentValue }}</p>
+      </div>
+    `,
+    props: {
+      trackBackground: {
+        type: String,
+        default: text('track-background', 'radial-gradient(circle at center, #4CBA38, #FFE713, #E00016)'),
+      },
+      progressBackground: {
+        type: String,
+        default: text('progress-background', 'transparent'),
+      },
+    },
+    data() {
+      return {
+        currentValue: 2,
       };
     },
   }));
