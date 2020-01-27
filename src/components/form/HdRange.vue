@@ -4,14 +4,14 @@
     class="range field"
   >
     <input type="range"
-      v-model.number="currentValue"
+      v-model.number="computedValue"
       :id="name"
       :name="name"
       :required="required"
       :disabled="disabled"
-      :min="minValue"
-      :max="maxValue"
-      :step="rangeStep"
+      :min="min"
+      :max="max"
+      :step="step"
       @focus="focusHandler"
       @blur="blurHandler"
     >
@@ -32,11 +32,16 @@
     </div>
     <ul v-if="displayStepBullets" class="range__steps">
       <li
-        v-for="(steps, i) in stepsAmount"
-        :key="i"
+        v-for="stepNumber in stepsAmount"
+        :key="stepNumber"
         class="range__step"
+        @click="onStepClick(stepNumber)"
       >
-        <p class="range__step-label">{{ labels[i] }}</p>
+        <p
+          v-if="labels[stepNumber - 1]"
+          class="range__step-label"
+          v-text="labels[stepNumber - 1]"
+        />
       </li>
     </ul>
     <div class="range__thumb" ref="thumb">
@@ -44,7 +49,7 @@
         v-if="displayTooltip"
         class="range__tooltip"
       >
-        {{ tooltipValue }}
+        {{ tooltipValue || value }}
       </div>
       <div class="range__thumb__inner" ref="thumbInner">
         <div class="range__thumb__bullet" />
@@ -71,15 +76,15 @@ export default {
       type: Boolean,
       default: false,
     },
-    minValue: {
+    min: {
       type: Number,
       default: 0,
     },
-    maxValue: {
+    max: {
       type: Number,
       default: 100,
     },
-    rangeStep: {
+    step: {
       type: Number,
       default: 1,
     },
@@ -93,7 +98,7 @@ export default {
     },
     displayStepBullets: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     displayTooltip: {
       type: Boolean,
@@ -115,10 +120,24 @@ export default {
   data() {
     return {
       isActive: null,
-      currentValue: this.value,
     };
   },
   computed: {
+    computedValue: {
+      get() {
+        return this.value;
+      },
+      set(value) {
+        let adjustedValue = value;
+
+        adjustedValue = Math.min(adjustedValue, this.max);
+        adjustedValue = Math.max(adjustedValue, this.min);
+
+        adjustedValue -= adjustedValue % this.step;
+
+        this.$emit('input', adjustedValue);
+      },
+    },
     fieldClasses() {
       return {
         'field--active': this.isActive,
@@ -127,23 +146,20 @@ export default {
       };
     },
     stepsAmount() {
-      return 1 + (this.maxValue - this.minValue) / this.rangeStep;
+      return 1 + (this.max - this.min) / this.step;
     },
   },
   watch: {
-    minValue() {
+    min() {
       this.updateRangeDecoration();
     },
-    maxValue() {
+    max() {
       this.updateRangeDecoration();
     },
-    rangeStep() {
+    step() {
       this.updateRangeDecoration();
     },
     value() {
-      this.currentValue = this.value;
-    },
-    currentValue() {
       this.updateRangeDecoration();
     },
   },
@@ -155,26 +171,16 @@ export default {
     onResize.offDebounced(this.updateRangeDecoration);
   },
   methods: {
-    normalizeAndEmit() {
-      if (this.currentValue > this.maxValue) {
-        this.currentValue = this.maxValue;
-      } else if (this.currentValue < this.minValue) {
-        this.currentValue = this.minValue;
-      }
-
-      this.currentValue -= this.currentValue % this.rangeStep;
-
-      this.$emit('input', this.currentValue);
-    },
     updateRangeDecoration() {
-      this.normalizeAndEmit();
-
       // the percentage of the value, between max and min. I.e. : 15 is the 0.5 between 10 and 20
-      const valuePercentage = (this.currentValue - this.minValue) / (this.maxValue - this.minValue);
+      const valuePercentage = (this.value - this.min) / (this.max - this.min);
       const valuePercentageInputWidthPixels = this.$refs.decoration.offsetWidth * valuePercentage;
 
       this.$refs.progress.style.transform = `scaleX(${valuePercentage})`;
       this.$refs.thumb.style.transform = `translateX(${valuePercentageInputWidthPixels}px)`;
+    },
+    onStepClick(stepNumber) {
+      this.computedValue = (this.max - this.min) * (stepNumber / this.stepsAmount);
     },
     focusHandler() {
       this.isActive = true;
@@ -217,7 +223,7 @@ export default {
     padding: 0;
     height: $range-thumb-size;
 
-    &:focus{
+    &:focus {
       outline: none;
     }
 
@@ -301,8 +307,9 @@ export default {
   }
 
   &__step {
-    height: 0;
-    width: 0;
+    height: 1px;
+    width: 1px;
+    cursor: pointer;
 
     &:after {
       content: "";
@@ -388,6 +395,7 @@ export default {
     height: 100%;
     width: 100%;
     transform-origin: 0 center;
+    transform: scaleX(0);
     transition: transform .3s;
 
     .field--disabled & {
