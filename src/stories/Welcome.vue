@@ -50,6 +50,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import 'hd-blocks/styles/mixins.scss';
 @import "~vue-code-highlight/themes/prism.css";
 
 .welcome {

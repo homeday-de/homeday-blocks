@@ -28,4 +28,46 @@ storiesOf('Gallery/HdGalleryTiles', module)
         action('itemClicked')(itemIndex);
       },
     },
+  }))
+  .add('3 images', () => ({
+    components: { HdGalleryTiles },
+    template: `
+    <HdGalleryTiles
+      :items="items"
+      class="expose__gallery expose__gallery--tiles"
+      @itemClick="onItemClick"
+    />
+  `,
+    data() {
+      return {
+        items: ITEMS.slice(0, 3),
+        visible: false,
+      };
+    },
+    methods: {
+      onItemClick(itemIndex) {
+        action('itemClicked')(itemIndex);
+      },
+    },
+  }))
+  .add('2 images', () => ({
+    components: { HdGalleryTiles },
+    template: `
+    <HdGalleryTiles
+      :items="items"
+      class="expose__gallery expose__gallery--tiles"
+      @itemClick="onItemClick"
+    />
+  `,
+    data() {
+      return {
+        items: ITEMS.slice(0, 2),
+        visible: false,
+      };
+    },
+    methods: {
+      onItemClick(itemIndex) {
+        action('itemClicked')(itemIndex);
+      },
+    },
   }));

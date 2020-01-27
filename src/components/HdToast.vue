@@ -69,6 +69,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import 'hd-blocks/styles/mixins.scss';
 $toastWidth: 288px;
 
 .toast {

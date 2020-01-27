@@ -1,14 +1,26 @@
 language: node_js
 node_js:
-- 10.16.0
+- 10.17.0
+
 cache: npm
+
+before_install:
+- source .travis.variables.sh
+
 install:
 - npm ci
+
+before_script:
+- npm run lint:ci
+
 script:
 - npm run test:unit:ci
 - npm run build:storybook
+- npm run test:percy
+
 after_success:
 - npm run coverage
+
 deploy:
   provider: s3
   access_key_id: AKIAI3XOIWNY6PBLTBQQ
@@ -22,6 +34,7 @@ deploy:
   upload-dir: master
   on:
     branch: master
+
 branches:
   only:
   - develop

@@ -11,11 +11,11 @@
       :src="iconSrc"
       class="alert__icon"
     >
-    <p
+    <div
       class="alert__message"
     >
       <slot />
-    </p>
+    </div>
   </div>
 </template>
 
@@ -69,6 +69,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import 'hd-blocks/styles/mixins.scss';
+
 .alert {
   display: flex;
   padding: $inset-s;

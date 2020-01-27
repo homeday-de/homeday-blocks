@@ -6,6 +6,7 @@ import { generateDateCycles } from 'hd-blocks/services/date';
 import HdCalendar from 'hd-blocks/components/HdCalendar.vue';
 
 storiesOf('HdCalendar', module)
+  .addParameters({ percy: { skip: true } })
   .add('base', () => ({
     components: { HdCalendar },
     data: () => ({

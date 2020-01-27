@@ -163,6 +163,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import 'hd-blocks/styles/mixins.scss';
 
 .autocomplete {
   &__suggestions {

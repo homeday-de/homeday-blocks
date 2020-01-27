@@ -30,12 +30,17 @@
             :style="sizerStyles"
             class="gallery-carousel__item__sizer"
           />
-          <div
-            :style="{
-              'background-image': `url('${item.thumbnail}')`,
-            }"
-            class="gallery-carousel__item__background"
-          />
+
+          <!-- the item.thumbnail field is used as default value for the item image -->
+          <!-- IE11 uses this value only because do not support the picture element -->
+          <picture class="gallery-carousel__item__picture">
+              <source v-for="(source, media) in item.thumbnailPictureSources"
+                :key="media"
+                :media="`(${media})`" :srcset="source"
+              >
+            <img :src="item.thumbnail" :alt="item.caption" :srcset="item.thumbnailSrcSet">
+          </picture>
+
         </div>
       </flickity>
       <div class="gallery-carousel__pager">
@@ -143,8 +148,9 @@ export default {
         this.updateCurrentIndex();
       });
     },
-    updateCurrentIndex() {
-      this.currentIndex = this.$refs.flickity.selectedIndex();
+    updateCurrentIndex(itemIndex) {
+      this.currentIndex = itemIndex;
+      this.$emit('input', itemIndex);
     },
     onStaticClick(event, pointer, cellElement, cellIndex) {
       if (typeof cellIndex === 'undefined') {
@@ -259,6 +265,10 @@ export default {
     border-radius: 2px;
     overflow: hidden;
     transition: box-shadow $time-s ease-in-out;
+    background-color: $wild-sand;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     @media (min-width: $break-tablet) {
       width: calc(100% / 5);
@@ -280,19 +290,21 @@ export default {
       margin-right: $inline-m;
     }
 
-    &__background {
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &__picture {
       position: absolute;
       top: 0;
       right: 0;
       bottom: 0;
       left: 0;
-      background-color: $wild-sand;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: contain;
-      @media (min-width: $break-tablet) {
-        background-size: cover;
-      }
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 }

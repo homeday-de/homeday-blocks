@@ -5,13 +5,15 @@ describe('HdRange', () => {
   let wrapper;
   const initialValue = 25;
   const maxValue = 100;
-  const minValue = 0;
+  const minValue = -100;
+  const rangeStep = 10;
   const wrapperFactory = wrapperFactoryBuilder(HdRange, {
     propsData: {
       name: 'testRange',
       minValue,
       maxValue,
       value: initialValue,
+      displayStepBullets: true,
     },
   });
 
@@ -19,11 +21,8 @@ describe('HdRange', () => {
     wrapper = wrapperFactory();
   });
 
-  test('renders component', () => {
+  test('renders component with preselected value', () => {
     expect(wrapper.html()).toMatchSnapshot();
-  });
-
-  test('renders with preselected value', () => {
     expect(parseFloat(wrapper.find('input').element.value)).toBe(initialValue);
   });
 
@@ -45,34 +44,28 @@ describe('HdRange', () => {
     expect(wrapper.emitted('input')[1][0]).toEqual(minValue);
   });
 
-  test('When the focus event is emitted, the proper method is executed', () => {
+  test('When the focus event is emitted, the proper status is set and the proper method is executed', () => {
+    wrapper.find('input').trigger('focus');
+
+    expect(wrapper.vm.isActive).toBe(true);
+
     const mockedFocusHandler = jest.fn();
     wrapper.setMethods({ focusHandler: mockedFocusHandler });
-
     wrapper.find('input').trigger('focus');
 
     expect(mockedFocusHandler).toHaveBeenCalledTimes(1);
   });
 
-  test('When the focus event is emitted, the input is in an active status', () => {
-    wrapper.find('input').trigger('focus');
-
-    expect(wrapper.vm.isActive).toBe(true);
-  });
-
-  test('When the blur event is emitted, the proper method is executed', () => {
-    const mockedBlurHandler = jest.fn();
-    wrapper.setMethods({ blurHandler: mockedBlurHandler });
-
-    wrapper.find('input').trigger('blur');
-
-    expect(mockedBlurHandler).toHaveBeenCalledTimes(1);
-  });
-
-  test('When the blue event is emitted, the input is in an non active status', () => {
+  test('When the blur event is emitted, the proper status is set and the proper method is executed', () => {
     wrapper.find('input').trigger('blur');
 
     expect(wrapper.vm.isActive).toBe(false);
+
+    const mockedBlurHandler = jest.fn();
+    wrapper.setMethods({ blurHandler: mockedBlurHandler });
+    wrapper.find('input').trigger('blur');
+
+    expect(mockedBlurHandler).toHaveBeenCalledTimes(1);
   });
 
   test('On props change, decoration is updated', () => {
@@ -95,5 +88,21 @@ describe('HdRange', () => {
     });
 
     expect(mockUpdateRangeDecoration).toHaveBeenCalledTimes(3);
+  });
+
+  test('Step bullets are properly displayed', () => {
+    wrapper.setProps({
+      rangeStep,
+    });
+    let foundStepsCount = wrapper.findAll('.range__steps li').length;
+
+    expect(foundStepsCount).toBe(21);
+
+    wrapper.setProps({
+      displayStepBullets: false,
+    });
+
+    foundStepsCount = wrapper.findAll('.range__steps li').length;
+    expect(foundStepsCount).toBe(0);
   });
 });
