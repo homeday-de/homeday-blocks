@@ -128,14 +128,9 @@ export default {
         return this.value;
       },
       set(value) {
-        let adjustedValue = value;
-
-        adjustedValue = Math.min(adjustedValue, this.max);
-        adjustedValue = Math.max(adjustedValue, this.min);
-
-        adjustedValue -= adjustedValue % this.step;
-
-        this.$emit('input', adjustedValue);
+        if (value !== this.computedValue) {
+          this.$emit('input', value);
+        }
       },
     },
     fieldClasses() {
@@ -146,7 +141,7 @@ export default {
       };
     },
     stepsAmount() {
-      return 1 + (this.max - this.min) / this.step;
+      return Math.ceil(1 + (this.max - this.min) / this.step);
     },
   },
   watch: {
@@ -160,10 +155,12 @@ export default {
       this.updateRangeDecoration();
     },
     value() {
+      this.adjustValue();
       this.updateRangeDecoration();
     },
   },
   mounted() {
+    this.adjustValue();
     this.updateRangeDecoration();
     onResize.onDebounced(this.updateRangeDecoration);
   },
@@ -171,9 +168,18 @@ export default {
     onResize.offDebounced(this.updateRangeDecoration);
   },
   methods: {
+    adjustValue() {
+      let adjustedValue = this.value;
+
+      adjustedValue -= adjustedValue % this.step;
+      adjustedValue = Math.min(adjustedValue, this.max);
+      adjustedValue = Math.max(adjustedValue, this.min);
+
+      this.computedValue = adjustedValue;
+    },
     updateRangeDecoration() {
       // the percentage of the value, between max and min. I.e. : 15 is the 0.5 between 10 and 20
-      const valuePercentage = (this.value - this.min) / (this.max - this.min);
+      const valuePercentage = (this.computedValue - this.min) / (this.max - this.min);
       const valuePercentageInputWidthPixels = this.$refs.decoration.offsetWidth * valuePercentage;
 
       this.$refs.progress.style.transform = `scaleX(${valuePercentage})`;
