@@ -30,20 +30,21 @@
         class="range__progress"
       />
     </div>
-    <ul v-if="displayStepBullets" class="range__steps">
-      <li
-        v-for="stepNumber in stepsAmount"
-        :key="stepNumber"
+    <div v-if="displayStepBullets" class="range__steps">
+      <button
+        v-for="(_, stepIndex) in stepsAmount"
+        :key="stepIndex"
+        type="button"
         class="range__step"
-        @click="onStepClick(stepNumber)"
+        @click="onStepClick(stepIndex)"
       >
         <p
-          v-if="labels[stepNumber - 1]"
+          v-if="labels[stepIndex]"
           class="range__step-label"
-          v-text="labels[stepNumber - 1]"
+          v-text="labels[stepIndex]"
         />
-      </li>
-    </ul>
+      </button>
+    </div>
     <div class="range__thumb" ref="thumb">
       <div
         v-if="displayTooltip"
@@ -188,8 +189,8 @@ export default {
       this.$refs.progress.style.transform = `scaleX(${valuePercentage})`;
       this.$refs.thumb.style.transform = `translateX(${valuePercentageInputWidthPixels}px)`;
     },
-    onStepClick(stepNumber) {
-      this.computedValue = (this.max - this.min) * (stepNumber / this.stepsAmount);
+    onStepClick(stepIndex) {
+      this.computedValue = this.min + (stepIndex * this.step);
     },
     onResize() {
       this.trackWidth = this.$refs.track.offsetWidth;
@@ -322,7 +323,9 @@ export default {
   &__step {
     height: 1px;
     width: 1px;
-    cursor: pointer;
+    padding: 0;
+    background: transparent;
+    border: 0;
 
     &:after {
       content: "";
