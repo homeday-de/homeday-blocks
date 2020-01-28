@@ -15,4 +15,9 @@ module.exports = {
   parserOptions: {
     parser: 'babel-eslint',
   },
+  settings: {
+    'import/resolver': {
+      node: {},
+    },
+  },
 };
