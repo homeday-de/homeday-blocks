@@ -1,9 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
 import HdLazyImage from 'hd-blocks/components/HdLazyImage.vue';
-import ITEMS from './mocks/GALLERY_ITEMS';
-
-const sampleImage = ITEMS[2];
 
 storiesOf('HdLazyImage', module)
   .addParameters({ percy: { skip: true } })
@@ -31,26 +28,6 @@ storiesOf('HdLazyImage', module)
         this.src = `https://picsum.photos/id/${id}/2000/2000`;
         this.srcSmall = `https://picsum.photos/id/${id}/100/100`;
       },
-    },
-  }))
-  .add('with source set', () => ({
-    components: { HdLazyImage },
-    template: `
-      <div>
-        <HdLazyImage
-          :src="src"
-          :src-small="srcSmall"
-          :srcset="srcset"
-          style="display: block; width: 500px; height: 500px;"
-        />
-      </div>
-    `,
-    data() {
-      return {
-        src: sampleImage.image,
-        srcSmall: sampleImage.thumbnail,
-        srcset: sampleImage.imageSrcSet,
-      };
     },
   }))
   .add('as background', () => ({
