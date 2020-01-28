@@ -5,6 +5,7 @@ module.exports = {
   globalSetup: './tests/global-setup.js',
   collectCoverageFrom: [
     'src/components/**/*.vue',
+    'src/services/**/*.js',
   ],
   coverageReporters: [
     'lcov',
