@@ -71,125 +71,148 @@ It is worth noting that HdResponsive component takes a `breakpoints` prop as wel
 
 ## Date
 
-##### resetDateTime
+#### resetDateTime
 
 Returns date with hour, minutes, seconds and miliseconds set to `0`.
+
 `param {Date} date - arbitrary date`
 
 Example:
 
 ```javascript
 const date = new Date(2018, 1, 15, 16, 30, 30, 30); // 15.2.2018 at 16:30:30:30
-const date2 = resetDateTime(d); // 15.2.2018 at 00:00:00:00
+
+const date2 = resetDateTime(date); // 15.2.2018 at 00:00:00:00
 ```
 
-##### getNDaysFromDate
+#### getNDaysFromDate
 
-Returns new date that i s N days away from inputted date, with hour, minutes, seconds and miliseconds set to `0`.
+Returns new date that is N days away from inputted date, with hour, minutes, seconds and miliseconds set to `0`.
 
-`param {Date} initialDate - arbitrary date`
-`param {Number} amountOfDays - offet in days`
+`param {Date} initialDate: Arbitrary date`
+
+`param {Number} amountOfDays: Offset in days`
 
 ```javascript
-const date = new Date(2018, 1, 15, 16, 30, 30, 30); // 15.2.2018 at 16:30:30:30
-const date2 = getNDaysFromDate(d, 1); // 16.2.2018 at 00:00:00:00
+const initialDate = new Date(2018, 1, 15, 16, 30, 30, 30); // 15.2.2018 at 16:30:30:30
+const amountOfDays = 1;
+
+const date2 = getNDaysFromDate(initialDate, amountOfDays); // 16.2.2018 at 00:00:00:00
 ```
 
-##### convertMsToDays
+#### convertMsToDays
 
 Returns number of days from miliseconds.
 
-`param {Number} ms - miliseconds`
+`param {Number} ms: Miliseconds`
 
 ```javascript
-const days = convertMsToDays(5 * 24 * 60 * 60 * 1000); // 5 days
+const ms = 5 * 24 * 60 * 60 * 1000; // 432000000
+
+const days = convertMsToDays(ms); // 5 days
 ```
 
-##### getDaysDateRange
+#### getDaysDateRange
 
-Returns array of date range between 2 dates, including start date and *excluding* end date
+Returns array of date range between 2 dates, including start date and **excluding** end date
 
-`param {Date} startDate - start of time interval`
-`param {Date} endDate - end of time interval`
+`param {Date} startDate: Start of time interval`
+
+`param {Date} endDate: End of time interval`
 
 ```javascript
-const timeInterval = getDaysDateRange(new Date(2018, 0, 1), new Date(2018, 0, 3));
+const startDate = new Date(2018, 0, 1);
+const endDate = new Date(2018, 0, 3);
+
+const timeInterval = getDaysDateRange(startDate, endDate);
 // [ 2018-01-01T00:00:00.000Z, 2018-01-02T00:00:00.000Z ]
 ```
 
-##### getIntlDateString
+#### getIntlDateString
 
-Returns array of *unique* day names in arbitrary(passed) date list
+Returns array of **unique** day names in arbitrary(passed) date list
 
-`param {String} locale - Valid locale`
-`param {Array} datesArray - list of dates to be check for date`
-`param {Object} localStringArgs - Locale options - see options here for full list of options: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString#Parameters`
+`param {String} locale: Valid locale`
+
+`param {Array} datesArray : List of dates to be checked for day name`
+
+`param {Object} localStringArgs - Locale options` - [Full List](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString#Parameters)
 
 
 ```javascript
-const daysInIntervalLong = getIntlDateString('en-US', [new Date(2018, 0, 1)], { weekday: 'long' });
+const locale = 'en-US';
+const datesArray = [new Date(2018, 0, 1)];
+const localStringArgs = { weekday: 'long' };
+
+const daysInIntervalLong = getIntlDateString(locale, datesArray, localStringArgs);
 // [ 'Monday' ]
 ```
 
-##### generateRandomIndexes
+#### generateRandomIndexes
 
-Returns array of N(count) indexes on `min` to `max` open interval
+Returns array of N(`count`) indexes on `min` to `max` open interval
 
-`param {Number} amount - Total number of indexes to be generated`
-`param {Number} min - minimum value that indexes can have`
-`param {Number} max - minimum value that indexes can have`
+`param {Number} amount: Total number of indexes to be generated`
+
+`param {Number} min: Minimum value that indexes can have`
+
+`param {Number} max: Maximum value that indexes can have`
 
 ```javascript
-    const max = 5;
-    const min = 1;
-    const count = 3;
-    const randomInts = generateRandomIndexes(count, min, max);
-    // [2, 3, 5]
+const max = 5;
+const min = 1;
+const amount = 3;
+
+const randomInts = generateRandomIndexes(amount, min, max);
+// [2, 3, 5]
 ```
 
-##### generateDateCycles
+#### generateDateCycles
 
-Returns an array of dates in N (cycleLengthWeeks) weeks, with M cycles (amountOfCycles) from speficis offset from today (startDateOffset)
+Returns an array of dates in N (`cycleLengthWeeks`) weeks, with M cycles (`amountOfCycles`) from selected offset(in days) from today (`startDateOffset`)
 
-`param {Number} cycleLengthWeeks - Total number of weeks in the cycle`
-`param {Number} amountOfCycles - Number of cycles to generate`
-`param {Number} startDateOffset - Offset in days e.g.: 0 = today, -1 = yestrday ,...`
+`param {Number} cycleLengthWeeks: Total number of weeks in the cycle`
+
+`param {Number} amountOfCycles: Number of cycles to generate`
+
+`param {Number} startDateOffset: Offset in days e.g.: 0 = today, -1 = yesterday ,...`
 
 ```javascript
 const cycleLengthWeeks = 2;
-    const amountOfCycles = 2;
-    const startDateOffset = 0;
-    const dateCycles = genera teDateCycles(cycleLengthWeeks, amountOfCycles, startDateOffset);
-    /*
-      [
-        2020-01-28T00:00:00.000Z,
-        2020-01-29T00:00:00.000Z,
-        2020-01-30T00:00:00.000Z,
-        2020-01-31T00:00:00.000Z,
-        2020-02-01T00:00:00.000Z,
-        2020-02-02T00:00:00.000Z,
-        2020-02-03T00:00:00.000Z,
-        2020-02-04T00:00:00.000Z,
-        2020-02-05T00:00:00.000Z,
-        2020-02-06T00:00:00.000Z,
-        2020-02-07T00:00:00.000Z,
-        2020-02-08T00:00:00.000Z,
-        2020-02-09T00:00:00.000Z,
-        2020-02-10T00:00:00.000Z,
-        2020-02-11T00:00:00.000Z,
-        2020-02-12T00:00:00.000Z,
-        2020-02-13T00:00:00.000Z,
-        2020-02-14T00:00:00.000Z,
-        2020-02-15T00:00:00.000Z,
-        2020-02-16T00:00:00.000Z,
-        2020-02-17T00:00:00.000Z,
-        2020-02-18T00:00:00.000Z,
-        2020-02-19T00:00:00.000Z,
-        2020-02-20T00:00:00.000Z,
-        2020-02-21T00:00:00.000Z,
-        2020-02-22T00:00:00.000Z,
-        2020-02-23T00:00:00.000Z,
-        2020-02-24T00:00:00.000Z
-      ]
-    */
+const amountOfCycles = 2;
+const startDateOffset = 0;
+
+const dateCycles = generateDateCycles(cycleLengthWeeks, amountOfCycles, startDateOffset);
+/*
+  [
+    2020-01-28T00:00:00.000Z,
+    2020-01-29T00:00:00.000Z,
+    2020-01-30T00:00:00.000Z,
+    2020-01-31T00:00:00.000Z,
+    2020-02-01T00:00:00.000Z,
+    2020-02-02T00:00:00.000Z,
+    2020-02-03T00:00:00.000Z,
+    2020-02-04T00:00:00.000Z,
+    2020-02-05T00:00:00.000Z,
+    2020-02-06T00:00:00.000Z,
+    2020-02-07T00:00:00.000Z,
+    2020-02-08T00:00:00.000Z,
+    2020-02-09T00:00:00.000Z,
+    2020-02-10T00:00:00.000Z,
+    2020-02-11T00:00:00.000Z,
+    2020-02-12T00:00:00.000Z,
+    2020-02-13T00:00:00.000Z,
+    2020-02-14T00:00:00.000Z,
+    2020-02-15T00:00:00.000Z,
+    2020-02-16T00:00:00.000Z,
+    2020-02-17T00:00:00.000Z,
+    2020-02-18T00:00:00.000Z,
+    2020-02-19T00:00:00.000Z,
+    2020-02-20T00:00:00.000Z,
+    2020-02-21T00:00:00.000Z,
+    2020-02-22T00:00:00.000Z,
+    2020-02-23T00:00:00.000Z,
+    2020-02-24T00:00:00.000Z
+  ]
+*/
 ```
