@@ -11,7 +11,6 @@ describe('HdLazyImage', () => {
       propsData: {
         src: sampleImage.image,
         srcSmall: sampleImage.thumbnail,
-        srcset: sampleImage.imageSrcSet,
         background: false,
       },
     });
