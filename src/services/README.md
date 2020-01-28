@@ -4,6 +4,7 @@ are here to be consumed in projects directly.
 
 Index:
 - [Breakpoints service](https://github.com/homeday-de/homeday-blocks/tree/develop/src/services#breakpoints) - Used for setting (and getting) the global project breakpoints.
+- [Date service](https://github.com/homeday-de/homeday-blocks/tree/develop/src/services#date) - Used as helpers to work with dates and date intervals.
 
 ## Breakpoints
 Exposes methods for setting up viewport breakpoints of the project. The breakpoints set in this way are later used by the `HdResponsive` component.
