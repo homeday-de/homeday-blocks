@@ -54,7 +54,7 @@ describe('HdRange', () => {
     expect(getLastEventPayload({ wrapper, eventName: 'input' })).toBe(min);
   });
 
-  test('When the focus event is emitted, the proper status is set and the proper method is executed', () => {
+  test('on input blur, the proper status is set and the proper method is executed', () => {
     wrapper.find('input').trigger('focus');
 
     expect(wrapper.vm.isActive).toBe(true);
@@ -66,7 +66,7 @@ describe('HdRange', () => {
     expect(mockedFocusHandler).toHaveBeenCalledTimes(1);
   });
 
-  test('When the blur event is emitted, the proper status is set and the proper method is executed', () => {
+  test('on input blur, the proper status is set and the proper method is executed', () => {
     wrapper.find('input').trigger('blur');
 
     expect(wrapper.vm.isActive).toBe(false);
@@ -78,7 +78,7 @@ describe('HdRange', () => {
     expect(mockedBlurHandler).toHaveBeenCalledTimes(1);
   });
 
-  test('On props change, UI is updated', () => {
+  test('on props change, UI is updated', () => {
     const mockUpdateUI = jest.fn();
     wrapper.setMethods({ updateUI: mockUpdateUI });
     wrapper.setProps({
@@ -100,7 +100,7 @@ describe('HdRange', () => {
     expect(mockUpdateUI).toHaveBeenCalledTimes(3);
   });
 
-  test('Step bullets are properly displayed', () => {
+  test('step bullets are properly displayed', () => {
     expect(wrapper.findAll(STEP_SELECTOR).length).toBe(5);
 
     wrapper.setProps({
@@ -108,6 +108,16 @@ describe('HdRange', () => {
     });
 
     expect(wrapper.findAll(STEP_SELECTOR).length).toBe(0);
+  });
+
+  test('emits the right value on steps click', () => {
+    const steps = wrapper.findAll(STEP_SELECTOR);
+
+    steps.at(0).trigger('click');
+    expect(getLastEventPayload({ wrapper, eventName: 'input' })).toBe(min);
+
+    steps.at(steps.length - 1).trigger('click');
+    expect(getLastEventPayload({ wrapper, eventName: 'input' })).toBe(max);
   });
 
   describe('Labels', () => {
@@ -184,5 +194,14 @@ describe('HdRange', () => {
 
     expect(wrapper.find(TRACK_SELECTOR).attributes().style).toMatch(`background: ${TEST_COLOR1}`);
     expect(wrapper.find(PROGRESS_SELECTOR).attributes().style).toMatch(`background: ${TEST_COLOR2}`);
+  });
+
+  test('calls `updateUI` on resize', () => {
+    const mockedUpdateUI = jest.fn();
+    wrapper.setMethods({ updateUI: mockedUpdateUI });
+
+    wrapper.vm.onResize();
+
+    expect(mockedUpdateUI).toHaveBeenCalledTimes(1);
   });
 });
