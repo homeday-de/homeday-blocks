@@ -4,7 +4,7 @@ import {
 } from 'tests/unit/helpers';
 import HdRange from '@/components/form/HdRange.vue';
 
-const TRACK_SELECTOR = '.range__decoration';
+const TRACK_SELECTOR = '.range__track';
 const PROGRESS_SELECTOR = '.range__progress';
 const STEP_SELECTOR = '.range__step';
 const TOOLTIP_SELECTOR = '.range__tooltip';
@@ -78,26 +78,26 @@ describe('HdRange', () => {
     expect(mockedBlurHandler).toHaveBeenCalledTimes(1);
   });
 
-  test('On props change, decoration is updated', () => {
-    const mockUpdateRangeDecoration = jest.fn();
-    wrapper.setMethods({ updateRangeDecoration: mockUpdateRangeDecoration });
+  test('On props change, UI is updated', () => {
+    const mockUpdateUI = jest.fn();
+    wrapper.setMethods({ updateUI: mockUpdateUI });
     wrapper.setProps({
       min: min + 1,
     });
 
-    expect(mockUpdateRangeDecoration).toHaveBeenCalledTimes(1);
+    expect(mockUpdateUI).toHaveBeenCalledTimes(1);
 
     wrapper.setProps({
       max: max - 1,
     });
 
-    expect(mockUpdateRangeDecoration).toHaveBeenCalledTimes(2);
+    expect(mockUpdateUI).toHaveBeenCalledTimes(2);
 
     wrapper.setProps({
       step: 10,
     });
 
-    expect(mockUpdateRangeDecoration).toHaveBeenCalledTimes(3);
+    expect(mockUpdateUI).toHaveBeenCalledTimes(3);
   });
 
   test('Step bullets are properly displayed', () => {

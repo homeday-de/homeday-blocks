@@ -2,7 +2,7 @@
 
 exports[`HdRange renders as expected 1`] = `
 <div class="range field"><input type="range" id="testRange" name="testRange" min="-100" max="100" step="50">
-  <div class="range__decoration">
+  <div class="range__track">
     <div class="range__progress" style="transform: scaleX(0.5);"></div>
   </div>
   <ul class="range__steps">

@@ -16,11 +16,11 @@
       @blur="blurHandler"
     >
     <div
-      ref="decoration"
+      ref="track"
       :style="{
         background: trackBackground,
       }"
-      class="range__decoration"
+      class="range__track"
     >
       <div
         ref="progress"
@@ -120,6 +120,7 @@ export default {
   data() {
     return {
       isActive: null,
+      trackWidth: 0,
     };
   },
   computed: {
@@ -146,26 +147,28 @@ export default {
   },
   watch: {
     min() {
-      this.updateRangeDecoration();
+      this.updateUI();
     },
     max() {
-      this.updateRangeDecoration();
+      this.updateUI();
     },
     step() {
-      this.updateRangeDecoration();
+      this.updateUI();
     },
     value() {
       this.adjustValue();
-      this.updateRangeDecoration();
+      this.updateUI();
     },
   },
   mounted() {
     this.adjustValue();
-    this.updateRangeDecoration();
-    onResize.onDebounced(this.updateRangeDecoration);
+
+    this.trackWidth = this.$refs.track.offsetWidth;
+    this.updateUI();
+    onResize.onDebounced(this.onResize);
   },
   beforeDestroy() {
-    onResize.offDebounced(this.updateRangeDecoration);
+    onResize.offDebounced(this.onResize);
   },
   methods: {
     adjustValue() {
@@ -177,16 +180,20 @@ export default {
 
       this.computedValue = adjustedValue;
     },
-    updateRangeDecoration() {
+    updateUI() {
       // the percentage of the value, between max and min. I.e. : 15 is the 0.5 between 10 and 20
       const valuePercentage = (this.computedValue - this.min) / (this.max - this.min);
-      const valuePercentageInputWidthPixels = this.$refs.decoration.offsetWidth * valuePercentage;
+      const valuePercentageInputWidthPixels = this.trackWidth * valuePercentage;
 
       this.$refs.progress.style.transform = `scaleX(${valuePercentage})`;
       this.$refs.thumb.style.transform = `translateX(${valuePercentageInputWidthPixels}px)`;
     },
     onStepClick(stepNumber) {
       this.computedValue = (this.max - this.min) * (stepNumber / this.stepsAmount);
+    },
+    onResize() {
+      this.trackWidth = this.$refs.track.offsetWidth;
+      this.updateUI();
     },
     focusHandler() {
       this.isActive = true;
@@ -285,7 +292,7 @@ export default {
     }
   }
 
-  &__decoration {
+  &__track {
     position: absolute;
     top: 50%;
     margin-top: - 3px;
