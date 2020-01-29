@@ -92,6 +92,9 @@ export default {
     customRules: {
       type: Array,
       default: () => [],
+      validator: rulesProvided => rulesProvided.every(
+        ({ validate, errorMessage }) => typeof validate === 'function' && typeof errorMessage === 'string',
+      ),
     },
   },
   data() {
