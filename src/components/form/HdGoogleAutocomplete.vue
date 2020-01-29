@@ -89,7 +89,7 @@ export default {
       type: Boolean,
       default: false,
     },
-    customValidators: {
+    customRules: {
       type: Array,
       default: () => [],
     },
@@ -253,12 +253,10 @@ export default {
       if (this.required && this.isEmpty) {
         this.showError(this.t.FORM.VALIDATION.REQUIRED);
       } else {
-        const [firstFailingValidation] = this.customValidators
-          .map(validator => validator(this.value))
-          .filter(validationResult => !validationResult.isValid);
+        const firstFailingRule = this.customRules.find(({ validate }) => !validate(this.value));
 
-        if (firstFailingValidation) {
-          this.showError(firstFailingValidation.errorMessage);
+        if (firstFailingRule) {
+          this.showError(firstFailingRule.errorMessage);
         } else {
           this.hideError();
         }

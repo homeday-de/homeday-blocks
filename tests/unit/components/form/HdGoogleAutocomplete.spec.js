@@ -69,17 +69,17 @@ describe('HdGoogleAutocomplete', () => {
   });
 
 
-  describe('Supports custom validators with error message', () => {
+  describe('Supports custom rules with error message', () => {
     const atLeastTenCharsErrorMessage = 'should be at least ten characters long';
-    const atLeastTenChars = value => ({ isValid: value.length >= 10, errorMessage: atLeastTenCharsErrorMessage });
+    const atLeastTenChars = { validate: value => value.length >= 10, errorMessage: atLeastTenCharsErrorMessage };
 
     const startsWithSpaceErrorMessage = 'should start with empty space';
-    const startsWithSpace = value => ({ isValid: value[0] === ' ', errorMessage: startsWithSpaceErrorMessage });
+    const startsWithSpace = { validate: value => value[0] === ' ', errorMessage: startsWithSpaceErrorMessage };
 
     test('Simple case', () => {
       // invalid
       wrapper.setProps({
-        customValidators: [atLeastTenChars],
+        customRules: [atLeastTenChars],
         value: 'too short',
       });
 
@@ -90,7 +90,7 @@ describe('HdGoogleAutocomplete', () => {
 
       // valid
       wrapper.setProps({
-        customValidators: [atLeastTenChars],
+        customRules: [atLeastTenChars],
         value: 'this one is long enough',
       });
 
@@ -103,7 +103,7 @@ describe('HdGoogleAutocomplete', () => {
     test('Multiple custom validators: first one has highest importance', () => {
       // both invalid
       wrapper.setProps({
-        customValidators: [startsWithSpace, atLeastTenChars],
+        customRules: [startsWithSpace, atLeastTenChars],
         value: 'short',
       });
 
@@ -114,7 +114,7 @@ describe('HdGoogleAutocomplete', () => {
 
       // first one valid, second one invalid
       wrapper.setProps({
-        customValidators: [startsWithSpace, atLeastTenChars],
+        customRules: [startsWithSpace, atLeastTenChars],
         value: ' short',
       });
 
