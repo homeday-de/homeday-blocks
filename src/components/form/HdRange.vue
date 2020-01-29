@@ -111,11 +111,11 @@ export default {
     },
     trackBackground: {
       type: String,
-      default: 'fallback to the styles',
+      default: '', // falls back to the internal styles
     },
     progressBackground: {
       type: String,
-      default: 'fallback to the styles',
+      default: '', // falls back to the internal styles
     },
   },
   data() {

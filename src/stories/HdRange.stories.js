@@ -176,7 +176,6 @@ storiesOf('Form/HdRange', module)
           :max="4"
           :track-background="trackBackground"
           :progress-background="progressBackground"
-          :labels="labels"
         />
         <p>Value: {{ currentValue }}</p>
       </div>
