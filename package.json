@@ -2,6 +2,7 @@
   "name": "homeday-blocks",
   "version": "4.2.0",
   "description": "A Vue component library built by Homeday's frontend team.",
+  "main": "main.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/homeday-de/homeday-blocks.git"
@@ -46,11 +47,11 @@
     "@percy/storybook": "3.2.0",
     "@storybook/addon-actions": "5.2.8",
     "@storybook/addon-console": "1.2.1",
-    "@storybook/addon-knobs": "5.3.9",
+    "@storybook/addon-knobs": "5.2.8",
     "@storybook/addon-links": "5.2.8",
     "@storybook/addon-notes": "5.2.8",
     "@storybook/addon-viewport": "5.2.8",
-    "@storybook/theming": "5.3.9",
+    "@storybook/theming": "5.2.8",
     "@vue/cli-plugin-babel": "4.1.2",
     "@vue/cli-plugin-eslint": "4.1.2",
     "@vue/cli-plugin-unit-jest": "4.1.1",
@@ -79,7 +80,7 @@
   ],
   "gitHooks": {
     "pre-commit": "lint-staged",
-    "pre-push": "npm run test:unit && npm run build:storybook && npm run test:percy"
+    "pre-push": "npm run test:unit"
   },
   "lint-staged": {
     "*.js": [
