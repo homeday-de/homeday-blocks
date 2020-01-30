@@ -144,7 +144,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .range {
   $range: &;

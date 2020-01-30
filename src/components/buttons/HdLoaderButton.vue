@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { getRandomInt, circleToPath } from 'hd-blocks/services/utils';
+import { getRandomInt, circleToPath } from 'homeday-blocks/src/services/utils';
 import debounce from 'lodash/debounce';
 
 export default {
@@ -208,7 +208,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .loaderButton {
   $lB: &;

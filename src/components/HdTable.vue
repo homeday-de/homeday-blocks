@@ -51,7 +51,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .hd-table {
   margin-top: $stack-s;

@@ -32,7 +32,7 @@
 
 <script>
 import chunk from 'lodash/chunk';
-import HdArrowButton from 'hd-blocks/components/buttons/HdArrowButton.vue';
+import HdArrowButton from 'homeday-blocks/src/components/buttons/HdArrowButton.vue';
 
 export default {
   name: 'HdTimeslots',
@@ -106,7 +106,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .timeslots-transition {
   &-left, &-right {

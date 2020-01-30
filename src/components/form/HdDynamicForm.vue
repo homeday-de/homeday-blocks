@@ -27,16 +27,16 @@
 </template>
 
 <script>
-import HdInput from 'hd-blocks/components/form/HdInput.vue';
-import HdCheckbox from 'hd-blocks/components/form/HdCheckbox.vue';
-import HdRadio from 'hd-blocks/components/form/HdRadio.vue';
-import HdPasswordConfirm from 'hd-blocks/components/form/HdPasswordConfirm.vue';
-import HdTextarea from 'hd-blocks/components/form/HdTextarea.vue';
-import HdSelect from 'hd-blocks/components/form/HdSelect.vue';
-import HdTagsSelector from 'hd-blocks/components/form/HdTagsSelector.vue';
-import HdSplitInput from 'hd-blocks/components/form/HdSplitInput.vue';
-import HdGoogleAutocomplete from 'hd-blocks/components/form/HdGoogleAutocomplete.vue';
-import HdButton from 'hd-blocks/components/buttons/HdButton.vue';
+import HdInput from 'homeday-blocks/src/components/form/HdInput.vue';
+import HdCheckbox from 'homeday-blocks/src/components/form/HdCheckbox.vue';
+import HdRadio from 'homeday-blocks/src/components/form/HdRadio.vue';
+import HdPasswordConfirm from 'homeday-blocks/src/components/form/HdPasswordConfirm.vue';
+import HdTextarea from 'homeday-blocks/src/components/form/HdTextarea.vue';
+import HdSelect from 'homeday-blocks/src/components/form/HdSelect.vue';
+import HdTagsSelector from 'homeday-blocks/src/components/form/HdTagsSelector.vue';
+import HdSplitInput from 'homeday-blocks/src/components/form/HdSplitInput.vue';
+import HdGoogleAutocomplete from 'homeday-blocks/src/components/form/HdGoogleAutocomplete.vue';
+import HdButton from 'homeday-blocks/src/components/buttons/HdButton.vue';
 
 
 export default {
@@ -139,7 +139,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .dynamicForm {
   &__line {

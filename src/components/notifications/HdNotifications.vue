@@ -28,8 +28,8 @@
 </template>
 
 <script>
-import onResize from 'hd-blocks/services/on-resize';
-import HdNotificationsBar from 'hd-blocks/components/notifications/HdNotificationsBar.vue';
+import onResize from 'homeday-blocks/src/services/on-resize';
+import HdNotificationsBar from 'homeday-blocks/src/components/notifications/HdNotificationsBar.vue';
 
 export default {
   name: 'HdNotifications',
@@ -138,7 +138,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .notifications__sizer {
   transition: height ($time-s * 2) ease-in-out;

@@ -30,7 +30,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .arrowButton {
   border: none;
@@ -56,11 +56,11 @@ export default {
   }
 
   &--left {
-    background: url('~hd-blocks/assets/icons/ic_arrow_backwards--idle-24px.svg') no-repeat center;
+    background: url('~homeday-blocks/src/assets/icons/ic_arrow_backwards--idle-24px.svg') no-repeat center;
   }
 
   &--right {
-    background: url('~hd-blocks/assets/icons/ic_arrow_forward--idle-24px.svg') no-repeat center;
+    background: url('~homeday-blocks/src/assets/icons/ic_arrow_forward--idle-24px.svg') no-repeat center;
   }
 }
 </style>

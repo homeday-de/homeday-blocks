@@ -57,7 +57,7 @@
 
 <script>
 import merge from 'lodash/merge';
-import { getMessages } from 'hd-blocks/lang';
+import { getMessages } from 'homeday-blocks/src/lang';
 
 export default {
   name: 'HdRadio',
@@ -218,8 +218,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'hd-blocks/styles/mixins.scss';
-@import 'hd-blocks/styles/inputs.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/inputs.scss';
 
 .radio {
   $r: &;
