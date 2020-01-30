@@ -2,7 +2,7 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 
-import HdRadio from 'hd-blocks/components/form/HdRadio.vue';
+import HdRadio from 'homeday-blocks/src/components/form/HdRadio.vue';
 import ITEMS from './mocks/FORM_ITEMS';
 
 storiesOf('Form/HdRadio', module)

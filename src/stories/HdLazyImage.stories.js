@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
 
-import HdLazyImage from 'hd-blocks/components/HdLazyImage.vue';
+import HdLazyImage from 'homeday-blocks/src/components/HdLazyImage.vue';
 
 storiesOf('HdLazyImage', module)
   .addParameters({ percy: { skip: true } })

@@ -2,9 +2,9 @@
 import { storiesOf } from '@storybook/vue';
 import { boolean } from '@storybook/addon-knobs';
 
-import HdEditSwitch from 'hd-blocks/components/HdEditSwitch.vue';
-import HdInput from 'hd-blocks/components/form/HdInput.vue';
-import FormWrapper from 'hd-blocks/storiesWrappers/FormWrapper';
+import HdEditSwitch from 'homeday-blocks/src/components/HdEditSwitch.vue';
+import HdInput from 'homeday-blocks/src/components/form/HdInput.vue';
+import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 
 storiesOf('HdEditSwitch', module)
   .addDecorator(FormWrapper)

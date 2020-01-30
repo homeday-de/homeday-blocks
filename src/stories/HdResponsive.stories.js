@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
 
-import HdResponsive from 'hd-blocks/components/HdResponsive.vue';
+import HdResponsive from 'homeday-blocks/src/components/HdResponsive.vue';
 import HdResponsiveNote from '../notes/HdResponsive.md';
 
 storiesOf('HdResponsive', module)

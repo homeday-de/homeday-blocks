@@ -1,8 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies, no-console */
 import { storiesOf } from '@storybook/vue';
 
-import HdRange from 'hd-blocks/components/form/HdRange.vue';
-import FormWrapper from 'hd-blocks/storiesWrappers/FormWrapper';
+import HdRange from 'homeday-blocks/src/components/form/HdRange.vue';
+import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 import { number, boolean } from '@storybook/addon-knobs';
 
 storiesOf('Form/HdRange', module)

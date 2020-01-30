@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
 
-import HdGalleryOverlay from 'hd-blocks/components/gallery/HdGalleryOverlay.vue';
+import HdGalleryOverlay from 'homeday-blocks/src/components/gallery/HdGalleryOverlay.vue';
 import ITEMS from './mocks/GALLERY_ITEMS';
 
 storiesOf('Gallery/HdGalleryOverlay', module)
