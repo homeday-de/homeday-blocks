@@ -5,6 +5,7 @@ are here to be consumed in projects directly.
 Index:
 - [Breakpoints service](#breakpoints) - Used for setting (and getting) the global project breakpoints.
 - [Date service](#date) - Used as helpers to work with dates and date intervals.
+- [Utils service](#utils) - Group of helpers that have generic usage.
 
 ## Breakpoints
 Exposes methods for setting up viewport breakpoints of the project. The breakpoints set in this way are later used by the `HdResponsive` component.
@@ -148,25 +149,6 @@ const daysInIntervalLong = getIntlDateString(locale, datesArray, localStringArgs
 // [ 'Monday' ]
 ```
 
-#### generateRandomIndexes
-
-Returns array of N(`count`) indexes on `min` to `max` open interval
-
-`param {Number} amount: Total number of indexes to be generated`
-
-`param {Number} min: Minimum value that indexes can have`
-
-`param {Number} max: Maximum value that indexes can have`
-
-```javascript
-const max = 5;
-const min = 1;
-const amount = 3;
-
-const randomInts = generateRandomIndexes(amount, min, max);
-// [2, 3, 5]
-```
-
 #### generateDateCycles
 
 Returns an array of dates in N (`cycleLengthWeeks`) weeks, with M cycles (`amountOfCycles`) from selected offset(in days) from today (`startDateOffset`)
@@ -215,4 +197,25 @@ const dateCycles = generateDateCycles(cycleLengthWeeks, amountOfCycles, startDat
     2020-02-24T00:00:00.000Z
   ]
 */
+```
+
+## Utils
+
+#### generateRandomNumbers
+
+Returns array of N(`count`) indexes on `min` to `max` open interval
+
+`param {Number} amount: Total number of indexes to be generated`
+
+`param {Number} min: Minimum value that indexes can have`
+
+`param {Number} max: Maximum value that indexes can have`
+
+```javascript
+const max = 5;
+const min = 1;
+const amount = 3;
+
+const randomInts = generateRandomNumbers(amount, min, max);
+// [2, 3, 5]
 ```

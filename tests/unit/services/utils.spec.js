@@ -1,15 +1,15 @@
 import {
-  generateRandomIndexes,
+  generateRandomNumbers,
 } from '@/services/utils';
 
 
 describe('Utils service', () => {
-  describe('generateRandomIndexes', () => {
+  describe('generateRandomNumbers', () => {
     it('returns array of random unique integers on open interval', () => {
       const max = 5;
       const min = 1;
       const amount = 3;
-      const randomInts = generateRandomIndexes(amount, min, max);
+      const randomInts = generateRandomNumbers(amount, min, max);
       expect(randomInts.length).toBe(amount);
       expect(Math.max(...randomInts)).toBeLessThanOrEqual(max);
       expect(Math.min(...randomInts)).toBeGreaterThanOrEqual(min);
@@ -20,7 +20,7 @@ describe('Utils service', () => {
       const max = 5;
       const min = 1;
       const amount = max - min + 1;
-      const randomInts = generateRandomIndexes(amount, min, max);
+      const randomInts = generateRandomNumbers(amount, min, max);
       expect(randomInts.length).toBe(0);
     });
   });

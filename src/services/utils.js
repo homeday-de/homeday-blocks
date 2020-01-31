@@ -100,7 +100,7 @@ export function loadScript({ url = '', first = false, head = false }) {
 }
 
 // Returns list of random integers
-export const generateRandomIndexes = (amount, min, max) => {
+export const generateRandomNumbers = (amount, min, max) => {
   const indexes = [];
   // sanity check to prevent infinit loop
   if (amount > (max - min)) {
@@ -128,4 +128,5 @@ export default {
   accentFold,
   getArrayOfSize,
   loadScript,
+  generateRandomNumbers,
 };
