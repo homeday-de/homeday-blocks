@@ -19,8 +19,4 @@ describe('HdLazyImage', () => {
   it('renders component', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
-
-  it('It fist display the thumbnail/small image', () => {
-    expect(wrapper.attributes().src).toBe(sampleImage.thumbnail);
-  });
 });
