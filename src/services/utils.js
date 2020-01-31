@@ -99,6 +99,27 @@ export function loadScript({ url = '', first = false, head = false }) {
   });
 }
 
+// Returns list of random integers
+export const generateRandomIndexes = (amount, min, max) => {
+  const indexes = [];
+  // sanity check to prevent infinit loop
+  if (amount > (max - min)) {
+    return indexes;
+  }
+  // max tries are arbitrary selected attempts limit
+  // to prevent super expensive cases of finding all
+  // unique numbers
+  let maxTries = 10 * amount;
+  while (indexes.length < amount && maxTries > 0) {
+    maxTries -= 1;
+    const randomInt = getRandomInt(min, max);
+    /* eslint-disable no-continue  */
+    if (indexes.indexOf(randomInt) > -1) continue;
+    indexes.push(randomInt);
+  }
+  return indexes;
+};
+
 export default {
   populateTemplate,
   getPasswordStrength,

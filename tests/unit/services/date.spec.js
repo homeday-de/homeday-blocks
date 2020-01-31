@@ -4,7 +4,6 @@ import {
   convertMsToDays,
   getDaysDateRange,
   getIntlDateString,
-  generateRandomIndexes,
   generateDateCycles,
 } from '@/services/date';
 
@@ -31,42 +30,50 @@ describe('Date service', () => {
     expect(resetDate.getMilliseconds()).toBe(0);
   });
 
-  it(`getNDaysFromDate adds N number of dates to selected date,
-      resets the time to 00:00:00:00 and returns new date`, () => {
-    // we pass in 28.02.1988
-    // when we add 0 days, we expect to keep the same date
-    // and time is set to 0
-    let addedDayes = 0;
-    const sameDate = getNDaysFromDate(fullDate, addedDayes);
-    expect(sameDate.getFullYear()).toBe(year);
-    expect(sameDate.getMonth()).toBe(month);
-    expect(sameDate.getDate()).toBe(date);
-    expect(sameDate.getHours()).toBe(0);
-    expect(sameDate.getMinutes()).toBe(0);
-    expect(sameDate.getSeconds()).toBe(0);
-    expect(sameDate.getMilliseconds()).toBe(0);
+  describe('getNDaysFromDate', () => {
+    it(`can keep the same date and
+      resets the time to 00:00:00:00. Returns new date`, () => {
+      // we pass in 28.02.1988
+      // when we add 0 days, we expect to keep the same date
+      // and time is set to 0
+      const addedDayes = 0;
+      const sameDate = getNDaysFromDate(fullDate, addedDayes);
+      expect(sameDate.getFullYear()).toBe(year);
+      expect(sameDate.getMonth()).toBe(month);
+      expect(sameDate.getDate()).toBe(date);
+      expect(sameDate.getHours()).toBe(0);
+      expect(sameDate.getMinutes()).toBe(0);
+      expect(sameDate.getSeconds()).toBe(0);
+      expect(sameDate.getMilliseconds()).toBe(0);
+    });
 
-    // expect to get 04.03.1988 back, after adding 5 days
-    addedDayes = 5;
-    const resetDate = getNDaysFromDate(fullDate, addedDayes);
-    expect(resetDate.getFullYear()).toBe(year);
-    expect(resetDate.getMonth()).toBe(2);
-    expect(resetDate.getDate()).toBe(4);
-    expect(resetDate.getHours()).toBe(0);
-    expect(resetDate.getMinutes()).toBe(0);
-    expect(resetDate.getSeconds()).toBe(0);
-    expect(resetDate.getMilliseconds()).toBe(0);
+    it(`can add N number of days to selected date and
+      resets the time to 00:00:00:00. Returns new date`, () => {
+      // expect to get 04.03.1988 back, after adding 5 days
+      const addedDayes = 5;
+      const futureDate = getNDaysFromDate(fullDate, addedDayes);
+      expect(futureDate.getFullYear()).toBe(year);
+      expect(futureDate.getMonth()).toBe(2);
+      expect(futureDate.getDate()).toBe(4);
+      expect(futureDate.getHours()).toBe(0);
+      expect(futureDate.getMinutes()).toBe(0);
+      expect(futureDate.getSeconds()).toBe(0);
+      expect(futureDate.getMilliseconds()).toBe(0);
+    });
 
-    // expect to get 27.02.1988 back, after deducting a day
-    addedDayes = -1;
-    const yesterday = getNDaysFromDate(fullDate, addedDayes);
-    expect(yesterday.getFullYear()).toBe(year);
-    expect(yesterday.getMonth()).toBe(month);
-    expect(yesterday.getDate()).toBe(date - 1);
-    expect(yesterday.getHours()).toBe(0);
-    expect(yesterday.getMinutes()).toBe(0);
-    expect(yesterday.getSeconds()).toBe(0);
-    expect(yesterday.getMilliseconds()).toBe(0);
+    it(`can deduct N number of days to selected date and
+      resets the time to 00:00:00:00. Returns new date`, () => {
+      // expect to get 27.02.1988 back, after deducting a day
+      const addedDayes = -1;
+      const yesterday = getNDaysFromDate(fullDate, addedDayes);
+      expect(yesterday.getFullYear()).toBe(year);
+      expect(yesterday.getMonth()).toBe(month);
+      expect(yesterday.getDate()).toBe(date - 1);
+      expect(yesterday.getHours()).toBe(0);
+      expect(yesterday.getMinutes()).toBe(0);
+      expect(yesterday.getSeconds()).toBe(0);
+      expect(yesterday.getMilliseconds()).toBe(0);
+    });
   });
 
   it('convertMsToDays converts ms to number of dats', () => {
@@ -114,16 +121,6 @@ describe('Date service', () => {
     const daysInIntervalShort = getIntlDateString('en-US', datesList, { weekday: 'short' });
     expect(daysInIntervalShort.length).toBe(7);
     expect(daysInIntervalShort[0]).toBe('Sun');
-  });
-
-  it('generateRandomIndexes returns array of random integers on open interval', () => {
-    const max = 5;
-    const min = 1;
-    const count = 3;
-    const randomInts = generateRandomIndexes(count, min, max);
-    expect(randomInts.length).toBe(count);
-    expect(Math.max(...randomInts)).toBeLessThanOrEqual(max);
-    expect(Math.min(...randomInts)).toBeGreaterThanOrEqual(min);
   });
 
   it('generateDateCycles returns the list if N weeks, from specific start date ', () => {
