@@ -201,7 +201,7 @@ const dateCycles = generateDateCycles(cycleLengthWeeks, amountOfCycles, startDat
 
 ## Utils
 
-#### generateRandomNumbers
+#### generateUniqueNumbers
 
 Returns array of N(`count`) indexes on `min` to `max` open interval
 
@@ -216,6 +216,6 @@ const max = 5;
 const min = 1;
 const amount = 3;
 
-const randomInts = generateRandomNumbers(amount, min, max);
+const randomInts = generateUniqueNumbers(amount, min, max);
 // [2, 3, 5]
 ```

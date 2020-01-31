@@ -1,5 +1,5 @@
 import {
-  generateRandomNumbers,
+  generateUniqueNumbers,
 } from '@/services/utils';
 
 
@@ -9,7 +9,7 @@ describe('Utils service', () => {
       const max = 5;
       const min = 1;
       const amount = 3;
-      const randomInts = generateRandomNumbers(amount, min, max);
+      const randomInts = generateUniqueNumbers(amount, min, max);
       expect(randomInts.length).toBe(amount);
       expect(Math.max(...randomInts)).toBeLessThanOrEqual(max);
       expect(Math.min(...randomInts)).toBeGreaterThanOrEqual(min);
@@ -20,7 +20,7 @@ describe('Utils service', () => {
       const max = 5;
       const min = 1;
       const amount = max - min + 1;
-      const randomInts = generateRandomNumbers(amount, min, max);
+      const randomInts = generateUniqueNumbers(amount, min, max);
       expect(randomInts.length).toBe(0);
     });
   });
