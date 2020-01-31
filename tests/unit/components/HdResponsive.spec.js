@@ -56,4 +56,25 @@ describe('HdResponsive', () => {
     });
     expect(wrapper.html()).toMatchSnapshot();
   });
+
+  it('breakpoint changes are managed', () => {
+    setBreakpoints(BREAKPOINTS);
+    wrapper = mount(HdResponsive, {
+      scopedSlots: {
+        default: `
+          <div>I'm a Slot</div>
+        `,
+      },
+    });
+
+    const mockedSetResponsiveFlags = jest.fn();
+    wrapper.setMethods({ setResponsiveFlags: mockedSetResponsiveFlags });
+
+    const modifiedBreakpoints = BREAKPOINTS;
+    delete modifiedBreakpoints.s;
+
+    wrapper.setProps({ breakpoints: modifiedBreakpoints });
+
+    expect(mockedSetResponsiveFlags).toHaveBeenCalled();
+  });
 });
