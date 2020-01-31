@@ -1,8 +1,6 @@
 <script>
-import onResize from 'homeday-blocks/src/services/on-resize';
 import {
   matchMediaAvailable,
-  mediaMatches,
   getBreakpoints,
 } from 'homeday-blocks/src/services/breakpoints';
 
@@ -18,6 +16,7 @@ export default {
     return {
       matches: {},
       indeterminate: !matchMediaAvailable,
+      listeners: {},
     };
   },
   watch: {
@@ -25,35 +24,38 @@ export default {
       this.setResponsiveFlags();
     },
   },
+  beforeMount() {
+    this.setResponsiveFlags();
+  },
   created() {
     this.setResponsiveFlags();
   },
-  mounted() {
-    this.addResizeEvents();
-  },
-  beforeDestroy() {
-    this.removeResizeEvents();
-  },
   methods: {
+    updateMatch(key, value) {
+      this.matches[key] = value;
+      this.$forceUpdate();
+    },
     setResponsiveFlags() {
+      this.listeners = {};
+
       const breakpoints = {
         ...getBreakpoints(),
         ...this.breakpoints,
       };
 
-      this.matches = Object.keys(breakpoints).reduce(
-        (matches, breakpointKey) => ({
-          ...matches,
-          [breakpointKey]: mediaMatches(breakpoints[breakpointKey]),
-        }),
-        {},
-      );
-    },
-    addResizeEvents() {
-      onResize.onThrottled(this.setResponsiveFlags);
-    },
-    removeResizeEvents() {
-      onResize.offThrottled(this.setResponsiveFlags);
+      for (const breakpointKey in breakpoints) {
+        this.listeners[breakpointKey] = window.matchMedia(breakpoints[breakpointKey]);
+        this.matches[breakpointKey] = this.listeners[breakpointKey].matches;
+        try {
+          this.listeners[breakpointKey].addEventListener('change', (e) => {
+            this.updateMatch(breakpointKey, e.matches);
+          });
+        } catch (error) {
+          this.listeners[breakpointKey].addListener((e) => {
+            this.updateMatch(breakpointKey, e.matches);
+          });
+        }
+      }
     },
   },
   render() {
