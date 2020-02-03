@@ -14,69 +14,6 @@ body {
 }
 
 
-
-/* CLASSES UTILITIES GENERATION */
-
-/** COLORS **/
-$colors-palette : (picton, $picton),
-(cello, $cello),
-(vivid-blue, $vivid-blue),
-(white, $white),
-(nevada, $nevada),
-(mercury, $mercury),
-(charlotte, $charlotte),
-(polar, $polar),
-(blue, $blue),
-(light-orange, $light-orange),
-(cherokee, $cherokee),
-(regent-gray, $regent-gray),
-(heather, $heather),
-(ebb, $ebb),
-(ebb2, $ebb2),
-(wild-sand, $wild-sand),
-(torch-red, $torch-red),
-(mantis, $mantis);
-
-$colors-properties: 'background-color',
-'color',
-'border-color';
-@each $property in $colors-properties {
-  @each $name, $color in $colors-palette {
-    .#{$property}-#{$name} {
-      #{$property}: $color;
-    }
-  }
-}
-
-
-/* MIX-IN WITH SAME PURPOSE THAN CLASSES UTILITIES */
-
-@mixin background-color($value) {
-  @each $name, $color in $colors-palette {
-    @if $value==$name {
-      background-color: $color;
-    }
-  }
-}
-
-@mixin color($value) {
-  @each $name,
-  $color in $colors-palette {
-    @if $value==$name {
-      color: $color;
-    }
-  }
-}
-
-@mixin border-color($value) {
-  @each $name,
-  $color in $colors-palette {
-    @if $value==$name {
-      border-color: $color;
-    }
-  }
-}
-
 /** SPACING **/
 /* CLASSES UTILITIES GENERATION */
 $spacing-properties : 'margin', 'padding';
