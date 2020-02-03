@@ -56,10 +56,9 @@ $monza-red: #E00016;
 // The abstraction 
 $primary-color: $cello-blue;
 $secondary-color: $dodger-blue;
-$tertiary-color: $neutral-gray;
-$accent-color: $crusta-orange;
+$tertiary-color: $crusta-orange;
+$quaternary-color: $neutral-gray;
 $primary-bg: $white;
 $secondary-bg: getShade($neutral-gray, 40);
-$danger-color: $monza-red;
-$warning-color: $crusta-orange;
+$error-color: $monza-red;
 $success-color: $mantis-green;
