@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HdLazyImage renders component 1`] = `<img class="lazy-image" src="https://dummyimage.com/154x86?text=3+thumb+default+density">`;

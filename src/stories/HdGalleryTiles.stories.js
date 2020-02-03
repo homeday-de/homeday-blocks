@@ -70,4 +70,26 @@ storiesOf('Gallery/HdGalleryTiles', module)
         action('itemClicked')(itemIndex);
       },
     },
+  }))
+  .add('default with image elements', () => ({
+    components: { HdGalleryTiles },
+    template: `
+    <HdGalleryTiles
+      :items="items"
+      class="expose__gallery expose__gallery--tiles"
+      @itemClick="onItemClick"
+      :background="false"
+    />
+  `,
+    data() {
+      return {
+        items: ITEMS,
+        visible: false,
+      };
+    },
+    methods: {
+      onItemClick(itemIndex) {
+        action('itemClicked')(itemIndex);
+      },
+    },
   }));

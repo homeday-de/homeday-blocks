@@ -1,6 +1,3 @@
-// Needed until https://github.com/benmosher/eslint-plugin-import/issues/1396
-// is solved
-// eslint-disable-next-line import/no-extraneous-dependencies
 const path = require('path');
 
 // Generates a webpack alias object

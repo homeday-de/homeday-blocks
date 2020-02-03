@@ -145,6 +145,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import 'hd-blocks/styles/mixins.scss';
+
 $_red: #E00016;
 
 .edit-switch {

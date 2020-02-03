@@ -5,9 +5,6 @@ import HdInput from '@/components/form/HdInput.vue';
 const ERROR_SELECTOR = '.field__error';
 const HELPER_SELECTOR = '.field__error--helper';
 const ICON_SELECTOR = '.field__icon';
-const VISIBILITY_TOGGLE_SELECTOR = '.field__visibilityToggle';
-
-const PASSWORD_VISIBLE_CLASS = 'field__visibilityToggle--visible';
 
 const TEST_VALUE = 'new value';
 const TEST_PROPS = {
@@ -189,45 +186,6 @@ describe('HdInput', () => {
     });
   });
 
-  describe('type "password"', () => {
-    beforeEach(() => {
-      wrapper = wrapperFactory({
-        propsData: {
-          value: 'MyPas$wOrD',
-          type: 'password',
-        },
-      });
-    });
-
-    test('sets the input type to "password"', () => {
-      expect(wrapper
-        .find('input')
-        .attributes()
-        .type).toBe('password');
-    });
-
-    test('shows the visibility toggle', () => {
-      expect(wrapper.find(VISIBILITY_TOGGLE_SELECTOR).exists()).toBe(true);
-    });
-
-    test('toggles the password\'s visibility', () => {
-      const toggle = wrapper.find(VISIBILITY_TOGGLE_SELECTOR);
-
-      toggle.trigger('click');
-      expect(wrapper.find('input').attributes().type).toBe('text');
-      expect(toggle.classes()).toContain(PASSWORD_VISIBLE_CLASS);
-
-      toggle.trigger('click');
-      expect(wrapper.find('input').attributes().type).toBe('password');
-      expect(toggle.classes()).not.toContain(PASSWORD_VISIBLE_CLASS);
-    });
-
-    test('doesn\'t show visibility toggle if empty', () => {
-      wrapper.setProps({ value: '' });
-      expect(wrapper.find(VISIBILITY_TOGGLE_SELECTOR).exists()).toBe(false);
-    });
-  });
-
   test('Supports disabling', () => {
     wrapper.setProps({
       disabled: true,
@@ -247,5 +205,12 @@ describe('HdInput', () => {
 
     expect(wrapper.classes()).toContain(FIELD_CLASSES.HAS_ICON);
     expect(wrapper.find(ICON_SELECTOR).exists()).toBe(true);
+  });
+
+  test('ignores LastPass auto fill', () => {
+    expect(wrapper
+      .find('input')
+      .attributes()['data-lpignore'])
+      .toBe('true');
   });
 });

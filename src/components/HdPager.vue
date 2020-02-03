@@ -248,7 +248,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import 'hd-blocks/styles/mixins.scss';
 @import 'hd-blocks/styles/inputs.scss';
+
 @keyframes pager-ripple {
   0% {
     opacity: 1;

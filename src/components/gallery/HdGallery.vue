@@ -165,6 +165,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import 'hd-blocks/styles/mixins.scss';
+
 .gallery {
   $_root: &;
   position: relative;

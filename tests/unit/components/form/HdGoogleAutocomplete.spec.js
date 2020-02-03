@@ -67,4 +67,61 @@ describe('HdGoogleAutocomplete', () => {
 
     expect(wrapper.find('input').attributes().disabled).toBe('disabled');
   });
+
+
+  describe('Supports custom rules with error message', () => {
+    const atLeastTenCharsErrorMessage = 'should be at least ten characters long';
+    const atLeastTenChars = { validate: value => value.length >= 10, errorMessage: atLeastTenCharsErrorMessage };
+
+    const startsWithSpaceErrorMessage = 'should start with empty space';
+    const startsWithSpace = { validate: value => value[0] === ' ', errorMessage: startsWithSpaceErrorMessage };
+
+    test('Simple case', () => {
+      // invalid
+      wrapper.setProps({
+        customRules: [atLeastTenChars],
+        value: 'too short',
+      });
+
+      wrapper.vm.validate();
+
+      expect(wrapper.vm.isValid).toBe(false);
+      expect(wrapper.vm.error).toBe(atLeastTenCharsErrorMessage);
+
+      // valid
+      wrapper.setProps({
+        customRules: [atLeastTenChars],
+        value: 'this one is long enough',
+      });
+
+      wrapper.vm.validate();
+
+      expect(wrapper.vm.isValid).toBe(true);
+      expect(wrapper.vm.error).toBeFalsy();
+    });
+
+    test('Multiple custom validators: first one has highest importance', () => {
+      // both invalid
+      wrapper.setProps({
+        customRules: [startsWithSpace, atLeastTenChars],
+        value: 'short',
+      });
+
+      wrapper.vm.validate();
+
+      expect(wrapper.vm.isValid).toBe(false);
+      expect(wrapper.vm.error).toBe(startsWithSpaceErrorMessage);
+
+      // first one valid, second one invalid
+      wrapper.setProps({
+        customRules: [startsWithSpace, atLeastTenChars],
+        value: ' short',
+      });
+
+      wrapper.vm.validate();
+
+      expect(wrapper.vm.isValid).toBe(false);
+      expect(wrapper.vm.error).toBe(atLeastTenCharsErrorMessage);
+    });
+  });
 });

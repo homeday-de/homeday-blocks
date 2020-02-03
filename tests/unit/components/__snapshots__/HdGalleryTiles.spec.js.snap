@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HdGalleryTiles renders component 1`] = `
+<div class="gallery-tiles" item="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]">
+  <section class="gallery-tiles__container"></section> <button class="btn gallery-tile__more-photos">Weitere Fotos</button>
+</div>
+`;
