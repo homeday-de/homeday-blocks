@@ -1,6 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
-
 import HdLazyImage from 'hd-blocks/components/HdLazyImage.vue';
 
 storiesOf('HdLazyImage', module)
