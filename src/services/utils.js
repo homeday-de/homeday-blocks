@@ -103,7 +103,7 @@ export function loadScript({ url = '', first = false, head = false }) {
 export const generateUniqueNumbers = (amount, min, max) => {
   const indexes = [];
   // sanity check to prevent infinit loop
-  if (amount > (max - min)) {
+  if (amount > (max - min + 1)) {
     return indexes;
   }
   // max tries are arbitrary selected attempts limit
@@ -113,9 +113,9 @@ export const generateUniqueNumbers = (amount, min, max) => {
   while (indexes.length < amount && maxTries > 0) {
     maxTries -= 1;
     const randomInt = getRandomInt(min, max);
-    /* eslint-disable no-continue  */
-    if (indexes.indexOf(randomInt) > -1) continue;
-    indexes.push(randomInt);
+    if (!indexes.includes(randomInt)) {
+      indexes.push(randomInt);
+    }
   }
   return indexes;
 };

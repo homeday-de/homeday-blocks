@@ -203,7 +203,7 @@ const dateCycles = generateDateCycles(cycleLengthWeeks, amountOfCycles, startDat
 
 #### generateUniqueNumbers
 
-Returns array of N(`count`) indexes on `min` to `max` open interval
+Returns array of N(`count`) indexes on `min` to `max` closed(including `min` and `max`) interval. In case that requested `amount` is larger then different between `min` and `max` (`amount > (max - min + 1)`), function returns an empty array (`[]`).
 
 `param {Number} amount: Total number of indexes to be generated`
 
