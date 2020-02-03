@@ -24,7 +24,7 @@ $button-transition: all $time-s ease-in-out;
 
 .btn--primary,
 .btn--secondary {
-  background-color: $vivid-blue;
+  background-color: $secondary-color;
   color: $white;
   font-family: $font-primary;
   width: 100%;
@@ -36,7 +36,7 @@ $button-transition: all $time-s ease-in-out;
   &:hover {
     color: $white;
     box-shadow: 0 3px 2px 0 rgba(0,0,0,0.3);
-    background-color: darken($vivid-blue, 15);
+    background-color: getShade($secondary-color, 110);
     transform: translateY(-1px);
   }
   
@@ -75,14 +75,14 @@ $button-transition: all $time-s ease-in-out;
 
 .btn--primary[disabled],
 .btn--primary-disabled {
-  background-color: $nevada;
-  color: $mercury;
+  background-color: $quaternary-color;
+  color: getShade($quaternary-color, 50);
   box-shadow: 0 0 2px 0 rgba(0,0,0,0.12), 0 2px 2px 0 rgba(0,0,0,0.24);
   &:after {
     display: none;
   }
   &:hover, &:active, &:focus, &:active:focus {
-    background-color: $nevada;
+    background-color: $quaternary-color;
     cursor: not-allowed;
     box-shadow: none;
     transform: none;
@@ -92,7 +92,7 @@ $button-transition: all $time-s ease-in-out;
 .btn--tertiary {
   @include font('body');
   display: inline-block;
-  color: $vivid-blue;
+  color: $secondary-color;
   transition: $button-transition;
   font-weight: 600;
   position: relative;
@@ -102,7 +102,7 @@ $button-transition: all $time-s ease-in-out;
     content: "";
     width: calc(100% - #{2 * $button-inset-padding});
     height: 2px;
-    background-color: $vivid-blue;
+    background-color: $secondary-color;
     position: absolute;
     bottom: 12px;
     left: 0;
@@ -128,7 +128,7 @@ $button-transition: all $time-s ease-in-out;
 .btn--flat {
   position: relative;
   background-color: $white;
-  color: $nevada;
+  color: $quaternary-color;
   font-family: $font-primary;
   font-size: 18px;
   line-height: 28px;
@@ -147,17 +147,17 @@ $button-transition: all $time-s ease-in-out;
     transition: $button-transition;
   }
   &:hover {
-    color: $vivid-blue;
+    color: $secondary-color;
   }
   &:hover:after {
-    border-color: $vivid-blue;
+    border-color: $secondary-color;
   }
 }
 
 .btn--flat-active, .btn--flat--hover {
-  color: $vivid-blue;
+  color: $secondary-color;
   &:after {
-    border-color: $vivid-blue;
+    border-color: $secondary-color;
   }
 }
 
@@ -184,23 +184,23 @@ $button-transition: all $time-s ease-in-out;
 }
 
 .btn--ghost {
-  border: 2px solid $vivid-blue;
+  border: 2px solid $secondary-color;
   font-size: 16px;
   padding: 0 $inline-m;
-  color: $vivid-blue;
+  color: $secondary-color;
   transition: $button-transition;
   height: 52px;
 
   &:hover {
     transform: translateY(-1px);
     @media (min-width: $break-tablet) {
-      border-color: darken($vivid-blue, 15);
-      background-color: darken($vivid-blue, 15);
+      border-color: getShade($secondary-color, 110);
+      background-color: getShade($secondary-color, 110);
     }
   }
 
   @media (min-width: $break-tablet) {
-    background: $vivid-blue;
+    background: $secondary-color;
     color: $white;
     font-size: 18px;
   }

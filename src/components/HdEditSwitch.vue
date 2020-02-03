@@ -147,8 +147,6 @@ export default {
 <style lang="scss">
 @import 'hd-blocks/styles/mixins.scss';
 
-$_red: #E00016;
-
 .edit-switch {
   $_root: &;
 
@@ -165,13 +163,13 @@ $_red: #E00016;
       margin-left: $inline-m;
       cursor: pointer;
       &--edit {
-        color: $vivid-blue;
+        color: $secondary-color;
       }
       &--save {
-        color: $mantis;
+        color: $success-color;
       }
       &--cancel {
-        color: $_red;
+        color: $error-color;
       }
       &__label {
         font-size: 18px;
@@ -192,7 +190,7 @@ $_red: #E00016;
       width: 20px;
       height: 20px;
       border-radius: 50%;
-      border: 2px solid $vivid-blue;
+      border: 2px solid $secondary-color;
       border-right-color: transparent;
       animation: edit-switch-loading-indicator-spin 1s linear infinite;
       content: '';

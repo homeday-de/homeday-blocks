@@ -63,7 +63,7 @@ export default {
     font-size: 72px;
     line-height: 80px;
     font-weight: 900;
-    color: $cello;
+    color: $primary-color;
     margin-top: $stack-m;
     margin-bottom: $stack-m;
 
@@ -75,7 +75,7 @@ export default {
       left: 0;
       width: calc(100% + 3px);
       height: 40%;
-      background: rgba(24,149,255, .25);
+      background: getShade($secondary-color, 80);
       z-index: -1;
     }
   }
@@ -93,7 +93,7 @@ export default {
     font-size: 14px;
 
     ::v-deep pre {
-      background-color: $wild-sand;
+      background-color: $secondary-bg;
     }
   }
 }

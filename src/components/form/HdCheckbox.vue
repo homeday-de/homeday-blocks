@@ -174,7 +174,7 @@ export default {
         top:0; left:0;
         width: 100%;
         height: 100%;
-        background-color: $vivid-blue;
+        background-color: $secondary-color;
         border-radius: 50%;
         transform: scale(0);
         opacity: 0;
@@ -184,7 +184,7 @@ export default {
           opacity: 1;
         }
         #{$c}--disabled & {
-          background-color: rgba($regent-gray, 0.8);
+          background-color: getShade($quaternary-color, 70);
         }
       }
       &__border {
@@ -194,22 +194,22 @@ export default {
         width: 100%;
         height: 100%;
         border-radius: 3px;
-        border: 2px solid $nevada;
+        border: 2px solid $quaternary-color;
         transition: border-color .3s;
         #{$c}:hover & {
-          border-color: $regent-gray;
+          border-color: getShade($quaternary-color, 80);
         }
         #{$c}.isChecked & {
           border-color: transparent;
         }
         #{$c}:not(#{$c}--active).hasError & {
-          border-color: $torch-red;
+          border-color: $error-color;
         }
         #{$c}--active & {
-          border-color: $vivid-blue;
+          border-color: $secondary-color;
         }
         #{$c}--disabled & {
-          border-color: rgba($regent-gray, 0.8);
+          border-color: getShade($quaternary-color, 70);
         }
       }
       &__tick {
@@ -235,7 +235,7 @@ export default {
       @include font('text-small');
 
       #{$c}--disabled & {
-        color: rgba($regent-gray, 0.8);
+        color: getShade($quaternary-color, 70);
       }
     }
   }
@@ -245,7 +245,7 @@ export default {
     }
 
     #{$c}--active & {
-      color: $regent-gray;
+      color: getShade($quaternary-color, 80);
     }
   }
   &__label {
@@ -253,18 +253,18 @@ export default {
     margin-bottom: 3px;
     font-size: 14px;
     line-height: 18px;
-    color: $nevada;
+    color: $quaternary-color;
     transition: color 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940);
     pointer-events: none;
 
     #{$c}.hasError & {
-      color: $torch-red;
+      color: $error-color;
     }
 
     #{$c}:hover &,
     #{$c}--active &,
     #{$c}--active.hasError & {
-      color: $vivid-blue;
+      color: $secondary-color;
     }
   }
 }

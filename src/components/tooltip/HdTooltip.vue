@@ -23,9 +23,9 @@ export default {
   font-size: 12px;
   line-height: 12px;
   padding: 4px 8px;
-  background-color: $nevada;
+  background-color: $quaternary-color;
   border-radius: 5px;
-  color: white;
+  color: $white;
   pointer-events: none;
   opacity: 0;
   z-index: 1000;

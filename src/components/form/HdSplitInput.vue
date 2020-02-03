@@ -206,7 +206,7 @@ export default {
       flex: 0 0 $inline-m;
       z-index: 1;
       background-color: $inputBackground;
-      color: $regent-gray;
+      color: getShade($quaternary-color, 80);
       font-size: 20px;
       font-weight: 700;
       #{$f}--filled:not(#{$f}--active):not(#{$f}--invalid) & {
@@ -222,7 +222,7 @@ export default {
     text-align: left;
     &--helper {
       display: block;
-      color: $regent-gray;
+      color: getShade($quaternary-color, 80);
     }
   }
 }

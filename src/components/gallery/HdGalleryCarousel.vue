@@ -249,7 +249,7 @@ export default {
       position: absolute;
       bottom: 0px;
       width: 100%;
-      background: linear-gradient(to top, rgba($nevada, .45), rgba($nevada, 0));
+      background: linear-gradient(to top, rgba($quaternary-color, .45), rgba($quaternary-color, 0));
 
       @media (min-width: $break-tablet) {
         display: none;
@@ -265,7 +265,7 @@ export default {
     border-radius: 2px;
     overflow: hidden;
     transition: box-shadow $time-s ease-in-out;
-    background-color: $wild-sand;
+    background-color: $secondary-bg;
     display: flex;
     align-items: center;
     justify-content: center;

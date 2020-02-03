@@ -121,7 +121,7 @@ export default {
   }
 
   &--notification {
-    background-color: $crusta;
+    background-color: $tertiary-color;
     color: $white;
 
     a {
@@ -130,7 +130,7 @@ export default {
   }
 
   &--success {
-    background-color:$mantis;
+    background-color:$success-color;
     color: $white;
 
     a {
@@ -149,10 +149,10 @@ export default {
 
   &--warning {
     background-color:#FFAB00;
-    color: $cello;
+    color: $primary-color;
 
     a {
-      color: $cello;
+      color: $primary-color;
     }
   }
 

@@ -181,12 +181,12 @@ export default {
     padding: $inset-s;
     font-size: 14px;
     line-height: 10px;
-    border: 1px solid $vivid-blue;
+    border: 1px solid $secondary-color;
     border-radius: 2px;
     margin-right: $inline-s;
     margin-bottom: $stack-s;
     text-align: center;
-    color: $cello;
+    color: $primary-color;
     cursor: pointer;
     transition: all 200ms ease;
     z-index: 1;
@@ -199,19 +199,19 @@ export default {
     }
 
     &--isUnavailable {
-      background: $heather;
-      border-color: $heather;
-      color: $regent-gray;
+      background: getShade($quaternary-color, 60);
+      border-color: getShade($quaternary-color, 60);
+      color: getShade($quaternary-color, 80);
       cursor: not-allowed;
     }
     &--isSelected {
-      background: $vivid-blue;
+      background: $secondary-color;
       color: $white;
     }
     &:not(&--isUnavailable):not(&--isSelected):hover {
-      background: lighten($vivid-blue, 10);
-      border-color: lighten($vivid-blue, 10);
-      color: #F5F5F5;
+      background: getShade($secondary-color, 90);
+      border-color: getShade($secondary-color, 90);
+      color: getShade($quaternary-color, 40);
       transform: translateY(-2px);
     }
     &:not(&--isSelected):not(&--isUnavailable) {
@@ -223,7 +223,7 @@ export default {
     display: none;
     font-size: 11px;
     line-height: 14px;
-    color: $cello;
+    color: $primary-color;
     margin-top: $stack-s;
     position: absolute;
     bottom: 0;
@@ -238,8 +238,8 @@ export default {
         vertical-align: middle;
         height: 10px;
         width: 10px;
-        border: 1px solid $mercury;
-        background: $mercury;
+        border: 1px solid getShade($quaternary-color, 50);
+        background: getShade($quaternary-color, 50);
         margin-right: $inline-s;
         border-radius: 2px;
 
@@ -250,7 +250,7 @@ export default {
 
       &--isAvailable:before {
         background: $white;
-        border-color: $vivid-blue;
+        border-color: $secondary-color;
       }
       &:first-child {
         margin-right: $inline-m;

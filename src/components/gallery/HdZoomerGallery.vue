@@ -96,7 +96,7 @@ export default {
     background-color: rgba(0, 0, 0, 0.8);
     @include font('text-xsmall');
     font-weight: 600;
-    color: white;
+    color: $white;
     border-radius: 2px;
     transition: opacity .5s ease-in-out;
 

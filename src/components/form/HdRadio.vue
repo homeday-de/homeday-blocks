@@ -251,10 +251,10 @@ export default {
     border-radius: 50%;
     overflow: hidden;
     outline-width: 0;
-    border: 2px solid $nevada;
+    border: 2px solid $quaternary-color;
 
     .radio-wrapper--disabled & {
-      border-color: rgba($regent-gray, 0.8);
+      border-color: getShade($quaternary-color, 70);
     }
 
     &:before {
@@ -266,18 +266,18 @@ export default {
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background-color: $vivid-blue;
+      background-color: $secondary-color;
       transform: scale(0);
       opacity: 0;
       transition: transform .2s, opacity .2s;
     }
 
     #{$r}:hover & {
-      border-color: $regent-gray;
+      border-color: getShade($quaternary-color, 80);
     }
 
     #{$r}:focus & {
-      border-color: $vivid-blue;
+      border-color: $secondary-color;
     }
   }
   &__label {
@@ -287,12 +287,12 @@ export default {
     @include font('text-small');
 
     .radio-wrapper--disabled & {
-      color: rgba($regent-gray, 0.8);
+      color: getShade($quaternary-color, 70);
     }
   }
   &.isSelected {
     .radio__circle {
-      border-color: $vivid-blue;
+      border-color: $secondary-color;
       &:before {
         transform: scale(1);
         opacity: 1;
@@ -315,18 +315,18 @@ export default {
     margin-bottom: 3px;
     font-size: 14px;
     line-height: 18px;
-    color: $nevada;
+    color: $quaternary-color;
     transition: color 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940);
     pointer-events: none;
 
     #{$r}.hasError & {
-      color: $torch-red;
+      color: $error-color;
     }
 
     #{$r}:not(#{$r}--disabled):hover &,
     #{$r}--active:not(#{$r}--disabled) &,
     #{$r}--active.hasError:not(#{$r}--disabled) & {
-      color: $vivid-blue;
+      color: $secondary-color;
     }
   }
 
@@ -347,7 +347,7 @@ export default {
   &.hasError &__items {
 
     .radio:not(:focus):not(#{$r}--disabled) .radio__circle {
-      border-color: $torch-red;
+      border-color: $error-color;
     }
   }
 
@@ -356,12 +356,12 @@ export default {
     #{$r}__items {
 
       .radio:not(:focus):not(#{$r}--disabled) .radio__circle {
-        border-color: $regent-gray;
+        border-color: getShade($quaternary-color, 80);
       }
     }
 
     .radio__error {
-      color: $regent-gray;
+      color: getShade($quaternary-color, 80);
     }
   }
 

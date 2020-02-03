@@ -125,7 +125,7 @@ export default {
 
     &:focus::after,
     &.isActive::after {
-      border-color: $vivid-blue;
+      border-color: $secondary-color;
     }
   }
 
@@ -148,7 +148,7 @@ export default {
 
     &:focus {
       border-radius: 0;
-      box-shadow: 0 4px 0 0 $vivid-blue;
+      box-shadow: 0 4px 0 0 $secondary-color;
       outline: initial;
     }
 

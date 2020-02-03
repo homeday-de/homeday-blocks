@@ -184,7 +184,7 @@ export default {
     }
     &__text {
       @include font('text-xxsmall');
-      color: $regent-gray;
+      color: getShade($quaternary-color, 80);
       width: 65px;
     }
     &__gauge {
@@ -201,7 +201,7 @@ export default {
           content: '';
           height: 100%;
           width: 20px;
-          background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, .7));
+          background-image: linear-gradient(to right, rgba($primary-bg, 0), rgba($primary-bg, .7));
           position: absolute;
           right: -30px;
           top: 0;

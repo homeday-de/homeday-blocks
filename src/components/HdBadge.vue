@@ -158,34 +158,34 @@ export default {
     }
 
     &--primary{
-        color: $mantis;
+        color: $success-color;
 
         .badge__label, .badge__details{
-          background: rgba($mantis, 0.3);
+          background: rgba($success-color, 0.15);
         }
     }
 
     &--secondary{
-        color: $vivid-blue;
+        color: $secondary-color;
 
         .badge__label, .badge__details{
-          background: rgba($vivid-blue, 0.3);
+          background: getShade($secondary-color, 70);
         }
     }
 
     &--tertiary{
-        color: $crusta;
+        color: $tertiary-color;
 
         .badge__label, .badge__details{
-          background: rgba($crusta, 0.3);
+          background: getShade($tertiary-color, 60);
         }
     }
 
     &--disabled{
-        color: $nevada;
+        color: $quaternary-color;
 
         .badge__label, .badge__details{
-          background: rgba($heather, 0.3);
+          background: getShade($quaternary-color, 40);
         }
     }
 

@@ -205,7 +205,7 @@ export default {
       background-color: rgba(0, 0, 0, 0.8);
       @include font('text-xsmall');
       font-weight: 600;
-      color: white;
+      color: $white;
       border-radius: 2px;
     }
   }
@@ -232,7 +232,7 @@ export default {
       appearance: none;
       background-color: $white;
       border-radius: 50%;
-      border: 1px solid $ebb2;
+      border: 1px solid getShade($quaternary-color, 50);
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       cursor: pointer;
       transition: opacity $time-s ease-in-out;
@@ -283,7 +283,7 @@ export default {
     background-color: rgba(0, 0, 0, 0.8);
     @include font('text-xsmall');
     font-weight: 600;
-    color: white;
+    color: $white;
     border-radius: 2px;
   }
 

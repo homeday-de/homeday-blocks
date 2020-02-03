@@ -222,14 +222,14 @@ export default {
     background-color: transparent;
     border: 0;
     box-shadow: none;
-    color: $cello;
+    color: $primary-color;
     cursor: pointer;
     outline: 0;
     transition: color $time-s ease-in-out;
 
     &:hover,
     &:focus {
-      color: $vivid-blue;
+      color: $secondary-color;
     }
 
     @media (min-width: $break-tablet) {
@@ -244,7 +244,7 @@ export default {
       left: 0;
       width: calc(100% - #{$inline-xs + $_icon-size});
       height: 1px;
-      background-color: $vivid-blue;
+      background-color: $secondary-color;
     }
 
     &__icons {

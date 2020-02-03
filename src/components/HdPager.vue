@@ -299,7 +299,7 @@ export default {
         transform: translate(-50%, -50%);
         display: block;
         content: '';
-        background-color: $heather;
+        background-color: getShade($quaternary-color, 60);
         border-radius: 50%;
         transition:
           height $time-s ease-in-out,
@@ -307,11 +307,11 @@ export default {
         z-index: 2;
 
         #{$_root}.isWhite & {
-          background-color: white;
+          background-color: $primary-bg;
         }
       }
       &.isActive::before {
-        background-color: $vivid-blue;
+        background-color: $secondary-color;
       }
       &--size-regular::before {
         width: 8px;
@@ -333,7 +333,7 @@ export default {
       &--size-tiny:hover::before {
         width: 12px;
         height: 12px;
-        background-color: $vivid-blue;
+        background-color: $secondary-color;
       }
       &::after {
         position: absolute;
@@ -344,7 +344,7 @@ export default {
         transform: translate(-50%, -50%);
         display: block;
         content: '';
-        background-color: rgba($vivid-blue, 0.3);
+        background-color: getShade($secondary-color, 80);
         border-radius: 50%;
         opacity: 0;
 
