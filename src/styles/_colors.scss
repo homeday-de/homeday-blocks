@@ -1,33 +1,3 @@
-/* ----- !!!!!! WARNING !!!!!! -----*/
-
-// In case of any colors variable is added, please make sure to update the list $colors-palette right under
-// primary colors
-$picton: #57C9E8;
-$cello: #1C3553;
-$vivid-blue: #1895FF;
-$crusta: #F76923;
-$white: #FFFFFF;
-$nevada: #60676E;
-$mercury: #E1E1E1;
-// variation of picton
-$charlotte: #C4ECF7;
-$polar: #EEF9FC;
-$blue: #2B496D;
-// variations of orange
-$light-orange: #FFC38F;
-$cherokee: #FCD185;
-// variation of cello
-$regent-gray: #8290A1;
-$heather: #C6CCD4;
-$ebb: #E8E2E2;
-$ebb2: #F0ECEC;
-$wild-sand: #F5F5F5;
-// error red
-$torch-red: #F50017;
-// success green
-$mantis: #63B65B;
-
-
 // The function to generate shades
 @function getShade($color, $shade) {
   // 100 is the reference, so shade 100 will keep the color the same
@@ -42,7 +12,6 @@ $mantis: #63B65B;
 
   @return change-color($color, $lightness: $new-lightness);
 }
-
 
 // The colors
 $white: #FFFFFF;
