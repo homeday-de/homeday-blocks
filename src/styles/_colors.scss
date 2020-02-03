@@ -26,3 +26,40 @@ $wild-sand: #F5F5F5;
 $torch-red: #F50017;
 // success green
 $mantis: #63B65B;
+
+
+// The function to generate shades
+@function getShade($color, $shade) {
+  // 100 is the reference, so shade 100 will keep the color the same
+  $lightness-diff: 100 - $shade;
+
+  @if $lightness-diff == 0 {
+    @return $color;
+  }
+
+  // All the shades are based on the rounded value of the original lightness
+  $new-lightness: round(lightness($color)) + $lightness-diff;
+
+  @return change-color($color, $lightness: $new-lightness);
+}
+
+
+// The colors
+$white: #FFFFFF;
+$cello-blue: #1C3553;
+$dodger-blue: #5BA4FF;
+$crusta-orange: #F76923;
+$neutral-gray: #495D75;
+$mantis-green: #63B65B;
+$monza-red: #E00016;
+
+// The abstraction 
+$primary-color: $cello-blue;
+$secondary-color: $dodger-blue;
+$tertiary-color: $neutral-gray;
+$accent-color: $crusta-orange;
+$primary-bg: $white;
+$secondary-bg: getShade($neutral-gray, 40);
+$danger-color: $monza-red;
+$warning-color: $crusta-orange;
+$success-color: $mantis-green;
