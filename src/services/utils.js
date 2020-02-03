@@ -99,6 +99,27 @@ export function loadScript({ url = '', first = false, head = false }) {
   });
 }
 
+// Returns list of random integers
+export const generateUniqueNumbers = (amount, min, max) => {
+  const indexes = [];
+  // sanity check to prevent infinit loop
+  if (amount > (max - min + 1)) {
+    return indexes;
+  }
+  // max tries are arbitrary selected attempts limit
+  // to prevent super expensive cases of finding all
+  // unique numbers
+  let maxTries = 10 * amount;
+  while (indexes.length < amount && maxTries > 0) {
+    maxTries -= 1;
+    const randomInt = getRandomInt(min, max);
+    if (!indexes.includes(randomInt)) {
+      indexes.push(randomInt);
+    }
+  }
+  return indexes;
+};
+
 export default {
   populateTemplate,
   getPasswordStrength,
@@ -107,4 +128,5 @@ export default {
   accentFold,
   getArrayOfSize,
   loadScript,
+  generateUniqueNumbers,
 };

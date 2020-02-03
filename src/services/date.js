@@ -1,5 +1,3 @@
-import { getRandomInt } from './utils';
-
 // Sets date time to midnight for unifying purposes
 export const resetDateTime = (date) => {
   const clonedDate = new Date(date);
@@ -39,21 +37,6 @@ export const getIntlDateString = (locale, datesArray, localStringArgs) => datesA
 
   return accumulator;
 }, []);
-
-
-// Returns list of random integers
-export const generateRandomIndexes = (amount, min, max) => {
-  const indexes = [];
-
-  while (indexes.length < amount) {
-    const randomInt = getRandomInt(min, max);
-    /* eslint-disable no-continue  */
-    if (indexes.indexOf(randomInt) > -1) continue;
-    indexes.push(getRandomInt(min, max));
-  }
-
-  return indexes;
-};
 
 export const generateDateCycles = (cycleLengthWeeks, amountOfCycles, startDateOffset) => {
   const WEEK_DAYS = 7;
