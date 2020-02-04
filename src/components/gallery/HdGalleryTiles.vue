@@ -5,13 +5,14 @@
         v-for="(photo, i) in items.slice(0, limit)"
         :key="photo.image"
         class="gallery-tile"
+        :class="{ 'gallery-tile--img': ! background }"
         tabindex="0"
         @keydown.enter.space.prevent="$emit('itemClick', i)"
         @click="$emit('itemClick', i)">
         <HdLazyImage
           :src="photo.image"
           :src-small="photo.thumbnail"
-          :background="true"
+          :background="background"
           class="gallery-tile__image"
         />
       </div>
@@ -49,6 +50,10 @@ export default {
     texts: {
       type: Object,
       default: () => ({}),
+    },
+    background: {
+      type: Boolean,
+      default: true,
     },
   },
   computed: {
@@ -94,6 +99,15 @@ export default {
   position: relative;
   overflow: hidden;
   cursor: pointer;
+
+  &--img {
+    display: flex;
+    align-items: center;
+
+    #{$_tile}__image {
+      object-fit: cover;
+    }
+  }
 
   @include only-ie {
     margin: $inset-xs;

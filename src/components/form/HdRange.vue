@@ -1,25 +1,57 @@
 <template>
-  <div :class="fieldClasses" class="range field">
-    <input
-      type="range"
-      v-model.number="currentValue"
+  <div
+    :class="fieldClasses"
+    class="range field"
+  >
+    <input type="range"
+      v-model.number="computedValue"
       :id="name"
       :name="name"
       :required="required"
       :disabled="disabled"
-      :min="minValue"
-      :max="maxValue"
-      :step="rangeStep"
+      :min="min"
+      :max="max"
+      :step="step"
       @focus="focusHandler"
       @blur="blurHandler"
-    />
-    <div class="range__decoration" ref="decoration">
-      <div class="range__progress" ref="progress" />
+    >
+    <div
+      ref="track"
+      :style="{
+        background: trackBackground,
+      }"
+      class="range__track"
+    >
+      <div
+        ref="progress"
+        :style="{
+          background: progressBackground,
+        }"
+        class="range__progress"
+      />
     </div>
-    <ul v-if="displayStepBullets" class="range__steps" v-bind:style="{ paddingRight: stepOffset + '%' }">
-      <li v-for="(steps, i) in stepsAmount" :key="i" />
-    </ul>
+    <div v-if="displayStepBullets" class="range__steps">
+      <button
+        v-for="(_, stepIndex) in stepsAmount"
+        :key="stepIndex"
+        type="button"
+        class="range__step"
+        @click="onStepClick(stepIndex)"
+      >
+        <p
+          v-if="labels[stepIndex]"
+          class="range__step-label"
+          v-text="labels[stepIndex]"
+        />
+      </button>
+    </div>
     <div class="range__thumb" ref="thumb">
+      <div
+        v-if="displayTooltip"
+        class="range__tooltip"
+      >
+        {{ tooltipValue || value }}
+      </div>
       <div class="range__thumb__inner" ref="thumbInner">
         <div class="range__thumb__bullet" />
       </div>
@@ -28,6 +60,8 @@
 </template>
 
 <script>
+import onResize from 'homeday-blocks/src/services/on-resize';
+
 export default {
   name: 'HdRange',
   props: {
@@ -43,15 +77,15 @@ export default {
       type: Boolean,
       default: false,
     },
-    minValue: {
+    min: {
       type: Number,
       default: 0,
     },
-    maxValue: {
+    max: {
       type: Number,
       default: 100,
     },
-    rangeStep: {
+    step: {
       type: Number,
       default: 1,
     },
@@ -59,79 +93,108 @@ export default {
       type: Number,
       default: 0,
     },
+    labels: {
+      type: Array,
+      default: () => [],
+    },
     displayStepBullets: {
       type: Boolean,
       default: false,
+    },
+    displayTooltip: {
+      type: Boolean,
+      default: false,
+    },
+    tooltipValue: {
+      type: [String, Number],
+      default: '',
+    },
+    trackBackground: {
+      type: String,
+      default: '', // falls back to the internal styles
+    },
+    progressBackground: {
+      type: String,
+      default: '', // falls back to the internal styles
     },
   },
   data() {
     return {
       isActive: null,
-      currentValue: this.value,
+      trackWidth: 0,
     };
   },
   computed: {
+    computedValue: {
+      get() {
+        return this.value;
+      },
+      set(value) {
+        if (value !== this.computedValue) {
+          this.$emit('input', value);
+        }
+      },
+    },
     fieldClasses() {
       return {
         'field--active': this.isActive,
         'field--disabled': this.disabled,
+        hasTooltip: this.displayTooltip,
       };
     },
-    rangeSize() {
-      return this.maxValue - this.minValue;
-    },
     stepsAmount() {
-      return 1 + Math.floor(this.rangeSize / this.rangeStep);
-    },
-    stepOffset() {
-      const rangeSize = this.maxValue - this.minValue;
-      return ((rangeSize % this.rangeStep) / rangeSize) * 100;
+      return Math.ceil(1 + (this.max - this.min) / this.step);
     },
   },
   watch: {
-    minValue() {
-      this.updateRangeDecoration();
+    min() {
+      this.updateUI();
     },
-    maxValue() {
-      this.updateRangeDecoration();
+    max() {
+      this.updateUI();
     },
-    rangeStep() {
-      this.updateRangeDecoration();
+    step() {
+      this.updateUI();
     },
     value() {
-      this.currentValue = this.value;
-    },
-    currentValue() {
-      this.updateRangeDecoration();
+      this.adjustValue();
+      this.updateUI();
     },
   },
   mounted() {
-    // the progress bar needs a starting fixed width to be then transformed in updateRangeDecoration() with scaleX property
-    this.$refs.progress.style.width = '1px';
+    this.adjustValue();
 
-    this.updateRangeDecoration();
+    this.trackWidth = this.$refs.track.offsetWidth;
+    this.updateUI();
+    onResize.onDebounced(this.onResize);
+  },
+  beforeDestroy() {
+    onResize.offDebounced(this.onResize);
   },
   methods: {
-    normalizeAndEmit() {
-      if (this.currentValue > this.maxValue) {
-        this.currentValue = this.maxValue;
-      } else if (this.currentValue < this.minValue) {
-        this.currentValue = this.minValue;
-      }
+    adjustValue() {
+      let adjustedValue = this.value;
 
-      this.currentValue -= (this.currentValue % this.rangeStep);
+      adjustedValue -= adjustedValue % this.step;
+      adjustedValue = Math.min(adjustedValue, this.max);
+      adjustedValue = Math.max(adjustedValue, this.min);
 
-      this.$emit('input', this.currentValue);
+      this.computedValue = adjustedValue;
     },
-    updateRangeDecoration() {
-      this.normalizeAndEmit();
+    updateUI() {
+      // the percentage of the value, between max and min. I.e. : 15 is the 0.5 between 10 and 20
+      const valuePercentage = (this.computedValue - this.min) / (this.max - this.min);
+      const valuePercentageInputWidthPixels = this.trackWidth * valuePercentage;
 
-      // the percentage of the value, between max and min. I.e. : 15 is the 50% between 10 and 20
-      const valuePercentage = ((this.currentValue - this.minValue) / (this.rangeSize)) * 100;
-      const valuePercentageInputWidthPixels = (this.$refs.decoration.offsetWidth * valuePercentage) / 100;
-
-      this.$refs.progress.style.transform = `scaleX(${valuePercentageInputWidthPixels})`;
+      this.$refs.progress.style.transform = `scaleX(${valuePercentage})`;
       this.$refs.thumb.style.transform = `translateX(${valuePercentageInputWidthPixels}px)`;
+    },
+    onStepClick(stepIndex) {
+      this.computedValue = this.min + (stepIndex * this.step);
+    },
+    onResize() {
+      this.trackWidth = this.$refs.track.offsetWidth;
+      this.updateUI();
     },
     focusHandler() {
       this.isActive = true;
@@ -148,7 +211,7 @@ export default {
 
 .range {
   $range: &;
-  height: $range-thumb-tot-size;
+  height: $stack-l;
   position: relative;
   display: flex;
   align-items: center;
@@ -157,36 +220,41 @@ export default {
     outline: none;
   }
 
-  input[type='range'] {
+  &.hasTooltip {
+    margin-top: $stack-xl;
+  }
+
+  input[type=range] {
     -moz-appearance: none;
     -webkit-appearance: none;
     background: transparent;
-    // overflow hidden needed for Chrome. It extends the sizing of the thumb
-    overflow: hidden;
     position: absolute;
     top: 0;
     left: 0;
     z-index: 2;
-    width: calc(100% + #{$range-thumb-tot-size});
-    margin: 0 -#{$range-thumb-tot-size/2};
+    width: 100%;
+    margin: 0;
     padding: 0;
-    height: $range-thumb-tot-size;
-    cursor: pointer;
+    height: $range-thumb-size;
+
+    &:focus {
+      outline: none;
+    }
 
     // range invisible
     @mixin thumb-style {
       -webkit-appearance: none;
       background: none;
       border: none;
+      height: $range-thumb-tot-size;
+      width: $range-thumb-tot-size;
       display: block;
       -moz-appearance: none;
+      cursor: grab;
+
       height: 1px;
       width: 1px;
       transform: scale(strip-unit($range-thumb-tot-size));
-
-      &:hover {
-        cursor: grab;
-      }
     }
 
     @mixin track-style {
@@ -194,10 +262,8 @@ export default {
       border-color: transparent;
       border: 0;
       color: transparent;
-      height: $range-bar-height;
-      // centers the thumb
-      display: flex;
-      align-items: center;
+      cursor: pointer;
+
     }
 
     &::-webkit-slider-thumb {
@@ -227,10 +293,10 @@ export default {
     }
   }
 
-  &__decoration {
+  &__track {
     position: absolute;
     top: 50%;
-    margin-top: -3px;
+    margin-top: - 3px;
     width: 100%;
     height: $range-bar-height;
     border-radius: $range-bar-height;
@@ -238,7 +304,7 @@ export default {
     z-index: 0;
     overflow: hidden;
 
-    &:focus {
+    &:focus{
       box-shadow: none;
     }
   }
@@ -252,32 +318,45 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
 
-    li {
-      height: 0;
-      width: 0;
+  &__step {
+    height: 1px;
+    width: 1px;
+    padding: 0;
+    background: transparent;
+    border: 0;
 
-      &:after {
-        content: '';
-        display: block;
-        margin-left: -$steps-size / 2;
-        margin-top: -$steps-size / 2;
-        height: $steps-size - ($steps-border-size * 2);
-        width: $steps-size - ($steps-border-size * 2);
-        border-radius: $steps-size / 2;
-        background: #ffffff;
-        border: $steps-border-size solid $nevada;
-        border-radius: 50%;
-      }
+    &:after {
+      content: "";
+      display: block;
+      margin-left: - $steps-size / 2;
+      margin-top: - $steps-size / 2;
+      height: $steps-size - ($steps-border-size * 2);
+      width: $steps-size - ($steps-border-size * 2);
+      border-radius: $steps-size / 2;
+      background: #FFFFFF;
+      border: $steps-border-size solid $nevada;
+      border-radius: 50%;
     }
+  }
+
+  &__step-label {
+    position: absolute;
+    top: #{$stack-l + $stack-s};
+    transform: translateX(-50%);
+    @include font('text-xsmall');
+    color: $regent-gray;
   }
 
   &__thumb {
     display: block;
     width: 0;
     height: 0;
+    transition: transform .3s;
 
     &__inner {
+      cursor: grab;
       box-shadow: $shadow;
       border: $range-thumb-border solid $activeColor;
       background: $disabledColor;
@@ -287,8 +366,8 @@ export default {
       position: absolute;
       background: $white;
       left: 0;
-      margin-top: -$range-thumb-tot-size / 2;
-      margin-left: -$range-thumb-tot-size / 2;
+      margin-top: - $range-thumb-tot-size / 2;
+      margin-left: - $range-thumb-tot-size / 2;
       z-index: 1;
       display: flex;
       align-items: center;
@@ -309,10 +388,11 @@ export default {
       max-width: $range-thumb-inner-bullet-size;
 
       border-radius: $inset-m;
-      transition: transform 0.1s ease-in-out;
+      transition: transform .1s ease-in-out;
       transform-origin: center center;
 
-      #{$range}:not(.field--disabled):hover & {
+
+      #{$range}:not(.field--disabled):hover &{
         background-color: $activeColor;
         transform: scale(1.25);
       }
@@ -320,8 +400,8 @@ export default {
       @include only-ie {
         top: 50%;
         left: 50%;
-        margin-left: -$range-thumb-inner-bullet-size / 2;
-        margin-top: -$range-thumb-inner-bullet-size / 2;
+        margin-left: - $range-thumb-inner-bullet-size / 2;
+        margin-top: - $range-thumb-inner-bullet-size / 2;
       }
     }
   }
@@ -329,11 +409,25 @@ export default {
   &__progress {
     background-color: $activeColor;
     height: 100%;
+    width: 100%;
     transform-origin: 0 center;
+    transform: scaleX(0);
+    transition: transform .3s;
 
     .field--disabled & {
       background-color: $disabledColor;
     }
+  }
+
+  &__tooltip {
+    position: absolute;
+    bottom: $stack-m;
+    transform: translateX(-50%);
+    color: white;
+    background: url('~hd-blocks/assets/icons/tooltip.svg') no-repeat;
+    background-size: 100% 100%;
+    padding: $stack-s $inline-m #{$stack-m + $stack-s};
+    pointer-events: none;
   }
 }
 </style>
