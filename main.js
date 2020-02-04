@@ -46,3 +46,14 @@ export { default as HdZoomerGallery } from './src/components/gallery/HdZoomerGal
 // Notifications
 export { default as HdNotifications } from './src/components/notifications/HdNotifications.vue';
 export { default as HdNotificationsBar } from './src/components/notifications/HdNotificationsBar.vue';
+
+// Services
+export { default as BreakpointsService } from './src/services/breakpoints';
+export { default as DateService } from './src/services/date';
+export { default as EventEmitterService } from './src/services/event-emitter';
+export { default as FlickityService } from './src/services/flickity';
+export { default as FormValidationService } from './src/services/formValidation';
+export { default as GoogleApiService } from './src/services/googleAPI';
+export { default as OnResizeService } from './src/services/on-resize';
+export { default as ScrollingService } from './src/services/scrolling';
+export { default as UtilsService } from './src/services/utils';
