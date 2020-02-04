@@ -424,7 +424,7 @@ export default {
     bottom: $stack-m;
     transform: translateX(-50%);
     color: white;
-    background: url('~hd-blocks/assets/icons/tooltip.svg') no-repeat;
+    background: url('~homeday-blocks/src/assets/icons/tooltip.svg') no-repeat;
     background-size: 100% 100%;
     padding: $stack-s $inline-m #{$stack-m + $stack-s};
     pointer-events: none;
