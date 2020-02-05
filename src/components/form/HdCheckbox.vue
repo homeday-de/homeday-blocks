@@ -56,7 +56,7 @@
 
 <script>
 import merge from 'lodash/merge';
-import { getMessages } from 'hd-blocks/lang';
+import { getMessages } from 'homeday-blocks/src/lang';
 
 export default {
   name: 'HdCheckbox',
@@ -137,7 +137,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .checkbox {
   $c: &;
@@ -217,7 +217,7 @@ export default {
         top:0; left:0;
         width: 100%;
         height: 100%;
-        background-image: url('~hd-blocks/assets/icons/ic_checkmark-white.svg');
+        background-image: url('~homeday-blocks/src/assets/icons/ic_checkmark-white.svg');
         background-repeat: no-repeat;
         background-position: center;
         background-size: 20px;

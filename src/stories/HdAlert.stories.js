@@ -5,7 +5,7 @@ import {
   boolean,
   select,
 } from '@storybook/addon-knobs';
-import HdAlert, { TYPES } from 'hd-blocks/components/HdAlert.vue';
+import HdAlert, { TYPES } from 'homeday-blocks/src/components/HdAlert.vue';
 
 const TYPES_ARRAY = Object.keys(TYPES);
 

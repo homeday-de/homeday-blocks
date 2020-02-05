@@ -75,7 +75,7 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 $iconWidth: 48px;
 .radioButton {
@@ -89,7 +89,7 @@ $iconWidth: 48px;
   transition: transform .2s ease-in-out, box-shadow .2s ease-in-out;
   &:after {
     content: "";
-    background: url('~hd-blocks/assets/icons/ic_arrow_forward--idle-24px.svg');
+    background: url('~homeday-blocks/src/assets/icons/ic_arrow_forward--idle-24px.svg');
     display: block;
     width: 24px;
     height: 24px;
@@ -219,7 +219,7 @@ $iconWidth: 48px;
   }
   &:after {
     content: "";
-    background: url('~hd-blocks/assets/icons/ic_arrow_forward--idle-24px.svg');
+    background: url('~homeday-blocks/src/assets/icons/ic_arrow_forward--idle-24px.svg');
     display: block;
     width: 24px;
     height: 24px;

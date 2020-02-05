@@ -11,7 +11,7 @@ You can also use it to render `<router-view>`, just provide the props `to` and i
 </template>
 
 <script>
-import HdLink from 'hd-blocks/components/HdLink.vue';
+import { HdLink } from 'homeday-blocks';
 
 export default {
   name: 'MyComponent',

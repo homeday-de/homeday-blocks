@@ -4,7 +4,7 @@ const path = require('path');
 // NOTE: The paths are generated from the point of view of this file
 module.exports = ({ custom = {} } = {}) => {
   const startAlias = {
-    'hd-blocks': './src',
+    'homeday-blocks': '.',
   };
   const mergedAlias = { ...startAlias, ...custom };
 

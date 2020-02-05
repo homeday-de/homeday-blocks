@@ -1,10 +1,10 @@
 <script>
-import onResize from 'hd-blocks/services/on-resize';
+import onResize from 'homeday-blocks/src/services/on-resize';
 import {
   matchMediaAvailable,
   mediaMatches,
   getBreakpoints,
-} from 'hd-blocks/services/breakpoints';
+} from 'homeday-blocks/src/services/breakpoints';
 
 export default {
   name: 'HdResponsive',

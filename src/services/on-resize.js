@@ -1,4 +1,4 @@
-import EventEmitter from 'hd-blocks/services/event-emitter';
+import EventEmitter from 'homeday-blocks/src/services/event-emitter';
 import throttle from 'lodash/throttle';
 import debounce from 'lodash/debounce';
 

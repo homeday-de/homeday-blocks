@@ -51,7 +51,7 @@
 <script>
 import flatten from 'lodash/flatten';
 import chunk from 'lodash/chunk';
-import { getIntlDateString } from 'hd-blocks/services/date';
+import { getIntlDateString } from 'homeday-blocks/src/services/date';
 
 const WEEK_DAYS = 7;
 export default {
@@ -155,7 +155,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 // Transitions
 .calendar {
@@ -308,10 +308,10 @@ export default {
       cursor: not-allowed;
     }
     &--prev {
-      background: url('~hd-blocks/assets/icons/ic_arrow_backwards--idle-24px.svg') no-repeat center;
+      background: url('~homeday-blocks/src/assets/icons/ic_arrow_backwards--idle-24px.svg') no-repeat center;
     }
     &--next {
-      background: url('~hd-blocks/assets/icons/ic_arrow_forward--idle-24px.svg') no-repeat center;
+      background: url('~homeday-blocks/src/assets/icons/ic_arrow_forward--idle-24px.svg') no-repeat center;
     }
 
     &--mobile {

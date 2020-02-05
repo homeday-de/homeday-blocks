@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import HdInput from 'hd-blocks/components/form/HdInput.vue';
+import HdInput from 'homeday-blocks/src/components/form/HdInput.vue';
 
 export default {
   name: 'HdInputPassword',
@@ -56,7 +56,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .passwordInput {
   position: relative;
@@ -65,7 +65,7 @@ export default {
     position: absolute;
     right: $inline-s;
     bottom: $stack-m;
-    background-image: url('~hd-blocks/assets/icons/ic_visibility-on.svg');
+    background-image: url('~homeday-blocks/src/assets/icons/ic_visibility-on.svg');
     background-repeat: no-repeat;
     width: 24px;
     height: 24px;

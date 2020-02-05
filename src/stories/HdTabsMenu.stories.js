@@ -2,7 +2,7 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 
-import HdTabsMenu from 'hd-blocks/components/HdTabsMenu.vue';
+import HdTabsMenu from 'homeday-blocks/src/components/HdTabsMenu.vue';
 import ITEMS from './mocks/MENU_ITEMS';
 
 storiesOf('HdTabsMenu', module)

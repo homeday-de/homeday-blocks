@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import HdInput from 'hd-blocks/components/form/HdInput.vue';
-import { populateTemplate } from 'hd-blocks/services/utils';
+import HdInput from 'homeday-blocks/src/components/form/HdInput.vue';
+import { populateTemplate } from 'homeday-blocks/src/services/utils';
 // import debounce from 'lodash/debounce';
 
 export default {
@@ -163,7 +163,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .autocomplete {
   &__suggestions {

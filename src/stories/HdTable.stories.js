@@ -1,10 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
 
-import HdTable from 'hd-blocks/components/HdTable.vue';
-import HdTagsList from 'hd-blocks/components/HdTagsList.vue';
-import TableWrapper from 'hd-blocks/storiesWrappers/TableWrapper';
-import MOVIES_TABLE from 'hd-blocks/stories/mocks/tables/movies';
+import HdTable from 'homeday-blocks/src/components/HdTable.vue';
+import HdTagsList from 'homeday-blocks/src/components/HdTagsList.vue';
+import TableWrapper from 'homeday-blocks/src/storiesWrappers/TableWrapper';
+import MOVIES_TABLE from 'homeday-blocks/src/stories/mocks/tables/movies';
 
 storiesOf('HdTable', module)
   .addDecorator(TableWrapper)

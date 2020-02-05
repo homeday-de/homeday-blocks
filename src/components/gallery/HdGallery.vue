@@ -62,9 +62,9 @@
 </template>
 
 <script>
-import HdGalleryCarousel from 'hd-blocks/components/gallery/HdGalleryCarousel.vue';
-import HdGalleryMedia from 'hd-blocks/components/gallery/HdGalleryMedia.vue';
-import HdGalleryPlaceholder from 'hd-blocks/components/gallery/HdGalleryPlaceholder.vue';
+import HdGalleryCarousel from 'homeday-blocks/src/components/gallery/HdGalleryCarousel.vue';
+import HdGalleryMedia from 'homeday-blocks/src/components/gallery/HdGalleryMedia.vue';
+import HdGalleryPlaceholder from 'homeday-blocks/src/components/gallery/HdGalleryPlaceholder.vue';
 
 export default {
   name: 'HdGallery',
@@ -101,7 +101,7 @@ export default {
     placeholderIcon: {
       type: String,
       // eslint-disable-next-line global-require
-      default: require('hd-blocks/assets/icons/ic_photos.svg'),
+      default: require('homeday-blocks/src/assets/icons/ic_photos.svg'),
     },
     placeholderText: {
       type: String,
@@ -165,7 +165,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .gallery {
   $_root: &;
@@ -251,7 +251,7 @@ export default {
         display: block;
         height: 24px;
         width: 24px;
-        background-image: url('~hd-blocks/assets/icons/ic_arrow.svg');
+        background-image: url('~homeday-blocks/src/assets/icons/ic_arrow.svg');
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
