@@ -1,7 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HdGalleryTiles renders component 1`] = `
-<div class="gallery-tiles" item="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]">
-  <section class="gallery-tiles__container"></section> <button class="btn gallery-tile__more-photos">Weitere Fotos</button>
+<div class="gallery-tiles">
+  <section class="gallery-tiles__container">
+    <div tabindex="0" class="gallery-tile">
+      <div class="lazy-image gallery-tile__image" style="background-image: url(https://dummyimage.com/154x86?text=1+thumb+TL+to+D);"></div>
+    </div>
+    <div tabindex="0" class="gallery-tile">
+      <div class="lazy-image gallery-tile__image" style="background-image: url(https://dummyimage.com/154x86?text=2+thumb+TL+to+D);"></div>
+    </div>
+    <div tabindex="0" class="gallery-tile">
+      <div class="lazy-image gallery-tile__image" style="background-image: url(https://dummyimage.com/154x86?text=3+thumb+default+density);"></div>
+    </div>
+    <div tabindex="0" class="gallery-tile">
+      <div class="lazy-image gallery-tile__image" style="background-image: url(https://dummyimage.com/306x172?text=4+thumb+default+density);"></div>
+    </div>
+    <div tabindex="0" class="gallery-tile">
+      <div class="lazy-image gallery-tile__image" style="background-image: url(https://dummyimage.com/306x172?text=6);"></div>
+    </div>
+  </section> <button class="btn gallery-tile__more-photos">Weitere Fotos</button>
 </div>
 `;
