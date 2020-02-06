@@ -96,9 +96,9 @@
     position: relative;
     transition: all $time-s ease-in-out;
     // Link underline
-    box-shadow: inset 0 -1px 0 $secondary-color;
+    box-shadow: inset 0 -1px 0 getShade($secondary-color, 110);
     &:hover {
-      color: $secondary-color;
+      color: getShade($secondary-color, 110);
     }
   }
 
@@ -140,7 +140,7 @@
 
   @elseif ($style=='showcase-link') {
     font-family: $font-primary;
-    color: $secondary-color;
+    color: getShade($secondary-color, 110);
     font-size: 21px;
     font-weight: 600;
     line-height: 33px;

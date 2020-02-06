@@ -125,7 +125,7 @@ export default {
 
     &:focus::after,
     &.isActive::after {
-      border-color: $secondary-color;
+      border-color: getShade($secondary-color, 110);
     }
   }
 
@@ -148,7 +148,7 @@ export default {
 
     &:focus {
       border-radius: 0;
-      box-shadow: 0 4px 0 0 $secondary-color;
+      box-shadow: 0 4px 0 0 getShade($secondary-color, 110);
       outline: initial;
     }
 

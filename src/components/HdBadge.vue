@@ -166,7 +166,7 @@ export default {
     }
 
     &--secondary{
-        color: $secondary-color;
+        color: getShade($secondary-color, 110);
 
         .badge__label, .badge__details{
           background: getShade($secondary-color, 70);

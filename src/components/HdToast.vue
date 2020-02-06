@@ -131,7 +131,7 @@ $toastWidth: 288px;
     background: $white;
 
     &--primary {
-      background: $secondary-color;
+      background: getShade($secondary-color, 110);
       color: $white;
       position: relative;
       cursor: pointer;
@@ -147,9 +147,9 @@ $toastWidth: 288px;
         top: 0;
         left: 0;
         margin-left: -1px;
-        border-right: 1px solid $secondary-color;
-        border-left: 1px solid $secondary-color;
-        border-bottom: 1px solid $secondary-color;
+        border-right: 1px solid getShade($secondary-color, 110);
+        border-left: 1px solid getShade($secondary-color, 110);
+        border-bottom: 1px solid getShade($secondary-color, 110);
 
         border-bottom-right-radius: $default-border-radius;
         border-bottom-right-radius: $default-border-radius;

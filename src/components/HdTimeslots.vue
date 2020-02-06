@@ -181,7 +181,7 @@ export default {
     padding: $inset-s;
     font-size: 14px;
     line-height: 10px;
-    border: 1px solid $secondary-color;
+    border: 1px solid getShade($secondary-color, 110);
     border-radius: 2px;
     margin-right: $inline-s;
     margin-bottom: $stack-s;
@@ -205,7 +205,7 @@ export default {
       cursor: not-allowed;
     }
     &--isSelected {
-      background: $secondary-color;
+      background: getShade($secondary-color, 110);
       color: $white;
     }
     &:not(&--isUnavailable):not(&--isSelected):hover {
@@ -250,7 +250,7 @@ export default {
 
       &--isAvailable:before {
         background: $white;
-        border-color: $secondary-color;
+        border-color: getShade($secondary-color, 110);
       }
       &:first-child {
         margin-right: $inline-m;

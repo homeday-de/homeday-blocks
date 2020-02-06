@@ -266,7 +266,7 @@ export default {
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background-color: $secondary-color;
+      background-color: getShade($secondary-color, 110);
       transform: scale(0);
       opacity: 0;
       transition: transform .2s, opacity .2s;
@@ -277,7 +277,7 @@ export default {
     }
 
     #{$r}:focus & {
-      border-color: $secondary-color;
+      border-color: getShade($secondary-color, 110);
     }
   }
   &__label {
@@ -292,7 +292,7 @@ export default {
   }
   &.isSelected {
     .radio__circle {
-      border-color: $secondary-color;
+      border-color: getShade($secondary-color, 110);
       &:before {
         transform: scale(1);
         opacity: 1;
@@ -326,7 +326,7 @@ export default {
     #{$r}:not(#{$r}--disabled):hover &,
     #{$r}--active:not(#{$r}--disabled) &,
     #{$r}--active.hasError:not(#{$r}--disabled) & {
-      color: $secondary-color;
+      color: getShade($secondary-color, 110);
     }
   }
 

@@ -139,7 +139,7 @@ $focusedLabelTop: 5px;
     }
 
     #{$f}--active & {
-      color: $secondary-color;
+      color: getShade($secondary-color, 110);
     }
 
     #{$f}--empty &, #{$f}--invalid:not(#{$f}--active) & {
@@ -147,7 +147,7 @@ $focusedLabelTop: 5px;
     }
 
     #{$f}:not(#{$f}--disabled):hover & {
-      color: $secondary-color;
+      color: getShade($secondary-color, 110);
     }
 
     #{$f}--textarea & {
@@ -255,7 +255,7 @@ $focusedLabelTop: 5px;
       transition: all 200ms ease;
 
       #{$f}--active & {
-        background: $secondary-color;
+        background: getShade($secondary-color, 110);
         width: calc(50% + 1px);
       }
 

@@ -24,7 +24,7 @@ $button-transition: all $time-s ease-in-out;
 
 .btn--primary,
 .btn--secondary {
-  background-color: $secondary-color;
+  background-color: getShade($secondary-color, 110);
   color: $white;
   font-family: $font-primary;
   width: 100%;
@@ -92,7 +92,7 @@ $button-transition: all $time-s ease-in-out;
 .btn--tertiary {
   @include font('body');
   display: inline-block;
-  color: $secondary-color;
+  color: getShade($secondary-color, 110);
   transition: $button-transition;
   font-weight: 600;
   position: relative;
@@ -102,7 +102,7 @@ $button-transition: all $time-s ease-in-out;
     content: "";
     width: calc(100% - #{2 * $button-inset-padding});
     height: 2px;
-    background-color: $secondary-color;
+    background-color: getShade($secondary-color, 110);
     position: absolute;
     bottom: 12px;
     left: 0;
@@ -147,17 +147,17 @@ $button-transition: all $time-s ease-in-out;
     transition: $button-transition;
   }
   &:hover {
-    color: $secondary-color;
+    color: getShade($secondary-color, 110);
   }
   &:hover:after {
-    border-color: $secondary-color;
+    border-color: getShade($secondary-color, 110);
   }
 }
 
 .btn--flat-active, .btn--flat--hover {
-  color: $secondary-color;
+  color: getShade($secondary-color, 110);
   &:after {
-    border-color: $secondary-color;
+    border-color: getShade($secondary-color, 110);
   }
 }
 
@@ -184,10 +184,10 @@ $button-transition: all $time-s ease-in-out;
 }
 
 .btn--ghost {
-  border: 2px solid $secondary-color;
+  border: 2px solid getShade($secondary-color, 110);
   font-size: 16px;
   padding: 0 $inline-m;
-  color: $secondary-color;
+  color: getShade($secondary-color, 110);
   transition: $button-transition;
   height: 52px;
 
@@ -200,7 +200,7 @@ $button-transition: all $time-s ease-in-out;
   }
 
   @media (min-width: $break-tablet) {
-    background: $secondary-color;
+    background: getShade($secondary-color, 110);
     color: $white;
     font-size: 18px;
   }

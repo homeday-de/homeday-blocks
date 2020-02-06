@@ -225,14 +225,14 @@ export default {
     transition: left $time-s ease-out;
     &__tag {
       background-color: $primary-bg;
-      border: 1px solid $secondary-color;
+      border: 1px solid getShade($secondary-color, 110);
       border-radius: 3px;
       padding: 0 $inline-s;
       margin: $stack-xs;
       cursor: pointer;
       transition: background-color $time-s ease-in-out;
       &--isSelected {
-        background-color: $secondary-color;
+        background-color: getShade($secondary-color, 110);
         color: $white;
       }
     }

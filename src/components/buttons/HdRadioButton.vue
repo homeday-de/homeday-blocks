@@ -129,7 +129,7 @@ $iconWidth: 48px;
     &:hover, &:focus {
       transform: translateY(-2px);
       box-shadow: 0 9px 12px 0 rgba(0,0,0,.2);
-      // border: 4px solid $secondary-color;
+      // border: 4px solid getShade($secondary-color, 110);
       outline: none;
       // margin: -4px;
       &:before {
@@ -140,7 +140,7 @@ $iconWidth: 48px;
         top: 0;
         bottom: 0;
         border-radius: 4px;
-        border: 4px solid $secondary-color;
+        border: 4px solid getShade($secondary-color, 110);
       }
     }
   }
@@ -200,7 +200,7 @@ $iconWidth: 48px;
     &:hover, &:focus {
       cursor: pointer;
       box-shadow: 0 9px 12px 0 rgba(0, 0, 0, 0.2);
-      border: 3px solid $secondary-color;
+      border: 3px solid getShade($secondary-color, 110);
       backface-visibility: hidden;
       outline: none;
       transform: translateY(-2px);

@@ -311,7 +311,7 @@ export default {
         }
       }
       &.isActive::before {
-        background-color: $secondary-color;
+        background-color: getShade($secondary-color, 110);
       }
       &--size-regular::before {
         width: 8px;
@@ -333,7 +333,7 @@ export default {
       &--size-tiny:hover::before {
         width: 12px;
         height: 12px;
-        background-color: $secondary-color;
+        background-color: getShade($secondary-color, 110);
       }
       &::after {
         position: absolute;

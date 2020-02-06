@@ -174,7 +174,7 @@ export default {
         top:0; left:0;
         width: 100%;
         height: 100%;
-        background-color: $secondary-color;
+        background-color: getShade($secondary-color, 110);
         border-radius: 50%;
         transform: scale(0);
         opacity: 0;
@@ -206,7 +206,7 @@ export default {
           border-color: $error-color;
         }
         #{$c}--active & {
-          border-color: $secondary-color;
+          border-color: getShade($secondary-color, 110);
         }
         #{$c}--disabled & {
           border-color: getShade($quaternary-color, 70);
@@ -264,7 +264,7 @@ export default {
     #{$c}:hover &,
     #{$c}--active &,
     #{$c}--active.hasError & {
-      color: $secondary-color;
+      color: getShade($secondary-color, 110);
     }
   }
 }

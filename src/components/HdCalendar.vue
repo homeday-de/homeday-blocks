@@ -257,7 +257,7 @@ export default {
       content: "";
       width: 16px;
       height: 16px;
-      background: $secondary-color;
+      background: getShade($secondary-color, 110);
       position: absolute;
       left: 0;
       right: 0;

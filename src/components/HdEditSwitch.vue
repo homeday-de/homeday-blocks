@@ -163,7 +163,7 @@ export default {
       margin-left: $inline-m;
       cursor: pointer;
       &--edit {
-        color: $secondary-color;
+        color: getShade($secondary-color, 110);
       }
       &--save {
         color: $success-color;
@@ -190,7 +190,7 @@ export default {
       width: 20px;
       height: 20px;
       border-radius: 50%;
-      border: 2px solid $secondary-color;
+      border: 2px solid getShade($secondary-color, 110);
       border-right-color: transparent;
       animation: edit-switch-loading-indicator-spin 1s linear infinite;
       content: '';

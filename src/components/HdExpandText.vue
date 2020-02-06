@@ -229,7 +229,7 @@ export default {
 
     &:hover,
     &:focus {
-      color: $secondary-color;
+      color: getShade($secondary-color, 110);
     }
 
     @media (min-width: $break-tablet) {
@@ -244,7 +244,7 @@ export default {
       left: 0;
       width: calc(100% - #{$inline-xs + $_icon-size});
       height: 1px;
-      background-color: $secondary-color;
+      background-color: getShade($secondary-color, 110);
     }
 
     &__icons {
