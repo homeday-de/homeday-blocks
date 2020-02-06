@@ -10,7 +10,7 @@ exports[`HdTagsSelector The component is rendered 1`] = `
     <div class="tags-selector__selected-tags__tag">
       <div class="tags-selector__selected-tags__tag__label">Daenerys</div>
       <div role="button" class="tags-selector__selected-tags__tag__remove"></div>
-    </div> <img src="~hd-blocks/assets/icons/ic_add-circle--blue.svg" alt="Add" role="button" class="tags-selector__selected-tags__panel-toggle">
+    </div> <img src="~homeday-blocks/src/assets/icons/ic_add-circle--blue.svg" alt="Add" role="button" class="tags-selector__selected-tags__panel-toggle">
   </section>
   <section class="tags-selector__panel">
     <div class="tags-selector__panel__tag tags-selector__panel__tag--isSelected">

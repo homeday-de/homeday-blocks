@@ -58,8 +58,8 @@
 <script>
 // eslint-disable-next-line import/extensions
 import Flickity from 'vue-flickity';
-import onResize from 'hd-blocks/services/on-resize';
-import HdPager from 'hd-blocks/components/HdPager.vue';
+import onResize from 'homeday-blocks/src/services/on-resize';
+import HdPager from 'homeday-blocks/src/components/HdPager.vue';
 
 export default {
   name: 'HdGalleryCarousel',
@@ -218,7 +218,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .gallery-carousel {
   $_root: &;

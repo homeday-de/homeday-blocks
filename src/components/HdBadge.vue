@@ -107,7 +107,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .badge{
     display: flex;
@@ -126,7 +126,7 @@ export default {
       &::after{
         content: ' ';
         display: none;
-        background: url('~hd-blocks/assets/icons/ic_chevron-down.svg') no-repeat;
+        background: url('~homeday-blocks/src/assets/icons/ic_chevron-down.svg') no-repeat;
         width: 16px;
         height: 16px;
         margin-left: $inline-m;

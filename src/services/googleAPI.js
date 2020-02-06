@@ -1,4 +1,4 @@
-import { loadScript } from 'hd-blocks/services/utils';
+import { loadScript } from 'homeday-blocks/src/services/utils';
 
 let mapsApiPromise = null;
 

@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import { getArrayOfSize } from 'hd-blocks/services/utils';
+import { getArrayOfSize } from 'homeday-blocks/src/services/utils';
 
 const DOT_SIZE = 40;
 let rippleTimeout;
@@ -248,8 +248,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'hd-blocks/styles/mixins.scss';
-@import 'hd-blocks/styles/inputs.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/inputs.scss';
 
 @keyframes pager-ripple {
   0% {

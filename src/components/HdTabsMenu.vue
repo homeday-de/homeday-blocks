@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { hidePaginationWhenNotNeeded } from 'hd-blocks/services/flickity';
+import { hidePaginationWhenNotNeeded } from 'homeday-blocks/src/services/flickity';
 // eslint-disable-next-line import/extensions
 import Flickity from 'vue-flickity';
 
@@ -104,7 +104,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .tabs-menu {
   $_root: &;

@@ -28,9 +28,9 @@
 import {
   freezeScrolling,
   unfreezeScrolling,
-} from 'hd-blocks/services/scrolling';
-import HdGallery from 'hd-blocks/components/gallery/HdGallery.vue';
-import HdZoomerGallery from 'hd-blocks/components/gallery/HdZoomerGallery.vue';
+} from 'homeday-blocks/src/services/scrolling';
+import HdGallery from 'homeday-blocks/src/components/gallery/HdGallery.vue';
+import HdZoomerGallery from 'homeday-blocks/src/components/gallery/HdZoomerGallery.vue';
 
 export default {
   name: 'HdGalleryOverlay',
@@ -80,7 +80,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .gallery-overlay {
   position: fixed;
@@ -124,7 +124,7 @@ export default {
     position: absolute;
     top: $stack-s;
     right: $inline-s;
-    background: url('~hd-blocks/assets/icons/ic_close--white-stroke.svg') no-repeat center / contain;
+    background: url('~homeday-blocks/src/assets/icons/ic_close--white-stroke.svg') no-repeat center / contain;
     width: 24px;
     height: 24px;
     padding: 0;

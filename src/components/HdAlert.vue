@@ -20,10 +20,10 @@
 </template>
 
 <script>
-import successIcon from 'hd-blocks/assets/icons/ic_success.svg';
-import infoIcon from 'hd-blocks/assets/icons/ic_info.svg';
-import warningIcon from 'hd-blocks/assets/icons/ic_warning.svg';
-import errorIcon from 'hd-blocks/assets/icons/ic_error.svg';
+import successIcon from 'homeday-blocks/src/assets/icons/ic_success.svg';
+import infoIcon from 'homeday-blocks/src/assets/icons/ic_info.svg';
+import warningIcon from 'homeday-blocks/src/assets/icons/ic_warning.svg';
+import errorIcon from 'homeday-blocks/src/assets/icons/ic_error.svg';
 
 // The first item is the default
 export const TYPES = {
@@ -69,7 +69,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .alert {
   display: flex;

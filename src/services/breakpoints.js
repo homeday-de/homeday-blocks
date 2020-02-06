@@ -21,3 +21,10 @@ export const setBreakpoints = (newBreakpoints) => {
 };
 
 export const getBreakpoints = () => breakpoints;
+
+export default {
+  matchMediaAvailable,
+  mediaMatches,
+  setBreakpoints,
+  getBreakpoints,
+};

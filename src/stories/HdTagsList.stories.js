@@ -2,7 +2,7 @@
 import { storiesOf } from '@storybook/vue';
 import { array } from '@storybook/addon-knobs';
 
-import HdTagsList from 'hd-blocks/components/HdTagsList.vue';
+import HdTagsList from 'homeday-blocks/src/components/HdTagsList.vue';
 import ITEMS from './mocks/FORM_ITEMS';
 
 

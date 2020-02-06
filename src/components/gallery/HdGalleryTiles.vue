@@ -26,8 +26,8 @@
 
 <script>
 import merge from 'lodash/merge';
-import { getMessages } from 'hd-blocks/lang';
-import HdLazyImage from 'hd-blocks/components/HdLazyImage.vue';
+import { getMessages } from 'homeday-blocks/src/lang';
+import HdLazyImage from 'homeday-blocks/src/components/HdLazyImage.vue';
 
 export default {
   name: 'HdGalleryTiles',
@@ -65,7 +65,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .gallery-tiles {
   position: relative;

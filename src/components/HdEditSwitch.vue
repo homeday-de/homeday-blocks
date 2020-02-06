@@ -75,10 +75,10 @@
 
 <script>
 import merge from 'lodash/merge';
-import { getMessages } from 'hd-blocks/lang';
-import editIcon from 'hd-blocks/assets/icons/ic_edit.svg';
-import saveIcon from 'hd-blocks/assets/icons/ic_save.svg';
-import cancelIcon from 'hd-blocks/assets/icons/ic_close--red.svg';
+import { getMessages } from 'homeday-blocks/src/lang';
+import editIcon from 'homeday-blocks/src/assets/icons/ic_edit.svg';
+import saveIcon from 'homeday-blocks/src/assets/icons/ic_save.svg';
+import cancelIcon from 'homeday-blocks/src/assets/icons/ic_close--red.svg';
 
 const BUTTONS = {
   edit: {
@@ -145,7 +145,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .edit-switch {
   $_root: &;

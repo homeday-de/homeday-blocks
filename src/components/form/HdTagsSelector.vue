@@ -17,7 +17,7 @@
         ref="panelToggle"
         :class="panelToggleClasses"
         class="tags-selector__selected-tags__panel-toggle"
-        src="~hd-blocks/assets/icons/ic_add-circle--blue.svg"
+        src="~homeday-blocks/src/assets/icons/ic_add-circle--blue.svg"
         alt="Add"
         role="button"
         @click="togglePanel">
@@ -165,7 +165,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .tags-selector {
   position: relative;
@@ -185,7 +185,7 @@ export default {
       &__remove {
         width: 24px;
         height: 24px;
-        background-image: url('~hd-blocks/assets/icons/ic_close.svg');
+        background-image: url('~homeday-blocks/src/assets/icons/ic_close.svg');
         background-repeat: no-repeat;
         background-size: $inset-m;
         background-position: center;

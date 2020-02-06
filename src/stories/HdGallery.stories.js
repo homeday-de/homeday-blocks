@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/vue';
 import { text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
-import HdGallery from 'hd-blocks/components/gallery/HdGallery.vue';
+import HdGallery from 'homeday-blocks/src/components/gallery/HdGallery.vue';
 import ITEMS from './mocks/GALLERY_ITEMS';
 
 storiesOf('Gallery/HdGallery', module)

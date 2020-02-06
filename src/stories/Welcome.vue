@@ -9,17 +9,9 @@
       <vue-code-highlight class="welcome__code">{{
         `npm install homeday-de/homeday-blocks --save`
       }}</vue-code-highlight>
-      2- Add the alias to your Webpack config:
+      2- Consume the components
       <vue-code-highlight class="welcome__code">{{
-        `
-        chainWebpack: config => {\n
-        \tconfig.resolve.alias.set('hd-blocks', 'homeday-blocks/src');\n
-        }
-        `
-      }}</vue-code-highlight>
-      3- Consume the components
-      <vue-code-highlight class="welcome__code">{{
-        'import HdGallery from \'hd-blocks/components/gallery/HdGallery.vue\';'
+        'import { HdGallery } from \'homeday-blocks\';'
       }}</vue-code-highlight>
     </p>
 
@@ -50,7 +42,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'hd-blocks/styles/mixins.scss';
+@import '~homeday-blocks/src/styles/mixins.scss';
 @import "~vue-code-highlight/themes/prism.css";
 
 .welcome {

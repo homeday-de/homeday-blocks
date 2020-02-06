@@ -100,3 +100,14 @@ export function scrollToEl({ el, offset = 0, onlyIfNotVisible = true }) {
     naturalScroll.scrollTop(toScrollEl, elOffset(el).top - offset);
   });
 }
+
+export default {
+  elOffset,
+  getDocumentHeight,
+  isWindowFullyScrolled,
+  freezeScrolling,
+  unfreezeScrolling,
+  isElVisible,
+  isScrolledPastElBottom,
+  scrollToEl,
+};

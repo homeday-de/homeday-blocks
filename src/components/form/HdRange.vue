@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import onResize from 'hd-blocks/services/on-resize';
+import onResize from 'homeday-blocks/src/services/on-resize';
 
 export default {
   name: 'HdRange',
@@ -207,7 +207,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .range {
   $range: &;
@@ -424,7 +424,7 @@ export default {
     bottom: $stack-m;
     transform: translateX(-50%);
     color: $white;
-    background: url('~hd-blocks/assets/icons/tooltip.svg') no-repeat;
+    background: url('~homeday-blocks/src/assets/icons/tooltip.svg') no-repeat;
     background-size: 100% 100%;
     padding: $stack-s $inline-m #{$stack-m + $stack-s};
     pointer-events: none;

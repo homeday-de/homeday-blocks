@@ -42,14 +42,14 @@ $focusedLabelTop: 5px;
 
   &--empty {
     &:not(#{$f}--active):after {
-      background-image: url('~hd-blocks/assets/icons/ic-error.svg');
+      background-image: url('~homeday-blocks/src/assets/icons/ic-error.svg');
       border-radius: 100%;
     }
   }
 
   &--valid:not(#{$f}--disabled):not(#{$f}--select):not(#{$f}--double) {
     &:after {
-      background-image: url('~hd-blocks/assets/icons/ic-checkmark.svg');
+      background-image: url('~homeday-blocks/src/assets/icons/ic-checkmark.svg');
       border-radius: 100%;
     }
   }
@@ -179,13 +179,13 @@ $focusedLabelTop: 5px;
     height: $iconDimension;
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url('~hd-blocks/assets/icons/ic-invalid--transparent.svg');
+    background-image: url('~homeday-blocks/src/assets/icons/ic-invalid--transparent.svg');
     border-radius: 100%;
     z-index: 10;
     cursor: pointer;
 
     &:hover {
-      background-image: url('~hd-blocks/assets/icons/ic-invalid--filled.svg');
+      background-image: url('~homeday-blocks/src/assets/icons/ic-invalid--filled.svg');
     }
   }
 
@@ -359,20 +359,20 @@ $focusedLabelTop: 5px;
     right: $inline-s;
     bottom: $stack-m;
     background-color: transparent;
-    background-image: url('~hd-blocks/assets/icons/ic-tooltip_info--transparent.svg');
+    background-image: url('~homeday-blocks/src/assets/icons/ic-tooltip_info--transparent.svg');
     background-position: center;
     background-repeat: no-repeat;
 
     &:hover {
       cursor: pointer;
-      background-image: url('~hd-blocks/assets/icons/ic-tooltip_info--filled.svg');
+      background-image: url('~homeday-blocks/src/assets/icons/ic-tooltip_info--filled.svg');
     }
 
     &--question {
-      background-image: url('~hd-blocks/assets/icons/ic-tooltip_question--transparent.svg');
+      background-image: url('~homeday-blocks/src/assets/icons/ic-tooltip_question--transparent.svg');
 
       &:hover {
-        background-image: url('~hd-blocks/assets/icons/ic-tooltip_question--filled.svg');
+        background-image: url('~homeday-blocks/src/assets/icons/ic-tooltip_question--filled.svg');
       }
     }
     &:focus {
@@ -392,7 +392,7 @@ $focusedLabelTop: 5px;
     border: none;
     position: absolute;
     background-color: transparent;
-    background-image: url('~hd-blocks/assets/icons/ic-input--reset.svg');
+    background-image: url('~homeday-blocks/src/assets/icons/ic-input--reset.svg');
     width: 24px;
     height: 24px;
     top: 0;
@@ -413,7 +413,7 @@ $focusedLabelTop: 5px;
 
   &--select {
     &:after {
-      background-image: url('~hd-blocks/assets/icons/ic-arrow_down.svg');
+      background-image: url('~homeday-blocks/src/assets/icons/ic-arrow_down.svg');
     }
   }
 

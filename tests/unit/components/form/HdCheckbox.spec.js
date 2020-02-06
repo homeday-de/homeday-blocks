@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
-import { getMessages } from 'hd-blocks/lang';
 import Vue from 'vue';
+import { getMessages } from '@/lang';
 import HdCheckbox from '@/components/form/HdCheckbox.vue';
 
 describe('HdCheckbox', () => {

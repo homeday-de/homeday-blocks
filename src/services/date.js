@@ -46,3 +46,12 @@ export const generateDateCycles = (cycleLengthWeeks, amountOfCycles, startDateOf
 
   return getDaysDateRange(startDate, endDate);
 };
+
+export default {
+  resetDateTime,
+  getNDaysFromDate,
+  convertMsToDays,
+  getDaysDateRange,
+  getIntlDateString,
+  generateDateCycles,
+};

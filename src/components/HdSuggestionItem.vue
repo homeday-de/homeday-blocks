@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { accentFold } from 'hd-blocks/services/utils';
+import { accentFold } from 'homeday-blocks/src/services/utils';
 
 const containsSharpS = text => text.match(/ß/) !== null;
 export default {
@@ -64,7 +64,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .suggestionItem {
   $sI: &;
