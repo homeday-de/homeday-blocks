@@ -49,7 +49,7 @@ export default {
 .gallery-placeholder {
   position: relative;
   margin-bottom: $stack-s;
-  background-color: $wild-sand;
+  background-color: $secondary-bg;
   &__content {
     position: absolute;
     top: 0;

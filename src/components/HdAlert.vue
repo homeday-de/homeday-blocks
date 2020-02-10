@@ -80,26 +80,26 @@ export default {
   border-radius: 3px;
 
   &--success {
-    border-color: $mantis;
-    color: $mantis;
-    background-color: rgba($mantis, .07);
+    border-color: $success-color;
+    color: $success-color;
+    background-color: rgba($success-color, .07);
   }
 
   &--info {
-    border-color: $heather;
-    color: $nevada;
+    border-color: getShade($quaternary-color, 60);
+    color: $quaternary-color;
   }
 
   &--warning {
-    border-color: $crusta;
-    color: $crusta;
-    background-color: rgba($crusta, .07);
+    border-color: $tertiary-color;
+    color: $tertiary-color;
+    background-color: getShade($tertiary-color, 60);
   }
 
   &--error {
-    border-color: $torch-red;
-    color: $torch-red;
-    background-color: rgba($torch-red, .07);
+    border-color: $error-color;
+    color: $error-color;
+    background-color: rgba($error-color, .07);
   }
 
   &--no-icon {

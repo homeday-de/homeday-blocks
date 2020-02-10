@@ -56,7 +56,7 @@ export default {
     flex: 0 0 152px;
     min-width: 0;
     margin-right: $inline-s;
-    color: $regent-gray;
+    color: getShade($quaternary-color, 80);
 
     @media (min-width: $break-tablet) {
       flex-basis: 187px;

@@ -2,8 +2,9 @@ $labelHeight: 18px;
 $iconDimension: 24px;
 $innerIconDimension: 18px;
 $inputLeftPadding: $inline-s;
-$inputBackground: #f4f5f6;
-$inputFilledBackground: #e8eaee;
+$inputBackground: $secondary-bg;
+// TODO: Use a design system value instead of `darken`
+$inputFilledBackground: darken($secondary-bg, 5);
 $inputPaddingTop: $labelHeight + $stack-xs;
 $focusedLabelTop: 5px;
 
@@ -86,7 +87,7 @@ $focusedLabelTop: 5px;
 
   &--disabled {
     &, &:hover{
-      color: rgba($regent-gray, 0.8);
+      color: getShade($quaternary-color, 70);
     }
   }
 
@@ -126,7 +127,7 @@ $focusedLabelTop: 5px;
     position: absolute;
     margin-left: $inputLeftPadding;
     top: $inputPaddingTop;
-    color: $nevada;
+    color: $quaternary-color;
     transition: all 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940);
     z-index: 9;
     pointer-events: none;
@@ -138,15 +139,15 @@ $focusedLabelTop: 5px;
     }
 
     #{$f}--active & {
-      color: $vivid-blue;
+      color: getShade($secondary-color, 110);
     }
 
     #{$f}--empty &, #{$f}--invalid:not(#{$f}--active) & {
-      color: $torch-red;
+      color: $error-color;
     }
 
     #{$f}:not(#{$f}--disabled):hover & {
-      color: $vivid-blue;
+      color: getShade($secondary-color, 110);
     }
 
     #{$f}--textarea & {
@@ -165,7 +166,7 @@ $focusedLabelTop: 5px;
     }
 
     #{$f}--disabled & {
-      color: rgba($regent-gray, 0.8);
+      color: getShade($quaternary-color, 70);
     }
   }
 
@@ -194,7 +195,7 @@ $focusedLabelTop: 5px;
     position: absolute;
     top: calc(100% + #{$inline-xs});
     margin-left: $inputLeftPadding;
-    color: $torch-red;
+    color: $error-color;
     display: none;
 
     #{$f}--empty &, #{$f}--invalid & {
@@ -202,7 +203,7 @@ $focusedLabelTop: 5px;
     }
 
     #{$f}--active & {
-      color: $regent-gray;
+      color: getShade($quaternary-color, 80);
     }
   }
 
@@ -227,7 +228,7 @@ $focusedLabelTop: 5px;
     position: absolute;
     bottom: 0;
     width: 100%;
-    border: 1px solid $heather;
+    border: 1px solid getShade($quaternary-color, 60);
     z-index: 1;
     transition: all 200ms ease;
 
@@ -240,7 +241,7 @@ $focusedLabelTop: 5px;
     }
 
     #{$f}:hover & {
-      border-color: $regent-gray;
+      border-color: getShade($quaternary-color, 80);
     }
 
 
@@ -249,18 +250,18 @@ $focusedLabelTop: 5px;
       position: absolute;
       bottom: -1px;
       height: 2px;
-      background: $heather;
+      background: getShade($quaternary-color, 60);
       width: 0;
       transition: all 200ms ease;
 
       #{$f}--active & {
-        background: $vivid-blue;
+        background: getShade($secondary-color, 110);
         width: calc(50% + 1px);
       }
 
       #{$f}--empty &, #{$f}--invalid:not(#{$f}--active) & {
         width: calc(50% + 1px);
-        background: $torch-red;
+        background: $error-color;
       }
     }
     &:before {
@@ -272,7 +273,7 @@ $focusedLabelTop: 5px;
 
     #{$f}--disabled & {
       border-style: dashed;
-      border-color: $regent-gray;
+      border-color: getShade($quaternary-color, 80);
     }
   }
 
@@ -280,7 +281,7 @@ $focusedLabelTop: 5px;
     font-family: $font-primary;
     font-size: 18px;
     line-height: 28px;
-    color: $cello;
+    color: $primary-color;
     border: none;
     outline: none;
     border-radius: $default-border-radius;
@@ -340,11 +341,11 @@ $focusedLabelTop: 5px;
     }
 
     #{$f}--disabled & {
-      color: rgba($regent-gray, 0.8);
+      color: getShade($quaternary-color, 70);
     }
 
     &::placeholder {
-      color: $regent-gray;
+      color: getShade($quaternary-color, 80);
       opacity: 0.5;
     }
   }
@@ -441,7 +442,7 @@ $focusedLabelTop: 5px;
       position: absolute;
       width: 8px;
       height: 2px;
-      background-color: #8290A1;
+      background-color: getShade($quaternary-color, 80);
       left: calc(50% - 4px);
       bottom: 20px;
       z-index: 3;

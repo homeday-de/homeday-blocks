@@ -46,7 +46,7 @@ export default {
       content: '';
       display: block;
       height: 2px;
-      background-color: $heather;
+      background-color: getShade($quaternary-color, 60);
       margin-top: $stack-s;
     }
   }

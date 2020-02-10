@@ -115,7 +115,7 @@ $iconWidth: 48px;
         height: 1px;
         width: calc(100% - #{$leftPos});
         bottom: 0;
-        background: $heather;
+        background: getShade($quaternary-color, 60);
       }
     }
   }
@@ -129,7 +129,7 @@ $iconWidth: 48px;
     &:hover, &:focus {
       transform: translateY(-2px);
       box-shadow: 0 9px 12px 0 rgba(0,0,0,.2);
-      // border: 4px solid $vivid-blue;
+      // border: 4px solid getShade($secondary-color, 110);
       outline: none;
       // margin: -4px;
       &:before {
@@ -140,7 +140,7 @@ $iconWidth: 48px;
         top: 0;
         bottom: 0;
         border-radius: 4px;
-        border: 4px solid $vivid-blue;
+        border: 4px solid getShade($secondary-color, 110);
       }
     }
   }
@@ -200,7 +200,7 @@ $iconWidth: 48px;
     &:hover, &:focus {
       cursor: pointer;
       box-shadow: 0 9px 12px 0 rgba(0, 0, 0, 0.2);
-      border: 3px solid $vivid-blue;
+      border: 3px solid getShade($secondary-color, 110);
       backface-visibility: hidden;
       outline: none;
       transform: translateY(-2px);
@@ -276,7 +276,7 @@ $iconWidth: 48px;
     width: 100%;
     margin-left: $inset-s;
     padding: #{$stack-m - 3px} 0;
-    border-bottom: 1px solid $heather;
+    border-bottom: 1px solid getShade($quaternary-color, 60);
     font-size: 16px;
     line-height: 19px;
     cursor: pointer;
@@ -284,7 +284,7 @@ $iconWidth: 48px;
     @media(min-width: $break-mobile) {
       margin-left: 0;
       text-align: center;
-      color: $cello;
+      color: $primary-color;
       border: 0;
       padding: 0 $inline-s;
       height: 41px;

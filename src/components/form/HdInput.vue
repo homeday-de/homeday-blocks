@@ -223,7 +223,7 @@ export default {
     text-align: left;
     &--helper {
       display: block;
-      color: $regent-gray;
+      color: getShade($quaternary-color, 80);
     }
   }
 }

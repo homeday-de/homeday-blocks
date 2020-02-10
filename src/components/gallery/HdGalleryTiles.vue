@@ -221,7 +221,7 @@ export default {
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: $heather;
+    background-color: getShade($quaternary-color, 60);
     z-index: -1;
   }
 
@@ -232,7 +232,7 @@ export default {
     right: 0;
     bottom: 0;
     left: 0;
-    background: $cello;
+    background: $primary-color;
     opacity: 0;
     transition: opacity .2s;
   }
@@ -253,7 +253,7 @@ export default {
     position: absolute;
     bottom: $stack-m;
     right: $inline-m;
-    background-color: white;
+    background-color: $primary-bg;
     padding: $inset-s;
     @include font('text-xsmall');
     font-weight: bold;

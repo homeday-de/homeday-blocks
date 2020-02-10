@@ -96,7 +96,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: $wild-sand;
+    background-color: $secondary-bg;
 
     &__thumbnail,
     &__picture {

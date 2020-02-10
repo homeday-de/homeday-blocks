@@ -181,7 +181,7 @@ export default {
 
 .calendar {
   width: 100%;
-  border-bottom: 1px solid $heather;
+  border-bottom: 1px solid getShade($quaternary-color, 60);
 
   &__header {
     text-align: center;
@@ -232,7 +232,7 @@ export default {
   &__day {
     font-size: 14px;
     line-height: 10px;
-    color: $regent-gray;
+    color: getShade($quaternary-color, 80);
     text-transform: uppercase;
     font-weight: 600;
     @media (min-width: $break-mobile) {
@@ -250,14 +250,14 @@ export default {
       font-size: 18px;
     }
     &--disabled {
-      color: $heather;
+      color: getShade($quaternary-color, 60);
       cursor: not-allowed;
     }
     &:after {
       content: "";
       width: 16px;
       height: 16px;
-      background: $vivid-blue;
+      background: getShade($secondary-color, 110);
       position: absolute;
       left: 0;
       right: 0;

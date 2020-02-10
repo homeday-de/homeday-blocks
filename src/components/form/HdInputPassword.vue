@@ -79,8 +79,8 @@ export default {
       left: 3px;
       width: 24px;
       height: 0px;
-      border-bottom: 2px solid $regent-gray;
-      border-top: 1px solid $wild-sand;
+      border-bottom: 2px solid getShade($quaternary-color, 80);
+      border-top: 1px solid $secondary-bg;
       transform-origin: left;
       transform: rotateZ(45deg) scaleX(1);
       transition: transform .3s;

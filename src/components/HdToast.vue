@@ -131,7 +131,7 @@ $toastWidth: 288px;
     background: $white;
 
     &--primary {
-      background: $vivid-blue;
+      background: getShade($secondary-color, 110);
       color: $white;
       position: relative;
       cursor: pointer;
@@ -147,25 +147,25 @@ $toastWidth: 288px;
         top: 0;
         left: 0;
         margin-left: -1px;
-        border-right: 1px solid $vivid-blue;
-        border-left: 1px solid $vivid-blue;
-        border-bottom: 1px solid $vivid-blue;
+        border-right: 1px solid getShade($secondary-color, 110);
+        border-left: 1px solid getShade($secondary-color, 110);
+        border-bottom: 1px solid getShade($secondary-color, 110);
 
         border-bottom-right-radius: $default-border-radius;
         border-bottom-right-radius: $default-border-radius;
       }
 
       &:hover {
-        background-color: darken($vivid-blue, 15);
+        background-color: getShade($secondary-color, 110);
 
         &:after {
-          border-color: darken($vivid-blue, 15);
+          border-color: getShade($secondary-color, 110);
         }
       }
     }
 
     &--secondary {
-      color: $regent-gray;
+      color: getShade($quaternary-color, 80);
     }
   }
 }

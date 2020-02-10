@@ -335,8 +335,8 @@ export default {
       height: $steps-size - ($steps-border-size * 2);
       width: $steps-size - ($steps-border-size * 2);
       border-radius: $steps-size / 2;
-      background: #FFFFFF;
-      border: $steps-border-size solid $nevada;
+      background: $primary-bg;
+      border: $steps-border-size solid $quaternary-color;
       border-radius: 50%;
     }
   }
@@ -346,7 +346,7 @@ export default {
     top: #{$stack-l + $stack-s};
     transform: translateX(-50%);
     @include font('text-xsmall');
-    color: $regent-gray;
+    color: getShade($quaternary-color, 80);
   }
 
   &__thumb {
@@ -423,7 +423,7 @@ export default {
     position: absolute;
     bottom: $stack-m;
     transform: translateX(-50%);
-    color: white;
+    color: $white;
     background: url('~homeday-blocks/src/assets/icons/tooltip.svg') no-repeat;
     background-size: 100% 100%;
     padding: $stack-s $inline-m #{$stack-m + $stack-s};
