@@ -21,21 +21,19 @@ export default {
   },
   watch: {
     breakpoints() {
-      this.setResponsiveFlags();
+      this.setListeners();
     },
   },
   beforeMount() {
-    this.setResponsiveFlags();
-  },
-  created() {
-    this.setResponsiveFlags();
+    this.setListeners();
   },
   methods: {
+    /* istanbul ignore next */
     updateMatch(key, value) {
       this.matches[key] = value;
       this.$forceUpdate();
     },
-    setResponsiveFlags() {
+    setListeners() {
       this.listeners = {};
 
       const breakpoints = {
@@ -47,10 +45,12 @@ export default {
         this.listeners[key] = window.matchMedia(value);
         this.matches[key] = this.listeners[key].matches;
         try {
+          /* istanbul ignore next */
           this.listeners[key].addEventListener('change', (e) => {
             this.updateMatch(key, e.matches);
           });
         } catch (error) {
+          /* istanbul ignore next */
           this.listeners[key].addListener((e) => {
             this.updateMatch(key, e.matches);
           });

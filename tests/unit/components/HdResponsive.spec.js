@@ -67,14 +67,14 @@ describe('HdResponsive', () => {
       },
     });
 
-    const mockedSetResponsiveFlags = jest.fn();
-    wrapper.setMethods({ setResponsiveFlags: mockedSetResponsiveFlags });
+    const mockedSetListeners = jest.fn();
+    wrapper.setMethods({ setListeners: mockedSetListeners });
 
     const modifiedBreakpoints = BREAKPOINTS;
     delete modifiedBreakpoints.s;
 
     wrapper.setProps({ breakpoints: modifiedBreakpoints });
 
-    expect(mockedSetResponsiveFlags).toHaveBeenCalled();
+    expect(mockedSetListeners).toHaveBeenCalled();
   });
 });
