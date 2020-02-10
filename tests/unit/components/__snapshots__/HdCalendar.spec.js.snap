@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HdCalendar renders component 1`] = `
+<div class="calendar">
+  <header class="calendar__header"><button class="calendar__button calendar__header__button calendar__button--prev calendar__button--disabled"></button> <span class="calendar__header__month">
+        February
+      </span> <button class="calendar__button calendar__header__button calendar__button--next"></button></header>
+  <section class="calendar__body">
+    <header class="calendar__days calendar__row">
+      <div class="calendar__row__item calendar__day">Wed</div>
+      <div class="calendar__row__item calendar__day">Thu</div>
+      <div class="calendar__row__item calendar__day">Fri</div>
+      <div class="calendar__row__item calendar__day">Sat</div>
+      <div class="calendar__row__item calendar__day">Sun</div>
+      <div class="calendar__row__item calendar__day">Mon</div>
+      <div class="calendar__row__item calendar__day">Tue</div>
+    </header>
+    <div class="calendar__body__inner">
+      <section class="calendar__dates" name="calendar-right">
+        <div class="calendar__week calendar__row">
+          <div class="calendar__date calendar__row__item calendar__date--selected">
+            12
+          </div>
+          <div class="calendar__date calendar__row__item">
+            13
+          </div>
+          <div class="calendar__date calendar__row__item">
+            14
+          </div>
+          <div class="calendar__date calendar__row__item calendar__date--disabled">
+            15
+          </div>
+          <div class="calendar__date calendar__row__item calendar__date--disabled">
+            16
+          </div>
+          <div class="calendar__date calendar__row__item">
+            17
+          </div>
+          <div class="calendar__date calendar__row__item">
+            18
+          </div>
+        </div>
+        <div class="calendar__week calendar__row">
+          <div class="calendar__date calendar__row__item">
+            19
+          </div>
+          <div class="calendar__date calendar__row__item">
+            20
+          </div>
+          <div class="calendar__date calendar__row__item">
+            21
+          </div>
+          <div class="calendar__date calendar__row__item calendar__date--disabled">
+            22
+          </div>
+          <div class="calendar__date calendar__row__item calendar__date--disabled">
+            23
+          </div>
+          <div class="calendar__date calendar__row__item">
+            24
+          </div>
+          <div class="calendar__date calendar__row__item">
+            25
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
+</div>
+`;
