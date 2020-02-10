@@ -15,6 +15,7 @@ storiesOf('Gallery/HdGallery', module)
         :items="items"
         :show-caption="false"
         @carouselItemClick="onCarouselItemClick"
+        @currentItemClick="onCurrentItemClick"
       />
       </div>
     `,
@@ -26,6 +27,34 @@ storiesOf('Gallery/HdGallery', module)
     methods: {
       onCarouselItemClick(value) {
         action('onCarouselItemClick')(value);
+      },
+      onCurrentItemClick(value) {
+        action('onCurrentItemClick')(value);
+      },
+    },
+  }))
+  .add('one photo', () => ({
+    components: { HdGallery },
+    template: `
+      <div style="max-width: 800px; padding-left: 16px; padding-right: 16px; margin: auto;">
+      <HdGallery
+        :items="items"
+        :show-caption="false"
+        @carouselItemClick="onCarouselItemClick"
+        @currentItemClick="onCurrentItemClick"
+      />
+      </div>
+    `,
+    data() {
+      return {
+        items: [
+          ITEMS[0],
+        ],
+      };
+    },
+    methods: {
+      onCurrentItemClick(value) {
+        action('onCurrentItemClick')(value);
       },
     },
   }))
