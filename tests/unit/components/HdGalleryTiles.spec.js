@@ -31,4 +31,13 @@ describe('HdGalleryTiles', () => {
 
     expect(wrapper.emitted('itemClick')[0][0]).toBe(0);
   });
+
+  it('emits the proper event with keydown on an image', () => {
+    const image = wrapper.find('.gallery-tiles__container div:nth-child(2)');
+    image.trigger('keydown.space');
+    expect(wrapper.emitted('itemClick').length).toBe(1);
+
+    image.trigger('keydown.enter');
+    expect(wrapper.emitted('itemClick').length).toBe(2);
+  });
 });
