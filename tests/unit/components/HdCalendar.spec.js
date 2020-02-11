@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import { generateDateCycles } from 'hd-blocks/services/date';
+import { generateDateCycles } from '@/services/date';
 import HdCalendar from '@/components/HdCalendar.vue';
 
 describe('HdCalendar', () => {
@@ -8,7 +8,7 @@ describe('HdCalendar', () => {
   beforeEach(() => {
     wrapper = mount(HdCalendar, {
       propsData: {
-        dates: generateDateCycles(2, 2, 2),
+        dates: generateDateCycles(2, 2, 2, new Date(2020, 1, 10)),
       },
     });
   });
