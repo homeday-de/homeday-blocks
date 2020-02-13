@@ -38,13 +38,13 @@ export const getIntlDateString = (locale, datesArray, localStringArgs) => datesA
   return accumulator;
 }, []);
 
-export const generateDateCycles = (cycleLengthWeeks, amountOfCycles, startDateOffset) => {
+export const generateDateCycles = (cycleLengthWeeks, amountOfCycles, startDateOffset, startDate = new Date()) => {
   const WEEK_DAYS = 7;
   const cycleLengthDays = cycleLengthWeeks * WEEK_DAYS;
-  const startDate = getNDaysFromDate(new Date(), startDateOffset);
-  const endDate = getNDaysFromDate(new Date(), (cycleLengthDays * amountOfCycles) + startDateOffset);
+  const calculatedStartDate = getNDaysFromDate(startDate, startDateOffset);
+  const endDate = getNDaysFromDate(startDate, (cycleLengthDays * amountOfCycles) + startDateOffset);
 
-  return getDaysDateRange(startDate, endDate);
+  return getDaysDateRange(calculatedStartDate, endDate);
 };
 
 export default {
