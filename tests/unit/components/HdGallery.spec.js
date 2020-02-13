@@ -2,6 +2,8 @@ import { mount } from '@vue/test-utils';
 import HdGallery from '@/components/gallery/HdGallery.vue';
 import ITEMS from '@/stories/mocks/GALLERY_ITEMS';
 
+const FIGURE_SELECTOR = '.gallery__figure';
+
 describe('HdGallery', () => {
   let wrapper;
 
@@ -19,7 +21,7 @@ describe('HdGallery', () => {
 
   it('switchs elements and emits the proper events clicks', () => {
     const testIndex = 3;
-    const figure = wrapper.find('.gallery__figure');
+    const figure = wrapper.find(FIGURE_SELECTOR);
     figure.trigger('click');
     expect(wrapper.emitted('currentItemClick')[0][0]).toBe(0);
 
