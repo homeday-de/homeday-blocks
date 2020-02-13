@@ -1,0 +1,11 @@
+on: push
+name: Publish on NPM and Github Packages
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+    - if: github.ref == 'refs/heads/master'
+      uses: mikeal/merge-release@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
