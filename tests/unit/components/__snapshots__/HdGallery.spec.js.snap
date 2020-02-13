@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HdGallery renders component 1`] = `
+<div class="gallery">
+  <figure class="gallery__figure">
+    <figcaption class="gallery__caption">Picture Sources Test</figcaption>
+    <div class="gallery__main">
+      <div class="gallery-media">
+        <div class="gallery-media__object">
+          <div class="gallery-media__object__sizer" style="padding-top: 56.25%;"></div>
+          <picture class="gallery-media__object__picture">
+            <source media="(max-width: 600px)" srcset="https://dummyimage.com/306x172?text=1+M">
+            <source media="(max-width: 900px)" srcset="https://dummyimage.com/768x432?text=1+TP">
+            <source media="(max-width: 1200px)" srcset="https://dummyimage.com/768x432?text=1+TL"> <img src="https://dummyimage.com/1536x364?text=1+Picture+Sources+Test" alt="Picture Sources Test"></picture>
+          <div class="gallery-media__object__thumbnail isVisible" style="background-image: url(https://dummyimage.com/154x86?text=1+thumb+TL+to+D);"></div>
+        </div>
+      </div>
+      <div class="gallery__controls"><button type="button" class="gallery__controls__prev isDisabled"></button> <button type="button" class="gallery__controls__next"></button></div>
+      <p class="gallery__info">1/12</p>
+    </div>
+  </figure>
+  <div class="gallery__carousel gallery-carousel">
+    <div tabindex="0" class="gallery-carousel__wrap">
+      <div class="flickity-enabled">
+        <div class="flickity-viewport" style="height: 0px;">
+          <div class="flickity-slider" style="left: 0px; transform: translateX(NaN%);">
+            <div class="gallery-carousel__item is-selected" style="position: absolute;">
+              <div class="gallery-carousel__item__sizer" style="padding-top: 56.25%;"></div>
+              <picture class="gallery-carousel__item__picture">
+                <source media="(max-width: 900px)" srcset="https://dummyimage.com/768x432?text=1+thumb+M+to+TP"> <img src="https://dummyimage.com/154x86?text=1+thumb+TL+to+D" alt="Picture Sources Test"></picture>
+            </div>
+            <div class="gallery-carousel__item is-selected" style="position: absolute;">
+              <div class="gallery-carousel__item__sizer" style="padding-top: 56.25%;"></div>
+              <picture class="gallery-carousel__item__picture">
+                <source media="(max-width: 900px)" srcset="https://dummyimage.com/768x432?text=2+thumb+M+to+TP"> <img src="https://dummyimage.com/154x86?text=2+thumb+TL+to+D" alt="Picture Sources Test"></picture>
+            </div>
+            <div class="gallery-carousel__item is-selected" style="position: absolute;">
+              <div class="gallery-carousel__item__sizer" style="padding-top: 56.25%;"></div>
+              <picture class="gallery-carousel__item__picture"> <img src="https://dummyimage.com/154x86?text=3+thumb+default+density" alt="Image Source Set test" srcset="https://dummyimage.com/308x172?text=3+thumb+DPR2x 2x, https://dummyimage.com/462x258?text=3+thumb+DPR3x 3x"></picture>
+            </div>
+            <div class="gallery-carousel__item is-selected" style="position: absolute;">
+              <div class="gallery-carousel__item__sizer" style="padding-top: 56.25%;"></div>
+              <picture class="gallery-carousel__item__picture">
+                <source media="(max-width: 900px)" srcset="https://dummyimage.com/768x432?text=4+thumb+M+to+TP+DPR1x 1x, https://dummyimage.com/1536x864?text=4+thumb+TP+DPI2x 2x, https://dummyimage.com/2304x1296?text=4+thumb+TP3x 3x"> <img src="https://dummyimage.com/306x172?text=4+thumb+default+density" alt="Image and Picture Source Sets test" srcset="https://dummyimage.com/612x344?text=4+thumb+DPR2x 2x, https://dummyimage.com/918x516?text=4+thumb+DPR3x 3x"></picture>
+            </div>
+            <div class="gallery-carousel__item is-selected" style="position: absolute;">
+              <div class="gallery-carousel__item__sizer" style="padding-top: 56.25%;"></div>
+              <picture class="gallery-carousel__item__picture"> <img src="https://dummyimage.com/306x172?text=6" alt="Cellar"></picture>
+            </div>
+            <div class="gallery-carousel__item is-selected" style="position: absolute;">
+              <div class="gallery-carousel__item__sizer" style="padding-top: 56.25%;"></div>
+              <picture class="gallery-carousel__item__picture"> <img src="https://dummyimage.com/2306x3172?text=5+thumb+uneven+image" alt="Uneven image"></picture>
+            </div>
+            <div class="gallery-carousel__item is-selected" style="position: absolute;">
+              <div class="gallery-carousel__item__sizer" style="padding-top: 56.25%;"></div>
+              <picture class="gallery-carousel__item__picture"> <img src="https://dummyimage.com/306x172?text=7" alt="__vue_devtool_undefined__"></picture>
+            </div>
+            <div class="gallery-carousel__item is-selected" style="position: absolute;">
+              <div class="gallery-carousel__item__sizer" style="padding-top: 56.25%;"></div>
+              <picture class="gallery-carousel__item__picture"> <img src="https://dummyimage.com/306x172?text=8" alt="__vue_devtool_undefined__"></picture>
+            </div>
+            <div class="gallery-carousel__item is-selected" style="position: absolute;">
+              <div class="gallery-carousel__item__sizer" style="padding-top: 56.25%;"></div>
+              <picture class="gallery-carousel__item__picture"> <img src="https://dummyimage.com/306x172?text=9" alt="Some title"></picture>
+            </div>
+            <div class="gallery-carousel__item is-selected" style="position: absolute;">
+              <div class="gallery-carousel__item__sizer" style="padding-top: 56.25%;"></div>
+              <picture class="gallery-carousel__item__picture"> <img src="https://dummyimage.com/306x172?text=10" alt="Some title"></picture>
+            </div>
+            <div class="gallery-carousel__item is-selected" style="position: absolute;">
+              <div class="gallery-carousel__item__sizer" style="padding-top: 56.25%;"></div>
+              <picture class="gallery-carousel__item__picture"> <img src="https://dummyimage.com/306x172?text=11" alt="Some title"></picture>
+            </div>
+            <div class="gallery-carousel__item is-selected" style="position: absolute;">
+              <div class="gallery-carousel__item__sizer" style="padding-top: 56.25%;"></div>
+              <picture class="gallery-carousel__item__picture"> <img src="https://dummyimage.com/306x172?text=12" alt="Some title"></picture>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-carousel__pager">
+        <!---->
+      </div>
+    </div>
+  </div>
+</div>
+`;

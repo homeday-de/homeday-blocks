@@ -8,6 +8,7 @@
     <figure
       v-if="hasImages"
       class="gallery__figure"
+      @click="onCurrentItemClick"
     >
       <figcaption
         v-if="showCaption"
@@ -159,6 +160,9 @@ export default {
     },
     onCarouselItemClick(itemIndex) {
       this.$emit('carouselItemClick', itemIndex);
+    },
+    onCurrentItemClick() {
+      this.$emit('currentItemClick', this.currentItemIndex);
     },
   },
 };
