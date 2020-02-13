@@ -1,9 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
-import { generateDateCycles } from 'hd-blocks/services/date';
+import { generateDateCycles } from 'homeday-blocks/src/services/date';
 
-import HdCalendar from 'hd-blocks/components/HdCalendar.vue';
+import HdCalendar from 'homeday-blocks/src/components/HdCalendar.vue';
 
 storiesOf('HdCalendar', module)
   .addParameters({ percy: { skip: true } })

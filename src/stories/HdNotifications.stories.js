@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import { select } from '@storybook/addon-knobs';
 
-import HdNotifications from 'hd-blocks/components/notifications/HdNotifications.vue';
+import HdNotifications from 'homeday-blocks/src/components/notifications/HdNotifications.vue';
 import HdNotificationsNote from '../notes/HdNotifications.md';
 
 storiesOf('HdNotifications', module)

@@ -32,9 +32,9 @@
 
 <script>
 import merge from 'lodash/merge';
-import { getMessages } from 'hd-blocks/lang';
-import { getPasswordStrength } from 'hd-blocks/services/utils';
-import HdInput from 'hd-blocks/components/form/HdInput.vue';
+import { getMessages } from 'homeday-blocks/src/lang';
+import { getPasswordStrength } from 'homeday-blocks/src/services/utils';
+import HdInput from 'homeday-blocks/src/components/form/HdInput.vue';
 
 export default {
   name: 'hd-confirm-password',
@@ -165,7 +165,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .confirmPassword {
   width: 100%;
@@ -184,7 +184,7 @@ export default {
     }
     &__text {
       @include font('text-xxsmall');
-      color: $regent-gray;
+      color: getShade($quaternary-color, 80);
       width: 65px;
     }
     &__gauge {
@@ -201,7 +201,7 @@ export default {
           content: '';
           height: 100%;
           width: 20px;
-          background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, .7));
+          background-image: linear-gradient(to right, rgba($primary-bg, 0), rgba($primary-bg, .7));
           position: absolute;
           right: -30px;
           top: 0;

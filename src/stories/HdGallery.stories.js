@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/vue';
 import { text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
-import HdGallery from 'hd-blocks/components/gallery/HdGallery.vue';
+import HdGallery from 'homeday-blocks/src/components/gallery/HdGallery.vue';
 import ITEMS from './mocks/GALLERY_ITEMS';
 
 storiesOf('Gallery/HdGallery', module)
@@ -15,6 +15,7 @@ storiesOf('Gallery/HdGallery', module)
         :items="items"
         :show-caption="false"
         @carouselItemClick="onCarouselItemClick"
+        @currentItemClick="onCurrentItemClick"
       />
       </div>
     `,
@@ -26,6 +27,34 @@ storiesOf('Gallery/HdGallery', module)
     methods: {
       onCarouselItemClick(value) {
         action('onCarouselItemClick')(value);
+      },
+      onCurrentItemClick(value) {
+        action('onCurrentItemClick')(value);
+      },
+    },
+  }))
+  .add('one photo', () => ({
+    components: { HdGallery },
+    template: `
+      <div style="max-width: 800px; padding-left: 16px; padding-right: 16px; margin: auto;">
+      <HdGallery
+        :items="items"
+        :show-caption="false"
+        @carouselItemClick="onCarouselItemClick"
+        @currentItemClick="onCurrentItemClick"
+      />
+      </div>
+    `,
+    data() {
+      return {
+        items: [
+          ITEMS[0],
+        ],
+      };
+    },
+    methods: {
+      onCurrentItemClick(value) {
+        action('onCurrentItemClick')(value);
       },
     },
   }))

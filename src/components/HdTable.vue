@@ -51,7 +51,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .hd-table {
   margin-top: $stack-s;
@@ -62,23 +62,23 @@ export default {
   text-align: center;
   th, td {
     padding: $inset-s;
-    border-top: 1px solid $heather;
-    color: $nevada;
+    border-top: 1px solid getShade($quaternary-color, 60);
+    color: $quaternary-color;
     font-weight: 600;
     vertical-align: middle;
     position: relative;
   }
   th {
     border-top: none;
-    color: $cello;
+    color: $primary-color;
     font-size: 13px;
     font-weight: 700;
     vertical-align: middle;
   }
   tr:nth-child(even) {
-    background-color: $wild-sand;
+    background-color: $secondary-bg;
     td:after {
-      background-color: $wild-sand;
+      background-color: $secondary-bg;
     }
   }
   &.fixed {
@@ -99,10 +99,10 @@ export default {
       position: absolute;
       right: 0;
       top: 0;
-      background: linear-gradient(to left, white, rgba(255, 255, 255, 0));
+      background: linear-gradient(to left, $primary-bg, rgba($primary-bg, 0));
     }
     tr:nth-child(even) td:after {
-      background: linear-gradient(to left, rgba(245, 245, 245, 1), rgba(245, 245, 245, 0));
+      background: linear-gradient(to left, $secondary-bg, rgba($secondary-bg, 0));
     }
   }
   &.left {

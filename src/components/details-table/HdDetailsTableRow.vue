@@ -33,7 +33,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .details-table__row {
   margin-top: $stack-s;
@@ -56,7 +56,7 @@ export default {
     flex: 0 0 152px;
     min-width: 0;
     margin-right: $inline-s;
-    color: $regent-gray;
+    color: getShade($quaternary-color, 80);
 
     @media (min-width: $break-tablet) {
       flex-basis: 187px;

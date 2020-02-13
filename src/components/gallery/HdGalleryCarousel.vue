@@ -58,8 +58,8 @@
 <script>
 // eslint-disable-next-line import/extensions
 import Flickity from 'vue-flickity';
-import onResize from 'hd-blocks/services/on-resize';
-import HdPager from 'hd-blocks/components/HdPager.vue';
+import onResize from 'homeday-blocks/src/services/on-resize';
+import HdPager from 'homeday-blocks/src/components/HdPager.vue';
 
 export default {
   name: 'HdGalleryCarousel',
@@ -218,7 +218,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .gallery-carousel {
   $_root: &;
@@ -249,7 +249,7 @@ export default {
       position: absolute;
       bottom: 0px;
       width: 100%;
-      background: linear-gradient(to top, rgba($nevada, .45), rgba($nevada, 0));
+      background: linear-gradient(to top, rgba($quaternary-color, .45), rgba($quaternary-color, 0));
 
       @media (min-width: $break-tablet) {
         display: none;
@@ -265,7 +265,7 @@ export default {
     border-radius: 2px;
     overflow: hidden;
     transition: box-shadow $time-s ease-in-out;
-    background-color: $wild-sand;
+    background-color: $secondary-bg;
     display: flex;
     align-items: center;
     justify-content: center;

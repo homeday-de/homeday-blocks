@@ -84,7 +84,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .gallery-media {
   $_root: &;
@@ -96,7 +96,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: $wild-sand;
+    background-color: $secondary-bg;
 
     &__thumbnail,
     &__picture {

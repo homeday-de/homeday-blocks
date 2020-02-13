@@ -17,7 +17,7 @@
         ref="panelToggle"
         :class="panelToggleClasses"
         class="tags-selector__selected-tags__panel-toggle"
-        src="~hd-blocks/assets/icons/ic_add-circle--blue.svg"
+        src="~homeday-blocks/src/assets/icons/ic_add-circle--blue.svg"
         alt="Add"
         role="button"
         @click="togglePanel">
@@ -165,7 +165,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .tags-selector {
   position: relative;
@@ -178,14 +178,14 @@ export default {
       display: flex;
       align-items: center;
       height: $stack-l;
-      background-color: rgba($heather, 0.5);
+      background-color: getShade($quaternary-color, 50);
       border-radius: 3px;
       padding: 0 $inline-s;
       margin: $stack-s $inline-s 0 0;
       &__remove {
         width: 24px;
         height: 24px;
-        background-image: url('~hd-blocks/assets/icons/ic_close.svg');
+        background-image: url('~homeday-blocks/src/assets/icons/ic_close.svg');
         background-repeat: no-repeat;
         background-size: $inset-m;
         background-position: center;
@@ -216,7 +216,7 @@ export default {
     position: absolute;
     top: 100%;
     max-width: 300px;
-    background-color: $wild-sand;
+    background-color: $secondary-bg;
     border-radius: 3px;
     padding: $stack-xs;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.23);
@@ -224,16 +224,16 @@ export default {
     z-index: 5;
     transition: left $time-s ease-out;
     &__tag {
-      background-color: white;
-      border: 1px solid $vivid-blue;
+      background-color: $primary-bg;
+      border: 1px solid getShade($secondary-color, 110);
       border-radius: 3px;
       padding: 0 $inline-s;
       margin: $stack-xs;
       cursor: pointer;
       transition: background-color $time-s ease-in-out;
       &--isSelected {
-        background-color: $vivid-blue;
-        color: white;
+        background-color: getShade($secondary-color, 110);
+        color: $white;
       }
     }
     &--isVisible {

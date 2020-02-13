@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import onResize from 'hd-blocks/services/on-resize';
+import onResize from 'homeday-blocks/src/services/on-resize';
 
 export default {
   name: 'HdRange',
@@ -207,7 +207,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .range {
   $range: &;
@@ -335,8 +335,8 @@ export default {
       height: $steps-size - ($steps-border-size * 2);
       width: $steps-size - ($steps-border-size * 2);
       border-radius: $steps-size / 2;
-      background: #FFFFFF;
-      border: $steps-border-size solid $nevada;
+      background: $primary-bg;
+      border: $steps-border-size solid $quaternary-color;
       border-radius: 50%;
     }
   }
@@ -346,7 +346,7 @@ export default {
     top: #{$stack-l + $stack-s};
     transform: translateX(-50%);
     @include font('text-xsmall');
-    color: $regent-gray;
+    color: getShade($quaternary-color, 80);
   }
 
   &__thumb {
@@ -423,8 +423,8 @@ export default {
     position: absolute;
     bottom: $stack-m;
     transform: translateX(-50%);
-    color: white;
-    background: url('~hd-blocks/assets/icons/tooltip.svg') no-repeat;
+    color: $white;
+    background: url('~homeday-blocks/src/assets/icons/tooltip.svg') no-repeat;
     background-size: 100% 100%;
     padding: $stack-s $inline-m #{$stack-m + $stack-s};
     pointer-events: none;

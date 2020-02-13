@@ -76,18 +76,18 @@ export default {
 
       /* eslint-disable global-require */
       if (this.type === 'success') {
-        return require('hd-blocks/assets/icons/ic_shield-checkmark.svg');
+        return require('homeday-blocks/src/assets/icons/ic_shield-checkmark.svg');
       }
 
       if (this.type === 'error') {
-        return require('hd-blocks/assets/icons/ic_alert-octagon.svg');
+        return require('homeday-blocks/src/assets/icons/ic_alert-octagon.svg');
       }
 
       if (this.type === 'warning') {
-        return require('hd-blocks/assets/icons/ic_alert-triangle.svg');
+        return require('homeday-blocks/src/assets/icons/ic_alert-triangle.svg');
       }
 
-      return require('hd-blocks/assets/icons/ic_bell.svg');
+      return require('homeday-blocks/src/assets/icons/ic_bell.svg');
       /* eslint-enable global-require */
     },
   },
@@ -95,7 +95,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .notifications-bar {
   display: flex;
@@ -121,7 +121,7 @@ export default {
   }
 
   &--notification {
-    background-color: $crusta;
+    background-color: $tertiary-color;
     color: $white;
 
     a {
@@ -130,7 +130,7 @@ export default {
   }
 
   &--success {
-    background-color:$mantis;
+    background-color:$success-color;
     color: $white;
 
     a {
@@ -149,10 +149,10 @@ export default {
 
   &--warning {
     background-color:#FFAB00;
-    color: $cello;
+    color: $primary-color;
 
     a {
-      color: $cello;
+      color: $primary-color;
     }
   }
 

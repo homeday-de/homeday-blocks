@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { accentFold } from 'hd-blocks/services/utils';
+import { accentFold } from 'homeday-blocks/src/services/utils';
 
 const containsSharpS = text => text.match(/ß/) !== null;
 export default {
@@ -64,12 +64,12 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .suggestionItem {
   $sI: &;
   @include font('text-xsmall');
-  background-color: white;
+  background-color: $primary-bg;
   cursor: pointer;
   border: 0;
   position: relative;
@@ -82,11 +82,11 @@ export default {
     position: absolute;
     top: 0; bottom: 1px; right: 0;
     width: 20px;
-    background: linear-gradient(to left, rgba(255,255,255,1), rgba(255,255,255,0));
+    background: linear-gradient(to left, rgba($primary-bg, 1), rgba($primary-bg, 0));
   }
 
   &:hover, &--isSelected {
-    background: $wild-sand;
+    background: $secondary-bg;
   }
 
   &__content {
@@ -104,7 +104,7 @@ export default {
       left: 0;
       right: 0;
       height: 1px;
-      background: $heather;
+      background: getShade($quaternary-color, 60);
       bottom: -1px;
       position: absolute;
       z-index: 1;
@@ -119,7 +119,7 @@ export default {
 
     &--2 {
       font-size: 13px;
-      color: $regent-gray;
+      color: getShade($quaternary-color, 80);
     }
 
   }

@@ -8,6 +8,7 @@
     <figure
       v-if="hasImages"
       class="gallery__figure"
+      @click="onCurrentItemClick"
     >
       <figcaption
         v-if="showCaption"
@@ -62,9 +63,9 @@
 </template>
 
 <script>
-import HdGalleryCarousel from 'hd-blocks/components/gallery/HdGalleryCarousel.vue';
-import HdGalleryMedia from 'hd-blocks/components/gallery/HdGalleryMedia.vue';
-import HdGalleryPlaceholder from 'hd-blocks/components/gallery/HdGalleryPlaceholder.vue';
+import HdGalleryCarousel from 'homeday-blocks/src/components/gallery/HdGalleryCarousel.vue';
+import HdGalleryMedia from 'homeday-blocks/src/components/gallery/HdGalleryMedia.vue';
+import HdGalleryPlaceholder from 'homeday-blocks/src/components/gallery/HdGalleryPlaceholder.vue';
 
 export default {
   name: 'HdGallery',
@@ -101,7 +102,7 @@ export default {
     placeholderIcon: {
       type: String,
       // eslint-disable-next-line global-require
-      default: require('hd-blocks/assets/icons/ic_photos.svg'),
+      default: require('homeday-blocks/src/assets/icons/ic_photos.svg'),
     },
     placeholderText: {
       type: String,
@@ -160,12 +161,15 @@ export default {
     onCarouselItemClick(itemIndex) {
       this.$emit('carouselItemClick', itemIndex);
     },
+    onCurrentItemClick() {
+      this.$emit('currentItemClick', this.currentItemIndex);
+    },
   },
 };
 </script>
 
 <style lang="scss">
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .gallery {
   $_root: &;
@@ -205,7 +209,7 @@ export default {
       background-color: rgba(0, 0, 0, 0.8);
       @include font('text-xsmall');
       font-weight: 600;
-      color: white;
+      color: $white;
       border-radius: 2px;
     }
   }
@@ -232,7 +236,7 @@ export default {
       appearance: none;
       background-color: $white;
       border-radius: 50%;
-      border: 1px solid $ebb2;
+      border: 1px solid getShade($quaternary-color, 50);
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       cursor: pointer;
       transition: opacity $time-s ease-in-out;
@@ -251,7 +255,7 @@ export default {
         display: block;
         height: 24px;
         width: 24px;
-        background-image: url('~hd-blocks/assets/icons/ic_arrow.svg');
+        background-image: url('~homeday-blocks/src/assets/icons/ic_arrow.svg');
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
@@ -283,7 +287,7 @@ export default {
     background-color: rgba(0, 0, 0, 0.8);
     @include font('text-xsmall');
     font-weight: 600;
-    color: white;
+    color: $white;
     border-radius: 2px;
   }
 

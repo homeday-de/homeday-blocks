@@ -2,7 +2,7 @@
 import { storiesOf } from '@storybook/vue';
 import { number } from '@storybook/addon-knobs';
 
-import HdExpandText from 'hd-blocks/components/HdExpandText.vue';
+import HdExpandText from 'homeday-blocks/src/components/HdExpandText.vue';
 
 storiesOf('HdExpandText', module)
   .add('default 🎛', () => ({

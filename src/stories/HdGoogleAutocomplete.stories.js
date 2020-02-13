@@ -2,8 +2,8 @@
 import { storiesOf } from '@storybook/vue';
 import { text } from '@storybook/addon-knobs';
 
-import HdGoogleAutocomplete from 'hd-blocks/components/form/HdGoogleAutocomplete.vue';
-import FormWrapper from 'hd-blocks/storiesWrappers/FormWrapper';
+import HdGoogleAutocomplete from 'homeday-blocks/src/components/form/HdGoogleAutocomplete.vue';
+import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 
 storiesOf('Form/HdGoogleAutocomplete', module)
   .addParameters({ percy: { skip: true } })

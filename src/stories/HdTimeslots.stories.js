@@ -2,9 +2,9 @@
 import range from 'lodash/range';
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
-import TimeslotsWrapper from 'hd-blocks/storiesWrappers/TimeslotsWrapper';
+import TimeslotsWrapper from 'homeday-blocks/src/storiesWrappers/TimeslotsWrapper';
 
-import HdTimeslots from 'hd-blocks/components/HdTimeslots.vue';
+import HdTimeslots from 'homeday-blocks/src/components/HdTimeslots.vue';
 
 const generateSlots = (endStartDeltaMins, duration) => range(1, (endStartDeltaMins / duration) + 2)
   .map((slot) => {

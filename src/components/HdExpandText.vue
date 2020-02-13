@@ -32,9 +32,9 @@
 
 <script>
 import merge from 'lodash/merge';
-import { getMessages } from 'hd-blocks/lang';
-import { mediaMatches } from 'hd-blocks/services/breakpoints';
-import onResize from 'hd-blocks/services/on-resize';
+import { getMessages } from 'homeday-blocks/src/lang';
+import { mediaMatches } from 'homeday-blocks/src/services/breakpoints';
+import onResize from 'homeday-blocks/src/services/on-resize';
 
 export default {
   name: 'HdExpandText',
@@ -185,7 +185,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .expand-text {
   $_root: &;
@@ -222,14 +222,14 @@ export default {
     background-color: transparent;
     border: 0;
     box-shadow: none;
-    color: $cello;
+    color: $primary-color;
     cursor: pointer;
     outline: 0;
     transition: color $time-s ease-in-out;
 
     &:hover,
     &:focus {
-      color: $vivid-blue;
+      color: getShade($secondary-color, 110);
     }
 
     @media (min-width: $break-tablet) {
@@ -244,7 +244,7 @@ export default {
       left: 0;
       width: calc(100% - #{$inline-xs + $_icon-size});
       height: 1px;
-      background-color: $vivid-blue;
+      background-color: getShade($secondary-color, 110);
     }
 
     &__icons {

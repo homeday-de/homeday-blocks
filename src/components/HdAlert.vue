@@ -20,10 +20,10 @@
 </template>
 
 <script>
-import successIcon from 'hd-blocks/assets/icons/ic_success.svg';
-import infoIcon from 'hd-blocks/assets/icons/ic_info.svg';
-import warningIcon from 'hd-blocks/assets/icons/ic_warning.svg';
-import errorIcon from 'hd-blocks/assets/icons/ic_error.svg';
+import successIcon from 'homeday-blocks/src/assets/icons/ic_success.svg';
+import infoIcon from 'homeday-blocks/src/assets/icons/ic_info.svg';
+import warningIcon from 'homeday-blocks/src/assets/icons/ic_warning.svg';
+import errorIcon from 'homeday-blocks/src/assets/icons/ic_error.svg';
 
 // The first item is the default
 export const TYPES = {
@@ -69,7 +69,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .alert {
   display: flex;
@@ -80,26 +80,26 @@ export default {
   border-radius: 3px;
 
   &--success {
-    border-color: $mantis;
-    color: $mantis;
-    background-color: rgba($mantis, .07);
+    border-color: $success-color;
+    color: $success-color;
+    background-color: rgba($success-color, .07);
   }
 
   &--info {
-    border-color: $heather;
-    color: $nevada;
+    border-color: getShade($quaternary-color, 60);
+    color: $quaternary-color;
   }
 
   &--warning {
-    border-color: $crusta;
-    color: $crusta;
-    background-color: rgba($crusta, .07);
+    border-color: $tertiary-color;
+    color: $tertiary-color;
+    background-color: getShade($tertiary-color, 60);
   }
 
   &--error {
-    border-color: $torch-red;
-    color: $torch-red;
-    background-color: rgba($torch-red, .07);
+    border-color: $error-color;
+    color: $error-color;
+    background-color: rgba($error-color, .07);
   }
 
   &--no-icon {

@@ -13,7 +13,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .hd-tooltip {
   position: absolute;
@@ -23,9 +23,9 @@ export default {
   font-size: 12px;
   line-height: 12px;
   padding: 4px 8px;
-  background-color: $nevada;
+  background-color: $quaternary-color;
   border-radius: 5px;
-  color: white;
+  color: $white;
   pointer-events: none;
   opacity: 0;
   z-index: 1000;

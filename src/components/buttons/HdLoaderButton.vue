@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { getRandomInt, circleToPath } from 'hd-blocks/services/utils';
+import { getRandomInt, circleToPath } from 'homeday-blocks/src/services/utils';
 import debounce from 'lodash/debounce';
 
 export default {
@@ -208,7 +208,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .loaderButton {
   $lB: &;
@@ -228,11 +228,11 @@ export default {
       cursor: progress;
       width: 46px; /* make a circle */
       border-width: 4px;
-      border-color: #ddd;
+      border-color: getShade($quaternary-color, 50);
       border-style: solid;
       border-radius: 30px;
       background-color: transparent;
-      color: #fff;
+      color: $white;
       transition: background-color 0.3s, color 0.3s, width 0.3s cubic-bezier(0.6, -0.6, 0.75, 0.75), border-width 0.3s, border-color 0.3s;
     }
 
@@ -251,13 +251,13 @@ export default {
     }
 
     #{$lB}--success & {
-      border-color: $mantis;
-      background-color: $mantis;
+      border-color: $success-color;
+      background-color: $success-color;
     }
 
     #{$lB}--error & {
-      border-color: $torch-red;
-      background-color: $torch-red;
+      border-color: $error-color;
+      background-color: $error-color;
     }
 
     &__label {
@@ -312,7 +312,7 @@ export default {
 
     &--progressCircle path {
       fill: transparent;
-      stroke: $mantis;
+      stroke: $success-color;
 
 
       #{$lB}--error & {

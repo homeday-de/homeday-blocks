@@ -4,7 +4,7 @@ import {
   withKnobs, select, boolean,
 } from '@storybook/addon-knobs';
 
-import HdArrowButton from 'hd-blocks/components/buttons/HdArrowButton.vue';
+import HdArrowButton from 'homeday-blocks/src/components/buttons/HdArrowButton.vue';
 
 storiesOf('HdArrowButton', module)
   .addDecorator(withKnobs)

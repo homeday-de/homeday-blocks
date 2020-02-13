@@ -29,7 +29,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .details-table-wrap {
   padding-top: $stack-m;
@@ -46,7 +46,7 @@ export default {
       content: '';
       display: block;
       height: 2px;
-      background-color: $heather;
+      background-color: getShade($quaternary-color, 60);
       margin-top: $stack-s;
     }
   }

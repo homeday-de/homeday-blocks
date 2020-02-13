@@ -1,9 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
 
-import HdTooltipped from 'hd-blocks/components/tooltip/HdTooltipped.vue';
-import HdInput from 'hd-blocks/components/form/HdInput.vue';
-import FormWrapper from 'hd-blocks/storiesWrappers/FormWrapper';
+import HdTooltipped from 'homeday-blocks/src/components/tooltip/HdTooltipped.vue';
+import HdInput from 'homeday-blocks/src/components/form/HdInput.vue';
+import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 
 storiesOf('Tooltipped', module)
   .addParameters({ percy: { skip: true } })

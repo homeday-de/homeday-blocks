@@ -23,7 +23,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'hd-blocks/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .tags-list {
   display: flex;
@@ -34,7 +34,7 @@ export default {
     display: flex;
     align-items: center;
     height: $stack-l;
-    background-color: rgba($heather, 0.5);
+    background-color: getShade($quaternary-color, 50);
     border-radius: 3px;
     padding: 0 $inline-s;
     margin: $stack-s $inline-s 0 0;

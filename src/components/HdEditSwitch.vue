@@ -75,10 +75,10 @@
 
 <script>
 import merge from 'lodash/merge';
-import { getMessages } from 'hd-blocks/lang';
-import editIcon from 'hd-blocks/assets/icons/ic_edit.svg';
-import saveIcon from 'hd-blocks/assets/icons/ic_save.svg';
-import cancelIcon from 'hd-blocks/assets/icons/ic_close--red.svg';
+import { getMessages } from 'homeday-blocks/src/lang';
+import editIcon from 'homeday-blocks/src/assets/icons/ic_edit.svg';
+import saveIcon from 'homeday-blocks/src/assets/icons/ic_save.svg';
+import cancelIcon from 'homeday-blocks/src/assets/icons/ic_close--red.svg';
 
 const BUTTONS = {
   edit: {
@@ -145,9 +145,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'hd-blocks/styles/mixins.scss';
-
-$_red: #E00016;
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .edit-switch {
   $_root: &;
@@ -165,13 +163,13 @@ $_red: #E00016;
       margin-left: $inline-m;
       cursor: pointer;
       &--edit {
-        color: $vivid-blue;
+        color: getShade($secondary-color, 110);
       }
       &--save {
-        color: $mantis;
+        color: $success-color;
       }
       &--cancel {
-        color: $_red;
+        color: $error-color;
       }
       &__label {
         font-size: 18px;
@@ -192,7 +190,7 @@ $_red: #E00016;
       width: 20px;
       height: 20px;
       border-radius: 50%;
-      border: 2px solid $vivid-blue;
+      border: 2px solid getShade($secondary-color, 110);
       border-right-color: transparent;
       animation: edit-switch-loading-indicator-spin 1s linear infinite;
       content: '';
