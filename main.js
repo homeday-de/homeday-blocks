@@ -14,6 +14,12 @@ export { default as HdTagsList } from './src/components/HdTagsList.vue';
 export { default as HdTimeslots } from './src/components/HdTimeslots.vue';
 export { default as HdToast } from './src/components/HdToast.vue';
 
+// Buttons
+export { default as HdArrowButton } from './src/components/buttons/HdArrowButton.vue';
+export { default as HdButton } from './src/components/buttons/HdButton.vue';
+export { default as HdLoaderButton } from './src/components/buttons/HdLoaderButton.vue';
+export { default as HdRadioButton } from './src/components/buttons/HdRadioButton.vue';
+
 // Form
 export { default as HdAutocomplete } from './src/components/form/HdAutocomplete.vue';
 export { default as HdCheckbox } from './src/components/form/HdCheckbox.vue';
