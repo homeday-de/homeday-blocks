@@ -5,7 +5,7 @@ import {
   getDaysDateRange,
   getIntlDateString,
   generateDateCycles,
-} from '@/services/date';
+} from 'homeday-blocks/services/date';
 
 
 describe('Date service', () => {
