@@ -1,9 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
-
-import HdGalleryTiles from 'homeday-blocks/src/components/gallery/HdGalleryTiles.vue';
 import SizedContainerWrapper from 'homeday-blocks/src/storiesWrappers/SizedContainerWrapper';
+import { HdGalleryTiles } from 'homeday-blocks';
 import ITEMS from './mocks/GALLERY_ITEMS';
 
 storiesOf('Gallery/HdGalleryTiles', module)

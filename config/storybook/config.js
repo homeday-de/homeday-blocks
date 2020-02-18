@@ -5,10 +5,10 @@ import { withKnobs } from '@storybook/addon-knobs';
 import '@storybook/addon-console';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 
-import tooltipInstall from 'homeday-blocks/src/components/tooltip/installer';
+import { HdTooltipInstaller } from 'homeday-blocks';
 import HdTheme from './themes/HdTheme';
 
-tooltipInstall();
+HdTooltipInstaller();
 
 addParameters({
   options: {

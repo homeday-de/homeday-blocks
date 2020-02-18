@@ -2,8 +2,7 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import { text, boolean, number } from '@storybook/addon-knobs';
-
-import HdLoaderButton from 'homeday-blocks/src/components/buttons/HdLoaderButton.vue';
+import { HdLoaderButton } from 'homeday-blocks';
 
 storiesOf('HdLoaderButton', module)
   .add('with label 🎛', () => ({

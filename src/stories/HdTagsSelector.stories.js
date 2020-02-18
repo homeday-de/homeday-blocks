@@ -1,8 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
-
-import HdTagsSelector from 'homeday-blocks/src/components/form/HdTagsSelector.vue';
+import { HdTagsSelector } from 'homeday-blocks';
 import ITEMS from './mocks/FORM_ITEMS';
 
 

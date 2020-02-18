@@ -1,7 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
-
-import HdCheckbox from 'homeday-blocks/src/components/form/HdCheckbox.vue';
+import { HdCheckbox } from 'homeday-blocks';
 
 storiesOf('Form/HdCheckbox', module)
   .add('required', () => ({

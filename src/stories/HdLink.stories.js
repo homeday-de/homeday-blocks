@@ -1,7 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
 import { text, select } from '@storybook/addon-knobs';
-import HdLink, { TYPES } from 'homeday-blocks/src/components/HdLink.vue';
+import {
+  HdLink,
+  HdLinkTypes as TYPES,
+} from 'homeday-blocks';
 import HdLinkNote from '../notes/HdLink.md';
 
 const stories = storiesOf('HdLink', module);
