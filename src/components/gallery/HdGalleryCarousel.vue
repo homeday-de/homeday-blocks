@@ -148,9 +148,9 @@ export default {
         this.updateCurrentIndex();
       });
     },
-    updateCurrentIndex(itemIndex) {
-      this.currentIndex = itemIndex;
-      this.$emit('input', itemIndex);
+    updateCurrentIndex() {
+      this.currentIndex = this.value;
+      this.$emit('input', this.currentIndex);
     },
     onStaticClick(event, pointer, cellElement, cellIndex) {
       if (typeof cellIndex === 'undefined') {
