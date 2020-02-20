@@ -148,8 +148,8 @@ export default {
         this.updateCurrentIndex();
       });
     },
-    updateCurrentIndex() {
-      this.currentIndex = this.value;
+    updateCurrentIndex(itemIndex) {
+      this.currentIndex = itemIndex;
       if (window.matchMedia('min-width: $break-tablet')) {
         this.$emit('input', itemIndex);
       }
