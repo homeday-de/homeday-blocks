@@ -150,7 +150,9 @@ export default {
     },
     updateCurrentIndex(itemIndex) {
       this.currentIndex = itemIndex;
-      this.$emit('input', itemIndex);
+      if (window.matchMedia('min-width: $break-tablet')) {
+        this.$emit('input', itemIndex);
+      }
     },
     onStaticClick(event, pointer, cellElement, cellIndex) {
       if (typeof cellIndex === 'undefined') {
