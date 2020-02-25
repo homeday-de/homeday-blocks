@@ -1,8 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
-
-import HdTabsMenu from 'homeday-blocks/src/components/HdTabsMenu.vue';
+import { HdTabsMenu } from 'homeday-blocks';
 import ITEMS from './mocks/MENU_ITEMS';
 
 storiesOf('HdTabsMenu', module)
