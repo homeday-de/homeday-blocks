@@ -2,8 +2,7 @@
 import { storiesOf } from '@storybook/vue';
 import { text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-
-import HdGallery from 'homeday-blocks/src/components/gallery/HdGallery.vue';
+import { HdGallery } from 'homeday-blocks';
 import ITEMS from './mocks/GALLERY_ITEMS';
 
 storiesOf('Gallery/HdGallery', module)
@@ -13,7 +12,7 @@ storiesOf('Gallery/HdGallery', module)
       <div style="max-width: 800px; padding-left: 16px; padding-right: 16px; margin: auto;">
       <HdGallery
         :items="items"
-        :show-caption="false"
+        :show-caption="true"
         @carouselItemClick="onCarouselItemClick"
         @currentItemClick="onCurrentItemClick"
       />

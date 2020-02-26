@@ -1,8 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
 import { number } from '@storybook/addon-knobs';
-
-import HdExpandText from 'homeday-blocks/src/components/HdExpandText.vue';
+import { HdExpandText } from 'homeday-blocks';
 
 storiesOf('HdExpandText', module)
   .add('default 🎛', () => ({
