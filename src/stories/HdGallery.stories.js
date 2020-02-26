@@ -12,7 +12,7 @@ storiesOf('Gallery/HdGallery', module)
       <div style="max-width: 800px; padding-left: 16px; padding-right: 16px; margin: auto;">
       <HdGallery
         :items="items"
-        :show-caption="false"
+        :show-caption="true"
         @carouselItemClick="onCarouselItemClick"
         @currentItemClick="onCurrentItemClick"
       />
