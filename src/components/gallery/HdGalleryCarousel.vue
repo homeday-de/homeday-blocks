@@ -153,9 +153,12 @@ export default {
     updateCurrentIndex(itemIndex) {
       this.currentIndex = itemIndex;
 
-      const mediaQuery = `(max-width: ${sassVariables.breakTablet})`;
+      const tabletMediaQuery = `(max-width: ${sassVariables.breakTablet})`;
 
-      if (mediaMatches(mediaQuery)) {
+      if (mediaMatches(tabletMediaQuery)) {
+        // Should not emit on desktop, because Flickity is used as thumbnails carousel there
+        // Whereas on mobile we use it as a gallery, so we should emit every time slide is changed.
+        // Prevents this bug https://homeday.atlassian.net/browse/CE-1025
         this.$emit('input', itemIndex);
       }
     },
