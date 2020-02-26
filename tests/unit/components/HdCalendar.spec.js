@@ -28,6 +28,18 @@ describe('HdCalendar', () => {
     expect(setWeekIndexTailMock).toHaveBeenCalledTimes(2);
   });
 
+  test('as a user I\'m able to change week and the first available day gets selected', () => {
+    jest.useFakeTimers();
+
+    const selectDateMock = jest.fn();
+    wrapper.setMethods({ selectDate: selectDateMock });
+
+    wrapper.find('.calendar__button--next').trigger('click');
+    jest.advanceTimersByTime(0);
+
+    expect(selectDateMock).toHaveBeenCalled();
+  });
+
   test('as a user I\'m able to select a day', () => {
     const selectDateMock = jest.fn();
     wrapper.setMethods({ selectDate: selectDateMock });
@@ -36,5 +48,13 @@ describe('HdCalendar', () => {
     firstDate.trigger('click');
     expect(selectDateMock).toHaveBeenCalled();
     expect(firstDate.classes()).toContain('calendar__date--selected');
+  });
+
+  test('when the disabled indexes are updated, the first available date is selected', () => {
+    const selectFirstAvialableMock = jest.fn();
+    wrapper.setMethods({ selectFirstAvialable: selectFirstAvialableMock });
+
+    wrapper.vm.disabledIndexes = [];
+    expect(selectFirstAvialableMock).toHaveBeenCalled();
   });
 });
