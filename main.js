@@ -1,10 +1,10 @@
-export { default as HdAlert } from './src/components/HdAlert.vue';
-export { default as HdBadge } from './src/components/HdBadge.vue';
+export { default as HdAlert, TYPES as HdAlertTypes } from './src/components/HdAlert.vue';
+export { default as HdBadge, TYPES as HdBadgeTypes } from './src/components/HdBadge.vue';
 export { default as HdCalendar } from './src/components/HdCalendar.vue';
 export { default as HdEditSwitch } from './src/components/HdEditSwitch.vue';
 export { default as HdExpandText } from './src/components/HdExpandText.vue';
 export { default as HdLazyImage } from './src/components/HdLazyImage.vue';
-export { default as HdLink } from './src/components/HdLink.vue';
+export { default as HdLink, TYPES as HdLinkTypes } from './src/components/HdLink.vue';
 export { default as HdPager } from './src/components/HdPager.vue';
 export { default as HdResponsive } from './src/components/HdResponsive.vue';
 export { default as HdSuggestionItem } from './src/components/HdSuggestionItem.vue';
@@ -16,9 +16,13 @@ export { default as HdToast } from './src/components/HdToast.vue';
 
 // Buttons
 export { default as HdArrowButton } from './src/components/buttons/HdArrowButton.vue';
-export { default as HdButton } from './src/components/buttons/HdButton.vue';
+export { default as HdButton, TYPES as HdButtonTypes } from './src/components/buttons/HdButton.vue';
 export { default as HdLoaderButton } from './src/components/buttons/HdLoaderButton.vue';
 export { default as HdRadioButton } from './src/components/buttons/HdRadioButton.vue';
+
+// Table
+export { default as HdDetailsTable } from './src/components/details-table/HdDetailsTable.vue';
+export { default as HdDetailsTableRow } from './src/components/details-table/HdDetailsTableRow.vue';
 
 // Form
 export { default as HdAutocomplete } from './src/components/form/HdAutocomplete.vue';

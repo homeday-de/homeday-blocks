@@ -1,10 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies, no-console */
 import { storiesOf } from '@storybook/vue';
-
-import HdDynamicForm from 'homeday-blocks/src/components/form/HdDynamicForm.vue';
+import {
+  HdDynamicForm,
+  UtilsService,
+} from 'homeday-blocks';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
-import { formatNestedData } from 'homeday-blocks/src/services/utils';
 import CONFIG from './mocks/forms';
+
+const { formatNestedData } = UtilsService;
 
 storiesOf('Form/HdDynamicForm', module)
   .addDecorator(FormWrapper)

@@ -1,8 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies, no-console */
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
-
-import HdRadio from 'homeday-blocks/src/components/form/HdRadio.vue';
+import { HdRadio } from 'homeday-blocks';
 import ITEMS from './mocks/FORM_ITEMS';
 
 storiesOf('Form/HdRadio', module)

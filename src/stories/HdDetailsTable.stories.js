@@ -1,9 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
 import { boolean } from '@storybook/addon-knobs';
-
-import HdDetailsTable from 'homeday-blocks/src/components/details-table/HdDetailsTable.vue';
-import HdDetailsTableRow from 'homeday-blocks/src/components/details-table/HdDetailsTableRow.vue';
+import {
+  HdDetailsTable,
+  HdDetailsTableRow,
+} from 'homeday-blocks';
 
 storiesOf('HdDetailsTable', module)
   .add('default 🎛', () => ({

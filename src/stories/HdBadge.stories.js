@@ -1,7 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
 import { text, boolean, select } from '@storybook/addon-knobs';
-import HdBadge, { TYPES } from 'homeday-blocks/src/components/HdBadge.vue';
+import {
+  HdBadge,
+  HdBadgeTypes as TYPES,
+} from 'homeday-blocks';
 
 storiesOf('HdBadge', module)
   .add('Playground without details', () => ({

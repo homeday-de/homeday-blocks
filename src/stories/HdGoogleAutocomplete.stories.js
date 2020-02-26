@@ -1,9 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
 import { text } from '@storybook/addon-knobs';
-
-import HdGoogleAutocomplete from 'homeday-blocks/src/components/form/HdGoogleAutocomplete.vue';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
+import { HdGoogleAutocomplete } from 'homeday-blocks';
 
 storiesOf('Form/HdGoogleAutocomplete', module)
   .addParameters({ percy: { skip: true } })
