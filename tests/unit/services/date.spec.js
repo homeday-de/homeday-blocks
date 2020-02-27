@@ -123,13 +123,22 @@ describe('Date service', () => {
     expect(daysInIntervalShort[0]).toBe('Sun');
   });
 
-  it('generateDateCycles returns the list if N weeks, from specific start date ', () => {
+  it('generateDateCycles returns the list if N weeks, from now', () => {
     const cycleLengthWeeks = 2;
     const amountOfCycles = 2;
     const startDateOffset = 0;
     const DAYS_IN_WEEK = 7;
     const dateCycles = generateDateCycles(cycleLengthWeeks, amountOfCycles, startDateOffset);
     expect(dateCycles.length).toBe(cycleLengthWeeks * amountOfCycles * DAYS_IN_WEEK);
-    expect(dateCycles[0].getDate()).toBe((new Date().getDate()));
+    expect(dateCycles[0].toString()).toBe((resetDateTime(new Date()).toString()));
+  });
+
+  it('generateDateCycles returns the list if N weeks, from specific start date', () => {
+    const specificDate = new Date(1789, 4, 5);
+    const cycleLengthWeeks = 2;
+    const amountOfCycles = 2;
+    const startDateOffset = 0;
+    const dateCycles = generateDateCycles(cycleLengthWeeks, amountOfCycles, startDateOffset, specificDate);
+    expect(dateCycles[0].toString()).toBe(specificDate.toString());
   });
 });
