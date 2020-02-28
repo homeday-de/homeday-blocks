@@ -1,5 +1,8 @@
 <template>
-  <button :class="computedClasses">
+  <button
+    v-on="$listeners"
+    :class="computedClasses"
+  >
     <slot />
   </button>
 </template>
