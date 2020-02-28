@@ -125,6 +125,7 @@ export default {
   getPasswordStrength,
   formatNestedData,
   getRandomInt,
+  circleToPath,
   accentFold,
   getArrayOfSize,
   loadScript,
