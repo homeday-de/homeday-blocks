@@ -3,8 +3,6 @@ $iconDimension: 24px;
 $innerIconDimension: 18px;
 $inputLeftPadding: $inline-s;
 $inputBackground: $secondary-bg;
-// TODO: Use a design system value instead of `darken`
-$inputFilledBackground: darken($secondary-bg, 5);
 $inputPaddingTop: $labelHeight + $stack-xs;
 $focusedLabelTop: 5px;
 
@@ -74,10 +72,6 @@ $focusedLabelTop: 5px;
       display: block;
       z-index: 1;
       pointer-events: none;
-    }
-
-    &#{$f}--filled:not(#{$f}--active):not(#{$f}--invalid):before {
-      background: $inputFilledBackground;
     }
 
     &#{$f}--hasIcon:before {
@@ -336,9 +330,6 @@ $focusedLabelTop: 5px;
     &::-ms-reveal {
       display: none;
     }
-    #{$f}--filled:not(#{$f}--active):not(#{$f}--invalid) & {
-      background: $inputFilledBackground;
-    }
 
     #{$f}--disabled & {
       color: getShade($quaternary-color, 70);
@@ -434,9 +425,7 @@ $focusedLabelTop: 5px;
       background: $inputBackground;
       left: calc(50% - 8px);
     }
-    #{$f}--filled:not(#{$f}--active):not(#{$f}--invalid) &:before {
-      background: $inputFilledBackground;
-    }
+
     &:after {
       content: "";
       position: absolute;

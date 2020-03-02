@@ -209,9 +209,7 @@ export default {
       color: getShade($quaternary-color, 80);
       font-size: 20px;
       font-weight: 700;
-      #{$f}--filled:not(#{$f}--active):not(#{$f}--invalid) & {
-        background-color: $inputFilledBackground;
-      }
+
       &__symbol {
         margin-top: $stack-m;
       }
