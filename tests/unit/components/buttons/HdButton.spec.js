@@ -76,4 +76,21 @@ describe('HdButton', () => {
     expect(wrapper.classes()).toContain(className);
     expect(wrapper.html()).toMatchSnapshot();
   });
+
+  it('should forward listeners', () => {
+    const click = jest.fn();
+
+    wrapper = shallowMount(HdButton, {
+      slots: {
+        default: '<span>Button text</span>',
+      },
+      listeners: {
+        click,
+      },
+    });
+
+    wrapper.trigger('click');
+
+    expect(click).toHaveBeenCalled();
+  });
 });
