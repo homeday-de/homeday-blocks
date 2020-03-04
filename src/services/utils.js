@@ -1,19 +1,6 @@
 /* eslint-disable */
 import merge from 'lodash/merge';
 
-const accentMap = {
-  'ä': 'a',
-  'ö': 'o',
-  'ü': 'u',
-  'ß': 'ss'
-};
-
-// Replaces all occurances of accents from the accentMap
-export const accentFold = string => string.split('').map(char => {
-  return accentMap[char] ? accentMap[char] : char;
-}).join('');
-
-
 /** Replace all the occurrences in a string */
 export function populateTemplate(template, map) {
   const regex = new RegExp(`(${Object.keys(map).map(k => `:${k}`).join('|')})`, 'g');
@@ -126,7 +113,6 @@ export default {
   formatNestedData,
   getRandomInt,
   circleToPath,
-  accentFold,
   getArrayOfSize,
   loadScript,
   generateUniqueNumbers,
