@@ -24,7 +24,7 @@ export default {
       this.setListeners();
     },
   },
-  beforeMount() {
+  created() {
     this.setListeners();
   },
   methods: {
