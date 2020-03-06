@@ -1,10 +1,11 @@
 <template>
-  <div class="passwordInput">
+  <div class="password-input">
     <HdInput
-    :type="type"
-    v-model="computedValue"
-    v-bind="$attrs"
-    :class="{ 'field--hasControl': this.showVisibilityToggle }"
+      ref="input"
+      :type="type"
+      v-model="computedValue"
+      v-bind="$attrs"
+      :class="{ 'field--hasControl': this.showVisibilityToggle }"
     />
 
     <span v-if="showVisibilityToggle"
@@ -27,7 +28,7 @@ export default {
   props: {
     value: {
       type: String,
-      required: true,
+      default: '',
     },
   },
   data() {
@@ -50,6 +51,15 @@ export default {
     toggleVisibility() {
       this.type = this.type === 'password' ? 'text' : 'password';
     },
+    showError(...args) {
+      this.$refs.input.showError(...args);
+    },
+    showHelper(...args) {
+      this.$refs.input.showHelper(...args);
+    },
+    hideError(...args) {
+      this.$refs.input.hideError(...args);
+    },
   },
 };
 </script>
@@ -57,14 +67,16 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/inputs.scss';
 
-.passwordInput {
+.password-input {
   position: relative;
 
   .field__visibilityToggle {
+
     position: absolute;
+    top: $inputPaddingTop;
     right: $inline-s;
-    bottom: $stack-m;
     background-image: url('~homeday-blocks/src/assets/icons/ic_visibility-on.svg');
     background-repeat: no-repeat;
     width: 24px;
@@ -77,10 +89,10 @@ export default {
       opacity: 1;
       top: 2px;
       left: 3px;
-      width: 24px;
+      width: calc(100% - 1px);
       height: 0px;
       border-bottom: 2px solid getShade($quaternary-color, 80);
-      border-top: 1px solid $secondary-bg;
+      border-top: 2px solid $inputBackground;
       transform-origin: left;
       transform: rotateZ(45deg) scaleX(1);
       transition: transform .3s;

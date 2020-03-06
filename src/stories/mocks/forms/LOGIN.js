@@ -11,11 +11,10 @@ export default [
     },
   },
   {
-    type: 'input',
+    type: 'inputPassword',
     name: 'password',
     props: {
       required: true,
-      type: 'password',
       label: 'Passwort',
       placeholder: '',
     },
