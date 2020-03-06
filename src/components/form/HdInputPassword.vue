@@ -52,13 +52,16 @@ export default {
       this.type = this.type === 'password' ? 'text' : 'password';
     },
     showError(...args) {
-      this.$refs.input.showError(...args);
+      return this.$refs.input.showError(...args);
     },
     showHelper(...args) {
-      this.$refs.input.showHelper(...args);
+      return this.$refs.input.showHelper(...args);
+    },
+    validate(...args) {
+      return this.$refs.input.validate(...args);
     },
     hideError(...args) {
-      this.$refs.input.hideError(...args);
+      return this.$refs.input.hideError(...args);
     },
   },
 };
