@@ -2,17 +2,37 @@
   <form class="dynamicForm" @submit.prevent="submit" novalidate>
     <slot name="before"/>
     <div v-for="(line, i) in lines" class="dynamicForm__line" :key="`line-${i}`">
+      <template v-for="(item, index) in getItemsArray(line)">
+        <div
+        v-if="Array.isArray(item)"
+        class="dynamicForm__line__item dynamicForm__line__item--with-subitems"
+        :key="`input-array-${index}`"
+        >
+          <component
+            v-for="subItem in item"
+            ref="fields"
+            :is="getComponent(subItem.type)"
+            :key="`input-${subItem.name}`"
+            v-model="formData[subItem.name]"
+            v-bind="subItem.props"
+            :name="subItem.name"
+            class="dynamicForm__line__item"
+            :lang="lang"
+            />
+        </div>
+
       <component
-      v-for="item in getItemsArray(line)"
-      ref="fields"
-      :is="getComponent(item.type)"
-      :key="`input-${item.name}`"
-      v-model="formData[item.name]"
-      v-bind="item.props"
-      :name="item.name"
-      class="dynamicForm__line__item"
-      :lang="lang"
+        v-else
+        ref="fields"
+        :is="getComponent(item.type)"
+        :key="`input-${item.name}`"
+        v-model="formData[item.name]"
+        v-bind="item.props"
+        :name="item.name"
+        class="dynamicForm__line__item"
+        :lang="lang"
       />
+    </template>
     </div>
     <slot name="before-button"/>
     <HdButton
@@ -152,6 +172,10 @@ export default {
       }
       &:last-of-type {
         margin-right: 0;
+      }
+
+      &--with-subitems {
+        display: flex;
       }
     }
   }
