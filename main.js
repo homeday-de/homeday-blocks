@@ -13,6 +13,7 @@ export { default as HdTagsList } from './src/components/HdTagsList.vue';
 export { default as HdTimeslots } from './src/components/HdTimeslots.vue';
 export { default as HdToast } from './src/components/HdToast.vue';
 export { default as HdModal } from './src/components/HdModal.vue';
+export { default as HdToggle } from './src/components/HdToggle.vue';
 
 // Buttons
 export { default as HdArrowButton } from './src/components/buttons/HdArrowButton.vue';
