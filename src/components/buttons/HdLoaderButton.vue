@@ -1,41 +1,71 @@
 <template>
-  <div class="loaderButton" :class="progressClass">
-      <button
-        class="btn btn--primary loaderButton__button"
-        :style="buttonStyles"
-        ref="button"
-        @click="clicked"
-        @keyup.enter.space="clicked"
-        @transitionend="runTransitionQue"
+  <div
+    :class="loaderButtonClasses"
+    :style="{
+      height: `${buttonHeight}px`,
+    }"
+    class="loaderButton"
+    @keydown="setUsingMouse(false)"
+    @mousedown="setUsingMouse(true)"
+  >
+    <button
+      ref="button"
+      :style="buttonStyles"
+      class="btn btn--primary loaderButton__button"
+      @click="clicked"
+      @keyup.enter.space="clicked"
+      @transitionend="runTransitionQue"
+    >
+      <span class="loaderButton__button__label">{{ label }}</span>
+    </button>
+
+    <!-- Loading circle -->
+    <svg
+      v-show="state == 'loading'"
+      ref="circle"
+      :width="`${buttonHeight}px`"
+      :height="`${buttonHeight}px`"
+      class="loaderButton__svg loaderButton__svg--progressCircle"
+    >
+      <path
+        :d="circlePath"
+        :style="{strokeWidth: `${loadingCircleStrokeWidth}px`}"
+      />
+    </svg>
+
+    <svg
+      ref="check"
+      class="loaderButton__svg loaderButton__svg--checkmark"
+      width="46px"
+      height="46px"
+    >
+      <!-- Checkmark -->
+      <g
+        :style="scaledPath"
+        stroke="#2988FF"
       >
-        <span class="loaderButton__button__label">{{ label }}</span>
-      </button>
+        <path d="m11.066433,23.18223l8.364397,7.766946" />
+        <path d="m34.933565,15.050822l-15.180095,15.533867" />
+      </g>
+    </svg>
 
-      <!-- Loading circle -->
-      <svg class="loaderButton__svg loaderButton__svg--progressCircle" v-show="state == 'loading'" :width="`${buttonHeight}px`" :height="`${buttonHeight}px`" ref="circle">
-        <path
-          :d="circlePath"
-          :style="{strokeWidth: `${loadingCircleStrokeWidth}px`}"
-        />
-      </svg>
-
-      <svg class="loaderButton__svg loaderButton__svg--checkmark" width="46px" height="46px" ref="check">
-        <!-- Checkmark -->
-        <g stroke="#1895FF" :style="scaledPath">
-          <path d="m11.066433,23.18223l8.364397,7.766946"/>
-          <path d="m34.933565,15.050822l-15.180095,15.533867"/>
-        </g>
-      </svg>
-
-      <!-- Error cross -->
-      <svg class="loaderButton__svg loaderButton__svg--cross" width="46px" height="46px" ref="cross">
-        <g stroke="#1895FF" :style="scaledPath">
-          <path d="m23,23l-10.3,-10.3"/>
-          <path d="m23,23l10.3,10.3"/>
-          <path d="m23,23l-10.3,10.3"/>
-          <path d="m23,23l10.3,-10.3"/>
-        </g>
-      </svg>
+    <!-- Error cross -->
+    <svg
+      ref="cross"
+      class="loaderButton__svg loaderButton__svg--cross"
+      width="46px"
+      height="46px"
+    >
+      <g
+        :style="scaledPath"
+        stroke="#2988FF"
+      >
+        <path d="m23,23l-10.3,-10.3" />
+        <path d="m23,23l10.3,10.3" />
+        <path d="m23,23l-10.3,10.3" />
+        <path d="m23,23l10.3,-10.3" />
+      </g>
+    </svg>
   </div>
 </template>
 
@@ -44,11 +74,12 @@ import { getRandomInt, circleToPath } from 'homeday-blocks/src/services/utils';
 import debounce from 'lodash/debounce';
 
 export default {
-  name: 'hdLoaderButton',
+  name: 'HdLoaderButton',
   props: {
     loadingState: {
       type: String,
-      validator: val => ['success', 'error'].indexOf(val) !== -1,
+      default: 'idle',
+      validator: val => ['success', 'error', 'idle'].indexOf(val) !== -1,
     },
     label: {
       type: String,
@@ -76,15 +107,23 @@ export default {
       type: Number,
       default: 4,
     },
-  },
-  mounted() {
-    this.undrawAll();
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
       state: 'idle',
       loadedAmount: 0,
       transitionsQue: [],
+      runTransitionQue: debounce(() => {
+        if (this.transitionsQue.length > 0) {
+          const nextInQueMethod = this.transitionsQue.shift();
+          nextInQueMethod();
+        }
+      }, 100),
+      isUsingMouse: false,
     };
   },
   computed: {
@@ -105,8 +144,11 @@ export default {
       const r = (this.buttonHeight - stroke) / 2;
       return circleToPath(c, c, r);
     },
-    progressClass() {
-      return `loaderButton--${this.state}`;
+    loaderButtonClasses() {
+      return {
+        [`loaderButton--${this.state}`]: true,
+        isUsingMouse: this.isUsingMouse,
+      };
     },
     buttonStyles() {
       const isLoading = this.state === 'loading';
@@ -131,23 +173,28 @@ export default {
     loadingState(state) {
       if (state === 'success') {
         this.loadedAmount = 1;
-      }
-      if (state === 'error') {
-        this.transitionsQue.push(this.setErrorState);
+      } else if (state === 'error') {
+        this.transitionsQue = [];
+        this.setErrorState();
+      } else if (state === 'idle') {
+        this.stopLoading();
       }
     },
+  },
+  mounted() {
+    this.undrawAll();
   },
   methods: {
     addToTransitionQue(method) {
       this.transitionsQue.push(method);
     },
-    setIdleState() {
+    setIdleState({ immediate = false } = {}) {
       setTimeout(() => {
         this.$emit(this.state);
         this.undrawAll();
         this.state = 'idle';
         this.loadedAmount = 0;
-      }, this.idleResetTime);
+      }, immediate ? 0 : this.idleResetTime);
     },
     setSuccessState() {
       this.addToTransitionQue(this.draw.bind(this, this.$refs.check));
@@ -158,18 +205,11 @@ export default {
     },
     setErrorState() {
       this.addToTransitionQue(this.draw.bind(this, this.$refs.cross));
-      this.addToTransitionQue(this.setIdleState);
       this.state = 'error';
     },
-    runTransitionQue: debounce(function debouncedQueMethod() {
-      if (this.transitionsQue.length > 0) {
-        const nextInQueMethod = this.transitionsQue.shift();
-        nextInQueMethod();
-      }
-    }, 100),
     fakeLoading() {
       const bumpLoading = () => {
-        const stopTreshold = this.isStatic ? 1 : 0.90;
+        const stopTreshold = this.isStatic ? 1 : 0.79;
         if (this.loadedAmount >= stopTreshold || this.state === 'error') {
           clearInterval(this.loadingInterval);
           return;
@@ -182,10 +222,26 @@ export default {
     },
     clicked() {
       this.$emit('click');
-      if (this.state === 'idle') {
-        this.state = 'loading';
-        this.transitionsQue.push(this.fakeLoading);
+
+      if (this.disabled) {
+        return;
       }
+
+      if (this.state === 'idle') {
+        this.startLoading();
+      }
+    },
+    startLoading() {
+      if (this.state === 'loading') {
+        return;
+      }
+
+      this.state = 'loading';
+      this.transitionsQue.push(this.fakeLoading);
+    },
+    stopLoading() {
+      this.transitionQue = [];
+      this.setIdleState({ immediate: true });
     },
     undrawAll() {
       this.draw(this.$el, 0);
@@ -203,6 +259,9 @@ export default {
         path.addEventListener('transitionend', this.runTransitionQue);
       });
     },
+    setUsingMouse(usingMouse) {
+      this.isUsingMouse = usingMouse;
+    },
   },
 };
 </script>
@@ -216,24 +275,40 @@ export default {
   display: inline-block;
   text-align: center;
   width: 100%;
+  line-height: 1;
 
   &__button {
     max-width: 100%;
     width: 100%;
     height: 46px;
     padding: 0;
-    transition: background-color 0.3s, color 0.3s, width 0.3s cubic-bezier(0.25, 0.25, 0.4, 1.6),  border-width 0.3s, border-color 0.3s;
+    transition:
+      background-color 0.3s,
+      color 0.3s,
+      width 0.3s cubic-bezier(0.25, 0.25, 0.4, 1.6),
+      border-width 0.3s,
+      border-color 0.3s;
+
+    #{$lB}.isUsingMouse & {
+      outline: 0;
+    }
 
     #{$lB}--loading & {
       cursor: progress;
+      pointer-events: none;
       width: 46px; /* make a circle */
       border-width: 4px;
-      border-color: getShade($quaternary-color, 50);
+      border-color: getShade($quaternary-color, 50);;
       border-style: solid;
       border-radius: 30px;
       background-color: transparent;
       color: $white;
-      transition: background-color 0.3s, color 0.3s, width 0.3s cubic-bezier(0.6, -0.6, 0.75, 0.75), border-width 0.3s, border-color 0.3s;
+      transition:
+        background-color 0.3s,
+        color 0.3s,
+        width 0.3s cubic-bezier(0.6, -0.6, 0.75, 0.75),
+        border-width 0.3s,
+        border-color 0.3s;
     }
 
     #{$lB}--success &,
@@ -278,17 +353,12 @@ export default {
 
   &__svg {
     position: absolute;
-    top: 0;
+    top: 50%;
     left: 50%;
     bottom: 0;
-    margin: auto;
-    transform: translateX(-50%);
+    margin: 0;
+    transform: translate(-50%, -50%);
     pointer-events: none;
-    // transition: all $time-s ease-in-out;
-
-    #{$lB}:hover & {
-      transform: translateX(-50%) translateY(-1px);
-    }
 
     path {
       opacity: 0;
