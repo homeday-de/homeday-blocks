@@ -11,7 +11,7 @@ jobs:
   changelog:
     # Job name is Chanegelog
     name: Chanegelog Generator
-    # This job runs on  Linux
+    # This job runs on Linux
     runs-on: ubuntu-latest
     steps:
         - uses: actions/checkout@v2
