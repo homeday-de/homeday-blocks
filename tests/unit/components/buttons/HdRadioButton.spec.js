@@ -11,6 +11,9 @@ describe('HdRadioButton', () => {
   const name = 'lorem';
   const value = 'ipsum';
   const label = 'dolor';
+  const ICON_SELECTOR = '.radioButton__icon';
+  const BACKGROUND_STYLE = 'background-image: url(desktop-icon-url);';
+  const EVENT_EMITTED = 'select';
 
   beforeEach(() => {
     wrapper = mount(HdRadioButton, {
@@ -27,10 +30,7 @@ describe('HdRadioButton', () => {
 
   test('the component is rendered', () => {
     expect(wrapper.html()).toMatchSnapshot();
-  });
-
-  test('test the background-image of the radio icon', () => {
-    expect(wrapper.find('.radioButton__icon').attributes().style).toBe('background-image: url(desktop-icon-url);');
+    expect(wrapper.find(ICON_SELECTOR).attributes().style).toBe(BACKGROUND_STYLE);
   });
 
   test('on change, the proper method is invoked', () => {
@@ -40,9 +40,8 @@ describe('HdRadioButton', () => {
     expect(wrapper.find('label').text()).toBe(label);
 
     // Check events emitted before and after change
-    expect(wrapper.emitted('select')).toBeFalsy();
+    expect(wrapper.emitted(EVENT_EMITTED)).toBeFalsy();
     input.trigger('change');
-    expect(wrapper.emitted('select')).toBeTruthy();
-    expect(wrapper.emitted('select')[0][0]).toMatchObject({ value, name });
+    expect(wrapper.emitted(EVENT_EMITTED)[0][0]).toMatchObject({ value, name });
   });
 });
