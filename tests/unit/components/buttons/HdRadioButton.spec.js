@@ -11,7 +11,6 @@ describe('HdRadioButton', () => {
   const name = 'lorem';
   const value = 'ipsum';
   const label = 'dolor';
-  const mockedSelect = jest.fn();
 
   beforeEach(() => {
     wrapper = mount(HdRadioButton, {
@@ -24,24 +23,26 @@ describe('HdRadioButton', () => {
         mobileIcon,
       },
     });
-
-    wrapper.setMethods({ select: mockedSelect });
   });
 
   test('the component is rendered', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
+  test('test the background-image of the radio icon', () => {
+    expect(wrapper.find('.radioButton__icon').attributes().style).toBe('background-image: url(desktop-icon-url);');
+  });
+
   test('on change, the proper method is invoked', () => {
     const input = wrapper.find('input');
-
     expect(input.attributes().name).toBe(name);
     expect(input.attributes().value).toBe(value);
-
     expect(wrapper.find('label').text()).toBe(label);
 
+    // Check events emitted before and after change
+    expect(wrapper.emitted('select')).toBeFalsy();
     input.trigger('change');
-
-    expect(mockedSelect).toHaveBeenCalled();
+    expect(wrapper.emitted('select')).toBeTruthy();
+    expect(wrapper.emitted('select')[0][0]).toMatchObject({ value, name });
   });
 });
