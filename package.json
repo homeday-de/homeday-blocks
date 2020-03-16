@@ -51,7 +51,7 @@
     "@storybook/addon-links": "5.2.8",
     "@storybook/addon-notes": "5.2.8",
     "@storybook/addon-viewport": "5.2.8",
-    "@storybook/theming": "5.2.8",
+    "@storybook/theming": "5.3.17",
     "@vue/cli-plugin-babel": "4.1.2",
     "@vue/cli-plugin-eslint": "4.1.2",
     "@vue/cli-plugin-unit-jest": "4.1.1",
