@@ -1,11 +1,10 @@
 <template>
   <div class="confirmPassword">
-    <hd-input
+    <hd-input-password
       ref="passwordMain"
       v-model="passwordMain"
       name="passwordMain"
       class="confirm-password__input"
-      type="password"
       :icon="icon"
       :label="t.FORM.PASSWORD.LABEL"
       :required="required"/>
@@ -18,12 +17,11 @@
       </div>
     </div>
 
-    <hd-input
+    <hd-input-password
       ref="passwordConfirm"
       v-model="passwordConfirm"
       name="passwordConfirm"
       class="confirmPassword__input"
-      type="password"
       :icon="icon"
       :label="t.FORM.PASSWORD.LABEL_CONFIRM"
       :required="required"/>
@@ -34,12 +32,12 @@
 import merge from 'lodash/merge';
 import { getMessages } from 'homeday-blocks/src/lang';
 import { getPasswordStrength } from 'homeday-blocks/src/services/utils';
-import HdInput from 'homeday-blocks/src/components/form/HdInput.vue';
+import HdInputPassword from 'homeday-blocks/src/components/form/HdInputPassword.vue';
 
 export default {
   name: 'hd-confirm-password',
   components: {
-    HdInput,
+    HdInputPassword,
   },
   props: {
     value: {
