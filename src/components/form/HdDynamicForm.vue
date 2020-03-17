@@ -30,6 +30,7 @@
 import HdInput from 'homeday-blocks/src/components/form/HdInput.vue';
 import HdCheckbox from 'homeday-blocks/src/components/form/HdCheckbox.vue';
 import HdRadio from 'homeday-blocks/src/components/form/HdRadio.vue';
+import HdInputPassword from 'homeday-blocks/src/components/form/HdInputPassword.vue';
 import HdPasswordConfirm from 'homeday-blocks/src/components/form/HdPasswordConfirm.vue';
 import HdTextarea from 'homeday-blocks/src/components/form/HdTextarea.vue';
 import HdSelect from 'homeday-blocks/src/components/form/HdSelect.vue';
@@ -38,9 +39,11 @@ import HdSplitInput from 'homeday-blocks/src/components/form/HdSplitInput.vue';
 import HdGoogleAutocomplete from 'homeday-blocks/src/components/form/HdGoogleAutocomplete.vue';
 import HdButton from 'homeday-blocks/src/components/buttons/HdButton.vue';
 
-
 export default {
   name: 'HdDynamicForm',
+  components: {
+    HdButton,
+  },
   props: {
     submitLabel: {
       type: String,
@@ -52,11 +55,8 @@ export default {
     },
     lang: {
       type: String,
-      default: '',
+      default: undefined,
     },
-  },
-  components: {
-    HdButton,
   },
   data() {
     return {
@@ -114,6 +114,8 @@ export default {
       switch (type) {
         case 'input':
           return HdInput;
+        case 'inputPassword':
+          return HdInputPassword;
         case 'checkbox':
           return HdCheckbox;
         case 'radio':
