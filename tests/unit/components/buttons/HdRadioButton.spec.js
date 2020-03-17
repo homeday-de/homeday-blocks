@@ -12,8 +12,7 @@ describe('HdRadioButton', () => {
   const value = 'ipsum';
   const label = 'dolor';
   const ICON_SELECTOR = '.radioButton__icon';
-  const BACKGROUND_STYLE = 'background-image: url(desktop-icon-url);';
-  const EVENT_EMITTED = 'select';
+  const ICON_HOVER_SELECTOR = '.radioButton__icon--isHover';
 
   beforeEach(() => {
     wrapper = mount(HdRadioButton, {
@@ -30,10 +29,15 @@ describe('HdRadioButton', () => {
 
   test('the component is rendered', () => {
     expect(wrapper.html()).toMatchSnapshot();
-    expect(wrapper.find(ICON_SELECTOR).attributes().style).toBe(BACKGROUND_STYLE);
+  });
+
+  test('shows the provided icon', () => {
+    expect(wrapper.find(ICON_SELECTOR).attributes().style).toEqual(expect.stringContaining(desktopIcon));
+    expect(wrapper.find(ICON_HOVER_SELECTOR).attributes().style).toEqual(expect.stringContaining(desktopIconHover));
   });
 
   test('on change, the proper method is invoked', () => {
+    const EVENT_EMITTED = 'select';
     const input = wrapper.find('input');
     expect(input.attributes().name).toBe(name);
     expect(input.attributes().value).toBe(value);
