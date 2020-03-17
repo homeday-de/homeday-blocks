@@ -1,8 +1,6 @@
 <script>
-import onResize from 'homeday-blocks/src/services/on-resize';
 import {
   matchMediaAvailable,
-  mediaMatches,
   getBreakpoints,
 } from 'homeday-blocks/src/services/breakpoints';
 
@@ -18,42 +16,46 @@ export default {
     return {
       matches: {},
       indeterminate: !matchMediaAvailable,
+      listeners: {},
     };
   },
   watch: {
     breakpoints() {
-      this.setResponsiveFlags();
+      this.setListeners();
     },
   },
   created() {
-    this.setResponsiveFlags();
-  },
-  mounted() {
-    this.addResizeEvents();
-  },
-  beforeDestroy() {
-    this.removeResizeEvents();
+    this.setListeners();
   },
   methods: {
-    setResponsiveFlags() {
+    /* istanbul ignore next */
+    updateMatch(key, value) {
+      this.matches[key] = value;
+      this.$forceUpdate();
+    },
+    setListeners() {
+      this.listeners = {};
+
       const breakpoints = {
         ...getBreakpoints(),
         ...this.breakpoints,
       };
 
-      this.matches = Object.keys(breakpoints).reduce(
-        (matches, breakpointKey) => ({
-          ...matches,
-          [breakpointKey]: mediaMatches(breakpoints[breakpointKey]),
-        }),
-        {},
-      );
-    },
-    addResizeEvents() {
-      onResize.onThrottled(this.setResponsiveFlags);
-    },
-    removeResizeEvents() {
-      onResize.offThrottled(this.setResponsiveFlags);
+      Object.entries(breakpoints).forEach(([key, value]) => {
+        this.listeners[key] = window.matchMedia(value);
+        this.matches[key] = this.listeners[key].matches;
+        try {
+          /* istanbul ignore next */
+          this.listeners[key].addEventListener('change', (e) => {
+            this.updateMatch(key, e.matches);
+          });
+        } catch (error) {
+          /* istanbul ignore next */
+          this.listeners[key].addListener((e) => {
+            this.updateMatch(key, e.matches);
+          });
+        }
+      });
     },
   },
   render() {

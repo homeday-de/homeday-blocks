@@ -7,7 +7,6 @@ export { default as HdLazyImage } from './src/components/HdLazyImage.vue';
 export { default as HdLink, TYPES as HdLinkTypes } from './src/components/HdLink.vue';
 export { default as HdPager } from './src/components/HdPager.vue';
 export { default as HdResponsive } from './src/components/HdResponsive.vue';
-export { default as HdSuggestionItem } from './src/components/HdSuggestionItem.vue';
 export { default as HdTable } from './src/components/HdTable.vue';
 export { default as HdTabsMenu } from './src/components/HdTabsMenu.vue';
 export { default as HdTagsList } from './src/components/HdTagsList.vue';

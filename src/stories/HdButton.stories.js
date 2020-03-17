@@ -1,5 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
+import { action } from '@storybook/addon-actions';
 import { text, select } from '@storybook/addon-knobs';
 import {
   HdButton,
@@ -17,8 +18,12 @@ Object.entries(TYPES)
     template: `
       <HdButton
         :modifier=modifier
+        @click="onClick"
       >{{ type }}</HdButton>
     `,
+    methods: {
+      onClick: action('onClick'),
+    },
   })));
 
 stories
@@ -34,9 +39,13 @@ stories
         default: select('Modifier', Object.values(TYPES), TYPES.default),
       },
     },
+    methods: {
+      onClick: action('onClick'),
+    },
     template: `
       <HdButton
         :modifier=modifier
+        @click="onClick"
       >{{ text }}</HdButton>
     `,
   }), { percy: { skip: true } });

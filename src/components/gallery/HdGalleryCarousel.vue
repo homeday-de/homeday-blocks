@@ -60,8 +60,6 @@
 import Flickity from 'vue-flickity';
 import onResize from 'homeday-blocks/src/services/on-resize';
 import HdPager from 'homeday-blocks/src/components/HdPager.vue';
-import { mediaMatches } from 'homeday-blocks/src/services/breakpoints';
-import sassVariables from 'homeday-blocks/src/styles/variablesForJS.scss';
 
 export default {
   name: 'HdGalleryCarousel',
@@ -153,12 +151,11 @@ export default {
     updateCurrentIndex(itemIndex) {
       this.currentIndex = itemIndex;
 
-      const tabletMediaQuery = `(max-width: ${sassVariables.breakTablet})`;
+      const slides = this.$refs.flickity.slides();
+      const cells = this.$refs.flickity.cells();
 
-      if (mediaMatches(tabletMediaQuery)) {
-        // Should not emit on desktop, because Flickity is used as thumbnails carousel there
-        // Whereas on mobile we use it as a gallery, so we should emit every time slide is changed.
-        // Prevents this bug https://homeday.atlassian.net/browse/CE-1025
+      // If we are showing one item per slide, we update the index on slide change
+      if (slides.length === cells.length) {
         this.$emit('input', itemIndex);
       }
     },

@@ -9,6 +9,21 @@ const BREAKPOINTS = {
   xl: '(min-width:1200px)',
 };
 
+// https://jestjs.io/docs/en/manual-mocks#mocking-methods-which-are-not-implemented-in-jsdom
+Object.defineProperty(window, 'matchMedia', {
+  writable: true,
+  value: jest.fn().mockImplementation(query => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: jest.fn(), // deprecated
+    removeListener: jest.fn(), // deprecated
+    addEventListener: jest.fn(),
+    removeEventListener: jest.fn(),
+    dispatchEvent: jest.fn(),
+  })),
+});
+
 describe('HdResponsive', () => {
   let wrapper;
 
@@ -40,5 +55,26 @@ describe('HdResponsive', () => {
       },
     });
     expect(wrapper.html()).toMatchSnapshot();
+  });
+
+  it('breakpoint changes are managed', () => {
+    setBreakpoints(BREAKPOINTS);
+    wrapper = mount(HdResponsive, {
+      scopedSlots: {
+        default: `
+          <div>I'm a Slot</div>
+        `,
+      },
+    });
+
+    const mockedSetListeners = jest.fn();
+    wrapper.setMethods({ setListeners: mockedSetListeners });
+
+    const modifiedBreakpoints = BREAKPOINTS;
+    delete modifiedBreakpoints.s;
+
+    wrapper.setProps({ breakpoints: modifiedBreakpoints });
+
+    expect(mockedSetListeners).toHaveBeenCalled();
   });
 });
