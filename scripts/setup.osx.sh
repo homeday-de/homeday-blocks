@@ -1,4 +1,4 @@
-echo "Mac setup started..."
+echo "OSX setup started..."
 echo "Trying to install brew..."
 command -v brew >/dev/null 2>&1 && echo "Already installed :)!" || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 echo "Running brew update..."

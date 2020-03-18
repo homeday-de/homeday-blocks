@@ -17,12 +17,32 @@ $ git remote add upstream git@github.com:homeday-de/homeday-blocks.git
 
 ## Prerequisites
 
-Vue CLI requires [Node.js](https://nodejs.org/) version 8.9 or above (8.11.0+ recommended). You can manage multiple versions of Node on the same machine with nvm or nvm-windows.
+Homeday Blocks requires [Node.js](https://nodejs.org/) version 8.9 or above (8.11.0+ recommended). It's recommended to manage multiple versions of Node on the same machine with [nvm](https://github.com/nvm-sh/nvm) or [nvm-windows](https://github.com/coreybutler/nvm-windows).
+
+Don't forget to setup the [deeper shell integration](https://github.com/nvm-sh/nvm#deeper-shell-integration) in your console to take full advantage of `nvm`. You can achieve this by adding the following alias into your `~/.bashrc`, or `~/.zshrc` file:
+
+```bash
+alias cd="cdnvm(){ cd $1; if [[ -f .nvmrc && -s .nvmrc && -r .nvmrc ]]; then <.nvmrc nvm install; elif [[ $(nvm current) != $(nvm version default) ]]; then nvm use default; fi; };cdnvm"
+```
 
 ## Project setup
 ```
 npm install
 ```
+
+### Download and install dependencies
+
+For a breif explanation of what is being install, please read our [setup documentation file](/docs/SETUP.md).
+
+#### OSX
+
+To install all our dependencies on OSX, run `scripts/setup.osx.sh`.
+
+#### Ubuntu
+
+To install all our dependencies on Ubuntu, run `scripts/setup.ubuntu.sh`.
+
+It is recommended to run the setup script everytime you pull from the `develop` branch. This way you can always be sure to have all the project dependencies up to date.
 
 ### Lints and fixes files
 ```
