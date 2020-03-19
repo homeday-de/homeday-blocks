@@ -55,8 +55,8 @@ export default {
       default: false,
     },
     autocomplete: {
-      type: Boolean,
-      default: false,
+      type: String,
+      default: 'off',
     },
     autofocus: {
       type: Boolean,
