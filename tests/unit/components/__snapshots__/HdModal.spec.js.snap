@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HdModal renders component 1`] = `
+<section class="modal modal--mobile-align-center modal--spacing-large" name="modal">
+  <div class="modal__overlay modal__overlay--dark"></div>
+  <div class="modal__inner">
+    <header class="modal__header">
+      <div>This is the modal header.</div>
+    </header>
+    <div class="modal__body">
+      <div>This is the modal content.</div>
+    </div>
+    <!----> <button class="modal__close modal__close--dark"></button>
+  </div>
+</section>
+`;
