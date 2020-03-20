@@ -26,9 +26,6 @@ alias cd="cdnvm(){ cd $1; if [[ -f .nvmrc && -s .nvmrc && -r .nvmrc ]]; then <.n
 ```
 
 ## Project setup
-```
-npm install
-```
 
 ### Download and install dependencies
 
