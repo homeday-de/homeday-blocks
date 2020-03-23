@@ -1,7 +1,8 @@
 <template>
   <inline-svg
-    v-bind="$attrs"
+    :src="src"
     :transform-source="transform"
+    v-bind="$attrs"
   />
 </template>
 
@@ -16,15 +17,16 @@ export default {
     InlineSvg,
   },
   props: {
-    rotate: {
-      type: Number,
-      default: 0,
+    src: {
+      type: String,
+      required: true,
     },
+    // to set a fill based on the path's class
     fillFromClass: {
       type: Object,
       default: null,
     },
-    // To add class
+    // To add class based on the path's fill
     classFromFill: {
       type: Object,
       default: null,

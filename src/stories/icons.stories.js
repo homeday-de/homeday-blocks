@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
 import { component as VueCodeHighlight } from 'vue-code-highlight';
-import { HdIcon } from 'homeday-blocks';
+import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import * as smallIcons from 'homeday-blocks/src/assets/small-icons';
 import * as bigIcons from 'homeday-blocks/src/assets/big-icons';
 import * as bicolorIcons from 'homeday-blocks/src/assets/bicolor-icons';

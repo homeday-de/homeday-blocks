@@ -7,7 +7,13 @@
       ref="closeBtn"
       class="gallery-overlay__close"
       @click="$emit('close')"
-    />
+    >
+      <HdIcon
+        :src="closeIcon"
+        width="100%"
+        height="100%"
+      />
+    </button>
     <HdGallery
       ref="gallery"
       :items="items"
@@ -31,12 +37,15 @@ import {
 } from 'homeday-blocks/src/services/scrolling';
 import HdGallery from 'homeday-blocks/src/components/gallery/HdGallery.vue';
 import HdZoomerGallery from 'homeday-blocks/src/components/gallery/HdZoomerGallery.vue';
+import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
+import { closeIcon } from 'homeday-blocks/src/assets/small-icons';
 
 export default {
   name: 'HdGalleryOverlay',
   components: {
     HdGallery,
     HdZoomerGallery,
+    HdIcon,
   },
   props: {
     items: {
@@ -47,6 +56,11 @@ export default {
       type: Number,
       default: 0,
     },
+  },
+  data() {
+    return {
+      closeIcon,
+    };
   },
   mounted() {
     freezeScrolling(this.$el);
@@ -124,9 +138,9 @@ export default {
     position: absolute;
     top: $stack-s;
     right: $inline-s;
-    background: url('~homeday-blocks/src/assets/icons/ic_close--white-stroke.svg') no-repeat center / contain;
     width: 24px;
     height: 24px;
+    background: transparent;
     padding: 0;
     border: 0;
     z-index: 10;

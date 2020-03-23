@@ -22,17 +22,19 @@
       <button
         class="btn edit-switch__actions__button edit-switch__actions__button--cancel"
         @click="cancel">
-        <img
+        <HdIcon
           :src="BUTTONS.cancel.icon"
-          class="edit-switch__actions__button__icon">
+          class="edit-switch__actions__button__icon"
+        />
         <p class="edit-switch__actions__button__label">{{ t.GENERAL.CANCEL }}</p>
       </button>
       <button
         class="btn edit-switch__actions__button edit-switch__actions__button--save"
         @click="save">
-        <img
+        <HdIcon
           :src="BUTTONS.save.icon"
-          class="edit-switch__actions__button__icon">
+          class="edit-switch__actions__button__icon"
+        />
         <p class="edit-switch__actions__button__label">{{ t.GENERAL.SAVE }}</p>
       </button>
     </div>
@@ -43,9 +45,10 @@
       <button
         class="btn edit-switch__actions__button edit-switch__actions__button--edit"
         @click="edit">
-        <img
+        <HdIcon
           :src="BUTTONS.edit.icon"
-          class="edit-switch__actions__button__icon">
+          class="edit-switch__actions__button__icon"
+        />
         <p class="edit-switch__actions__button__label">{{ t.GENERAL.EDIT }}</p>
       </button>
     </div>
@@ -74,26 +77,32 @@
 </template>
 
 <script>
+import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import merge from 'lodash/merge';
 import { getMessages } from 'homeday-blocks/src/lang';
-import editIcon from 'homeday-blocks/src/assets/icons/ic_edit.svg';
-import saveIcon from 'homeday-blocks/src/assets/icons/ic_save.svg';
-import cancelIcon from 'homeday-blocks/src/assets/icons/ic_close--red.svg';
+import {
+  editIcon,
+  checkIcon,
+  closeIcon,
+} from 'homeday-blocks/src/assets/small-icons';
 
 const BUTTONS = {
   edit: {
     icon: editIcon,
   },
   save: {
-    icon: saveIcon,
+    icon: checkIcon,
   },
   cancel: {
-    icon: cancelIcon,
+    icon: closeIcon,
   },
 };
 
 export default {
   name: 'HdEditSwitch',
+  components: {
+    HdIcon,
+  },
   props: {
     loading: {
       type: Boolean,
@@ -176,6 +185,9 @@ export default {
         font-weight: 400;
         line-height: 26px;
         margin-left: $inline-xs;
+      }
+      &__icon path {
+        fill: currentColor;
       }
     }
   }

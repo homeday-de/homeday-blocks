@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
-import { HdIcon } from 'homeday-blocks';
+import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import { apartmentFloorIcon as bigIcon } from 'homeday-blocks/src/assets/big-icons';
 import multiColorIcon from './assets/ic_multi-color.svg';
 import multiColorIconWithClasses from './assets/ic_multi-color--with-classes.svg';
