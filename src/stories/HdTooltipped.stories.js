@@ -6,7 +6,7 @@ import {
   HdInput,
 } from 'homeday-blocks';
 
-storiesOf('Tooltipped', module)
+storiesOf('Components|Tooltipped', module)
   .addParameters({ percy: { skip: true } })
   .addDecorator(FormWrapper)
   .add('default', () => ({

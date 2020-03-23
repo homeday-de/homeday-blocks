@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { text } from '@storybook/addon-knobs';
 import { HdRadioButton } from 'homeday-blocks';
 
-storiesOf('HdRadioButton', module).add('base 🎛', () => ({
+storiesOf('Components|HdRadioButton', module).add('base 🎛', () => ({
   components: { HdRadioButton },
   template: `<HdRadioButton
       @select="action"

@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { text, boolean, number } from '@storybook/addon-knobs';
 import { HdLoaderButton } from 'homeday-blocks';
 
-storiesOf('HdLoaderButton', module)
+storiesOf('Components|HdLoaderButton', module)
   .add('with label 🎛', () => ({
     components: { HdLoaderButton },
     props: {

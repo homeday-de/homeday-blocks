@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions';
 import { HdGallery } from 'homeday-blocks';
 import ITEMS from './mocks/GALLERY_ITEMS';
 
-storiesOf('Gallery/HdGallery', module)
+storiesOf('Components|Gallery/HdGallery', module)
   .add('default', () => ({
     components: { HdGallery },
     template: `

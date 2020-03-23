@@ -4,7 +4,7 @@ import { text } from '@storybook/addon-knobs';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 import { HdGoogleAutocomplete } from 'homeday-blocks';
 
-storiesOf('Form/HdGoogleAutocomplete', module)
+storiesOf('Components|Form/HdGoogleAutocomplete', module)
   .addParameters({ percy: { skip: true } })
   .addDecorator(FormWrapper)
   .add('required 🎛', () => ({

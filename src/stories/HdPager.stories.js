@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { number } from '@storybook/addon-knobs';
 import { HdPager } from 'homeday-blocks';
 
-storiesOf('HdPager', module)
+storiesOf('Components|HdPager', module)
   .add('default 🎛', () => ({
     components: { HdPager },
     props: {
