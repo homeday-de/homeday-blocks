@@ -1,5 +1,5 @@
 /* eslint-disable */
-require('dotenv').config();
+require('dotenv').config({ path: '.env.local' });
 const fs = require('fs');
 const fetch = require('node-fetch');
 const _camelCase = require('lodash/camelCase');
@@ -35,14 +35,17 @@ async function download({
   });
   const writer = fs.createWriteStream(`${distPath}/${filename}`);
 
-  const response = await fetch(url);
+  try {
+    const response = await fetch(url);
+    response.body.pipe(writer);
 
-  response.body.pipe(writer);
-
-  return new Promise((resolve, reject) => {
-    writer.on('finish', resolve(filename));
-    writer.on('error', reject);
-  });
+    return new Promise((resolve, reject) => {
+      writer.on('finish', resolve(filename));
+      writer.on('error', reject);
+    });
+  } catch(err) {
+    return Promise.reject(new Error(err));
+  }
 }
 
 async function importAssetsFromFigma({
@@ -99,14 +102,14 @@ async function importAssetsFromFigma({
 
 function createIndex({ files, dist, exportNameRegex = '*', suffix = '' }) {
   const fileContent = [...new Set(files)]
-    .reduce ((content, file) => {
+    .reduce((content, file) => {
       const nameMatches = file.match(exportNameRegex);
       if (!nameMatches) {
         return content;
       }
 
       const exportName = _camelCase(nameMatches.pop()) + suffix;
-      return `${content}\nexport { default as ${exportName} } from './${file}';\n`;
+      return `export { default as ${exportName} } from './${file}';\n${content}`;
     }, '');
 
   console.log('fileContent', fileContent);
