@@ -68,21 +68,21 @@ export default {
     value: {
       type: Number,
       default: 0,
-      validate(value) {
+      validator(value) {
         return value >= 0;
       },
     },
     count: {
       type: Number,
       default: 1,
-      validate(count) {
+      validator(count) {
         return count >= 1;
       },
     },
     maxVisible: {
       type: Number,
       default: 7,
-      validate(maxVisible) {
+      validator(maxVisible) {
         return maxVisible > 3;
       },
     },
