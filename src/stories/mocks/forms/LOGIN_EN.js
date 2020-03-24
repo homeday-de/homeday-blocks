@@ -2,6 +2,7 @@ export default [
   {
     type: 'input',
     name: 'email',
+    lang: 'en',
     props: {
       required: true,
       value: 'contact@homeday.de',
@@ -11,11 +12,10 @@ export default [
     },
   },
   {
-    type: 'input',
+    type: 'inputPassword',
     name: 'password',
     props: {
       required: true,
-      type: 'password',
       label: 'Password',
       placeholder: '',
     },

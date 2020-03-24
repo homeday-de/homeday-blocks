@@ -1,6 +1,6 @@
 language: node_js
-node_js:
-- 10.19.0
+# node_js:
+# - 10.19.0 https://docs.travis-ci.com/user/languages/javascript-with-nodejs/#specifying-nodejs-versions-using-nvmrc
 
 cache: npm
 

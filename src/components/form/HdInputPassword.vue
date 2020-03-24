@@ -1,10 +1,11 @@
 <template>
-  <div class="passwordInput">
+  <div class="password-input">
     <HdInput
-    :type="type"
-    v-model="computedValue"
-    v-bind="$attrs"
-    :class="{ 'field--hasControl': this.showVisibilityToggle }"
+      ref="input"
+      :type="type"
+      v-model="computedValue"
+      v-bind="$attrs"
+      :class="{ 'field--hasControl': this.showVisibilityToggle }"
     />
 
     <span v-if="showVisibilityToggle"
@@ -36,7 +37,7 @@ export default {
   props: {
     value: {
       type: String,
-      required: true,
+      default: '',
     },
   },
   data() {
@@ -60,6 +61,18 @@ export default {
     toggleVisibility() {
       this.type = this.type === 'password' ? 'text' : 'password';
     },
+    showError(...args) {
+      return this.$refs.input.showError(...args);
+    },
+    showHelper(...args) {
+      return this.$refs.input.showHelper(...args);
+    },
+    validate(...args) {
+      return this.$refs.input.validate(...args);
+    },
+    hideError(...args) {
+      return this.$refs.input.hideError(...args);
+    },
   },
 };
 </script>
@@ -67,6 +80,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/inputs.scss';
 
 $icon-color: getShade($quaternary-color, 80);
 
@@ -74,10 +88,10 @@ $icon-color: getShade($quaternary-color, 80);
   position: relative;
 
   .field__visibilityToggle {
+
     position: absolute;
+    top: $inputPaddingTop;
     right: $inline-s;
-    bottom: $stack-m;
-    background-repeat: no-repeat;
     width: 24px;
     height: 24px;
     cursor: pointer;
@@ -88,10 +102,10 @@ $icon-color: getShade($quaternary-color, 80);
       opacity: 1;
       top: 2px;
       left: 3px;
-      width: 24px;
+      width: calc(100% - 1px);
       height: 0px;
       border-bottom: 2px solid $icon-color;
-      border-top: 1px solid $secondary-bg;
+      border-top: 1px solid $inputBackground;
       transform-origin: left;
       transform: rotateZ(45deg) scaleX(1);
       transition: transform .3s;
