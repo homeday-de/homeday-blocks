@@ -73,8 +73,6 @@ async function importAssetsFromFigma({
       return map;
     }, {});
 
-  console.log('filenameMap', filenameMap);
-
   const ids = Object.keys(filenameMap).join(',');
   const assets = await fetchFromFigma(`/images/${fileKey}?ids=${ids}&format=${format}`);
 
@@ -112,17 +110,20 @@ function createIndex({ files, dist, exportNameRegex = '*', suffix = '' }) {
       return `export { default as ${exportName} } from './${file}';\n${content}`;
     }, '');
 
-  console.log('fileContent', fileContent);
-
   fs.writeFile(`${process.cwd()}${dist}/index.js`, fileContent, (err) => {
     if (err) console.error('Failed to create index', err);
   });
 }
 
-CONFIG.FIGMA_FILES.forEach(FIGMA_FILE => importAssetsFromFigma({
-  fileKey: FIGMA_FILE.KEY,
-  format: FIGMA_FILE.FORMAT,
-  filenameRegex: FIGMA_FILE.FILENAME_REGEX,
-  shouldMatchRegex: FIGMA_FILE.SHOULD_MATCH_REGEX,
-  dist: FIGMA_FILE.DIST,
-}));
+
+function importAll() {
+  CONFIG.FIGMA_FILES.forEach(FIGMA_FILE => importAssetsFromFigma({
+    fileKey: FIGMA_FILE.KEY,
+    format: FIGMA_FILE.FORMAT,
+    filenameRegex: FIGMA_FILE.FILENAME_REGEX,
+    shouldMatchRegex: FIGMA_FILE.SHOULD_MATCH_REGEX,
+    dist: FIGMA_FILE.DIST,
+  }));
+};
+
+importAll();
