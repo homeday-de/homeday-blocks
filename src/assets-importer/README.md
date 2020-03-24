@@ -9,7 +9,7 @@ E.g:
 FIGMA_ACCESS_TOKEN=xxxxx-xxxxxxxx-xxxx-xxx-xxxx-xxxxxxxxxxx
 ```
 
-⚠ *Do not commit this file.*
+⚠ **Do not commit this file.**
 
 
 ### Configuration
