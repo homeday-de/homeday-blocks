@@ -126,7 +126,7 @@ When new version is ready to be released, those are the steps we need to take:
 1) Create a release PR from `develop` to `master`
 2) Changelog will be generated during the checks. Check it to determed the release type - `MAJOR`, `MINOR` or `PATCH`.For more info, please see [contribuiton guide](#contribution-guide). If in doubt, consult with rest of the team. 
 3) Create a version bump PR to develop (use [`npm version`](https://docs.npmjs.com/cli/version.html) to make sure version is updated everywhere). This should be merged as last PR before releasing.
-4) Once version bump PR is merged to `develop` and all changes on release PR have passed, merged the release PR. 
+4) Once version bump PR is merged to `develop` and all changes on release PR have passed, merge the release PR. 
 5) Draft a github release with corresponding version (target `master` branch) and publish it, including the before generate chanelog. Version naming convention is `vx.x.x`.
 6) Double check that new version has been automatically published on [npm registry]( https://www.npmjs.com/package/homeday-blocks)
 
