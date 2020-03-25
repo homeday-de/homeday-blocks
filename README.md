@@ -93,10 +93,44 @@ You can also follow build statuses in https://percy.io/Homeday/homeday-blocks
 - `tests/` is an alias for `<rootDir>/tests/`
 - The form components share many classes (mostly `field--*`), to avoid repeatedly defining some of them in each form test, [FIELD_CLASSES.js](https://github.com/homeday-de/homeday-blocks/blob/develop/tests/unit/components/form/FIELD_CLASSES.js) contains the most common classes we need for testing. Feel free to add more classes.
 
-## Deployment
+## Contribution guide
 
-The [CI](https://travis-ci.com/homeday-de/homeday-blocks) will deploy storybook automatically to our [showcase env](https://blocks.homeday.dev), once PR is merged to `develop` branch. 
+Project follows [forking workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow). See [project setup](#project-setup) to get started locally. That means that all code changes enter the project by PR to `develop` branch. Once you open the PR with suggested changes the checks for `build` and `coverage` will run. If those fail, PR needs some more work. :) 
 
+Each PR should be reviewed by 2 team members. Once reviewed and approved,it can be merged. Please follow the following convention when merging the PR: 
+
+1) Use "Squash and merge" to merge the PR. 
+2) Use a meaningful title when merging your PR. 
+3) Give title a semantic meaning through [emojis](https://gitmoji.carloscuesta.me/). Please use emoji first, then the text. 
+4) **:boom: - marks breaking changes (MAJOR version change)** 
+5) **:sparkles: - marks new feature (MINOR version change)**
+6) Everything else is consider a patch change.
+
+It is important to follow this convention, because it makese generating changelog much easier (automatic). We use [changelog github action](https://github.com/homeday-de/github-action-changelog-generator) to automatically generate the changelog. Please see the link for more details on supported conventions. 
+
+#### Examples 
+
+##### Major change
+:boom: Removed HdNotNeeded component (#32)
+
+##### Minor change
+:sparkles: Added HdAwesomeComponent (#33)
+
+##### Patch
+:wrench: Updated travis configuration and run lint on build(#34)
+
+## Version release
+
+When new version is ready to be released, those are the steps we need to take:
+
+1) Create a release PR from `develop` to `master`
+2) Changelog will be generated during the checks. Check it to determed the release type - `MAJOR`, `MINOR` or `PATCH`.For more info, please see [contribuiton guide](#contribution-guide). If in doubt, consult with rest of the team. 
+3) Create a version bump PR to develop (use [`npm version`](https://docs.npmjs.com/cli/version.html) to make sure version is updated everywhere). This should be merged as last PR before releasing.
+4) Once version bump PR is merged to `develop` and all changes on release PR have passed, merged the release PR. 
+5) Draft a github release with corresponding version (target `master` branch) and publish it, including the before generate chanelog. Version naming convention is `vx.x.x`.
+6) Double check that new version has been automatically published on [npm registry]( https://www.npmjs.com/package/homeday-blocks)
+
+The [CI](https://travis-ci.com/homeday-de/homeday-blocks) will deploy storybook automatically to our [showcase env](https://blocks.homeday.dev), once PR is merged to `master` branch. 
 
 ## Consuming in other projects
 
