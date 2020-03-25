@@ -106,7 +106,7 @@ Each PR should be reviewed by 2 team members. Once reviewed and approved,it can 
 5) **:sparkles: - marks new feature (MINOR version change)**
 6) Everything else is consider a patch change.
 
-It is important to follow this convention, because it makese generating changelog much easier (automatic). We use [changelog github action](https://github.com/homeday-de/github-action-changelog-generator) to automatically generate the changelog. Please see the link for more details on supported conventions. 
+It is important to follow this convention, because it makes generating changelog much easier (automatic). We use [changelog github action](https://github.com/homeday-de/github-action-changelog-generator) to automatically generate the changelog. Please see the link for more details on supported conventions. 
 
 #### Examples 
 
