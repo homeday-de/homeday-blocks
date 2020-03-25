@@ -106,7 +106,7 @@ Each PR should be reviewed by at least two team members. Once reviewed and appro
 5) **:sparkles: - marks new feature (MINOR version change)**
 6) Everything else is consider a patch change.
 
-It is important to follow this convention, because it makes generating changelog much easier (automatic). We use [changelog github action](https://github.com/homeday-de/github-action-changelog-generator) to automatically generate the changelog. Please see the link for more details on supported conventions. 
+It is important to follow this convention, because it makese generating changelog much easier (automatic). We use [changelog github action](https://github.com/homeday-de/homeday-blocks/blob/develop/.github/workflows/changelog.yml) to automatically generate the changelog. Please see [the link](https://github.com/homeday-de/github-action-changelog-generator) for more details on supported conventions. 
 
 #### Examples 
 
@@ -126,9 +126,9 @@ When a new version is ready to be released, these are the steps we need to take:
 1) Create a release PR from `develop` to `master`
 2) Changelog will be generated during the checks. Check it to determed the release type - `MAJOR`, `MINOR` or `PATCH`.For more info, please see [contribuiton guide](#contribution-guide). If in doubt, consult with rest of the team. 
 3) Create a version bump PR to develop (use [`npm version`](https://docs.npmjs.com/cli/version.html) to make sure version is updated everywhere). This should be merged as last PR before releasing.
-4) Once version bump PR is merged to `develop` and all changes on release PR have passed, merge the release PR. 
-5) Draft a github release with corresponding version (target `master` branch), include the generated changelog, and publish it. Version naming convention is `vx.x.x`.
-6) Double check that the new version has been automatically published on [npm registry]( https://www.npmjs.com/package/homeday-blocks)
+4) Once version bump PR is merged to `develop` and all checks on release PR have passed, merge the release PR. 
+5) Draft a github release with corresponding version (target `master` branch),include the generated changelog, and publish it. Version naming convention is `vx.x.x`.
+6) After publishing the release on github, new version will be published automatically to the npm registry ([using github action](https://github.com/homeday-de/homeday-blocks/blob/develop/.github/workflows/publish.yml)) that's hooked to the [release event](https://developer.github.com/v3/activity/events/types/#releaseevent). Double check that the new version has been correctly published on [npm registry]( https://www.npmjs.com/package/homeday-blocks)
 
 The [CI](https://travis-ci.com/homeday-de/homeday-blocks) will automatically deploy the storybook to our [showcase env](https://blocks.homeday.dev), once the PR is merged to `master` branch. 
 
