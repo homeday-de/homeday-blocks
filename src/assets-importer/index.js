@@ -110,6 +110,8 @@ async function importAssetsFromFigma({
 
 function createIndex({ files, dist, exportNameRegex = '*', suffix = '' }) {
   const fileContent = [...new Set(files)]
+    // To have a consistent order and avoid unnecessary line changes, we sort the array
+    .sort((a, b) => b.localeCompare(a)) // Ascending
     .reduce((content, file) => {
       const nameMatches = file.match(exportNameRegex);
       if (!nameMatches) {
