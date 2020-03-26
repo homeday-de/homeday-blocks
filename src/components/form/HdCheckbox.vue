@@ -8,6 +8,7 @@
       'hasError': !!error,
       'isUsingMouse': isUsingMouse,
     }"
+    :key="error+isChecked"
     @keydown="setUsingMouse(false)"
     @mousedown="setUsingMouse(true)"
   >
@@ -34,10 +35,12 @@
       @focus="handleFocus"
       @blur="handleBlur"
     >
-      <div class="checkbox__inner__box">
-        <div class="checkbox__inner__box__overlay"></div>
-        <div class="checkbox__inner__box__border"></div>
-        <div class="checkbox__inner__box__tick"></div>
+      <div class="checkbox__inner__box--shadow">
+        <div class="checkbox__inner__box">
+          <div class="checkbox__inner__box__overlay"></div>
+          <div class="checkbox__inner__box__border"></div>
+          <div class="checkbox__inner__box__tick"></div>
+        </div>
       </div>
       <p
         v-if="innerLabel"
@@ -139,6 +142,20 @@ export default {
 <style lang="scss" scoped>
 @import 'homeday-blocks/src/styles/mixins.scss';
 
+.hasError {
+  .checkbox {
+    &__inner {
+      &__box {
+        &--shadow:hover {
+          transition: ease-in 0.1s;
+          border-radius: 100%;
+          box-shadow: 0 0 1px 6px rgba($error-color, 0.15);
+        }
+      }
+    }
+  }
+}
+
 .checkbox {
   $c: &;
   position: relative;
@@ -168,6 +185,15 @@ export default {
       border-radius: 3px;
       overflow: hidden;
       outline-width: 0;
+
+      &--shadow {
+        &:hover, &:active, &:focus {
+          transition: ease-in 0.1s;
+          border-radius: 100%;
+          box-shadow: 0 0 1px 6px rgba(getShade($dodger-blue, 110), 0.15);
+        }
+      }
+
       &__overlay {
         display: block;
         position: absolute;
@@ -184,7 +210,7 @@ export default {
           opacity: 1;
         }
         #{$c}--disabled & {
-          background-color: getShade($quaternary-color, 70);
+          background-color: $white;
         }
       }
       &__border {
@@ -199,7 +225,7 @@ export default {
         #{$c}:hover & {
           border-color: getShade($quaternary-color, 80);
         }
-        #{$c}.isChecked & {
+        #{$c}:not(#{$c}--disabled).isChecked & {
           border-color: transparent;
         }
         #{$c}:not(#{$c}--active).hasError & {
@@ -225,6 +251,10 @@ export default {
         transition: opacity .2s;
         #{$c}.isChecked & {
           opacity: 1;
+        }
+        #{$c}--disabled & {
+          background-image: url('~homeday-blocks/src/assets/icons/ic_checkmark-gray.svg');
+          background-size: 12px;
         }
       }
     }

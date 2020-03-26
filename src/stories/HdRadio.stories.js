@@ -112,7 +112,7 @@ storiesOf('Form/HdRadio', module)
     `,
     data() {
       return {
-        value: '',
+        value: ITEMS[0].value,
         ITEMS,
       };
     },
