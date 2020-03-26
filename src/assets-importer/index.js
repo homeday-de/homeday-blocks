@@ -100,7 +100,7 @@ async function importAssetsFromFigma({
       })),
   );
 
-  createIndex({
+  createIndexFile({
     files: downloadedFiles,
     dist,
     exportNameRegex: new RegExp(`ic_(.*).${format}`),
@@ -108,7 +108,7 @@ async function importAssetsFromFigma({
   });
 }
 
-function createIndex({ files, dist, exportNameRegex = '*', suffix = '' }) {
+function createIndexFile({ files, dist, exportNameRegex = '*', suffix = '' }) {
   const fileContent = [...new Set(files)]
     // To have a consistent order and avoid unnecessary line changes, we sort the array
     .sort((a, b) => b.localeCompare(a)) // Ascending
