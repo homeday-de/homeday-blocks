@@ -27,7 +27,7 @@ describe('HdAutocomplete', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  test('the lang prop validation accepts only danish and english', () => {
+  test('the lang prop validation accepts only German and English', () => {
     expect(wrapper.vm.$options.props.lang.validator('pt')).toBeFalsy();
     expect(wrapper.vm.$options.props.lang.validator('en')).toBeTruthy();
     expect(wrapper.vm.$options.props.lang.validator('de')).toBeTruthy();
