@@ -5,9 +5,14 @@ const fetch = require('node-fetch');
 const _camelCase = require('lodash/camelCase');
 const CONFIG = require('./CONFIG');
 
-if (process.env.FIGMA_ACCESS_TOKEN === undefined) {
-  console.error('FIGMA_ACCESS_TOKEN is undefined. Did you add it to your environment variables?');
-  return;
+if (require.main == module) {
+  const  firstArgument = process.argv[2];
+
+  if (firstArgument === undefined) {
+    importAllCollections();
+  } else {
+    importCollectionByName(firstArgument);
+  }
 }
 
 function fetchFromFigma(endpoint) {
@@ -53,8 +58,13 @@ async function importAssetsFromFigma({
   format,
   dist,
   filenameRegex,
-  shouldMatchRegex,
+  matchingRegex,
 }) {
+  if (process.env.FIGMA_ACCESS_TOKEN === undefined) {
+    console.error('FIGMA_ACCESS_TOKEN is undefined. Did you add it to your environment variables?');
+    process.exit(1);
+  }
+
   const file = await fetchFromFigma(`/files/${fileKey}/components`);
 
   if (!file.meta.components || file.meta.components.length === 0) {
@@ -64,7 +74,7 @@ async function importAssetsFromFigma({
 
   const filenameMap = file.meta.components
     .reduce((map, component) => {
-      const isMatch = Array.isArray(component.name.match(shouldMatchRegex));
+      const isMatch = Array.isArray(component.name.match(matchingRegex));
       if (isMatch) {
         const filename = normalizeFilename({ name: component.name, regex: filenameRegex });
         map[component.node_id] = filename;
@@ -77,7 +87,7 @@ async function importAssetsFromFigma({
   const assets = await fetchFromFigma(`/images/${fileKey}?ids=${ids}&format=${format}`);
 
   if (assets.images === undefined) {
-    console.warn('No images found for regexp', shouldMatchRegex);
+    console.warn('No images found for regexp', matchingRegex);
     return;
   }
 
@@ -115,15 +125,27 @@ function createIndex({ files, dist, exportNameRegex = '*', suffix = '' }) {
   });
 }
 
+async function importCollection(collection) {
+  console.log(`📦 Importing collection "${collection.name}"...`);
+  await importAssetsFromFigma({
+    ...collection,
+    fileKey: collection.figmaFileKey,
+  });
+  console.log(`✅ Collection "${collection.name}" has been imported successfully!`);
+}
 
-function importAll() {
-  CONFIG.FIGMA_FILES.forEach(FIGMA_FILE => importAssetsFromFigma({
-    fileKey: FIGMA_FILE.KEY,
-    format: FIGMA_FILE.FORMAT,
-    filenameRegex: FIGMA_FILE.FILENAME_REGEX,
-    shouldMatchRegex: FIGMA_FILE.SHOULD_MATCH_REGEX,
-    dist: FIGMA_FILE.DIST,
-  }));
-};
+function importAllCollections() {
+  console.log('Importing all the collections...');
+  CONFIG.COLLECTIONS.forEach(collection => importCollection(collection));
+}
 
-importAll();
+function importCollectionByName(collectionName) {
+  const collection = CONFIG.COLLECTIONS.find(({ name }) => name === collectionName);
+
+  if (collection === undefined) {
+    console.error(`Couldn't find collection "${collectionName}", make sure it's in CONFIG.js`);
+    return;
+  }
+
+  importCollection(collection);
+}
