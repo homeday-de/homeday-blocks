@@ -14,7 +14,7 @@
       class="btn btn--primary loaderButton__button"
       @click="clicked"
       @keyup.enter.space="clicked"
-      @transitionend="runTransitionQue"
+      @transitionend="runTransitionQueue"
     >
       <span class="loaderButton__button__label">{{ label }}</span>
     </button>
@@ -119,7 +119,7 @@ export default {
       state: 'idle',
       loadedAmount: 0,
       transitionsQue: [],
-      runTransitionQue: debounce(() => {
+      runTransitionQueue: debounce(() => {
         if (this.transitionsQue.length > 0) {
           const nextInQueMethod = this.transitionsQue.shift();
           nextInQueMethod();
@@ -260,7 +260,7 @@ export default {
         path.style.strokeDasharray = pathLength;
         path.style.strokeDashoffset = pathLength * (1 - drawValue);
 
-        path.addEventListener('transitionend', this.runTransitionQue);
+        path.addEventListener('transitionend', this.runTransitionQueue);
       });
     },
     setUsingMouse(usingMouse) {
