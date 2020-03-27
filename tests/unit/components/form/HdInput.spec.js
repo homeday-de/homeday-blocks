@@ -238,6 +238,6 @@ describe('HdInput', () => {
     wrapper.setData({
       value: TEST_VALUE,
     });
-    // expect(wrapper.find(ERROR_SELECTOR).element.textContent).toBe(errorMsg);
+    expect(wrapper.find(ERROR_SELECTOR).text()).toBe(errorMsg);
   });
 });

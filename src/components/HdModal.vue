@@ -170,7 +170,7 @@ export default {
     position: absolute;
     top: $stack-s;
     right: $inline-s;
-    background: url('~homeday-blocks/src/assets/icons/ic_close.svg') no-repeat center / contain;
+    background: url('~@/assets/icons/ic_close.svg') no-repeat center / contain;
     width: 24px;
     height: 24px;
     padding: 0;
@@ -186,14 +186,14 @@ export default {
     #{$_root}--external-close-icon & {
       top: -24px;
       right: 0;
-      background: $primary-color url('~homeday-blocks/src/assets/icons/ic_close--white.svg');
+      background: $primary-color url('~@/assets/icons/ic_close--white.svg');
       background-position: center;
       background-size: contain;
       background-repeat: no-repeat;
     }
 
     &--light {
-      background: url('~homeday-blocks/src/assets/icons/ic_close--white.svg');
+      background: url('~@/assets/icons/ic_close--white.svg');
     }
   }
   &__inner {
