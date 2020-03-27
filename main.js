@@ -12,6 +12,7 @@ export { default as HdTabsMenu } from './src/components/HdTabsMenu.vue';
 export { default as HdTagsList } from './src/components/HdTagsList.vue';
 export { default as HdTimeslots } from './src/components/HdTimeslots.vue';
 export { default as HdToast } from './src/components/HdToast.vue';
+export { default as HdIcon } from './src/components/HdIcon.vue';
 export { default as HdModal } from './src/components/HdModal.vue';
 
 // Buttons

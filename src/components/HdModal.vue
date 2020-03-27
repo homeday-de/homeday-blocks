@@ -61,15 +61,26 @@
           :class="`modal__close--${closeIconColor}`"
           class="modal__close"
           @click="onCloseClick"
-        />
+        >
+          <HdIcon
+            :src="closeIcon"
+            width="100%"
+          />
+        </button>
       </div>
     </section>
   </transition>
 </template>
 
 <script>
+import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
+import { closeIcon } from 'homeday-blocks/src/assets/small-icons';
+
 export default {
   name: 'HdModal',
+  components: {
+    HdIcon,
+  },
   props: {
     closeIconColor: {
       type: String,
@@ -116,6 +127,11 @@ export default {
       type: Array,
       default: () => [],
     },
+  },
+  data() {
+    return {
+      closeIcon,
+    };
   },
   methods: {
     onCloseClick() {
@@ -170,9 +186,9 @@ export default {
     position: absolute;
     top: $stack-s;
     right: $inline-s;
-    background: url('~@/assets/icons/ic_close.svg') no-repeat center / contain;
     width: 24px;
     height: 24px;
+    background-color: transparent;
     padding: 0;
     border: 0;
     cursor: pointer;
@@ -186,14 +202,16 @@ export default {
     #{$_root}--external-close-icon & {
       top: -24px;
       right: 0;
-      background: $primary-color url('~@/assets/icons/ic_close--white.svg');
-      background-position: center;
-      background-size: contain;
-      background-repeat: no-repeat;
+      background-color: $primary-color;
+      &::v-deep path {
+        fill: white;
+      }
     }
 
     &--light {
-      background: url('~@/assets/icons/ic_close--white.svg');
+      &::v-deep path {
+        fill: white;
+      }
     }
   }
   &__inner {
@@ -259,9 +277,12 @@ export default {
   }
 
   &__header {
-    padding: $inset-m;
     text-align: center;
     border-bottom: 1px solid getShade($quaternary-color, 60);
+
+    &::v-deep > *:first-child {
+      padding: $inset-m;
+    }
   }
 
   &-leave-active {

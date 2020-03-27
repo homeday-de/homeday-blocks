@@ -5,7 +5,7 @@ import { HdTextarea } from 'homeday-blocks';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 import icon from './assets/ic_user.svg';
 
-storiesOf('Form/HdTextarea', module)
+storiesOf('Components|Form/HdTextarea', module)
   .addDecorator(FormWrapper)
   .add('required', () => ({
     components: { HdTextarea },

@@ -10,7 +10,9 @@ exports[`HdModal renders component 1`] = `
     <div class="modal__body">
       <div>This is the modal content.</div>
     </div>
-    <!----> <button class="modal__close modal__close--dark"></button>
+    <!----> <button class="modal__close modal__close--dark">
+      <hdicon-stub src="" width="100%"></hdicon-stub>
+    </button>
   </div>
 </section>
 `;

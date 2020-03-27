@@ -3,7 +3,7 @@
 exports[`HdBadge modifier variations should render with \`badge--disabled\` class if modifier is set to disabled 1`] = `
 <div class="badge badge--disabled badge--with-details"><span class="badge__label"><svg xmlns="http://www.w3.org/2000/svg" class="badge__icon"><circle cx="7" cy="7" r="7" fill="currentColor"></circle></svg>
     test label
-  </span>
+    <hdicon-stub src="" transform="rotate(90)" class="badge__chevron"></hdicon-stub></span>
   <p class="badge__details">test <strong>badge</strong> details!</p>
 </div>
 `;
@@ -11,7 +11,7 @@ exports[`HdBadge modifier variations should render with \`badge--disabled\` clas
 exports[`HdBadge modifier variations should render with \`badge--primary\` class if modifier is set to primary 1`] = `
 <div class="badge badge--primary badge--with-details"><span class="badge__label"><svg xmlns="http://www.w3.org/2000/svg" class="badge__icon"><circle cx="7" cy="7" r="7" fill="currentColor"></circle></svg>
     test label
-  </span>
+    <hdicon-stub src="" transform="rotate(90)" class="badge__chevron"></hdicon-stub></span>
   <p class="badge__details">test <strong>badge</strong> details!</p>
 </div>
 `;
@@ -19,7 +19,7 @@ exports[`HdBadge modifier variations should render with \`badge--primary\` class
 exports[`HdBadge modifier variations should render with \`badge--secondary\` class if modifier is set to secondary 1`] = `
 <div class="badge badge--secondary badge--with-details"><span class="badge__label"><svg xmlns="http://www.w3.org/2000/svg" class="badge__icon"><circle cx="7" cy="7" r="7" fill="currentColor"></circle></svg>
     test label
-  </span>
+    <hdicon-stub src="" transform="rotate(90)" class="badge__chevron"></hdicon-stub></span>
   <p class="badge__details">test <strong>badge</strong> details!</p>
 </div>
 `;
@@ -27,7 +27,7 @@ exports[`HdBadge modifier variations should render with \`badge--secondary\` cla
 exports[`HdBadge modifier variations should render with \`badge--tertiary\` class if modifier is set to tertiary 1`] = `
 <div class="badge badge--tertiary badge--with-details"><span class="badge__label"><svg xmlns="http://www.w3.org/2000/svg" class="badge__icon"><circle cx="7" cy="7" r="7" fill="currentColor"></circle></svg>
     test label
-  </span>
+    <hdicon-stub src="" transform="rotate(90)" class="badge__chevron"></hdicon-stub></span>
   <p class="badge__details">test <strong>badge</strong> details!</p>
 </div>
 `;
@@ -35,7 +35,7 @@ exports[`HdBadge modifier variations should render with \`badge--tertiary\` clas
 exports[`HdBadge should render 1`] = `
 <div class="badge badge--with-details"><span class="badge__label"><svg xmlns="http://www.w3.org/2000/svg" class="badge__icon"><circle cx="7" cy="7" r="7" fill="currentColor"></circle></svg>
     test label
-  </span>
+    <hdicon-stub src="" transform="rotate(90)" class="badge__chevron"></hdicon-stub></span>
   <p class="badge__details">test <strong>badge</strong> details!</p>
 </div>
 `;
