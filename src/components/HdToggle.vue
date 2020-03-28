@@ -218,7 +218,8 @@ $_controlIconSize: 32px;
         right: 0;
         width: $_controlIconSize;
         height: $_controlIconSize;
-        background-image: url('~homeday-blocks/src/assets/icons/ic_chevron-down.svg');
+        // use ilyas's hdIcon later
+        // background-image: url('~homeday-blocks/src/assets/icons/ic_chevron-down.svg');
         background-position: center;
         background-repeat: no-repeat;
         transition: transform ($time-s * 2) ease-in-out;
