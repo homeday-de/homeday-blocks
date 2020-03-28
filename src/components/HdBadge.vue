@@ -28,6 +28,11 @@
         </svg>
       </template>
       {{ label }}
+      <HdIcon
+        :src="chevronIcon"
+        transform="rotate(90)"
+        class="badge__chevron"
+      />
     </span>
     <p
       v-if="hasDetails"
@@ -39,6 +44,9 @@
 </template>
 
 <script>
+import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
+import { chevronIcon } from 'homeday-blocks/src/assets/small-icons';
+
 export const TYPES = {
   DEFAULT: '',
   PRIMARY: 'primary',
@@ -49,6 +57,9 @@ export const TYPES = {
 
 export default {
   name: 'HdBadge',
+  components: {
+    HdIcon,
+  },
   props: {
     modifier: {
       type: String,
@@ -75,6 +86,7 @@ export default {
   data() {
     return {
       collapsed: false,
+      chevronIcon,
     };
   },
   computed: {
@@ -122,15 +134,17 @@ export default {
       border-radius: 4px;
       padding: $stack-xs $inline-s;
       cursor: default;
+    }
 
-      &::after{
-        content: ' ';
-        display: none;
-        background: url('~homeday-blocks/src/assets/icons/ic_chevron-down.svg') no-repeat;
-        width: 16px;
-        height: 16px;
-        margin-left: $inline-m;
-        margin-right: $inline-s;
+    &__chevron {
+      display: none;
+      width: 24px;
+      height: 24px;
+      margin-left: $inline-m;
+      margin-right: $inline-s;
+
+      &::v-deep path {
+        fill: currentColor;
       }
     }
 
@@ -189,28 +203,30 @@ export default {
         }
     }
 
-    &--with-details > &__label{
-      cursor: pointer;
+    &--with-details & {
+      &__label{
+        cursor: pointer;
+      }
 
-      &::after{
+      &__chevron{
         display: block;
       }
     }
 
-    &--collapsed{
+    &--collapsed {
       display: block;
     }
 
-    &--collapsed > &__label{
+    &--collapsed > &__label {
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
-
-      &::after{
-        transform: rotateZ(180deg);
-      }
     }
 
-    &--collapsed > &__details{
+    &--collapsed &__chevron {
+      transform: rotateZ(270deg);
+    }
+
+    &--collapsed > &__details {
       visibility: visible;
       width: 100%;
       white-space: normal;

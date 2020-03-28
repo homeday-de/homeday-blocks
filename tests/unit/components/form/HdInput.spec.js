@@ -213,4 +213,31 @@ describe('HdInput', () => {
       .attributes()['data-lpignore'])
       .toBe('true');
   });
+
+  test('custom validation prop validation', () => {
+    expect(wrapper.vm.$options.props.customRules.validator([1])).toBeFalsy();
+    expect(wrapper.vm.$options.props.customRules.validator([{ validate: () => true, errorMessage: '' }])).toBeTruthy();
+  });
+
+  test('custom validation error message', async () => {
+    // Set a custom validation where input should match 'custom' keyword
+    const errorMsg = 'Input should match custom keyword';
+    const customKeyword = 'custom';
+    wrapper.setProps({
+      customRules: [{
+        validate: value => value === 'custom',
+        errorMessage: errorMsg,
+      }],
+      value: customKeyword,
+    });
+
+    // Makes sure it does not display error msg
+    expect(wrapper.vm.$data.error).toBeNull();
+
+    // Change value and look for error message
+    wrapper.setData({
+      value: TEST_VALUE,
+    });
+    expect(wrapper.find(ERROR_SELECTOR).text()).toBe(errorMsg);
+  });
 });

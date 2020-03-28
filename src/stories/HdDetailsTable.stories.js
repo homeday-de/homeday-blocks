@@ -6,7 +6,7 @@ import {
   HdDetailsTableRow,
 } from 'homeday-blocks';
 
-storiesOf('HdDetailsTable', module)
+storiesOf('Components|HdDetailsTable', module)
   .add('default 🎛', () => ({
     components: {
       HdDetailsTable,

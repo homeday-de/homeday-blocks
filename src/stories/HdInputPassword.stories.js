@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 import { HdInputPassword } from 'homeday-blocks';
 
-storiesOf('Form/HdInputPassword', module)
+storiesOf('Components|Form/HdInputPassword', module)
   .addDecorator(FormWrapper)
   .add('simple', () => ({
     components: { HdInputPassword },

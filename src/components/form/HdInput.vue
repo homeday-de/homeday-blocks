@@ -115,6 +115,13 @@ export default {
       type: String,
       default: '',
     },
+    customRules: {
+      type: Array,
+      default: () => [],
+      validator: rulesProvided => rulesProvided.every(
+        ({ validate, errorMessage }) => typeof validate === 'function' && typeof errorMessage === 'string',
+      ),
+    },
   },
   data() {
     return {
@@ -202,11 +209,21 @@ export default {
         this.showError(this.t.FORM.VALIDATION.INVALID_EMAIL);
       } else if (this.currentType === 'date' && !validateDate(this.value)) {
         this.showError(this.t.FORM.VALIDATION.INVALID_DATE);
+      } else if (this.customRules.length && !this.isEmpty) {
+        this.validateCustomRules();
       } else {
         this.hideError();
       }
 
       return !this.error;
+    },
+    validateCustomRules() {
+      const firstFailingRule = this.customRules.find(({ validate }) => !validate(this.value));
+      if (firstFailingRule) {
+        this.showError(firstFailingRule.errorMessage);
+      } else {
+        this.hideError();
+      }
     },
   },
 };

@@ -7,7 +7,7 @@ import {
 } from 'homeday-blocks';
 import HdLinkNote from '../notes/HdLink.md';
 
-const stories = storiesOf('HdLink', module);
+const stories = storiesOf('Components|HdLink', module);
 
 TYPES.forEach((modifier) => {
   const capitalizedModifier = modifier.charAt(0).toUpperCase() + modifier.slice(1);
