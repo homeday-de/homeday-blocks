@@ -24,6 +24,14 @@ describe('HdArrowButton', () => {
     expect(button.classes()).toContain('arrowButton');
   });
 
+  test('direction class based on direction prop', () => {
+    wrapper.setProps({ direction: 'right' });
+    expect(wrapper.classes()).toContain('arrowButton--right');
+
+    wrapper.setProps({ direction: 'left' });
+    expect(wrapper.classes()).toContain('arrowButton--left');
+  });
+
   // FIXME: https://bugzilla.mozilla.org/show_bug.cgi?id=654072
   test("<button> has autocomplete='off' attribute", () => {
     const button = wrapper.find('button');
@@ -50,12 +58,10 @@ describe('HdArrowButton', () => {
         const button = wrapper.find('button');
 
         expect(button.attributes().disabled).toBeUndefined();
-        expect(wrapper.html()).toMatchSnapshot();
 
         wrapper.setProps({ disabled: true });
 
         expect(button.attributes().disabled).toBeTruthy();
-        expect(wrapper.html()).toMatchSnapshot();
       });
     });
 
@@ -78,22 +84,6 @@ describe('HdArrowButton', () => {
         expect(direction.validator('right')).toBe(true);
         expect(direction.validator('left')).toBe(true);
         expect(direction.validator('top')).toBe(false);
-      });
-    });
-
-    describe('computed', () => {
-      describe('computedClasses', () => {
-        test('direction class based on direction prop', () => {
-          const { vm } = wrapper;
-
-          wrapper.setProps({ direction: 'right' });
-          expect(vm.computedClasses).toBe('arrowButton--right');
-          expect(wrapper.html()).toMatchSnapshot();
-
-          wrapper.setProps({ direction: 'left' });
-          expect(vm.computedClasses).toBe('arrowButton--left');
-          expect(wrapper.html()).toMatchSnapshot();
-        });
       });
     });
   });

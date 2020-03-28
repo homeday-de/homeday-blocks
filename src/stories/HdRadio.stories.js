@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { HdRadio } from 'homeday-blocks';
 import ITEMS from './mocks/FORM_ITEMS';
 
-storiesOf('Form/HdRadio', module)
+storiesOf('Components|Form/HdRadio', module)
   .add('required', () => ({
     components: { HdRadio },
     template: `
