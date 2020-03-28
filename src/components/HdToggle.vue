@@ -218,7 +218,7 @@ $_controlIconSize: 32px;
         right: 0;
         width: $_controlIconSize;
         height: $_controlIconSize;
-        background-image: url('~@/assets/icons/ic_chevron-down.svg');
+        background-image: url('~homeday-blocks/src/assets/icons/ic_chevron-down.svg');
         background-position: center;
         background-repeat: no-repeat;
         transition: transform ($time-s * 2) ease-in-out;
