@@ -6,11 +6,11 @@
       'alert--no-icon': noIcon,
     }"
   >
-    <img
+    <HdIcon
       v-if="!noIcon"
       :src="iconSrc"
       class="alert__icon"
-    >
+    />
     <div
       class="alert__message"
     >
@@ -20,10 +20,13 @@
 </template>
 
 <script>
-import successIcon from 'homeday-blocks/src/assets/icons/ic_success.svg';
-import infoIcon from 'homeday-blocks/src/assets/icons/ic_info.svg';
-import warningIcon from 'homeday-blocks/src/assets/icons/ic_warning.svg';
-import errorIcon from 'homeday-blocks/src/assets/icons/ic_error.svg';
+import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
+import {
+  checkCircleIcon as successIcon,
+  infoIcon,
+  warningIcon,
+  errorIcon,
+} from 'homeday-blocks/src/assets/small-icons';
 
 // The first item is the default
 export const TYPES = {
@@ -43,6 +46,9 @@ export const TYPES = {
 
 export default {
   name: 'HdAlert',
+  components: {
+    HdIcon,
+  },
   props: {
     type: {
       type: String,
@@ -72,6 +78,7 @@ export default {
 @import 'homeday-blocks/src/styles/mixins.scss';
 
 .alert {
+  $root: &;
   display: flex;
   padding: $inset-s;
   @include font('text-small');
@@ -111,6 +118,21 @@ export default {
     align-self: flex-start;
     margin-top: $stack-xxs;
     margin-right: $inline-s;
+
+    ::v-deep path {
+      #{$root}--success & {
+        fill: $success-color;
+      }
+      #{$root}--info & {
+        fill: $secondary-color;
+      }
+      #{$root}--warning & {
+        fill: $tertiary-color;
+      }
+      #{$root}--error & {
+        fill: $error-color;
+      }
+    }
   }
 }
 </style>

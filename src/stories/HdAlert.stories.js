@@ -12,7 +12,7 @@ import {
 
 const TYPES_ARRAY = Object.keys(TYPES);
 
-const stories = storiesOf('HdAlert', module);
+const stories = storiesOf('Components|HdAlert', module);
 
 stories.add('Default', () => ({
   components: { HdAlert },

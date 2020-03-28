@@ -7,7 +7,7 @@ import {
   HdButtonTypes as TYPES,
 } from 'homeday-blocks';
 
-const stories = storiesOf('HdButton', module);
+const stories = storiesOf('Components|HdButton', module);
 
 Object.entries(TYPES)
   .forEach(([type, modifier]) => stories.add(type, () => ({

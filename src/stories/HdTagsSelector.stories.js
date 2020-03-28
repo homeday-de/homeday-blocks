@@ -5,7 +5,7 @@ import { HdTagsSelector } from 'homeday-blocks';
 import ITEMS from './mocks/FORM_ITEMS';
 
 
-storiesOf('Form/HdTagsSelector', module)
+storiesOf('Components|Form/HdTagsSelector', module)
   .add('prefilled', () => ({
     components: { HdTagsSelector },
     template: `

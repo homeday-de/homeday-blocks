@@ -29,7 +29,12 @@
             }"
             type="button"
             @click="goPrev"
-          />
+          >
+            <HdIcon
+              :src="chevronIcon"
+              transform="rotate(180)"
+            />
+          </button>
           <button
             :class="{
               'gallery__controls__next': true,
@@ -37,7 +42,9 @@
             }"
             type="button"
             @click="goNext"
-          />
+          >
+            <HdIcon :src="chevronIcon" />
+          </button>
         </div>
         <p class="gallery__info">{{ `${currentItemIndex + 1}/${items.length}` }}</p>
       </div>
@@ -66,6 +73,9 @@
 import HdGalleryCarousel from 'homeday-blocks/src/components/gallery/HdGalleryCarousel.vue';
 import HdGalleryMedia from 'homeday-blocks/src/components/gallery/HdGalleryMedia.vue';
 import HdGalleryPlaceholder from 'homeday-blocks/src/components/gallery/HdGalleryPlaceholder.vue';
+import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
+import { chevronIcon } from 'homeday-blocks/src/assets/small-icons';
+import { pictureIcon } from 'homeday-blocks/src/assets/big-icons';
 
 export default {
   name: 'HdGallery',
@@ -73,6 +83,7 @@ export default {
     HdGalleryCarousel,
     HdGalleryMedia,
     HdGalleryPlaceholder,
+    HdIcon,
   },
   props: {
     items: {
@@ -102,7 +113,7 @@ export default {
     placeholderIcon: {
       type: String,
       // eslint-disable-next-line global-require
-      default: require('homeday-blocks/src/assets/icons/ic_photos.svg'),
+      default: pictureIcon,
     },
     placeholderText: {
       type: String,
@@ -112,6 +123,7 @@ export default {
   data() {
     return {
       currentItemIndex: this.startIndex,
+      chevronIcon,
     };
   },
   computed: {
@@ -249,18 +261,6 @@ export default {
         opacity: 0;
         pointer-events: none;
       }
-
-      &::before {
-        content: '';
-        display: block;
-        height: 24px;
-        width: 24px;
-        background-image: url('~homeday-blocks/src/assets/icons/ic_arrow.svg');
-        background-position: center;
-        background-size: contain;
-        background-repeat: no-repeat;
-        transform: rotateY(180deg);
-      }
     }
 
     &__next {
@@ -270,10 +270,6 @@ export default {
 
       @media (min-width: $break-desktop) {
         transform: translate(50%, -50%);
-      }
-
-      &::before {
-        transform: none;
       }
     }
   }
