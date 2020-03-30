@@ -15,6 +15,11 @@
       @click="toggleOpen"
     >
       {{ title }}
+
+      <HdIcon
+        :src="chevronIcon"
+        class="hd-toggle__control__icon"
+      />
     </button>
     <div
       ref="body"
@@ -31,9 +36,14 @@
 
 <script>
 import { OnResizeService } from 'homeday-blocks';
+import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
+import { chevronIcon } from 'homeday-blocks/src/assets/small-icons';
 
 export default {
   name: 'HdToggle',
+  components: {
+    HdIcon,
+  },
   props: {
     title: {
       type: String,
@@ -59,6 +69,7 @@ export default {
       bodyHeight: '100%',
       isUsingMouse: false,
       internalFocusRemoved: false,
+      chevronIcon,
     };
   },
   computed: {
@@ -209,29 +220,25 @@ $_controlIconSize: 32px;
 
     &:not([disabled]) {
       cursor: pointer;
-
-      &::before {
-        content: '';
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: $_controlIconSize;
-        height: $_controlIconSize;
-        // use ilyas's hdIcon later
-        // background-image: url('~homeday-blocks/src/assets/icons/ic_chevron-down.svg');
-        background-position: center;
-        background-repeat: no-repeat;
-        transition: transform ($time-s * 2) ease-in-out;
-
-        #{$_root}--is-open & {
-          transform: rotate(180deg);
-        }
-      }
     }
 
     #{$_root}--is-using-mouse & {
       outline: 0;
+    }
+
+    &__icon {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: $_controlIconSize;
+      height: $_controlIconSize;
+      transform: rotate(90deg);
+      transition: transform ($time-s * 2) ease-in-out;
+
+      #{$_root}--is-open & {
+        transform: rotate(-90deg);
+      }
     }
   }
 
