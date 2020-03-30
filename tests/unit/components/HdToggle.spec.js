@@ -15,9 +15,11 @@ const FAKE_HEIGHT = 300;
 describe('HdToggle', () => {
   let wrapper;
   let getScrollHeight;
+  let removeResizeEvents;
 
   beforeEach(() => {
     getScrollHeight = jest.fn(() => FAKE_HEIGHT);
+    removeResizeEvents = jest.fn();
 
     wrapper = shallowMount(HdToggle, {
       propsData: TEST_PROPS,
@@ -26,6 +28,7 @@ describe('HdToggle', () => {
       },
       methods: {
         getScrollHeight,
+        removeResizeEvents,
       },
     });
   });
@@ -74,5 +77,11 @@ describe('HdToggle', () => {
     wrapper.setProps({ open: true });
 
     expect(wrapper.vm.$refs.body.scrollTop).toEqual(0);
+  });
+
+  it('removes resize events before it get destroyed', () => {
+    wrapper.destroy();
+
+    expect(removeResizeEvents).toBeCalled();
   });
 });
