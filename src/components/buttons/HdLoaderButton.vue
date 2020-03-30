@@ -73,6 +73,11 @@
 import { getRandomInt, circleToPath } from 'homeday-blocks/src/services/utils';
 import debounce from 'lodash/debounce';
 
+const LOADING_STATE = Object.freeze({
+  IDLE: 'idle',
+  SUCCESS: 'success',
+  ERROR: 'error',
+});
 const FAKE_LOADING_STOP_THRESHOLD = 0.79;
 
 export default {
@@ -80,8 +85,8 @@ export default {
   props: {
     loadingState: {
       type: String,
-      default: 'idle',
-      validator: val => ['success', 'error', 'idle'].indexOf(val) !== -1,
+      default: LOADING_STATE.IDLE,
+      validator: val => Object.values(LOADING_STATE).indexOf(val) !== -1,
     },
     label: {
       type: String,
@@ -116,7 +121,7 @@ export default {
   },
   data() {
     return {
-      state: 'idle',
+      state: LOADING_STATE.IDLE,
       loadedAmount: 0,
       transitionsQue: [],
       runTransitionQueue: debounce(() => {
@@ -173,14 +178,14 @@ export default {
       }
     },
     loadingState(state) {
-      if (state === 'success') {
+      if (state === LOADING_STATE.SUCCESS) {
         this.loadedAmount = 1;
       }
-      if (state === 'error') {
+      if (state === LOADING_STATE.ERROR) {
         this.transitionsQue = [];
         this.setErrorState();
       }
-      if (state === 'idle') {
+      if (state === LOADING_STATE.IDLE) {
         this.stopLoading();
       }
     },
@@ -196,7 +201,7 @@ export default {
       setTimeout(() => {
         this.$emit(this.state);
         this.undrawAll();
-        this.state = 'idle';
+        this.state = LOADING_STATE.IDLE;
         this.loadedAmount = 0;
       }, immediate ? 0 : this.idleResetTime);
     },
@@ -205,16 +210,16 @@ export default {
       if (this.resetOnSuccess) {
         this.addToTransitionQue(this.setIdleState);
       }
-      this.state = 'success';
+      this.state = LOADING_STATE.SUCCESS;
     },
     setErrorState() {
       this.addToTransitionQue(this.draw.bind(this, this.$refs.cross));
-      this.state = 'error';
+      this.state = LOADING_STATE.ERROR;
     },
     fakeLoading() {
       const bumpLoading = () => {
         const stopTreshold = this.isStatic ? 1 : FAKE_LOADING_STOP_THRESHOLD;
-        if (this.loadedAmount >= stopTreshold || this.state === 'error') {
+        if (this.loadedAmount >= stopTreshold || this.state === LOADING_STATE.ERROR) {
           clearInterval(this.loadingInterval);
           return;
         }
@@ -231,7 +236,7 @@ export default {
         return;
       }
 
-      if (this.state === 'idle') {
+      if (this.state === LOADING_STATE.IDLE) {
         this.startLoading();
       }
     },
