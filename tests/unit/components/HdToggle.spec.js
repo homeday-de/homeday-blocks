@@ -10,19 +10,14 @@ const TEST_PROPS = {
   title: 'HdToggle',
   open: false,
 };
+const FAKE_HEIGHT = 300;
 
 describe('HdToggle', () => {
   let wrapper;
-  let calculateBodyHeight;
-  let ensureBodyScrolledToTop;
-  let enableInternalFocus;
-  let disableInternalFocus;
+  let getScrollHeight;
 
   beforeEach(() => {
-    calculateBodyHeight = jest.fn();
-    ensureBodyScrolledToTop = jest.fn();
-    enableInternalFocus = jest.fn();
-    disableInternalFocus = jest.fn();
+    getScrollHeight = jest.fn(() => FAKE_HEIGHT);
 
     wrapper = shallowMount(HdToggle, {
       propsData: TEST_PROPS,
@@ -30,10 +25,7 @@ describe('HdToggle', () => {
         default: TEST_CONTENT,
       },
       methods: {
-        calculateBodyHeight,
-        ensureBodyScrolledToTop,
-        enableInternalFocus,
-        disableInternalFocus,
+        getScrollHeight,
       },
     });
   });
@@ -48,14 +40,6 @@ describe('HdToggle', () => {
 
   it('renders the slot', () => {
     expect(wrapper.find(TOGGLE_BODY_SELECTOR).element.innerHTML).toBe(TEST_CONTENT);
-  });
-
-  it('toggles the body with title click ', () => {
-    const toggleControl = wrapper.find(TOGGLE_CONTROL_SELECTOR);
-
-    toggleControl.trigger('click');
-
-    expect(wrapper.emitted('toggle')).toBeTruthy();
   });
 
   it('toggles the body with the prop `open` true/false', () => {
@@ -73,32 +57,22 @@ describe('HdToggle', () => {
   });
 
   it('won\'t toggle if the prop `canBeToggled` is set to false', () => {
+    expect(wrapper.find(TOGGLE_CONTROL_SELECTOR).attributes().disabled).toBeFalsy();
+
     wrapper.setProps({ canBeToggled: false });
 
-    const toggleControl = wrapper.find(TOGGLE_CONTROL_SELECTOR);
-
-    toggleControl.trigger('click');
-
-    expect(wrapper.emitted('toggle')).toBeFalsy();
+    expect(wrapper.find(TOGGLE_CONTROL_SELECTOR).attributes().disabled).toBeTruthy();
   });
 
   it('calculates its body height after mount', () => {
-    expect(calculateBodyHeight).toBeCalled();
+    expect(getScrollHeight).toBeCalled();
+
+    expect(wrapper.vm.bodyHeight).toEqual(FAKE_HEIGHT);
   });
 
   it('ensures the body is scrolled to top when toggled', () => {
     wrapper.setProps({ open: true });
 
-    expect(ensureBodyScrolledToTop).toBeCalled();
-  });
-
-  it('enables/disables internal focus when toggled/untoggled', async () => {
-    await wrapper.setProps({ open: true });
-
-    expect(enableInternalFocus).toBeCalled();
-
-    await wrapper.setProps({ open: false });
-
-    expect(disableInternalFocus).toBeCalled();
+    expect(wrapper.vm.$refs.body.scrollTop).toEqual(0);
   });
 });
