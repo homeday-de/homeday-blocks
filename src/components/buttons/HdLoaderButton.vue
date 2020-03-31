@@ -73,11 +73,11 @@
 import { getRandomInt, circleToPath } from 'homeday-blocks/src/services/utils';
 import debounce from 'lodash/debounce';
 
-const LOADING_STATE = Object.freeze({
+export const LOADING_STATE = {
   IDLE: 'idle',
   SUCCESS: 'success',
   ERROR: 'error',
-});
+};
 const FAKE_LOADING_STOP_THRESHOLD = 0.79;
 
 export default {
