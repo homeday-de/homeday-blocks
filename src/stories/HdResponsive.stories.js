@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/vue';
 import { HdResponsive } from 'homeday-blocks';
 import HdResponsiveNote from '../notes/HdResponsive.md';
 
-storiesOf('HdResponsive', module)
+storiesOf('Components|HdResponsive', module)
   .add('default 📝', () => ({
     components: { HdResponsive },
     data() {

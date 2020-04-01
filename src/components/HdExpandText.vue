@@ -25,19 +25,28 @@
       @click="toggleExpanded"
     >
       {{ toggleText }}
-      <div class="expand-text__toggle__icons"/>
+      <HdIcon
+        :src="chevronIcon"
+        transform="rotate(90)"
+        class="expand-text__toggle__icon"
+      />
     </button>
   </div>
 </template>
 
 <script>
 import merge from 'lodash/merge';
+import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import { getMessages } from 'homeday-blocks/src/lang';
 import { mediaMatches } from 'homeday-blocks/src/services/breakpoints';
 import onResize from 'homeday-blocks/src/services/on-resize';
+import { chevronIcon } from 'homeday-blocks/src/assets/small-icons';
 
 export default {
   name: 'HdExpandText',
+  components: {
+    HdIcon,
+  },
   props: {
     // Can be an object with keys set to breakpoints and values the desired
     // lines count
@@ -80,6 +89,7 @@ export default {
       isToggleVisible: true,
       wrapperHeight: 0,
       fullHeight: 0,
+      chevronIcon,
     };
   },
   computed: {
@@ -189,7 +199,7 @@ export default {
 
 .expand-text {
   $_root: &;
-  $_icon-size: 16px;
+  $_icon-size: 24px;
 
   &__wrapper {
     position: relative;
@@ -247,56 +257,19 @@ export default {
       background-color: getShade($secondary-color, 110);
     }
 
-    &__icons {
+    &__icon {
       position: relative;
       width: $_icon-size;
       height: $_icon-size;
       margin-left: $inline-xs;
       transition: transform ($time-s * 2) ease-in-out;
 
+      path {
+        fill: currentColor;
+      }
+
       #{$_root}.isExpanded & {
-        transform: rotateZ(180deg);
-      }
-
-      &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: block;
-        width: 100%;
-        height: 100%;
-        background-image: url('../assets/icons/ic_chevron-down.svg');
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: contain;
-        transition: opacity $time-s ease-in-out;
-
-        #{$_root_toggle}:hover &,
-        #{$_root_toggle}:focus & {
-          opacity: 0;
-        }
-      }
-
-      &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: block;
-        width: 100%;
-        height: 100%;
-        background-image: url('../assets/icons/ic_chevron-down--active.svg');
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: contain;
-        transition: opacity $time-s ease-in-out;
-        opacity: 0;
-
-        #{$_root_toggle}:hover &,
-        #{$_root_toggle}:focus & {
-          opacity: 1;
-        }
+        transform: rotateZ(270deg);
       }
     }
   }

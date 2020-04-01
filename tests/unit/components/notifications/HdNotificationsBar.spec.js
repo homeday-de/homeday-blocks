@@ -3,7 +3,6 @@ import HdNotificationsBar from '@/components/notifications/HdNotificationsBar.vu
 
 const MESSAGE = 'Hello world!, <a href="/test">This is a link...</a>';
 const MESSAGE_SELECTOR = '.notifications-bar__message';
-const ICON_SELECTOR = '.notifications-bar__icon__image';
 const ICON_FAKE_PATH = '/foo/bar/icon.svg';
 
 describe('HdNotificationsBar', () => {
@@ -27,7 +26,7 @@ describe('HdNotificationsBar', () => {
 
   test('supports custom icon', () => {
     wrapper.setProps({ customIcon: ICON_FAKE_PATH });
-    expect(wrapper.find(ICON_SELECTOR).attributes().src).toBe(ICON_FAKE_PATH);
+    expect(wrapper.vm.icon).toBe(ICON_FAKE_PATH);
   });
 
   test('supports setting a custom offset', () => {

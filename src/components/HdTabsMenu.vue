@@ -161,11 +161,11 @@ export default {
       display: block;
       position: absolute;
       top: 0;
-      left: 0;
+      right: 0;
       width: 24px;
       height: 100%;
-      background-color: $white;
-      background-image: url('../assets/icons/ic_arrow-left.svg');
+      background-color: $primary-bg;
+      background-image: url('~homeday-blocks/src/assets/small-icons/ic_chevron.svg');
       background-repeat: no-repeat;
       background-position: center left;
       background-size: contain;
@@ -176,35 +176,35 @@ export default {
       display: block;
       position: absolute;
       top: 0;
-      left: 24px;
+      right: 24px;
       width: 16px;
       height: 100%;
       background-image: linear-gradient(
-        90deg,
-        $white,
-        rgba($white, 0)
+        -90deg,
+        $primary-bg,
+        rgba($primary-bg, 0)
       );
       content: '';
     }
 
     &.previous {
       left: 0;
+
+      &::before {
+        transform: rotate(180deg);
+        right: auto;
+        left: 0;
+      }
+
+      &::after {
+        left: 24px;
+        right: auto;
+        transform: rotate(180deg);
+      }
     }
 
     &.next {
       right: 0;
-
-      &::before {
-        left: auto;
-        right: 0;
-        transform: rotate(180deg);
-      }
-
-      &::after {
-        right: 24px;
-        left: auto;
-        transform: rotate(180deg);
-      }
     }
   }
 

@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
 
-storiesOf('v-hd-tooltip', module)
+storiesOf('Directives|v-hd-tooltip', module)
   .addParameters({ percy: { skip: true } })
   .add('default', () => ({
     template: `

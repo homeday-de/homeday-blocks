@@ -5,7 +5,7 @@ import { select } from '@storybook/addon-knobs';
 import { HdNotifications } from 'homeday-blocks';
 import HdNotificationsNote from '../notes/HdNotifications.md';
 
-storiesOf('HdNotifications', module)
+storiesOf('Components|HdNotifications', module)
   .add('default 🎛📝', () => ({
     components: { HdNotifications },
     props: {

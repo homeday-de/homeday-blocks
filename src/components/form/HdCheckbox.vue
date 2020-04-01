@@ -37,7 +37,10 @@
       <div class="checkbox__inner__box">
         <div class="checkbox__inner__box__overlay"></div>
         <div class="checkbox__inner__box__border"></div>
-        <div class="checkbox__inner__box__tick"></div>
+        <HdIcon
+          :src="checkIcon"
+          class="checkbox__inner__box__tick"
+        />
       </div>
       <p
         v-if="innerLabel"
@@ -57,9 +60,14 @@
 <script>
 import merge from 'lodash/merge';
 import { getMessages } from 'homeday-blocks/src/lang';
+import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
+import { checkIcon } from 'homeday-blocks/src/assets/small-icons';
 
 export default {
   name: 'HdCheckbox',
+  components: {
+    HdIcon,
+  },
   props: {
     name: {
       type: String,
@@ -99,6 +107,7 @@ export default {
       error: null,
       isActive: false,
       isUsingMouse: false,
+      checkIcon,
     };
   },
   computed: {
@@ -217,14 +226,14 @@ export default {
         top:0; left:0;
         width: 100%;
         height: 100%;
-        background-image: url('~homeday-blocks/src/assets/icons/ic_checkmark-white.svg');
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: 20px;
         opacity: 0;
         transition: opacity .2s;
         #{$c}.isChecked & {
           opacity: 1;
+        }
+
+        &::v-deep path {
+          fill: $white;
         }
       }
     }
