@@ -89,13 +89,19 @@ export default {
         this.$set(this.formData, item.name, item.initialValue);
       });
     },
-    submit() {
-      const invalidFields = this.$refs.fields.filter((field) => {
+    getInvalidFields() {
+      return this.$refs.fields.filter((field) => {
         if (field.validate) {
           return !field.validate();
         }
         return false;
       });
+    },
+    validate() {
+      return this.getInvalidFields().length === 0;
+    },
+    submit() {
+      const invalidFields = this.getInvalidFields();
 
       this.$emit('submit', {
         data: this.formData,
