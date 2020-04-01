@@ -8,19 +8,29 @@
         :key="tag.value"
         class="tags-selector__selected-tags__tag">
         <div class="tags-selector__selected-tags__tag__label">{{ tag.label }}</div>
-        <div
-          role="button"
+        <button
           class="tags-selector__selected-tags__tag__remove"
-          @click="removeTag(index)"/>
+          @click="removeTag(index)"
+        >
+          <HdIcon
+            :src="closeIcon"
+            width="70%"
+            height="70%"
+          />
+        </button>
       </div>
-      <img
+      <button
         ref="panelToggle"
         :class="panelToggleClasses"
         class="tags-selector__selected-tags__panel-toggle"
-        src="~homeday-blocks/src/assets/icons/ic_add-circle--blue.svg"
-        alt="Add"
-        role="button"
-        @click="togglePanel">
+        @click="togglePanel"
+      >
+        <HdIcon
+          :src="addCircleIcon"
+          width="100%"
+          height="100%"
+        />
+      </button>
     </section>
     <section
       ref="panel"
@@ -39,8 +49,14 @@
 </template>
 
 <script>
+import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
+import { addCircleIcon, closeIcon } from 'homeday-blocks/src/assets/small-icons';
+
 export default {
   name: 'HdTagsSelector',
+  components: {
+    HdIcon,
+  },
   props: {
     value: {
       type: Array,
@@ -56,6 +72,8 @@ export default {
     return {
       selectedTags: this.value,
       panelVisible: false,
+      addCircleIcon,
+      closeIcon,
     };
   },
   computed: {
@@ -183,15 +201,18 @@ export default {
       padding: 0 $inline-s;
       margin: $stack-s $inline-s 0 0;
       &__remove {
+        display: flex;
+        justify-content: center;
+        align-content: center;
         width: 24px;
         height: 24px;
-        background-image: url('~homeday-blocks/src/assets/icons/ic_close.svg');
-        background-repeat: no-repeat;
-        background-size: $inset-m;
-        background-position: center;
-        border-radius: 50%;
+        background-color: transparent;
+        padding: 0;
         margin-left: $stack-s;
+        border: 0;
+        border-radius: 50%;
         cursor: pointer;
+
         transition: background-color $time-s;
         &:hover {
           background-color: rgba(0,0,0, .1);
@@ -201,12 +222,19 @@ export default {
     &__panel-toggle {
       width: 24px;
       height: 24px;
+      background: transparent;
+      padding: 0;
       margin-top: #{$stack-s + $stack-xs};
       margin-left: $inset-xs;
+      border: 0;
       cursor: pointer;
       transition: transform $time-s ease-in-out;
       &--close {
         transform: rotateZ(45deg);
+      }
+
+      &::v-deep path {
+        fill: getShade($secondary-color, 110);
       }
     }
   }

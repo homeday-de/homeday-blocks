@@ -12,11 +12,10 @@
     }"
   >
     <div class="notifications-bar__icon">
-      <img
-        :alt="`type-${icon}`"
+      <HdIcon
         :src="icon"
         class="notifications-bar__icon__image"
-      >
+      />
     </div>
     <div
       class="notifications-bar__message"
@@ -26,8 +25,19 @@
 </template>
 
 <script>
+import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
+import {
+  verifiedIcon,
+  reportIcon,
+  warningIcon,
+  bellIcon,
+} from 'homeday-blocks/src/assets/small-icons';
+
 export default {
   name: 'HdNotificationsBar',
+  components: {
+    HdIcon,
+  },
   props: {
     type: {
       type: String,
@@ -74,21 +84,19 @@ export default {
         return this.customIcon;
       }
 
-      /* eslint-disable global-require */
       if (this.type === 'success') {
-        return require('homeday-blocks/src/assets/icons/ic_shield-checkmark.svg');
+        return verifiedIcon;
       }
 
       if (this.type === 'error') {
-        return require('homeday-blocks/src/assets/icons/ic_alert-octagon.svg');
+        return reportIcon;
       }
 
       if (this.type === 'warning') {
-        return require('homeday-blocks/src/assets/icons/ic_alert-triangle.svg');
+        return warningIcon;
       }
 
-      return require('homeday-blocks/src/assets/icons/ic_bell.svg');
-      /* eslint-enable global-require */
+      return bellIcon;
     },
   },
 };
@@ -163,6 +171,10 @@ export default {
     justify-content: center;
     margin-right: $inline-s;
     width: 24px;
+
+    path {
+      fill: currentColor;
+    }
   }
 
   &__message {
