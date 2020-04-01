@@ -35,7 +35,7 @@
       @focus="handleFocus"
       @blur="handleBlur"
     >
-      <div class="checkbox__inner__box--shadow">
+      <div class="checkbox__inner__box__shadow">
         <div class="checkbox__inner__box">
           <div class="checkbox__inner__box__overlay"></div>
           <div class="checkbox__inner__box__border"></div>
@@ -155,7 +155,7 @@ export default {
   .checkbox {
     &__inner {
       &__box {
-        &--shadow:hover {
+        &__shadow:hover {
           transition: ease-in 0.1s;
           border-radius: 100%;
           box-shadow: 0 0 1px 6px rgba($error-color, 0.15);
@@ -195,7 +195,7 @@ export default {
       overflow: hidden;
       outline-width: 0;
 
-      &--shadow {
+      &__shadow {
         &:hover, &:active, &:focus {
           transition: ease-in 0.1s;
           border-radius: 100%;

@@ -4,7 +4,7 @@ exports[`HdCheckbox Accepts <html> code as innerLabel 1`] = `
 <div class="checkbox">
   <!----> <input type="checkbox" name="Test checkbox" class="checkbox__input">
   <div aria-checked="false" tabindex="0" role="checkbox" class="checkbox__inner">
-    <div class="checkbox__inner__box--shadow">
+    <div class="checkbox__inner__box__shadow">
       <div class="checkbox__inner__box">
         <div class="checkbox__inner__box__overlay"></div>
         <div class="checkbox__inner__box__border"></div>
@@ -21,7 +21,7 @@ exports[`HdCheckbox renders component 1`] = `
 <div class="checkbox">
   <!----> <input type="checkbox" name="Test checkbox" class="checkbox__input">
   <div aria-checked="false" tabindex="0" role="checkbox" class="checkbox__inner">
-    <div class="checkbox__inner__box--shadow">
+    <div class="checkbox__inner__box__shadow">
       <div class="checkbox__inner__box">
         <div class="checkbox__inner__box__overlay"></div>
         <div class="checkbox__inner__box__border"></div>
