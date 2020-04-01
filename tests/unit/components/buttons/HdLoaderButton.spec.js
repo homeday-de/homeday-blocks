@@ -52,7 +52,7 @@ describe('HdLoaderButton', () => {
     // after it start loading it should be loading
     wrapper.vm.startLoading();
     expect(wrapper.vm.state).toEqual('loading');
-    expect(wrapper.classes()).toContain(`${BASE_CLASS}--loading`);
+    expect(wrapper.classes()).toContain(`${BASE_CLASS}--${LOADING_STATE.LOADING}`);
 
     // on success it should be success
     wrapper.vm.setSuccessState();
