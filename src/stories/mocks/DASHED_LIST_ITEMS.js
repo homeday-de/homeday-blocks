@@ -1,22 +1,26 @@
 export default [
   {
-    label: 'item',
-    value: '1',
+    label: 'item 1',
+    value: '1 (value)',
   },
   {
-    label: 'item',
-    value: '2',
+    label: 'Item 2',
+    value: '2 (value)',
+    secondaryValue: '2 (secondaryValue)',
   },
   {
-    label: 'item',
-    value: '3',
-  },
-  {
-    label: 'item',
-    value: '4',
-  },
-  {
-    label: 'item',
-    value: '5',
+    title: 'Title',
+    items: [
+      {
+        label: 'Item 3',
+        value: '3',
+        secondaryValue: '3 (secondaryValue)',
+      },
+      {
+        label: 'Item 4',
+        value: '4',
+        secondaryValue: '4 (secondaryValue)',
+      },
+    ],
   },
 ];
