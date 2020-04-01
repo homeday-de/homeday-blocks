@@ -21,7 +21,7 @@
 
     <!-- Loading circle -->
     <svg
-      v-show="state == 'loading'"
+      v-show="state == LOADING_STATE.LOADING"
       ref="circle"
       :width="`${buttonHeight}px`"
       :height="`${buttonHeight}px`"
@@ -72,9 +72,11 @@
 <script>
 import { getRandomInt, circleToPath } from 'homeday-blocks/src/services/utils';
 import debounce from 'lodash/debounce';
+import omit from 'lodash/omit';
 
 export const LOADING_STATE = {
   IDLE: 'idle',
+  LOADING: 'loading',
   SUCCESS: 'success',
   ERROR: 'error',
 };
@@ -86,7 +88,9 @@ export default {
     loadingState: {
       type: String,
       default: LOADING_STATE.IDLE,
-      validator: val => Object.values(LOADING_STATE).indexOf(val) !== -1,
+      validator: val => Object.values(
+        omit(LOADING_STATE, 'LOADING'),
+      ).indexOf(val) !== -1,
     },
     label: {
       type: String,
@@ -131,6 +135,7 @@ export default {
         }
       }, 100),
       isUsingMouse: false,
+      LOADING_STATE,
     };
   },
   computed: {
@@ -158,7 +163,7 @@ export default {
       };
     },
     buttonStyles() {
-      const isLoading = this.state === 'loading';
+      const isLoading = this.state === LOADING_STATE.LOADING;
       const setIfLoading = val => (isLoading ? `${val}px` : undefined);
 
       return {
@@ -241,11 +246,11 @@ export default {
       }
     },
     startLoading() {
-      if (this.state === 'loading') {
+      if (this.state === LOADING_STATE.LOADING) {
         return;
       }
 
-      this.state = 'loading';
+      this.state = LOADING_STATE.LOADING;
       this.transitionsQue.push(this.fakeLoading);
     },
     stopLoading() {
