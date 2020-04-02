@@ -139,6 +139,9 @@ export default {
     };
   },
   computed: {
+    isLoading() {
+      return this.state === LOADING_STATE.LOADING;
+    },
     scaledPath() {
       const baseHeight = 46;
       const passedHeight = this.buttonHeight;
@@ -163,8 +166,7 @@ export default {
       };
     },
     buttonStyles() {
-      const isLoading = this.state === LOADING_STATE.LOADING;
-      const setIfLoading = val => (isLoading ? `${val}px` : undefined);
+      const setIfLoading = val => (this.isLoading ? `${val}px` : undefined);
 
       return {
         // We want to make button a circle on loading so we use same dimensions for height and width
@@ -246,7 +248,7 @@ export default {
       }
     },
     startLoading() {
-      if (this.state === LOADING_STATE.LOADING) {
+      if (this.isLoading) {
         return;
       }
 

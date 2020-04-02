@@ -71,7 +71,7 @@ describe('HdLoaderButton', () => {
     expect(wrapper.classes()).toContain(`${BASE_CLASS}--${LOADING_STATE.IDLE}`);
   });
 
-  it('shouldn\'t be disabled even if the prop `disabled` is set to true', () => {
+  it('should emit click when disabled', () => {
     const button = wrapper.find(BUTTON_SELECTOR);
 
     wrapper.setProps({ disabled: true });
