@@ -26,7 +26,6 @@ export { default as HdDetailsTable } from './src/components/details-table/HdDeta
 export { default as HdDetailsTableRow } from './src/components/details-table/HdDetailsTableRow.vue';
 
 // Form
-export { default as HdAutocomplete } from './src/components/form/HdAutocomplete.vue';
 export { default as HdCheckbox } from './src/components/form/HdCheckbox.vue';
 export { default as HdDynamicForm } from './src/components/form/HdDynamicForm.vue';
 export { default as HdGoogleAutocomplete } from './src/components/form/HdGoogleAutocomplete.vue';
