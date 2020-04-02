@@ -21,7 +21,7 @@
 
     <!-- Loading circle -->
     <svg
-      v-show="state == LOADING_STATE.LOADING"
+      v-show="isLoading"
       ref="circle"
       :width="`${buttonHeight}px`"
       :height="`${buttonHeight}px`"
@@ -135,7 +135,6 @@ export default {
         }
       }, 100),
       isUsingMouse: false,
-      LOADING_STATE,
     };
   },
   computed: {
