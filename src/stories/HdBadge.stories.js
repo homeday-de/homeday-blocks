@@ -6,7 +6,7 @@ import {
   HdBadgeTypes as TYPES,
 } from 'homeday-blocks';
 
-storiesOf('HdBadge', module)
+storiesOf('Components|HdBadge', module)
   .add('Playground without details', () => ({
     components: { HdBadge },
     props: {

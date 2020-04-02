@@ -7,7 +7,7 @@ import {
   HdTagsList,
 } from 'homeday-blocks';
 
-storiesOf('HdTable', module)
+storiesOf('Components|HdTable', module)
   .addDecorator(TableWrapper)
   .add('default', () => ({
     components: { HdTable },

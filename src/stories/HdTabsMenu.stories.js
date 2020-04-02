@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { HdTabsMenu } from 'homeday-blocks';
 import ITEMS from './mocks/MENU_ITEMS';
 
-storiesOf('HdTabsMenu', module)
+storiesOf('Components|HdTabsMenu', module)
   .add('default', () => ({
     components: { HdTabsMenu },
     template: `

@@ -20,11 +20,11 @@ describe('HdDynamicForm', () => {
     wrapper = wrapperFactory();
   });
 
-  test('renders all the items', () => {
+  it('renders all the items', () => {
     expect(wrapper.findAll(LINE_SELECTOR).length).toBe(LOGIN_FORM.length);
   });
 
-  test('does not render sumit button when `submitLabel` is empty', () => {
+  it('does not render submit button when `submitLabel` is empty', () => {
     wrapper = wrapperFactory({
       propsData: {
         submitLabel: '',
@@ -34,7 +34,7 @@ describe('HdDynamicForm', () => {
     expect(wrapper.find(SUBMIT_SELECTOR).exists()).toBe(false);
   });
 
-  test('does not render sumit button when `submitLabel` is missing', () => {
+  it('does not render sumit button when `submitLabel` is missing', () => {
     wrapper = wrapperFactory({
       propsData: {
         submitLabel: undefined,
@@ -44,7 +44,7 @@ describe('HdDynamicForm', () => {
     expect(wrapper.find(SUBMIT_SELECTOR).exists()).toBe(false);
   });
 
-  test('renders nested components', () => {
+  it('renders nested components', () => {
     wrapper = wrapperFactory({
       propsData: {
         items: [
@@ -65,7 +65,7 @@ describe('HdDynamicForm', () => {
     expect(wrapper.find(LINE_SELECTOR).findAll(ITEM_SELECTOR).length).toBe(2);
   });
 
-  test('sets the initial values', () => {
+  it('sets the initial values', () => {
     const formData = LOGIN_FORM.reduce((data, { name, initialValue }) => ({
       ...data,
       [name]: initialValue,
@@ -74,7 +74,7 @@ describe('HdDynamicForm', () => {
     expect(wrapper.vm.formData).toEqual(formData);
   });
 
-  test('emits the right payload on input', () => {
+  it('emits the right payload on input', () => {
     const TEST_VALUE = 'test value';
     const TEST_INPUT_NAME = LOGIN_FORM[0].name;
     wrapper.find(`[name=${TEST_INPUT_NAME}]`).setValue(TEST_VALUE);
@@ -82,7 +82,7 @@ describe('HdDynamicForm', () => {
     expect(wrapper.emitted('input')[0][0][TEST_INPUT_NAME]).toBe(TEST_VALUE);
   });
 
-  describe('emits submit event', () => {
+  describe('the submit event', () => {
     test('invalid form', () => {
       wrapper.find('form').trigger('submit');
       const payload = wrapper.emitted('submit')[0][0];
@@ -107,7 +107,7 @@ describe('HdDynamicForm', () => {
     });
   });
 
-  test('renders slots', () => {
+  it('renders slots', () => {
     wrapper = wrapperFactory({
       propsData: {
         items: [{}],
@@ -120,5 +120,27 @@ describe('HdDynamicForm', () => {
     });
 
     expect(wrapper.html()).toMatchSnapshot();
+  });
+
+  it('validates the form when `validate` is called', () => {
+    const TEST_NAME = 'test';
+
+    wrapper = wrapperFactory({
+      propsData: {
+        items: [{
+          type: 'input',
+          name: TEST_NAME,
+          props: {
+            required: true,
+          },
+        }],
+      },
+    });
+
+    expect(wrapper.vm.validate()).toBe(false);
+
+    wrapper.find(`[name=${TEST_NAME}]`).setValue('foo');
+
+    expect(wrapper.vm.validate()).toBe(true);
   });
 });

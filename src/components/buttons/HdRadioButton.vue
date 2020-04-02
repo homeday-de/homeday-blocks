@@ -33,12 +33,22 @@
       />
     </div>
     <label :for="name" class="radioButton__label" v-text="label" />
+    <HdIcon
+      :src="chevronIcon"
+      class="radioButton__chevron"
+    />
   </div>
 </template>
 
 <script>
+import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
+import { chevronIcon } from 'homeday-blocks/src/assets/small-icons';
+
 export default {
   name: 'hdRadioButton',
+  components: {
+    HdIcon,
+  },
   props: {
     label: String,
     value: {
@@ -61,6 +71,11 @@ export default {
       type: String,
       required: true,
     },
+  },
+  data() {
+    return {
+      chevronIcon,
+    };
   },
   methods: {
     setBackgroundImage: path => ({ 'background-image': `url(${path})` }),
@@ -87,12 +102,10 @@ $iconWidth: 48px;
   justify-content: flex-start;
   align-items: center;
   transition: transform .2s ease-in-out, box-shadow .2s ease-in-out;
-  &:after {
-    content: "";
-    background: url('~homeday-blocks/src/assets/icons/ic_arrow_forward--idle-24px.svg');
-    display: block;
-    width: 24px;
-    height: 24px;
+
+  &__chevron {
+    width: 32px;
+    height: 32px;
     position: absolute;
     top: 0;
     right: 0;
@@ -101,6 +114,10 @@ $iconWidth: 48px;
 
     @media(min-width: $break-mobile) {
       display: none;
+    }
+
+    &::v-deep path {
+      fill: $quaternary-color;
     }
   }
   // Border
@@ -189,120 +206,6 @@ $iconWidth: 48px;
   &__label {
     font-size: 16px;
     line-height: 19px;
-  }
-}
-.hd-radio-button {
-  @media(min-width: $break-mobile) {
-    border-radius: 3px;
-    flex-direction: column;
-    box-shadow: 0 6px 12px 0px rgba(0, 0, 0, 0.3);
-
-    &:hover, &:focus {
-      cursor: pointer;
-      box-shadow: 0 9px 12px 0 rgba(0, 0, 0, 0.2);
-      border: 3px solid getShade($secondary-color, 110);
-      backface-visibility: hidden;
-      outline: none;
-      transform: translateY(-2px);
-
-      .image-container {
-        display: none;
-        &--hover {
-          display: block;
-        }
-      }
-    }
-
-  }
-  &:focus {
-    outline: none;
-  }
-  &:after {
-    content: "";
-    background: url('~homeday-blocks/src/assets/icons/ic_arrow_forward--idle-24px.svg');
-    display: block;
-    width: 24px;
-    height: 24px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-
-    @media(min-width: $break-mobile) {
-      display: none;
-    }
-  }
-
-  &__input {
-    display: none;
-  }
-
-  &__img {
-    .image-container {
-      background-size: contain;
-      background-position: center center;
-      background-repeat: no-repeat;
-    }
-
-    &--mobile {
-      .image-container {
-        width: 48px;
-        height: 48px;
-      }
-
-      @media(min-width: $break-mobile) {
-        display: none;
-      }
-    }
-
-    &--desktop {
-      display: none;
-      .image-container {
-        width: 96px;
-        height: 96px;
-        &--hover {
-          display: none;
-        }
-      }
-      @media(min-width: $break-mobile) {
-        display: block;
-      }
-    }
-  }
-
-
-  &__label {
-    width: 100%;
-    margin-left: $inset-s;
-    padding: #{$stack-m - 3px} 0;
-    border-bottom: 1px solid getShade($quaternary-color, 60);
-    font-size: 16px;
-    line-height: 19px;
-    cursor: pointer;
-
-    @media(min-width: $break-mobile) {
-      margin-left: 0;
-      text-align: center;
-      color: $primary-color;
-      border: 0;
-      padding: 0 $inline-s;
-      height: 41px;
-    }
-  }
-}
-
-
-.touch {
-  .hd-radio-button {
-    @media(min-width: $break-mobile) {
-      &:hover .radio-img-wrapper .radio-img {
-        display: block;
-      }
-      &:hover .radio-img-wrapper .radio-img-hover {
-        display: none;
-      }
-    }
   }
 }
 </style>

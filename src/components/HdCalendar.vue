@@ -5,7 +5,14 @@
         class="calendar__button calendar__header__button calendar__button--prev"
         :class="{'calendar__button--disabled': selectedWeekIndexTail - cycleLengthWeeks < 0}"
         @click="setWeekIndexTail(-cycleLengthWeeks)"
+      >
+        <HdIcon
+          :src="chevronIcon"
+          transform="rotate(180)"
+          width="100%"
+          height="100%"
       />
+      </button>
       <span class="calendar__header__month">
         <template v-for="(month, index) in activeMonths">
           {{ index > 0 ? `- ${month}` : month }}
@@ -15,7 +22,13 @@
         class="calendar__button calendar__header__button calendar__button--next"
         :class="{'calendar__button--disabled': selectedWeekIndexTail + cycleLengthWeeks >= availableWeeks.length}"
         @click="setWeekIndexTail(cycleLengthWeeks)"
+      >
+        <HdIcon
+          :src="chevronIcon"
+          width="100%"
+          height="100%"
       />
+      </button>
     </header>
     <section class="calendar__body">
       <header class="calendar__days calendar__row">
@@ -52,10 +65,15 @@
 import flatten from 'lodash/flatten';
 import chunk from 'lodash/chunk';
 import { getIntlDateString } from 'homeday-blocks/src/services/date';
+import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
+import { chevronIcon } from 'homeday-blocks/src/assets/small-icons';
 
 const WEEK_DAYS = 7;
 export default {
   name: 'hdCalendar',
+  components: {
+    HdIcon,
+  },
   props: {
     dates: {
       type: Array,
@@ -85,6 +103,7 @@ export default {
     selectedWeekIndexTail: 0,
     animateCalendar: true,
     animationDirection: 'right',
+    chevronIcon,
   }),
   mounted() {
     this.weekdays = getIntlDateString(this.locale, this.dates, { weekday: 'short' });
@@ -293,25 +312,25 @@ export default {
   }
   &__button {
     border: none;
-    width: 16px;
-    height: 16px;
+    background: transparent;
+    width: 24px;
+    height: 24px;
+    padding: 0;
     cursor: pointer;
     z-index: 2;
 
     @media (min-width: $break-mobile) {
       display: block;
-      width: 24px;
-      height: 24px;
+      width: 32px;
+      height: 32px;
     }
     &--disabled {
       opacity: 0.4;
       cursor: not-allowed;
     }
-    &--prev {
-      background: url('~homeday-blocks/src/assets/icons/ic_arrow_backwards--idle-24px.svg') no-repeat center;
-    }
-    &--next {
-      background: url('~homeday-blocks/src/assets/icons/ic_arrow_forward--idle-24px.svg') no-repeat center;
+
+    ::v-deep path {
+      fill: $quaternary-color;
     }
 
     &--mobile {

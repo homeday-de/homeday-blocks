@@ -2,7 +2,9 @@
 
 exports[`HdNotificationsBar renders component 1`] = `
 <div class="notifications-bar notifications-bar--notification isVisible" style="top: 0px; right: 0px; left: 0px;">
-  <div class="notifications-bar__icon"><img alt="type-" src="" class="notifications-bar__icon__image"></div>
+  <div class="notifications-bar__icon">
+    <!---->
+  </div>
   <div class="notifications-bar__message">Hello world!, <a href="/test">This is a link...</a></div>
 </div>
 `;

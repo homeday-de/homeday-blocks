@@ -1,6 +1,6 @@
 {
   "name": "homeday-blocks",
-  "version": "7.0.0",
+  "version": "8.0.0",
   "description": "A Vue component library built by Homeday's frontend team.",
   "main": "main.js",
   "repository": {
@@ -30,9 +30,10 @@
     "test:unit:snapshot": "vue-cli-service test:unit -u",
     "test:unit:watch": "npm run test:unit -- --watch",
     "test:unit:ci": "npm run test:unit -- --ci --coverage",
+    "test:unit:coverage": "npm run test:unit -- --coverage && open coverage/lcov-report/index.html",
     "test:percy": "if [ $PERCY_TOKEN ]; then percy-storybook; else echo 'Skipping test: PERCY_TOKEN is not defined'; fi",
     "coverage": "cat ./coverage/lcov.info | coveralls -v",
-    "test:unit:coverage": "npm run test:unit -- --coverage && open coverage/lcov-report/index.html"
+    "import-assets": "node src/assets-importer"
   },
   "dependencies": {
     "body-scroll-lock": "2.6.4",
@@ -41,6 +42,7 @@
     "natural-scroll": "0.2.2",
     "vue": "2.6.11",
     "vue-flickity": "1.2.1",
+    "vue-inline-svg": "1.2.0",
     "vue-zoomer": "homeday-de/vue-zoomer#0.4.0"
   },
   "devDependencies": {
@@ -63,9 +65,11 @@
     "babel-jest": "^24.9.0",
     "core-js": "3.6.4",
     "coveralls": "^3.0.7",
+    "dotenv": "^8.2.0",
     "eslint": "^6.5.1",
     "eslint-plugin-vue": "5.2.3",
     "lint-staged": "9.5.0",
+    "node-fetch": "^2.6.0",
     "node-sass": "4.13.1",
     "raw-loader": "3.1.0",
     "sass-loader": "8.0.2",
