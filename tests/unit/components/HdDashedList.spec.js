@@ -21,7 +21,7 @@ describe('HdDashedList', () => {
   });
 
   test('renders items correctly', () => {
-    expect(wrapper.findAll(ITEM_SELECTOR).length).toEqual(ITEMS.length);
+    expect(wrapper.findAll(ITEM_SELECTOR).length).toEqual(4);
   });
 
   test('renders expanded labels if if the prop `expandedLabel` is true', () => {
