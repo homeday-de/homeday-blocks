@@ -221,6 +221,17 @@ export default {
 @import 'homeday-blocks/src/styles/mixins.scss';
 @import 'homeday-blocks/src/styles/inputs.scss';
 
+.radio-wrapper--disabled {
+  .isSelected {
+    .radio {
+      &__circle {
+        border: 2px solid getShade($quaternary-color, 70);
+        background-color: $white;
+      }
+    }
+  }
+}
+
 .radio {
   $r: &;
 
@@ -253,6 +264,12 @@ export default {
     outline-width: 0;
     border: 2px solid $quaternary-color;
 
+    // Hover effect WITHOUT state
+    &:hover, &:active, &:focus {
+      transition: ease-in 0.1s;
+      box-shadow: 0 0 1px 6px rgba(getShade($dodger-blue, 110), 0.15);
+    }
+
     .radio-wrapper--disabled & {
       border-color: getShade($quaternary-color, 70);
     }
@@ -266,7 +283,7 @@ export default {
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background-color: getShade($secondary-color, 110);
+      background-color: $white;
       transform: scale(0);
       opacity: 0;
       transition: transform .2s, opacity .2s;
@@ -293,9 +310,20 @@ export default {
   &.isSelected {
     .radio__circle {
       border-color: getShade($secondary-color, 110);
+      background-color: getShade($secondary-color, 110);
       &:before {
         transform: scale(1);
         opacity: 1;
+      }
+      .radio-wrapper--disabled & {
+        border-color: getShade($quaternary-color, 70);
+        background-color: $white;
+
+        &:before {
+          transform: scale(1);
+          opacity: 1;
+          background-color: getShade($quaternary-color, 70);
+        }
       }
     }
   }
@@ -341,6 +369,18 @@ export default {
 
     .radio {
       margin-left: 0;
+    }
+  }
+
+  // Hover effect for error state
+  &.hasError {
+    .radio {
+      &__circle {
+        &:hover {
+          transition: ease-in 0.1s;
+          box-shadow: 0 0 1px 6px rgba($error-color, 0.15);
+        }
+      }
     }
   }
 

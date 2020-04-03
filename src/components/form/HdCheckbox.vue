@@ -8,6 +8,7 @@
       'hasError': !!error,
       'isUsingMouse': isUsingMouse,
     }"
+    :key="error+isChecked"
     @keydown="setUsingMouse(false)"
     @mousedown="setUsingMouse(true)"
   >
@@ -34,13 +35,15 @@
       @focus="handleFocus"
       @blur="handleBlur"
     >
-      <div class="checkbox__inner__box">
-        <div class="checkbox__inner__box__overlay"></div>
-        <div class="checkbox__inner__box__border"></div>
-        <HdIcon
-          :src="checkIcon"
-          class="checkbox__inner__box__tick"
-        />
+      <div class="checkbox__inner__box__shadow">
+        <div class="checkbox__inner__box">
+          <div class="checkbox__inner__box__overlay"></div>
+          <div class="checkbox__inner__box__border"></div>
+          <HdIcon
+            :src="checkIcon"
+            class="checkbox__inner__box__tick"
+          />
+        </div>
       </div>
       <p
         v-if="innerLabel"
@@ -148,6 +151,20 @@ export default {
 <style lang="scss" scoped>
 @import 'homeday-blocks/src/styles/mixins.scss';
 
+.hasError {
+  .checkbox {
+    &__inner {
+      &__box {
+        &__shadow:hover {
+          transition: ease-in 0.1s;
+          border-radius: 100%;
+          box-shadow: 0 0 1px 6px rgba($error-color, 0.15);
+        }
+      }
+    }
+  }
+}
+
 .checkbox {
   $c: &;
   position: relative;
@@ -177,6 +194,15 @@ export default {
       border-radius: 3px;
       overflow: hidden;
       outline-width: 0;
+
+      &__shadow {
+        &:hover, &:active, &:focus {
+          transition: ease-in 0.1s;
+          border-radius: 100%;
+          box-shadow: 0 0 1px 6px rgba(getShade($dodger-blue, 110), 0.15);
+        }
+      }
+
       &__overlay {
         display: block;
         position: absolute;
@@ -193,7 +219,7 @@ export default {
           opacity: 1;
         }
         #{$c}--disabled & {
-          background-color: getShade($quaternary-color, 70);
+          background-color: transparent;
         }
       }
       &__border {
@@ -208,7 +234,7 @@ export default {
         #{$c}:hover & {
           border-color: getShade($quaternary-color, 80);
         }
-        #{$c}.isChecked & {
+        #{$c}:not(#{$c}--disabled).isChecked & {
           border-color: transparent;
         }
         #{$c}:not(#{$c}--active).hasError & {
@@ -230,6 +256,14 @@ export default {
         transition: opacity .2s;
         #{$c}.isChecked & {
           opacity: 1;
+        }
+        #{$c}--disabled & {
+          top:1px; left:1px;
+          width: 90%;
+          height: 90%;
+          &::v-deep path {
+            fill: getShade($quaternary-color, 70);
+          }
         }
 
         &::v-deep path {
