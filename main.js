@@ -14,6 +14,7 @@ export { default as HdTimeslots } from './src/components/HdTimeslots.vue';
 export { default as HdToast } from './src/components/HdToast.vue';
 export { default as HdIcon } from './src/components/HdIcon.vue';
 export { default as HdModal } from './src/components/HdModal.vue';
+export { default as HdDashedList } from './src/components/HdDashedList.vue';
 
 // Buttons
 export { default as HdArrowButton } from './src/components/buttons/HdArrowButton.vue';

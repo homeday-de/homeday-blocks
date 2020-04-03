@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HdDashedList renders component 1`] = `
+<dl class="dashed-list">
+  <!---->
+  <div class="dashed-list__item">
+    <dt class="dashed-list__section dashed-list__section--label"><span class="dashed-list__text">item 1</span>
+      <div class="dashed-list__dashes"></div>
+    </dt>
+    <dd class="dashed-list__section"><span class="dashed-list__text">1 (value)</span></dd>
+    <!---->
+  </div>
+  <!---->
+  <div class="dashed-list__item">
+    <dt class="dashed-list__section dashed-list__section--label"><span class="dashed-list__text">Item 2</span>
+      <div class="dashed-list__dashes"></div>
+    </dt>
+    <dd class="dashed-list__section"><span class="dashed-list__text">2 (value)</span></dd>
+    <dd class="dashed-list__section dashed-list__section--secondary">
+      <div class="dashed-list__dashes"></div> <span class="dashed-list__text">2 (secondaryValue)</span>
+    </dd>
+  </div>
+  <h4 class="dashed-list__title">
+    Title
+  </h4>
+  <div class="dashed-list__item">
+    <dt class="dashed-list__section dashed-list__section--label"><span class="dashed-list__text">Item 3</span>
+      <div class="dashed-list__dashes"></div>
+    </dt>
+    <dd class="dashed-list__section"><span class="dashed-list__text">3</span></dd>
+    <dd class="dashed-list__section dashed-list__section--secondary">
+      <div class="dashed-list__dashes"></div> <span class="dashed-list__text">3 (secondaryValue)</span>
+    </dd>
+  </div>
+  <div class="dashed-list__item">
+    <dt class="dashed-list__section dashed-list__section--label"><span class="dashed-list__text">Item 4</span>
+      <div class="dashed-list__dashes"></div>
+    </dt>
+    <dd class="dashed-list__section"><span class="dashed-list__text">4</span></dd>
+    <dd class="dashed-list__section dashed-list__section--secondary">
+      <div class="dashed-list__dashes"></div> <span class="dashed-list__text">4 (secondaryValue)</span>
+    </dd>
+  </div>
+</dl>
+`;
