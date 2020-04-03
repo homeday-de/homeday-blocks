@@ -131,7 +131,7 @@ export default {
   &__dashes {
     height: 2px;
     flex: 1;
-    background-image: url('~@/assets/patterns/dash-pattern-horizontal.svg');
+    background-image: url('~homeday-blocks/src/assets/patterns/dash-pattern-horizontal.svg');
     background-size: contain;
     margin-bottom: .4em;
   }
