@@ -1,5 +1,4 @@
-import { mount } from '@vue/test-utils';
-import Vue from 'vue';
+import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import HdNotifications from '@/components/notifications/HdNotifications.vue';
 
 const NOTIFICATIONS = [
@@ -8,32 +7,39 @@ const NOTIFICATIONS = [
   },
 ];
 
-describe('HdNotifications', () => {
-  let wrapper;
-  let scrollHeightSpy = jest.fn();
+const wrapperBuilder = wrapperFactoryBuilder(HdNotifications, {
+  props: {
+    notifications: [],
+  },
+  shallow: true,
+});
 
-  beforeEach(() => {
-    wrapper = mount(HdNotifications, {
-      propsData: {
-        notifications: [],
-      },
-    });
-  });
+describe('HdNotifications', () => {
+  let scrollHeightSpy = jest.fn();
 
   afterEach(() => {
     scrollHeightSpy.mockRestore();
   });
 
-  test('renders component', () => {
+  it('renders component', () => {
+    const wrapper = wrapperBuilder();
+
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  test('renders notification bars', () => {
-    wrapper.setProps({ notifications: NOTIFICATIONS });
+  it('renders notification bars', () => {
+    const wrapper = wrapperBuilder({
+      props: {
+        notifications: NOTIFICATIONS,
+      },
+    });
+
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  test('fires the heightChange event when height of the notifications changes', () => {
+  it('fires the heightChange event when height of the notifications changes', async () => {
+    const wrapper = wrapperBuilder();
+
     scrollHeightSpy = jest.spyOn(wrapper.vm, 'getScrollHeight')
       .mockImplementation(
         // A random number, used just to make sure it's not 0 and that the height
@@ -43,19 +49,8 @@ describe('HdNotifications', () => {
 
     wrapper.setProps({ notifications: NOTIFICATIONS });
 
-    return Vue.nextTick()
-      .then(() => {
-        expect(wrapper.emitted('heightChange')).toBeTruthy();
-      });
-  });
+    await wrapper.vm.$nextTick();
 
-  test('fires the route event on anchor click', () => {
-    wrapper.setProps({ notifications: NOTIFICATIONS });
-
-    const anchor = wrapper.find('a');
-
-    anchor.trigger('click');
-    expect(wrapper.emitted('route')).toBeTruthy();
-    expect(wrapper.emitted('route')[0][0].path).toEqual(anchor.element.pathname);
+    expect(wrapper.emitted('heightChange')).toBeTruthy();
   });
 });
