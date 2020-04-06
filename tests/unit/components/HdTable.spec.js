@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import HdTable from '@/components/HdTable.vue';
 
 const headerData = ['a', 'b', 'c'];
@@ -7,128 +7,41 @@ const bodyData = [
   [4, 5, 6],
 ];
 
+const wrapperBuilder = wrapperFactoryBuilder(HdTable, {
+  props: {
+    header: headerData,
+    body: bodyData,
+  },
+});
+
 describe('HdTable', () => {
-  let wrapper;
+  it('renders component', () => {
+    const wrapper = wrapperBuilder();
 
-  beforeEach(() => {
-    wrapper = mount(HdTable, {
-      propsData: {
-        header: headerData,
-        body: bodyData,
-      },
-    });
-  });
-
-  test('renders component', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  test('creates a <table>', () => {
+  it('creates a <table>', () => {
+    const wrapper = wrapperBuilder();
     const table = wrapper.find('table');
 
     expect(table.exists()).toBe(true);
   });
 
-  describe('props', () => {
-    describe('fixed', () => {
-      test('only accepts Boolean', () => {
-        const { fixed } = wrapper.vm.$options.props;
-
-        expect(fixed.type).toBe(Boolean);
-      });
-
-      test('defaults to false', () => {
-        const { fixed } = wrapper.props();
-
-        expect(fixed).toBe(false);
-      });
-    });
-
-    describe('noWrap', () => {
-      test('only accepts Boolean', () => {
-        const { noWrap } = wrapper.vm.$options.props;
-
-        expect(noWrap.type).toBe(Boolean);
-      });
-
-      test('defaults to false', () => {
-        const { noWrap } = wrapper.props();
-
-        expect(noWrap).toBe(false);
-      });
-    });
-
-    describe('header', () => {
-      test('only accepts Array', () => {
-        const { header } = wrapper.vm.$options.props;
-
-        expect(header.type).toBe(Array);
-      });
-
-      test('is required', () => {
-        const { header } = wrapper.vm.$options.props;
-
-        expect(header.required).toBe(true);
-      });
-
-      test('length should be bigger than 0', () => {
-        const { header } = wrapper.vm.$options.props;
-
-        expect(header.validator([])).toBe(false);
-        expect(header.validator([1])).toBe(true);
-      });
-    });
-
-    describe('body', () => {
-      test('only accepts Array', () => {
-        const { body } = wrapper.vm.$options.props;
-
-        expect(body.type).toBe(Array);
-      });
-
-      test('is required', () => {
-        const { body } = wrapper.vm.$options.props;
-
-        expect(body.required).toBe(true);
-      });
-
-      test('length should be bigger than 0', () => {
-        const { body } = wrapper.vm.$options.props;
-
-        expect(body.validator([])).toBe(false);
-        expect(body.validator([1])).toBe(true);
-      });
-    });
-
-    describe('align', () => {
-      test('only accepts String', () => {
-        const { align } = wrapper.vm.$options.props;
-
-        expect(align.type).toBe(String);
-      });
-
-      test('defaults to center', () => {
-        const { align } = wrapper.props();
-
-        expect(align).toBe('center');
-      });
-    });
-  });
-
   describe('methods', () => {
     describe('isComponent', () => {
-      test('false for random object', () => {
+      it('false for random object', () => {
+        const wrapper = wrapperBuilder();
         const object = {};
-        const { vm } = wrapper;
 
-        expect(vm.isComponent(object)).toBe(false);
+        expect(wrapper.vm.isComponent(object)).toBe(false);
       });
 
-      test('true for object with property component', () => {
+      it('true for object with property component', () => {
+        const wrapper = wrapperBuilder();
         const object = { component: HdTable };
-        const { vm } = wrapper;
 
-        expect(vm.isComponent(object)).toBe(true);
+        expect(wrapper.vm.isComponent(object)).toBe(true);
       });
     });
   });
