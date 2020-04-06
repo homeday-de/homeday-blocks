@@ -8,6 +8,7 @@ export function wrapperFactoryBuilder(
     props: defaultProps,
     listeners: defaultListeners,
     provide: defaultProvide,
+    methods: defaultMethods,
     shallow: defaultShallow = false,
   } = {},
 ) {
@@ -17,6 +18,7 @@ export function wrapperFactoryBuilder(
     props,
     listeners,
     provide,
+    methods,
     shallow = defaultShallow,
   } = {}) {
     const mounter = shallow ? shallowMount : mount;
@@ -41,6 +43,10 @@ export function wrapperFactoryBuilder(
       provide: {
         ...defaultProvide,
         ...provide,
+      },
+      methods: {
+        ...defaultMethods,
+        ...methods,
       },
     });
   };
