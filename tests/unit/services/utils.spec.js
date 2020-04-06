@@ -1,7 +1,4 @@
-import {
-  generateUniqueNumbers,
-} from '@/services/utils';
-
+import { generateUniqueNumbers } from '@/services/utils';
 
 describe('Utils service', () => {
   describe('generateRandomNumbers', () => {
