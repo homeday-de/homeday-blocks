@@ -1,50 +1,57 @@
-import { mount } from '@vue/test-utils';
+import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import HdNotificationsBar from '@/components/notifications/HdNotificationsBar.vue';
 
 const MESSAGE = 'Hello world!, <a href="/test">This is a link...</a>';
-const MESSAGE_SELECTOR = '.notifications-bar__message';
 const ICON_FAKE_PATH = '/foo/bar/icon.svg';
 
+const wrapperBuilder = wrapperFactoryBuilder(HdNotificationsBar, {
+  props: {
+    message: MESSAGE,
+  },
+});
+
 describe('HdNotificationsBar', () => {
-  let wrapper;
+  it('renders component', () => {
+    const wrapper = wrapperBuilder();
 
-  beforeEach(() => {
-    wrapper = mount(HdNotificationsBar, {
-      propsData: {
-        message: MESSAGE,
-      },
-    });
-  });
-
-  test('renders component', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  test('renders a message correctly', () => {
-    expect(wrapper.find(MESSAGE_SELECTOR).element.innerHTML).toBe(MESSAGE);
-  });
+  it('supports custom icon', () => {
+    const wrapper = wrapperBuilder({
+      props: {
+        customIcon: ICON_FAKE_PATH,
+      },
+    });
 
-  test('supports custom icon', () => {
-    wrapper.setProps({ customIcon: ICON_FAKE_PATH });
     expect(wrapper.vm.icon).toBe(ICON_FAKE_PATH);
   });
 
-  test('supports setting a custom offset', () => {
-    wrapper.setProps({
-      offsetTop: 20,
-      offsetRight: 30,
-      offsetLeft: 40,
+  it('supports setting a custom offset', () => {
+    const wrapper = wrapperBuilder({
+      props: {
+        offsetTop: 20,
+        offsetRight: 30,
+        offsetLeft: 40,
+      },
     });
+
     expect(wrapper.vm.$el.style.top).toBe('20px');
     expect(wrapper.vm.$el.style.right).toBe('30px');
     expect(wrapper.vm.$el.style.left).toBe('40px');
   });
 
-  test('supports hiding the bar', () => {
+  it('supports hiding the bar', async () => {
+    const wrapper = wrapperBuilder();
+
     expect(wrapper.classes().includes('isVisible')).toBe(true);
+
     wrapper.setProps({
       visible: false,
     });
+
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.classes().includes('isVisible')).toBe(false);
   });
 });
