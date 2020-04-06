@@ -2,7 +2,7 @@
  * NOTE: hd-blocks mapper is needed to solve hd-blocks path in the components
  */
 module.exports = {
-  globalSetup: './tests/global-setup.js',
+  globalSetup: '<rootDir>/tests/unit/globalSetup.js',
   collectCoverageFrom: [
     'src/components/**/*.vue',
     'src/services/**/*.js',
