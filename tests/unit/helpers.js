@@ -5,6 +5,7 @@ export function wrapperFactoryBuilder(
   {
     data: defaultData,
     slots: defaultSlots,
+    stubs: defaultStubs,
     props: defaultProps,
     listeners: defaultListeners,
     provide: defaultProvide,
@@ -13,8 +14,9 @@ export function wrapperFactoryBuilder(
   } = {},
 ) {
   return function innerHandler({
-    slots,
     data,
+    slots,
+    stubs,
     props,
     listeners,
     provide,
@@ -31,6 +33,10 @@ export function wrapperFactoryBuilder(
       slots: {
         ...defaultSlots,
         ...slots,
+      },
+      stubs: {
+        ...defaultStubs,
+        ...stubs,
       },
       propsData: {
         ...defaultProps,
