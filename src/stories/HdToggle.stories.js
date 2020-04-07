@@ -7,7 +7,7 @@ import {
 } from '@storybook/addon-knobs';
 import { HdToggle } from 'homeday-blocks';
 
-const stories = storiesOf('HdToggle', module);
+const stories = storiesOf('Components|HdToggle', module);
 
 stories.add('Default', () => ({
   components: { HdToggle },
