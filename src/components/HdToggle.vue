@@ -18,7 +18,7 @@
 
       <HdIcon
         :src="chevronIcon"
-        class="hd-toggle__control__icon"
+        class="hd-toggle__control-icon"
       />
     </button>
     <div
@@ -38,6 +38,8 @@
 import { OnResizeService } from 'homeday-blocks';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import { chevronIcon } from 'homeday-blocks/src/assets/small-icons';
+
+export const TABINDEX_BACKUP_ATTRIBUTE = 'data-hd-tabindex-backup';
 
 export default {
   name: 'HdToggle',
@@ -64,9 +66,9 @@ export default {
   },
   data() {
     return {
-      // bodyHeight is a string only initially, will be set to a Number
-      // as soon as it is mounted
-      bodyHeight: '100%',
+      // bodyHeight is a random big number only initially,
+      // it will be calculated on mounted
+      bodyHeight: 10000,
       isUsingMouse: false,
       internalFocusRemoved: false,
       chevronIcon,
@@ -143,11 +145,11 @@ export default {
         return;
       }
 
-      Array.from($innerFocusableElements).forEach((el) => {
+      $innerFocusableElements.forEach((el) => {
         const currentTabIndex = el.getAttribute('tabindex');
 
         if (currentTabIndex !== null) {
-          el.setAttribute('data-hd-tabindex-backup', currentTabIndex);
+          el.setAttribute(TABINDEX_BACKUP_ATTRIBUTE, currentTabIndex);
         }
 
         el.setAttribute('tabindex', '-1');
@@ -161,22 +163,18 @@ export default {
       }
 
       const $innerFocusableElements = this.$refs.body.querySelectorAll(
-        'a, button, [tabindex]',
+        `[${TABINDEX_BACKUP_ATTRIBUTE}]`,
       );
 
       if (!$innerFocusableElements.length) {
         return;
       }
 
-      Array.from($innerFocusableElements).forEach((el) => {
-        const oldTabIndex = el.getAttribute('data-hd-tabindex-backup');
+      $innerFocusableElements.forEach((el) => {
+        const oldTabIndex = el.getAttribute(TABINDEX_BACKUP_ATTRIBUTE);
 
-        if (oldTabIndex !== null) {
-          el.setAttribute('tabindex', oldTabIndex);
-          el.removeAttribute('data-hd-tabindex-backup');
-        } else {
-          el.removeAttribute('tabindex');
-        }
+        el.setAttribute('tabindex', oldTabIndex);
+        el.removeAttribute(TABINDEX_BACKUP_ATTRIBUTE);
       });
     },
     addResizeEvents() {
@@ -225,20 +223,20 @@ $_controlIconSize: 32px;
     #{$_root}--is-using-mouse & {
       outline: 0;
     }
+  }
 
-    &__icon {
-      display: block;
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: $_controlIconSize;
-      height: $_controlIconSize;
-      transform: rotate(90deg);
-      transition: transform ($time-s * 2) ease-in-out;
+  &__control-icon {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: $_controlIconSize;
+    height: $_controlIconSize;
+    transform: rotate(90deg);
+    transition: transform ($time-s * 2) ease-in-out;
 
-      #{$_root}--is-open & {
-        transform: rotate(-90deg);
-      }
+    #{$_root}--is-open & {
+      transform: rotate(-90deg);
     }
   }
 
