@@ -5,7 +5,7 @@ import { text, boolean, number } from '@storybook/addon-knobs';
 import { HdLoaderButton } from 'homeday-blocks';
 
 storiesOf('Components|HdLoaderButton', module)
-  .add('with label 🎛', () => ({
+  .add('Playground 🎛', () => ({
     components: { HdLoaderButton },
     props: {
       label: {
@@ -32,6 +32,10 @@ storiesOf('Components|HdLoaderButton', module)
         type: Number,
         default: number('Loading circle stroke width', 4),
       },
+      disabled: {
+        type: Boolean,
+        default: boolean('Disabled?', false),
+      },
     },
     template: `<HdLoaderButton
       @click="clicked"
@@ -43,6 +47,7 @@ storiesOf('Components|HdLoaderButton', module)
       :resetOnSuccess=resetOnSuccess
       :loadingCircleStrokeWidth=loadingCircleStrokeWidth
       :buttonHeight=height
+      :disabled=disabled
     />`,
     methods: {
       clicked: action('clicked 123'),
