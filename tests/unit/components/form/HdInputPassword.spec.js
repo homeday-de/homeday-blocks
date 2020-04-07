@@ -14,60 +14,79 @@ const TEST_PROPS = {
   value: 'test password',
 };
 
+const wrapperBuilder = wrapperFactoryBuilder(HdInputPassword, {
+  props: {
+    ...TEST_PROPS,
+  },
+});
+
 describe('HdInputPassword', () => {
-  const wrapperFactory = wrapperFactoryBuilder(
-    HdInputPassword,
-    {
-      propsData: TEST_PROPS,
-    },
-  );
+  it('is rendered as expected', () => {
+    const wrapper = wrapperBuilder();
 
-  let wrapper;
-  let inputWrapper;
-  beforeEach(() => {
-    wrapper = wrapperFactory();
-    inputWrapper = wrapper.find(HdInput);
-  });
-
-  test('is rendered as expected', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  test('updates the field on change of the prop `value`', () => {
-    wrapper.setProps({ value: TEST_VALUE });
+  it('updates the field on change of the prop `value`', () => {
+    const wrapper = wrapperBuilder({
+      props: {
+        value: TEST_VALUE,
+      },
+    });
+
     expect(wrapper.find('input').element.value).toBe(TEST_VALUE);
   });
 
-  test('emits `input` event with the right payload', () => {
+  it('emits `input` event with the right payload', () => {
+    const wrapper = wrapperBuilder();
+    const input = wrapper.get(HdInput);
+
     wrapper.find('input').setValue(TEST_VALUE);
-    expect(inputWrapper.emitted('input')[0][0]).toEqual(TEST_VALUE);
+
+    expect(input.emitted('input')[0][0]).toEqual(TEST_VALUE);
   });
 
-  test('check if the input type is "password"', () => {
+  it('check if the input type is "password"', () => {
+    const wrapper = wrapperBuilder();
+
     expect(wrapper
       .find('input')
       .attributes()
       .type).toBe('password');
   });
 
-  test('shows the visibility toggle', () => {
+  it('shows the visibility toggle', () => {
+    const wrapper = wrapperBuilder();
+
     expect(wrapper.find(VISIBILITY_TOGGLE_SELECTOR).exists()).toBe(true);
   });
 
-  test('toggles the password\'s visibility', () => {
+  it('toggles the password\'s visibility', async () => {
+    const wrapper = wrapperBuilder();
     const toggle = wrapper.find(VISIBILITY_TOGGLE_SELECTOR);
 
     toggle.trigger('click');
+
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.find('input').attributes().type).toBe('text');
     expect(toggle.classes()).toContain(PASSWORD_VISIBLE_CLASS);
 
     toggle.trigger('click');
+
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.find('input').attributes().type).toBe('password');
     expect(toggle.classes()).not.toContain(PASSWORD_VISIBLE_CLASS);
   });
 
-  test('doesn\'t show visibility toggle if empty', () => {
-    wrapper.setProps({ value: '' });
+  it('doesn\'t show visibility toggle if empty', () => {
+    const wrapper = wrapperBuilder({
+      props: {
+        value: '',
+      },
+    });
+
     expect(wrapper.find(VISIBILITY_TOGGLE_SELECTOR).exists()).toBe(false);
   });
 });
