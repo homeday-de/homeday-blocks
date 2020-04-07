@@ -4,11 +4,7 @@
       'notifications-bar': true,
       [`notifications-bar--${type}`]: true,
       isVisible: visible,
-    }"
-    :style="{
-      'top': `${offsetTop}px`,
-      'right': `${offsetRight}px`,
-      'left': `${offsetLeft}px`,
+      isCompact: compact,
     }"
   >
     <div class="notifications-bar__icon">
@@ -17,10 +13,11 @@
         class="notifications-bar__icon__image"
       />
     </div>
-    <div
-      class="notifications-bar__message"
-      v-html="message"
-    />
+    <div class="notifications-bar__content">
+      <slot>
+        {{ message }}
+      </slot>
+    </div>
   </div>
 </template>
 
@@ -65,17 +62,9 @@ export default {
       type: String,
       default: '',
     },
-    offsetTop: {
-      type: Number,
-      default: 0,
-    },
-    offsetRight: {
-      type: Number,
-      default: 0,
-    },
-    offsetLeft: {
-      type: Number,
-      default: 0,
+    compact: {
+      type: Boolean,
+      default: false,
     },
   },
   computed: {
@@ -106,8 +95,11 @@ export default {
 @import 'homeday-blocks/src/styles/mixins.scss';
 
 .notifications-bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
   display: flex;
-  position: fixed;
   justify-content: center;
   opacity: 0;
   padding: $stack-m $inline-s;
@@ -116,6 +108,10 @@ export default {
 
   &.isVisible {
     opacity: 1;
+  }
+
+  &.isCompact {
+    padding: $stack-s $inline-s;
   }
 
   &--enter-active,
@@ -131,37 +127,21 @@ export default {
   &--notification {
     background-color: $tertiary-color;
     color: $white;
-
-    a {
-      color: $white;
-    }
   }
 
   &--success {
     background-color:$success-color;
     color: $white;
-
-    a {
-      color: $white;
-    }
   }
 
   &--error {
     background-color:#E00016;
     color: $white;
-
-    a {
-      color: $white;
-    }
   }
 
   &--warning {
     background-color:#FFAB00;
     color: $primary-color;
-
-    a {
-      color: $primary-color;
-    }
   }
 
   &__icon {
@@ -177,7 +157,7 @@ export default {
     }
   }
 
-  &__message {
+  &__content {
     font-size: 14px;
     font-weight: 600;
     line-height: 24px;

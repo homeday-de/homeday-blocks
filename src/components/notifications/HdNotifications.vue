@@ -8,14 +8,14 @@
         v-for="(notification, i) in notifications"
         ref="notifications"
         :key="notification.id"
-        :message="notification.message"
         :type="notification.type"
-        :custom-icon="notification.customIcon || ''"
+        :message="notification.message"
+        :custom-icon="notification.customIcon"
         :visible="i === notifications.length - 1"
-        :offsetTop="offsetTop"
-        :offsetRight="offsetRight"
-        :offsetLeft="offsetLeft"
-      />
+        v-bind="$attrs"
+      >
+        <slot :notification="notification" />
+      </HdNotificationsBar>
     </transition-group>
     <div
       ref="sizer"
@@ -36,6 +36,7 @@ export default {
   components: {
     HdNotificationsBar,
   },
+  inheritAttrs: false,
   props: {
     notifications: {
       type: Array,
@@ -45,9 +46,6 @@ export default {
   data() {
     return {
       sizerHeight: 0,
-      offsetTop: 0,
-      offsetRight: 0,
-      offsetLeft: 0,
     };
   },
   watch: {
@@ -62,7 +60,6 @@ export default {
     this.resizeNotifications();
     this.addResizeEvents();
     this.addRoutingEvents();
-    this.calculateOffset();
   },
   beforeDestroy() {
     this.removeResizeEvents();
@@ -96,13 +93,6 @@ export default {
       }, 0);
       this.sizerHeight = maxSize;
     },
-    calculateOffset() {
-      const elRect = this.$el.getBoundingClientRect();
-      const bodyRect = document.body.getBoundingClientRect();
-      this.offsetTop = elRect.top - bodyRect.top;
-      this.offsetRight = bodyRect.right - elRect.right;
-      this.offsetLeft = elRect.left - bodyRect.left;
-    },
     addRoutingEvents() {
       this.$el.addEventListener('click', this.routeOnClick, false);
     },
@@ -122,7 +112,6 @@ export default {
     },
     resizeHandler() {
       this.resizeNotifications();
-      this.calculateOffset();
     },
     addResizeEvents() {
       onResize.onDebounced(this.resizeHandler);
