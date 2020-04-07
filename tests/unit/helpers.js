@@ -7,6 +7,7 @@ export function wrapperFactoryBuilder(
     slots: defaultSlots,
     scopedSlots: defaultScopedSlots,
     stubs: defaultStubs,
+    attachToDocument: defaultAttachToDocument,
     props: defaultProps,
     listeners: defaultListeners,
     provide: defaultProvide,
@@ -19,6 +20,7 @@ export function wrapperFactoryBuilder(
     slots,
     scopedSlots,
     stubs,
+    attachToDocument = defaultAttachToDocument,
     props,
     listeners,
     provide,
@@ -44,6 +46,7 @@ export function wrapperFactoryBuilder(
         ...defaultStubs,
         ...stubs,
       },
+      attachToDocument,
       propsData: {
         ...defaultProps,
         ...props,
