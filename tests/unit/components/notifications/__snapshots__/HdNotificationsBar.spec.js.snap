@@ -1,10 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HdNotificationsBar renders component 1`] = `
-<div class="notifications-bar notifications-bar--notification isVisible" style="top: 0px; right: 0px; left: 0px;">
+<div class="notifications-bar notifications-bar--notification notifications-bar--visible">
   <div class="notifications-bar__icon">
     <!---->
   </div>
-  <div class="notifications-bar__message">Hello world!, <a href="/test">This is a link...</a></div>
+  <div class="notifications-bar__content">
+    Hello world!
+  </div>
 </div>
 `;
