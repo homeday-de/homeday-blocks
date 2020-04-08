@@ -3,8 +3,8 @@
     :class="{
       'notifications-bar': true,
       [`notifications-bar--${type}`]: true,
-      isVisible: visible,
-      isCompact: compact,
+      'notifications-bar--visible': visible,
+      'notifications-bar--compact': compact,
     }"
   >
     <div class="notifications-bar__icon">
@@ -30,6 +30,13 @@ import {
   bellIcon,
 } from 'homeday-blocks/src/assets/small-icons';
 
+export const TYPES = {
+  NOTIFICATION: 'notification',
+  SUCCESS: 'success',
+  ERROR: 'error',
+  WARNING: 'warning',
+};
+
 export default {
   name: 'HdNotificationsBar',
   components: {
@@ -38,16 +45,9 @@ export default {
   props: {
     type: {
       type: String,
-      default: 'notification',
+      default: TYPES.NOTIFICATION,
       validator(type) {
-        const allowedTypes = [
-          'notification',
-          'success',
-          'error',
-          'warning',
-        ];
-
-        return allowedTypes.some(allowedType => allowedType === type);
+        return Object.values(TYPES).includes(type);
       },
     },
     message: {
@@ -73,15 +73,15 @@ export default {
         return this.customIcon;
       }
 
-      if (this.type === 'success') {
+      if (this.type === TYPES.SUCCESS) {
         return verifiedIcon;
       }
 
-      if (this.type === 'error') {
+      if (this.type === TYPES.ERROR) {
         return reportIcon;
       }
 
-      if (this.type === 'warning') {
+      if (this.type === TYPES.WARNING) {
         return warningIcon;
       }
 
@@ -106,11 +106,11 @@ export default {
   transition: opacity ($time-s * 2) ease-in-out;
   z-index: 10;
 
-  &.isVisible {
+  &--visible {
     opacity: 1;
   }
 
-  &.isCompact {
+  &--compact {
     padding: $stack-s $inline-s;
   }
 

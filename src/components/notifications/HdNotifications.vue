@@ -7,7 +7,7 @@
       <HdNotificationsBar
         v-for="(notification, i) in notifications"
         ref="notifications"
-        :key="notification.id"
+        :key="notification.id || i"
         :type="notification.type"
         :message="notification.message"
         :custom-icon="notification.customIcon"
@@ -59,11 +59,9 @@ export default {
   mounted() {
     this.resizeNotifications();
     this.addResizeEvents();
-    this.addRoutingEvents();
   },
   beforeDestroy() {
     this.removeResizeEvents();
-    this.removeRoutingEvents();
   },
   methods: {
     // Encapsulated in a method to be able to mock it in the tests
@@ -93,23 +91,6 @@ export default {
       }, 0);
       this.sizerHeight = maxSize;
     },
-    addRoutingEvents() {
-      this.$el.addEventListener('click', this.routeOnClick, false);
-    },
-    // We are catching cliks on anchors, and if it's an internal link, we use
-    // router push instead (for a nicer transition)
-    routeOnClick(e) {
-      if (e.target.nodeName !== 'A') {
-        return;
-      }
-
-      if (e.target.hostname !== window.location.hostname) {
-        return;
-      }
-
-      e.preventDefault();
-      this.$emit('route', { path: e.target.pathname });
-    },
     resizeHandler() {
       this.resizeNotifications();
     },
@@ -119,9 +100,6 @@ export default {
     removeResizeEvents() {
       onResize.offDebounced(this.resizeHandler);
     },
-    removeRoutingEvents() {
-      this.$el.removeEventListener('click', this.routeOnClick, false);
-    },
   },
 };
 </script>
@@ -129,7 +107,11 @@ export default {
 <style lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
 
-.notifications__sizer {
-  transition: height ($time-s * 2) ease-in-out;
+.notifications {
+  position: relative;
+
+  &__sizer {
+    transition: height ($time-s * 2) ease-in-out;
+  }
 }
 </style>
