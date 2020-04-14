@@ -8,11 +8,9 @@
         v-for="(notification, i) in notifications"
         ref="notifications"
         :key="notification.id || i"
-        :type="notification.type"
-        :message="notification.message"
-        :custom-icon="notification.customIcon"
-        :visible="i === notifications.length - 1"
-        v-bind="$attrs"
+        :visible="isLast(i)"
+        :compact="compact"
+        v-bind="notification"
       >
         <slot :notification="notification" />
       </HdNotificationsBar>
@@ -36,11 +34,14 @@ export default {
   components: {
     HdNotificationsBar,
   },
-  inheritAttrs: false,
   props: {
     notifications: {
       type: Array,
       default: () => [],
+    },
+    compact: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {
@@ -64,6 +65,9 @@ export default {
     this.removeResizeEvents();
   },
   methods: {
+    isLast(notificationIndex) {
+      return notificationIndex === this.notifications.length - 1;
+    },
     // Encapsulated in a method to be able to mock it in the tests
     getScrollHeight(el) {
       return el.scrollHeight;

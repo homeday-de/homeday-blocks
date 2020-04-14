@@ -18,7 +18,10 @@ storiesOf('Components|HdNotifications', module)
     },
     template: `
       <div>
-        <HdNotifications :notifications="notifications">
+        <HdNotifications
+          style="margin: -8px"
+          :notifications="notifications"
+        >
           <template v-slot:default="{ notification }">
             <span>
               {{ notification.text }}

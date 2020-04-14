@@ -122,6 +122,7 @@ export default {
   &--enter,
   &--leave-to {
     transform: translateY(-100%);
+    opacity: 0;
   }
 
   &--notification {
