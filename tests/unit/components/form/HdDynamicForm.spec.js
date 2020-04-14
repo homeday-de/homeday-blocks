@@ -6,27 +6,23 @@ const LINE_SELECTOR = '.dynamicForm__line';
 const ITEM_SELECTOR = '.dynamicForm__line__item';
 const SUBMIT_SELECTOR = '.dynamicForm__submit';
 
+const wrapperBuilder = wrapperFactoryBuilder(HdDynamicForm, {
+  props: {
+    items: LOGIN_FORM,
+    submitLabel: 'submit',
+  },
+});
+
 describe('HdDynamicForm', () => {
-  const wrapperFactory = wrapperFactoryBuilder(HdDynamicForm,
-    {
-      propsData: {
-        items: LOGIN_FORM,
-        submitLabel: 'submit',
-      },
-    });
-
-  let wrapper;
-  beforeEach(() => {
-    wrapper = wrapperFactory();
-  });
-
   it('renders all the items', () => {
+    const wrapper = wrapperBuilder();
+
     expect(wrapper.findAll(LINE_SELECTOR).length).toBe(LOGIN_FORM.length);
   });
 
   it('does not render submit button when `submitLabel` is empty', () => {
-    wrapper = wrapperFactory({
-      propsData: {
+    const wrapper = wrapperBuilder({
+      props: {
         submitLabel: '',
       },
     });
@@ -35,8 +31,8 @@ describe('HdDynamicForm', () => {
   });
 
   it('does not render sumit button when `submitLabel` is missing', () => {
-    wrapper = wrapperFactory({
-      propsData: {
+    const wrapper = wrapperBuilder({
+      props: {
         submitLabel: undefined,
       },
     });
@@ -45,8 +41,8 @@ describe('HdDynamicForm', () => {
   });
 
   it('renders nested components', () => {
-    wrapper = wrapperFactory({
-      propsData: {
+    const wrapper = wrapperBuilder({
+      props: {
         items: [
           [
             {
@@ -66,6 +62,7 @@ describe('HdDynamicForm', () => {
   });
 
   it('sets the initial values', () => {
+    const wrapper = wrapperBuilder();
     const formData = LOGIN_FORM.reduce((data, { name, initialValue }) => ({
       ...data,
       [name]: initialValue,
@@ -74,16 +71,22 @@ describe('HdDynamicForm', () => {
     expect(wrapper.vm.formData).toEqual(formData);
   });
 
-  it('emits the right payload on input', () => {
+  it('emits the right payload on input', async () => {
+    const wrapper = wrapperBuilder();
     const TEST_VALUE = 'test value';
     const TEST_INPUT_NAME = LOGIN_FORM[0].name;
-    wrapper.find(`[name=${TEST_INPUT_NAME}]`).setValue(TEST_VALUE);
+
+    wrapper.get(`[name=${TEST_INPUT_NAME}]`).setValue(TEST_VALUE);
+
+    await wrapper.vm.$nextTick();
 
     expect(wrapper.emitted('input')[0][0][TEST_INPUT_NAME]).toBe(TEST_VALUE);
   });
 
   describe('the submit event', () => {
-    test('invalid form', () => {
+    it('invalid form', () => {
+      const wrapper = wrapperBuilder();
+
       wrapper.find('form').trigger('submit');
       const payload = wrapper.emitted('submit')[0][0];
 
@@ -91,10 +94,14 @@ describe('HdDynamicForm', () => {
       expect(payload.invalidFields.length).toBe(1);
     });
 
-    test('valid form', () => {
+    it('valid form', async () => {
+      const wrapper = wrapperBuilder();
       const TEST_VALUE = 'test value';
       const TEST_INPUT_NAME = LOGIN_FORM[1].name;
       wrapper.find(`[name=${TEST_INPUT_NAME}]`).setValue(TEST_VALUE);
+
+      await wrapper.vm.$nextTick();
+
       wrapper.find('form').trigger('submit');
       const payload = wrapper.emitted('submit')[0][0];
 
@@ -108,10 +115,7 @@ describe('HdDynamicForm', () => {
   });
 
   it('renders slots', () => {
-    wrapper = wrapperFactory({
-      propsData: {
-        items: [{}],
-      },
+    const wrapper = wrapperBuilder({
       slots: {
         before: '<div>The before slot</div>',
         'before-button': '<div>The before button slot</div>',
@@ -122,11 +126,10 @@ describe('HdDynamicForm', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  it('validates the form when `validate` is called', () => {
+  it('validates the form when `validate` is called', async () => {
     const TEST_NAME = 'test';
-
-    wrapper = wrapperFactory({
-      propsData: {
+    const wrapper = wrapperBuilder({
+      props: {
         items: [{
           type: 'input',
           name: TEST_NAME,
@@ -140,6 +143,8 @@ describe('HdDynamicForm', () => {
     expect(wrapper.vm.validate()).toBe(false);
 
     wrapper.find(`[name=${TEST_NAME}]`).setValue('foo');
+
+    await wrapper.vm.$nextTick();
 
     expect(wrapper.vm.validate()).toBe(true);
   });

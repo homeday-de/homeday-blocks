@@ -1,5 +1,11 @@
-import { mount } from '@vue/test-utils';
+import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import HdPager from '@/components/HdPager.vue';
+
+const wrapperBuilder = wrapperFactoryBuilder(HdPager, {
+  props: {
+    count: 10,
+  },
+});
 
 describe('HdPager', () => {
   // list of classNames we depend on
@@ -7,33 +13,35 @@ describe('HdPager', () => {
   const PAGER_ITEM_SELECTOR = '.pager__items__item';
   const ACTIVE_PAGER_ITEM_SELECTOR = `${PAGER_ITEM_SELECTOR}.isActive`;
 
-  let wrapper;
+  it('The component is rendered', () => {
+    const wrapper = wrapperBuilder();
 
-  beforeEach(() => {
-    wrapper = mount(HdPager);
-  });
-
-  test('The component is rendered', () => {
-    wrapper.setProps({ count: 10 });
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  test('Pre-selecting the active item should work', () => {
-    wrapper.setProps({ count: 10, value: 3 });
+  it('Pre-selecting the active item should work', () => {
+    const wrapper = wrapperBuilder({
+      props: {
+        value: 3,
+      },
+    });
+
     // We increment the nth-child by 1 because there is always a sizer item
     // before the pager items
     expect(wrapper.findAll(`${ACTIVE_PAGER_ITEM_SELECTOR}:nth-child(5)`).length).toBe(1);
   });
 
-  test('By default, first item is selected', () => {
-    wrapper.setProps({ count: 10 });
+  it('By default, first item is selected', () => {
+    const wrapper = wrapperBuilder();
+
     // We increment the nth-child by 1 because there is always a sizer item
     // before the pager items
     expect(wrapper.findAll(`${ACTIVE_PAGER_ITEM_SELECTOR}:nth-child(2)`).length).toBe(1);
   });
 
-  test('Pager item can be selected', () => {
-    wrapper.setProps({ count: 10 });
+  it('Pager item can be selected', () => {
+    const wrapper = wrapperBuilder();
+
     // select a pager item
     wrapper.find(`${PAGER_ITEM_SELECTOR}:nth-child(5)`).trigger('click');
     // confirm that input event is emitted
@@ -43,8 +51,12 @@ describe('HdPager', () => {
     expect(payload).toBe(3);
   });
 
-  test('Pager supports keyboard navigation', () => {
-    wrapper.setProps({ count: 10, value: 3 });
+  it('Pager supports keyboard navigation', () => {
+    const wrapper = wrapperBuilder({
+      props: {
+        value: 3,
+      },
+    });
 
     const pagerItems = wrapper.find(PAGER_ITEMS_SELECTOR);
     let payload;
@@ -72,49 +84,5 @@ describe('HdPager', () => {
     // eslint-disable-next-line prefer-destructuring
     payload = wrapper.emitted('input')[3][0];
     expect(payload).toBe(4);
-  });
-
-  describe('props', () => {
-    describe('value', () => {
-      test('only accepts Number', () => {
-        const { value } = wrapper.vm.$options.props;
-
-        expect(value.type).toBe(Number);
-      });
-
-      test('defaults to 0', () => {
-        const { value } = wrapper.props();
-
-        expect(value).toBe(0);
-      });
-    });
-
-    describe('count', () => {
-      test('only accepts Number', () => {
-        const { count } = wrapper.vm.$options.props;
-
-        expect(count.type).toBe(Number);
-      });
-
-      test('defaults to 1', () => {
-        const { count } = wrapper.props();
-
-        expect(count).toBe(1);
-      });
-    });
-
-    describe('maxVisible', () => {
-      test('only accepts Number', () => {
-        const { maxVisible } = wrapper.vm.$options.props;
-
-        expect(maxVisible.type).toBe(Number);
-      });
-
-      test('defaults to 7', () => {
-        const { maxVisible } = wrapper.props();
-
-        expect(maxVisible).toBe(7);
-      });
-    });
   });
 });

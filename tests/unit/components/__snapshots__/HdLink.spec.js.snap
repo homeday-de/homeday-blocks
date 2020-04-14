@@ -2,7 +2,7 @@
 
 exports[`HdLink should have link class 1`] = `<a class="link link--primary"><span>Text</span></a>`;
 
-exports[`HdLink should render <router-link> on :to 1`] = `<router-link class="link link--primary"><span>Text</span></router-link>`;
+exports[`HdLink should render <router-link> on :to 1`] = `<a class="link link--primary"><span>Text</span></a>`;
 
 exports[`HdLink should render link--primary 1`] = `<a class="link link--primary"><span>Text</span></a>`;
 

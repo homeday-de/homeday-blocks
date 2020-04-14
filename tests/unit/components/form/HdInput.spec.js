@@ -13,89 +13,108 @@ const TEST_PROPS = {
   placeholder: 'test placeholder',
 };
 
+const wrapperBuilder = wrapperFactoryBuilder(HdInput, {
+  props: {
+    ...TEST_PROPS,
+  },
+});
+
 describe('HdInput', () => {
-  const wrapperFactory = wrapperFactoryBuilder(
-    HdInput,
-    {
-      propsData: TEST_PROPS,
-    },
-  );
+  it('is rendered as expected', () => {
+    const wrapper = wrapperBuilder();
 
-  let wrapper;
-  beforeEach(() => {
-    wrapper = wrapperFactory();
-  });
-
-  test('is rendered as expected', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  test('is rendered with prefilled value', () => {
-    wrapper = wrapperFactory({
-      propsData: {
+  it('is rendered with prefilled value', () => {
+    const wrapper = wrapperBuilder({
+      props: {
         value: TEST_VALUE,
       },
     });
+
     expect(wrapper.find('input').element.value).toBe(TEST_VALUE);
   });
 
-  test('updates the field on change of the prop `value`', () => {
-    wrapper.setProps({ value: TEST_VALUE });
+  it('updates the field on change of the prop `value`', () => {
+    const wrapper = wrapperBuilder({
+      props: {
+        value: TEST_VALUE,
+      },
+    });
+
     expect(wrapper.find('input').element.value).toBe(TEST_VALUE);
   });
 
-  test('emits `input` event with the right payload', () => {
-    wrapper.find('input').setValue(TEST_VALUE);
+  it('emits `input` event with the right payload', () => {
+    const wrapper = wrapperBuilder();
+
+    wrapper.get('input').setValue(TEST_VALUE);
+
     expect(wrapper.emitted('input')[0][0]).toEqual(TEST_VALUE);
   });
 
-  test('allows setting a helper', () => {
+  it('allows setting a helper', async () => {
+    const wrapper = wrapperBuilder();
     const TEST_HTML = '<b>test</b> test';
+
     wrapper.vm.showHelper(TEST_HTML);
+
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.find(HELPER_SELECTOR).element.innerHTML).toEqual(TEST_HTML);
   });
 
-  test('validates requiredness', () => {
-    wrapper = wrapperFactory({
-      propsData: {
+  it('validates requiredness', async () => {
+    const wrapper = wrapperBuilder({
+      props: {
         value: '',
         required: true,
       },
     });
+
     expect(wrapper.vm.validate()).toBe(false);
+
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.find(ERROR_SELECTOR).text()).toBeTruthy();
     expect(wrapper.classes()).toContain(FIELD_CLASSES.INVALID);
 
     wrapper.setProps({ required: false });
+
     expect(wrapper.vm.validate()).toBe(true);
   });
 
   describe('type "email"', () => {
-    beforeEach(() => {
-      wrapper = wrapperFactory({
-        propsData: {
-          type: 'email',
-        },
-      });
+    const emailWrapperBuilder = wrapperFactoryBuilder(HdInput, {
+      props: {
+        ...TEST_PROPS,
+        type: 'email',
+      },
     });
 
-    test('sets the input type to "email"', () => {
+    it('sets the input type to "email"', () => {
+      const wrapper = emailWrapperBuilder();
+
       expect(wrapper
         .find('input')
         .attributes()
         .type).toBe('email');
     });
 
-    test('validates email', () => {
+    it('validates email', async () => {
       const VALID_EMAIL = 'valid@email.com';
       const INVALID_EMAIL = 'unvalid@email@com';
-
-      wrapper.setProps({
-        type: 'email',
-        value: INVALID_EMAIL,
+      const wrapper = emailWrapperBuilder({
+        props: {
+          value: INVALID_EMAIL,
+        },
       });
 
       expect(wrapper.vm.validate()).toBe(false);
+
+      await wrapper.vm.$nextTick();
+
       expect(wrapper.find(ERROR_SELECTOR).text()).toBeTruthy();
       expect(wrapper.classes()).toContain(FIELD_CLASSES.INVALID);
 
@@ -105,31 +124,35 @@ describe('HdInput', () => {
   });
 
   describe('type "date"', () => {
-    beforeEach(() => {
-      wrapper = wrapperFactory({
-        propsData: {
-          type: 'date',
-        },
-      });
+    const dateWrapperBuilder = wrapperFactoryBuilder(HdInput, {
+      props: {
+        ...TEST_PROPS,
+        type: 'date',
+      },
     });
 
-    test('sets the input type to "date"', () => {
+    it('sets the input type to "date"', () => {
+      const wrapper = dateWrapperBuilder();
+
       expect(wrapper
         .find('input')
         .attributes()
         .type).toBe('date');
     });
 
-    test('validates date', () => {
+    it('validates date', async () => {
       const VALID_DATE = '1990-01-01';
       const INVALID_DATE = '01-01-1990';
-
-      wrapper.setProps({
-        type: 'date',
-        value: INVALID_DATE,
+      const wrapper = dateWrapperBuilder({
+        props: {
+          value: INVALID_DATE,
+        },
       });
 
       expect(wrapper.vm.validate()).toBe(false);
+
+      await wrapper.vm.$nextTick();
+
       expect(wrapper.find(ERROR_SELECTOR).text()).toBeTruthy();
       expect(wrapper.classes()).toContain(FIELD_CLASSES.INVALID);
 
@@ -139,41 +162,43 @@ describe('HdInput', () => {
   });
 
   describe('type "number"', () => {
-    beforeEach(() => {
-      wrapper = wrapperFactory({
-        propsData: {
-          type: 'number',
-        },
-      });
+    const numberWrapperBuilder = wrapperFactoryBuilder(HdInput, {
+      props: {
+        ...TEST_PROPS,
+        type: 'number',
+      },
     });
 
-    test('sets the input type to "number"', () => {
+    it('sets the input type to "number"', () => {
+      const wrapper = numberWrapperBuilder();
+
       expect(wrapper
         .find('input')
         .attributes()
         .type).toBe('number');
     });
 
-    test('parses to Number', () => {
+    it('parses to Number', () => {
+      const wrapper = numberWrapperBuilder();
       const TEST_STRING = '1234.56';
+      const input = wrapper.get('input');
 
-      const input = wrapper.find('input');
       input.setValue(TEST_STRING);
 
       expect(wrapper.emitted('input')[0][0]).toBe(parseFloat(TEST_STRING));
     });
 
-    test('limits the value in a given "min"-"max" range', () => {
+    it('limits the value in a given "min"-"max" range', () => {
       const MAX = 100;
       const MIN = 0;
       const TEST_NUMBER = 50;
-
-      wrapper.setProps({
-        max: MAX,
-        min: MIN,
+      const wrapper = numberWrapperBuilder({
+        props: {
+          max: MAX,
+          min: MIN,
+        },
       });
-
-      const input = wrapper.find('input');
+      const input = wrapper.get('input');
 
       input.setValue(TEST_NUMBER);
       expect(wrapper.emitted('input')[0][0]).toBe(TEST_NUMBER);
@@ -186,15 +211,19 @@ describe('HdInput', () => {
     });
   });
 
-  test('Supports disabling', () => {
-    wrapper.setProps({
-      disabled: true,
+  it('Supports disabling', () => {
+    const wrapper = wrapperBuilder({
+      props: {
+        disabled: true,
+      },
     });
+
     expect(wrapper.find('input').attributes().disabled).toBe('disabled');
   });
 
-  test('Can render an icon', () => {
+  it('Can render an icon', async () => {
     const ICON_PATH = 'fake/icon.svg';
+    const wrapper = wrapperBuilder();
 
     expect(wrapper.classes()).not.toContain(FIELD_CLASSES.HAS_ICON);
     expect(wrapper.find(ICON_SELECTOR).exists()).toBe(false);
@@ -203,41 +232,52 @@ describe('HdInput', () => {
       icon: ICON_PATH,
     });
 
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.classes()).toContain(FIELD_CLASSES.HAS_ICON);
     expect(wrapper.find(ICON_SELECTOR).exists()).toBe(true);
   });
 
-  test('ignores LastPass auto fill', () => {
+  it('ignores LastPass auto fill', () => {
+    const wrapper = wrapperBuilder();
+
     expect(wrapper
       .find('input')
       .attributes()['data-lpignore'])
       .toBe('true');
   });
 
-  test('custom validation prop validation', () => {
+  it('custom validation prop validation', () => {
+    const wrapper = wrapperBuilder();
+
     expect(wrapper.vm.$options.props.customRules.validator([1])).toBeFalsy();
     expect(wrapper.vm.$options.props.customRules.validator([{ validate: () => true, errorMessage: '' }])).toBeTruthy();
   });
 
-  test('custom validation error message', async () => {
+  it('custom validation error message', async () => {
     // Set a custom validation where input should match 'custom' keyword
     const errorMsg = 'Input should match custom keyword';
     const customKeyword = 'custom';
-    wrapper.setProps({
-      customRules: [{
-        validate: value => value === 'custom',
-        errorMessage: errorMsg,
-      }],
-      value: customKeyword,
+    const wrapper = wrapperBuilder({
+      props: {
+        customRules: [{
+          validate: value => value === 'custom',
+          errorMessage: errorMsg,
+        }],
+        value: customKeyword,
+      },
     });
 
     // Makes sure it does not display error msg
     expect(wrapper.vm.$data.error).toBeNull();
 
     // Change value and look for error message
-    wrapper.setData({
+    wrapper.setProps({
       value: TEST_VALUE,
     });
+
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.find(ERROR_SELECTOR).text()).toBe(errorMsg);
   });
 });

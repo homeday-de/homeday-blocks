@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import HdTagsList from '@/components/HdTagsList.vue';
 
 const ITEMS = [
@@ -6,18 +6,16 @@ const ITEMS = [
   'bar',
 ];
 
+const wrapperBuilder = wrapperFactoryBuilder(HdTagsList, {
+  props: {
+    items: ITEMS,
+  },
+});
+
 describe('HdTagsList', () => {
-  let wrapper;
+  it('renders component', () => {
+    const wrapper = wrapperBuilder();
 
-  beforeEach(() => {
-    wrapper = mount(HdTagsList, {
-      propsData: {
-        items: ITEMS,
-      },
-    });
-  });
-
-  test('renders component', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 });

@@ -1,89 +1,37 @@
-import { shallowMount } from '@vue/test-utils';
+import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import HdButton, { TYPES } from '@/components/buttons/HdButton.vue';
 
+const wrapperBuilder = wrapperFactoryBuilder(HdButton, {
+  slots: {
+    default: '<span>Button text</span>',
+  },
+});
+
 describe('HdButton', () => {
-  let wrapper;
-
-  beforeEach(() => {
-    wrapper = shallowMount(HdButton, {
-      slots: {
-        default: '<span>Button text</span>',
-      },
-    });
-  });
-
   it('should render component with `btn` class', () => {
+    const wrapper = wrapperBuilder();
+
     expect(wrapper.classes()).toContain('btn');
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  it('should render component with `btn--primary` class', () => {
-    const modifier = TYPES.PRIMARY;
-    const className = `btn--${modifier}`;
+  Object.values(TYPES).filter(modifier => modifier).forEach((modifier) => {
+    it(`should render component with btn--${modifier} class`, () => {
+      const className = `btn--${modifier}`;
+      const wrapper = wrapperBuilder({
+        props: {
+          modifier,
+        },
+      });
 
-    wrapper.setProps({
-      modifier,
+      expect(wrapper.classes()).toContain(className);
+      expect(wrapper.html()).toMatchSnapshot();
     });
-
-    expect(wrapper.classes()).toContain(className);
-    expect(wrapper.html()).toMatchSnapshot();
-  });
-
-  it('should render component with `btn--secondary` class', () => {
-    const modifier = TYPES.SECONDARY;
-    const className = `btn--${modifier}`;
-
-    wrapper.setProps({
-      modifier,
-    });
-
-    expect(wrapper.classes()).toContain(className);
-    expect(wrapper.html()).toMatchSnapshot();
-  });
-
-  it('should render component with `btn--tertiary` class', () => {
-    const modifier = TYPES.TERTIARY;
-    const className = `btn--${modifier}`;
-
-    wrapper.setProps({
-      modifier,
-    });
-
-    expect(wrapper.classes()).toContain(className);
-    expect(wrapper.html()).toMatchSnapshot();
-  });
-
-  it('should render component with `btn--flat` class', () => {
-    const modifier = TYPES.FLAT;
-    const className = `btn--${modifier}`;
-
-    wrapper.setProps({
-      modifier,
-    });
-
-    expect(wrapper.classes()).toContain(className);
-    expect(wrapper.html()).toMatchSnapshot();
-  });
-
-  it('should render component with `btn--ghost` class', () => {
-    const modifier = TYPES.GHOST;
-    const className = `btn--${modifier}`;
-
-    wrapper.setProps({
-      modifier,
-    });
-
-    expect(wrapper.classes()).toContain(className);
-    expect(wrapper.html()).toMatchSnapshot();
   });
 
   it('should forward listeners', () => {
     const click = jest.fn();
-
-    wrapper = shallowMount(HdButton, {
-      slots: {
-        default: '<span>Button text</span>',
-      },
+    const wrapper = wrapperBuilder({
       listeners: {
         click,
       },
