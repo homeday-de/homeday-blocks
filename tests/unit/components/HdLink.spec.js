@@ -1,9 +1,13 @@
+import { RouterLinkStub } from '@vue/test-utils';
 import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import HdLink, { TYPES } from '@/components/HdLink.vue';
 
 const wrapperBuilder = wrapperFactoryBuilder(HdLink, {
   slots: {
     default: '<span>Text</span>',
+  },
+  stubs: {
+    RouterLink: RouterLinkStub,
   },
 });
 
@@ -38,7 +42,7 @@ describe('HdLink', () => {
       },
     });
 
-    expect(wrapper.is('router-link')).toBe(true);
+    expect(wrapper.is('a')).toBe(true);
     expect(wrapper.html()).toMatchSnapshot();
   });
 });

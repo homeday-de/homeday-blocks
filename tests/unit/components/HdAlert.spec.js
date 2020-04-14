@@ -1,5 +1,5 @@
 import { wrapperFactoryBuilder } from 'tests/unit/helpers';
-import HdAlert from '@/components/HdAlert.vue';
+import HdAlert, { TYPES } from '@/components/HdAlert.vue';
 
 const defaultSlot = '<b>Default slot</b>';
 
@@ -26,17 +26,17 @@ describe('HdAlert', () => {
     expect(wrapper.find(MESSAGE_SELECTOR).element.innerHTML).toBe(defaultSlot);
   });
 
-  it('renders the right type', () => {
-    const TEST_TYPE = 'warning';
-    const wrapper = wrapperBuilder({
-      props: {
-        type: TEST_TYPE,
-      },
-    });
-    // It doesn't make sense to go through all the possible types (we may have many)
-    // they share the same logic, so if one works the rest should work as well
+  Object.keys(TYPES).forEach((type) => {
+    it(`should render alert--${type}`, () => {
+      const wrapper = wrapperBuilder({
+        props: {
+          type,
+        },
+      });
 
-    expect(wrapper.classes()).toContain(`alert--${TEST_TYPE}`);
+      expect(wrapper.classes()).toContain(`alert--${type}`);
+      expect(wrapper.html()).toMatchSnapshot();
+    });
   });
 
   it('renders a custom icon', () => {
