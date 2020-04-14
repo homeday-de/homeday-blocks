@@ -1,6 +1,6 @@
 {
   "name": "homeday-blocks",
-  "version": "8.0.0",
+  "version": "9.0.0",
   "description": "A Vue component library built by Homeday's frontend team.",
   "main": "main.js",
   "repository": {
