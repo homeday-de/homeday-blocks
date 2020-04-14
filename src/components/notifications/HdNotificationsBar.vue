@@ -39,6 +39,7 @@ export const TYPES = {
 
 export default {
   name: 'HdNotificationsBar',
+  inheritAttrs: false,
   components: {
     HdIcon,
   },
