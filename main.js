@@ -12,8 +12,10 @@ export { default as HdTabsMenu } from './src/components/HdTabsMenu.vue';
 export { default as HdTagsList } from './src/components/HdTagsList.vue';
 export { default as HdTimeslots } from './src/components/HdTimeslots.vue';
 export { default as HdToast } from './src/components/HdToast.vue';
+export { default as HdToggle } from './src/components/HdToggle.vue';
 export { default as HdIcon } from './src/components/HdIcon.vue';
 export { default as HdModal } from './src/components/HdModal.vue';
+export { default as HdDashedList } from './src/components/HdDashedList.vue';
 
 // Buttons
 export { default as HdArrowButton } from './src/components/buttons/HdArrowButton.vue';
@@ -26,7 +28,6 @@ export { default as HdDetailsTable } from './src/components/details-table/HdDeta
 export { default as HdDetailsTableRow } from './src/components/details-table/HdDetailsTableRow.vue';
 
 // Form
-export { default as HdAutocomplete } from './src/components/form/HdAutocomplete.vue';
 export { default as HdCheckbox } from './src/components/form/HdCheckbox.vue';
 export { default as HdDynamicForm } from './src/components/form/HdDynamicForm.vue';
 export { default as HdGoogleAutocomplete } from './src/components/form/HdGoogleAutocomplete.vue';
