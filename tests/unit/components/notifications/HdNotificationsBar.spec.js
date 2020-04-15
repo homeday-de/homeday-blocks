@@ -44,22 +44,26 @@ describe('HdNotificationsBar', () => {
     expect(wrapper.vm.icon).toBe(ICON_FAKE_PATH);
   });
 
-  it('can be compact', () => {
+  it('can be compact', async () => {
     expect(wrapper.classes().includes(COMPACT_CLASS)).toBe(false);
 
     wrapper.setProps({
       compact: true,
     });
 
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.classes().includes(COMPACT_CLASS)).toBe(true);
   });
 
-  it('supports hiding the bar', () => {
+  it('supports hiding the bar', async () => {
     expect(wrapper.classes().includes(VISIBLE_CLASS)).toBe(true);
 
     wrapper.setProps({
       visible: false,
     });
+
+    await wrapper.vm.$nextTick();
 
     expect(wrapper.classes().includes(VISIBLE_CLASS)).toBe(false);
   });
