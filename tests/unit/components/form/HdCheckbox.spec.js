@@ -1,55 +1,64 @@
-import { mount } from '@vue/test-utils';
-import Vue from 'vue';
+import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import { getMessages } from '@/lang';
 import HdCheckbox from '@/components/form/HdCheckbox.vue';
 
+const activeClass = 'checkbox--active';
+const usingMouseClass = 'isUsingMouse';
+const errorClass = 'hasError';
+
+const wrapperBuilder = wrapperFactoryBuilder(HdCheckbox, {
+  props: {
+    name: 'Test checkbox',
+  },
+});
+
 describe('HdCheckbox', () => {
-  let wrapper;
-  let checkboxInner;
-  const activeClass = 'checkbox--active';
-  const usingMouseClass = 'isUsingMouse';
-  const errorClass = 'hasError';
+  it('renders component', () => {
+    const wrapper = wrapperBuilder();
 
-  beforeEach(() => {
-    wrapper = mount(HdCheckbox, {
-      propsData: {
-        name: 'Test checkbox',
-      },
-    });
-
-    checkboxInner = wrapper.find('.checkbox__inner');
-  });
-
-  test('renders component', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  test('Accepts <html> code as innerLabel', () => {
+  it('Accepts <html> code as innerLabel', () => {
     const innerLabelHtml = 'Hello <b>World!</b>';
     const innerLabelParsed = 'Hello World!';
-
-    wrapper.setProps({ innerLabel: innerLabelHtml });
+    const wrapper = wrapperBuilder({
+      props: {
+        innerLabel: innerLabelHtml,
+      },
+    });
 
     expect(wrapper.html()).toMatchSnapshot();
     expect(wrapper.find('.checkbox__inner__label').text()).toBe(innerLabelParsed);
   });
 
-  test('At blur, the validation method is fired and the input element is not styled as active', () => {
+  it('At blur, the validation method is fired and the input element is not styled as active', () => {
     const mockedValidate = jest.fn();
-    wrapper.setMethods({ validate: mockedValidate });
+    const wrapper = wrapperBuilder({
+      methods: {
+        validate: mockedValidate,
+      },
+    });
+    const checkboxInner = wrapper.get('.checkbox__inner');
+
     checkboxInner.trigger('blur');
 
     expect(mockedValidate).toHaveBeenCalledTimes(1);
     expect(wrapper.classes()).not.toContain(activeClass);
   });
 
-  test('At blur, the input is styled as error if not valid, not as error if is valid. The proper error message is also displayed', () => {
-    wrapper.setProps({
-      required: true,
-      value: false,
+  it('At blur, the input is styled as error if not valid, not as error if is valid. The proper error message is also displayed', async () => {
+    const wrapper = wrapperBuilder({
+      props: {
+        required: true,
+        value: false,
+      },
     });
+    const checkboxInner = wrapper.get('.checkbox__inner');
 
     checkboxInner.trigger('blur');
+
+    await wrapper.vm.$nextTick();
 
     expect(wrapper.vm.error).toBe(getMessages('de').FORM.VALIDATION.REQUIRED);
     expect(wrapper.classes()).toContain(errorClass);
@@ -59,46 +68,69 @@ describe('HdCheckbox', () => {
     });
     checkboxInner.trigger('blur');
 
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.vm.error).toBe(null);
     expect(wrapper.classes()).not.toContain(errorClass);
   });
 
-  test('At focus, the input element is styled as active', () => {
+  it('At focus, the input element is styled as active', async () => {
+    const wrapper = wrapperBuilder();
+    const checkboxInner = wrapper.get('.checkbox__inner');
+
     checkboxInner.trigger('focus');
+
+    await wrapper.vm.$nextTick();
 
     expect(wrapper.classes()).toContain(activeClass);
   });
 
-  test('On user input interaction, the proper kind of input device is detected', () => {
+  it('On user input interaction, the proper kind of input device is detected', async () => {
+    const wrapper = wrapperBuilder();
+
     wrapper.trigger('mousedown');
+
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.classes()).toContain(usingMouseClass);
 
     wrapper.trigger('keydown');
+
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.classes()).not.toContain(usingMouseClass);
   });
 
-  test('A click on the checkboxes, emits the input event with the proper value and validates it right after', () => {
+  it('A click on the checkboxes, emits the input event with the proper value and validates it right after', async () => {
     const value = true;
-    wrapper.setProps({ value });
     const mockedValidate = jest.fn();
-    wrapper.setMethods({ validate: mockedValidate });
+    const wrapper = wrapperBuilder({
+      props: {
+        value,
+      },
+      methods: {
+        validate: mockedValidate,
+      },
+    });
+    const checkboxInner = wrapper.get('.checkbox__inner');
 
     checkboxInner.trigger('click');
 
-    // that's why https://vue-test-utils.vuejs.org/guides/#what-about-nexttick
-    return Vue.nextTick().then(() => {
-      expect(wrapper.emitted('input')).toBeTruthy();
+    await wrapper.vm.$nextTick();
 
-      const payload = wrapper.emitted('input')[0][0];
-      expect(payload).toBe(!value);
+    expect(wrapper.emitted('input')).toBeTruthy();
 
-      expect(mockedValidate).toHaveBeenCalledTimes(1);
-    });
+    const payload = wrapper.emitted('input')[0][0];
+    expect(payload).toBe(!value);
+
+    expect(mockedValidate).toHaveBeenCalledTimes(1);
   });
 
-  test('Supports disabling of the input', () => {
-    wrapper.setProps({
-      disabled: true,
+  it('Supports disabling of the input', () => {
+    const wrapper = wrapperBuilder({
+      props: {
+        disabled: true,
+      },
     });
 
     expect(wrapper.find('input').attributes().disabled).toBe('disabled');

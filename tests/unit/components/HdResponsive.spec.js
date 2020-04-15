@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import { setBreakpoints } from '@/services/breakpoints';
 import HdResponsive from '@/components/HdResponsive.vue';
 
@@ -24,51 +24,58 @@ Object.defineProperty(window, 'matchMedia', {
   })),
 });
 
-describe('HdResponsive', () => {
-  let wrapper;
+const wrapperBuilder = wrapperFactoryBuilder(HdResponsive);
 
+describe('HdResponsive', () => {
   afterEach(() => {
     // We reset the breakpoints after each test
     setBreakpoints({});
   });
 
   it('renders no markup', () => {
-    wrapper = mount(HdResponsive);
+    const wrapper = wrapperBuilder();
+
     expect(wrapper.html()).toMatchSnapshot();
   });
 
   it('provides "matches" object as part of a scoped slot', () => {
     setBreakpoints(BREAKPOINTS);
-    wrapper = mount(HdResponsive, {
+
+    const wrapper = wrapperBuilder({
       scopedSlots: {
         default: '<div>{{Object.keys(props.matches)}}</div>',
       },
     });
+
     expect(wrapper.html()).toMatchSnapshot();
   });
 
   it('provides "indeterminate" flag as part of a scoped slot', () => {
     setBreakpoints(BREAKPOINTS);
-    wrapper = mount(HdResponsive, {
+
+    const wrapper = wrapperBuilder({
       scopedSlots: {
         default: '<div>{{props.indeterminate}}</div>',
       },
     });
+
     expect(wrapper.html()).toMatchSnapshot();
   });
 
   it('breakpoint changes are managed', () => {
     setBreakpoints(BREAKPOINTS);
-    wrapper = mount(HdResponsive, {
+
+    const mockedSetListeners = jest.fn();
+    const wrapper = wrapperBuilder({
       scopedSlots: {
         default: `
           <div>I'm a Slot</div>
         `,
       },
+      methods: {
+        setListeners: mockedSetListeners,
+      },
     });
-
-    const mockedSetListeners = jest.fn();
-    wrapper.setMethods({ setListeners: mockedSetListeners });
 
     const modifiedBreakpoints = BREAKPOINTS;
     delete modifiedBreakpoints.s;

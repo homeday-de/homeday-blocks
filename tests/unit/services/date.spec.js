@@ -7,7 +7,6 @@ import {
   generateDateCycles,
 } from '@/services/date';
 
-
 describe('Date service', () => {
   const year = 1988;
   // don't forget that months are 0 based

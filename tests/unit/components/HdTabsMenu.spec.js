@@ -1,41 +1,46 @@
-import { mount } from '@vue/test-utils';
+import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import HdTabsMenu from '@/components/HdTabsMenu.vue';
-// reusing items from the stories
 import ITEMS from '@/stories/mocks/MENU_ITEMS';
 
+const MENU_ITEM_SELECTOR = '.js-tabs-menu-item';
+const ACTIVE_MENU_ITEM_SELECTOR = '.js-tabs-menu-item.isActive';
+
+const wrapperBuilder = wrapperFactoryBuilder(HdTabsMenu, {
+  props: {
+    items: ITEMS,
+  },
+});
+
 describe('HdTabsMenu', () => {
-  // list of classNames we depend on
-  const MENU_ITEM_SELECTOR = '.js-tabs-menu-item';
-  const ACTIVE_MENU_ITEM_SELECTOR = '.js-tabs-menu-item.isActive';
-
-  let wrapper;
-
-  beforeEach(() => {
-    wrapper = mount(HdTabsMenu, {
-      propsData: {
-        items: ITEMS,
+  it('The component is rendered', () => {
+    const wrapper = wrapperBuilder({
+      props: {
+        value: ITEMS[1].value,
       },
     });
-  });
 
-  test('The component is rendered', () => {
-    wrapper.setProps({ value: ITEMS[1].value });
     expect(wrapper.html()).toMatchSnapshot();
-    wrapper.destroy();
   });
 
-  test('Rendered selected menu item should match passed in preselected item', () => {
-    wrapper.setProps({ value: ITEMS[1].value });
+  it('Rendered selected menu item should match passed in preselected item', () => {
+    const wrapper = wrapperBuilder({
+      props: {
+        value: ITEMS[1].value,
+      },
+    });
+
     expect(wrapper.findAll(ACTIVE_MENU_ITEM_SELECTOR).length).toBe(1);
-    wrapper.destroy();
   });
 
-  test('By default, no menu item is selected', () => {
+  it('By default, no menu item is selected', () => {
+    const wrapper = wrapperBuilder();
+
     expect(wrapper.findAll(ACTIVE_MENU_ITEM_SELECTOR).length).toBe(0);
-    wrapper.destroy();
   });
 
-  test('Menu item can be selected', () => {
+  it('Menu item can be selected', async () => {
+    const wrapper = wrapperBuilder();
+
     // select a menu item
     wrapper.find(MENU_ITEM_SELECTOR).trigger('click');
     // confirm that input event is emitted
@@ -45,37 +50,9 @@ describe('HdTabsMenu', () => {
     expect(payload).toBe(ITEMS[0].value);
     // check that a menu item is selected
     wrapper.setProps({ value: payload });
+
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.findAll(ACTIVE_MENU_ITEM_SELECTOR).length).toBe(1);
-    wrapper.destroy();
-  });
-
-  describe('props', () => {
-    describe('items', () => {
-      test('only accepts Array', () => {
-        const { items } = wrapper.vm.$options.props;
-
-        expect(items.type).toBe(Array);
-      });
-
-      test('defaults to empty array', () => {
-        const { items } = wrapper.vm.$options.props;
-
-        expect(items.default().length).toBe(0);
-      });
-    });
-
-    describe('value', () => {
-      test('only accepts String', () => {
-        const { value } = wrapper.vm.$options.props;
-
-        expect(value.type).toBe(String);
-      });
-
-      test('defaults to empty string', () => {
-        const { value } = wrapper.props();
-
-        expect(value).toBe('');
-      });
-    });
   });
 });

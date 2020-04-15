@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HdNotifications renders the component corrently 1`] = `
-<div class="notifications"><span name="notifications-bar-" tag="div"><div class="notifications-bar notifications-bar--notification"><div class="notifications-bar__icon"><!----></div> <div class="notifications-bar__content"><p>
+<div class="notifications"><span name="notifications-bar-" tag="div"><hdnotificationsbar-stub type="notification" message="" customicon=""><p>
           Hello world
-          <!----></p></div></div><div class="notifications-bar notifications-bar--notification notifications-bar--visible"><div class="notifications-bar__icon"><!----></div> <div class="notifications-bar__content"><p>
+          <!----></p></hdnotificationsbar-stub><hdnotificationsbar-stub type="notification" message="" visible="true" customicon=""><p>
           Welcome to
-          <a href="props.notification.url">Homeday</a></p></div></div></span>
+          <a href="props.notification.url">Homeday</a></p></hdnotificationsbar-stub></span>
   <div class="notifications__sizer" style="height: 0px;"></div>
 </div>
 `;

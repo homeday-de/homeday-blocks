@@ -7,76 +7,84 @@ const HELPER_SELECTOR = '.field__error--helper';
 const TEST_VALUE = 'new value';
 const ICON_SELECTOR = '.field__icon';
 
+const wrapperBuilder = wrapperFactoryBuilder(HdTextarea, {
+  props: {
+    name: 'test name',
+    label: 'test label',
+    placeholder: 'test placeholder',
+  },
+});
+
 describe('HdTextarea', () => {
-  const wrapperFactory = wrapperFactoryBuilder(
-    HdTextarea,
-    {
-      propsData: {
-        name: 'test name',
-        label: 'test label',
-        placeholder: 'test placeholder',
-      },
-    },
-  );
+  it('is rendered as expected', () => {
+    const wrapper = wrapperBuilder();
 
-  let wrapper;
-  beforeEach(() => {
-    wrapper = wrapperFactory();
-  });
-
-  test('is rendered as expected', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  test('is rendered with prefilled value', () => {
-    wrapper = wrapperFactory({
-      propsData: {
+  it('is rendered with prefilled value', () => {
+    const wrapper = wrapperBuilder({
+      props: {
         value: TEST_VALUE,
       },
     });
+
     expect(wrapper.find('textarea').element.value).toBe(TEST_VALUE);
   });
 
-  test('updates the field on change of the prop `value`', () => {
-    wrapper.setProps({ value: TEST_VALUE });
-    expect(wrapper.find('textarea').element.value).toBe(TEST_VALUE);
-  });
+  it('emits `input` event with the right payload', () => {
+    const wrapper = wrapperBuilder();
 
-  test('emits `input` event with the right payload', () => {
-    wrapper.find('textarea').setValue(TEST_VALUE);
+    wrapper.get('textarea').setValue(TEST_VALUE);
+
     expect(wrapper.emitted('input')[0][0]).toEqual(TEST_VALUE);
   });
 
-  test('allows setting a helper', () => {
+  it('allows setting a helper', async () => {
+    const wrapper = wrapperBuilder();
     const TEST_HTML = '<b>test</b> test';
+
     wrapper.vm.showHelper(TEST_HTML);
+
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.find(HELPER_SELECTOR).element.innerHTML).toEqual(TEST_HTML);
   });
 
-  test('validates requiredness', () => {
-    wrapper = wrapperFactory({
-      propsData: {
+  it('validates requiredness', async () => {
+    const wrapper = wrapperBuilder({
+      props: {
         value: '',
         required: true,
       },
     });
+
     expect(wrapper.vm.validate()).toBe(false);
+
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.find(ERROR_SELECTOR).text()).toBeTruthy();
     expect(wrapper.classes()).toContain(FIELD_CLASSES.INVALID);
+
     wrapper.setProps({
       required: false,
     });
+
     expect(wrapper.vm.validate()).toBe(true);
   });
 
-  test('Supports disabling', () => {
-    wrapper.setProps({
-      disabled: true,
+  it('Supports disabling', () => {
+    const wrapper = wrapperBuilder({
+      props: {
+        disabled: true,
+      },
     });
+
     expect(wrapper.find('textarea').attributes().disabled).toBe('disabled');
   });
 
-  test('Can render an icon', () => {
+  it('Can render an icon', async () => {
+    const wrapper = wrapperBuilder();
     const ICON_PATH = 'fake/icon.svg';
 
     expect(wrapper.classes()).not.toContain(FIELD_CLASSES.HAS_ICON);
@@ -85,6 +93,8 @@ describe('HdTextarea', () => {
     wrapper.setProps({
       icon: ICON_PATH,
     });
+
+    await wrapper.vm.$nextTick();
 
     expect(wrapper.classes()).toContain(FIELD_CLASSES.HAS_ICON);
     expect(wrapper.find(ICON_SELECTOR).exists()).toBe(true);

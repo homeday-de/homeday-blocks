@@ -1,5 +1,4 @@
-import { mount } from '@vue/test-utils';
-import Vue from 'vue';
+import { shallowMount } from '@vue/test-utils';
 import HdNotifications from '@/components/notifications/HdNotifications.vue';
 
 const NOTIFICATIONS = [
@@ -17,7 +16,7 @@ describe('HdNotifications', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = mount(HdNotifications, {
+    wrapper = shallowMount(HdNotifications, {
       propsData: {
         notifications: NOTIFICATIONS,
       },
@@ -34,17 +33,15 @@ describe('HdNotifications', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  it('fires the heightChange event when height of the notifications changes', () => {
+  it('fires the heightChange event when height of the notifications changes', async () => {
     // A random number, used just to make sure it's not 0 and that the height actually changes
     const mockedScrollHeight = jest.fn(() => 123);
 
     wrapper.setMethods({ getScrollHeight: mockedScrollHeight });
-
     wrapper.setProps({ notifications: NOTIFICATIONS.slice(-1) });
 
-    return Vue.nextTick()
-      .then(() => {
-        expect(wrapper.emitted('heightChange')).toBeTruthy();
-      });
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.emitted('heightChange')).toBeTruthy();
   });
 });

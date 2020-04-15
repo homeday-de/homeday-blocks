@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import HdNotificationsBar from '@/components/notifications/HdNotificationsBar.vue';
 
 const MESSAGE = 'Hello world!';
@@ -13,14 +13,15 @@ describe('HdNotificationsBar', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = mount(HdNotificationsBar, {
+    wrapper = shallowMount(HdNotificationsBar, {
       propsData: {
         message: MESSAGE,
       },
     });
   });
 
-  it('renders component', () => {
+
+  it('renders as expected', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
@@ -29,7 +30,7 @@ describe('HdNotificationsBar', () => {
   });
 
   it('renders a slot correctly', () => {
-    wrapper = mount(HdNotificationsBar, {
+    wrapper = shallowMount(HdNotificationsBar, {
       slots: {
         default: SLOT,
       },
@@ -44,15 +45,22 @@ describe('HdNotificationsBar', () => {
   });
 
   it('can be compact', () => {
-    wrapper.setProps({ compact: true });
+    expect(wrapper.classes().includes(COMPACT_CLASS)).toBe(false);
+
+    wrapper.setProps({
+      compact: true,
+    });
+
     expect(wrapper.classes().includes(COMPACT_CLASS)).toBe(true);
   });
 
   it('supports hiding the bar', () => {
     expect(wrapper.classes().includes(VISIBLE_CLASS)).toBe(true);
+
     wrapper.setProps({
       visible: false,
     });
+
     expect(wrapper.classes().includes(VISIBLE_CLASS)).toBe(false);
   });
 });

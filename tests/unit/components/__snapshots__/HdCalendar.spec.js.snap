@@ -3,10 +3,12 @@
 exports[`HdCalendar renders component 1`] = `
 <div class="calendar">
   <header class="calendar__header"><button class="calendar__button calendar__header__button calendar__button--prev calendar__button--disabled">
-      <!----></button> <span class="calendar__header__month">
+      <hdicon-stub src="" transform="rotate(180)" width="100%" height="100%"></hdicon-stub>
+    </button> <span class="calendar__header__month">
         May
       </span> <button class="calendar__button calendar__header__button calendar__button--next">
-      <!----></button></header>
+      <hdicon-stub src="" width="100%" height="100%"></hdicon-stub>
+    </button></header>
   <section class="calendar__body">
     <header class="calendar__days calendar__row">
       <div class="calendar__row__item calendar__day">Thu</div>
@@ -18,54 +20,56 @@ exports[`HdCalendar renders component 1`] = `
       <div class="calendar__row__item calendar__day">Wed</div>
     </header>
     <div class="calendar__body__inner">
-      <section class="calendar__dates" name="calendar-right">
-        <div class="calendar__week calendar__row">
-          <div class="calendar__date calendar__row__item calendar__date--selected">
-            7
+      <transition-stub name="calendar-right">
+        <section class="calendar__dates">
+          <div class="calendar__week calendar__row">
+            <div class="calendar__date calendar__row__item calendar__date--selected">
+              7
+            </div>
+            <div class="calendar__date calendar__row__item">
+              8
+            </div>
+            <div class="calendar__date calendar__row__item calendar__date--disabled">
+              9
+            </div>
+            <div class="calendar__date calendar__row__item calendar__date--disabled">
+              10
+            </div>
+            <div class="calendar__date calendar__row__item">
+              11
+            </div>
+            <div class="calendar__date calendar__row__item">
+              12
+            </div>
+            <div class="calendar__date calendar__row__item">
+              13
+            </div>
           </div>
-          <div class="calendar__date calendar__row__item">
-            8
+          <div class="calendar__week calendar__row">
+            <div class="calendar__date calendar__row__item">
+              14
+            </div>
+            <div class="calendar__date calendar__row__item">
+              15
+            </div>
+            <div class="calendar__date calendar__row__item calendar__date--disabled">
+              16
+            </div>
+            <div class="calendar__date calendar__row__item calendar__date--disabled">
+              17
+            </div>
+            <div class="calendar__date calendar__row__item">
+              18
+            </div>
+            <div class="calendar__date calendar__row__item">
+              19
+            </div>
+            <div class="calendar__date calendar__row__item">
+              20
+            </div>
           </div>
-          <div class="calendar__date calendar__row__item calendar__date--disabled">
-            9
-          </div>
-          <div class="calendar__date calendar__row__item calendar__date--disabled">
-            10
-          </div>
-          <div class="calendar__date calendar__row__item">
-            11
-          </div>
-          <div class="calendar__date calendar__row__item">
-            12
-          </div>
-          <div class="calendar__date calendar__row__item">
-            13
-          </div>
-        </div>
-        <div class="calendar__week calendar__row">
-          <div class="calendar__date calendar__row__item">
-            14
-          </div>
-          <div class="calendar__date calendar__row__item">
-            15
-          </div>
-          <div class="calendar__date calendar__row__item calendar__date--disabled">
-            16
-          </div>
-          <div class="calendar__date calendar__row__item calendar__date--disabled">
-            17
-          </div>
-          <div class="calendar__date calendar__row__item">
-            18
-          </div>
-          <div class="calendar__date calendar__row__item">
-            19
-          </div>
-          <div class="calendar__date calendar__row__item">
-            20
-          </div>
-        </div>
-      </section>
+        </section>
+      </transition-stub>
     </div>
   </section>
 </div>

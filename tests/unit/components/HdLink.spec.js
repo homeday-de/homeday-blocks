@@ -1,18 +1,20 @@
-import { mount } from '@vue/test-utils';
+import { RouterLinkStub } from '@vue/test-utils';
+import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import HdLink, { TYPES } from '@/components/HdLink.vue';
 
+const wrapperBuilder = wrapperFactoryBuilder(HdLink, {
+  slots: {
+    default: '<span>Text</span>',
+  },
+  stubs: {
+    RouterLink: RouterLinkStub,
+  },
+});
+
 describe('HdLink', () => {
-  let wrapper;
-
-  beforeEach(() => {
-    wrapper = mount(HdLink, {
-      slots: {
-        default: '<span>Text</span>',
-      },
-    });
-  });
-
   it('should have link class', () => {
+    const wrapper = wrapperBuilder();
+
     expect(wrapper.classes()).toContain('link');
     expect(wrapper.classes()).toContain('link--primary');
     expect(wrapper.html()).toMatchSnapshot();
@@ -20,8 +22,10 @@ describe('HdLink', () => {
 
   TYPES.forEach((modifier) => {
     it(`should render link--${modifier}`, () => {
-      wrapper.setProps({
-        modifier,
+      const wrapper = wrapperBuilder({
+        props: {
+          modifier,
+        },
       });
 
       expect(wrapper.classes()).toContain(`link--${modifier}`);
@@ -32,12 +36,13 @@ describe('HdLink', () => {
 
   it('should render <router-link> on :to', () => {
     const to = 'www.homeday.de';
-
-    wrapper.setProps({
-      to,
+    const wrapper = wrapperBuilder({
+      props: {
+        to,
+      },
     });
 
-    expect(wrapper.is('router-link')).toBe(true);
+    expect(wrapper.is('a')).toBe(true);
     expect(wrapper.html()).toMatchSnapshot();
   });
 });

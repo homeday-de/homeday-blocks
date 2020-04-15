@@ -6,3 +6,31 @@ exports[`HdAlert renders component 1`] = `
   <div class="alert__message"><b>Default slot</b></div>
 </div>
 `;
+
+exports[`HdAlert should render alert--error 1`] = `
+<div class="alert alert--error">
+  <hdicon-stub src="" class="alert__icon"></hdicon-stub>
+  <div class="alert__message"><b>Default slot</b></div>
+</div>
+`;
+
+exports[`HdAlert should render alert--info 1`] = `
+<div class="alert alert--info">
+  <hdicon-stub src="" class="alert__icon"></hdicon-stub>
+  <div class="alert__message"><b>Default slot</b></div>
+</div>
+`;
+
+exports[`HdAlert should render alert--success 1`] = `
+<div class="alert alert--success">
+  <hdicon-stub src="" class="alert__icon"></hdicon-stub>
+  <div class="alert__message"><b>Default slot</b></div>
+</div>
+`;
+
+exports[`HdAlert should render alert--warning 1`] = `
+<div class="alert alert--warning">
+  <hdicon-stub src="" class="alert__icon"></hdicon-stub>
+  <div class="alert__message"><b>Default slot</b></div>
+</div>
+`;

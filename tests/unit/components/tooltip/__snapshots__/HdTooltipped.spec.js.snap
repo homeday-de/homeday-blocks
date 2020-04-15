@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HDTooltipped the component is rendered 1`] = `<span></span>`;
+exports[`HdTooltipped renders empty 1`] = `<span></span>`;
 
-exports[`HDTooltipped the component is rendered 2`] = `
+exports[`HdTooltipped renders full 1`] = `
 <div class="field field--input">
   <!----> <input autocomplete="on" type="text" id="testInput" name="testInput" placeholder="" data-lpignore="true" class="field__input"> <label for="testInput" class="field__label">
     dolor sit ammet
