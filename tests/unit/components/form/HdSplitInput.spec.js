@@ -19,98 +19,127 @@ const TEST_FIELDS = [
   },
 ];
 
+const wrapperBuilder = wrapperFactoryBuilder(HdSplitInput, {
+  props: {
+    name: 'test name',
+    label: 'test label',
+    fields: TEST_FIELDS,
+  },
+});
+
 describe('HdSplitInput', () => {
-  const wrapperFactory = wrapperFactoryBuilder(HdSplitInput, {
-    propsData: {
-      name: 'test name',
-      label: 'test label',
-      fields: TEST_FIELDS,
-    },
-  });
+  it('is rendered as expected', () => {
+    const wrapper = wrapperBuilder();
 
-  let wrapper;
-  beforeEach(() => {
-    wrapper = wrapperFactory();
-  });
-
-  test('is rendered as expected', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  test('is rendered with prefilled value', () => {
+  it('is rendered with prefilled value', () => {
     const TEST_NAME = TEST_FIELDS[0].name;
-    wrapper = wrapperFactory({
-      propsData: {
+    const wrapper = wrapperBuilder({
+      props: {
         value: {
           [TEST_NAME]: TEST_VALUE,
         },
       },
     });
+
     expect(wrapper.find(`[name=${TEST_NAME}]`).element.value).toBe(TEST_VALUE);
   });
 
-  test('can customize the separator', () => {
+  it('can customize the separator', () => {
     const CUSTOM_SEPARATOR = '777';
-    wrapper.setProps({
-      separator: CUSTOM_SEPARATOR,
+    const wrapper = wrapperBuilder({
+      props: {
+        separator: CUSTOM_SEPARATOR,
+      },
     });
     const wrongSeparators = wrapper
       .findAll(SEPARATOR_SELECTOR)
       .filter(separator => separator.text() !== CUSTOM_SEPARATOR);
+
     expect(wrongSeparators.length).toBe(0);
   });
 
   describe('emits events with the right payload', () => {
-    test('input', () => {
+    it('input', async () => {
+      const wrapper = wrapperBuilder();
       const TEST_NAME = TEST_FIELDS[0].name;
+
       wrapper.find(`[name=${TEST_NAME}]`).setValue(TEST_VALUE);
+
+      await wrapper.vm.$nextTick();
+
       expect(wrapper.emitted('input')[0][0][TEST_NAME]).toBe(TEST_VALUE);
     });
-    test('fieldFocus', () => {
+
+    it('fieldFocus', () => {
+      const wrapper = wrapperBuilder();
       const TEST_FIELD = TEST_FIELDS[0];
+
       wrapper.find(`[name=${TEST_FIELD.name}]`).trigger('focus');
+
       expect(wrapper.emitted('fieldFocus')[0][0]).toEqual(TEST_FIELD);
     });
-    test('fieldBlur', () => {
+
+    it('fieldBlur', () => {
+      const wrapper = wrapperBuilder();
       const TEST_FIELD = TEST_FIELDS[1];
+
       wrapper.find(`[name=${TEST_FIELD.name}]`).trigger('blur');
+
       expect(wrapper.emitted('fieldBlur')[0][0]).toEqual(TEST_FIELD);
     });
   });
 
-  test('allows setting a helper', () => {
+  it('allows setting a helper', async () => {
+    const wrapper = wrapperBuilder();
     const TEST_HTML = '<b>test</b> test';
+
     wrapper.vm.showHelper(TEST_HTML);
+
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.find(HELPER_SELECTOR).element.innerHTML).toBe(TEST_HTML);
   });
 
-  test('validates requiredness', () => {
-    wrapper = wrapperFactory({
-      propsData: {
+  it('validates requiredness', async () => {
+    const wrapper = wrapperBuilder({
+      props: {
         value: {},
         required: true,
       },
     });
+
     expect(wrapper.vm.validate()).toBe(false);
+
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.find(ERROR_SELECTOR).text()).toBeTruthy();
     expect(wrapper.classes()).toContain(FIELD_CLASSES.INVALID);
+
     wrapper.setProps({
       required: false,
     });
+
     expect(wrapper.vm.validate()).toBe(true);
   });
 
-  test('Supports disabling', () => {
-    wrapper.setProps({
-      disabled: true,
+  it('Supports disabling', () => {
+    const wrapper = wrapperBuilder({
+      props: {
+        disabled: true,
+      },
     });
     const enabledInputs = wrapper
       .findAll('input')
       .filter(input => input.attributes().disabled !== 'disabled');
+
     expect(enabledInputs.length).toBe(0);
   });
 
-  test('Can render an icon', () => {
+  it('Can render an icon', async () => {
+    const wrapper = wrapperBuilder();
     const ICON_PATH = 'fake/icon.svg';
 
     expect(wrapper.classes()).not.toContain(FIELD_CLASSES.HAS_ICON);
@@ -119,6 +148,8 @@ describe('HdSplitInput', () => {
     wrapper.setProps({
       icon: ICON_PATH,
     });
+
+    await wrapper.vm.$nextTick();
 
     expect(wrapper.classes()).toContain(FIELD_CLASSES.HAS_ICON);
     expect(wrapper.find(ICON_SELECTOR).exists()).toBe(true);

@@ -10,39 +10,40 @@ const STEP_SELECTOR = '.range__step';
 const TOOLTIP_SELECTOR = '.range__tooltip';
 const LABEL_SELECTOR = '.range__step-label';
 
+const initialValue = 0;
+const max = 100;
+const min = -100;
+const step = 50;
+
+const wrapperBuilder = wrapperFactoryBuilder(HdRange, {
+  props: {
+    name: 'testRange',
+    min,
+    max,
+    step,
+    value: initialValue,
+    displayStepBullets: true,
+  },
+});
+
 describe('HdRange', () => {
-  let wrapper;
-  const initialValue = 0;
-  const max = 100;
-  const min = -100;
-  const step = 50;
+  it('renders as expected', () => {
+    const wrapper = wrapperBuilder();
 
-  const wrapperFactory = wrapperFactoryBuilder(HdRange, {
-    propsData: {
-      name: 'testRange',
-      min,
-      max,
-      step,
-      value: initialValue,
-      displayStepBullets: true,
-    },
-  });
-
-  beforeEach(() => {
-    wrapper = wrapperFactory();
-  });
-
-  test('renders as expected', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  test('renders component with preselected value', () => {
+  it('renders component with preselected value', () => {
+    const wrapper = wrapperBuilder();
+
     expect(parseFloat(wrapper.find('input').element.value)).toBe(initialValue);
   });
 
-  test('limits the value to the passed `min` and `max`', () => {
-    wrapper.setProps({
-      value: max + 1,
+  it('limits the value to the passed `min` and `max`', async () => {
+    const wrapper = wrapperBuilder({
+      props: {
+        value: max + 1,
+      },
     });
 
     expect(getLastEventPayload({ wrapper, eventName: 'input' })).toBe(max);
@@ -51,38 +52,40 @@ describe('HdRange', () => {
       value: min - 1,
     });
 
+    await wrapper.vm.$nextTick();
+
     expect(getLastEventPayload({ wrapper, eventName: 'input' })).toBe(min);
   });
 
-  test('on input blur, the proper status is set and the proper method is executed', () => {
-    wrapper.find('input').trigger('focus');
+  it('on input blur, the proper status is set and the proper method is executed', () => {
+    const wrapper = wrapperBuilder();
+
+    wrapper.get('input').trigger('focus');
 
     expect(wrapper.vm.isActive).toBe(true);
-
-    const mockedFocusHandler = jest.fn();
-    wrapper.setMethods({ focusHandler: mockedFocusHandler });
-    wrapper.find('input').trigger('focus');
-
-    expect(mockedFocusHandler).toHaveBeenCalledTimes(1);
   });
 
-  test('on input blur, the proper status is set and the proper method is executed', () => {
-    wrapper.find('input').trigger('blur');
+  it('on input blur, the proper status is set and the proper method is executed', () => {
+    const wrapper = wrapperBuilder({
+      data: {
+        isActive: true,
+      },
+    });
+
+    wrapper.get('input').trigger('blur');
 
     expect(wrapper.vm.isActive).toBe(false);
-
-    const mockedBlurHandler = jest.fn();
-    wrapper.setMethods({ blurHandler: mockedBlurHandler });
-    wrapper.find('input').trigger('blur');
-
-    expect(mockedBlurHandler).toHaveBeenCalledTimes(1);
   });
 
-  test('on props change, UI is updated', () => {
+  it('on props change, UI is updated', async () => {
     const mockUpdateUI = jest.fn();
-    wrapper.setMethods({ updateUI: mockUpdateUI });
-    wrapper.setProps({
-      min: min + 1,
+    const wrapper = wrapperBuilder({
+      props: {
+        min: min + 1,
+      },
+      methods: {
+        updateUI: mockUpdateUI,
+      },
     });
 
     expect(mockUpdateUI).toHaveBeenCalledTimes(1);
@@ -91,26 +94,35 @@ describe('HdRange', () => {
       max: max - 1,
     });
 
+    await wrapper.vm.$nextTick();
+
     expect(mockUpdateUI).toHaveBeenCalledTimes(2);
 
     wrapper.setProps({
       step: 10,
     });
 
+    await wrapper.vm.$nextTick();
+
     expect(mockUpdateUI).toHaveBeenCalledTimes(3);
   });
 
-  test('step bullets are properly displayed', () => {
+  it('step bullets are properly displayed', async () => {
+    const wrapper = wrapperBuilder();
+
     expect(wrapper.findAll(STEP_SELECTOR).length).toBe(5);
 
     wrapper.setProps({
       displayStepBullets: false,
     });
 
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.findAll(STEP_SELECTOR).length).toBe(0);
   });
 
-  test('emits the right value on steps click', () => {
+  it('emits the right value on steps click', () => {
+    const wrapper = wrapperBuilder();
     const steps = wrapper.findAll(STEP_SELECTOR);
 
     steps.at(0).trigger('click');
@@ -123,85 +135,106 @@ describe('HdRange', () => {
   describe('Labels', () => {
     const TEST_LABELS = ['label1', 'label2', 'label3', 'label4'];
     const TEST_INDEX = Math.round(TEST_LABELS.length / 2);
-
-    beforeEach(() => {
-      wrapper = wrapperFactory({
-        propsData: {
-          displayStepBullets: true,
-          labels: TEST_LABELS,
-        },
-      });
+    const labelsWrapperBuilder = wrapperFactoryBuilder(HdRange, {
+      props: {
+        name: 'testrange',
+        min,
+        max,
+        step,
+        value: initialValue,
+        displayStepBullets: true,
+        labels: TEST_LABELS,
+      },
     });
 
-    test('renders the right number of labels', () => {
+    it('renders the right number of labels', () => {
+      const wrapper = labelsWrapperBuilder();
+
       expect(wrapper.findAll(LABEL_SELECTOR).length).toBe(TEST_LABELS.length);
     });
 
-    test('shows the right values', () => {
+    it('shows the right values', () => {
+      const wrapper = labelsWrapperBuilder();
+
       expect(wrapper.findAll(LABEL_SELECTOR).at(TEST_INDEX).text()).toBe(TEST_LABELS[TEST_INDEX]);
     });
   });
 
   describe('Tooltip', () => {
-    beforeEach(() => {
-      wrapper = wrapperFactory({
-        propsData: {
-          displayTooltip: true,
-        },
-      });
+    const tooltipWrapperBuilder = wrapperFactoryBuilder(HdRange, {
+      props: {
+        name: 'testrange',
+        min,
+        max,
+        step,
+        value: initialValue,
+        displayStepBullets: true,
+        displayTooltip: true,
+      },
     });
 
-    test('is visible when the `displayTooltip` prop is set to `true`', () => {
+    it('is visible when the `displayTooltip` prop is set to `true`', async () => {
+      const wrapper = tooltipWrapperBuilder();
+
       expect(wrapper.find(TOOLTIP_SELECTOR).exists()).toBe(true);
 
       wrapper.setProps({
         displayTooltip: false,
       });
 
+      await wrapper.vm.$nextTick();
+
       expect(wrapper.find(TOOLTIP_SELECTOR).exists()).toBe(false);
     });
 
-    test('accepts custom value', () => {
+    it('accepts custom value', () => {
       const TEST_TOOLTIP_VALUE = 'Foo Bar';
-
-      wrapper.setProps({
-        tooltipValue: TEST_TOOLTIP_VALUE,
+      const wrapper = tooltipWrapperBuilder({
+        props: {
+          tooltipValue: TEST_TOOLTIP_VALUE,
+        },
       });
 
       expect(wrapper.find(TOOLTIP_SELECTOR).text()).toBe(TEST_TOOLTIP_VALUE);
     });
 
-    test('shows the range value as a fallback', () => {
+    it('shows the range value as a fallback', () => {
       const TEST_VALUE = 10;
-
-      wrapper.setProps({
-        displayTooltip: true,
-        value: TEST_VALUE,
+      const wrapper = tooltipWrapperBuilder({
+        props: {
+          displayTooltip: true,
+          value: TEST_VALUE,
+        },
       });
 
       expect(wrapper.find(TOOLTIP_SELECTOR).text()).toBe(TEST_VALUE.toString());
     });
   });
 
-  test('supports setting custom backgrounds', () => {
+  it('supports setting custom backgrounds', () => {
     const TEST_COLOR1 = 'red';
     const TEST_COLOR2 = 'blue';
-
-    wrapper.setProps({
-      trackBackground: TEST_COLOR1,
-      progressBackground: TEST_COLOR2,
+    const wrapper = wrapperBuilder({
+      props: {
+        trackBackground: TEST_COLOR1,
+        progressBackground: TEST_COLOR2,
+      },
     });
 
     expect(wrapper.find(TRACK_SELECTOR).attributes().style).toMatch(`background: ${TEST_COLOR1}`);
     expect(wrapper.find(PROGRESS_SELECTOR).attributes().style).toMatch(`background: ${TEST_COLOR2}`);
   });
 
-  test('calls `updateUI` on resize', () => {
+  it('calls `updateUI` on resize', () => {
     const mockedUpdateUI = jest.fn();
-    wrapper.setMethods({ updateUI: mockedUpdateUI });
+    const wrapper = wrapperBuilder({
+      methods: {
+        updateUI: mockedUpdateUI,
+      },
+    });
 
     wrapper.vm.onResize();
 
-    expect(mockedUpdateUI).toHaveBeenCalledTimes(1);
+    expect(mockedUpdateUI).toHaveBeenCalledTimes(2);
   });
 });

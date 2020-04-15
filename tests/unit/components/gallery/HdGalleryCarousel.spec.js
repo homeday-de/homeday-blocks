@@ -1,35 +1,25 @@
 import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import HdGalleryCarousel from '@/components/gallery/HdGalleryCarousel.vue';
+import ITEMS from '@/stories/mocks/GALLERY_ITEMS';
 
 const GALLERY_ITEM_SELECTOR = '.gallery-carousel__item';
 
-const TEST_ITEM = {
-  caption: 'test',
-  image: 'http://placehold.it/10x10',
-  thumbnail: 'http://placehold.it/10x10',
-};
+const wrapperBuilder = wrapperFactoryBuilder(HdGalleryCarousel, {
+  props: {
+    items: ITEMS,
+  },
+});
 
 describe('HdGalleryCarousel', () => {
-  const testItems = new Array(3).fill(TEST_ITEM);
-
-  const wrapperFactory = wrapperFactoryBuilder(
-    HdGalleryCarousel, {
-      propsData: {
-        items: testItems,
-      },
-    },
-  );
-
-  let wrapper;
-  beforeEach(() => {
-    wrapper = wrapperFactory();
-  });
-
   it('should render as expected', () => {
+    const wrapper = wrapperBuilder();
+
     expect(wrapper.html()).toMatchSnapshot();
   });
 
   it('should render items correctly', () => {
-    expect(wrapper.findAll(GALLERY_ITEM_SELECTOR).length).toEqual(testItems.length);
+    const wrapper = wrapperBuilder();
+
+    expect(wrapper.findAll(GALLERY_ITEM_SELECTOR).length).toEqual(ITEMS.length);
   });
 });

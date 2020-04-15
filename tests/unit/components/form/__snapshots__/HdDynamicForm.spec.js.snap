@@ -4,7 +4,21 @@ exports[`HdDynamicForm renders slots 1`] = `
 <form novalidate="novalidate" class="dynamicForm">
   <div>The before slot</div>
   <div class="dynamicForm__line">
-    <!---->
+    <div class="field field--input dynamicForm__line__item field--filled">
+      <!----> <input autocomplete="on" type="email" id="email" name="email" placeholder="" required="required" data-lpignore="true" class="field__input"> <label for="email" class="field__label">
+        E-Mail-Adresse
+      </label>
+      <!----> <span class="field__border"></span></div>
+  </div>
+  <div class="dynamicForm__line">
+    <div class="password-input dynamicForm__line__item">
+      <div class="field field--input">
+        <!----> <input autocomplete="on" type="password" id="password" name="password" placeholder="" required="required" data-lpignore="true" class="field__input"> <label for="password" class="field__label">
+          Passwort
+        </label>
+        <!----> <span class="field__border"></span></div>
+      <!---->
+    </div>
   </div>
   <div>The before button slot</div> <button class="dynamicForm__submit btn btn--primary">
     submit

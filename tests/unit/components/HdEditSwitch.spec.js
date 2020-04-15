@@ -1,4 +1,5 @@
-import { mount, createWrapper } from '@vue/test-utils';
+import { wrapperFactoryBuilder } from 'tests/unit/helpers';
+import { createWrapper } from '@vue/test-utils';
 import HdEditSwitch from '@/components/HdEditSwitch.vue';
 
 const DEFAULT_SLOT_CONTENT = '<p>Default slot</p>';
@@ -7,28 +8,30 @@ const VIEW_SLOT_CONTENT = '<p>View slot</p>';
 const EDIT_CONTROLS_SELECTOR = '.edit-switch__actions';
 const LOADING_INDICATOR_SELECTOR = '.edit-switch__loading-indicator';
 
+const wrapperBuilder = wrapperFactoryBuilder(HdEditSwitch, {
+  slots: {
+    default: DEFAULT_SLOT_CONTENT,
+    edit: EDIT_SLOT_CONTENT,
+    view: VIEW_SLOT_CONTENT,
+  },
+});
+
 describe('HdEditSwitch', () => {
-  let wrapper;
-
-  beforeEach(() => {
-    wrapper = mount(HdEditSwitch, {
-      slots: {
-        default: DEFAULT_SLOT_CONTENT,
-        edit: EDIT_SLOT_CONTENT,
-        view: VIEW_SLOT_CONTENT,
-      },
-    });
-  });
-
   it('renders the component', () => {
+    const wrapper = wrapperBuilder();
+
     expect(wrapper.html()).toMatchSnapshot();
   });
 
   it('Default slot is always visible', () => {
+    const wrapper = wrapperBuilder();
+
     expect(wrapper.vm.$refs.defaultSlot).not.toBeUndefined();
+
     wrapper.setProps({
       editing: true,
     });
+
     expect(wrapper.vm.$refs.defaultSlot).not.toBeUndefined();
     expect(
       createWrapper(
@@ -38,6 +41,8 @@ describe('HdEditSwitch', () => {
   });
 
   it('In the default state, edit slot is not present, and view is', () => {
+    const wrapper = wrapperBuilder();
+
     expect(wrapper.vm.$refs.editSlot).toBeUndefined();
     expect(wrapper.vm.$refs.viewSlot).not.toBeUndefined();
     expect(
@@ -48,9 +53,12 @@ describe('HdEditSwitch', () => {
   });
 
   it('In the editing state, edit slot is present, and view is not', () => {
-    wrapper.setProps({
-      editing: true,
+    const wrapper = wrapperBuilder({
+      props: {
+        editing: true,
+      },
     });
+
     expect(wrapper.vm.$refs.editSlot).not.toBeUndefined();
     expect(
       createWrapper(
@@ -61,25 +69,38 @@ describe('HdEditSwitch', () => {
   });
 
   it('Loading should work', () => {
-    wrapper.setProps({
-      loading: true,
+    const wrapper = wrapperBuilder({
+      props: {
+        loading: true,
+      },
     });
+
     expect(wrapper.find(LOADING_INDICATOR_SELECTOR).exists()).toBe(true);
   });
 
   it('You should be able to disallow editing', () => {
-    wrapper.setProps({
-      editingAllowed: false,
+    const wrapper = wrapperBuilder({
+      props: {
+        editingAllowed: false,
+      },
     });
+
     expect(wrapper.find(EDIT_CONTROLS_SELECTOR).exists()).toBe(false);
   });
 
   it('Should fire edit events', () => {
+    const wrapper = wrapperBuilder();
+
     wrapper.vm.edit();
+
     expect(wrapper.emitted('edit')).toBeTruthy();
+
     wrapper.vm.cancel();
+
     expect(wrapper.emitted('cancel')).toBeTruthy();
+
     wrapper.vm.save();
+
     expect(wrapper.emitted('save')).toBeTruthy();
   });
 });

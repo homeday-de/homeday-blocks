@@ -19,39 +19,37 @@ const stubbedInlineSvg = _merge(InlineSvg, {
   },
 });
 
+const wrapperBuilder = wrapperFactoryBuilder(HdIcon, {
+  props: {
+    src: 'fake/icon1.svg',
+  },
+  stubs: {
+    InlineSvg: stubbedInlineSvg,
+  },
+});
+
 describe('HdIcon', () => {
-  const wrapperFactory = wrapperFactoryBuilder(HdIcon, {
-    propsData: {
-      src: 'fake/icon1.svg',
-    },
-    stubs: {
-      InlineSvg: stubbedInlineSvg,
-    },
-  });
+  it('renders as expected', async () => {
+    const wrapper = wrapperBuilder();
 
-  let wrapper;
-  beforeEach(() => {
-    wrapper = wrapperFactory();
-  });
+    await wrapper.vm.$nextTick();
 
-  afterEach(() => {
-    wrapper.destroy();
-  });
-
-  it('renders as expected', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  it('has an <svg> in the root', () => {
+  it('has an <svg> in the root', async () => {
+    const wrapper = wrapperBuilder();
+
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.is('svg')).toBe(true);
   });
 
   it('sets the right fill based on `fillFromClass`', async () => {
     const TEST_CLASS = 'color1';
     const TEST_FILL = 'orange';
-
-    wrapper = wrapperFactory({
-      propsData: {
+    const wrapper = wrapperBuilder({
+      props: {
         src: 'fake/icon2.svg',
         fillFromClass: {
           [TEST_CLASS]: TEST_FILL,
@@ -70,9 +68,8 @@ describe('HdIcon', () => {
   it('sets the right class based on `classFromFill`', async () => {
     const TEST_FILL = '#1C3553';
     const TEST_CLASS = 'primary-color';
-
-    wrapper = wrapperFactory({
-      propsData: {
+    const wrapper = wrapperBuilder({
+      props: {
         src: 'fake/icon3.svg',
         classFromFill: {
           [TEST_FILL]: TEST_CLASS,

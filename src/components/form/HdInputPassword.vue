@@ -84,7 +84,7 @@ export default {
 
 $icon-color: getShade($quaternary-color, 80);
 
-.passwordInput {
+.password-input {
   position: relative;
 
   .field__visibilityToggle {

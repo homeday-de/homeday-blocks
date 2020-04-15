@@ -1,10 +1,19 @@
-import { mount } from '@vue/test-utils';
+import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import HdExpandText from '@/components/HdExpandText.vue';
 
 const originalMatchMedia = global.matchMedia;
 
+const wrapperBuilder = wrapperFactoryBuilder(HdExpandText, {
+  slots: {
+    default: `<p>Look, just because I don't be givin' no man a foot
+      massage don't make it right for Marsellus to throw Antwone into
+      a glass Muttafu' house, frickin' up the way the talks.
+      Muttafu do that shirt to me, he better paralyze my lol, 'cause
+      I'll kill the Muttafu, know what I'm sayin'?</p>`,
+  },
+});
+
 describe('HdExpandText', () => {
-  let wrapper;
   let matchMediaSpy;
   let scrollHeightSpy = jest.fn();
 
@@ -14,16 +23,6 @@ describe('HdExpandText', () => {
     }));
 
     global.matchMedia = matchMediaSpy;
-
-    wrapper = mount(HdExpandText, {
-      slots: {
-        default: `<p>Look, just because I don't be givin' no man a foot 
-          massage don't make it right for Marsellus to throw Antwone into
-          a glass Muttafu' house, frickin' up the way the talks. 
-          Muttafu do that shirt to me, he better paralyze my lol, 'cause 
-          I'll kill the Muttafu, know what I'm sayin'?</p>`,
-      },
-    });
   });
 
   afterEach(() => {
@@ -32,11 +31,17 @@ describe('HdExpandText', () => {
     scrollHeightSpy.mockRestore();
   });
 
-  it('renders the component', () => {
+  it('renders the component', async () => {
+    const wrapper = wrapperBuilder();
+
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.html()).toMatchSnapshot();
   });
 
   it('display partial content', () => {
+    const wrapper = wrapperBuilder();
+
     scrollHeightSpy = jest.spyOn(wrapper.vm, 'getScrollHeight')
       .mockImplementation((el) => {
         if (el === wrapper.vm.$refs.sample) return 32;
@@ -52,6 +57,8 @@ describe('HdExpandText', () => {
   });
 
   it('display the full content with no toggle', () => {
+    const wrapper = wrapperBuilder();
+
     scrollHeightSpy = jest.spyOn(wrapper.vm, 'getScrollHeight')
       .mockImplementation((el) => {
         if (el === wrapper.vm.$refs.sample) return 1000;
@@ -66,7 +73,9 @@ describe('HdExpandText', () => {
     expect(wrapper.vm.isToggleVisible).toBe(false);
   });
 
-  it('the content is expandable and shrinkable', () => {
+  it('the content is expandable and shrinkable', async () => {
+    const wrapper = wrapperBuilder();
+
     scrollHeightSpy = jest.spyOn(wrapper.vm, 'getScrollHeight')
       .mockImplementation((el) => {
         if (el === wrapper.vm.$refs.sample) return 32;
@@ -79,6 +88,8 @@ describe('HdExpandText', () => {
     wrapper.vm.resizeWrapper();
     expect(wrapper.vm.isExpanded).toBe(false);
 
+    await wrapper.vm.$nextTick();
+
     wrapper.find('.expand-text__toggle').trigger('click');
     expect(wrapper.vm.isExpanded).toBe(true);
 
@@ -90,11 +101,13 @@ describe('HdExpandText', () => {
     const marginTop = 72;
     const marginBottom = 61;
     const sampleHeight = 32;
-    const lineCount = 3;
-    wrapper.setProps({
-      lines: lineCount,
-      marginTop,
-      marginBottom,
+    const lines = 3;
+    const wrapper = wrapperBuilder({
+      props: {
+        lines,
+        marginTop,
+        marginBottom,
+      },
     });
 
     scrollHeightSpy = jest.spyOn(wrapper.vm, 'getScrollHeight')
@@ -106,6 +119,6 @@ describe('HdExpandText', () => {
 
     wrapper.vm.resizeWrapper();
 
-    expect(wrapper.vm.$refs.wrapper.style.maxHeight).toBe(`${(sampleHeight * lineCount) + marginTop}px`);
+    expect(wrapper.vm.$refs.wrapper.style.maxHeight).toBe(`${(sampleHeight * lines) + marginTop}px`);
   });
 });

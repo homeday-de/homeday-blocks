@@ -1,21 +1,24 @@
-import { shallowMount } from '@vue/test-utils';
+import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import Vue from 'vue';
-import HDTooltipped from '@/components/tooltip/HdTooltipped.vue';
+import HdTooltipped from '@/components/tooltip/HdTooltipped.vue';
 import HdInput from '@/components/form/HdInput.vue';
 import tooltipDirective from '@/components/tooltip/tooltipDirective';
 
 // required to properly solve HDTooltipped
 Vue.directive('hd-tooltip', tooltipDirective);
 
-describe('HDTooltipped', () => {
-  let emptyWrapper;
-  let wrapper;
+const wrapperBuilder = wrapperFactoryBuilder(HdTooltipped);
 
-  beforeEach(() => {
-    emptyWrapper = shallowMount(HDTooltipped);
+describe('HdTooltipped', () => {
+  it('renders empty', () => {
+    const wrapper = wrapperBuilder();
 
-    wrapper = shallowMount(HDTooltipped, {
-      propsData: {
+    expect(wrapper.html()).toMatchSnapshot();
+  });
+
+  it('renders full', () => {
+    const wrapper = wrapperBuilder({
+      props: {
         component: HdInput,
         value: 'Lorem ipsum',
         direction: 'left',
@@ -26,10 +29,7 @@ describe('HDTooltipped', () => {
         },
       },
     });
-  });
 
-  test('the component is rendered', () => {
-    expect(emptyWrapper.html()).toMatchSnapshot();
     expect(wrapper.html()).toMatchSnapshot();
   });
 });
