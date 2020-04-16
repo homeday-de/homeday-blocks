@@ -3,12 +3,8 @@
     :class="{
       'notifications-bar': true,
       [`notifications-bar--${type}`]: true,
-      isVisible: visible,
-    }"
-    :style="{
-      'top': `${offsetTop}px`,
-      'right': `${offsetRight}px`,
-      'left': `${offsetLeft}px`,
+      'notifications-bar--visible': visible,
+      'notifications-bar--compact': compact,
     }"
   >
     <div class="notifications-bar__icon">
@@ -17,10 +13,11 @@
         class="notifications-bar__icon__image"
       />
     </div>
-    <div
-      class="notifications-bar__message"
-      v-html="message"
-    />
+    <div class="notifications-bar__content">
+      <slot>
+        {{ message }}
+      </slot>
+    </div>
   </div>
 </template>
 
@@ -33,24 +30,25 @@ import {
   bellIcon,
 } from 'homeday-blocks/src/assets/small-icons';
 
+export const TYPES = {
+  NOTIFICATION: 'notification',
+  SUCCESS: 'success',
+  ERROR: 'error',
+  WARNING: 'warning',
+};
+
 export default {
   name: 'HdNotificationsBar',
+  inheritAttrs: false,
   components: {
     HdIcon,
   },
   props: {
     type: {
       type: String,
-      default: 'notification',
+      default: TYPES.NOTIFICATION,
       validator(type) {
-        const allowedTypes = [
-          'notification',
-          'success',
-          'error',
-          'warning',
-        ];
-
-        return allowedTypes.some(allowedType => allowedType === type);
+        return Object.values(TYPES).includes(type);
       },
     },
     message: {
@@ -65,17 +63,9 @@ export default {
       type: String,
       default: '',
     },
-    offsetTop: {
-      type: Number,
-      default: 0,
-    },
-    offsetRight: {
-      type: Number,
-      default: 0,
-    },
-    offsetLeft: {
-      type: Number,
-      default: 0,
+    compact: {
+      type: Boolean,
+      default: false,
     },
   },
   computed: {
@@ -84,15 +74,15 @@ export default {
         return this.customIcon;
       }
 
-      if (this.type === 'success') {
+      if (this.type === TYPES.SUCCESS) {
         return verifiedIcon;
       }
 
-      if (this.type === 'error') {
+      if (this.type === TYPES.ERROR) {
         return reportIcon;
       }
 
-      if (this.type === 'warning') {
+      if (this.type === TYPES.WARNING) {
         return warningIcon;
       }
 
@@ -106,16 +96,23 @@ export default {
 @import 'homeday-blocks/src/styles/mixins.scss';
 
 .notifications-bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
   display: flex;
-  position: fixed;
   justify-content: center;
   opacity: 0;
   padding: $stack-m $inline-s;
   transition: opacity ($time-s * 2) ease-in-out;
   z-index: 10;
 
-  &.isVisible {
+  &--visible {
     opacity: 1;
+  }
+
+  &--compact {
+    padding: $stack-s $inline-s;
   }
 
   &--enter-active,
@@ -126,42 +123,27 @@ export default {
   &--enter,
   &--leave-to {
     transform: translateY(-100%);
+    opacity: 0;
   }
 
   &--notification {
     background-color: $tertiary-color;
     color: $white;
-
-    a {
-      color: $white;
-    }
   }
 
   &--success {
     background-color:$success-color;
     color: $white;
-
-    a {
-      color: $white;
-    }
   }
 
   &--error {
     background-color:#E00016;
     color: $white;
-
-    a {
-      color: $white;
-    }
   }
 
   &--warning {
     background-color:#FFAB00;
     color: $primary-color;
-
-    a {
-      color: $primary-color;
-    }
   }
 
   &__icon {
@@ -177,7 +159,7 @@ export default {
     }
   }
 
-  &__message {
+  &__content {
     font-size: 14px;
     font-weight: 600;
     line-height: 24px;

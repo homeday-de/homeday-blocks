@@ -1,25 +1,71 @@
-import { mount } from '@vue/test-utils';
+import { mount, shallowMount } from '@vue/test-utils';
 
 export function wrapperFactoryBuilder(
   component,
   {
-    propsData: defaultProps = {},
-    ...defaultOptions
+    data: defaultData,
+    slots: defaultSlots,
+    scopedSlots: defaultScopedSlots,
+    stubs: defaultStubs,
+    attachToDocument: defaultAttachToDocument,
+    props: defaultProps,
+    listeners: defaultListeners,
+    provide: defaultProvide,
+    methods: defaultMethods,
+    shallow: defaultShallow = false,
   } = {},
 ) {
-  return ({ propsData = {}, ...options } = {}) => mount(component, {
-    propsData: {
-      ...defaultProps,
-      ...propsData,
-    },
-    ...defaultOptions,
-    ...options,
-  });
-}
+  return function innerHandler({
+    data,
+    slots,
+    scopedSlots,
+    stubs,
+    attachToDocument = defaultAttachToDocument,
+    props,
+    listeners,
+    provide,
+    methods,
+    shallow = defaultShallow,
+  } = {}) {
+    const mounter = shallow ? shallowMount : mount;
 
-export default {
-  wrapperFactoryBuilder,
-};
+    return mounter(component, {
+      data: () => ({
+        ...defaultData,
+        ...data,
+      }),
+      slots: {
+        ...defaultSlots,
+        ...slots,
+      },
+      scopedSlots: {
+        ...defaultScopedSlots,
+        ...scopedSlots,
+      },
+      stubs: {
+        ...defaultStubs,
+        ...stubs,
+      },
+      attachToDocument,
+      propsData: {
+        ...defaultProps,
+        ...props,
+      },
+      listeners: {
+        ...defaultListeners,
+        ...listeners,
+      },
+      provide: {
+        ...defaultProvide,
+        ...provide,
+      },
+      methods: {
+        ...defaultMethods,
+        ...methods,
+      },
+    });
+  };
+}
 
 // Returns the payload of the last emitted `eventName` by the `wrapper`
 export function getLastEventPayload({ wrapper, eventName }) {

@@ -1,18 +1,18 @@
-import { shallowMount } from '@vue/test-utils';
+import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import HdTooltip from '@/components/tooltip/HdTooltip.vue';
 
+const wrapperBuilder = wrapperFactoryBuilder(HdTooltip);
+
 describe('HdTooltip', () => {
-  let wrapper;
+  it('the component is rendered', () => {
+    const wrapper = wrapperBuilder();
 
-  beforeEach(() => {
-    wrapper = shallowMount(HdTooltip);
-  });
-
-  test('the component is rendered', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  test('the window tooltip element is set properly', () => {
+  it('the window tooltip element is set properly', () => {
+    const wrapper = wrapperBuilder();
+
     expect(window.tooltipElement).toEqual(wrapper.element);
   });
 });

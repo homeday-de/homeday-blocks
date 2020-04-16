@@ -1,6 +1,7 @@
 <template>
   <transition name="modal">
     <section
+      ref="modal"
       :class="{
         'modal--no-spacing': noSpacing,
         'modal--no-external-spacing': noExternalSpacing,

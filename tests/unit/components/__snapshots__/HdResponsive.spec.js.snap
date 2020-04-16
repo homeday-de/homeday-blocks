@@ -11,4 +11,4 @@ exports[`HdResponsive provides "matches" object as part of a scoped slot 1`] = `
   ]</div>
 `;
 
-exports[`HdResponsive renders no markup 1`] = `undefined`;
+exports[`HdResponsive renders no markup 1`] = `""`;

@@ -1,123 +1,121 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
-import { select } from '@storybook/addon-knobs';
-import { HdNotifications } from 'homeday-blocks';
-import HdNotificationsNote from '../notes/HdNotifications.md';
+import {
+  select,
+  text,
+  boolean,
+} from '@storybook/addon-knobs';
+import {
+  HdNotifications,
+  HdNotificationsTypes,
+} from 'homeday-blocks';
 
 storiesOf('Components|HdNotifications', module)
-  .add('default 🎛📝', () => ({
+  .add('using scropedSlots', () => ({
+    components: {
+      HdNotifications,
+    },
+    template: `
+      <div>
+        <HdNotifications
+          style="margin: -8px"
+          :notifications="notifications"
+        >
+          <template v-slot:default="{ notification }">
+            <span>
+              {{ notification.text }}
+            </span>
+            <a
+              href="#"
+              style="color: currentColor"
+              @click.prevent="notification.onClick"
+            >
+              {{ notification.urlLabel }}
+            </a>
+          </template>
+        </HdNotifications>
+      </div>
+    `,
+    data() {
+      return {
+        notifications: [
+          {
+            id: 0,
+            type: HdNotificationsTypes.NOTIFICATION,
+            text: 'This is a slot.',
+            urlLabel: 'Say "Hi" in the console',
+            onClick: () => console.log('Hi'),
+          },
+        ],
+      };
+    },
+  }))
+  .add('Playground 🎛', () => ({
     components: { HdNotifications },
     props: {
       type: {
         type: String,
         default: select(
           'Type',
-          [
-            'notification',
-            'success',
-            'error',
-            'warning',
-          ],
+          Object.values(HdNotificationsTypes),
+          HdNotificationsTypes.NOTIFICATION,
           'notification',
         ),
       },
+      message: {
+        type: String,
+        default: text('message', 'Some text', 'notification'),
+      },
+      customIcon: {
+        type: String,
+        default: text('customIcon', '', 'notification'),
+      },
+      compact: {
+        type: Boolean,
+        default: boolean('Compact', false, 'general'),
+      },
     },
     template: `
       <div>
         <HdNotifications
+          :compact="compact"
           style="margin: -8px"
-          :notifications="transformedNotifications"
+          :notifications="notifications"
           @heightChange="onHeightChange"
-          @route="onRoute"
         />
+
+        <div style="margin-top: 100px">
+          <button @click="addNotification" style="margin-top: auto">Add a new notification</button>
+          <button @click="removeNotification">Remove current notification</button>
+          <p class="text-small">Change the knobs to add a different notifications</p>
+          <p class="text-xsmall">(the numerical identifier is added for demo purposes only)</p>
+        </div>
       </div>
     `,
     data() {
       return {
-        notifications: [
-          {
-            id: 0,
-            message: 'Hello world!, <a href="/test">This is a link...</a>',
-          },
-        ],
+        notifications: [],
       };
     },
-    computed: {
-      transformedNotifications() {
-        return this.notifications.map(notification => ({
-          ...notification,
-          type: this.type,
-        }));
-      },
+    mounted() {
+      this.addNotification();
     },
     methods: {
-      onRoute(route) {
-        action('route')(route);
-      },
       onHeightChange(height) {
         action('heightChange')(height);
       },
-    },
-  }), {
-    notes: {
-      markdown: HdNotificationsNote,
-    },
-  })
-  .add('custom icon 🎛', () => ({
-    components: { HdNotifications },
-    props: {
-      type: {
-        type: String,
-        default: select(
-          'Type',
-          [
-            'notification',
-            'success',
-            'error',
-            'warning',
-          ],
-          'warning',
-        ),
-      },
-    },
-    template: `
-      <div>
-        <HdNotifications
-          style="margin: -8px"
-          :notifications="transformedNotifications"
-          @heightChange="onHeightChange"
-          @route="onRoute"
-        />
-      </div>
-    `,
-    data() {
-      return {
-        notifications: [
-          {
-            id: 0,
-            message: 'Hello world!, <a href="/test">This is a link...</a>',
-          },
-        ],
-        // eslint-disable-next-line global-require
-        customIcon: require('./assets/homeday-icon.svg'),
-      };
-    },
-    computed: {
-      transformedNotifications() {
-        return this.notifications.map(notification => ({
-          ...notification,
+      addNotification() {
+        const orderedMessage = `${this.notifications.length + 1} - ${this.message}`;
+
+        this.notifications.push({
           type: this.type,
           customIcon: this.customIcon,
-        }));
+          message: orderedMessage,
+        });
       },
-    },
-    methods: {
-      onRoute(route) {
-        action('route')(route);
-      },
-      onHeightChange(height) {
-        action('heightChange')(height);
+      removeNotification() {
+        this.notifications.pop();
       },
     },
   }));

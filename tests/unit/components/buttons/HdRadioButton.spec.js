@@ -1,44 +1,40 @@
-import { mount } from '@vue/test-utils';
+import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import HdRadioButton from '@/components/buttons/HdRadioButton.vue';
 
 const desktopIcon = 'desktop-icon-url';
 const desktopIconHover = 'desktop-icon-hover-url';
 const mobileIcon = 'mobile-icon-url';
+const name = 'lorem';
+const value = 'ipsum';
+const label = 'dolor';
+const ICON_SELECTOR = '.radioButton__icon';
+const ICON_HOVER_SELECTOR = '.radioButton__icon--isHover';
+
+const wrapperBuilder = wrapperFactoryBuilder(HdRadioButton, {
+  props: {
+    name,
+    value,
+    label,
+    desktopIcon,
+    desktopIconHover,
+    mobileIcon,
+  },
+});
 
 describe('HdRadioButton', () => {
-  let wrapper;
+  it('the component is rendered', () => {
+    const wrapper = wrapperBuilder();
 
-  const name = 'lorem';
-  const value = 'ipsum';
-  const label = 'dolor';
-  const ICON_SELECTOR = '.radioButton__icon';
-  const ICON_HOVER_SELECTOR = '.radioButton__icon--isHover';
-
-  beforeEach(() => {
-    wrapper = mount(HdRadioButton, {
-      propsData: {
-        name,
-        value,
-        label,
-        desktopIcon,
-        desktopIconHover,
-        mobileIcon,
-      },
-    });
-  });
-
-  test('the component is rendered', () => {
+    expect(wrapper.find(ICON_SELECTOR).attributes().style).toEqual(expect.stringContaining(desktopIcon));
+    expect(wrapper.find(ICON_HOVER_SELECTOR).attributes().style).toEqual(expect.stringContaining(desktopIconHover));
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  test('shows the provided icon', () => {
-    expect(wrapper.find(ICON_SELECTOR).attributes().style).toEqual(expect.stringContaining(desktopIcon));
-    expect(wrapper.find(ICON_HOVER_SELECTOR).attributes().style).toEqual(expect.stringContaining(desktopIconHover));
-  });
-
-  test('on change, the proper method is invoked', () => {
+  it('on change, the proper method is invoked', () => {
+    const wrapper = wrapperBuilder();
     const EVENT_EMITTED = 'select';
-    const input = wrapper.find('input');
+    const input = wrapper.get('input');
+
     expect(input.attributes().name).toBe(name);
     expect(input.attributes().value).toBe(value);
     expect(wrapper.find('label').text()).toBe(label);

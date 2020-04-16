@@ -1,50 +1,74 @@
-import { mount } from '@vue/test-utils';
+import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import HdNotificationsBar from '@/components/notifications/HdNotificationsBar.vue';
 
-const MESSAGE = 'Hello world!, <a href="/test">This is a link...</a>';
-const MESSAGE_SELECTOR = '.notifications-bar__message';
+const MESSAGE = 'Hello world!';
+const SLOT = '<p>Hello world!, <a href="#">This is a link...</a></p>';
+const CONTENT_SELECTOR = '.notifications-bar__content';
 const ICON_FAKE_PATH = '/foo/bar/icon.svg';
+
+const COMPACT_CLASS = 'notifications-bar--compact';
+const VISIBLE_CLASS = 'notifications-bar--visible';
+
+const wrapperBuilder = wrapperFactoryBuilder(HdNotificationsBar, {
+  shallow: true,
+});
 
 describe('HdNotificationsBar', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = mount(HdNotificationsBar, {
-      propsData: {
+    wrapper = wrapperBuilder({
+      props: {
         message: MESSAGE,
       },
     });
   });
 
-  test('renders component', () => {
+
+  it('renders as expected', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  test('renders a message correctly', () => {
-    expect(wrapper.find(MESSAGE_SELECTOR).element.innerHTML).toBe(MESSAGE);
+  it('renders a message correctly', () => {
+    expect(wrapper.find(CONTENT_SELECTOR).text()).toBe(MESSAGE);
   });
 
-  test('supports custom icon', () => {
+  it('renders a slot correctly', () => {
+    wrapper = wrapperBuilder({
+      slots: {
+        default: SLOT,
+      },
+    });
+
+    expect(wrapper.find(CONTENT_SELECTOR).element.innerHTML).toBe(SLOT);
+  });
+
+  it('supports custom icon', () => {
     wrapper.setProps({ customIcon: ICON_FAKE_PATH });
     expect(wrapper.vm.icon).toBe(ICON_FAKE_PATH);
   });
 
-  test('supports setting a custom offset', () => {
+  it('can be compact', async () => {
+    expect(wrapper.classes().includes(COMPACT_CLASS)).toBe(false);
+
     wrapper.setProps({
-      offsetTop: 20,
-      offsetRight: 30,
-      offsetLeft: 40,
+      compact: true,
     });
-    expect(wrapper.vm.$el.style.top).toBe('20px');
-    expect(wrapper.vm.$el.style.right).toBe('30px');
-    expect(wrapper.vm.$el.style.left).toBe('40px');
+
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.classes().includes(COMPACT_CLASS)).toBe(true);
   });
 
-  test('supports hiding the bar', () => {
-    expect(wrapper.classes().includes('isVisible')).toBe(true);
+  it('supports hiding the bar', async () => {
+    expect(wrapper.classes().includes(VISIBLE_CLASS)).toBe(true);
+
     wrapper.setProps({
       visible: false,
     });
-    expect(wrapper.classes().includes('isVisible')).toBe(false);
+
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.classes().includes(VISIBLE_CLASS)).toBe(false);
   });
 });

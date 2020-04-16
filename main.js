@@ -32,6 +32,7 @@ export { default as HdCheckbox } from './src/components/form/HdCheckbox.vue';
 export { default as HdDynamicForm } from './src/components/form/HdDynamicForm.vue';
 export { default as HdGoogleAutocomplete } from './src/components/form/HdGoogleAutocomplete.vue';
 export { default as HdInput } from './src/components/form/HdInput.vue';
+export { default as HdInputFormatter } from './src/components/form/HdInputFormatter.vue';
 export { default as HdInputPassword } from './src/components/form/HdInputPassword.vue';
 export { default as HdPasswordConfirm } from './src/components/form/HdPasswordConfirm.vue';
 export { default as HdRadio } from './src/components/form/HdRadio.vue';
@@ -57,7 +58,10 @@ export { default as HdZoomerGallery } from './src/components/gallery/HdZoomerGal
 
 // Notifications
 export { default as HdNotifications } from './src/components/notifications/HdNotifications.vue';
-export { default as HdNotificationsBar } from './src/components/notifications/HdNotificationsBar.vue';
+export {
+  default as HdNotificationsBar,
+  TYPES as HdNotificationsTypes,
+} from './src/components/notifications/HdNotificationsBar.vue';
 
 // Services
 export { default as BreakpointsService } from './src/services/breakpoints';

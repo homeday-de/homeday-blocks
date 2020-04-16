@@ -7,15 +7,13 @@
       <HdNotificationsBar
         v-for="(notification, i) in notifications"
         ref="notifications"
-        :key="notification.id"
-        :message="notification.message"
-        :type="notification.type"
-        :custom-icon="notification.customIcon || ''"
-        :visible="i === notifications.length - 1"
-        :offsetTop="offsetTop"
-        :offsetRight="offsetRight"
-        :offsetLeft="offsetLeft"
-      />
+        :key="notification.id || i"
+        :visible="isLast(i)"
+        :compact="compact"
+        v-bind="notification"
+      >
+        <slot :notification="notification" />
+      </HdNotificationsBar>
     </transition-group>
     <div
       ref="sizer"
@@ -41,13 +39,14 @@ export default {
       type: Array,
       default: () => [],
     },
+    compact: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
       sizerHeight: 0,
-      offsetTop: 0,
-      offsetRight: 0,
-      offsetLeft: 0,
     };
   },
   watch: {
@@ -61,14 +60,14 @@ export default {
   mounted() {
     this.resizeNotifications();
     this.addResizeEvents();
-    this.addRoutingEvents();
-    this.calculateOffset();
   },
   beforeDestroy() {
     this.removeResizeEvents();
-    this.removeRoutingEvents();
   },
   methods: {
+    isLast(notificationIndex) {
+      return notificationIndex === this.notifications.length - 1;
+    },
     // Encapsulated in a method to be able to mock it in the tests
     getScrollHeight(el) {
       return el.scrollHeight;
@@ -96,42 +95,14 @@ export default {
       }, 0);
       this.sizerHeight = maxSize;
     },
-    calculateOffset() {
-      const elRect = this.$el.getBoundingClientRect();
-      const bodyRect = document.body.getBoundingClientRect();
-      this.offsetTop = elRect.top - bodyRect.top;
-      this.offsetRight = bodyRect.right - elRect.right;
-      this.offsetLeft = elRect.left - bodyRect.left;
-    },
-    addRoutingEvents() {
-      this.$el.addEventListener('click', this.routeOnClick, false);
-    },
-    // We are catching cliks on anchors, and if it's an internal link, we use
-    // router push instead (for a nicer transition)
-    routeOnClick(e) {
-      if (e.target.nodeName !== 'A') {
-        return;
-      }
-
-      if (e.target.hostname !== window.location.hostname) {
-        return;
-      }
-
-      e.preventDefault();
-      this.$emit('route', { path: e.target.pathname });
-    },
     resizeHandler() {
       this.resizeNotifications();
-      this.calculateOffset();
     },
     addResizeEvents() {
       onResize.onDebounced(this.resizeHandler);
     },
     removeResizeEvents() {
       onResize.offDebounced(this.resizeHandler);
-    },
-    removeRoutingEvents() {
-      this.$el.removeEventListener('click', this.routeOnClick, false);
     },
   },
 };
@@ -140,7 +111,11 @@ export default {
 <style lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
 
-.notifications__sizer {
-  transition: height ($time-s * 2) ease-in-out;
+.notifications {
+  position: relative;
+
+  &__sizer {
+    transition: height ($time-s * 2) ease-in-out;
+  }
 }
 </style>
