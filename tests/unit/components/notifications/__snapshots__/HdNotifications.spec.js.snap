@@ -1,16 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HdNotifications renders component 1`] = `
-<div class="notifications">
-  <transition-group-stub tag="div" name="notifications-bar-"></transition-group-stub>
-  <div class="notifications__sizer" style="height: 0px;"></div>
-</div>
-`;
-
-exports[`HdNotifications renders notification bars 1`] = `
+exports[`HdNotifications renders the component corrently 1`] = `
 <div class="notifications">
   <transition-group-stub tag="div" name="notifications-bar-">
-    <hdnotificationsbar-stub type="notification" message="Hello <a href=&quot;http://localhost&quot;>Homeday!</a>" visible="true" customicon="" offsettop="0" offsetright="0" offsetleft="0"></hdnotificationsbar-stub>
+    <hdnotificationsbar-stub type="notification" message="" customicon="" text="Hello world">
+      <p>
+        Hello world
+        <!---->
+      </p>
+    </hdnotificationsbar-stub>
+    <hdnotificationsbar-stub type="notification" message="" visible="true" customicon="" text="Welcome to" url="https://www.homeday.de" urllabel="Homeday">
+      <p>
+        Welcome to
+        <a href="props.notification.url">Homeday</a></p>
+    </hdnotificationsbar-stub>
   </transition-group-stub>
   <div class="notifications__sizer" style="height: 0px;"></div>
 </div>
