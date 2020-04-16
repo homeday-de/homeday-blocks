@@ -36,4 +36,7 @@ storiesOf('Components|Form/HdInputFormatter', module)
         action('input')(value);
       },
     },
-  }), { percy: { skip: true } });
+  }), {
+    // Doesn't make sense to test the UI of this components because it's based on HdInput
+    percy: { skip: true },
+  });
