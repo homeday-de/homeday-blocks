@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils';
+import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import HdNotifications from '@/components/notifications/HdNotifications.vue';
 
 const NOTIFICATIONS = [
@@ -12,21 +12,24 @@ const NOTIFICATIONS = [
   },
 ];
 
+const wrapperBuilder = wrapperFactoryBuilder(HdNotifications, {
+  props: {
+    notifications: NOTIFICATIONS,
+  },
+  scopedSlots: {
+    default: `<p>
+      {{props.notification.text}}
+      <a v-if="props.notification.url" href="props.notification.url">{{props.notification.urlLabel}}</a>
+    </p>`,
+  },
+  shallow: true,
+});
+
 describe('HdNotifications', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallowMount(HdNotifications, {
-      propsData: {
-        notifications: NOTIFICATIONS,
-      },
-      scopedSlots: {
-        default: `<p>
-          {{props.notification.text}}
-          <a v-if="props.notification.url" href="props.notification.url">{{props.notification.urlLabel}}</a>
-        </p>`,
-      },
-    });
+    wrapper = wrapperBuilder();
   });
 
   it('renders the component corrently', () => {

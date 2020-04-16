@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils';
+import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import HdNotificationsBar from '@/components/notifications/HdNotificationsBar.vue';
 
 const MESSAGE = 'Hello world!';
@@ -9,12 +9,16 @@ const ICON_FAKE_PATH = '/foo/bar/icon.svg';
 const COMPACT_CLASS = 'notifications-bar--compact';
 const VISIBLE_CLASS = 'notifications-bar--visible';
 
+const wrapperBuilder = wrapperFactoryBuilder(HdNotificationsBar, {
+  shallow: true,
+});
+
 describe('HdNotificationsBar', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallowMount(HdNotificationsBar, {
-      propsData: {
+    wrapper = wrapperBuilder({
+      props: {
         message: MESSAGE,
       },
     });
@@ -30,7 +34,7 @@ describe('HdNotificationsBar', () => {
   });
 
   it('renders a slot correctly', () => {
-    wrapper = shallowMount(HdNotificationsBar, {
+    wrapper = wrapperBuilder({
       slots: {
         default: SLOT,
       },
