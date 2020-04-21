@@ -116,6 +116,7 @@ export default {
   &__icon {
     width: 24px;
     align-self: flex-start;
+    flex-shrink: 0;
     margin-top: $stack-xxs;
     margin-right: $inline-s;
 
