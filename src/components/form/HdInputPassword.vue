@@ -25,6 +25,7 @@
 <script>
 import HdInput from 'homeday-blocks/src/components/form/HdInput.vue';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
+import hasPasswordBeenPwnd from 'homeday-blocks/src/services/hibp';
 import { visibilityOnIcon } from 'homeday-blocks/src/assets/small-icons';
 
 export default {
@@ -58,6 +59,9 @@ export default {
     },
   },
   methods: {
+    hasPasswordBeenPwnd() {
+      return hasPasswordBeenPwnd(this.computedValue);
+    },
     toggleVisibility() {
       this.type = this.type === 'password' ? 'text' : 'password';
     },

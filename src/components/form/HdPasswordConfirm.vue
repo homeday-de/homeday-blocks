@@ -118,6 +118,9 @@ export default {
       }
       return isValid;
     },
+    hasPasswordBeenPwnd() {
+      return this.$refs.passwordMain.hasPasswordBeenPwnd(this.passwordMain);
+    },
     checkPasswordLength() {
       if (this.passwordMain.length === 0 && this.required) {
         this.$refs.passwordMain.showError(this.t.FORM.VALIDATION.REQUIRED);

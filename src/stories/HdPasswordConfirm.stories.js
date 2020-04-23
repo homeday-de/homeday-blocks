@@ -102,4 +102,35 @@ storiesOf('Components|Form/HdPasswordConfirm', module)
         default: text('icon', icon),
       },
     },
-  }));
+  }))
+  .add('with hibp check 🎛', () => ({
+    components: { HdPasswordConfirm },
+    props: {
+      min: {
+        type: Number,
+        default: number('min', 5),
+      },
+    },
+    template: `
+      <div>
+        <hd-password-confirm
+          ref="password"
+          v-model="password"
+          :min="min"
+        />
+        <button class="btn btn--primary" @click="check">Check Pwnd</button>
+        <p style="margin-top: 8px">Is pwnd: {{ valid }}</p>
+      </div>
+    `,
+    methods: {
+      async check() {
+        this.valid = await this.$refs.password.hasPasswordBeenPwnd();
+      },
+    },
+    data() {
+      return {
+        password: '',
+        valid: false,
+      };
+    },
+  }), { percy: { skip: true } });

@@ -26,4 +26,29 @@ storiesOf('Components|Form/HdInputPassword', module)
         action('input')(value);
       },
     },
-  }));
+  }))
+  .add('with hibp check 🎛', () => ({
+    components: { HdInputPassword },
+    template: `
+      <div>
+        <HdInputPassword
+          name="hibp"
+          ref="password"
+          v-model="password"
+        />
+        <button class="btn btn--primary" @click="check">Check Pwnd</button>
+        <p style="margin-top: 8px">Is pwnd: {{ valid }}</p>
+      </div>
+    `,
+    methods: {
+      async check() {
+        this.valid = await this.$refs.password.hasPasswordBeenPwnd();
+      },
+    },
+    data() {
+      return {
+        password: '',
+        valid: false,
+      };
+    },
+  }), { percy: { skip: true } });
