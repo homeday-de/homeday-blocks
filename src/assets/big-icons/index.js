@@ -14,7 +14,6 @@ export { default as cancelledIcon } from './ic_cancelled.svg';
 export { default as castleBurgHouseTypeIcon } from './ic_castle-burg-house-type.svg';
 export { default as changeEuroHandIcon } from './ic_change-euro-hand.svg';
 export { default as checklistClipboardIcon } from './ic_checklist-clipboard.svg';
-export { default as checkmarkIcon } from './ic_checkmark.svg';
 export { default as constructionYearIcon } from './ic_construction-year.svg';
 export { default as documentCommentsIcon } from './ic_document-comments.svg';
 export { default as documentKeyIcon } from './ic_document-key.svg';
