@@ -4,6 +4,7 @@ export { default as atticSimplifiedIcon } from './ic_attic-simplified.svg';
 export { default as atticIcon } from './ic_attic.svg';
 export { default as balkonySimplifiedIcon } from './ic_balkony-simplified.svg';
 export { default as balkonyIcon } from './ic_balkony.svg';
+export { default as buildYearSimplifiedIcon } from './ic_build-year-simplified.svg';
 export { default as buildYearIcon } from './ic_build-year.svg';
 export { default as bungalowHouseSimplifiedIcon } from './ic_bungalow-house-simplified.svg';
 export { default as bungalowHouseIcon } from './ic_bungalow-house.svg';
