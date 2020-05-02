@@ -30,7 +30,6 @@
 </template>
 
 <script>
-import imagesLoaded from 'imagesloaded';
 
 export default {
   name: 'HdGalleryMedia',
@@ -75,9 +74,16 @@ export default {
       this.showThumbnail = false;
     },
     hideThumbnailOnBgLoad() {
-      imagesLoaded(this.$refs.imageHolder, () => {
-        this.showThumbnail = false;
-      });
+      const self = this;
+      if (self.$refs.imageHolder) {
+        const checkImage = setInterval(() => {
+          const isImageOk = self.$refs.imageHolder.complete;
+          if (isImageOk) {
+            clearInterval(checkImage);
+            self.showThumbnail = false;
+          }
+        }, 1);
+      }
     },
   },
 };
@@ -129,12 +135,13 @@ export default {
 
     &__thumbnail {
       opacity: 0;
-      transition: opacity ($time-s * 2) ease-in-out;
+      transition: opacity ($time-s * 2) ease-in-out, transform .2s;
       filter: blur(4px);
 
       &.isVisible {
         opacity: 1;
         transition: none;
+        transform: scale(1.03);
       }
     }
   }
