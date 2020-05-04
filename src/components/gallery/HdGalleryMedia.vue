@@ -12,7 +12,11 @@
           :key="media"
           :media="`(${media})`" :srcset="source"
         >
-        <img ref="imageHolder" :src="item.image" :alt="item.caption" :srcset="item.imageSrcSet"/>
+        <img ref="imageHolder"
+             :src="item.image"
+             :alt="item.caption"
+             :srcset="item.imageSrcSet"
+             @load="hideThumbnail"/>
       </picture>
 
       <div
@@ -61,27 +65,17 @@ export default {
   watch: {
     item() {
       this.$nextTick(() => {
-        this.hideThumbnailOnBgLoad();
+        this.hideThumbnail();
         this.showThumbnail = true;
       });
     },
   },
   mounted() {
-    this.hideThumbnailOnBgLoad();
+    this.hideThumbnail();
   },
   methods: {
-    imageLoadListener() {
+    hideThumbnail() {
       this.showThumbnail = false;
-    },
-    hideThumbnailOnBgLoad() {
-      if (this.$refs.imageHolder) {
-        this.$refs.imageHolder.addEventListener('load', () => {
-          const isImageOk = this.$refs.imageHolder.complete;
-          if (isImageOk) {
-            this.showThumbnail = false;
-          }
-        });
-      }
     },
   },
 };
