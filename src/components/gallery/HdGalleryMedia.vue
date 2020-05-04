@@ -9,10 +9,10 @@
       <!-- IE11 uses this value only because do not support the picture element -->
       <picture class="gallery-media__object__picture">
         <source v-for="(source, media) in item.pictureSources"
-          :key="media"
-          :media="`(${media})`" :srcset="source"
+                :key="media"
+                :media="`(${media})`" :srcset="source"
         >
-        <img ref="imageHolder" :src="item.image" :alt="item.caption" :srcset="item.imageSrcSet"/>
+        <img ref="imageHolder" :src="item.image" :alt="item.caption" :srcset="item.imageSrcSet" @load="hideThumbnail"/>
       </picture>
 
       <div
@@ -30,8 +30,6 @@
 </template>
 
 <script>
-import imagesLoaded from 'imagesloaded';
-
 export default {
   name: 'HdGalleryMedia',
   props: {
@@ -62,22 +60,13 @@ export default {
   watch: {
     item() {
       this.$nextTick(() => {
-        this.hideThumbnailOnBgLoad();
         this.showThumbnail = true;
       });
     },
   },
-  mounted() {
-    this.hideThumbnailOnBgLoad();
-  },
   methods: {
-    imageLoadListener() {
+    hideThumbnail() {
       this.showThumbnail = false;
-    },
-    hideThumbnailOnBgLoad() {
-      imagesLoaded(this.$refs.imageHolder, () => {
-        this.showThumbnail = false;
-      });
     },
   },
 };
@@ -129,12 +118,13 @@ export default {
 
     &__thumbnail {
       opacity: 0;
-      transition: opacity ($time-s * 2) ease-in-out;
+      transition: opacity ($time-s * 2) ease-in-out, transform .2s;
       filter: blur(4px);
 
       &.isVisible {
         opacity: 1;
         transition: none;
+        transform: scale(1.03);
       }
     }
   }
