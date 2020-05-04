@@ -9,14 +9,10 @@
       <!-- IE11 uses this value only because do not support the picture element -->
       <picture class="gallery-media__object__picture">
         <source v-for="(source, media) in item.pictureSources"
-          :key="media"
-          :media="`(${media})`" :srcset="source"
+                :key="media"
+                :media="`(${media})`" :srcset="source"
         >
-        <img ref="imageHolder"
-             :src="item.image"
-             :alt="item.caption"
-             :srcset="item.imageSrcSet"
-             @load="hideThumbnail"/>
+        <img ref="imageHolder" :src="item.image" :alt="item.caption" :srcset="item.imageSrcSet" @load="hideThumbnail"/>
       </picture>
 
       <div
@@ -34,7 +30,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'HdGalleryMedia',
   props: {
@@ -65,13 +60,9 @@ export default {
   watch: {
     item() {
       this.$nextTick(() => {
-        this.hideThumbnail();
         this.showThumbnail = true;
       });
     },
-  },
-  mounted() {
-    this.hideThumbnail();
   },
   methods: {
     hideThumbnail() {
@@ -82,60 +73,60 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'homeday-blocks/src/styles/mixins.scss';
+  @import 'homeday-blocks/src/styles/mixins.scss';
 
-.gallery-media {
-  $_root: &;
+  .gallery-media {
+    $_root: &;
 
-  &__object {
-    position: relative;
-    overflow: hidden;
-    border-radius: 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: $secondary-bg;
-
-    &__thumbnail,
-    &__picture {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-    }
-
-    &__picture {
+    &__object {
+      position: relative;
+      overflow: hidden;
+      border-radius: 2px;
       display: flex;
       align-items: center;
       justify-content: center;
-    }
+      background-color: $secondary-bg;
 
-    &__thumbnail {
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: contain;
-      @media (min-width: $break-tablet) {
-        background-size: cover;
+      &__thumbnail,
+      &__picture {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
       }
-    }
 
-    img {
-      max-width: 100%;
-      max-height: 100%;
-    }
+      &__picture {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
 
-    &__thumbnail {
-      opacity: 0;
-      transition: opacity ($time-s * 2) ease-in-out, transform .2s;
-      filter: blur(4px);
+      &__thumbnail {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        @media (min-width: $break-tablet) {
+          background-size: cover;
+        }
+      }
 
-      &.isVisible {
-        opacity: 1;
-        transition: none;
-        transform: scale(1.03);
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      &__thumbnail {
+        opacity: 0;
+        transition: opacity ($time-s * 2) ease-in-out, transform .2s;
+        filter: blur(4px);
+
+        &.isVisible {
+          opacity: 1;
+          transition: none;
+          transform: scale(1.03);
+        }
       }
     }
   }
-}
 </style>
