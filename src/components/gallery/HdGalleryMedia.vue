@@ -74,15 +74,13 @@ export default {
       this.showThumbnail = false;
     },
     hideThumbnailOnBgLoad() {
-      const self = this;
-      if (self.$refs.imageHolder) {
-        const checkImage = setInterval(() => {
-          const isImageOk = self.$refs.imageHolder.complete;
+      if (this.$refs.imageHolder) {
+        this.$refs.imageHolder.addEventListener('load', () => {
+          const isImageOk = this.$refs.imageHolder.complete;
           if (isImageOk) {
-            clearInterval(checkImage);
-            self.showThumbnail = false;
+            this.showThumbnail = false;
           }
-        }, 1);
+        });
       }
     },
   },
