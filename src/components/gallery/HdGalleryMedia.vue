@@ -73,60 +73,60 @@ export default {
 </script>
 
 <style lang="scss">
-  @import 'homeday-blocks/src/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/mixins.scss';
 
-  .gallery-media {
-    $_root: &;
+.gallery-media {
+  $_root: &;
 
-    &__object {
-      position: relative;
-      overflow: hidden;
-      border-radius: 2px;
+  &__object {
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $secondary-bg;
+
+    &__thumbnail,
+    &__picture {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    &__picture {
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: $secondary-bg;
+    }
 
-      &__thumbnail,
-      &__picture {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
+    &__thumbnail {
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      @media (min-width: $break-tablet) {
+        background-size: cover;
       }
+    }
 
-      &__picture {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
 
-      &__thumbnail {
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: contain;
-        @media (min-width: $break-tablet) {
-          background-size: cover;
-        }
-      }
+    &__thumbnail {
+      opacity: 0;
+      transition: opacity ($time-s * 2) ease-in-out, transform .2s;
+      filter: blur(4px);
 
-      img {
-        max-width: 100%;
-        max-height: 100%;
-      }
-
-      &__thumbnail {
-        opacity: 0;
-        transition: opacity ($time-s * 2) ease-in-out, transform .2s;
-        filter: blur(4px);
-
-        &.isVisible {
-          opacity: 1;
-          transition: none;
-          transform: scale(1.03);
-        }
+      &.isVisible {
+        opacity: 1;
+        transition: none;
+        transform: scale(1.03);
       }
     }
   }
+}
 </style>
