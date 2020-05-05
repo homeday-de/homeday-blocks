@@ -41,7 +41,7 @@
         <p
           v-if="labels[stepIndex]"
           class="range__step-label"
-          v-text="labels[stepIndex]"
+          v-html="labels[stepIndex]"
         />
       </button>
     </div>
