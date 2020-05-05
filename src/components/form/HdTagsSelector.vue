@@ -26,7 +26,7 @@
         @click="togglePanel"
       >
         <HdIcon
-          :src="addCircleIcon"
+          :src="plusCircleIcon"
           width="100%"
           height="100%"
         />
@@ -50,7 +50,7 @@
 
 <script>
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
-import { addCircleIcon, closeIcon } from 'homeday-blocks/src/assets/small-icons';
+import { plusCircleIcon, closeIcon } from 'homeday-blocks/src/assets/small-icons';
 
 export default {
   name: 'HdTagsSelector',
@@ -72,7 +72,7 @@ export default {
     return {
       selectedTags: this.value,
       panelVisible: false,
-      addCircleIcon,
+      plusCircleIcon,
       closeIcon,
     };
   },
