@@ -133,7 +133,7 @@ describe('HdRange', () => {
   });
 
   describe('Labels', () => {
-    const TEST_LABELS = ['label1', 'label2', 'label3', 'label4'];
+    const TEST_LABELS = ['label1', 'label<br>2', 'label3', 'label4'];
     const TEST_INDEX = Math.round(TEST_LABELS.length / 2);
     const labelsWrapperBuilder = wrapperFactoryBuilder(HdRange, {
       props: {
@@ -145,6 +145,12 @@ describe('HdRange', () => {
         displayStepBullets: true,
         labels: TEST_LABELS,
       },
+    });
+
+    it('renders', () => {
+      const wrapper = labelsWrapperBuilder();
+
+      expect(wrapper.html()).toMatchSnapshot();
     });
 
     it('renders the right number of labels', () => {
