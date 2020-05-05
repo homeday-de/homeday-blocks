@@ -51,7 +51,7 @@ export default {
       return this.currentItem.caption;
     },
     images() {
-      return this.items.map(({ image }) => image);
+      return this.items;
     },
   },
   methods: {
