@@ -3,7 +3,15 @@ import { storiesOf } from '@storybook/vue';
 import Welcome from './Welcome.vue';
 
 storiesOf('Introduction|Welcome', module)
-  .addParameters({ percy: { skip: true } })
+  .addParameters({
+    options: {
+      showPanel: false,
+      isToolshown: false,
+    },
+    percy: {
+      skip: true,
+    },
+  })
   .add('Welcome', () => ({
     components: {
       Welcome,
@@ -11,10 +19,4 @@ storiesOf('Introduction|Welcome', module)
     template: `
     <Welcome />
     `,
-  }),
-  {
-    options: {
-      showPanel: false,
-      isToolshown: false,
-    },
-  });
+  }));

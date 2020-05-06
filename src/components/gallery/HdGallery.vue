@@ -75,7 +75,7 @@ import HdGalleryMedia from 'homeday-blocks/src/components/gallery/HdGalleryMedia
 import HdGalleryPlaceholder from 'homeday-blocks/src/components/gallery/HdGalleryPlaceholder.vue';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import { chevronIcon } from 'homeday-blocks/src/assets/small-icons';
-import { pictureIcon } from 'homeday-blocks/src/assets/big-icons';
+import { picturesIcon } from 'homeday-blocks/src/assets/big-icons';
 
 export default {
   name: 'HdGallery',
@@ -112,8 +112,7 @@ export default {
     },
     placeholderIcon: {
       type: String,
-      // eslint-disable-next-line global-require
-      default: pictureIcon,
+      default: picturesIcon,
     },
     placeholderText: {
       type: String,

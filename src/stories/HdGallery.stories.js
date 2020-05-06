@@ -52,6 +52,9 @@ storiesOf('Components|Gallery/HdGallery', module)
       };
     },
     methods: {
+      onCarouselItemClick(value) {
+        action('onCarouselItemClick')(value);
+      },
       onCurrentItemClick(value) {
         action('onCurrentItemClick')(value);
       },
