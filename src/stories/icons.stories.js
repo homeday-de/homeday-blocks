@@ -8,6 +8,15 @@ import * as bicolorIcons from 'homeday-blocks/src/assets/bicolor-icons';
 
 
 storiesOf('Assets|Icons', module)
+  .addParameters({
+    options: {
+      showPanel: false,
+      isToolshown: false,
+    },
+    percy: {
+      skip: true,
+    },
+  })
   .add('Small icons', () => ({
     components: {
       HdIcon,
