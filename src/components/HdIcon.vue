@@ -8,7 +8,7 @@
 
 <script>
 import _intersection from 'lodash/intersection';
-import InlineSvg from 'vue-inline-svg/dist/vue-inline-svg';
+import InlineSvg from 'vue-inline-svg';
 
 export default {
   name: 'HdIcon',
