@@ -118,7 +118,7 @@ export default {
 
     &__thumbnail {
       opacity: 0;
-      transition: opacity ($time-s * 2) ease-in-out, transform .2s;
+      transition: opacity ($time-s * 2) ease-in-out;
 
       &.isVisible {
         opacity: 1;
