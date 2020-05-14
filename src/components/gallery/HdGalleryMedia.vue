@@ -119,6 +119,7 @@ export default {
     &__thumbnail {
       opacity: 0;
       transition: opacity ($time-s * 2) ease-in-out;
+      filter: blur(3px);
 
       &.isVisible {
         opacity: 1;
