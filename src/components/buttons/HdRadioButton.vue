@@ -32,7 +32,7 @@
         class="radioButton__icon"
       />
     </div>
-    <label :for="name" class="radioButton__label" v-text="label" />
+    <label :for="name" class="radioButton__label" v-html="label" />
     <HdIcon
       :src="chevronIcon"
       class="radioButton__chevron"
