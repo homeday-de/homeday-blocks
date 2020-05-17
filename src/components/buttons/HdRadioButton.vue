@@ -52,7 +52,7 @@ export default {
   props: {
     label: String,
     value: {
-      type: [String, Number],
+      type: [String, Number, Object],
       required: true,
     },
     name: {
