@@ -44,7 +44,6 @@ describe('HdNotifications', () => {
     wrapper.setProps({ notifications: NOTIFICATIONS.slice(-1) });
 
     await wrapper.vm.$nextTick();
-    await wrapper.vm.$nextTick();
 
     expect(wrapper.emitted('heightChange')).toBeTruthy();
   });
