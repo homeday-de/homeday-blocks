@@ -118,13 +118,12 @@ export default {
 
     &__thumbnail {
       opacity: 0;
-      transition: opacity ($time-s * 2) ease-in-out, transform .2s;
-      filter: blur(4px);
+      transition: opacity ($time-s * 2) ease-in-out;
+      filter: blur(3px);
 
       &.isVisible {
         opacity: 1;
         transition: none;
-        transform: scale(1.03);
       }
     }
   }
