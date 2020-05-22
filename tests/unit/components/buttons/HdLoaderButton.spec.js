@@ -87,7 +87,7 @@ describe('HdLoaderButton', () => {
     expect(wrapper.classes()).toContain(`${BASE_CLASS}--${LOADING_STATE.IDLE}`);
   });
 
-  it('should emit click when disabled', () => {
+  it('should not emit click when disabled', () => {
     const clicked = jest.fn();
     const wrapper = wrapperBuilder({
       props: {
@@ -99,10 +99,10 @@ describe('HdLoaderButton', () => {
     });
     const button = wrapper.get(BUTTON_SELECTOR);
 
-    expect(button.attributes().disabled).toBeFalsy();
+    expect(button.attributes().disabled).toBeTruthy();
 
     button.trigger('click');
 
-    expect(clicked).toHaveBeenCalled();
+    expect(clicked).not.toHaveBeenCalled();
   });
 });
