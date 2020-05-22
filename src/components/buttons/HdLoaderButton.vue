@@ -15,6 +15,7 @@
       @click="clicked"
       @keyup.enter.space="clicked"
       @transitionend="runTransitionQueue"
+      :disabled="disabled"
     >
       <span class="loaderButton__button__label">{{ label }}</span>
     </button>
