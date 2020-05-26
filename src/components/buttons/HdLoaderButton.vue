@@ -12,10 +12,10 @@
       ref="button"
       :style="buttonStyles"
       class="btn btn--primary loaderButton__button"
+      :class="customClasses"
       @click="clicked"
       @keyup.enter.space="clicked"
       @transitionend="runTransitionQueue"
-      :disabled="disabled"
     >
       <span class="loaderButton__button__label">{{ label }}</span>
     </button>
@@ -176,6 +176,11 @@ export default {
         borderWidth: setIfLoading(this.loadingCircleStrokeWidth),
       };
     },
+    customClasses() {
+      return {
+        'btn--primary-disabled': this.disabled,
+      };
+    },
   },
   watch: {
     loadedAmount(val) {
@@ -314,7 +319,7 @@ export default {
       pointer-events: none;
       width: 46px; /* make a circle */
       border-width: 4px;
-      border-color: getShade($quaternary-color, 50);;
+      border-color: getShade($quaternary-color, 50);
       border-style: solid;
       border-radius: 30px;
       background-color: transparent;

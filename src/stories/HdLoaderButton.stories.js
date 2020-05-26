@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import { text, boolean, number } from '@storybook/addon-knobs';
 import { HdLoaderButton } from 'homeday-blocks';
+import hdLoaderButtonNote from '../notes/HdLoaderButton.md';
 
 storiesOf('Components|HdLoaderButton', module)
   .add('Playground 🎛', () => ({
@@ -54,4 +55,6 @@ storiesOf('Components|HdLoaderButton', module)
       success: action('success'),
       error: action('error'),
     },
-  }));
+  }), {
+    notes: hdLoaderButtonNote,
+  });
