@@ -6,7 +6,7 @@ import { HdLoaderButton } from 'homeday-blocks';
 import hdLoaderButtonNote from '../notes/HdLoaderButton.md';
 
 storiesOf('Components|HdLoaderButton', module)
-  .add('Playground 🎛', () => ({
+  .add('Playground 📝🎛', () => ({
     components: { HdLoaderButton },
     props: {
       label: {
