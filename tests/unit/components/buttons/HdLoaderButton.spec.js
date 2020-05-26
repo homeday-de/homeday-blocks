@@ -115,13 +115,13 @@ describe('HdLoaderButton', () => {
       },
     });
     const button = wrapper.get(BUTTON_SELECTOR);
-    expect(button.attributes().class).not.toContain(disabledClass);
+    expect(button.classes()).not.toContain(disabledClass);
 
     // Disabled
     wrapper.setProps({
       disabled: true,
     });
     await wrapper.vm.$nextTick();
-    expect(button.attributes().class).toContain(disabledClass);
+    expect(button.classes()).toContain(disabledClass);
   });
 });
