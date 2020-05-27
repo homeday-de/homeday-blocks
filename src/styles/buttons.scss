@@ -75,14 +75,14 @@ $button-transition: all $time-s ease-in-out;
 
 .btn--primary[disabled],
 .btn--primary-disabled {
-  background-color: $quaternary-color;
-  color: getShade($quaternary-color, 50);
+  background-color: getShade($neutral-gray, 60);
+  color: $white;
   box-shadow: 0 0 2px 0 rgba(0,0,0,0.12), 0 2px 2px 0 rgba(0,0,0,0.24);
   &:after {
     display: none;
   }
   &:hover, &:active, &:focus, &:active:focus {
-    background-color: $quaternary-color;
+    background-color: getShade($neutral-gray, 60);
     cursor: not-allowed;
     box-shadow: none;
     transform: none;
