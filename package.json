@@ -68,6 +68,7 @@
     "eslint": "^6.5.1",
     "eslint-plugin-vue": "5.2.3",
     "gitmoji-cli": "3.2.4",
+    "husky": "4.2.5",
     "lint-staged": "9.5.0",
     "node-fetch": "^2.6.0",
     "node-sass": "4.13.1",
@@ -82,10 +83,12 @@
     "*.json",
     "*.js"
   ],
-  "gitHooks": {
-    "pre-commit": "lint-staged",
-    "prepare-commit-msg": "exec < /dev/tty && gitmoji --hook './.git/COMMIT_EDITMSG' || true",
-    "pre-push": "npm run test:unit"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "prepare-commit-msg": "exec < /dev/tty && gitmoji --hook $HUSKY_GIT_PARAMS || true",
+      "pre-push": "npm run test:unit"
+    }
   },
   "lint-staged": {
     "*.js": [
