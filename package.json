@@ -84,6 +84,7 @@
   ],
   "gitHooks": {
     "pre-commit": "lint-staged",
+    "prepare-commit-msg": "exec < /dev/tty && gitmoji --hook './.git/COMMIT_EDITMSG' || true",
     "pre-push": "npm run test:unit"
   },
   "lint-staged": {
