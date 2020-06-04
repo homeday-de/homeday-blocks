@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
 import {
-  withKnobs, boolean,
+  withKnobs, boolean, select,
 } from '@storybook/addon-knobs';
 import { HdDatePicker } from 'homeday-blocks';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
@@ -9,6 +9,7 @@ import {
   defaultNotes,
   disabledNotes,
   disablingDatesNotes,
+  displayFormatNotes,
   startWeekOnSundayNotes,
 } from '../notes/HdDatePicker';
 
@@ -72,6 +73,36 @@ storiesOf('Components|Form/HdDatePicker', module)
   }), {
     notes: {
       markdown: disablingDatesNotes,
+    },
+  })
+  .add('displayFormat', () => ({
+    components: { HdDatePicker },
+    template: `
+      <HdDatePicker
+        v-model="date"
+        :displayFormat="displayFormat"
+      />
+    `,
+    props: {
+      displayFormat: {
+        default: select('Display format', [
+          'MM - YYYY',
+          'DD.MM.YYYY',
+          'DDMMYYYY',
+          'DD/MM/YYYY',
+          'MM/DD/YYYY',
+          'MM-DD-YYYY',
+        ], 'MM - YYYY'),
+      },
+    },
+    data() {
+      return {
+        date: '2020.06.01',
+      };
+    },
+  }), {
+    notes: {
+      markdown: displayFormatNotes,
     },
   })
   .add('startWeekOnSunday', () => ({
