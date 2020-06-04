@@ -9,7 +9,7 @@ It can handle:
 - Different formats
 - Cross browser support
 
-## Basic usage
+## Basic code example
 
 ```html
 <template>
@@ -32,6 +32,9 @@ export default {
 </script>
 ```
 
+For an extensive overview of the available options for the component visit the [Vue date pick docs][vue_date_pick_docs].
+
 <!-- Links references -->
 
 [vue_date_pick]: https://github.com/dbrekalo/vue-date-pick
+[vue_date_pick_docs]: https://dbrekalo.github.io/vue-date-pick/
