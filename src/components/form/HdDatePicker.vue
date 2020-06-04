@@ -8,7 +8,6 @@
 
 <script>
 import DatePick from 'vue-date-pick';
-import 'vue-date-pick/dist/vueDatePick.css';
 
 export default {
   components: { DatePick },
@@ -43,3 +42,8 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+$vdpColor: #5BA4FF;
+@import 'vue-date-pick/src/vueDatePick.scss';
+</style>
