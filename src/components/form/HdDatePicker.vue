@@ -17,14 +17,14 @@ export default {
       type: String,
       default: '',
     },
-    displayFormat: {
+    format: {
       type: String,
       default: 'YYYY.MM.DD',
     },
     weekdays: {
       type: Array,
       default: () => ([
-        'So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa',
+        'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So',
       ]),
     },
     months: {
@@ -34,10 +34,6 @@ export default {
         'Mai', 'Juni', 'Juli', 'August',
         'September', 'Oktober', 'November', 'Dezember',
       ]),
-    },
-    startWeekOnSunday: {
-      type: Boolean,
-      default: false,
     },
   },
   methods: {
