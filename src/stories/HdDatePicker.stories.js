@@ -6,6 +6,7 @@ import {
 import { HdDatePicker } from 'homeday-blocks';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 import {
+  dateTimePickerNotes,
   defaultNotes,
   disabledNotes,
   disablingDatesNotes,
@@ -126,5 +127,26 @@ storiesOf('Components|Form/HdDatePicker', module)
   }), {
     notes: {
       markdown: startWeekOnSundayNotes,
+    },
+  })
+  .add('dateTimePicker', () => ({
+    components: { HdDatePicker },
+    template: `
+      <HdDatePicker
+        v-model="date"
+        :pickTime="true"
+        :use12HourClock="true"
+        :format="'YYYY-MM-DD HH:mm'"
+        :displayFormat="'YYYY.MM.DD H:mm A'"
+      />
+    `,
+    data() {
+      return {
+        date: '2020.06.01 14:30',
+      };
+    },
+  }), {
+    notes: {
+      markdown: dateTimePickerNotes,
     },
   });
