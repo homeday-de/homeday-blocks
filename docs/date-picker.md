@@ -6,6 +6,7 @@
   - [General criteria for the selection](#general-criteria-for-the-selection)
     - [Potential resources](#potential-resources)
   - [Benchmarking](#benchmarking)
+  - [The winner](#the-winner)
   - [Relevant links](#relevant-links)
 
 ## Why do we need a date-picker component?
@@ -48,14 +49,18 @@ The points taken into consideration are the following:
 
 ## Benchmarking
 
+After reviewing several libraries these are the ones that better solves our problem.
+
 | Library | Documentation | Browser Support | i18n | Programmatic API | Customizable UI | Unpacked Package size | Latest release |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| **[vue-datetime][vue_datetime]** | [Readme][vue_datetime_documentation] | ◻️ IE <br> ✅ Safari | ✅ | ✅ | ✅ | 191 kB, but depends on [Luxon][luxon] (huge package) | May 1, 2020 |
-| **[vue-date-pick][vue_date_pick]** | [Docs page][vue_date_pick_documentation] | ◻️ IE <br> ✅ Safari | ✅ | ✅ | ✅ | 63.8 kB | May 3, 2020 |
-| **[vue2-datepicker][vue2_datepicker]** | [Docs page][vue2_datepicker_documentation] | ◻️ IE <br> ✅ Safari | ✅ | ✅ | ✅ | 809 kB | April 22, 2020 |
-| **[vuejs-datepicker][vuejs_datepicker]** | [Readme][vuejs_datepicker_documentation] | ◻️ IE <br> ✅ Safari | ✅ | ✅ | ✅ | 467 kB | June 24, 2019 |
+| **[vue-datetime][vue_datetime]** | [Readme][vue_datetime_documentation] | ◻️ IE11 <br> ✅ Safari | ✅ | ✅ | ✅ | 191 kB, but depends on [Luxon][luxon] (huge package) | May 1, 2020 |
+| **[vue-date-pick][vue_date_pick]** | [Docs page][vue_date_pick_documentation] | ◻️ IE11 <br> ✅ Safari | ✅ | ✅ | ✅ | 63.8 kB | May 3, 2020 |
+| **[vue2-datepicker][vue2_datepicker]** | [Docs page][vue2_datepicker_documentation] | ◻️ IE11 <br> ✅ Safari | ✅ | ✅ | ✅ | 809 kB | April 22, 2020 |
+| **[vuejs-datepicker][vuejs_datepicker]** | [Readme][vuejs_datepicker_documentation] | ◻️ IE11 <br> ✅ Safari | ✅ | ✅ | ✅ | 467 kB | June 24, 2019 |
 
+## The winner
 
+The selected library is **[vue-date-pick][vue_date_pick]**. It's a simple library, with active development and that solves all our current needs for picking dates. It doesn't have huge dependencies, and the package size is really slim. In addition, it's really simple to add i18n, and custom styles.
 
 ## Relevant links
 
@@ -75,7 +80,7 @@ The points taken into consideration are the following:
 [luxon]: https://moment.github.io/luxon/
 [vue_date_pick]: https://github.com/dbrekalo/vue-date-pick
 [vue_date_pick_documentation]: https://dbrekalo.github.io/vue-date-pick/getting-started.html
-[vue2_datepicker]: https://github.com/dbrekalo/vue-date-pick
+[vue2_datepicker]: https://github.com/mengxiong10/vue2-datepicker
 [vue2_datepicker_documentation]: https://mengxiong10.github.io/vue2-datepicker/index.html
 [vuejs_datepicker]: https://github.com/charliekassel/vuejs-datepicker
 [vuejs_datepicker_documentation]: https://github.com/charliekassel/vuejs-datepicker#readme
