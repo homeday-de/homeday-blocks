@@ -63,4 +63,21 @@ describe('HdDatePicker', () => {
 
     expect(wrapper.attributes('weekdays')).toBe(weekdays.join(','));
   });
+
+  it('updates the i18n months', () => {
+    const months = [
+      'Enero', 'Febrero', 'Marzo', 'Abril',
+      'Mayo', 'Junio', 'Julio', 'Agosto',
+      'Septiembre', 'Octubre', 'Noviembre', 'Diciembre',
+    ];
+    const wrapper = wrapperBuilder({
+      props: {
+        value: TEST_VALUE,
+        months,
+      },
+      shallow: true,
+    });
+
+    expect(wrapper.attributes('months')).toBe(months.join(','));
+  });
 });
