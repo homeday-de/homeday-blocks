@@ -21,4 +21,14 @@ describe('HdDatePicker', () => {
 
     expect(wrapper.find('input').element.value).toBe(TEST_VALUE);
   });
+
+  it('updates the field on change of the prop `value`', () => {
+    const wrapper = wrapperBuilder();
+
+    expect(wrapper.find('input').element.value).not.toBe(TEST_VALUE);
+
+    wrapper.get('input').setValue(TEST_VALUE);
+
+    expect(wrapper.find('input').element.value).toBe(TEST_VALUE);
+  });
 });
