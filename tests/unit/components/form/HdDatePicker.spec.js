@@ -80,4 +80,17 @@ describe('HdDatePicker', () => {
 
     expect(wrapper.attributes('months')).toBe(months.join(','));
   });
+
+  it('updates the i18n next month caption', () => {
+    const nextMonthCaption = 'Siguiente mes';
+    const wrapper = wrapperBuilder({
+      props: {
+        value: TEST_VALUE,
+        nextMonthCaption,
+      },
+      shallow: true,
+    });
+
+    expect(wrapper.attributes('nextmonthcaption')).toBe(nextMonthCaption);
+  });
 });
