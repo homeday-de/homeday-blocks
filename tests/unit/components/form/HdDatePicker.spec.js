@@ -42,4 +42,12 @@ describe('HdDatePicker', () => {
 
     expect(wrapper.find('input').attributes('readonly')).toBe('readonly');
   });
+
+  it('emits `input` event with the right payload', () => {
+    const wrapper = wrapperBuilder();
+
+    wrapper.get('input').setValue(TEST_VALUE);
+
+    expect(wrapper.emitted('input')[0][0]).toEqual(TEST_VALUE);
+  });
 });
