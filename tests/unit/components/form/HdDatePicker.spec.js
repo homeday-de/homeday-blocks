@@ -31,4 +31,15 @@ describe('HdDatePicker', () => {
 
     expect(wrapper.find('input').element.value).toBe(TEST_VALUE);
   });
+
+  it('is disabled with prop `disabled`', () => {
+    const wrapper = wrapperBuilder({
+      props: {
+        value: TEST_VALUE,
+        disabled: true,
+      },
+    });
+
+    expect(wrapper.find('input').attributes('readonly')).toBe('readonly');
+  });
 });
