@@ -50,4 +50,17 @@ describe('HdDatePicker', () => {
 
     expect(wrapper.emitted('input')[0][0]).toEqual(TEST_VALUE);
   });
+
+  it('updates the i18n weekdays', () => {
+    const weekdays = ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa', 'Do'];
+    const wrapper = wrapperBuilder({
+      props: {
+        value: TEST_VALUE,
+        weekdays,
+      },
+      shallow: true,
+    });
+
+    expect(wrapper.attributes('weekdays')).toBe(weekdays.join(','));
+  });
 });
