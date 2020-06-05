@@ -39,7 +39,7 @@ storiesOf('Components|Form/HdDatePicker', module)
     template: `
       <HdDatePicker
         v-model="date"
-        :editable="false"
+        disabled
       />
     `,
     data() {

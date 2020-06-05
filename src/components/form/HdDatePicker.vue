@@ -3,6 +3,7 @@
     v-bind="{...$props, ...$attrs}"
     :value="value"
     @input="handleInput"
+    :editable="!disabled"
   />
 </template>
 
@@ -15,6 +16,10 @@ export default {
     value: {
       type: String,
       default: '',
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     },
     format: {
       type: String,
