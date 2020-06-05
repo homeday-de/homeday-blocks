@@ -93,4 +93,17 @@ describe('HdDatePicker', () => {
 
     expect(wrapper.attributes('nextmonthcaption')).toBe(nextMonthCaption);
   });
+
+  it('updates the i18n previous month caption', () => {
+    const prevMonthCaption = 'Siguiente anterior';
+    const wrapper = wrapperBuilder({
+      props: {
+        value: TEST_VALUE,
+        prevMonthCaption,
+      },
+      shallow: true,
+    });
+
+    expect(wrapper.attributes('prevmonthcaption')).toBe(prevMonthCaption);
+  });
 });

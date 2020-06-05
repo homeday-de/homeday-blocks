@@ -29,6 +29,10 @@ export default {
       type: String,
       default: 'Nächsten Monat',
     },
+    prevMonthCaption: {
+      type: String,
+      default: 'Vorheriger Monat',
+    },
     weekdays: {
       type: Array,
       default: () => ([
