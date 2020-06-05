@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HdDatePicker is rendered as expected 1`] = `
+<div class="vdpComponent vdpWithInput"><input type="text">
+  <!---->
+  <!---->
+</div>
+`;
