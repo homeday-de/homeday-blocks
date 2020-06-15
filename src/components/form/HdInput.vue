@@ -205,12 +205,16 @@ export default {
     validate() {
       if (this.required && this.isEmpty) {
         this.showError(this.t.FORM.VALIDATION.REQUIRED);
-      } else if (this.currentType === 'email' && !validateEmail(this.value)) {
-        this.showError(this.t.FORM.VALIDATION.INVALID_EMAIL);
-      } else if (this.currentType === 'date' && !validateDate(this.value)) {
-        this.showError(this.t.FORM.VALIDATION.INVALID_DATE);
-      } else if (this.customRules.length && !this.isEmpty) {
-        this.validateCustomRules();
+      } else if (!this.isEmpty) {
+        if (this.currentType === 'email' && !validateEmail(this.value)) {
+          this.showError(this.t.FORM.VALIDATION.INVALID_EMAIL);
+        } else if (this.currentType === 'date' && !validateDate(this.value)) {
+          this.showError(this.t.FORM.VALIDATION.INVALID_DATE);
+        } else if (this.customRules.length) {
+          this.validateCustomRules();
+        } else {
+          this.hideError();
+        }
       } else {
         this.hideError();
       }
