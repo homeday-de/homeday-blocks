@@ -105,11 +105,11 @@ describe('HdInput', () => {
     it('validates email', async () => {
       const VALID_EMAIL = 'valid@email.com';
       const INVALID_EMAIL = 'unvalid@email@com';
-      const wrapper = emailWrapperBuilder({
-        props: {
-          value: INVALID_EMAIL,
-        },
-      });
+      const wrapper = emailWrapperBuilder();
+
+      expect(wrapper.vm.validate()).toBe(true);
+
+      wrapper.setProps({ value: INVALID_EMAIL });
 
       expect(wrapper.vm.validate()).toBe(false);
 
@@ -143,11 +143,11 @@ describe('HdInput', () => {
     it('validates date', async () => {
       const VALID_DATE = '1990-01-01';
       const INVALID_DATE = '01-01-1990';
-      const wrapper = dateWrapperBuilder({
-        props: {
-          value: INVALID_DATE,
-        },
-      });
+      const wrapper = dateWrapperBuilder();
+
+      expect(wrapper.vm.validate()).toBe(true);
+
+      wrapper.setProps({ value: INVALID_DATE });
 
       expect(wrapper.vm.validate()).toBe(false);
 
