@@ -6,12 +6,6 @@ $inputBackground: $secondary-bg;
 $inputPaddingTop: $labelHeight + $stack-xs;
 $focusedLabelTop: 5px;
 
-@mixin filledState {
-  font-size: 14px;
-  line-height: 18px;
-  top: $focusedLabelTop;
-}
-
 .field {
   $f: &;
   position: relative;
@@ -132,8 +126,10 @@ $focusedLabelTop: 5px;
     z-index: 9;
     pointer-events: none;
 
-    #{$f}--filled &, #{$f}--active &, #{$f}--select &, #{$f}--double & {
-      @include filledState;
+    #{$f}--filled &, #{$f}--active &, #{$f}--select &, #{$f}--double &, #{$f}__input:-webkit-autofill + & {
+      font-size: 14px;
+      line-height: 18px;
+      top: $focusedLabelTop;
     }
 
     #{$f}--active & {
@@ -342,10 +338,6 @@ $focusedLabelTop: 5px;
     &::placeholder {
       color: getShade($quaternary-color, 80);
       opacity: 0.5;
-    }
-
-    &:-webkit-autofill + #{$f}__label {
-      @include filledState;
     }
   }
 
