@@ -5,6 +5,7 @@ import { HdInputFormatter } from 'homeday-blocks';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 
 storiesOf('Components|Form/HdInputFormatter', module)
+  .addParameters({ percy: { skip: true } })
   .addDecorator(FormWrapper)
   .add('simple', () => ({
     components: { HdInputFormatter },
@@ -36,7 +37,39 @@ storiesOf('Components|Form/HdInputFormatter', module)
         action('input')(value);
       },
     },
-  }), {
-    // Doesn't make sense to test the UI of this components because it's based on HdInput
-    percy: { skip: true },
-  });
+  }))
+  .add('with validation', () => ({
+    components: { HdInputFormatter },
+    template: `
+      <div class="text-xsmall">
+        <p>Try a value lower than 1.000.000</p><br>
+        <HdInputFormatter
+          v-model="value"
+          :formatter="formatter"
+          name="test"
+          label="Currency formatter"
+          type="number"
+          :custom-rules="[rule]"
+        />
+        <p>As you can see, the validation is done on the original value, and not the formatted one
+        (which contain some dots htat make parsing hard)</p>
+      </div>
+    `,
+    data() {
+      return {
+        value: 50,
+        rule: {
+          validate(value) {
+            return value > 1000000;
+          },
+          errorMessage: 'The value should be > 1.000.000',
+        },
+      };
+    },
+    methods: {
+      formatter(value) {
+        return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' })
+          .format(value);
+      },
+    },
+  }));

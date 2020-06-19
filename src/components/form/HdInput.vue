@@ -206,29 +206,29 @@ export default {
 
       return true;
     },
-    validate() {
+    validate(value = this.value) {
       if (this.required && this.isEmpty) {
         return this.showError(this.t.FORM.VALIDATION.REQUIRED);
       }
 
       if (!this.isEmpty) {
-        if (this.currentType === 'email' && !validateEmail(this.value)) {
+        if (this.currentType === 'email' && !validateEmail(value)) {
           return this.showError(this.t.FORM.VALIDATION.INVALID_EMAIL);
         }
 
-        if (this.currentType === 'date' && !validateDate(this.value)) {
+        if (this.currentType === 'date' && !validateDate(value)) {
           return this.showError(this.t.FORM.VALIDATION.INVALID_DATE);
         }
 
         if (this.customRules.length) {
-          return this.validateCustomRules();
+          return this.validateCustomRules(value);
         }
       }
 
       return this.hideError();
     },
-    validateCustomRules() {
-      const firstFailingRule = this.customRules.find(({ validate }) => !validate(this.value));
+    validateCustomRules(value = this.value) {
+      const firstFailingRule = this.customRules.find(({ validate }) => !validate(value));
 
       if (firstFailingRule) {
         return this.showError(firstFailingRule.errorMessage);
