@@ -178,6 +178,12 @@ export default {
       if (this.currentType === 'number' && newValue !== '') {
         newValue = parseFloat(newValue);
 
+        // If the parse value has no change we don't emit the new value
+        // because it might suppress the the decimals' dot
+        if (newValue === this.value) {
+          return;
+        }
+
         if (typeof this.min === 'number' && newValue < this.min) {
           newValue = this.min;
         } else if (typeof this.max === 'number' && newValue > this.max) {
