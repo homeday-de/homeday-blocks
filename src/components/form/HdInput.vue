@@ -180,7 +180,7 @@ export default {
 
         // If the parsed value is the same as the current value
         // we don't emit the custom input event
-        // because it might suppress the the decimal deparator on webkit browsers
+        // because it might suppress the the decimal separator on webkit browsers
         if (newValue === this.value) {
           return;
         }
