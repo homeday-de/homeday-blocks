@@ -194,6 +194,8 @@ export default {
     showError(errorMessage) {
       this.error = errorMessage;
       this.isValid = false;
+
+      return false;
     },
     showHelper(message) {
       this.helper = message;
@@ -201,29 +203,38 @@ export default {
     hideError() {
       this.isValid = true;
       this.error = null;
+
+      return true;
     },
     validate() {
       if (this.required && this.isEmpty) {
-        this.showError(this.t.FORM.VALIDATION.REQUIRED);
-      } else if (this.currentType === 'email' && !validateEmail(this.value)) {
-        this.showError(this.t.FORM.VALIDATION.INVALID_EMAIL);
-      } else if (this.currentType === 'date' && !validateDate(this.value)) {
-        this.showError(this.t.FORM.VALIDATION.INVALID_DATE);
-      } else if (this.customRules.length && !this.isEmpty) {
-        this.validateCustomRules();
-      } else {
-        this.hideError();
+        return this.showError(this.t.FORM.VALIDATION.REQUIRED);
       }
 
-      return !this.error;
+      if (!this.isEmpty) {
+        if (this.currentType === 'email' && !validateEmail(this.value)) {
+          return this.showError(this.t.FORM.VALIDATION.INVALID_EMAIL);
+        }
+
+        if (this.currentType === 'date' && !validateDate(this.value)) {
+          return this.showError(this.t.FORM.VALIDATION.INVALID_DATE);
+        }
+
+        if (this.customRules.length) {
+          return this.validateCustomRules();
+        }
+      }
+
+      return this.hideError();
     },
     validateCustomRules() {
       const firstFailingRule = this.customRules.find(({ validate }) => !validate(this.value));
+
       if (firstFailingRule) {
-        this.showError(firstFailingRule.errorMessage);
-      } else {
-        this.hideError();
+        return this.showError(firstFailingRule.errorMessage);
       }
+
+      return this.hideError();
     },
   },
 };

@@ -369,6 +369,10 @@ export default {
 
     .radio {
       margin-left: 0;
+
+      &:not(:first-child) {
+        margin-top: $stack-m;
+      }
     }
   }
 

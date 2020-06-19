@@ -30,7 +30,7 @@ storiesOf('Assets|Icons', module)
     template: `
       <div>
         <vue-code-highlight>{{
-          'import { mailIcon } from "homeday/src/assets/small-icons";'
+          'import { mailIcon } from "homeday-blocks/src/assets/small-icons";'
         }}</vue-code-highlight>
         <section style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;">
           <div
@@ -59,7 +59,7 @@ storiesOf('Assets|Icons', module)
     template: `
       <div>
         <vue-code-highlight>{{
-          'import { mailIcon } from "homeday/src/assets/big-icons";'
+          'import { mailIcon } from "homeday-blocks/src/assets/big-icons";'
         }}</vue-code-highlight>
         <section style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;">
           <div
@@ -88,7 +88,7 @@ storiesOf('Assets|Icons', module)
     template: `
       <div>
         <vue-code-highlight>{{
-          'import { mailIcon } from "homeday/src/assets/bicolor-icons";'
+          'import { mailIcon } from "homeday-blocks/src/assets/bicolor-icons";'
         }}</vue-code-highlight>
         <section style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;">
           <div
