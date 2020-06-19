@@ -57,10 +57,14 @@ export default {
       this.boundType = this.type;
       this.$emit('focus');
     },
-    handleBlurEvent() {
+    async handleBlurEvent() {
       this.isFocused = false;
       this.boundType = defaultInputType;
       this.$emit('blur');
+
+      await this.$nextTick();
+
+      this.validate();
     },
     handleInputEvent(value) {
       this.$emit('input', value);
@@ -71,8 +75,8 @@ export default {
     showHelper(...args) {
       return this.$refs.input.showHelper(...args);
     },
-    validate(...args) {
-      return this.$refs.input.validate(...args);
+    validate() {
+      return this.$refs.input.validate(this.boundValue);
     },
     hideError(...args) {
       return this.$refs.input.hideError(...args);
