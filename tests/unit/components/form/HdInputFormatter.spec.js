@@ -117,4 +117,24 @@ describe('HdInputFormatter', () => {
 
     expect(wrapper.emitted('input')[0][0]).toBe(String(defaultValue));
   });
+
+  it('should validate the raw value', () => {
+    const VALUE = 10;
+    const FORMATTED_VALUE = '100';
+    const wrapper = wrapperBuilder({
+      props: {
+        formatter: () => FORMATTED_VALUE,
+        value: VALUE,
+        customRules: [
+          {
+            validate: value => value < 50,
+            errorMessage: 'error',
+          },
+        ],
+      },
+    });
+
+    expect(wrapper.find('input').element.value).toBe(FORMATTED_VALUE);
+    expect(wrapper.vm.validate()).toBe(true);
+  });
 });
