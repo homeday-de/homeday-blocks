@@ -2,7 +2,7 @@
 import { storiesOf } from '@storybook/vue';
 import { HdModal } from 'homeday-blocks';
 
-const stories = storiesOf('HdModal', module);
+const stories = storiesOf('Components|HdModal', module);
 
 stories.add('Default', () => ({
   components: { HdModal },
@@ -57,12 +57,12 @@ stories.add('Light', () => ({
         closeIconColor="light"
         overlayColor="light"
       >
-        <div 
+        <div
         slot="header"
         style="background:#2988ff;"
         >This is the modal header.
         </div>
-        <div 
+        <div
         slot="content"
         >This is the modal content.
         </div>
