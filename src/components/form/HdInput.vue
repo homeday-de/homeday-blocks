@@ -178,6 +178,13 @@ export default {
       if (this.currentType === 'number' && newValue !== '') {
         newValue = parseFloat(newValue);
 
+        // If the parsed value is the same as the current value
+        // we don't emit the custom input event
+        // because it might suppress the the decimal separator on webkit browsers
+        if (newValue === this.value) {
+          return;
+        }
+
         if (typeof this.min === 'number' && newValue < this.min) {
           newValue = this.min;
         } else if (typeof this.max === 'number' && newValue > this.max) {
