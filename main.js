@@ -10,6 +10,7 @@ export { default as HdResponsive } from './src/components/HdResponsive.vue';
 export { default as HdTable } from './src/components/HdTable.vue';
 export { default as HdTabsMenu } from './src/components/HdTabsMenu.vue';
 export { default as HdTagsList } from './src/components/HdTagsList.vue';
+export { default as HdTileSelect } from './src/components/HdTileSelect.vue';
 export { default as HdTimeslots } from './src/components/HdTimeslots.vue';
 export { default as HdToast } from './src/components/HdToast.vue';
 export { default as HdToggle } from './src/components/HdToggle.vue';

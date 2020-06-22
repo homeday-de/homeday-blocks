@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HdTileSelect allows custom new value 1`] = `
+<section class="field tile-select">
+  <section class="tile-select__items"><button type="button" class="tile-select-item tile-select__item">
+      1
+    </button><button type="button" class="tile-select-item tile-select__item">
+      2
+    </button><button type="button" class="tile-select-item tile-select__item">
+      3
+    </button> <button type="button" class="tile-select-item tile-select-editable-item tile-select__item">
+      +
+    </button></section>
+</section>
+`;
+
+exports[`HdTileSelect renders component not selected 1`] = `
+<section class="field tile-select">
+  <section class="tile-select__items"><button type="button" class="tile-select-item tile-select__item">
+      1
+    </button><button type="button" class="tile-select-item tile-select__item">
+      2
+    </button><button type="button" class="tile-select-item tile-select__item">
+      3
+    </button>
+    <!---->
+  </section>
+</section>
+`;
+
+exports[`HdTileSelect renders component selected 1`] = `
+<section class="field tile-select">
+  <section class="tile-select__items"><button type="button" class="tile-select-item tile-select__item tile-select-item--selected">
+      1
+    </button><button type="button" class="tile-select-item tile-select__item">
+      2
+    </button><button type="button" class="tile-select-item tile-select__item">
+      3
+    </button>
+    <!---->
+  </section>
+</section>
+`;
