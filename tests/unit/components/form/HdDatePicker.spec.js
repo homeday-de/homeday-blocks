@@ -81,6 +81,19 @@ describe('HdDatePicker', () => {
     expect(wrapper.attributes('months')).toBe(months.join(','));
   });
 
+  it('updates the i18n set time', () => {
+    const setTimeText = 'Elige hora';
+    const wrapper = wrapperBuilder({
+      props: {
+        value: TEST_VALUE,
+        setTimeText,
+      },
+      shallow: true,
+    });
+
+    expect(wrapper.attributes('settimetext')).toBe(setTimeText);
+  });
+
   it('updates the i18n next month caption', () => {
     const nextMonthCaption = 'Siguiente mes';
     const wrapper = wrapperBuilder({

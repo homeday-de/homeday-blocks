@@ -33,6 +33,10 @@ export default {
       type: String,
       default: 'Vorheriger Monat',
     },
+    setTimeCaption: {
+      type: String,
+      default: 'Zeit einstellen',
+    },
     weekdays: {
       type: Array,
       default: () => ([
