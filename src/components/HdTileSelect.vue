@@ -13,6 +13,7 @@
       <hd-tile-select-editable-item
         v-if="acceptNewValue"
         class="tile-select__item"
+        v-bind="$attrs"
         v-model="customInputModel"
         :text="customInputText"
         :model="value"
@@ -56,7 +57,7 @@ export default {
     },
     value: {
       type: [String, Number, Boolean],
-      required: true,
+      default: '',
     },
     formatter: {
       type: Function,
