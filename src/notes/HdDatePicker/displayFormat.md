@@ -1,4 +1,4 @@
-# Disabling dates
+# `<HdDatePicker>` - display format
 
 Use `displayFormat` prop when UI date format is different from raw data format.
 

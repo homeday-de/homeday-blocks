@@ -1,4 +1,4 @@
-# Disabling dates
+# `<HdDatePicker>` - disabling dates
 
 You can disable some dates on the `<HdDatePicker>` with the prop `isDateDisabled`. It must be a function that returns a boolean value for a date.
 

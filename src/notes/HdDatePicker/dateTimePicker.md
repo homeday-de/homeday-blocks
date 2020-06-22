@@ -1,4 +1,4 @@
-# Datetime picker
+# `<HdDatePicker>` - Datetime picker
 
 You can create a date picker with controls for hours and minutes.
 

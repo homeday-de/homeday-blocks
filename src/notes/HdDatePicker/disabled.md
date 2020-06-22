@@ -1,4 +1,4 @@
-# Disabling dates
+# `<HdDatePicker>` - disabled
 
 You can disable the input. This could be useful when you want to show some date, but not let the user to edit it.
 
