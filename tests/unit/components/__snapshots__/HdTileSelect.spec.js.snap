@@ -2,13 +2,13 @@
 
 exports[`HdTileSelect allows custom new value 1`] = `
 <div class="field tile-select">
-  <div class="tile-select__items"><button type="button" class="tile-select-item tile-select__item">
+  <div class="tile-select__items"><button type="button" class="tile-select-item">
       1
-    </button><button type="button" class="tile-select-item tile-select__item">
+    </button><button type="button" class="tile-select-item">
       2
-    </button><button type="button" class="tile-select-item tile-select__item">
+    </button><button type="button" class="tile-select-item">
       3
-    </button> <button type="button" class="tile-select-item tile-select-editable-item tile-select__item">
+    </button> <button type="button" class="tile-select-item tile-select-editable-item">
       +
     </button></div>
 </div>
@@ -16,11 +16,11 @@ exports[`HdTileSelect allows custom new value 1`] = `
 
 exports[`HdTileSelect renders component not selected 1`] = `
 <div class="field tile-select">
-  <div class="tile-select__items"><button type="button" class="tile-select-item tile-select__item">
+  <div class="tile-select__items"><button type="button" class="tile-select-item">
       1
-    </button><button type="button" class="tile-select-item tile-select__item">
+    </button><button type="button" class="tile-select-item">
       2
-    </button><button type="button" class="tile-select-item tile-select__item">
+    </button><button type="button" class="tile-select-item">
       3
     </button>
     <!---->
@@ -30,11 +30,11 @@ exports[`HdTileSelect renders component not selected 1`] = `
 
 exports[`HdTileSelect renders component selected 1`] = `
 <div class="field tile-select">
-  <div class="tile-select__items"><button type="button" class="tile-select-item tile-select__item tile-select-item--selected">
+  <div class="tile-select__items"><button type="button" class="tile-select-item tile-select-item--selected">
       1
-    </button><button type="button" class="tile-select-item tile-select__item">
+    </button><button type="button" class="tile-select-item">
       2
-    </button><button type="button" class="tile-select-item tile-select__item">
+    </button><button type="button" class="tile-select-item">
       3
     </button>
     <!---->
