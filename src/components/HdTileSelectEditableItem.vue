@@ -11,7 +11,7 @@
   />
   <input
     v-else
-    class="tile-select-editable-item tile-select-editable-item__input"
+    class="tile-select-editable-item tile-select-editable-item--input"
     :class="{
       'tile-select-editable-item--selected': isSelected,
     }"
@@ -76,7 +76,7 @@ export default {
     color: white;
   }
 
-  &__input{
+  &--input{
     height: 100%;
     width: 100%;
     border: 0;
