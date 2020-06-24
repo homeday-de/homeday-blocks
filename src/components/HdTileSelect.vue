@@ -1,6 +1,6 @@
 <template>
-  <section class="field tile-select">
-    <section class="tile-select__items">
+  <div class="field tile-select">
+    <div class="tile-select__items">
       <hd-tile-select-item
         class="tile-select__item"
         v-for="item in itemsMapped"
@@ -18,8 +18,8 @@
         :text="customInputText"
         :model="value"
       />
-    </section>
-  </section>
+    </div>
+  </div>
 </template>
 
 <script>
