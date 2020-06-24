@@ -23,6 +23,13 @@
 </template>
 
 <script>
+/**
+ * @typedef ItemEntryObject
+ * @type {Object}
+ * @property {string}                   text  - Text to be used in the tile
+ * @property {(string|number|boolean)}  value - Value associated with the tile
+ */
+
 import _get from 'lodash/get';
 import HdTileSelectItem from 'homeday-blocks/src/components/HdTileSelectItem.vue';
 import HdTileSelectEditableItem from 'homeday-blocks/src/components/HdTileSelectEditableItem.vue';
@@ -40,14 +47,7 @@ export default {
     };
   },
   props: {
-    /*
-      [item, item, item, ...]
-      or
-      [{
-        text, If the text is not specified, the formatted value is used for the display
-        value,
-      }]
-    */
+    /** @type {(string|number|boolean|ItemEntryObject)[]} */
     items: {
       type: Array,
       required: true,
