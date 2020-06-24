@@ -2,7 +2,6 @@
   <div class="field tile-select">
     <div class="tile-select__items">
       <hd-tile-select-item
-        class="tile-select__item"
         v-for="item in itemsMapped"
         :key="item.value"
         :value="item.value"
@@ -12,7 +11,6 @@
       />
       <hd-tile-select-editable-item
         v-if="acceptNewValue"
-        class="tile-select__item"
         v-bind="$attrs"
         v-model="customInputModel"
         :text="customInputText"
