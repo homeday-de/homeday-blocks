@@ -29,7 +29,7 @@ describe('HdTileSelectEditableItem', () => {
     expect(wrapper.get('input')).toBeTruthy();
   });
 
-  it('emits value on inpu', () => {
+  it('emits value on input', () => {
     const newValue = '3';
     const wrapper = wrapperFactory({
       data: {
