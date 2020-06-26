@@ -26,13 +26,9 @@ describe('HdToast', () => {
 
   it("primary <button> calls 'primaryClick' when clicked", () => {
     const text = 'random-text';
-    const primaryClickMock = jest.fn();
     const wrapper = wrapperBuilder({
       props: {
         primaryLabel: text,
-      },
-      methods: {
-        primaryClick: primaryClickMock,
       },
     });
 
@@ -40,7 +36,7 @@ describe('HdToast', () => {
 
     button.trigger('click');
 
-    expect(primaryClickMock).toHaveBeenCalledTimes(1);
+    expect(wrapper.emitted().primaryClick).toBeTruthy();
   });
 
   it("'secondaryLabel' text binds to secondary <button>", () => {
@@ -59,13 +55,9 @@ describe('HdToast', () => {
 
   it("secondary <button> calls 'secondaryClick' when clicked", () => {
     const text = 'random-text';
-    const secondaryClickMock = jest.fn();
     const wrapper = wrapperBuilder({
       props: {
         secondaryLabel: text,
-      },
-      methods: {
-        secondaryClick: secondaryClickMock,
       },
     });
 
@@ -73,7 +65,7 @@ describe('HdToast', () => {
 
     button.trigger('click');
 
-    expect(secondaryClickMock).toHaveBeenCalledTimes(1);
+    expect(wrapper.emitted().secondaryClick).toBeTruthy();
   });
 
   it('renders default slot', () => {
