@@ -105,4 +105,23 @@ describe('HdLoaderButton', () => {
 
     expect(clicked).toHaveBeenCalled();
   });
+
+  it('should toggle disabled class', async () => {
+    // Enabled
+    const disabledClass = 'btn--primary-disabled';
+    const wrapper = wrapperBuilder({
+      props: {
+        disabled: false,
+      },
+    });
+    const button = wrapper.get(BUTTON_SELECTOR);
+    expect(button.classes()).not.toContain(disabledClass);
+
+    // Disabled
+    wrapper.setProps({
+      disabled: true,
+    });
+    await wrapper.vm.$nextTick();
+    expect(button.classes()).toContain(disabledClass);
+  });
 });

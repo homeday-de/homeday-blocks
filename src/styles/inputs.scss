@@ -126,10 +126,20 @@ $focusedLabelTop: 5px;
     z-index: 9;
     pointer-events: none;
 
-    #{$f}--filled &, #{$f}--active &, #{$f}--select &, #{$f}--double & {
+    @mixin minimized {
       font-size: 14px;
       line-height: 18px;
       top: $focusedLabelTop;
+    }
+
+    #{$f}--filled &, #{$f}--active &, #{$f}--select &, #{$f}--double & {
+      @include minimized;
+    }
+
+    // We are seperating this declaration from the block above
+    // because non-webkit engines will ignore the whole block, e.g. Gecko
+    #{$f}__input:-webkit-autofill + & {
+      @include minimized;
     }
 
     #{$f}--active & {
