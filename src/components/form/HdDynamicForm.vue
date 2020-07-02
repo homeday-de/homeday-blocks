@@ -38,6 +38,7 @@ import HdTagsSelector from 'homeday-blocks/src/components/form/HdTagsSelector.vu
 import HdSplitInput from 'homeday-blocks/src/components/form/HdSplitInput.vue';
 import HdGoogleAutocomplete from 'homeday-blocks/src/components/form/HdGoogleAutocomplete.vue';
 import HdButton from 'homeday-blocks/src/components/buttons/HdButton.vue';
+import HdDatePicker from 'homeday-blocks/src/components/form/HdDatePicker.vue';
 
 export default {
   name: 'HdDynamicForm',
@@ -138,6 +139,8 @@ export default {
           return HdSplitInput;
         case 'googleAutocomplete':
           return HdGoogleAutocomplete;
+        case 'datepicker':
+          return HdDatePicker;
         default:
           return null;
       }
