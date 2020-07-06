@@ -10,9 +10,9 @@ module.exports = {
     },
     {
       name: 'bigIcons',
-      figmaFileKey: 'ZfLfSmSFdNbhNFvwitFIs6',
+      figmaFileKey: 'KdznSjw9btqHEKdgmm2UT4co',
       matchingRegex: new RegExp('Icons XL/ic_', 'i'),
-      filenameRegex: new RegExp('ic_.*?(?=_)', 'i'),
+      filenameRegex: new RegExp('ic_[a-z0-9-]+', 'i'),
       dist: '/src/assets/big-icons',
       format: 'svg',
     },
