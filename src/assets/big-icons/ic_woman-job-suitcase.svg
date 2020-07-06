@@ -1,10 +1,10 @@
 <svg width="156" height="156" viewBox="0 0 156 156" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M103 68C115.15 68 125 58.1503 125 46C125 33.8497 115.15 24 103 24C90.8497 24 81 33.8497 81 46C81 58.1503 90.8497 68 103 68ZM116 57V39H90V57H116Z" fill="#C2DDFF"/>
-<path d="M57.0007 113L56.9998 122C51.8545 122.782 41.3019 125.113 33.3474 133" stroke="#1C3553" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M78.9998 113V122C84.145 122.782 95.5292 125.113 102.347 133" stroke="#1C3553" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M57.0005 113L56.9995 122C51.8542 122.782 41.3017 125.113 33.3472 133" stroke="#1C3553" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M78.9995 113V122C84.1448 122.782 95.529 125.113 102.347 133" stroke="#1C3553" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
 <circle cx="103" cy="46" r="28" stroke="#1C3553" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M46.0004 126C63.3957 135.333 72.605 135.333 90.0004 126" stroke="#1C3553" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M49.0002 78C49.0002 78 47.0002 84 47.0002 89C47.0002 105 56.1529 116 68.0002 116C79.8476 116 89.0002 105 89.0002 89C89.0002 84 87.0002 78 87.0002 78" stroke="#1C3553" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M46.0005 126C63.3958 135.333 72.6051 135.333 90.0005 126" stroke="#1C3553" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M49.0005 78C49.0005 78 47.0005 84 47.0005 89C47.0005 105 56.1532 116 68.0005 116C79.8478 116 89.0005 105 89.0005 89C89.0005 84 87.0005 78 87.0005 78" stroke="#1C3553" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M97.0005 128C97.0005 128 114.57 119.593 97.0005 82M38.0005 128C38.0005 128 16.3167 119.817 39.0004 77C49.0363 58.0565 56.6763 53.8461 63.9996 53.1278C64.1663 53.0852 67.0005 53 67.0005 53" stroke="#1C3553" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M49.0005 78H73.9995V71C76.0816 73.2535 81.5493 78 87.0005 78" stroke="#1C3553" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
 <rect x="90.0005" y="39" width="26" height="18" rx="2" stroke="#1C3553" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
