@@ -8,10 +8,26 @@ const wrapperBuilder = wrapperFactoryBuilder(HdGalleryMedia, {
   },
 });
 
+const emptyWrapperBuilder = wrapperFactoryBuilder(HdGalleryMedia, {});
+
 describe('HdGalleryMedia', () => {
   it('renders component', () => {
     const wrapper = wrapperBuilder();
 
     expect(wrapper.html()).toMatchSnapshot();
+  });
+
+  it('renders empty element', () => {
+    const wrapper = emptyWrapperBuilder();
+
+    expect(wrapper.html()).toMatchSnapshot();
+  });
+
+  it('hides thumbnail placeholder', () => {
+    const wrapper = wrapperBuilder();
+
+    wrapper.get('.gallery-media__object__picture img').trigger('load');
+
+    expect(wrapper.vm.showThumbnail).toBe(false);
   });
 });
