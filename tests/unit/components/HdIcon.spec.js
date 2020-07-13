@@ -97,9 +97,6 @@ describe('HdIcon', () => {
 
     await wrapper.vm.$nextTick();
 
-    expect(wrapper.contains('title')).toBeTruthy();
-    expect(wrapper.contains('desc')).toBeTruthy();
-    expect(wrapper.attributes('aria-labelledby')).toBe('icon-id-title');
-    expect(wrapper.attributes('aria-describedby')).toBe('icon-id-desc');
+    expect(wrapper.html()).toMatchSnapshot();
   });
 });
