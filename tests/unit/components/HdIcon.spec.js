@@ -84,4 +84,21 @@ describe('HdIcon', () => {
     expect(targetedPaths.length).toBeGreaterThan(0);
     expect(targetedPaths.is(`.${TEST_CLASS}`)).toBe(true);
   });
+
+  it('adds title and desc tag to the svg', async () => {
+    const wrapper = wrapperBuilder({
+      props: {
+        src: 'fake/icon4.svg',
+        title: 'This make me accessible.',
+        description: 'Some description.',
+        id: 'icon-id',
+      },
+    });
+
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.contains('title')).toBeTruthy();
+    expect(wrapper.contains('desc')).toBeTruthy();
+    expect(wrapper.attributes('aria-labelledby')).toBe('icon-id-title icon-id-desc');
+  });
 });
