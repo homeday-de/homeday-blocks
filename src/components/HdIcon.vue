@@ -1,9 +1,7 @@
 <template>
   <inline-svg
     :src="src"
-    :title="title"
     :id="id"
-    :description="description"
     :transform-source="transform"
     v-bind="$attrs"
   />
@@ -69,24 +67,22 @@ export default {
     },
     addAccessibilityTags(svg) {
       const randId = Math.floor(Math.random() * 1000);
-      const attrs = [];
       if (this.title) {
         const titleId = `${this.id || randId}-title`;
         const titleTag = document.createElementNS('http://www.w3.org/2000/svg', 'title');
-        titleTag.innerHTML = this.title;
+        titleTag.textContent = this.title;
         titleTag.id = titleId;
         svg.insertBefore(titleTag, svg.firstChild);
-        attrs.push(titleId);
+        svg.setAttribute('aria-labelledby', titleId);
       }
       if (this.description) {
         const descId = `${this.id || randId}-desc`;
         const descTag = document.createElementNS('http://www.w3.org/2000/svg', 'desc');
         descTag.id = descId;
+        descTag.textContent = this.description;
         svg.appendChild(descTag);
-        attrs.push(descId);
+        svg.setAttribute('aria-describedby', descId);
       }
-      if (attrs.length) svg.setAttribute('aria-labelledby', attrs.join(' '));
-      svg.setAttribute('role', 'img');
     },
     getFillFromClassNames(classNames) {
       if (!classNames || !this.fillFromClass) {

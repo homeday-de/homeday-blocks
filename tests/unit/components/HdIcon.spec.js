@@ -99,6 +99,7 @@ describe('HdIcon', () => {
 
     expect(wrapper.contains('title')).toBeTruthy();
     expect(wrapper.contains('desc')).toBeTruthy();
-    expect(wrapper.attributes('aria-labelledby')).toBe('icon-id-title icon-id-desc');
+    expect(wrapper.attributes('aria-labelledby')).toBe('icon-id-title');
+    expect(wrapper.attributes('aria-describedby')).toBe('icon-id-desc');
   });
 });
