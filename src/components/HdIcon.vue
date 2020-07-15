@@ -44,9 +44,7 @@ export default {
   },
   methods: {
     transform(svg) {
-      const randId = Math.floor(Math.random() * 1000);
-      if (this.title) this.addTitleTag(svg, randId);
-      if (this.description) this.addDescTag(svg, randId);
+      this.addAccessibilityTags(svg);
 
       if (!this.fillFromClass && !this.classFromFill) {
         return svg;
@@ -66,6 +64,11 @@ export default {
       });
 
       return svg;
+    },
+    addAccessibilityTags(svg) {
+      const randId = Math.floor(Math.random() * 1000);
+      if (this.title) this.addTitleTag(svg, randId);
+      if (this.description) this.addDescTag(svg, randId);
     },
     addTitleTag(svg, randId) {
       const titleId = `${this.id || randId}-title`;
