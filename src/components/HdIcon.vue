@@ -44,7 +44,9 @@ export default {
   },
   methods: {
     transform(svg) {
-      this.addAccessibilityTags(svg);
+      const randId = Math.floor(Math.random() * 1000);
+      if (this.title) this.addTitleTag(svg, randId);
+      if (this.description) this.addDescTag(svg, randId);
 
       if (!this.fillFromClass && !this.classFromFill) {
         return svg;
@@ -65,24 +67,21 @@ export default {
 
       return svg;
     },
-    addAccessibilityTags(svg) {
-      const randId = Math.floor(Math.random() * 1000);
-      if (this.title) {
-        const titleId = `${this.id || randId}-title`;
-        const titleTag = document.createElementNS('http://www.w3.org/2000/svg', 'title');
-        titleTag.textContent = this.title;
-        titleTag.id = titleId;
-        svg.insertBefore(titleTag, svg.firstChild);
-        svg.setAttribute('aria-labelledby', titleId);
-      }
-      if (this.description) {
-        const descId = `${this.id || randId}-desc`;
-        const descTag = document.createElementNS('http://www.w3.org/2000/svg', 'desc');
-        descTag.id = descId;
-        descTag.textContent = this.description;
-        svg.appendChild(descTag);
-        svg.setAttribute('aria-describedby', descId);
-      }
+    addTitleTag(svg, randId) {
+      const titleId = `${this.id || randId}-title`;
+      const titleTag = document.createElementNS('http://www.w3.org/2000/svg', 'title');
+      titleTag.textContent = this.title;
+      titleTag.id = titleId;
+      svg.insertBefore(titleTag, svg.firstChild);
+      svg.setAttribute('aria-labelledby', titleId);
+    },
+    addDescTag(svg, randId) {
+      const descId = `${this.id || randId}-desc`;
+      const descTag = document.createElementNS('http://www.w3.org/2000/svg', 'desc');
+      descTag.id = descId;
+      descTag.textContent = this.description;
+      svg.appendChild(descTag);
+      svg.setAttribute('aria-describedby', descId);
     },
     getFillFromClassNames(classNames) {
       if (!classNames || !this.fillFromClass) {

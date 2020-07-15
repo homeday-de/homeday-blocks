@@ -99,4 +99,18 @@ describe('HdIcon', () => {
 
     expect(wrapper.html()).toMatchSnapshot();
   });
+
+  it("generates the title and desc id if it's not provided", async () => {
+    const wrapper = wrapperBuilder({
+      props: {
+        src: 'fake/icon5.svg',
+        title: 'This make me accessible.',
+        description: 'Some description.',
+      },
+    });
+
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.html()).toMatchSnapshot();
+  });
 });
