@@ -111,9 +111,9 @@ describe('HdIcon', () => {
 
     await wrapper.vm.$nextTick();
 
-    const titleTag = wrapper.find('title')
-    const descTag = wrapper.find('desc')
-    expect(titleTag.element.id).toMatch(/\d+-title/)
-    expect(descTag.element.id).toMatch(/\d+-desc/)
+    const titleTag = wrapper.find('title');
+    const descTag = wrapper.find('desc');
+    expect(titleTag.element.id).toMatch(/\d+-title/);
+    expect(descTag.element.id).toMatch(/\d+-desc/);
   });
 });
