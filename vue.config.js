@@ -12,6 +12,7 @@ module.exports = {
       .options({
         fix: true,
       });
+    config.resolve.symlinks(false);
   },
   transpileDependencies: ['vue-zoomer'],
 };

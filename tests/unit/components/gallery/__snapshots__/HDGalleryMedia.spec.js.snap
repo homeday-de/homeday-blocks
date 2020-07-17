@@ -12,13 +12,3 @@ exports[`HdGalleryMedia renders component 1`] = `
   </div>
 </div>
 `;
-
-exports[`HdGalleryMedia renders empty element 1`] = `
-<div class="gallery-media">
-  <div class="gallery-media__object">
-    <div class="gallery-media__object__sizer" style="padding-top: 56.25%;"></div>
-    <picture class="gallery-media__object__picture"> <img></picture>
-    <!---->
-  </div>
-</div>
-`;

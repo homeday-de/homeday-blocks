@@ -35,7 +35,7 @@ export default {
   props: {
     item: {
       type: Object,
-      default: () => ({}),
+      required: true,
     },
     aspectRatio: {
       type: Number,

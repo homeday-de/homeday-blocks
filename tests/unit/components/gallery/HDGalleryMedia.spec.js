@@ -8,17 +8,9 @@ const wrapperBuilder = wrapperFactoryBuilder(HdGalleryMedia, {
   },
 });
 
-const emptyWrapperBuilder = wrapperFactoryBuilder(HdGalleryMedia, {});
-
 describe('HdGalleryMedia', () => {
   it('renders component', () => {
     const wrapper = wrapperBuilder();
-
-    expect(wrapper.html()).toMatchSnapshot();
-  });
-
-  it('renders empty element', () => {
-    const wrapper = emptyWrapperBuilder();
 
     expect(wrapper.html()).toMatchSnapshot();
   });
