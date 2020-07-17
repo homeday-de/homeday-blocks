@@ -10,6 +10,7 @@
       class="field__icon"
     >
     <input
+      v-bind="$attrs"
       :autocomplete="autocomplete"
       :value="value"
       :type="currentType"
@@ -58,6 +59,7 @@ import {
 
 export default {
   name: 'HdInput',
+  inheritAttrs: false,
   props: {
     label: {
       type: String,
