@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "body-scroll-lock": "2.6.4",
-    "lodash": "4.17.15",
+    "lodash": "4.17.19",
     "natural-scroll": "0.2.2",
     "vue": "2.6.11",
     "vue-flickity": "1.2.1",
