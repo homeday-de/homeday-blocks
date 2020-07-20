@@ -2,15 +2,9 @@
   <date-pick
     v-bind="{...$props, ...$attrs}"
     :value="value"
-    v-on="$listeners"
     @input="handleInput"
     :editable="!disabled"
   >
-    <slot
-      v-bind="{...$props, ...$attrs}"
-      v-on="$listeners"
-    />
-  </date-pick>
 </template>
 
 <script>
