@@ -11,6 +11,7 @@
 import DatePick from 'vue-date-pick';
 
 export default {
+  name: 'HdDatePicker',
   components: { DatePick },
   props: {
     value: {
