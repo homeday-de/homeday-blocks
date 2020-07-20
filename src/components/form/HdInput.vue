@@ -19,6 +19,7 @@
       :required="required"
       :autofocus="autofocus"
       :disabled="disabled"
+      :readonly="readonly"
       class="field__input"
       ref="input"
       data-lpignore="true"
@@ -88,6 +89,10 @@ export default {
       default: 'on',
     },
     autofocus: {
+      type: Boolean,
+      default: false,
+    },
+    readonly: {
       type: Boolean,
       default: false,
     },
