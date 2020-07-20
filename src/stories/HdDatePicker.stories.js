@@ -14,7 +14,7 @@ import {
   startWeekOnSundayNotes,
 } from '../notes/HdDatePicker';
 
-storiesOf('Components|Form/HdDatePicker', module)
+storiesOf('Components|HdDatePicker', module)
   .addDecorator(FormWrapper)
   .addDecorator(withKnobs)
   .add('default', () => ({

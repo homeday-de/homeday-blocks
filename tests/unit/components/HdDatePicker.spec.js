@@ -1,6 +1,6 @@
 import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 
-import HdDatePicker from '@/components/form/HdDatePicker.vue';
+import HdDatePicker from '@/components/HdDatePicker.vue';
 
 const TEST_VALUE = '2020.06.01';
 const wrapperBuilder = wrapperFactoryBuilder(HdDatePicker, {});
