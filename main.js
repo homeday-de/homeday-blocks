@@ -42,7 +42,7 @@ export { default as HdSelect } from './src/components/form/HdSelect.vue';
 export { default as HdSplitInput } from './src/components/form/HdSplitInput.vue';
 export { default as HdTagsSelector } from './src/components/form/HdTagsSelector.vue';
 export { default as HdTextarea } from './src/components/form/HdTextarea.vue';
-export { default as HdDatePicker } from './src/components/form/HdDatePicker.vue';
+export { default as HdDatePicker } from './src/components/HdDatePicker.vue';
 
 // Tooltip
 export { default as HdTooltip } from './src/components/tooltip/HdTooltip.vue';
