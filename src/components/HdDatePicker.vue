@@ -6,7 +6,10 @@
     @input="handleInput"
     :editable="!disabled"
   >
-   <slot v-on="$listeners" />
+    <slot
+      v-bind="{...$props, ...$attrs}"
+      v-on="$listeners"
+    />
   </date-pick>
 </template>
 
