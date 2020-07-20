@@ -5,7 +5,14 @@
     @input="handleInput"
     :editable="!disabled"
   >
-   <slot />
+    <slot
+      :open="open"
+      :close="close"
+      :toggle="toggle"
+      :inputValue="inputValue"
+      :processUserInput="processUserInput"
+      :valueToInputFormat="valueToInputFormat"
+    />
   </date-pick>
 </template>
 
