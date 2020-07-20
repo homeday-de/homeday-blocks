@@ -4,7 +4,7 @@
     :value="value"
     @input="handleInput"
     :editable="!disabled"
-  >
+  />
 </template>
 
 <script>
