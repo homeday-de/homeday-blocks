@@ -4,7 +4,15 @@
     :value="value"
     @input="handleInput"
     :editable="!disabled"
-  />
+    ref="date-pick"
+  >
+    <slot
+      :value="value"
+      :open="open"
+      :close="close"
+      :toggle="toggle"
+    />
+  </date-pick>
 </template>
 
 <script>
@@ -56,6 +64,15 @@ export default {
   methods: {
     handleInput(value) {
       this.$emit('input', value);
+    },
+    open() {
+      this.$refs['date-pick'].open();
+    },
+    close() {
+      this.$refs['date-pick'].close();
+    },
+    toggle() {
+      this.$refs['date-pick'].toggle();
     },
   },
 };
