@@ -4,7 +4,9 @@
     :value="value"
     @input="handleInput"
     :editable="!disabled"
-  />
+  >
+   <slot />
+  </date-pick>
 </template>
 
 <script>
