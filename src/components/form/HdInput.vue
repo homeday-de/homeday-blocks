@@ -10,6 +10,7 @@
       class="field__icon"
     >
     <input
+      v-bind="$attrs"
       :autocomplete="autocomplete"
       :value="value"
       :type="currentType"
@@ -17,7 +18,6 @@
       :name="name"
       :placeholder="isActive && placeholder !== undefined ? placeholder : ''"
       :required="required"
-      :autofocus="autofocus"
       :disabled="disabled"
       class="field__input"
       ref="input"
@@ -58,6 +58,7 @@ import {
 
 export default {
   name: 'HdInput',
+  inheritAttrs: false,
   props: {
     label: {
       type: String,
@@ -86,10 +87,6 @@ export default {
     autocomplete: {
       type: String,
       default: 'on',
-    },
-    autofocus: {
-      type: Boolean,
-      default: false,
     },
     min: {
       type: Number,

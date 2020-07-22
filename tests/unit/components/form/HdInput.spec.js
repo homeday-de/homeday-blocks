@@ -280,4 +280,14 @@ describe('HdInput', () => {
 
     expect(wrapper.find(ERROR_SELECTOR).text()).toBe(errorMsg);
   });
+
+  it('forwards attributes to <input>', () => {
+    const wrapper = wrapperBuilder({
+      props: {
+        readonly: true,
+      },
+    });
+
+    expect(wrapper.find('input').attributes().readonly).toBe('readonly');
+  });
 });
