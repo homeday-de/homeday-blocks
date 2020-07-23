@@ -2,9 +2,9 @@ module.exports = {
   COLLECTIONS: [
     {
       name: 'smallIcons',
-      figmaFileKey: 'ZfLfSmSFdNbhNFvwitFIs6',
+      figmaFileKey: 'KdznSjw9btqHEKdgmm2UT4co',
       matchingRegex: new RegExp('Icons/ic_', 'i'),
-      filenameRegex: new RegExp('ic_.*?(?=_)', 'i'),
+      filenameRegex: new RegExp('ic_[a-z0-9-]+', 'i'),
       dist: '/src/assets/small-icons',
       format: 'svg',
     },
@@ -18,9 +18,9 @@ module.exports = {
     },
     {
       name: 'bicolorIcons',
-      figmaFileKey: 'ZfLfSmSFdNbhNFvwitFIs6',
+      figmaFileKey: 'KdznSjw9btqHEKdgmm2UT4co',
       matchingRegex: new RegExp('Slidericon/ic_', 'i'),
-      filenameRegex: new RegExp('ic_.*?(?=_)', 'i'),
+      filenameRegex: new RegExp('ic_[a-z0-9-]+', 'i'),
       dist: '/src/assets/bicolor-icons',
       format: 'svg',
     },
