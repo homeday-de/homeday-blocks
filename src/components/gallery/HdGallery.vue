@@ -16,6 +16,7 @@
       <div class="gallery__main">
         <HdGalleryMedia
           :item="currentItem"
+          :link="link"
           :aspect-ratio="aspectRatio"
         />
         <div
@@ -117,6 +118,10 @@ export default {
     placeholderText: {
       type: String,
       default: '',
+    },
+    link: {
+      type: String,
+      default: null,
     },
   },
   data() {
@@ -238,6 +243,7 @@ export default {
       width: 36px;
       height: 36px;
       padding: 0;
+      z-index: 3;
       position: absolute;
       top: 50%;
       left: 0;
