@@ -27,7 +27,7 @@ exports[`HdToast renders component 1`] = `
 exports[`HdToast renders default slot 1`] = `
 <div class="toast">
   <p class="toast__text">
-  <div id="slot"></div>
+    <div id="slot"></div>
   </p>
   <!---->
 </div>
