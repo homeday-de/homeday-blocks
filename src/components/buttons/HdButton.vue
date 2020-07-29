@@ -13,6 +13,7 @@ export const TYPES = {
   PRIMARY: 'primary',
   SECONDARY: 'secondary',
   TERTIARY: 'tertiary',
+  QUATERNARY: 'quaternary',
   FLAT: 'flat',
   GHOST: 'ghost',
 };

@@ -125,6 +125,12 @@ $button-transition: all $time-s ease-in-out;
   }
 }
 
+.btn--quaternary {
+  background: getShade($secondary-color, 70);
+  border: 1px solid transparent;
+  color: getShade($secondary-color, 110);
+}
+
 .btn--flat {
   position: relative;
   background-color: $white;
