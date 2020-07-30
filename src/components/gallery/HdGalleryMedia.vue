@@ -25,7 +25,6 @@
           'background-image': `url('${item.thumbnail}')`,
         }"
       />
-      <a v-if="link" class="gallery-media__object__link" :href="link"></a>
     </div>
   </div>
 </template>
@@ -41,10 +40,6 @@ export default {
     aspectRatio: {
       type: Number,
       default: 16 / 9,
-    },
-    link: {
-      type: String,
-      default: null,
     },
   },
   data() {
@@ -91,6 +86,7 @@ export default {
     align-items: center;
     justify-content: center;
     background-color: $secondary-bg;
+    cursor: pointer;
 
     &__thumbnail,
     &__picture {
@@ -131,16 +127,6 @@ export default {
         opacity: 1;
         transition: none;
       }
-    }
-
-    &__link {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      display: block;
-      left: 0;
-      top: 0;
-      z-index: 2;
     }
   }
 }
