@@ -13,7 +13,10 @@
         v-if="showCaption"
         class="gallery__caption">{{ currentItemCaption || '&#8203;' }}</figcaption>
       <div class="gallery__main">
-        <div @click="onCurrentItemClick">
+        <div
+          class="gallery__image"
+          @click="onCurrentItemClick"
+        >
           <HdGalleryMedia
             :item="currentItem"
             :aspect-ratio="aspectRatio"
@@ -118,10 +121,6 @@ export default {
     placeholderText: {
       type: String,
       default: '',
-    },
-    link: {
-      type: String,
-      default: null,
     },
   },
   data() {
