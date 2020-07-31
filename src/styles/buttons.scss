@@ -113,6 +113,7 @@ $button-transition: all $time-s ease-in-out;
   color: getShade($secondary-color, 110);
   transition: 
     background-color 0.3s ease-in-out,
+    border 0.3s ease-in-out,
     box-shadow 0.3s ease-in-out,
     color 0.3s ease-in-out;
 
@@ -133,8 +134,18 @@ $button-transition: all $time-s ease-in-out;
     background-color: #1895FF;
   }
 
+  &.btn--dark-background {
+    border: 2px solid $white;
+    color: $white;
+
+    &:hover,
+    &:focus {
+      border: 2px solid getShade($secondary-color, 110);
+    }
+  }
+
   &[disabled],
-  &.btn--primary__disabled {
+  &.btn--secondary__disabled {
     border: 2px solid getShade($neutral-gray, 60);
     color: getShade($neutral-gray, 70);
     box-shadow: none;
@@ -150,6 +161,10 @@ $button-transition: all $time-s ease-in-out;
       cursor: default;
       box-shadow: none;
       transform: none;
+    }
+
+    &.btn--dark-background {
+      color: getShade($neutral-gray, 60);
     }
   }
 }

@@ -29,6 +29,10 @@ export default {
         return allTypes.includes(value);
       },
     },
+    isInDarkBackground: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     computedClasses() {
@@ -37,6 +41,10 @@ export default {
 
       if (this.modifier) {
         classes.push(`${baseClass}--${this.modifier}`);
+      }
+
+      if (this.isInDarkBackground) {
+        classes.push(`${baseClass}--dark-background`);
       }
 
       return classes;
