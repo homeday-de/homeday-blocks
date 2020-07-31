@@ -193,6 +193,27 @@ $button-transition: all $time-s ease-in-out;
   &:active {
     background-color: getShade($secondary-color, 70);
   }
+
+  &[disabled],
+  &.btn--tertiary__disabled {
+    border: 2px solid transparent;
+    background-color: getShade($neutral-gray, 40);
+    color: getShade($neutral-gray, 70);
+    box-shadow: none;
+
+    &:after {
+      display: none;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      background: getShade($neutral-gray, 40);
+      cursor: default;
+      box-shadow: none;
+      transform: none;
+    }
+  }
 }
 
 .btn--flat {
