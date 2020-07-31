@@ -4,7 +4,7 @@
 $button-inset-padding: 16px;
 $button-transition: all $time-s ease-in-out;
 
-@mixin btn-ripple($ripple-color: $white) {
+@mixin btn-ripple($ripple-color: $white, $blend-mode: normal, $opacity: 0.2) {
   position: relative;
   overflow: hidden;
   transform: translate3d(0, 0, 0);
@@ -21,7 +21,7 @@ $button-transition: all $time-s ease-in-out;
     background-image: radial-gradient(circle, $ripple-color 10%, transparent 10.01%);
     background-repeat: no-repeat;
     background-position: 50%;
-    mix-blend-mode: normal;
+    mix-blend-mode: $blend-mode;
     transform: scale(10, 10);
     opacity: 0;
     transition: transform 0.3s, opacity 0.8s;
@@ -30,7 +30,7 @@ $button-transition: all $time-s ease-in-out;
   &:active {
     &::after {
       transform: scale(0, 0);
-      opacity: .2;
+      opacity: $opacity;
       transition: 0s;
     }
   }
@@ -41,16 +41,16 @@ $button-transition: all $time-s ease-in-out;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: $font-primary;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 28px;
   margin: 0;
   padding: $stack-s $inline-l;
   border: 0;
   border-radius: 2px;
   outline: 0;
   background-color: transparent;
+  font-family: $font-primary;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 28px;
   text-align: center;
   text-decoration: none;
   -webkit-appearance: none;
@@ -62,7 +62,7 @@ $button-transition: all $time-s ease-in-out;
 }
 
 .btn--primary {
-  @include btn-ripple($white);
+  @include btn-ripple;
 
   background-color: getShade($secondary-color, 110);
   box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.12), 0px 0px 4px rgba(0, 0, 0, 0.24);
@@ -105,10 +105,9 @@ $button-transition: all $time-s ease-in-out;
 }
 
 .btn--secondary {
-  @include btn-ripple($white);
+  @include btn-ripple;
 
-  padding-top: #{$stack-s - 2px}; // adjustment for the border
-  padding-bottom: #{$stack-s - 2px}; // adjustment for the border
+  padding: #{$stack-s - 2px} #{$inline-l - 2px}; // adjustment for the border-width of 2px
   border: 2px solid getShade($secondary-color, 110);
   color: getShade($secondary-color, 110);
   transition: 
@@ -170,38 +169,29 @@ $button-transition: all $time-s ease-in-out;
 }
 
 .btn--tertiary {
-  @include font('body');
-  display: inline-block;
-  color: getShade($secondary-color, 110);
-  transition: $button-transition;
-  font-weight: 600;
-  position: relative;
-  width: auto;
+  @include btn-ripple(getShade($secondary-color, 80), multiply, 0.4);
 
-  &:after {
-    content: "";
-    width: calc(100% - #{2 * $button-inset-padding});
-    height: 2px;
-    background-color: getShade($secondary-color, 110);
-    position: absolute;
-    bottom: 12px;
-    left: 0;
-    right: 0;
-    margin: auto;
+  padding: #{$stack-s - 2px} #{$inline-l - 2px}; // adjustment for the border-width of 2px
+  border: 2px solid transparent;
+  background-color: getShade($secondary-color, 70);
+  color: getShade($secondary-color, 110);
+  transition: 
+    background-color 0.3s ease-in-out,
+    border 0.3s ease-in-out,
+    padding 0.3s ease-in-out;
+
+  &:hover {
+    background-color: transparent;
+    border: 2px solid getShade($secondary-color, 110);
   }
-  &:before {
-    content: "";
-    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMCA1Ij48ZyBpZD0iSG9tZXBhZ2UiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PGcgaWQ9ImhvbWVwYWdlXzMuMC5fUHJpbWFyeV9OYXZpZ2F0aW9uX0V4cGFuZGVkIiBmaWxsPSIjMTg5NUZGIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTMwMC4wMDAwMDAsIC00OS4wMDAwMDApIj48ZyBpZD0iTW9sZWN1bGVzL2hlYWRlciIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEuMDAwMDAwLCAwLjAwMDAwMCkiPjxnIGlkPSJOYXZpZ2F0aW9uLS1wcmltYXJ5IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxLjAwMDAwMCwgMC4wMDAwMDApIj48ZyBpZD0iQ29udGVudCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTQ0LjAwMDAwMCwgMTYuMDAwMDAwKSI+PGcgaWQ9ImF0b20vaWNvbi9pY19tZW51YXJyb3ctZG93bi1ibHVlIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMTU2LjAwMDAwMCwgMzMuMDAwMDAwKSI+PHBvbHlnb24gaWQ9ImljX21lbnVhcnJvdy1kb3duLWJsdWUiIHBvaW50cz0iMi4wODMzMzMzMyA2LjI4MTgwMTM0IDUuNTgyMTc2MTMgMi41IDIuMDgzMzMzMzMgLTEuMjgxODAxMzQgMi44NDMzNDc1OCAtMi4wODMzMzMzMyA3LjA4MzMzMzMzIDIuNSAyLjg0MzM0NzU4IDcuMDgzMzMzMzMiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQuNTgzMzMzLCAyLjUwMDAwMCkgc2NhbGUoMSwgLTEpIHJvdGF0ZSgtOTAuMDAwMDAwKSB0cmFuc2xhdGUoLTQuNTgzMzMzLCAtMi41MDAwMDApICIvPjwvZz48L2c+PC9nPjwvZz48L2c+PC9nPjwvc3ZnPg==);    
-    background-repeat: no-repeat;
-    height: 10px;
-    width: 15px;
-    display: block;
-    position: absolute;
-    right: -4px;
-    bottom: 20px;
+
+  &:focus {
+    background-color: transparent;
+    border: 2px solid getShade($secondary-color, 110);
   }
-  &:hover:before {
-    animation: bounceBack 500ms normal ease-in-out;
+
+  &:active {
+    background-color: getShade($secondary-color, 70);
   }
 }
 
