@@ -45,9 +45,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.btn {
-  width: 100%;
-}
-</style>

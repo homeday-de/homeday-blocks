@@ -5,87 +5,94 @@ $button-inset-padding: 16px;
 $button-transition: all $time-s ease-in-out;
 
 .btn {
-  @include font('body');
+  box-sizing: border-box;
   display: inline-flex;
-  text-decoration: none;
-  border: none;
-  border-radius: $default-border-radius;
-  background-color: transparent;
-  padding: 13px $stack-m;
-  justify-content: center;
-  width: auto;
   align-items: center;
+  justify-content: center;
+  font-family: $font-primary;
   font-weight: 600;
+  font-size: 16px;
+  line-height: 28px;
+  margin: 0;
+  padding: $stack-s $inline-l;
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+  border-radius: 1px;
   text-align: center;
-  &:hover {
-    cursor: pointer;
-  }
+  text-decoration: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
-.btn--primary,
-.btn--secondary {
+.btn--primary {
   background-color: getShade($secondary-color, 110);
+  box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.12), 0px 0px 4px rgba(0, 0, 0, 0.24);
   color: $white;
-  font-family: $font-primary;
-  width: 100%;
-  font-size: 16px;
-  height: 52px;
-  padding: 0 $stack-m;
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.3);
-  transition: $button-transition;
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
   &:hover {
-    color: $white;
-    box-shadow: 0 3px 2px 0 rgba(0,0,0,0.3);
-    background-color: getShade($secondary-color, 110);
-    transform: translateY(-1px);
+    cursor: pointer;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
   }
-  
-  // Ripple effect on click
+
+  &:focus {
+    border-radius: 2px;
+    box-shadow: 0px 0px 14px #1895FF, 0px 0px 1px #1895FF;
+  }
+
+  /*** Properties for Ripple effect on click ***/
   position: relative;
   overflow: hidden;
-  transform: translate3d(0,0,0);
-  &:after {
+  transform: translate3d(0, 0, 0);
+
+  &::after {
     content: "";
     display: block;
     position: absolute;
-    width: 100%;
-    height: 100%;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
-    background-image: radial-gradient(circle,#000 10%,transparent 10.01%);
+    background-image: radial-gradient(circle, #FFF 10%, transparent 10.01%);
     background-repeat: no-repeat;
     background-position: 50%;
-    transform: scale(10,10);
+    mix-blend-mode: normal;
+    transform: scale(10, 10);
     opacity: 0;
-    transition: transform 300ms, opacity 0.8s;
-
-  }
-  &:active:after {
-    transform: scale(0,0);
-    opacity: .2;
-    transition: 0s;
+    transition: transform 0.3s, opacity 0.8s;
   }
 
-  @media (min-width: $break-tablet) {
-    font-size: 18px;
-    width: auto;
+  &:active {
+    // ToDo: Ask design team which color is this.
+    background-color: #1895FF;
+    
+    &::after {
+      transform: scale(0, 0);
+      opacity: .2;
+      transition: 0s;
+    }
   }
-}
+  /*** Properties for Ripple effect on click ***/
 
-.btn--primary[disabled],
-.btn--primary-disabled {
-  background-color: getShade($neutral-gray, 60);
-  color: $white;
-  box-shadow: 0 0 2px 0 rgba(0,0,0,0.12), 0 2px 2px 0 rgba(0,0,0,0.24);
-  &:after {
-    display: none;
-  }
-  &:hover, &:active, &:focus, &:active:focus {
-    background-color: getShade($neutral-gray, 60);
-    cursor: not-allowed;
+  &[disabled],
+  &.btn--primary__disabled {
+    background: getShade($neutral-gray, 50);
     box-shadow: none;
-    transform: none;
+
+    &:after {
+      display: none;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      background: getShade($neutral-gray, 50);
+      cursor: default;
+      box-shadow: none;
+      transform: none;
+    }
   }
 }
 
@@ -123,12 +130,6 @@ $button-transition: all $time-s ease-in-out;
   &:hover:before {
     animation: bounceBack 500ms normal ease-in-out;
   }
-}
-
-.btn--quaternary {
-  background: getShade($secondary-color, 70);
-  border: 1px solid transparent;
-  color: getShade($secondary-color, 110);
 }
 
 .btn--flat {

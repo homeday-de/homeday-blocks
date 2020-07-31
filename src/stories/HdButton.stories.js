@@ -26,6 +26,24 @@ Object.entries(TYPES)
     },
   })));
 
+Object.entries(TYPES)
+  .forEach(([type, modifier]) => stories.add(`${type} -- DISABLED`, () => ({
+    components: { HdButton },
+    data() {
+      return { type, modifier };
+    },
+    template: `
+      <HdButton
+        :modifier=modifier
+        @click="onClick"
+        disabled
+      >{{ type }}</HdButton>
+    `,
+    methods: {
+      onClick: action('onClick'),
+    },
+  })));
+
 stories
   .add('Playground 🎛', () => ({
     components: { HdButton },
