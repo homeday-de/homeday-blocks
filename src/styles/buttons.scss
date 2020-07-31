@@ -4,6 +4,38 @@
 $button-inset-padding: 16px;
 $button-transition: all $time-s ease-in-out;
 
+@mixin btn-ripple($ripple-color: $white) {
+  position: relative;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: radial-gradient(circle, $ripple-color 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    mix-blend-mode: normal;
+    transform: scale(10, 10);
+    opacity: 0;
+    transition: transform 0.3s, opacity 0.8s;
+  }
+
+  &:active {
+    &::after {
+      transform: scale(0, 0);
+      opacity: .2;
+      transition: 0s;
+    }
+  }
+}
+
 .btn {
   box-sizing: border-box;
   display: inline-flex;
@@ -30,6 +62,8 @@ $button-transition: all $time-s ease-in-out;
 }
 
 .btn--primary {
+  @include btn-ripple($white);
+
   background-color: getShade($secondary-color, 110);
   box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.12), 0px 0px 4px rgba(0, 0, 0, 0.24);
   color: $white;
@@ -45,40 +79,10 @@ $button-transition: all $time-s ease-in-out;
     box-shadow: 0px 0px 14px #1895FF, 0px 0px 1px #1895FF;
   }
 
-  /*** Properties for Ripple effect on click ***/
-  position: relative;
-  overflow: hidden;
-  transform: translate3d(0, 0, 0);
-
-  &::after {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    background-image: radial-gradient(circle, $white 10%, transparent 10.01%);
-    background-repeat: no-repeat;
-    background-position: 50%;
-    mix-blend-mode: normal;
-    transform: scale(10, 10);
-    opacity: 0;
-    transition: transform 0.3s, opacity 0.8s;
-  }
-
   &:active {
     // ToDo: Ask design team which color is this.
     background-color: #1895FF;
-    
-    &::after {
-      transform: scale(0, 0);
-      opacity: .2;
-      transition: 0s;
-    }
   }
-  /*** Properties for Ripple effect on click ***/
 
   &[disabled],
   &.btn--primary__disabled {
@@ -101,6 +105,8 @@ $button-transition: all $time-s ease-in-out;
 }
 
 .btn--secondary {
+  @include btn-ripple($white);
+
   padding-top: #{$stack-s - 2px}; // adjustment for the border
   padding-bottom: #{$stack-s - 2px}; // adjustment for the border
   border: 2px solid getShade($secondary-color, 110);
@@ -122,40 +128,10 @@ $button-transition: all $time-s ease-in-out;
     color: $white;
   }
 
-  /*** Properties for Ripple effect on click ***/
-  position: relative;
-  overflow: hidden;
-  transform: translate3d(0, 0, 0);
-
-  &::after {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    background-image: radial-gradient(circle, $white 10%, transparent 10.01%);
-    background-repeat: no-repeat;
-    background-position: 50%;
-    mix-blend-mode: normal;
-    transform: scale(10, 10);
-    opacity: 0;
-    transition: transform 0.3s, opacity 0.8s;
-  }
-
   &:active {
     // ToDo: Ask design team which color is this.
     background-color: #1895FF;
-    
-    &::after {
-      transform: scale(0, 0);
-      opacity: .2;
-      transition: 0s;
-    }
   }
-  /*** Properties for Ripple effect on click ***/
 
   &[disabled],
   &.btn--primary__disabled {
