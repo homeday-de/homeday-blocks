@@ -3,11 +3,18 @@
     v-on="$listeners"
     :class="computedClasses"
   >
+    <HdIcon
+      v-if="iconSrc"
+      :src="iconSrc"
+      class="btn__icon"
+    />
     <slot />
   </button>
 </template>
 
 <script>
+import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
+
 export const TYPES = {
   DEFAULT: '',
   PRIMARY: 'primary',
@@ -19,6 +26,9 @@ export const TYPES = {
 
 export default {
   name: 'HdButton',
+  components: {
+    HdIcon,
+  },
   props: {
     modifier: {
       type: String,
@@ -32,6 +42,10 @@ export default {
     isInDarkBackground: {
       type: Boolean,
       default: false,
+    },
+    iconSrc: {
+      type: String,
+      default: '',
     },
   },
   computed: {
@@ -52,3 +66,15 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+@import 'homeday-blocks/src/styles/_variables.scss';
+
+.btn__icon {
+  margin-right: $inline-xs;
+
+  path {
+    fill: currentColor;
+  }
+}
+</style>

@@ -7,6 +7,8 @@ import {
   HdButtonTypes as TYPES,
 } from 'homeday-blocks';
 
+import { plusIcon } from 'homeday-blocks/src/assets/small-icons';
+
 const stories = storiesOf('Components|HdButton', module);
 
 Object.entries(TYPES)
@@ -44,9 +46,13 @@ stories
       disabled: {
         default: boolean('Disabled', false),
       },
+      showIcon: {
+        default: boolean('Show icon', false),
+      },
     },
     data() {
       return {
+        plusIcon,
         styleWrapper: {
           position: 'relative',
           width: '100vw',
@@ -70,6 +76,15 @@ stories
     template: `
       <div :style="styleWrapper">
         <HdButton
+          v-if="showIcon"
+          :modifier=modifier
+          :isInDarkBackground=isInDarkBackground
+          :disabled=disabled
+          @click="onClick"
+          :iconSrc=plusIcon
+        >{{ text }}</HdButton>
+        <HdButton
+          v-else
           :modifier=modifier
           :isInDarkBackground=isInDarkBackground
           :disabled=disabled
