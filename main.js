@@ -17,6 +17,7 @@ export { default as HdToggle } from './src/components/HdToggle.vue';
 export { default as HdIcon } from './src/components/HdIcon.vue';
 export { default as HdModal } from './src/components/HdModal.vue';
 export { default as HdDashedList } from './src/components/HdDashedList.vue';
+export { default as HdLoadingSpinner } from './src/components/HdLoadingSpinner.vue';
 
 // Buttons
 export { default as HdArrowButton } from './src/components/buttons/HdArrowButton.vue';
