@@ -23,7 +23,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/styles/mixins.scss";
+@import "homeday-blocks/src/styles/mixins.scss";
+
 .loading-spinner {
   width: 40px;
   height: 40px;
