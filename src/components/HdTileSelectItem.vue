@@ -46,7 +46,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/styles/mixins.scss";
+@import "homeday-blocks/src/styles/mixins.scss";
 
 .tile-select-item {
   cursor: pointer;
