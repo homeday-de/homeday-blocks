@@ -86,6 +86,7 @@ export default {
     align-items: center;
     justify-content: center;
     background-color: $secondary-bg;
+    cursor: pointer;
 
     &__thumbnail,
     &__picture {
@@ -94,6 +95,7 @@ export default {
       right: 0;
       bottom: 0;
       left: 0;
+      z-index: 1;
     }
 
     &__picture {
