@@ -11,6 +11,7 @@
             :key="i"
             :class="{
               'tabs-menu__item': true,
+              'tabs-menu__item--focus': !removeFocus,
               'btn': true,
               'btn--flat': true,
               'js-tabs-menu-item': true,
@@ -48,6 +49,10 @@ export default {
     value: {
       type: String,
       default: '',
+    },
+    removeFocus: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {
@@ -123,7 +128,7 @@ export default {
       width: 100%;
     }
 
-    &:focus::after,
+    &--focus:focus::after,
     &.isActive::after {
       border-color: getShade($secondary-color, 110);
     }
