@@ -17,7 +17,7 @@ $ git remote add upstream git@github.com:homeday-de/homeday-blocks.git
 
 ## Prerequisites
 
-Homeday Blocks requires [Node.js](https://nodejs.org/) version 8.9 or above (8.11.0+ recommended). It's recommended to manage multiple versions of Node on the same machine with [nvm](https://github.com/nvm-sh/nvm) or [nvm-windows](https://github.com/coreybutler/nvm-windows).
+Homeday Blocks requires [Node.js](https://nodejs.org/) version 10.22.0 (.nvmrc). It's recommended to manage multiple versions of Node on the same machine with [nvm](https://github.com/nvm-sh/nvm) or [nvm-windows](https://github.com/coreybutler/nvm-windows).
 
 Don't forget to setup the [deeper shell integration](https://github.com/nvm-sh/nvm#deeper-shell-integration) in your console to take full advantage of `nvm`. You can achieve this by adding the following alias into your `~/.bashrc`, or `~/.zshrc` file:
 
