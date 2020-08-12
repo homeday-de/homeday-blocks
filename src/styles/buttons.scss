@@ -76,12 +76,12 @@ $button-transition: all $time-s ease-in-out;
   }
 
   &:focus {
-    box-shadow: 0px 0px 14px #1895FF, 0px 0px 1px #1895FF;
+    box-shadow: 0px 0px 14px getShade($secondary-color, 110), 0px 0px 1px getShade($secondary-color, 110);
   }
 
   &:active {
     // ToDo: Ask design team which color is this.
-    background-color: #1895FF;
+    background-color: getShade($secondary-color, 110);
   }
 
   &[disabled],
@@ -123,14 +123,13 @@ $button-transition: all $time-s ease-in-out;
   }
 
   &:focus {
-    box-shadow: 0px 0px 14px #1895FF, 0px 0px 1px #1895FF;
+    box-shadow: 0px 0px 14px getShade($secondary-color, 110), 0px 0px 1px getShade($secondary-color, 110);
     background-color: getShade($secondary-color, 110);
     color: $white;
   }
 
   &:active {
-    // ToDo: Ask design team which color is this.
-    background-color: #1895FF;
+    background-color: getShade($secondary-color, 110);
   }
 
   &.btn--dark-background {
