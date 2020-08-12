@@ -3,6 +3,7 @@ import HdTabsMenu from '@/components/HdTabsMenu.vue';
 import ITEMS from '@/stories/mocks/MENU_ITEMS';
 
 const MENU_ITEM_SELECTOR = '.js-tabs-menu-item';
+const MENU_ITEM_WITH_FOCUS = '.tabs-menu__item--focus';
 const ACTIVE_MENU_ITEM_SELECTOR = '.js-tabs-menu-item.isActive';
 
 const wrapperBuilder = wrapperFactoryBuilder(HdTabsMenu, {
@@ -30,6 +31,16 @@ describe('HdTabsMenu', () => {
     });
 
     expect(wrapper.findAll(ACTIVE_MENU_ITEM_SELECTOR).length).toBe(1);
+  });
+
+  it('Rendered selected menu items without BEM modifier \'--focus\'', () => {
+    const wrapper = wrapperBuilder({
+      props: {
+        removeFocus: true,
+      },
+    });
+
+    expect(wrapper.findAll(MENU_ITEM_WITH_FOCUS).length).toBe(0);
   });
 
   it('By default, no menu item is selected', () => {
