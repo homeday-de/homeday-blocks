@@ -8,16 +8,20 @@
     <figure
       v-if="hasImages"
       class="gallery__figure"
-      @click="onCurrentItemClick"
     >
       <figcaption
         v-if="showCaption"
         class="gallery__caption">{{ currentItemCaption || '&#8203;' }}</figcaption>
       <div class="gallery__main">
-        <HdGalleryMedia
-          :item="currentItem"
-          :aspect-ratio="aspectRatio"
-        />
+        <div
+          class="gallery__image"
+          @click="onCurrentItemClick"
+        >
+          <HdGalleryMedia
+            :item="currentItem"
+            :aspect-ratio="aspectRatio"
+          />
+        </div>
         <div
           v-if="items.length > 1"
           class="gallery__controls"
@@ -238,6 +242,7 @@ export default {
       width: 36px;
       height: 36px;
       padding: 0;
+      z-index: 3;
       position: absolute;
       top: 50%;
       left: 0;

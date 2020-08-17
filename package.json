@@ -1,6 +1,6 @@
 {
   "name": "homeday-blocks",
-  "version": "12.3.1",
+  "version": "12.3.2",
   "description": "A Vue component library built by Homeday's frontend team.",
   "main": "main.js",
   "repository": {
@@ -33,7 +33,8 @@
     "test:unit:coverage": "npm run test:unit -- --coverage && open coverage/lcov-report/index.html",
     "test:percy": "if [ $PERCY_TOKEN ]; then percy-storybook; else echo 'Skipping test: PERCY_TOKEN is not defined'; fi",
     "coverage": "cat ./coverage/lcov.info | coveralls -v",
-    "import-assets": "node src/assets-importer"
+    "import-assets": "node src/assets-importer",
+    "new": "hygen new"
   },
   "dependencies": {
     "body-scroll-lock": "2.6.4",
@@ -69,6 +70,7 @@
     "eslint-plugin-vue": "5.2.3",
     "gitmoji-cli": "3.2.4",
     "husky": "4.2.5",
+    "hygen": "^6.0.4",
     "lint-staged": "9.5.0",
     "node-fetch": "^2.6.0",
     "node-sass": "4.13.1",

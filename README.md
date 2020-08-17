@@ -17,7 +17,7 @@ $ git remote add upstream git@github.com:homeday-de/homeday-blocks.git
 
 ## Prerequisites
 
-Homeday Blocks requires [Node.js](https://nodejs.org/) version 8.9 or above (8.11.0+ recommended). It's recommended to manage multiple versions of Node on the same machine with [nvm](https://github.com/nvm-sh/nvm) or [nvm-windows](https://github.com/coreybutler/nvm-windows).
+Homeday Blocks requires [Node.js](https://nodejs.org/) version 10.22.0 (.nvmrc). It's recommended to manage multiple versions of Node on the same machine with [nvm](https://github.com/nvm-sh/nvm) or [nvm-windows](https://github.com/coreybutler/nvm-windows).
 
 Don't forget to setup the [deeper shell integration](https://github.com/nvm-sh/nvm#deeper-shell-integration) in your console to take full advantage of `nvm`. You can achieve this by adding the following alias into your `~/.bashrc`, or `~/.zshrc` file:
 
@@ -92,6 +92,19 @@ You can also follow build statuses in https://percy.io/Homeday/homeday-blocks
 #### Gotchas
 - `tests/` is an alias for `<rootDir>/tests/`
 - The form components share many classes (mostly `field--*`), to avoid repeatedly defining some of them in each form test, [FIELD_CLASSES.js](https://github.com/homeday-de/homeday-blocks/blob/develop/tests/unit/components/form/FIELD_CLASSES.js) contains the most common classes we need for testing. Feel free to add more classes.
+
+## Generators
+
+We use [Hygen](https://www.hygen.io/) as a code generator tool to save time when we need to scaffold some structure.
+
+Just run:
+
+```
+npm run new component
+npm run new service
+```
+
+And follow the wizzard in order to generate a base component structure or a service.
 
 ## Contribution guide
 

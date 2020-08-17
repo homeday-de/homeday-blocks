@@ -40,7 +40,6 @@
               >
             <img :src="item.thumbnail" :alt="item.caption" :srcset="item.thumbnailSrcSet">
           </picture>
-
         </div>
       </flickity>
       <div class="gallery-carousel__pager">
@@ -312,6 +311,7 @@ export default {
       display: flex;
       align-items: center;
       justify-content: center;
+      z-index: 1;
     }
   }
 }
