@@ -1,5 +1,5 @@
 ---
-to: tests/unit/<%= path || 'components' %>/<%= name %>.spec.js
+to: tests/unit/<%= path %>/<%= name %>.spec.js
 ---
 import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import <%= name %> from '@/<%= path %>/<%= name %>.vue';
