@@ -8,7 +8,7 @@ import classFromFillNote from '../notes/HdIconClassFromFill.md';
 import fillFromClassNote from '../notes/HdIconFillFromClass.md';
 import './styles/HdIcon.css';
 
-storiesOf('Components|HdIcon', module)
+storiesOf('Components/HdIcon', module)
   .add('simple', () => ({
     components: { HdIcon },
     data() {

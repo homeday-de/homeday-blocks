@@ -5,7 +5,7 @@ import SizedContainerWrapper from 'homeday-blocks/src/storiesWrappers/SizedConta
 import { HdGalleryTiles } from 'homeday-blocks';
 import ITEMS from './mocks/GALLERY_ITEMS';
 
-storiesOf('Components|Gallery/HdGalleryTiles', module)
+storiesOf('Components/Gallery/HdGalleryTiles', module)
   .addDecorator(SizedContainerWrapper)
   .add('default', () => ({
     components: { HdGalleryTiles },

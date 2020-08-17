@@ -10,7 +10,7 @@ import { HdPasswordConfirm } from 'homeday-blocks';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 import icon from './assets/ic_lock.svg';
 
-storiesOf('Components|Form/HdPasswordConfirm', module)
+storiesOf('Components/Form/HdPasswordConfirm', module)
   .addDecorator(FormWrapper)
   .add('simple', () => ({
     components: { HdPasswordConfirm },

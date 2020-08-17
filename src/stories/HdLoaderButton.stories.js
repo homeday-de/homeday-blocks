@@ -5,7 +5,7 @@ import { text, boolean, number } from '@storybook/addon-knobs';
 import { HdLoaderButton } from 'homeday-blocks';
 import hdLoaderButtonNote from '../notes/HdLoaderButton.md';
 
-storiesOf('Components|HdLoaderButton', module)
+storiesOf('Components/HdLoaderButton', module)
   .add('Playground 📝🎛', () => ({
     components: { HdLoaderButton },
     props: {

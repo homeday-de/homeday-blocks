@@ -9,7 +9,7 @@ import {
 
 import { plusIcon } from 'homeday-blocks/src/assets/small-icons';
 
-const stories = storiesOf('Components|HdButton', module);
+const stories = storiesOf('Components/HdButton', module);
 
 Object.entries(TYPES)
   .forEach(([type, modifier]) => stories.add(type, () => ({

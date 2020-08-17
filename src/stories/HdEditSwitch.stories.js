@@ -7,7 +7,7 @@ import {
   HdInput,
 } from 'homeday-blocks';
 
-storiesOf('Components|HdEditSwitch', module)
+storiesOf('Components/HdEditSwitch', module)
   .addDecorator(FormWrapper)
   .add('Concrete example 🎛', () => ({
     components: { HdEditSwitch, HdInput },

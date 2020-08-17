@@ -2,7 +2,7 @@
 import { storiesOf } from '@storybook/vue';
 import { HdTileSelect } from 'homeday-blocks';
 
-const stories = storiesOf('Components|HdTileSelect', module);
+const stories = storiesOf('Components/HdTileSelect', module);
 const watch = {
   value(newValue) {
     console.log(`Selected value: ${newValue}`);

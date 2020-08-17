@@ -2,7 +2,7 @@
 import { storiesOf } from '@storybook/vue';
 import Welcome from './Welcome.vue';
 
-storiesOf('Introduction|Welcome', module)
+storiesOf('Introduction/Welcome', module)
   .addParameters({
     options: {
       showPanel: false,

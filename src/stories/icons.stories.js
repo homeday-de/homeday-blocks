@@ -7,7 +7,7 @@ import * as bigIcons from 'homeday-blocks/src/assets/big-icons';
 import * as bicolorIcons from 'homeday-blocks/src/assets/bicolor-icons';
 
 
-storiesOf('Assets|Icons', module)
+storiesOf('Assets/Icons', module)
   .addParameters({
     options: {
       showPanel: false,

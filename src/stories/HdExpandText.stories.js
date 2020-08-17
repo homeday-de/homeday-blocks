@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/vue';
 import { number } from '@storybook/addon-knobs';
 import { HdExpandText } from 'homeday-blocks';
 
-storiesOf('Components|HdExpandText', module)
+storiesOf('Components/HdExpandText', module)
   .add('default 🎛', () => ({
     components: { HdExpandText },
     props: {

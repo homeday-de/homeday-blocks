@@ -23,7 +23,7 @@ const generateSlots = (endStartDeltaMins, duration) => range(1, (endStartDeltaMi
     };
   });
 
-storiesOf('Components|HdTimeslots', module)
+storiesOf('Components/HdTimeslots', module)
   .addParameters({ percy: { skip: true } })
   .addDecorator(TimeslotsWrapper)
   .add('base', () => ({

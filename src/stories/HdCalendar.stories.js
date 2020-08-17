@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { generateDateCycles } from 'homeday-blocks/src/services/date';
 import { HdCalendar } from 'homeday-blocks';
 
-storiesOf('Components|HdCalendar', module)
+storiesOf('Components/HdCalendar', module)
   .addParameters({ percy: { skip: true } })
   .add('base', () => ({
     components: { HdCalendar },
