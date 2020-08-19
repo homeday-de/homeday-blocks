@@ -93,6 +93,19 @@ You can also follow build statuses in https://percy.io/Homeday/homeday-blocks
 - `tests/` is an alias for `<rootDir>/tests/`
 - The form components share many classes (mostly `field--*`), to avoid repeatedly defining some of them in each form test, [FIELD_CLASSES.js](https://github.com/homeday-de/homeday-blocks/blob/develop/tests/unit/components/form/FIELD_CLASSES.js) contains the most common classes we need for testing. Feel free to add more classes.
 
+## Generators
+
+We use [Hygen](https://www.hygen.io/) as a code generator tool to save time when we need to scaffold some structure.
+
+Just run:
+
+```
+npm run new component
+npm run new service
+```
+
+And follow the wizzard in order to generate a base component structure or a service.
+
 ## Contribution guide
 
 This project follows [forking workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow). See [project setup](#project-setup) to get started locally. That means that all code changes enter the project by PR to `develop` branch. Once you open the PR with suggested changes, the checks for `build` and `coverage` will run. If those fail, your PR needs some more work. :) 
