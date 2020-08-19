@@ -85,7 +85,7 @@ $button-transition: all $time-s ease-in-out;
   }
 
   &[disabled],
-  &.btn--primary__disabled {
+  &.btn--disabled {
     background: getShade($neutral-gray, 50);
     box-shadow: none;
     color: getShade($neutral-gray, 90);
@@ -144,7 +144,7 @@ $button-transition: all $time-s ease-in-out;
   }
 
   &[disabled],
-  &.btn--secondary__disabled {
+  &.btn--disabled {
     border: 2px solid getShade($neutral-gray, 60);
     color: getShade($neutral-gray, 70);
     box-shadow: none;
@@ -195,7 +195,7 @@ $button-transition: all $time-s ease-in-out;
   }
 
   &[disabled],
-  &.btn--tertiary__disabled {
+  &.btn--disabled {
     border: 2px solid transparent;
     background-color: getShade($neutral-gray, 40);
     color: getShade($neutral-gray, 70);
