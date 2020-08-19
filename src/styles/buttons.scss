@@ -97,7 +97,7 @@ $button-transition: all $time-s ease-in-out;
     &:hover,
     &:active,
     &:focus {
-      background: getShade($neutral-gray, 50);
+      background-color: getShade($neutral-gray, 50);
       cursor: default;
       box-shadow: none;
       transform: none;
@@ -156,7 +156,7 @@ $button-transition: all $time-s ease-in-out;
     &:hover,
     &:active,
     &:focus {
-      background: transparent;
+      background-color: transparent;
       cursor: default;
       box-shadow: none;
       transform: none;
@@ -192,12 +192,23 @@ $button-transition: all $time-s ease-in-out;
 
   &:active {
     background-color: getShade($secondary-color, 70);
+    border: 2px solid transparent;
+  }
+
+  &.btn--dark-background {
+    background-color: rgba(white, 0.2);
+    color: white;
+
+    &:hover,
+    &:focus {
+      border: 2px solid white;
+    }
   }
 
   &[disabled],
   &.btn--disabled {
-    border: 2px solid transparent;
     background-color: getShade($neutral-gray, 40);
+    border: 2px solid transparent;
     color: getShade($neutral-gray, 70);
     box-shadow: none;
 
@@ -208,10 +219,15 @@ $button-transition: all $time-s ease-in-out;
     &:hover,
     &:active,
     &:focus {
-      background: getShade($neutral-gray, 40);
+      background-color: getShade($neutral-gray, 40);
+      border: 2px solid transparent;
       cursor: default;
       box-shadow: none;
       transform: none;
+    }
+
+    &.btn--dark-background {
+      background-color: rgba(120, 143, 171, 0.7);
     }
   }
 }
