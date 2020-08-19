@@ -16,7 +16,6 @@
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 
 export const TYPES = {
-  DEFAULT: '',
   PRIMARY: 'primary',
   SECONDARY: 'secondary',
   TERTIARY: 'tertiary',
@@ -32,7 +31,7 @@ export default {
   props: {
     modifier: {
       type: String,
-      default: TYPES.DEFAULT,
+      default: TYPES.PRIMARY,
       validator(value) {
         const allTypes = Object.values(TYPES);
 
