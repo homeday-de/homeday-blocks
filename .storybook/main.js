@@ -3,12 +3,12 @@ const generateWebpackAlias = require('../webpack-alias');
 
 module.exports = {
   "stories": [
-    "../src/**/HdAlert.stories.@(js|jsx|ts|tsx|mdx)",
-    "../src/**/HdArrowButton.stories.@(js|jsx|ts|tsx|mdx)",
+    "../src/**/*.stories.@(js|jsx|ts|tsx|mdx)",
   ],
   "addons": [
     "@storybook/addon-links",
-    "@storybook/addon-essentials"
+    "@storybook/addon-essentials",
+    "@storybook/addon-knobs",
   ],
   webpackFinal: async (config) => {
     config.resolve.alias = generateWebpackAlias({

@@ -1,57 +1,64 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import { storiesOf } from '@storybook/vue';
-import { text, select } from '@storybook/addon-knobs';
 import {
   HdLink,
   HdLinkTypes as TYPES,
 } from 'homeday-blocks';
 import HdLinkNote from '../notes/HdLink.md';
 
-const stories = storiesOf('Components/HdLink', module);
-
-TYPES.forEach((modifier) => {
-  const capitalizedModifier = modifier.charAt(0).toUpperCase() + modifier.slice(1);
-
-  stories.add(capitalizedModifier, () => ({
-    components: { HdLink },
-    data() {
-      return { modifier, capitalizedModifier };
+export default {
+  title: 'Components/HdLink',
+  component: HdLink,
+  argTypes: {
+    href: {
+      control: {
+        type: 'text',
+      },
     },
-    template: `
-      <HdLink
-        :modifier=modifier
-        href="https://www.homeday.de"
-      >
-        {{ capitalizedModifier }}
-      </HdLink>
-    `,
-  }));
+    modifier: {
+      control: {
+        type: 'select',
+        options: TYPES,
+      },
+    },
+  },
+  args: {
+    modifier: TYPES[0],
+    href: 'https://www.homeday.de',
+  },
+};
+
+const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { HdLink },
+  computed: {
+    capitalizedModifier() {
+      return this.modifier.charAt(0).toUpperCase() + this.modifier.slice(1);
+    },
+  },
+  template: `
+    <HdLink
+      :modifier="modifier"
+      :href="href"
+    >
+      {{ capitalizedModifier }}
+    </HdLink>
+  `,
 });
 
-stories
-  .add('Playground 🎛📝', () => ({
-    components: { HdLink },
-    props: {
-      text: {
-        type: String,
-        default: text('Text (<slot>)', 'Awesome link'),
-      },
-      modifier: {
-        type: String,
-        default: select('Modifier', TYPES, TYPES[0]),
-      },
+export const Default = Template.bind({});
+Default.parameters = {
+  docs: {
+    description: {
+      component: HdLinkNote,
     },
-    template: `
-      <HdLink
-        :modifier=modifier
-        href="https://www.homeday.de"
-      >
-        {{ text }}
-      </HdLink>
-    `,
-  }), {
-    notes: {
-      markdown: HdLinkNote,
-    },
-    percy: { skip: true },
-  });
+  },
+};
+
+export const Primary = Template.bind({});
+Primary.args = {
+  modifier: TYPES[0],
+};
+
+export const Secondary = Template.bind({});
+Secondary.args = {
+  modifier: TYPES[1],
+};

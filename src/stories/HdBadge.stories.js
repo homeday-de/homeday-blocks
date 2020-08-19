@@ -1,73 +1,66 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import { storiesOf } from '@storybook/vue';
-import { text, boolean, select } from '@storybook/addon-knobs';
 import {
   HdBadge,
   HdBadgeTypes as TYPES,
 } from 'homeday-blocks';
 
-storiesOf('Components/HdBadge', module)
-  .add('Playground without details', () => ({
-    components: { HdBadge },
-    props: {
-      label: {
-        type: String,
-        default: text('Label', 'Badge'),
-      },
-      modifier: {
-        type: String,
-        default: select('Modifier', Object.values(TYPES), TYPES.default),
-      },
-      icon: {
-        type: String,
-        default: text('icon (url)'),
-      },
-      showIconBefore: {
-        type: Boolean,
-        default: boolean('show-icon-before', true),
+export default {
+  title: 'Components/HdBadge',
+  component: HdBadge,
+  argTypes: {
+    modifier: {
+      control: { type: 'select', options: Object.values(TYPES) },
+      table: {
+        defaultValue: { summary: TYPES.DEFAULT },
       },
     },
-    template: `
-      <HdBadge
-        :label=label
-        :modifier=modifier
-        :icon="icon"
-        :show-icon-before="showIconBefore"
-      />
-    `,
-  }))
-  .add('Playground with details', () => ({
-    components: { HdBadge },
-    props: {
-      label: {
-        type: String,
-        default: text('Label', 'Badge'),
-      },
-      details: {
-        type: String,
-        default: text('Details', 'test badge details!'),
-      },
-      modifier: {
-        type: String,
-        default: select('Modifier', Object.values(TYPES), TYPES.default),
-      },
-      icon: {
-        type: String,
-        default: text('icon (url)'),
-      },
-      showIconBefore: {
-        type: Boolean,
-        default: boolean('show-icon-before', true),
+    details: {
+      control: { type: 'text' },
+      description: 'Details default slot of the badge',
+    },
+  },
+  args: {
+    label: 'Badge',
+    modifier: TYPES.DEFAULT,
+    icon: '',
+    showIconBefore: true,
+    details: null,
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<HdBadge
+  :label="label"
+  :modifier="modifier"
+  :icon="icon"
+  :show-icon-before="showIconBefore"
+>
+  {{ details }}
+</HdBadge>
+        `,
       },
     },
-    template: `
-      <HdBadge
-        :label=label
-        :modifier=modifier
-        :icon="icon"
-        :show-icon-before="showIconBefore"
-      >
-        <template>{{details}}</template>
-      </HdBadge>
-    `,
-  }));
+  },
+};
+
+const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { HdBadge },
+  template: `
+    <HdBadge
+      :label="label"
+      :modifier="modifier"
+      :icon="icon"
+      :show-icon-before="showIconBefore"
+    >
+      <template v-if="details">{{ details }}</template>
+    </HdBadge>
+  `,
+});
+
+export const WithoutDetails = Template.bind({});
+
+export const WithDetails = Template.bind({});
+WithDetails.args = {
+  details: 'test badge details!',
+};
