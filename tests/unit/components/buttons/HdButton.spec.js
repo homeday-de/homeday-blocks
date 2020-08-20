@@ -50,6 +50,18 @@ describe('HdButton', () => {
     });
   });
 
+  it('should render component with btn--dark-background class if prop isInDarkBackground is true', () => {
+    const className = 'btn--dark-background';
+    const wrapper = wrapperBuilder({
+      props: {
+        isInDarkBackground: true,
+      },
+    });
+
+    expect(wrapper.classes()).toContain(className);
+    expect(wrapper.html()).toMatchSnapshot();
+  });
+
   it('should render the icon passed as prop', async () => {
     const wrapper = wrapperBuilder({
       props: {

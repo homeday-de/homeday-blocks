@@ -5,6 +5,11 @@ exports[`HdButton should render component with \`btn\` class 1`] = `
   <!----> <span>Button text</span></button>
 `;
 
+exports[`HdButton should render component with btn--dark-background class if prop isInDarkBackground is true 1`] = `
+<button class="btn btn--primary btn--dark-background">
+  <!----> <span>Button text</span></button>
+`;
+
 exports[`HdButton should render component with btn--flat class 1`] = `
 <button class="btn btn--flat">
   <!----> <span>Button text</span></button>
