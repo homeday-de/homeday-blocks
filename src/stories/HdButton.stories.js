@@ -37,21 +37,36 @@ export default {
   },
 };
 
+
 const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { HdButton },
   template: `
-      <HdButton
-        @click="onClick"
-        :modifier="modifier"
-        :isInDarkBackground="isInDarkBackground"
-        :disabled="disabled"
-        :iconSrc="icon"
-      >{{ text }}</HdButton>
-    `,
+    <div>
+        <HdButton
+          @click="onClick"
+          :modifier="modifier"
+          :isInDarkBackground="isInDarkBackground"
+          :disabled="disabled"
+          :iconSrc="icon"
+          style="z-index: 1;"
+        >{{ text }}</HdButton>
+        <div :style="style" />
+    </div>
+      `,
   computed: {
     icon() {
       return this.iconSrc ? plusIcon : '';
+    },
+    style() {
+      return {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        backgroundColor: this.isInDarkBackground ? '#1C3553' : '#FFF',
+      };
     },
   },
 });
