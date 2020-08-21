@@ -1,5 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import { action } from '@storybook/addon-actions';
 import {
   HdButton,
   HdButtonTypes as TYPES,
@@ -25,6 +23,9 @@ export default {
     },
     disabled: {
       control: 'boolean',
+    },
+    onClick: {
+      action: 'onClick',
     },
   },
   args: {
@@ -52,9 +53,6 @@ const Template = (args, { argTypes }) => ({
     icon() {
       return this.iconSrc ? plusIcon : '';
     },
-  },
-  methods: {
-    onClick: action('clicked'),
   },
 });
 

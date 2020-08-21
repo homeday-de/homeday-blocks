@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { generateDateCycles } from 'homeday-blocks/src/services/date';
 import { HdCalendar } from 'homeday-blocks';
 
