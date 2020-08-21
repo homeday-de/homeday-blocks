@@ -13,6 +13,7 @@ export default {
     dates: generateDateCycles(2, 2, 2),
     disabledIndexes: [],
   },
+  parameters: { percy: { skip: true } },
 };
 
 const Template = (args, { argTypes }) => ({
