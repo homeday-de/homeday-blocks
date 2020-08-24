@@ -1,9 +1,7 @@
 <template>
   <div class="gallery-media">
     <div class="gallery-media__object">
-      <div
-        :style="sizerStyles"
-        class="gallery-media__object__sizer"/>
+      <div :style="sizerStyles" />
 
       <!-- the item.image field is used as default value for the item image -->
       <!-- IE11 uses this value only because do not support the picture element -->
