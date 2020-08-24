@@ -6,11 +6,19 @@
       <!-- the item.image field is used as default value for the item image -->
       <!-- IE11 uses this value only because do not support the picture element -->
       <picture class="gallery-media__object-picture">
-        <source v-for="(source, media) in item.pictureSources"
-                :key="media"
-                :media="`(${media})`" :srcset="source"
-        >
-        <img ref="imageHolder" :src="item.image" :alt="item.caption" :srcset="item.imageSrcSet" @load="hideThumbnail"/>
+        <source
+          v-for="(source, media) in item.pictureSources"
+          :key="media"
+          :media="`(${media})`"
+          :srcset="source"
+        />
+        <img
+          ref="imageHolder"
+          :src="item.image"
+          :alt="item.caption"
+          :srcset="item.imageSrcSet"
+          @load="hideThumbnail"
+        />
       </picture>
 
       <div
