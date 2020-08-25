@@ -5,7 +5,7 @@ import HdGalleryPlaceholder from '@/components/gallery/HdGalleryPlaceholder.vue'
 describe('HdGalleryPlaceholder', () => {
   const build = (props = {}) => {
     const wrapper = wrapperFactoryBuilder(HdGalleryPlaceholder, {
-      props: _.merge({
+      props: _.assign({
         icon: '',
         text: '',
       }, props),

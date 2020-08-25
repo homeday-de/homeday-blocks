@@ -6,7 +6,7 @@ import ITEMS from '@/stories/mocks/GALLERY_ITEMS';
 describe('HdGalleryMedia', () => {
   const build = (props = {}) => {
     const wrapper = wrapperFactoryBuilder(HdGalleryMedia, {
-      props: _.merge({
+      props: _.assign({
         item: ITEMS[0],
       }, props),
     })();
