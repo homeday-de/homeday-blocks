@@ -1,39 +1,32 @@
 <template>
   <div
+    class="gallery-carousel"
     :class="{
-      'gallery-carousel': true,
-      isUsingMouse,
-      withPagerInside: pagerInside,
+      'gallery-carousel--with-pager-inside': pagerInside,
     }"
-    @keydown="setUsingMouse(false)"
-    @mousedown="setUsingMouse(true)"
   >
     <div
       class="gallery-carousel__wrap"
       tabindex="0"
       @keydown.self="maybeSelectItem"
-      @blur.self="setUsingMouse(false)"
     >
       <flickity
         ref="flickity"
         :options="flickityOptions"
       >
         <div
+          class="gallery-carousel__item"
           v-for="(item, i) in items"
           :key="i"
           :class="{
-            'gallery-carousel__item': true,
-            'isActive': shouldShowActiveState(i),
+            'is-active': shouldShowActiveState(i),
           } "
         >
-          <div
-            :style="sizerStyles"
-            class="gallery-carousel__item__sizer"
-          />
+          <div :style="sizerStyles" />
 
           <!-- the item.thumbnail field is used as default value for the item image -->
           <!-- IE11 uses this value only because do not support the picture element -->
-          <picture class="gallery-carousel__item__picture">
+          <picture class="gallery-carousel__item-picture">
               <source v-for="(source, media) in item.thumbnailPictureSources"
                 :key="media"
                 :media="`(${media})`" :srcset="source"
@@ -100,7 +93,6 @@ export default {
       currentIndex: 0,
       pagerItemsCount: 0,
       valueChanged: false,
-      isUsingMouse: false,
     };
   },
   computed: {
@@ -216,9 +208,6 @@ export default {
 
       this.$refs.flickity.select(targetSlide);
     },
-    setUsingMouse(usingMouse) {
-      this.isUsingMouse = usingMouse;
-    },
   },
 };
 </script>
@@ -229,10 +218,6 @@ export default {
 .gallery-carousel {
   $_root: &;
   position: relative;
-
-  &.isUsingMouse * {
-    outline: 0;
-  }
 
   &__wrap {
     overflow: hidden;
@@ -251,7 +236,7 @@ export default {
       margin-top: $stack-m;
     }
 
-    #{$_root}.withPagerInside & {
+    #{$_root}--with-pager-inside & {
       position: absolute;
       bottom: 0px;
       width: 100%;
@@ -283,7 +268,7 @@ export default {
 
       &:hover,
       &:focus,
-      &.isActive {
+      &.is-active {
         box-shadow: 0 5px 7px -3px rgba(0, 0, 0, 0.5);
         @media (min-width: $break-tablet) {
           box-shadow: 0 6px 11px -3px rgba(0, 0, 0, 0.45);
@@ -302,7 +287,7 @@ export default {
       object-fit: cover;
     }
 
-    &__picture {
+    &-picture {
       position: absolute;
       top: 0;
       right: 0;
