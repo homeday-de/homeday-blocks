@@ -1,69 +1,81 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import { storiesOf } from '@storybook/vue';
-import {
-  text,
-  boolean,
-  select,
-} from '@storybook/addon-knobs';
 import {
   HdAlert,
   HdAlertTypes as TYPES,
 } from 'homeday-blocks';
 
-const TYPES_ARRAY = Object.keys(TYPES);
+export default {
+  title: 'Components/HdAlert',
+  component: HdAlert,
+  argTypes: {
+    type: {
+      control: { type: 'select', options: Object.keys(TYPES) },
+      table: {
+        defaultValue: { summary: 'info' },
+      },
+    },
+    text: {
+      control: 'text',
+      description: 'Text default slot of the alert',
+    },
+  },
+  args: {
+    text: 'Karaoke means “empty orchestra” in Japanese.',
+    type: 'info',
+    noIcon: false,
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<HdAlert
+  :type="type"
+  :icon="icon"
+  :no-icon="noIcon"
+>
+  {{ text }}
+</HdAlert>
+        `,
+      },
+    },
+  },
+};
 
-const stories = storiesOf('Components|HdAlert', module);
-
-stories.add('Default', () => ({
+const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
   components: { HdAlert },
   template: `
-    <HdAlert>
-      Karaoke means &#8220;empty orchestra&#8221; in Japanese.
+    <HdAlert
+      :type="type"
+      :icon="icon"
+      :no-icon="noIcon"
+    >
+      {{ text }}
     </HdAlert>
   `,
-}));
-
-TYPES_ARRAY.forEach((type) => {
-  stories.add(type, () => ({
-    components: { HdAlert },
-    data() {
-      return {
-        type,
-        message: `A message with type: ${type}`,
-      };
-    },
-    template: `
-      <HdAlert :type="type">
-        {{ message }}
-      </HdAlert>
-    `,
-  }));
 });
 
-stories
-  .add('Playground 🎛', () => ({
-    components: { HdAlert },
-    props: {
-      type: {
-        type: String,
-        default: select('type', TYPES_ARRAY),
-      },
-      icon: {
-        type: String,
-        default: text('icon (url)'),
-      },
-      noIcon: {
-        type: Boolean,
-        default: boolean('no-icon', false),
-      },
-    },
-    template: `
-      <HdAlert
-        :type="type"
-        :icon="icon"
-        :no-icon="noIcon"
-      >
-        You can play around with the knobs
-      </HdAlert>
-    `,
-  }), { percy: { skip: true } });
+export const Default = Template.bind({});
+
+export const Info = Template.bind({});
+Info.args = {
+  type: 'info',
+  text: 'A message with type: info',
+};
+
+export const Success = Template.bind({});
+Success.args = {
+  type: 'success',
+  text: 'A message with type: success',
+};
+
+export const Warning = Template.bind({});
+Warning.args = {
+  type: 'warning',
+  text: 'A message with type: warning',
+};
+
+export const Error = Template.bind({});
+Error.args = {
+  type: 'error',
+  text: 'A message with type: error',
+};

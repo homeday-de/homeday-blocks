@@ -2,7 +2,7 @@
 import { storiesOf } from '@storybook/vue';
 import { HdModal } from 'homeday-blocks';
 
-const stories = storiesOf('Components|HdModal', module);
+const stories = storiesOf('Components/HdModal', module);
 
 stories.add('Default', () => ({
   components: { HdModal },

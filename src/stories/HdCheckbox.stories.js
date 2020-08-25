@@ -2,7 +2,7 @@
 import { storiesOf } from '@storybook/vue';
 import { HdCheckbox } from 'homeday-blocks';
 
-storiesOf('Components|Form/HdCheckbox', module)
+storiesOf('Components/Form/HdCheckbox', module)
   .add('required', () => ({
     components: { HdCheckbox },
     template: `

@@ -9,7 +9,7 @@ import CONFIG from './mocks/forms';
 
 const { formatNestedData } = UtilsService;
 
-storiesOf('Components|Form/HdDynamicForm', module)
+storiesOf('Components/Form/HdDynamicForm', module)
   .addDecorator(FormWrapper)
   .add('profile', () => ({
     components: { HdDynamicForm },
