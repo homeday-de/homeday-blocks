@@ -1,9 +1,9 @@
 <template>
   <div
-    :class="{
-      hasSingleItem,
-    }"
     class="gallery"
+    :class="{
+      'gallery--has-single-item': hasSingleItem,
+    }"
   >
     <figure
       v-if="hasImages"
@@ -292,7 +292,7 @@ export default {
   }
 
   &__carousel {
-    #{$_root}.hasSingleItem & {
+    #{$_root}--has-single-item & {
       @media (min-width: $break-tablet) {
         display: none;
       }
