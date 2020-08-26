@@ -20,7 +20,8 @@ describe('HdGalleryCarousel', () => {
       pager: () => wrapper.find('.gallery-carousel__pager'),
       flickity: () => wrapper.find({ ref: 'flickity' }),
       wrap: () => wrapper.find('.gallery-carousel__wrap'),
-      activeThumbnailImg: () => wrapper.find('.is-active img'),
+      activeThumbnail: () => wrapper.find('.is-active'),
+      activeThumbnailImg: () => wrapper.find('.is-active').find('img'),
     };
   };
 
@@ -55,38 +56,47 @@ describe('HdGalleryCarousel', () => {
   it('should change selected gallery item when user types directional keys', async () => {
     const items = [ITEMS[3], ITEMS[4]];
     const {
-      wrapper, activeThumbnailImg, wrap,
+      wrapper, activeThumbnail, activeThumbnailImg, wrap,
     } = build({
       items,
     });
 
-    console.log(items);
-
     await wrapper.vm.$nextTick();
+
+    // no current thumbnail is "active" until
+    // we trigger any change inside the carousel
+    expect(activeThumbnail().exists()).toBe(false);
+
+    let nextIndex = 1;
     await wrap().trigger('keydown', { key: 'ArrowRight' });
+    await wrapper.setProps({ value: nextIndex });
+
+    expect(activeThumbnailImg().attributes().alt).toBe(items[1].caption);
+    expect(activeThumbnailImg().attributes().src).toBe(items[1].thumbnail);
+    expect(wrapper.emitted('input')[0][0]).toBe(nextIndex);
+
+    nextIndex = 0;
+    await wrap().trigger('keydown', { key: 'ArrowDown' });
+    await wrapper.setProps({ value: nextIndex });
 
     expect(activeThumbnailImg().attributes().alt).toBe(items[0].caption);
     expect(activeThumbnailImg().attributes().src).toBe(items[0].thumbnail);
-    expect(wrapper.emitted('input')[0][0]).toBe(1);
+    expect(wrapper.emitted('input')[1][0]).toBe(nextIndex);
 
-    await wrapper.setProps({ value: 1 });
-    await wrapper.vm.$nextTick();
-    await wrap().trigger('keydown', { key: 'ArrowRight' });
-    await wrapper.vm.$nextTick();
+    nextIndex = 1;
+    await wrap().trigger('keydown', { key: 'ArrowLeft' });
+    await wrapper.setProps({ value: nextIndex });
 
-    // console.log(wrapper.html());
+    expect(activeThumbnailImg().attributes().alt).toBe(items[1].caption);
+    expect(activeThumbnailImg().attributes().src).toBe(items[1].thumbnail);
+    expect(wrapper.emitted('input')[2][0]).toBe(nextIndex);
 
-    // expect(activeThumbnailImg().attributes().alt).toBe(items[1].caption);
-    // expect(activeThumbnailImg().attributes().src).toBe(items[1].thumbnail);
+    nextIndex = 0;
+    await wrap().trigger('keydown', { key: 'ArrowUp' });
+    await wrapper.setProps({ value: nextIndex });
 
-    // await wrap().trigger('keydown', { key: 'ArrowLeft' });
-
-    // expect(activeThumbnailImg().attributes().alt).toBe(items[0].caption);
-    // expect(activeThumbnailImg().attributes().src).toBe(items[0].thumbnail);
-
-    // await wrap().trigger('keydown', { key: 'ArrowLeft' });
-
-    // expect(activeThumbnailImg().attributes().alt).toBe(items[1].caption);
-    // expect(activeThumbnailImg().attributes().src).toBe(items[1].thumbnail);
+    expect(activeThumbnailImg().attributes().alt).toBe(items[0].caption);
+    expect(activeThumbnailImg().attributes().src).toBe(items[0].thumbnail);
+    expect(wrapper.emitted('input')[3][0]).toBe(nextIndex);
   });
 });
