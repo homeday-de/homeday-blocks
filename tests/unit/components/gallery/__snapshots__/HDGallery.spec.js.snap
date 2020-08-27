@@ -30,44 +30,44 @@ exports[`HdGalleryCarousel renders the component 1`] = `
           <div class="flickity-slider" style="left: 0px; transform: translateX(NaN%);">
             <div class="gallery-carousel__item is-selected" style="position: absolute;">
               <div style="padding-top: 56.25%;"></div>
-              <picture class="gallery-carousel__item-picture">
+              <picture class="gallery-carousel__picture">
                 <source media="(max-width: 900px)" srcset="https://dummyimage.com/768x432?text=1+thumb+mw+900px"> <img src="https://dummyimage.com/154x86?text=1+thumb" alt="Image 1"></picture>
             </div>
             <div class="gallery-carousel__item is-selected" style="position: absolute;">
               <div style="padding-top: 56.25%;"></div>
-              <picture class="gallery-carousel__item-picture"> <img src="https://dummyimage.com/154x86?text=2+thumb" alt="Image 2" srcset="https://dummyimage.com/308x172?text=2+thumb+DPR2x 2x, https://dummyimage.com/462x258?text=2+thumb+DPR3x 3x"></picture>
+              <picture class="gallery-carousel__picture"> <img src="https://dummyimage.com/154x86?text=2+thumb" alt="Image 2" srcset="https://dummyimage.com/308x172?text=2+thumb+DPR2x 2x, https://dummyimage.com/462x258?text=2+thumb+DPR3x 3x"></picture>
             </div>
             <div class="gallery-carousel__item is-selected" style="position: absolute;">
               <div style="padding-top: 56.25%;"></div>
-              <picture class="gallery-carousel__item-picture"> <img src="https://dummyimage.com/154x86?text=3+thumb" alt="Image 3"></picture>
+              <picture class="gallery-carousel__picture"> <img src="https://dummyimage.com/154x86?text=3+thumb" alt="Image 3"></picture>
             </div>
             <div class="gallery-carousel__item is-selected" style="position: absolute;">
               <div style="padding-top: 56.25%;"></div>
-              <picture class="gallery-carousel__item-picture"> <img src="https://dummyimage.com/154x86?text=4+thumb" alt="Image 4"></picture>
+              <picture class="gallery-carousel__picture"> <img src="https://dummyimage.com/154x86?text=4+thumb" alt="Image 4"></picture>
             </div>
             <div class="gallery-carousel__item is-selected" style="position: absolute;">
               <div style="padding-top: 56.25%;"></div>
-              <picture class="gallery-carousel__item-picture"> <img src="https://dummyimage.com/154x86?text=5+thumb" alt="Image 5"></picture>
+              <picture class="gallery-carousel__picture"> <img src="https://dummyimage.com/154x86?text=5+thumb" alt="Image 5"></picture>
             </div>
             <div class="gallery-carousel__item is-selected" style="position: absolute;">
               <div style="padding-top: 56.25%;"></div>
-              <picture class="gallery-carousel__item-picture"> <img src="https://dummyimage.com/154x86?text=6+thumb" alt="Image 6"></picture>
+              <picture class="gallery-carousel__picture"> <img src="https://dummyimage.com/154x86?text=6+thumb" alt="Image 6"></picture>
             </div>
             <div class="gallery-carousel__item is-selected" style="position: absolute;">
               <div style="padding-top: 56.25%;"></div>
-              <picture class="gallery-carousel__item-picture"> <img src="https://dummyimage.com/154x86?text=7+thumb" alt="Image 7"></picture>
+              <picture class="gallery-carousel__picture"> <img src="https://dummyimage.com/154x86?text=7+thumb" alt="Image 7"></picture>
             </div>
             <div class="gallery-carousel__item is-selected" style="position: absolute;">
               <div style="padding-top: 56.25%;"></div>
-              <picture class="gallery-carousel__item-picture"> <img src="https://dummyimage.com/154x86?text=8+thumb" alt="Image 8"></picture>
+              <picture class="gallery-carousel__picture"> <img src="https://dummyimage.com/154x86?text=8+thumb" alt="Image 8"></picture>
             </div>
             <div class="gallery-carousel__item is-selected" style="position: absolute;">
               <div style="padding-top: 56.25%;"></div>
-              <picture class="gallery-carousel__item-picture"> <img src="https://dummyimage.com/154x86?text=9+thumb" alt="Image 9"></picture>
+              <picture class="gallery-carousel__picture"> <img src="https://dummyimage.com/154x86?text=9+thumb" alt="Image 9"></picture>
             </div>
             <div class="gallery-carousel__item is-selected" style="position: absolute;">
               <div style="padding-top: 56.25%;"></div>
-              <picture class="gallery-carousel__item-picture"> <img src="https://dummyimage.com/154x86?text=10+thumb" alt="Image 10"></picture>
+              <picture class="gallery-carousel__picture"> <img src="https://dummyimage.com/154x86?text=10+thumb" alt="Image 10"></picture>
             </div>
           </div>
         </div>
