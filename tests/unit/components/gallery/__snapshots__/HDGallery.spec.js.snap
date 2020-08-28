@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HdGalleryCarousel renders the component 1`] = `
+exports[`HdGallery renders the component 1`] = `
 <div class="gallery">
   <figure class="gallery__figure">
     <figcaption class="gallery__caption">Image 1</figcaption>

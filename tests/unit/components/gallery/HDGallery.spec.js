@@ -1,16 +1,15 @@
-import _ from 'lodash';
 import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import HdGallery from '@/components/gallery/HdGallery.vue';
 import HdGalleryPlaceholder from '@/components/gallery/HdGalleryPlaceholder.vue';
 import ITEMS from '@/stories/mocks/GALLERY_ITEMS';
 
-describe('HdGalleryCarousel', () => {
-  const build = (props = {}) => {
+describe('HdGallery', () => {
+  const build = (props) => {
     const wrapper = wrapperFactoryBuilder(HdGallery, {
-      props: _.assign({
+      props: {
         items: ITEMS,
-      }, props),
-    })();
+      },
+    })({ props });
 
     return {
       wrapper,

@@ -1,15 +1,14 @@
-import _ from 'lodash';
 import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import HdGalleryPlaceholder from '@/components/gallery/HdGalleryPlaceholder.vue';
 
 describe('HdGalleryPlaceholder', () => {
-  const build = (props = {}) => {
+  const build = (props) => {
     const wrapper = wrapperFactoryBuilder(HdGalleryPlaceholder, {
-      props: _.assign({
+      props: {
         icon: '',
         text: '',
-      }, props),
-    })();
+      },
+    })({ props });
 
     return {
       wrapper,

@@ -1,15 +1,14 @@
-import _ from 'lodash';
 import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import HdGalleryMedia from '@/components/gallery/HdGalleryMedia.vue';
 import ITEMS from '@/stories/mocks/GALLERY_ITEMS';
 
 describe('HdGalleryMedia', () => {
-  const build = (props = {}) => {
+  const build = (props) => {
     const wrapper = wrapperFactoryBuilder(HdGalleryMedia, {
-      props: _.assign({
+      props: {
         item: ITEMS[0],
-      }, props),
-    })();
+      },
+    })({ props });
 
     return {
       wrapper,

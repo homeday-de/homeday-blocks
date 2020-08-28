@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import onResize from 'homeday-blocks/src/services/on-resize';
 import HdGalleryCarousel from '@/components/gallery/HdGalleryCarousel.vue';
@@ -7,12 +6,12 @@ import ITEMS from '@/stories/mocks/GALLERY_ITEMS';
 jest.mock('homeday-blocks/src/services/on-resize');
 
 describe('HdGalleryCarousel', () => {
-  const build = (props = {}) => {
+  const build = (props) => {
     const wrapper = wrapperFactoryBuilder(HdGalleryCarousel, {
-      props: _.assign({
+      props: {
         items: ITEMS,
-      }, props),
-    })();
+      },
+    })({ props });
 
     return {
       wrapper,
