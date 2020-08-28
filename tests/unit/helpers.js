@@ -1,4 +1,5 @@
 import { mount, shallowMount } from '@vue/test-utils';
+import deepmerge from 'deepmerge';
 
 export function wrapperFactoryBuilder(
   component,
@@ -8,7 +9,7 @@ export function wrapperFactoryBuilder(
     scopedSlots: defaultScopedSlots,
     stubs: defaultStubs,
     attachToDocument: defaultAttachToDocument,
-    props: defaultProps,
+    props: defaultProps = {},
     listeners: defaultListeners,
     provide: defaultProvide,
     methods: defaultMethods,
@@ -21,7 +22,7 @@ export function wrapperFactoryBuilder(
     scopedSlots,
     stubs,
     attachToDocument = defaultAttachToDocument,
-    props,
+    props = {},
     listeners,
     provide,
     methods,
@@ -47,10 +48,7 @@ export function wrapperFactoryBuilder(
         ...stubs,
       },
       attachToDocument,
-      propsData: {
-        ...defaultProps,
-        ...props,
-      },
+      propsData: deepmerge(defaultProps, props, { arrayMerge: (_, sourceArray) => sourceArray }),
       listeners: {
         ...defaultListeners,
         ...listeners,
