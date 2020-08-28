@@ -1,0 +1,12 @@
+.deprecated-wrapper::before {
+    content: "deprecated";
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: auto;
+    font-size: 1rem;
+    padding: 0 0.75rem;
+    background-color: #F76923;
+    color: white;
+}
