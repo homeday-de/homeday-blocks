@@ -1,14 +1,16 @@
 import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import HdGalleryPlaceholder from '@/components/gallery/HdGalleryPlaceholder.vue';
 
+const wrapperFactory = wrapperFactoryBuilder(HdGalleryPlaceholder, {
+  props: {
+    icon: '',
+    text: '',
+  },
+});
+
 describe('HdGalleryPlaceholder', () => {
   const build = (props) => {
-    const wrapper = wrapperFactoryBuilder(HdGalleryPlaceholder, {
-      props: {
-        icon: '',
-        text: '',
-      },
-    })({ props });
+    const wrapper = wrapperFactory({ props });
 
     return {
       wrapper,

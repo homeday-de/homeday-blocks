@@ -5,13 +5,15 @@ import ITEMS from '@/stories/mocks/GALLERY_ITEMS';
 
 jest.mock('homeday-blocks/src/services/on-resize');
 
+const wrapperFactory = wrapperFactoryBuilder(HdGalleryCarousel, {
+  props: {
+    items: ITEMS,
+  },
+});
+
 describe('HdGalleryCarousel', () => {
   const build = (props) => {
-    const wrapper = wrapperFactoryBuilder(HdGalleryCarousel, {
-      props: {
-        items: ITEMS,
-      },
-    })({ props });
+    const wrapper = wrapperFactory({ props });
 
     return {
       wrapper,

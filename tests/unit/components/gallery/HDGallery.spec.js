@@ -3,13 +3,15 @@ import HdGallery from '@/components/gallery/HdGallery.vue';
 import HdGalleryPlaceholder from '@/components/gallery/HdGalleryPlaceholder.vue';
 import ITEMS from '@/stories/mocks/GALLERY_ITEMS';
 
+const wrapperFactory = wrapperFactoryBuilder(HdGallery, {
+  props: {
+    items: ITEMS,
+  },
+});
+
 describe('HdGallery', () => {
   const build = (props) => {
-    const wrapper = wrapperFactoryBuilder(HdGallery, {
-      props: {
-        items: ITEMS,
-      },
-    })({ props });
+    const wrapper = wrapperFactory({ props });
 
     return {
       wrapper,
