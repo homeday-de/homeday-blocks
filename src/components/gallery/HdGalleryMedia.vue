@@ -60,10 +60,12 @@ export default {
     },
   },
   watch: {
-    item() {
-      this.$nextTick(() => {
-        this.showThumbnail = true;
-      });
+    item(oldValue, newValue) {
+      if (oldValue.image !== newValue.image) {
+        this.$nextTick(() => {
+          this.showThumbnail = true;
+        });
+      }
     },
   },
   methods: {
