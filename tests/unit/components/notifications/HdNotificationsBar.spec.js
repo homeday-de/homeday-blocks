@@ -6,7 +6,6 @@ const SLOT = '<p>Hello world!, <a href="#">This is a link...</a></p>';
 const CONTENT_SELECTOR = '.notifications-bar__content';
 const ICON_FAKE_PATH = '/foo/bar/icon.svg';
 
-const COMPACT_CLASS = 'notifications-bar--compact';
 const VISIBLE_CLASS = 'notifications-bar--visible';
 
 const wrapperBuilder = wrapperFactoryBuilder(HdNotificationsBar, {
@@ -46,18 +45,6 @@ describe('HdNotificationsBar', () => {
   it('supports custom icon', () => {
     wrapper.setProps({ customIcon: ICON_FAKE_PATH });
     expect(wrapper.vm.icon).toBe(ICON_FAKE_PATH);
-  });
-
-  it('can be compact', async () => {
-    expect(wrapper.classes().includes(COMPACT_CLASS)).toBe(false);
-
-    wrapper.setProps({
-      compact: true,
-    });
-
-    await wrapper.vm.$nextTick();
-
-    expect(wrapper.classes().includes(COMPACT_CLASS)).toBe(true);
   });
 
   it('supports hiding the bar', async () => {

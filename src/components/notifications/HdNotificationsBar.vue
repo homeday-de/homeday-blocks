@@ -4,7 +4,6 @@
       'notifications-bar': true,
       [`notifications-bar--${type}`]: true,
       'notifications-bar--visible': visible,
-      'notifications-bar--compact': compact,
     }"
   >
     <div class="notifications-bar__icon">
@@ -63,10 +62,6 @@ export default {
       type: String,
       default: '',
     },
-    compact: {
-      type: Boolean,
-      default: false,
-    },
   },
   computed: {
     icon() {
@@ -109,10 +104,6 @@ export default {
 
   &--visible {
     opacity: 1;
-  }
-
-  &--compact {
-    padding: $stack-s $inline-s;
   }
 
   &--enter-active,

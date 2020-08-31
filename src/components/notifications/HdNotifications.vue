@@ -9,7 +9,6 @@
         ref="notifications"
         :key="notification.id || i"
         :visible="isLast(i)"
-        :compact="compact"
         v-bind="notification"
       >
         <slot :notification="notification" />
@@ -38,10 +37,6 @@ export default {
     notifications: {
       type: Array,
       default: () => [],
-    },
-    compact: {
-      type: Boolean,
-      default: false,
     },
   },
   data() {
