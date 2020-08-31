@@ -7,9 +7,9 @@
     <div class="gallery-placeholder__content">
       <img
         :src="icon"
-        class="gallery-placeholder__content__icon"
+        class="gallery-placeholder__content-icon"
       >
-      <p class="gallery-placeholder__content__text">
+      <p class="gallery-placeholder__content-text">
         {{ text }}
       </p>
     </div>
@@ -60,13 +60,13 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    &__icon {
+    &-icon {
       height: 100px;
       @media (min-width: $break-tablet) {
         height: 155px;
       }
     }
-    &__text {
+    &-text {
       margin-top: $stack-xs;
       @media (min-width: $break-tablet) {
         margin-top: $stack-l;

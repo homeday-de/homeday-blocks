@@ -44,6 +44,7 @@ export default {
     pagerInside: false,
     disableKeyEvents: false,
     showCaption: true,
+    startIndex: 0,
   },
   parameters: { percy: { widths: [375] } },
 };
