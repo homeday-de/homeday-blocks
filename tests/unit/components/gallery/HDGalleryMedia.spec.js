@@ -24,14 +24,14 @@ describe('HdGalleryMedia', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  it('hides the thumbnail when is not provided', async () => {
+  it('hides the thumbnail when it is not provided', async () => {
     const itemWithoutThumb = { ...ITEMS[0], thumbnail: null };
     const { thumbnail } = build({ item: itemWithoutThumb });
 
     expect(thumbnail().exists()).toBe(false);
   });
 
-  it('checks the thumbnail when an item change', async () => {
+  it('shows thumbnail when item changes', async () => {
     const expectedItem = ITEMS[0];
     const newPictureWithSameImage = {
       ...ITEMS[0],
