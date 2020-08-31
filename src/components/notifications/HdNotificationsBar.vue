@@ -30,10 +30,11 @@ import {
 } from 'homeday-blocks/src/assets/small-icons';
 
 export const TYPES = {
-  NOTIFICATION: 'notification',
-  SUCCESS: 'success',
   ERROR: 'error',
-  WARNING: 'warning',
+  NOTIFICATION: 'notification',
+  STATUS_INFO: 'status-info',
+  SUCCESS: 'success',
+  UPDATES: 'updates',
 };
 
 export default {

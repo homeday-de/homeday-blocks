@@ -1,5 +1,74 @@
+import {
+  HdNotifications,
+  HdNotificationsBar,
+  HdNotificationsTypes as TYPES,
+} from 'homeday-blocks';
+
+export default {
+  title: 'Components/HdNotifications',
+  component: HdNotifications,
+  subcomponents: { HdNotificationsBar },
+  argTypes: {
+    // type: {
+    //   control: { type: 'select', options: Object.keys(TYPES) },
+    //   table: {
+    //     defaultValue: { summary: 'info' },
+    //   },
+    // },
+    notifications: {
+      control: { type: 'object' },
+    },
+  },
+  args: {
+    notifications: [
+      {
+        id: 0,
+        type: TYPES.NOTIFICATION,
+        message: 'This is a slot.',
+        urlLabel: 'Say "Hi" in the console',
+        onClick: () => console.log('Hi'),
+      }, {
+        id: 1,
+        type: TYPES.SUCCESS,
+        message: 'HEEELLO',
+        urlLabel: 'Say "Hi" in the console',
+        onClick: () => console.log('Hi'),
+      },
+    ],
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+const notifications = [
+  { id: 0, type: 'success', message: 'Hello', onClick: () => {} }
+]
+
+<HdNotifications
+  :notifications="notifications"
+>
+  {{ text }}
+</HdNotifications>
+        `,
+      },
+    },
+  },
+};
+
+const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { HdNotifications },
+  template: `
+    <HdNotifications
+      :notifications="notifications"
+    />
+  `,
+});
+
+export const Default = Template.bind({});
+
 /* eslint-disable import/no-extraneous-dependencies */
-import { storiesOf } from '@storybook/vue';
+/* import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import {
   select,
@@ -119,3 +188,4 @@ storiesOf('Components/HdNotifications', module)
       },
     },
   }));
+*/
