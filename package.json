@@ -53,7 +53,7 @@
     "@storybook/addon-knobs": "6.0.12",
     "@storybook/addon-links": "6.0.21",
     "@storybook/addon-viewport": "6.0.21",
-    "@storybook/theming": "6.0.12",
+    "@storybook/theming": "6.0.21",
     "@storybook/vue": "6.0.12",
     "@vue/cli-plugin-babel": "4.1.2",
     "@vue/cli-plugin-eslint": "4.1.2",
