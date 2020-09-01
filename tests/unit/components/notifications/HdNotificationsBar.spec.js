@@ -1,61 +1,87 @@
 import { wrapperFactoryBuilder } from 'tests/unit/helpers';
-import HdNotificationsBar from '@/components/notifications/HdNotificationsBar.vue';
+import {
+  errorIcon,
+  bellIcon,
+  infoIcon,
+  checkCircleIcon,
+} from 'homeday-blocks/src/assets/small-icons';
+import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
+import HdNotificationsBar, { TYPES } from '@/components/notifications/HdNotificationsBar.vue';
 
-const MESSAGE = 'Hello world!';
-const SLOT = '<p>Hello world!, <a href="#">This is a link...</a></p>';
-const CONTENT_SELECTOR = '.notifications-bar__content';
-const ICON_FAKE_PATH = '/foo/bar/icon.svg';
+jest.mock('homeday-blocks/src/assets/small-icons', () => ({
+  errorIcon: 'errorIcon.svg',
+  bellIcon: 'bellIcon.svg',
+  infoIcon: 'infoIcon.svg',
+  checkCircleIcon: 'checkCircleIcon.svg',
+}));
 
-const VISIBLE_CLASS = 'notifications-bar--visible';
+const ICONS_LOOKUP_TABLE = {
+  [TYPES.ERROR]: errorIcon,
+  [TYPES.NOTIFICATION]: bellIcon,
+  [TYPES.INFO]: infoIcon,
+  [TYPES.SUCCESS]: checkCircleIcon,
+};
 
-const wrapperBuilder = wrapperFactoryBuilder(HdNotificationsBar, {
-  shallow: true,
-});
+const wrapperFactory = wrapperFactoryBuilder(HdNotificationsBar);
 
 describe('HdNotificationsBar', () => {
-  let wrapper;
-
-  beforeEach(() => {
-    wrapper = wrapperBuilder({
-      props: {
-        message: MESSAGE,
+  const build = (args) => {
+    const wrapper = wrapperFactory({
+      ...args,
+      stubs: {
+        HdIcon: true,
       },
     });
-  });
 
+    return {
+      wrapper,
+      icon: () => wrapper.find(HdIcon),
+      content: () => wrapper.find('.notifications-bar__content'),
+    };
+  };
 
-  it('renders as expected', () => {
+  it('renders the component', () => {
+    const { wrapper } = build();
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  it('renders a message correctly', () => {
-    expect(wrapper.find(CONTENT_SELECTOR).text()).toBe(MESSAGE);
+  it('renders all notifications types', () => {
+    Object.values(TYPES).forEach((type) => {
+      const expectedMessage = `Notification type: "${type}"`;
+      const expectedIcon = ICONS_LOOKUP_TABLE[type];
+      const expectedTypeClass = `notifications-bar--${type}`;
+
+      const props = { message: expectedMessage, type };
+      const { wrapper, icon, content } = build({ props });
+
+      expect(icon().attributes().src).toEqual(expectedIcon);
+      expect(content().text()).toContain(expectedMessage);
+      expect(wrapper.classes()).toContain(expectedTypeClass);
+    });
   });
 
-  it('renders a slot correctly', () => {
-    wrapper = wrapperBuilder({
+  it('renders a slot message', () => {
+    const expectedSlot = '<p>Hello world!, <a href="#">This is a link...</a></p>';
+    const { content } = build({
       slots: {
-        default: SLOT,
+        default: expectedSlot,
       },
     });
 
-    expect(wrapper.find(CONTENT_SELECTOR).element.innerHTML).toBe(SLOT);
+    expect(content().html()).toContain(expectedSlot);
   });
 
-  it('supports custom icon', () => {
-    wrapper.setProps({ customIcon: ICON_FAKE_PATH });
-    expect(wrapper.vm.icon).toBe(ICON_FAKE_PATH);
-  });
+  it('centers content', async () => {
+    const expectedClass = 'notifications-bar__content--centered';
+    const { wrapper, content } = build();
 
-  it('supports hiding the bar', async () => {
-    expect(wrapper.classes().includes(VISIBLE_CLASS)).toBe(true);
+    expect(content().classes()).not.toContain(expectedClass);
 
     wrapper.setProps({
-      visible: false,
+      centered: true,
     });
-
     await wrapper.vm.$nextTick();
 
-    expect(wrapper.classes().includes(VISIBLE_CLASS)).toBe(false);
+    expect(content().classes()).toContain(expectedClass);
   });
 });
