@@ -2,6 +2,7 @@ import {
   HdNotifications,
   HdNotificationsBar,
   HdNotificationsTypes as TYPES,
+  HdButton,
 } from 'homeday-blocks';
 
 export default {
@@ -9,12 +10,6 @@ export default {
   component: HdNotifications,
   subcomponents: { HdNotificationsBar },
   argTypes: {
-    // type: {
-    //   control: { type: 'select', options: Object.keys(TYPES) },
-    //   table: {
-    //     defaultValue: { summary: 'info' },
-    //   },
-    // },
     notifications: {
       control: { type: 'object' },
     },
@@ -24,31 +19,26 @@ export default {
       {
         id: 0,
         type: TYPES.NOTIFICATION,
-        message: 'This is a slot.',
-        urlLabel: 'Say "Hi" in the console',
-        onClick: () => console.log('Hi'),
-      }, {
-        id: 1,
-        type: TYPES.SUCCESS,
-        message: 'HEEELLO',
-        urlLabel: 'Say "Hi" in the console',
-        onClick: () => console.log('Hi'),
+        message: 'My notification.',
       },
     ],
   },
   parameters: {
     docs: {
+      description: {
+        component: "Use Notifications at the top of your application's screen to display critical messages about the loss of data, features, notes, prompts, or important information that could affect the user's ability to use the product.",
+      },
       source: {
         code: `
 const notifications = [
-  { id: 0, type: 'success', message: 'Hello', onClick: () => {} }
+  { id: 0, type: 'success', message: 'Success message' },
+  { id: 1, type: 'error', message: 'Error message' },
+  { id: 2, type: 'notification', message: 'Notification message' },
 ]
 
 <HdNotifications
   :notifications="notifications"
->
-  {{ text }}
-</HdNotifications>
+/>
         `,
       },
     },
@@ -65,127 +55,219 @@ const Template = (args, { argTypes }) => ({
   `,
 });
 
-export const Default = Template.bind({});
+export const Default = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { HdNotifications, HdButton },
+  template: `
+    <div>
+      <HdNotifications
+        :notifications="notifications"
+      />
 
-/* eslint-disable import/no-extraneous-dependencies */
-/* import { storiesOf } from '@storybook/vue';
-import { action } from '@storybook/addon-actions';
-import {
-  select,
-  text,
-  boolean,
-} from '@storybook/addon-knobs';
-import {
-  HdNotifications,
-  HdNotificationsTypes,
-} from 'homeday-blocks';
-
-storiesOf('Components/HdNotifications', module)
-  .add('using scropedSlots', () => ({
-    components: {
-      HdNotifications,
-    },
-    template: `
-      <div>
-        <HdNotifications
-          style="margin: -8px"
-          :notifications="notifications"
+      <div style="display: flex; flex-wrap: wrap; align-items: center; margin-top: 20px;">
+        <hd-button modifier="secondary" @click="removeNotification" style="margin-bottom: 5px;">
+          Remove current notification
+        </hd-button>
+        <hd-button
+          v-for="type in types"
+          :key="type"
+          modifier="flat"
+          @click="addNotification(type)"
+          style="margin: 5px 0;"
         >
-          <template v-slot:default="{ notification }">
-            <span>
-              {{ notification.text }}
-            </span>
-            <a
-              href="#"
-              style="color: currentColor"
-              @click.prevent="notification.onClick"
-            >
-              {{ notification.urlLabel }}
-            </a>
-          </template>
-        </HdNotifications>
+          Add "{{ type }}"
+        </hd-button>
       </div>
-    `,
-    data() {
-      return {
-        notifications: [
-          {
-            id: 0,
-            type: HdNotificationsTypes.NOTIFICATION,
-            text: 'This is a slot.',
-            urlLabel: 'Say "Hi" in the console',
-            onClick: () => console.log('Hi'),
-          },
-        ],
-      };
+    </div>
+  `,
+  computed: {
+    types() {
+      return Object.values(TYPES);
     },
-  }))
-  .add('Playground 🎛', () => ({
-    components: { HdNotifications },
-    props: {
-      type: {
-        type: String,
-        default: select(
-          'Type',
-          Object.values(HdNotificationsTypes),
-          HdNotificationsTypes.NOTIFICATION,
-          'notification',
-        ),
-      },
-      message: {
-        type: String,
-        default: text('message', 'Some text', 'notification'),
-      },
-      customIcon: {
-        type: String,
-        default: text('customIcon', '', 'notification'),
-      },
-      compact: {
-        type: Boolean,
-        default: boolean('Compact', false, 'general'),
-      },
+  },
+  methods: {
+    removeNotification() {
+      this.notifications.pop();
     },
-    template: `
-      <div>
-        <HdNotifications
-          :compact="compact"
-          style="margin: -8px"
-          :notifications="notifications"
-          @heightChange="onHeightChange"
-        />
+    addNotification(type) {
+      const id = this.notifications.length + 1;
+      this.notifications.push({
+        id,
+        type,
+        message: `Notification ${id}: Our Homeday brokers come from your region and have known the local real estate market for many years.`,
+      });
+    },
+  },
+});
 
-        <div style="margin-top: 100px">
-          <button @click="addNotification" style="margin-top: auto">Add a new notification</button>
-          <button @click="removeNotification">Remove current notification</button>
-          <p class="text-small">Change the knobs to add a different notifications</p>
-          <p class="text-xsmall">(the numerical identifier is added for demo purposes only)</p>
-        </div>
-      </div>
-    `,
-    data() {
-      return {
-        notifications: [],
-      };
+export const Error = Template.bind({});
+Error.args = {
+  notifications: [
+    {
+      id: 0,
+      type: TYPES.ERROR,
+      message: 'ERROR notification.',
     },
-    mounted() {
-      this.addNotification();
-    },
-    methods: {
-      onHeightChange(height) {
-        action('heightChange')(height);
-      },
-      addNotification() {
-        const orderedMessage = `${this.notifications.length + 1} - ${this.message}`;
+  ],
+};
+Error.parameters = {
+  docs: {
+    source: {
+      code: `
+const notifications = [
+  { id: 0, type: 'error', message: 'Hello' }
+]
 
-        this.notifications.push({
-          type: this.type,
-          customIcon: this.customIcon,
-          message: orderedMessage,
-        });
-      },
-      removeNotification() {
-        this.notifications.pop();
-      },
+<HdNotifications
+  :notifications="notifications"
+/>
+      `,
     },
-  }));
-*/
+  },
+};
+
+export const Notification = Template.bind({});
+Notification.args = {
+  notifications: [
+    {
+      id: 0,
+      type: TYPES.NOTIFICATION,
+      message: 'NOTIFICATION notification.',
+    },
+  ],
+};
+Notification.parameters = {
+  docs: {
+    source: {
+      code: `
+const notifications = [
+  { id: 0, type: 'notification', message: 'Hello' }
+]
+
+<HdNotifications
+  :notifications="notifications"
+/>
+      `,
+    },
+  },
+};
+
+export const Info = Template.bind({});
+Info.args = {
+  notifications: [
+    {
+      id: 0,
+      type: TYPES.INFO,
+      message: 'INFO notification.',
+    },
+  ],
+};
+Info.parameters = {
+  docs: {
+    source: {
+      code: `
+const notifications = [
+  { id: 0, type: 'info', message: 'Hello' }
+]
+
+<HdNotifications
+  :notifications="notifications"
+/>
+      `,
+    },
+  },
+};
+
+export const Success = Template.bind({});
+Success.args = {
+  notifications: [
+    {
+      id: 0,
+      type: TYPES.SUCCESS,
+      message: 'SUCCESS notification.',
+    },
+  ],
+};
+Success.parameters = {
+  docs: {
+    source: {
+      code: `
+const notifications = [
+  { id: 0, type: 'success', message: 'Hello' }
+]
+
+<HdNotifications
+  :notifications="notifications"
+/>
+      `,
+    },
+  },
+};
+
+export const UsingScopedSlots = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { HdNotifications },
+  template: `
+    <HdNotifications
+      :notifications="notifications"
+    >
+      <template #default="{ notification }">
+        <span>
+          {{ notification.text }}
+        </span>
+        <a
+          href="#"
+          style="color: currentColor"
+          @click.prevent="notification.onClick"
+        >
+          {{ notification.urlLabel }}
+        </a>
+      </template>
+    </HdNotifications>
+  `,
+});
+UsingScopedSlots.args = {
+  notifications: [
+    {
+      id: 0,
+      type: TYPES.NOTIFICATION,
+      text: 'Custom notification',
+      urlLabel: 'Say "Hi" in the console',
+      onClick: () => console.log('Hi from custom notification'),
+    },
+  ],
+};
+UsingScopedSlots.parameters = {
+  docs: {
+    source: {
+      code: `
+const notifications = [
+  {
+    id: 0,
+    type: TYPES.NOTIFICATION,
+    text: 'Custom notification',
+    urlLabel: 'Say "Hi" in the console',
+    onClick: () => console.log('Hi from custom notification'),
+  }
+]
+
+<HdNotifications
+  :notifications="notifications"
+>
+  <template #default="{ notification }">
+    <span>
+      {{ notification.text }}
+    </span>
+    <a
+      href="#"
+      style="color: currentColor"
+      @click.prevent="notification.onClick"
+    >
+      {{ notification.urlLabel }}
+    </a>
+  </template>
+</HdNotifications>
+      `,
+    },
+  },
+};

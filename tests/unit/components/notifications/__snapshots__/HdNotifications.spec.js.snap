@@ -2,19 +2,12 @@
 
 exports[`HdNotifications renders the component corrently 1`] = `
 <div class="notifications">
-  <transition-group-stub tag="div" name="notifications-bar-">
-    <hdnotificationsbar-stub type="notification" message="" customicon="" text="Hello world">
-      <p>
-        Hello world
-        <!---->
-      </p>
-    </hdnotificationsbar-stub>
-    <hdnotificationsbar-stub type="notification" message="" visible="true" customicon="" text="Welcome to" url="https://www.homeday.de" urllabel="Homeday">
+  <transition-stub name="fade" appear="true" tag="div">
+    <hdnotificationsbar-stub type="notification" message="" text="Welcome to" url="https://www.homeday.de" urllabel="Homeday">
       <p>
         Welcome to
         <a href="props.notification.url">Homeday</a></p>
     </hdnotificationsbar-stub>
-  </transition-group-stub>
-  <div class="notifications__sizer" style="height: 0px;"></div>
+  </transition-stub>
 </div>
 `;

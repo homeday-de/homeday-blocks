@@ -1,31 +1,22 @@
 <template>
   <div class="notifications">
-    <transition-group
-      name="notifications-bar-"
+    <transition
+      name="notifications-slide-down"
       tag="div"
+      appear
     >
       <HdNotificationsBar
-        v-for="(notification, i) in notifications"
-        ref="notifications"
-        :key="notification.id || i"
-        :visible="isLast(i)"
+        v-if="notification"
         v-bind="notification"
+        :key="notification.id"
       >
         <slot :notification="notification" />
       </HdNotificationsBar>
-    </transition-group>
-    <div
-      ref="sizer"
-      :style="{
-        height: `${sizerHeight}px`,
-      }"
-      class="notifications__sizer"
-    />
+    </transition>
   </div>
 </template>
 
 <script>
-import onResize from 'homeday-blocks/src/services/on-resize';
 import HdNotificationsBar from 'homeday-blocks/src/components/notifications/HdNotificationsBar.vue';
 
 export default {
@@ -39,65 +30,10 @@ export default {
       default: () => [],
     },
   },
-  data() {
-    return {
-      sizerHeight: 0,
-    };
-  },
-  watch: {
-    notifications() {
-      this.$nextTick(this.resizeNotifications);
-    },
-    sizerHeight() {
-      this.$emit('heightChange', this.sizerHeight);
-    },
-  },
-  mounted() {
-    this.resizeNotifications();
-    this.addResizeEvents();
-  },
-  beforeDestroy() {
-    this.removeResizeEvents();
-  },
-  methods: {
-    isLast(notificationIndex) {
-      return notificationIndex === this.notifications.length - 1;
-    },
-    // Encapsulated in a method to be able to mock it in the tests
-    getScrollHeight(el) {
-      return el.scrollHeight;
-    },
-    resizeNotifications() {
-      if (!this.notifications.length) {
-        this.sizerHeight = 0;
-        return;
-      }
-
-      if (!this.$refs.notifications) {
-        this.sizerHeight = 0;
-        return;
-      }
-      // Go through all the notifications and get the max height in order to
-      // resize the sizer (since notification bars are position: fixed)
-      const maxSize = this.$refs.notifications.reduce((maxHeight, { $el }) => {
-        const elHeight = this.getScrollHeight($el);
-
-        if (maxHeight >= elHeight) {
-          return maxHeight;
-        }
-
-        return elHeight;
-      }, 0);
-      this.sizerHeight = maxSize;
-    },
-    resizeHandler() {
-      this.resizeNotifications();
-    },
-    addResizeEvents() {
-      onResize.onDebounced(this.resizeHandler);
-    },
-    removeResizeEvents() {
-      onResize.offDebounced(this.resizeHandler);
+  computed: {
+    notification() {
+      const length = this.notifications?.length;
+      return length && this.notifications[length - 1];
     },
   },
 };
@@ -108,9 +44,21 @@ export default {
 
 .notifications {
   position: relative;
+  overflow: hidden;
+  height: auto;
+}
 
-  &__sizer {
-    transition: height ($time-s * 2) ease-in-out;
-  }
+.notifications-slide-down-enter-active, .notifications-slide-down-leave-active {
+  transition: all ($time-s * 2) ease-in-out;
+}
+
+.notifications-slide-down-enter, .notifications-slide-down-leave-to {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateY(-100%);
+  opacity: 0;
 }
 </style>
