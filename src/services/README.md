@@ -264,4 +264,4 @@ Scrolls the window to the top of a given element. It accepts as an argument an *
 
 `param {Object} el: the DOM element to scroll to`
 `param {Number} [offset=0]: scrolling offset to the element.`
-`param {Boolean} onlyIfNotVisible: scrolls to the element only if this is not visible. The check of the visibility is made with isElVisible described above`
+`param {Boolean} [onlyIfNotVisible=true]: scrolls to the element only if this is not visible. The check of the visibility is made with isElVisible described above`
