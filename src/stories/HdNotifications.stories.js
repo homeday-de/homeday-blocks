@@ -11,7 +11,7 @@ import {
   HdNotificationsTypes,
 } from 'homeday-blocks';
 
-storiesOf('Components|HdNotifications', module)
+storiesOf('Components/HdNotifications', module)
   .add('using scropedSlots', () => ({
     components: {
       HdNotifications,

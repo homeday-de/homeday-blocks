@@ -219,3 +219,53 @@ const amount = 3;
 const randomInts = generateUniqueNumbers(amount, min, max);
 // [2, 3, 5]
 ```
+
+
+## Scrolling
+We provide a collection of functions to manage elements position and the page scrolling.
+
+### elOffset
+Given an element, returns its sizing and position from the top left of the document.
+```javascript
+const fistHeadingPositionAndSize = elOffset(document.querySelector('h1')); 
+// {top: 111.5, left: 25, width: 1352, height: 51}
+```
+
+### getDocumentHeight
+It gives the height of the document.
+```javascript
+const documentHeight = getDocumentHeight(); // 4157
+```
+
+### isWindowFullyScrolled
+Returns a boolean indicating if the document is scrolled until the very bottom.
+```javascript
+const theDocumentIsScrolled = isWindowFullyScrolled(); // false
+```
+
+### freezeScrolling/unfreezeScrolling
+These functions encapsulate `disableBodyScroll` from [*willmcpo's body-scroll-lock*]((https://github.com/willmcpo/body-scroll-lock)) which supports iOS browsers. They allow freezing/unfreezing the document scroll, keeping it allowed on the target element passed as argument.
+
+
+### isElVisible
+Returns a boolean indicating if the argument element is currently visible in the document window. It accepts as an argument an **object** and uses two properties:
+
+`param {Object} el: the DOM element to check`
+
+`param {Number} [offset=0]: an offset from the top for element to be considered visible`
+
+### isScrolledPastElBottom
+Returns a boolean indicating if the bottom edge of the element passed a vertical position from the top of the document (offset). It accepts as an argument an **object** and uses two properties:
+
+`param {Object} el: the DOM element to check`
+
+`param {Number} [offset=window.innerHeight]: the value to check the bottom of the element. It's default value has been chose to check, as default, if the element is scrolled past the bottom of the window.`
+
+### scrollToEl
+Scrolls the window to the top of a given element. It accepts as an argument an **object** and uses three properties:
+
+`param {Object} el: the DOM element to scroll to`
+
+`param {Number} [offset=0]: scrolling offset to the element.`
+
+`param {Boolean} [onlyIfNotVisible=true]: scrolls to the element only if it's not in the viewport. The check of the visibility is made with isElVisible described above`

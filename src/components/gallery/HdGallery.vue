@@ -1,30 +1,34 @@
 <template>
   <div
-    :class="{
-      hasSingleItem,
-    }"
     class="gallery"
+    :class="{
+      'gallery--has-single-item': hasSingleItem,
+    }"
   >
     <figure
       v-if="hasImages"
       class="gallery__figure"
-      @click="onCurrentItemClick"
     >
       <figcaption
         v-if="showCaption"
         class="gallery__caption">{{ currentItemCaption || '&#8203;' }}</figcaption>
       <div class="gallery__main">
-        <HdGalleryMedia
-          :item="currentItem"
-          :aspect-ratio="aspectRatio"
-        />
+        <div
+          class="gallery__image"
+          @click="onCurrentItemClick"
+        >
+          <HdGalleryMedia
+            :item="currentItem"
+            :aspect-ratio="aspectRatio"
+          />
+        </div>
         <div
           v-if="items.length > 1"
           class="gallery__controls"
         >
           <button
+            class="gallery__controls-prev"
             :class="{
-              'gallery__controls__prev': true,
               'isDisabled': isFirstItem,
             }"
             type="button"
@@ -36,8 +40,8 @@
             />
           </button>
           <button
+            class="gallery__controls-next"
             :class="{
-              'gallery__controls__next': true,
               'isDisabled': isLastItem,
             }"
             type="button"
@@ -232,12 +236,13 @@ export default {
       display: block;
     }
 
-    &__prev,
-    &__next {
+    &-prev,
+    &-next {
       display: flex;
       width: 36px;
       height: 36px;
       padding: 0;
+      z-index: 3;
       position: absolute;
       top: 50%;
       left: 0;
@@ -262,7 +267,7 @@ export default {
       }
     }
 
-    &__next {
+    &-next {
       left: auto;
       right: 0;
       transform: translate(30%, -50%);
@@ -287,7 +292,7 @@ export default {
   }
 
   &__carousel {
-    #{$_root}.hasSingleItem & {
+    #{$_root}--has-single-item & {
       @media (min-width: $break-tablet) {
         display: none;
       }

@@ -1,29 +1,12 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import range from 'lodash/range';
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import TimeslotsWrapper from 'homeday-blocks/src/storiesWrappers/TimeslotsWrapper';
 import { HdTimeslots } from 'homeday-blocks';
+import generateSlots from './mocks/generateTimeSlots';
 
-const generateSlots = (endStartDeltaMins, duration) => range(1, (endStartDeltaMins / duration) + 2)
-  .map((slot) => {
-    const date = new Date();
-    const mins = duration * slot;
-    // We have to make sure to also set the seconds and milliseconds to 0
-    date.setMinutes(mins, 0, 0);
-    const isAvialable = true;
 
-    const hours = date.getHours();
-    // Pad minutes with trailing zero
-    const minutes = (date.getMinutes() < 10 ? '0' : '') + date.getMinutes();
-    const time = `${hours}:${minutes}`;
-    return {
-      time,
-      isAvialable,
-    };
-  });
-
-storiesOf('Components|HdTimeslots', module)
+storiesOf('Components/HdTimeslots', module)
   .addParameters({ percy: { skip: true } })
   .addDecorator(TimeslotsWrapper)
   .add('base', () => ({
@@ -37,6 +20,3 @@ storiesOf('Components|HdTimeslots', module)
     />`,
     methods: { action: action('timeSelected') },
   }));
-
-
-export default generateSlots;
