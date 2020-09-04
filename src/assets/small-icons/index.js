@@ -96,6 +96,7 @@ export { default as starBorderIcon } from './ic_star-border.svg';
 export { default as starFilledIcon } from './ic_star-filled.svg';
 export { default as starHalfFilledIcon } from './ic_star-half-filled.svg';
 export { default as tasksIcon } from './ic_tasks.svg';
+export { default as thumbUpIcon } from './ic_thumb-up.svg';
 export { default as timeIcon } from './ic_time.svg';
 export { default as trendDownIcon } from './ic_trend-down.svg';
 export { default as trendUpIcon } from './ic_trend-up.svg';
