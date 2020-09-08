@@ -154,7 +154,10 @@ export default {
       this.currentType = type;
     },
     required() {
-      this.validate();
+      if (this.error) this.validate();
+    },
+    customRules() {
+      if (this.error) this.validate();
     },
   },
   methods: {
