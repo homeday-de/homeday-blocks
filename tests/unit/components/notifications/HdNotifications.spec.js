@@ -1,6 +1,6 @@
 import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import HdNotifications from '@/components/notifications/HdNotifications.vue';
-import HdNotificationsBar, { TYPES } from '@/components/notifications/HdNotificationsBar.vue';
+import HdNotification, { TYPES } from '@/components/notifications/HdNotification.vue';
 
 const wrapperFactory = wrapperFactoryBuilder(HdNotifications);
 
@@ -15,12 +15,12 @@ describe('HdNotifications', () => {
 
     return {
       wrapper,
-      notification: () => wrapper.find(HdNotificationsBar),
+      notification: () => wrapper.find(HdNotification),
     };
   };
 
   it('displays a notification', () => {
-    const expectedClass = `notifications-bar--${TYPES.SUCCESS}`;
+    const expectedClass = `notification--${TYPES.SUCCESS}`;
     const expectedMessage = 'Success message';
 
     const notifications = [{ id: 0, type: TYPES.SUCCESS, message: expectedMessage }];
@@ -33,7 +33,7 @@ describe('HdNotifications', () => {
   });
 
   it('displays only the last notification', () => {
-    const expectedClass = `notifications-bar--${TYPES.SUCCESS}`;
+    const expectedClass = `notification--${TYPES.SUCCESS}`;
     const expectedMessage = 'Success message';
 
     const notifications = [

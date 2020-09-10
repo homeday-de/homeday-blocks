@@ -5,24 +5,24 @@
       tag="div"
       appear
     >
-      <HdNotificationsBar
+      <HdNotification
         v-if="notification"
         v-bind="notification"
         :key="notification.id"
       >
         <slot :notification="notification" />
-      </HdNotificationsBar>
+      </HdNotification>
     </transition>
   </div>
 </template>
 
 <script>
-import HdNotificationsBar from 'homeday-blocks/src/components/notifications/HdNotificationsBar.vue';
+import HdNotification from 'homeday-blocks/src/components/notifications/HdNotification.vue';
 
 export default {
   name: 'HdNotifications',
   components: {
-    HdNotificationsBar,
+    HdNotification,
   },
   props: {
     notifications: {

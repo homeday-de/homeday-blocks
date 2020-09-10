@@ -6,7 +6,7 @@ import {
   checkCircleIcon,
 } from 'homeday-blocks/src/assets/small-icons';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
-import HdNotificationsBar, { TYPES } from '@/components/notifications/HdNotificationsBar.vue';
+import HdNotification, { TYPES } from '@/components/notifications/HdNotification.vue';
 
 jest.mock('homeday-blocks/src/assets/small-icons', () => ({
   errorIcon: 'errorIcon.svg',
@@ -22,9 +22,9 @@ const ICONS_LOOKUP_TABLE = {
   [TYPES.SUCCESS]: checkCircleIcon,
 };
 
-const wrapperFactory = wrapperFactoryBuilder(HdNotificationsBar);
+const wrapperFactory = wrapperFactoryBuilder(HdNotification);
 
-describe('HdNotificationsBar', () => {
+describe('HdNotification', () => {
   const build = (args) => {
     const wrapper = wrapperFactory({
       ...args,
@@ -36,7 +36,7 @@ describe('HdNotificationsBar', () => {
     return {
       wrapper,
       icon: () => wrapper.find(HdIcon),
-      content: () => wrapper.find('.notifications-bar__content'),
+      content: () => wrapper.find('.notification__content'),
     };
   };
 
@@ -49,7 +49,7 @@ describe('HdNotificationsBar', () => {
     Object.values(TYPES).forEach((type) => {
       const expectedMessage = `Notification type: "${type}"`;
       const expectedIcon = ICONS_LOOKUP_TABLE[type];
-      const expectedTypeClass = `notifications-bar--${type}`;
+      const expectedTypeClass = `notification--${type}`;
 
       const props = { message: expectedMessage, type };
       const { wrapper, icon, content } = build({ props });
@@ -72,7 +72,7 @@ describe('HdNotificationsBar', () => {
   });
 
   it('centers content', async () => {
-    const expectedClass = 'notifications-bar__content--centered';
+    const expectedClass = 'notification__content--centered';
     const { wrapper, content } = build();
 
     expect(content().classes()).not.toContain(expectedClass);

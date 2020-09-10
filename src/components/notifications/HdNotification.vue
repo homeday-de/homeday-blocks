@@ -1,16 +1,16 @@
 <template>
   <div
-    class="notifications-bar"
-    :class="[`notifications-bar--${type}`]"
+    class="notification"
+    :class="[`notification--${type}`]"
   >
     <HdIcon
       :src="icon"
-      class="notifications-bar__icon"
+      class="notification__icon"
     />
     <div
-      class="notifications-bar__content"
+      class="notification__content"
       :class="{
-        'notifications-bar__content--centered': centered
+        'notification__content--centered': centered
       }"
     >
       <slot>
@@ -37,7 +37,7 @@ export const TYPES = {
 };
 
 export default {
-  name: 'HdNotificationsBar',
+  name: 'HdNotification',
   inheritAttrs: false,
   components: {
     HdIcon,
@@ -73,7 +73,7 @@ export default {
 <style lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
 
-.notifications-bar {
+.notification {
   display: flex;
   padding: $stack-m $inline-s;
   color: $white;

@@ -1,14 +1,14 @@
 import {
   HdNotifications,
-  HdNotificationsBar,
+  HdNotification,
   HdNotificationsTypes as TYPES,
   HdButton,
 } from 'homeday-blocks';
 
 export default {
-  title: 'Components/HdNotifications',
+  title: 'Components/Notifications/HdNotifications',
   component: HdNotifications,
-  subcomponents: { HdNotificationsBar },
+  subcomponents: { HdNotification },
   argTypes: {
     notifications: {
       control: { type: 'object' },
