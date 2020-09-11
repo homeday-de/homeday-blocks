@@ -74,12 +74,6 @@ const Template = (args, { argTypes }) => ({
   },
 });
 
-export const Default = Template.bind({});
-Default.args = {
-  modifier: '',
-  text: 'Default',
-};
-
 
 export const Primary = Template.bind({});
 Primary.args = {
