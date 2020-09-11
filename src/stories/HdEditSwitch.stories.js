@@ -1,20 +1,26 @@
-/* eslint-disable import/no-extraneous-dependencies, no-console */
-import { storiesOf } from '@storybook/vue';
-import { boolean } from '@storybook/addon-knobs';
-import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 import {
   HdEditSwitch,
   HdInput,
 } from 'homeday-blocks';
+import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 
-storiesOf('Components|HdEditSwitch', module)
-  .addDecorator(FormWrapper)
-  .add('Concrete example 🎛', () => ({
-    components: { HdEditSwitch, HdInput },
-    template: `
+export default {
+  title: 'Components/HdEditSwitch',
+  component: HdEditSwitch,
+  args: {
+    loading: false,
+    editing: false,
+  },
+  decorators: [FormWrapper],
+};
+
+const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { HdEditSwitch, HdInput },
+  template: `
     <HdEditSwitch
       :editing="editing"
-      :editing-allowed="isEditable"
+      :editing-allowed="editingAllowed"
       :loading="loading"
       @edit="enableEditing"
       @cancel="onCancel"
@@ -39,49 +45,43 @@ storiesOf('Components|HdEditSwitch', module)
         <p><span style="margin-right: 16px; font-weight: bold">Last Name:</span>{{ lastName }}</p>
       </template>
     </HdEditSwitch>
-    `,
-    props: {
-      isEditable: {
-        type: Boolean,
-        default: boolean('isEditable', true),
-      },
+  `,
+  data() {
+    return {
+      firstName: 'Chuck',
+      lastName: 'Norris',
+      editedFirstName: '',
+      editedLastName: '',
+    };
+  },
+  created() {
+    this.editedFirstName = this.firstName;
+    this.editedLastName = this.lastName;
+  },
+  methods: {
+    onSave() {
+      const firstNameIsValid = this.$refs.firstName.validate();
+      const lastNameIsValid = this.$refs.lastName.validate();
+      this.loading = true;
+      if (firstNameIsValid && lastNameIsValid) {
+        setTimeout(this.onSaveSuccess, 2000);
+      }
     },
-    data() {
-      return {
-        firstName: 'Chuck',
-        lastName: 'Norris',
-        editedFirstName: '',
-        editedLastName: '',
-        editing: false,
-        loading: false,
-      };
-    },
-    created() {
+    onCancel() {
+      this.editing = false;
       this.editedFirstName = this.firstName;
       this.editedLastName = this.lastName;
     },
-    methods: {
-      onSave() {
-        const firstNameIsValid = this.$refs.firstName.validate();
-        const lastNameIsValid = this.$refs.lastName.validate();
-        this.loading = true;
-        if (firstNameIsValid && lastNameIsValid) {
-          setTimeout(this.onSaveSuccess, 2000);
-        }
-      },
-      onCancel() {
-        this.editing = false;
-        this.editedFirstName = this.firstName;
-        this.editedLastName = this.lastName;
-      },
-      onSaveSuccess() {
-        this.firstName = this.editedFirstName;
-        this.lastName = this.editedLastName;
-        this.editing = false;
-        this.loading = false;
-      },
-      enableEditing() {
-        this.editing = true;
-      },
+    onSaveSuccess() {
+      this.firstName = this.editedFirstName;
+      this.lastName = this.editedLastName;
+      this.editing = false;
+      this.loading = false;
     },
-  }));
+    enableEditing() {
+      this.editing = true;
+    },
+  },
+});
+
+export const Default = Template.bind({});

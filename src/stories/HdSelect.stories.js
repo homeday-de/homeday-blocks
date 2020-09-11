@@ -7,7 +7,7 @@ import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 import ITEMS from './mocks/FORM_ITEMS';
 import icon from './assets/ic_user.svg';
 
-storiesOf('Components|Form/HdSelect', module)
+storiesOf('Components/Form/HdSelect', module)
   .addDecorator(FormWrapper)
   .add('required', () => ({
     components: { HdSelect },
