@@ -1,6 +1,6 @@
 import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import HdTimeslots from '@/components/HdTimeslots.vue';
-import generateSlots from '@/stories/HdTimeslots.stories';
+import generateSlots from '@/stories/mocks/generateTimeSlots';
 
 const defaultTimeslots = generateSlots(400, 20);
 const defaultTimeslotsPerPage = Math.floor(defaultTimeslots.length / 2);

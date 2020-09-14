@@ -5,7 +5,7 @@ import {
 } from '@storybook/addon-knobs';
 import { HdArrowButton } from 'homeday-blocks';
 
-storiesOf('Components|HdArrowButton', module)
+storiesOf('Components/HdArrowButton', module)
   .addDecorator(withKnobs)
   .add('right', () => ({
     components: { HdArrowButton },

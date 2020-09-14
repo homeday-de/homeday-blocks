@@ -1,96 +1,110 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import { storiesOf } from '@storybook/vue';
-import { action } from '@storybook/addon-actions';
-import { text, boolean, select } from '@storybook/addon-knobs';
 import {
   HdButton,
   HdButtonTypes as TYPES,
 } from 'homeday-blocks';
-
 import { plusIcon } from 'homeday-blocks/src/assets/small-icons';
 
-const stories = storiesOf('Components|HdButton', module);
-
-Object.entries(TYPES)
-  .forEach(([type, modifier]) => stories.add(type, () => ({
-    components: { HdButton },
-    data() {
-      return { type, modifier };
+export default {
+  title: 'Components/HdButton',
+  component: HdButton,
+  argTypes: {
+    text: {
+      control: 'text',
+      description: 'Text default slot of the button',
     },
-    template: `
+    iconSrc: {
+      control: 'boolean',
+    },
+    disabled: {
+      control: 'boolean',
+    },
+    modifier: {
+      control: { type: 'select', options: Object.values(TYPES) },
+      table: {
+        defaultValue: { summary: TYPES.PRIMARY },
+      },
+    },
+    isInDarkBackground: {
+      control: 'boolean',
+    },
+    onClick: {
+      action: 'onClick',
+    },
+  },
+  args: {
+    modifier: TYPES.PRIMARY,
+    text: '',
+    isInDarkBackground: false,
+    iconSrc: false,
+    disabled: false,
+  },
+};
+
+
+const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { HdButton },
+  template: `
+    <div>
       <HdButton
-        :modifier=modifier
         @click="onClick"
-      >{{ type }}</HdButton>
-    `,
-    methods: {
-      onClick: action('onClick'),
+        :modifier="modifier"
+        :isInDarkBackground="isInDarkBackground"
+        :disabled="disabled"
+        :iconSrc="icon"
+      >{{ text }}</HdButton>
+      <div :style="style" />
+    </div>
+      `,
+  computed: {
+    icon() {
+      return this.iconSrc ? plusIcon : '';
     },
-  })));
-
-stories
-  .add('Playground 🎛', () => ({
-    components: { HdButton },
-    props: {
-      text: {
-        type: String,
-        default: text('Text', 'Register'),
-      },
-      modifier: {
-        type: String,
-        default: select('Modifier', Object.values(TYPES), TYPES.default),
-      },
-      isInDarkBackground: {
-        default: boolean('Dark background', false),
-      },
-      disabled: {
-        default: boolean('Disabled', false),
-      },
-      showIcon: {
-        default: boolean('Show icon', false),
-      },
-    },
-    data() {
+    style() {
       return {
-        plusIcon,
-        styleWrapper: {
-          position: 'relative',
-          width: '100vw',
-          height: '100vh',
-          padding: '50px',
-        },
-        styleDarkBackground: {
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          backgroundColor: '#1C3553',
-          zIndex: -1,
-        },
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        backgroundColor: this.isInDarkBackground ? '#1C3553' : '#FFF',
+        zIndex: -1,
       };
     },
-    methods: {
-      onClick: action('onClick'),
-    },
-    template: `
-      <div :style="styleWrapper">
-        <HdButton
-          v-if="showIcon"
-          :modifier=modifier
-          :isInDarkBackground=isInDarkBackground
-          :disabled=disabled
-          @click="onClick"
-          :iconSrc=plusIcon
-        >{{ text }}</HdButton>
-        <HdButton
-          v-else
-          :modifier=modifier
-          :isInDarkBackground=isInDarkBackground
-          :disabled=disabled
-          @click="onClick"
-        >{{ text }}</HdButton>
-        <div v-if="isInDarkBackground" :style="styleDarkBackground" />
-      </div>
-    `,
-  }), { percy: { skip: true } });
+  },
+});
+
+
+export const Primary = Template.bind({});
+Primary.args = {
+  modifier: TYPES.PRIMARY,
+  text: 'Primary',
+};
+
+
+export const Secondary = Template.bind({});
+Secondary.args = {
+  modifier: TYPES.SECONDARY,
+  text: 'Secondary',
+};
+
+
+export const Tertiary = Template.bind({});
+Tertiary.args = {
+  modifier: TYPES.TERTIARY,
+  text: 'Tertiary',
+};
+
+
+export const Flat = Template.bind({});
+Flat.args = {
+  modifier: TYPES.FLAT,
+  text: 'Flat',
+};
+
+
+export const Ghost = Template.bind({});
+Ghost.args = {
+  modifier: TYPES.GHOST,
+  text: 'Ghost',
+};

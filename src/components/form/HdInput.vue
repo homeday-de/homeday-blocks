@@ -153,6 +153,12 @@ export default {
     type(type) {
       this.currentType = type;
     },
+    required() {
+      if (this.error) this.validate();
+    },
+    customRules() {
+      if (this.error) this.validate();
+    },
   },
   methods: {
     clearInput() {

@@ -4,7 +4,7 @@ import { boolean } from '@storybook/addon-knobs';
 import { HdDashedList } from 'homeday-blocks';
 import ITEMS from './mocks/DASHED_LIST_ITEMS';
 
-const stories = storiesOf('Components|HdDashedList', module);
+const stories = storiesOf('Components/HdDashedList', module);
 
 stories.add('Playground 🎛', () => ({
   components: { HdDashedList },

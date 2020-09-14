@@ -1,29 +1,31 @@
 <template>
   <div class="gallery-media">
     <div class="gallery-media__object">
-      <div
-        :style="sizerStyles"
-        class="gallery-media__object__sizer"/>
+      <div :style="sizerStyles" />
 
       <!-- the item.image field is used as default value for the item image -->
       <!-- IE11 uses this value only because do not support the picture element -->
-      <picture class="gallery-media__object__picture">
-        <source v-for="(source, media) in item.pictureSources"
-                :key="media"
-                :media="`(${media})`" :srcset="source"
-        >
-        <img ref="imageHolder" :src="item.image" :alt="item.caption" :srcset="item.imageSrcSet" @load="hideThumbnail"/>
+      <picture class="gallery-media__object-picture">
+        <source
+          v-for="(source, media) in item.pictureSources"
+          :key="media"
+          :media="`(${media})`"
+          :srcset="source"
+        />
+        <img
+          ref="imageHolder"
+          :src="item.image"
+          :alt="item.caption"
+          :srcset="item.imageSrcSet"
+          @load="hideThumbnail"
+        />
       </picture>
 
       <div
         v-if="hasThumbnail"
-        :class="{
-          'gallery-media__object__thumbnail': true,
-          'isVisible': showThumbnail,
-        }"
-        :style="{
-          'background-image': `url('${item.thumbnail}')`,
-        }"
+        class="gallery-media__object-thumbnail"
+        :class="{ 'isVisible': showThumbnail }"
+        :style="{ 'background-image': `url('${item.thumbnail}')` }"
       />
     </div>
   </div>
@@ -58,10 +60,12 @@ export default {
     },
   },
   watch: {
-    item() {
-      this.$nextTick(() => {
-        this.showThumbnail = true;
-      });
+    item(oldValue, newValue) {
+      if (oldValue.image !== newValue.image) {
+        this.$nextTick(() => {
+          this.showThumbnail = true;
+        });
+      }
     },
   },
   methods: {
@@ -88,8 +92,8 @@ export default {
     background-color: $secondary-bg;
     cursor: pointer;
 
-    &__thumbnail,
-    &__picture {
+    &-thumbnail,
+    &-picture {
       position: absolute;
       top: 0;
       right: 0;
@@ -98,35 +102,33 @@ export default {
       z-index: 1;
     }
 
-    &__picture {
+    &-picture {
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    &__thumbnail {
+    &-thumbnail {
+      opacity: 0;
+      transition: opacity ($time-s * 2) ease-in-out;
+      filter: blur(3px);
       background-position: center;
       background-repeat: no-repeat;
       background-size: contain;
+
       @media (min-width: $break-tablet) {
         background-size: cover;
+      }
+
+      &.isVisible {
+        opacity: 1;
+        transition: none;
       }
     }
 
     img {
       max-width: 100%;
       max-height: 100%;
-    }
-
-    &__thumbnail {
-      opacity: 0;
-      transition: opacity ($time-s * 2) ease-in-out;
-      filter: blur(3px);
-
-      &.isVisible {
-        opacity: 1;
-        transition: none;
-      }
     }
   }
 }

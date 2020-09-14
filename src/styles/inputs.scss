@@ -1,10 +1,10 @@
 $labelHeight: 18px;
 $iconDimension: 24px;
 $innerIconDimension: 18px;
-$inputLeftPadding: $inline-s;
+$inputLeftPadding: $inline-m;
 $inputBackground: $secondary-bg;
-$inputPaddingTop: $labelHeight + $stack-xs;
-$focusedLabelTop: 5px;
+$inputPaddingTop: $stack-m;
+$focusedLabelTop: $stack-s;
 
 .field {
   $f: &;
@@ -116,8 +116,8 @@ $focusedLabelTop: 5px;
   }
 
   &__label {
-    font-size: 18px;
-    line-height: 28px;
+    font-size: 16px;
+    line-height: 24px;
     position: absolute;
     margin-left: $inputLeftPadding;
     top: $inputPaddingTop;
@@ -127,8 +127,8 @@ $focusedLabelTop: 5px;
     pointer-events: none;
 
     @mixin minimized {
-      font-size: 14px;
-      line-height: 18px;
+      font-size: 12px;
+      line-height: 16px;
       top: $focusedLabelTop;
     }
 
@@ -283,17 +283,17 @@ $focusedLabelTop: 5px;
 
   &__input {
     font-family: $font-primary;
-    font-size: 18px;
-    line-height: 28px;
+    font-size: 16px;
+    line-height: 24px;
     color: $primary-color;
     border: none;
     outline: none;
     border-radius: $default-border-radius;
 
-    padding-top: $inputPaddingTop;
+    padding-top: 24px;
     padding-left: $inputLeftPadding;
     padding-right: $inline-s;
-    padding-bottom: $stack-s - $stack-xxs;
+    padding-bottom: $stack-s;
     -webkit-appearance: none;
 
     background: $inputBackground;

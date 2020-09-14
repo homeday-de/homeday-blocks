@@ -8,7 +8,7 @@ import {
   text,
 } from '@storybook/addon-knobs';
 
-storiesOf('Components|Form/HdRange', module)
+storiesOf('Components/Form/HdRange', module)
   .addDecorator(FormWrapper)
   .add('default 🎛', () => ({
     components: { HdRange },

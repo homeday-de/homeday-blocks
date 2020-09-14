@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/vue';
 import { HdGalleryOverlay } from 'homeday-blocks';
 import ITEMS from './mocks/GALLERY_ITEMS';
 
-storiesOf('Components|Gallery/HdGalleryOverlay', module)
+storiesOf('Components/Gallery/HdGalleryOverlay', module)
   .addParameters({ percy: { skip: true } })
   .add('default', () => ({
     components: { HdGalleryOverlay },
