@@ -7,6 +7,7 @@
       'isChecked': isChecked,
       'hasError': !!error,
       'isUsingMouse': isUsingMouse,
+      'checkbox--indeterminate': indeterminate,
     }"
     :key="error+isChecked"
     @keydown="setUsingMouse(false)"
@@ -104,6 +105,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    indeterminate: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -173,6 +178,20 @@ export default {
 
   &--disabled {
     pointer-events: none;
+  }
+
+  &--indeterminate {
+    ::v-deep .checkbox__inner__box::before {
+      content: '';
+      display: block;
+      background: getShade($quaternary-color, 80);
+      width: 50%;
+      height: 2px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
 
   &__input {
