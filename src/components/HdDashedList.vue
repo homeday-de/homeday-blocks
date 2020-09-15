@@ -68,7 +68,7 @@ export default {
 
 .dashed-list {
   $root: &;
-  $leaders-border: 2px dashed getShade($neutral-gray, 50);;
+  $leaders-border: 2px dashed getShade($neutral-gray, 50);
   background-color: inherit;
 
   &__item {
