@@ -61,9 +61,9 @@ export { default as HdZoomerGallery } from './src/components/gallery/HdZoomerGal
 // Notifications
 export { default as HdNotifications } from './src/components/notifications/HdNotifications.vue';
 export {
-  default as HdNotificationsBar,
+  default as HdNotification,
   TYPES as HdNotificationsTypes,
-} from './src/components/notifications/HdNotificationsBar.vue';
+} from './src/components/notifications/HdNotification.vue';
 
 // Services
 export { default as BreakpointsService } from './src/services/breakpoints';

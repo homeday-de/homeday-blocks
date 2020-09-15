@@ -2,9 +2,10 @@ import {
   HdAlert,
   HdAlertTypes as TYPES,
 } from 'homeday-blocks';
+import DeprecatedWrapper from 'homeday-blocks/src/storiesWrappers/DeprecatedWrapper';
 
 export default {
-  title: 'Components/HdAlert',
+  title: 'Components/HdAlert (Deprecated)',
   component: HdAlert,
   argTypes: {
     type: {
@@ -23,8 +24,12 @@ export default {
     type: 'info',
     noIcon: false,
   },
+  decorators: [DeprecatedWrapper],
   parameters: {
     docs: {
+      description: {
+        component: 'This component is deprecated, please use <b>HdNotifications</b> component**',
+      },
       source: {
         code: `
 <HdAlert
