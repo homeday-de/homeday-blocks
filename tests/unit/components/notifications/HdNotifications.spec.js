@@ -1,50 +1,85 @@
 import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import HdNotifications from '@/components/notifications/HdNotifications.vue';
+import HdNotification, { TYPES } from '@/components/notifications/HdNotification.vue';
 
-const NOTIFICATIONS = [
-  {
-    text: 'Hello world',
-  },
-  {
-    text: 'Welcome to',
-    url: 'https://www.homeday.de',
-    urlLabel: 'Homeday',
-  },
-];
-
-const wrapperBuilder = wrapperFactoryBuilder(HdNotifications, {
-  props: {
-    notifications: NOTIFICATIONS,
-  },
-  scopedSlots: {
-    default: `<p>
-      {{props.notification.text}}
-      <a v-if="props.notification.url" href="props.notification.url">{{props.notification.urlLabel}}</a>
-    </p>`,
-  },
-  shallow: true,
-});
+const wrapperFactory = wrapperFactoryBuilder(HdNotifications);
 
 describe('HdNotifications', () => {
-  let wrapper;
+  const build = (args) => {
+    const wrapper = wrapperFactory({
+      ...args,
+      stubs: {
+        HdIcon: true,
+      },
+    });
 
-  beforeEach(() => {
-    wrapper = wrapperBuilder();
+    return {
+      wrapper,
+      notification: () => wrapper.find(HdNotification),
+    };
+  };
+
+  it('displays a notification', () => {
+    const expectedClass = `notification--${TYPES.SUCCESS}`;
+    const expectedMessage = 'Success message';
+
+    const notifications = [{ id: 0, type: TYPES.SUCCESS, message: expectedMessage }];
+    const props = { notifications };
+    const { notification } = build({ props });
+
+    expect(notification().exists()).toBe(true);
+    expect(notification().classes()).toContain(expectedClass);
+    expect(notification().text()).toContain(expectedMessage);
   });
 
-  it('renders the component corrently', () => {
-    expect(wrapper.html()).toMatchSnapshot();
+  it('displays only the last notification', () => {
+    const expectedClass = `notification--${TYPES.SUCCESS}`;
+    const expectedMessage = 'Success message';
+
+    const notifications = [
+      { id: 0, type: TYPES.ERROR, message: 'An error ocurred' },
+      { id: 1, type: TYPES.SUCCESS, message: expectedMessage },
+    ];
+    const props = { notifications };
+    const { notification } = build({ props });
+
+    expect(notification().exists()).toBe(true);
+    expect(notification().classes()).toContain(expectedClass);
+    expect(notification().text()).toContain(expectedMessage);
   });
 
-  it('fires the heightChange event when height of the notifications changes', async () => {
-    // A random number, used just to make sure it's not 0 and that the height actually changes
-    const mockedScrollHeight = jest.fn(() => 123);
+  it('hides the component if there are no notification', () => {
+    const props = { notifications: [] };
+    const { notification } = build({ props });
 
-    wrapper.setMethods({ getScrollHeight: mockedScrollHeight });
-    wrapper.setProps({ notifications: NOTIFICATIONS.slice(-1) });
+    expect(notification().exists()).toBe(false);
+  });
 
-    await wrapper.vm.$nextTick();
+  it('renders a slot message', () => {
+    const notifications = [{
+      text: 'Welcome to',
+      url: 'https://www.homeday.de',
+      urlLabel: 'Homeday',
+    }];
+    const { wrapper } = build({
+      props: { notifications },
+      scopedSlots: {
+        default: `
+          <p>
+            {{ props.notification.text }}
+            <a :href="props.notification.url">
+              {{ props.notification.urlLabel }}
+            </a>
+          </p>
+        `,
+      },
+    });
 
-    expect(wrapper.emitted('heightChange')).toBeTruthy();
+    const hyperlinkInSlot = wrapper.find('a');
+
+    expect(wrapper.text()).toContain(notifications[0].text);
+    expect(hyperlinkInSlot.exists()).toBe(true);
+    expect(hyperlinkInSlot.attributes().href).toBe(notifications[0].url);
+    expect(hyperlinkInSlot.text()).toBe(notifications[0].urlLabel);
   });
 });
