@@ -25,7 +25,6 @@
             class="dashed-list__text"
             v-html="label"
           />
-          <div class="dashed-list__dashes" />
         </dt>
         <dd class="dashed-list__section">
           <span
@@ -69,6 +68,7 @@ export default {
 
 .dashed-list {
   $root: &;
+  $leaders-border: 2px dashed getShade($neutral-gray, 50);
   background-color: inherit;
 
   &__item {
@@ -85,6 +85,8 @@ export default {
   &__section {
     display: flex;
     align-items: flex-end;
+    position: relative;
+    overflow: hidden;
 
     &--label {
       width: 100%;
@@ -97,6 +99,15 @@ export default {
       #{$root}__text {
         @media (min-width: $break-tablet) {
           max-width: 60%;
+
+          &:after {
+            content: "";
+            position: absolute;
+            border-bottom: $leaders-border;
+            margin-left: 2px;
+            margin-top: 1.03em;
+            width: 100%;
+          }
         }
       }
 
@@ -129,11 +140,9 @@ export default {
   }
 
   &__dashes {
-    height: 2px;
     flex: 1;
-    background-image: url('~homeday-blocks/src/assets/patterns/dash-pattern-horizontal.svg');
-    background-size: contain;
     margin-bottom: .4em;
+    border-bottom: $leaders-border;
   }
 }
 </style>
