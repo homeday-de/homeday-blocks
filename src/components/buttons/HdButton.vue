@@ -48,19 +48,19 @@ export default {
     },
   },
   computed: {
+    isIconButton() {
+      return this.$slots.default === undefined;
+    },
     computedClasses() {
       const baseClass = 'btn';
-      const classes = [baseClass];
-
-      if (this.modifier) {
-        classes.push(`${baseClass}--${this.modifier}`);
-      }
-
-      if (this.isInDarkBackground) {
-        classes.push(`${baseClass}--dark-background`);
-      }
-
-      return classes;
+      return [
+        baseClass,
+        {
+          [`${baseClass}--${this.modifier}`]: this.modifier,
+          [`${baseClass}--dark-background`]: this.isInDarkBackground,
+          [`${baseClass}--icon-button`]: this.isIconButton,
+        },
+      ];
     },
   },
 };
@@ -69,11 +69,25 @@ export default {
 <style lang="scss">
 @import 'homeday-blocks/src/styles/_variables.scss';
 
-.btn__icon {
-  margin-right: $inline-xs;
+.btn {
+  $root: &;
 
-  path {
-    fill: currentColor;
+  &--icon-button {
+    padding: $inset-s;
+  }
+
+  &__icon {
+    margin-right: $inline-xs;
+
+    #{$root}--icon-button & {
+      width: 28px;
+      height: 28px;
+      margin-right: 0;
+    }
+
+    path {
+      fill: currentColor;
+    }
   }
 }
 </style>

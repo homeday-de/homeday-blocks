@@ -53,6 +53,13 @@ const Template = (args, { argTypes }) => ({
         :disabled="disabled"
         :iconSrc="icon"
       >{{ text }}</HdButton>
+      <HdButton
+        @click="onClick"
+        :modifier="modifier"
+        :isInDarkBackground="isInDarkBackground"
+        :disabled="disabled"
+        :iconSrc="icon"
+      />
       <div :style="style" />
     </div>
       `,
