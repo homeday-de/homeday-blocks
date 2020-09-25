@@ -1,57 +1,59 @@
 <template>
-  <div
-    :class="fieldClasses"
-    class="field field--select">
-    <img
-      v-if="icon"
-      :src="icon"
-      role="presentation"
-      class="field__icon"
-    >
+  <FieldBase
+    v-bind="$attrs"
+    :name="name"
+    :error="error"
+    :helper="helper"
+    :active="isActive"
+    :filled="isFilled"
+    :disabled="disabled"
+    :valid="isValid"
+    minimized-label
+  >
     <select
-      ref="input"
       v-model="currentValue"
       :id="name"
       :name="name"
       :required="required"
       :autofocus="autofocus"
       :disabled="disabled"
-      class="field__input"
+      class="select"
       @focus="handleFocus"
       @blur="handleBlur"
     >
       <option
-        v-for="(option, i) in options"
-        :key="i"
+        v-for="option in options"
+        :key="option.value"
         :value="option.value"
-      >{{ option.label }}</option>
+      >
+        {{ option.label }}
+      </option>
     </select>
-    <label
-      v-if="label"
-      :for="name"
-      class="field__label">{{ label }}</label>
-    <p
-      v-if="error"
-      class="field__error">{{ error }}</p>
-    <p
-      v-else-if="helper"
-      class="field__error field__error--helper"
-      v-html="helper"/>
-    <span class="field__border"/>
-  </div>
+    <template #input-right>
+      <HdIcon
+        :src="smallArrowIcon"
+        width="24px"
+        height="24px"
+        class="select__arrow"
+      />
+    </template>
+  </FieldBase>
 </template>
 
 <script>
 import merge from 'lodash/merge';
 import { getMessages } from 'homeday-blocks/src/lang';
+import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
+import { smallArrowIcon } from 'homeday-blocks/src/assets/small-icons';
+import FieldBase from './FieldBase.vue';
 
 export default {
   name: 'HdSelect',
+  components: {
+    FieldBase,
+    HdIcon,
+  },
   props: {
-    label: {
-      type: String,
-      default: '',
-    },
     name: {
       type: String,
       required: true,
@@ -84,10 +86,6 @@ export default {
       type: Boolean,
       default: false,
     },
-    icon: {
-      type: String,
-      default: '',
-    },
   },
   data() {
     return {
@@ -96,24 +94,15 @@ export default {
       isValid: undefined,
       error: null,
       helper: null,
+      smallArrowIcon,
     };
   },
   computed: {
     t() {
       return merge(getMessages(this.lang), this.texts);
     },
-    isEmpty() {
-      return this.value === null || this.value === undefined || this.value === '';
-    },
-    fieldClasses() {
-      return {
-        'field--active': this.isActive,
-        'field--filled': !this.isEmpty,
-        'field--valid': false,
-        'field--invalid': this.isValid === false,
-        'field--disabled': this.disabled,
-        'field--hasIcon': this.icon,
-      };
+    isFilled() {
+      return this.value !== null && this.value !== undefined && this.value !== '';
     },
   },
   watch: {
@@ -159,23 +148,12 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
 
-.field {
-  &__error {
-    width: 100%;
-    text-align: left;
-    &--helper {
-      display: block;
-      color: getShade($quaternary-color, 80);
-    }
-  }
-  &::after {
-    height: 100%;
-    top: 0;
-    bottom: 0;
+.select {
+  &__arrow {
+    transform: rotateZ(90deg);
   }
 }
 </style>

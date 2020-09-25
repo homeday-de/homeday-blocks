@@ -5,6 +5,7 @@
       ['x-field--error']: hasError,
       ['x-field--active']: active,
       ['x-field--filled']: filled,
+      ['x-field--minimized-label']: minimizedLabel,
       ['x-field--disabled']: disabled,
     }"
   >
@@ -74,6 +75,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    minimizedLabel: {
+      type: Boolean,
+      default: false,
+    },
     disabled: {
       type: Boolean,
       default: false,
@@ -139,6 +144,7 @@ export default {
       line-height: inherit;
       font-family: inherit;
       outline: none;
+      appearance: none;
     }
   }
   &__label {
@@ -149,7 +155,9 @@ export default {
     transition: transform .3s, color .2s;
     pointer-events: none;
 
-    #{$root}--active &, #{$root}--filled & {
+    #{$root}--active &,
+    #{$root}--filled &,
+    #{$root}--minimized-label & {
       transform: translateY(-50%) scale(0.75);
     }
     #{$root}:hover:not(#{$root}--active) &,
