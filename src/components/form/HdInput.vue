@@ -2,8 +2,6 @@
   <TextFieldBase
     v-bind="$attrs"
     :name="name"
-    :label="label"
-    :icon="icon"
     :error="error"
     :helper="helper"
     :active="isActive"
@@ -14,6 +12,7 @@
     @status-click="focusInput"
   >
     <input
+      ref="input"
       v-bind="$attrs"
       :autocomplete="autocomplete"
       :value="value"
@@ -23,8 +22,8 @@
       :placeholder="isActive && placeholder !== undefined ? placeholder : ''"
       :required="required"
       :disabled="disabled"
-      ref="input"
       data-lpignore="true"
+      class="input"
       @input="handleInput"
       @focus="handleFocus"
       @blur="handleBlur"
@@ -51,10 +50,6 @@ export default {
     TextFieldBase,
   },
   props: {
-    label: {
-      type: String,
-      default: '',
-    },
     name: {
       type: String,
       required: true,
@@ -98,10 +93,6 @@ export default {
     disabled: {
       type: Boolean,
       default: false,
-    },
-    icon: {
-      type: String,
-      default: '',
     },
     customRules: {
       type: Array,
@@ -233,3 +224,13 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.input {
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+}
+</style>
