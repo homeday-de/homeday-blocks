@@ -117,6 +117,7 @@ export default {
   &__icon {
     margin-top: $stack-m;
     margin-right: $inline-s;
+    flex: 0 0 24px;
 
     #{$root}--disabled & {
       ::v-deep path {
@@ -134,17 +135,26 @@ export default {
       width: 100%;
       background: $secondary-bg;
       border-radius: 4px 4px 0 0;
-      border: 0;
+      overflow: hidden;
+    }
+
+    input, textarea {
       padding-top: $stack-l - $stack-s;
       padding-right: $inline-s;
       padding-bottom: $stack-s;
       padding-left: $inline-m;
+      background: inherit;
       color: inherit;
       font-size: inherit;
       line-height: inherit;
       font-family: inherit;
+      border: 0;
       outline: none;
       appearance: none;
+
+      &::placeholder {
+        color: getShade($quaternary-color, 60);
+      }
     }
   }
   &__label {

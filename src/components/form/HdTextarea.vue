@@ -153,7 +153,7 @@ export default {
       this.error = null;
     },
     validate() {
-      if (this.required && this.isEmpty) {
+      if (this.required && !this.isFilled) {
         this.showError(this.t.FORM.VALIDATION.REQUIRED);
       } else {
         this.hideError();
