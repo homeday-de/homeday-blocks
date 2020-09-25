@@ -1,14 +1,18 @@
 <template>
-  <div
-    :class="fieldClasses"
-    class="field field--input"
+  <TextFieldBase
+    v-bind="$attrs"
+    :name="name"
+    :label="label"
+    :icon="icon"
+    :error="error"
+    :helper="helper"
+    :active="isActive"
+    :filled="isFilled"
+    :valid="isValid"
+    :disabled="disabled"
+    @clear-click="clearInput"
+    @status-click="focusInput"
   >
-    <img
-      v-if="icon"
-      :src="icon"
-      role="presentation"
-      class="field__icon"
-    >
     <input
       v-bind="$attrs"
       :autocomplete="autocomplete"
@@ -19,33 +23,16 @@
       :placeholder="isActive && placeholder !== undefined ? placeholder : ''"
       :required="required"
       :disabled="disabled"
-      class="field__input"
       ref="input"
       data-lpignore="true"
       @input="handleInput"
       @focus="handleFocus"
       @blur="handleBlur"
     />
-    <label
-      v-if="label"
-      :for="name"
-      class="field__label"
-    >
-      {{ label }}
-    </label>
-    <p
-      v-if="error"
-      class="field__error"
-    >
-      {{ error }}
-    </p>
-    <p
-      v-else-if="helper"
-      class="field__error field__error--helper"
-      v-html="helper"
-    />
-    <span class="field__border"/>
-  </div>
+    <template #input-right>
+      <slot name="input-right" />
+    </template>
+  </TextFieldBase>
 </template>
 
 <script>
@@ -55,10 +42,14 @@ import {
   email as validateEmail,
   date as validateDate,
 } from 'homeday-blocks/src/services/formValidation';
+import TextFieldBase from './TextFieldBase.vue';
 
 export default {
   name: 'HdInput',
   inheritAttrs: false,
+  components: {
+    TextFieldBase,
+  },
   props: {
     label: {
       type: String,
@@ -133,17 +124,8 @@ export default {
     t() {
       return merge(getMessages(this.lang), this.texts);
     },
-    isEmpty() {
-      return this.value === null || this.value === undefined || this.value === '';
-    },
-    fieldClasses() {
-      return {
-        'field--active': this.isActive,
-        'field--filled': !this.isEmpty,
-        'field--invalid': this.isValid === false,
-        'field--disabled': this.disabled,
-        'field--hasIcon': this.icon,
-      };
+    isFilled() {
+      return this.value !== null && this.value !== undefined && this.value !== '';
     },
   },
   watch: {
@@ -162,9 +144,11 @@ export default {
   },
   methods: {
     clearInput() {
-      this.$refs.input.focus();
-      this.hideError();
+      this.focusInput();
       this.$emit('input', '');
+    },
+    focusInput() {
+      this.$refs.input.focus();
     },
     handleFocus() {
       this.isActive = true;
@@ -217,11 +201,11 @@ export default {
       return true;
     },
     validate(value = this.value) {
-      if (this.required && this.isEmpty) {
+      if (this.required && !this.isFilled) {
         return this.showError(this.t.FORM.VALIDATION.REQUIRED);
       }
 
-      if (!this.isEmpty) {
+      if (this.isFilled) {
         if (this.currentType === 'email' && !validateEmail(value)) {
           return this.showError(this.t.FORM.VALIDATION.INVALID_EMAIL);
         }
@@ -249,20 +233,3 @@ export default {
   },
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-@import 'homeday-blocks/src/styles/mixins.scss';
-@import 'homeday-blocks/src/styles/inputs.scss';
-
-.field {
-  &__error {
-    width: 100%;
-    text-align: left;
-    &--helper {
-      display: block;
-      color: getShade($quaternary-color, 80);
-    }
-  }
-}
-</style>
