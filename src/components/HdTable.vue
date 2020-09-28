@@ -8,8 +8,7 @@
     <tbody>
       <tr v-for="(tr, i) in body" :key="`row-${i}`">
         <td v-for="(value, i) in tr" :key="`cell-${i}`">
-          <component v-if="isComponent(value)" :is="value.component" v-bind="value.props"></component>
-          <span v-else>{{ value }}</span>
+          <slot :name="i" :value="value">{{ value }}</slot>
         </td>
       </tr>
     </tbody>
@@ -40,11 +39,6 @@ export default {
     },
     noWrap: Boolean,
     fixed: Boolean,
-  },
-  methods: {
-    isComponent(value) {
-      return typeof value === 'object' && value.component !== undefined;
-    },
   },
 };
 </script>
