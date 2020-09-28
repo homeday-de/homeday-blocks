@@ -96,6 +96,14 @@ Tertiary.args = {
 };
 
 
+export const IconButton = Template.bind({});
+IconButton.args = {
+  modifier: TYPES.PRIMARY,
+  text: '',
+  iconSrc: true,
+};
+
+
 export const Flat = Template.bind({});
 Flat.args = {
   modifier: TYPES.FLAT,
