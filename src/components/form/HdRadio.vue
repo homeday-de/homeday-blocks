@@ -1,57 +1,53 @@
 <template>
+
   <section
-    :class="wrapperClasses"
-    class="radio-wrapper"
     @keydown="setUsingMouse(false)"
     @mousedown="setUsingMouse(true)"
   >
-    <label
-      v-if="label"
-      :id="`${name}--label`"
-      class="radio-wrapper__label"
-      tabindex="-1"
-    >{{ label }}</label>
     <div
-      :id="name"
-      :aria-labelledby="label ? `${name}--label` : null"
-      class="radio-wrapper__items"
       role="radiogroup"
+      class="radio-wrapper"
+      :class="{
+        'radio-wrapper--errored': hasError,
+        'radio-wrapper--disabled': disabled,
+        'radio-wrapper--vertical': vertical,
+        'radio-wrapper--using-mouse': isUsingMouse,
+      }"
     >
-      <!-- eslint-disable vue/valid-v-on -->
       <div
         v-for="(item, i) in items"
-        :key="`radio-${item.value}`"
+        :key="item.value"
         ref="items"
         :aria-checked="item.value === value ? 'true' : 'false'"
         :class="{
-          'isSelected': item.value === value,
+          'radio--selected': item.value === value,
         }"
         :tabindex="getTabindex(item, i)"
         class="radio"
-        role="radio"
         @keydown.space.enter.prevent="radioSelect(item.value)"
         @keydown.exact="maybeRadioSelect"
         @click="radioSelect(item.value)"
         @focus="handleFocus"
         @blur="handleBlur"
       >
-      <!-- eslint-enable vue/valid-v-on -->
         <input
-          :name="name"
+          :id="getItemName(item)"
+          :name="getItemName(item)"
+          v-model="boundValue"
           :value="item.value"
-          :checked="item.value === value"
           :disabled="disabled"
-          class="radio__input"
           type="radio"
         />
         <div class="radio__circle"></div>
-        <p class="radio__label">{{ item.label }}</p>
+        <label
+          :for="getItemName(item)"
+          class="radio__label"
+        >
+          {{ item.label }}
+        </label>
       </div>
     </div>
-    <p
-      v-if="error"
-      class="field__error radio__error">{{ error }}
-    </p>
+    <p v-if="error && !disabled" class="field__error">{{ error }}</p>
   </section>
 </template>
 
@@ -62,10 +58,6 @@ import { getMessages } from 'homeday-blocks/src/lang';
 export default {
   name: 'HdRadio',
   props: {
-    label: {
-      type: String,
-      default: '',
-    },
     name: {
       type: String,
       required: true,
@@ -110,17 +102,19 @@ export default {
     t() {
       return merge(getMessages(this.lang), this.texts);
     },
-    isEmpty() {
-      return this.value === null || this.value === undefined || this.value === '';
+    boundValue: {
+      get() {
+        return this.value;
+      },
+      set(value) {
+        this.radioSelect(value);
+      },
     },
-    wrapperClasses() {
-      return {
-        'radio-wrapper--active': this.isActive,
-        'radio-wrapper--vertical': this.vertical,
-        'radio-wrapper--disabled': this.disabled,
-        hasError: !!this.error,
-        isUsingMouse: this.isUsingMouse,
-      };
+    isFilled() {
+      return this.value !== null && this.value !== undefined && this.value !== '';
+    },
+    hasError() {
+      return !!this.error;
     },
   },
   watch: {
@@ -129,20 +123,19 @@ export default {
     },
   },
   methods: {
+    getItemName({ value }) {
+      return `${this.name}-${value}`;
+    },
     getTabindex(item, index) {
       if (this.disabled === true) {
         return -1;
       }
 
       if (!this.value) {
-        return index === 0
-          ? 0
-          : -1;
+        return index === 0 ? 0 : -1;
       }
 
-      return item.value === this.value
-        ? 0
-        : -1;
+      return item.value === this.value ? 0 : -1;
     },
     radioSelect(value) {
       this.$emit('input', value);
@@ -155,7 +148,9 @@ export default {
           return;
         }
 
-        const currentIndex = this.items.findIndex(item => item.value === this.value);
+        const currentIndex = this.items.findIndex(
+          item => item.value === this.value,
+        );
 
         if (currentIndex === -1 || currentIndex === this.items.length - 1) {
           this.$emit('input', this.items[0].value);
@@ -172,7 +167,9 @@ export default {
           return;
         }
 
-        const currentIndex = this.items.findIndex(item => item.value === this.value);
+        const currentIndex = this.items.findIndex(
+          item => item.value === this.value,
+        );
 
         if (currentIndex === -1 || currentIndex === 0) {
           this.$emit('input', this.items[this.items.length - 1].value);
@@ -202,7 +199,7 @@ export default {
       this.error = null;
     },
     validate() {
-      if (this.required && this.isEmpty) {
+      if (this.required && !this.isFilled) {
         this.showError(this.t.FORM.VALIDATION.REQUIRED);
       } else {
         this.hideError();
@@ -218,199 +215,140 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'homeday-blocks/src/styles/mixins.scss';
-@import 'homeday-blocks/src/styles/inputs.scss';
+@import "homeday-blocks/src/styles/mixins.scss";
+@import "homeday-blocks/src/styles/inputs.scss";
+
+.field__error {
+  position: relative;
+  display: block;
+}
+
+.radio-wrapper {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.radio-wrapper--vertical {
+  flex-direction: column;
+
+  > .radio:not(:first-of-type) {
+    margin-top: $stack-m;
+    margin-left: 0;
+  }
+}
+
+.radio-wrapper--using-mouse > .radio {
+  outline: 0;
+}
+
+.radio-wrapper--errored > .radio > .radio__circle {
+  border-color: $error-color;
+
+  &:hover {
+    transition: ease-in $time-s;
+    box-shadow: 0 0 0 7px rgba($error-color, 0.15);
+  }
+}
 
 .radio-wrapper--disabled {
-  .isSelected {
-    .radio {
-      &__circle {
-        border: 2px solid getShade($quaternary-color, 70);
-        background-color: $white;
+  pointer-events: none;
+
+  > .radio,
+  > .radio--selected {
+    color: getShade($neutral-gray, 70);
+
+    > .radio__circle {
+      border-color: getShade($neutral-gray, 70);
+      background-color: transparent;
+
+      &::before {
+        background-color: getShade($neutral-gray, 70);
       }
     }
   }
 }
 
 .radio {
-  $r: &;
-
+  flex: 1;
   display: flex;
   align-items: center;
-  position: relative;
-  flex: 1;
+
   cursor: pointer;
-  margin-left: $inline-m;
-  transition: outline 0.1s ease-in-out;
-  &:first-of-type {
-    margin-left: 0;
+
+  position: relative;
+
+  transition: outline $time-s ease-in-out;
+
+  &:not(:first-of-type) {
+    margin-left: $inline-m;
   }
 
-  .radio-wrapper--disabled & {
-    pointer-events: none;
-  }
-
-  &__input {
+  > input[type="radio"] {
     display: none;
   }
-  &__circle {
+
+  > .radio__circle {
     position: relative;
-    flex: 0 0 20px;
     width: 20px;
-    max-width: 20px;
     height: 20px;
+    max-width: 20px;
+
     border-radius: 50%;
-    overflow: hidden;
+    border: 2px solid $neutral-gray;
+
     outline-width: 0;
-    border: 2px solid $quaternary-color;
+    overflow: hidden;
 
-    // Hover effect WITHOUT state
-    &:hover, &:active, &:focus {
-      transition: ease-in 0.1s;
-      box-shadow: 0 0 1px 6px rgba(getShade($dodger-blue, 110), 0.15);
+    &:hover,
+    &:active,
+    &:focus {
+      transition: ease-in-out $time-s;
+      box-shadow: 0 0 0 7px getShade($dodger-blue, 90);
     }
 
-    .radio-wrapper--disabled & {
-      border-color: getShade($quaternary-color, 70);
-    }
+    &::before {
+      content: "";
 
-    &:before {
-      content: '';
-      display: block;
       position: absolute;
-      top: 3px;
-      left: 3px;
-      width: 10px;
-      height: 10px;
+      top: 50%;
+      left: 50%;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
+
       background-color: $white;
-      transform: scale(0);
+
       opacity: 0;
-      transition: transform .2s, opacity .2s;
-    }
-
-    #{$r}:hover & {
-      border-color: getShade($quaternary-color, 80);
-    }
-
-    #{$r}:focus & {
-      border-color: getShade($secondary-color, 110);
+      transform: scale(0) translate(-50%, -50%);
+      transform-origin: top left;
+      transition: transform $time-s, opacity $time-s;
     }
   }
-  &__label {
+
+  > .radio__label {
     flex: 1;
-    margin: 0 0 0 $inline-s;
+    padding-left: $inline-s;
+    cursor: pointer;
     text-align: left;
-    @include font('text-small');
-
-    .radio-wrapper--disabled & {
-      color: getShade($quaternary-color, 70);
-    }
-  }
-  &.isSelected {
-    .radio__circle {
-      border-color: getShade($secondary-color, 110);
-      background-color: getShade($secondary-color, 110);
-      &:before {
-        transform: scale(1);
-        opacity: 1;
-      }
-      .radio-wrapper--disabled & {
-        border-color: getShade($quaternary-color, 70);
-        background-color: $white;
-
-        &:before {
-          transform: scale(1);
-          opacity: 1;
-          background-color: getShade($quaternary-color, 70);
-        }
-      }
-    }
-  }
-  &__error {
-    display: block;
+    @include font("text-small");
   }
 }
 
-.radio-wrapper {
-  $r: &;
+.radio--selected > .radio__circle {
+  border-color: getShade($dodger-blue, 110);
+  background-color: getShade($dodger-blue, 110);
 
-  position: relative;
-  margin-bottom: $labelHeight + $stack-s;
-
-  &__label {
-    display: block;
-    margin-bottom: 3px;
-    font-size: 14px;
-    line-height: 18px;
-    color: $quaternary-color;
-    transition: color 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940);
-    pointer-events: none;
-
-    #{$r}.hasError & {
-      color: $error-color;
-    }
-
-    #{$r}:not(#{$r}--disabled):hover &,
-    #{$r}--active:not(#{$r}--disabled) &,
-    #{$r}--active.hasError:not(#{$r}--disabled) & {
-      color: getShade($secondary-color, 110);
-    }
+  &:hover,
+  &:active,
+  &:focus {
+    box-shadow: 0 0 0 7px rgba(getShade($dodger-blue, 110), 0.15);
   }
 
-  &__items {
-    display: flex;
-    flex-direction: row;
-    flex: 1;
-  }
-
-  &--vertical &__items {
-    flex-direction: column;
-
-    .radio {
-      margin-left: 0;
-
-      &:not(:first-child) {
-        margin-top: $stack-m;
-      }
-    }
-  }
-
-  // Hover effect for error state
-  &.hasError {
-    .radio {
-      &__circle {
-        &:hover {
-          transition: ease-in 0.1s;
-          box-shadow: 0 0 1px 6px rgba($error-color, 0.15);
-        }
-      }
-    }
-  }
-
-  &.hasError &__items {
-
-    .radio:not(:focus):not(#{$r}--disabled) .radio__circle {
-      border-color: $error-color;
-    }
-  }
-
-  &--active.hasError {
-
-    #{$r}__items {
-
-      .radio:not(:focus):not(#{$r}--disabled) .radio__circle {
-        border-color: getShade($quaternary-color, 80);
-      }
-    }
-
-    .radio__error {
-      color: getShade($quaternary-color, 80);
-    }
-  }
-
-  &.isUsingMouse .radio {
-    outline: 0;
+  &:before {
+    transform: scale(1) translate(-50%, -50%);
+    opacity: 1;
   }
 }
 </style>
