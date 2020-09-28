@@ -3,12 +3,22 @@
     v-on="$listeners"
     :class="computedClasses"
   >
-    <HdIcon
+    <span
       v-if="iconSrc"
-      :src="iconSrc"
       class="btn__icon"
-    />
-    <slot />
+    >
+      <HdIcon
+        :src="iconSrc"
+        width="100%"
+        height="100%"
+      />
+    </span>
+    <span
+      ref="content"
+      class="btn__content"
+    >
+      <slot />
+    </span>
   </button>
 </template>
 
@@ -47,10 +57,13 @@ export default {
       default: '',
     },
   },
+  data() {
+    return {
+      contentObserver: null,
+      isIconButton: false,
+    };
+  },
   computed: {
-    isIconButton() {
-      return this.$slots.default === undefined;
-    },
     computedClasses() {
       const baseClass = 'btn';
       return [
@@ -61,6 +74,28 @@ export default {
           [`${baseClass}--icon-button`]: this.isIconButton,
         },
       ];
+    },
+  },
+  mounted() {
+    // We set an observer to watch the content of the button
+    // to know when to switch to the icon button mode
+    this.contentObserver = new MutationObserver(() => {
+      this.detectIconButton();
+    });
+    this.contentObserver.observe(this.$refs.content, {
+      characterData: true,
+      subtree: true,
+    });
+
+    this.detectIconButton();
+  },
+  beforeDestroy() {
+    this.contentObserver.disconnect();
+  },
+  methods: {
+    detectIconButton() {
+      // It's an icon button if the content element has no text
+      this.isIconButton = !this.$refs.content.innerText;
     },
   },
 };
@@ -77,6 +112,8 @@ export default {
   }
 
   &__icon {
+    width: 24px;
+    height: 24px;
     margin-right: $inline-xs;
 
     #{$root}--icon-button & {
