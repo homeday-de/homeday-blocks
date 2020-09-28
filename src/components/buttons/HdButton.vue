@@ -95,7 +95,7 @@ export default {
   methods: {
     detectIconButton() {
       // It's an icon button if the content element has no text
-      this.isIconButton = !this.$refs.content.innerText;
+      this.isIconButton = !this.$refs.content.textContent.trim();
     },
   },
 };
