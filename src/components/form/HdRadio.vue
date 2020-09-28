@@ -205,21 +205,15 @@ export default {
       this.error = errorMessage;
     },
     hideError() {
-      console.log('hideError');
       this.error = null;
     },
     showHelper(helper) {
       this.helper = helper;
     },
     hideHelper() {
-      console.log('hideError');
       this.helper = null;
     },
     validate() {
-      console.log('validate');
-      console.log('this.required', this.required);
-      console.log('this.isFilled', this.isFilled);
-      console.log('------');
       if (this.required && !this.isFilled) {
         this.showError(this.t.FORM.VALIDATION.REQUIRED);
       } else {
