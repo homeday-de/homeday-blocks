@@ -97,6 +97,8 @@ export default {
   },
   computed: {
     helperText() {
+      // We default to an uinvisible character to keep the same element height
+      // and avoid content shift
       return this.error || this.helper || '&#8205;';
     },
     hasError() {
