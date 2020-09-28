@@ -2,11 +2,12 @@
   <div
     class="x-field"
     :class="{
-      ['x-field--error']: hasError,
+      ['x-field--errored']: hasError,
       ['x-field--active']: active,
       ['x-field--filled']: filled,
       ['x-field--minimized-label']: minimizedLabel,
       ['x-field--disabled']: disabled,
+      ['x-field--grouped']: grouped,
     }"
   >
     <HdIcon
@@ -17,7 +18,7 @@
     />
     <div class="x-field__body">
       <div class="x-field__main">
-        <slot />
+        <slot v-bind="{ hasError }" />
         <label
           v-if="label"
           :for="name"
@@ -28,7 +29,10 @@
         <div class="x-field__input-right">
           <slot name="input-right"/>
         </div>
-        <div class="x-field__border"/>
+        <div
+          v-if="!grouped"
+          class="x-field__border"
+        />
       </div>
       <p
         class="x-field__helper"
@@ -83,6 +87,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    grouped: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     helperText() {
@@ -97,7 +105,6 @@ export default {
 
 <style scoped lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
-// @import 'homeday-blocks/src/styles/inputs.scss';
 
 @mixin typography-regular {
   font-size: 16px;
@@ -127,8 +134,14 @@ export default {
   }
   &__body {
     flex: 1;
+    position: relative;
+
+    #{$root}--grouped & {
+      padding-top: $stack-m;
+      margin-top: $stack-s;
+    }
   }
-  &__main {
+  &:not(#{$root}--grouped) &__main {
     position: relative;
 
     & > :first-child {
@@ -138,7 +151,7 @@ export default {
       overflow: hidden;
     }
 
-    input, textarea {
+    input, textarea, select {
       padding-top: $stack-l - $stack-s;
       padding-right: $inline-s;
       padding-bottom: $stack-s;
@@ -165,6 +178,13 @@ export default {
     transition: transform .3s, color .2s;
     pointer-events: none;
 
+    #{$root}--grouped & {
+      top: 0;
+      left: 0;
+    }
+    #{$root}--errored & {
+      color: $error-color;
+    }
     #{$root}--active &,
     #{$root}--filled &,
     #{$root}--minimized-label & {
@@ -186,11 +206,11 @@ export default {
     height: 2px;
     background-color: getShade($quaternary-color, 60);
 
-    #{$root}:hover:not(#{$root}--error):not(#{$root}--disabled) & {
+    #{$root}:hover:not(#{$root}--errored):not(#{$root}--disabled) & {
       background-color: getShade($quaternary-color, 80);
     }
 
-    #{$root}--error & {
+    #{$root}--errored & {
       background-color: $error-color;
     }
 
@@ -225,7 +245,7 @@ export default {
     padding-right: $inline-m;
     padding-left: $inline-m;
 
-    #{$root}--error:not(#{$root}--active) & {
+    #{$root}--errored:not(#{$root}--active) & {
       color: $error-color;
     }
   }

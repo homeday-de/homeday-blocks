@@ -1,21 +1,24 @@
 <template>
-  <section
-    :class="wrapperClasses"
-    class="radio-wrapper"
-    @keydown="setUsingMouse(false)"
-    @mousedown="setUsingMouse(true)"
+  <FieldBase
+    v-bind="$attrs"
+    :name="name"
+    :error="error"
+    :helper="helper"
+    :active="isActive"
+    :filled="isFilled"
+    :disabled="disabled"
+    minimized-label
+    grouped
+    #default="{ hasError }"
   >
-    <label
-      v-if="label"
-      :id="`${name}--label`"
-      class="radio-wrapper__label"
-      tabindex="-1"
-    >{{ label }}</label>
     <div
-      :id="name"
-      :aria-labelledby="label ? `${name}--label` : null"
-      class="radio-wrapper__items"
       role="radiogroup"
+      class="radio-wrapper"
+      :class="{
+        ['radio-wrapper--errored']: hasError,
+        ['radio-wrapper--disabled']: disabled,
+        ['radio-wrapper--vertical']: vertical,
+      }"
     >
       <!-- eslint-disable vue/valid-v-on -->
       <div
@@ -28,44 +31,43 @@
         }"
         :tabindex="getTabindex(item, i)"
         class="radio"
-        role="radio"
-        @keydown.space.enter.prevent="radioSelect(item.value)"
         @keydown.exact="maybeRadioSelect"
-        @click="radioSelect(item.value)"
         @focus="handleFocus"
         @blur="handleBlur"
       >
       <!-- eslint-enable vue/valid-v-on -->
         <input
-          :name="name"
+          :id="getItemName(item)"
+          :name="getItemName(item)"
+          v-model="boundValue"
           :value="item.value"
-          :checked="item.value === value"
           :disabled="disabled"
           class="radio__input"
           type="radio"
         />
         <div class="radio__circle"></div>
-        <p class="radio__label">{{ item.label }}</p>
+        <label
+          :for="getItemName(item)"
+          class="radio__label"
+        >
+          {{ item.label }}
+        </label>
       </div>
     </div>
-    <p
-      v-if="error"
-      class="field__error radio__error">{{ error }}
-    </p>
-  </section>
+  </FieldBase>
 </template>
 
 <script>
 import merge from 'lodash/merge';
 import { getMessages } from 'homeday-blocks/src/lang';
+import FieldBase from './FieldBase.vue';
 
 export default {
   name: 'HdRadio',
+  components: {
+    FieldBase,
+  },
   props: {
-    label: {
-      type: String,
-      default: '',
-    },
     name: {
       type: String,
       required: true,
@@ -102,6 +104,7 @@ export default {
   data() {
     return {
       error: null,
+      helper: null,
       isActive: false,
       isUsingMouse: false,
     };
@@ -110,17 +113,16 @@ export default {
     t() {
       return merge(getMessages(this.lang), this.texts);
     },
-    isEmpty() {
-      return this.value === null || this.value === undefined || this.value === '';
+    boundValue: {
+      get() {
+        return this.value;
+      },
+      set(value) {
+        this.$emit('input', value);
+      },
     },
-    wrapperClasses() {
-      return {
-        'radio-wrapper--active': this.isActive,
-        'radio-wrapper--vertical': this.vertical,
-        'radio-wrapper--disabled': this.disabled,
-        hasError: !!this.error,
-        isUsingMouse: this.isUsingMouse,
-      };
+    isFilled() {
+      return this.value !== null && this.value !== undefined && this.value !== '';
     },
   },
   watch: {
@@ -129,6 +131,9 @@ export default {
     },
   },
   methods: {
+    getItemName({ value }) {
+      return `${this.name}-${value}`;
+    },
     getTabindex(item, index) {
       if (this.disabled === true) {
         return -1;
@@ -143,9 +148,6 @@ export default {
       return item.value === this.value
         ? 0
         : -1;
-    },
-    radioSelect(value) {
-      this.$emit('input', value);
     },
     maybeRadioSelect(e) {
       if (['ArrowDown', 'Down', 'ArrowRight', 'Right'].includes(e.key)) {
@@ -199,10 +201,22 @@ export default {
       this.error = errorMessage;
     },
     hideError() {
+      console.log('hideError');
       this.error = null;
     },
+    showHelper(helper) {
+      this.helper = helper;
+    },
+    hideHelper() {
+      console.log('hideError');
+      this.helper = null;
+    },
     validate() {
-      if (this.required && this.isEmpty) {
+      console.log('validate');
+      console.log('this.required', this.required);
+      console.log('this.isFilled', this.isFilled);
+      console.log('------');
+      if (this.required && !this.isFilled) {
         this.showError(this.t.FORM.VALIDATION.REQUIRED);
       } else {
         this.hideError();
@@ -219,7 +233,6 @@ export default {
 
 <style lang="scss" scoped>
 @import 'homeday-blocks/src/styles/mixins.scss';
-@import 'homeday-blocks/src/styles/inputs.scss';
 
 .radio-wrapper--disabled {
   .isSelected {
@@ -234,14 +247,13 @@ export default {
 
 .radio {
   $r: &;
-
   display: flex;
   align-items: center;
   position: relative;
   flex: 1;
-  cursor: pointer;
   margin-left: $inline-m;
   transition: outline 0.1s ease-in-out;
+
   &:first-of-type {
     margin-left: 0;
   }
@@ -299,13 +311,10 @@ export default {
   }
   &__label {
     flex: 1;
-    margin: 0 0 0 $inline-s;
+    padding-left: $inline-s;
     text-align: left;
     @include font('text-small');
-
-    .radio-wrapper--disabled & {
-      color: getShade($quaternary-color, 70);
-    }
+    cursor: pointer;
   }
   &.isSelected {
     .radio__circle {
@@ -327,44 +336,16 @@ export default {
       }
     }
   }
-  &__error {
-    display: block;
-  }
 }
 
 .radio-wrapper {
   $r: &;
-
+  display: flex;
+  flex-direction: row;
+  flex: 1;
   position: relative;
-  margin-bottom: $labelHeight + $stack-s;
 
-  &__label {
-    display: block;
-    margin-bottom: 3px;
-    font-size: 14px;
-    line-height: 18px;
-    color: $quaternary-color;
-    transition: color 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940);
-    pointer-events: none;
-
-    #{$r}.hasError & {
-      color: $error-color;
-    }
-
-    #{$r}:not(#{$r}--disabled):hover &,
-    #{$r}--active:not(#{$r}--disabled) &,
-    #{$r}--active.hasError:not(#{$r}--disabled) & {
-      color: getShade($secondary-color, 110);
-    }
-  }
-
-  &__items {
-    display: flex;
-    flex-direction: row;
-    flex: 1;
-  }
-
-  &--vertical &__items {
+    &--vertical {
     flex-direction: column;
 
     .radio {
@@ -377,7 +358,7 @@ export default {
   }
 
   // Hover effect for error state
-  &.hasError {
+  &--errored {
     .radio {
       &__circle {
         &:hover {
@@ -386,26 +367,15 @@ export default {
         }
       }
     }
-  }
-
-  &.hasError &__items {
 
     .radio:not(:focus):not(#{$r}--disabled) .radio__circle {
       border-color: $error-color;
     }
   }
 
-  &--active.hasError {
-
-    #{$r}__items {
-
-      .radio:not(:focus):not(#{$r}--disabled) .radio__circle {
-        border-color: getShade($quaternary-color, 80);
-      }
-    }
-
-    .radio__error {
-      color: getShade($quaternary-color, 80);
+  &--active {
+    .radio:not(:focus):not(#{$r}--disabled) .radio__circle {
+      border-color: getShade($quaternary-color, 80);
     }
   }
 
