@@ -2,9 +2,9 @@ import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import HdInputPassword from '@/components/form/HdInputPassword.vue';
 import HdInput from '@/components/form/HdInput.vue';
 
-const VISIBILITY_TOGGLE_SELECTOR = '.field__visibilityToggle';
+const VISIBILITY_TOGGLE_SELECTOR = '.password-input__visibility-toggle';
 
-const PASSWORD_VISIBLE_CLASS = 'field__visibilityToggle--visible';
+const PASSWORD_VISIBLE_CLASS = 'password-input__visibility-toggle--visible';
 
 const TEST_VALUE = 'new value';
 const TEST_PROPS = {

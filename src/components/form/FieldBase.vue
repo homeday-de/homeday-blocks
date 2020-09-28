@@ -10,12 +10,15 @@
       ['field--grouped']: grouped,
     }"
   >
-    <HdIcon
-      v-if="icon"
-      :src="icon"
-      role="presentation"
+    <div
+       v-if="icon"
       class="field__icon"
-    />
+    >
+      <HdIcon
+        :src="icon"
+        role="presentation"
+      />
+    </div>
     <div class="field__body">
       <div class="field__main">
         <slot v-bind="{ hasError }" />

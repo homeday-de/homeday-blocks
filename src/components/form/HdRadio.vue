@@ -31,7 +31,9 @@
         }"
         :tabindex="getTabindex(item, i)"
         class="radio"
+        @keydown.space.enter.prevent="radioSelect(item.value)"
         @keydown.exact="maybeRadioSelect"
+        @click="radioSelect(item.value)"
         @focus="handleFocus"
         @blur="handleBlur"
       >
@@ -106,7 +108,6 @@ export default {
       error: null,
       helper: null,
       isActive: false,
-      isUsingMouse: false,
     };
   },
   computed: {
@@ -148,6 +149,9 @@ export default {
       return item.value === this.value
         ? 0
         : -1;
+    },
+    radioSelect(value) {
+      this.$emit('input', value);
     },
     maybeRadioSelect(e) {
       if (['ArrowDown', 'Down', 'ArrowRight', 'Right'].includes(e.key)) {
@@ -224,9 +228,6 @@ export default {
 
       return !this.error;
     },
-    setUsingMouse(usingMouse) {
-      this.isUsingMouse = usingMouse;
-    },
   },
 };
 </script>
@@ -253,6 +254,7 @@ export default {
   flex: 1;
   margin-left: $inline-m;
   transition: outline 0.1s ease-in-out;
+  cursor: pointer;
 
   &:first-of-type {
     margin-left: 0;
@@ -377,10 +379,6 @@ export default {
     .radio:not(:focus):not(#{$r}--disabled) .radio__circle {
       border-color: getShade($quaternary-color, 80);
     }
-  }
-
-  &.isUsingMouse .radio {
-    outline: 0;
   }
 }
 </style>

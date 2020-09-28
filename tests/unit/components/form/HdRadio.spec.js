@@ -8,8 +8,9 @@ import ITEMS from '@/stories/mocks/FORM_ITEMS';
 
 // list of selectors we depend on
 const SELECTED_ITEM_SELECTOR = '.isSelected';
+const ITEMS_SELECTOR = '.radio-wrapper';
+const ITEM_SELECTOR = '.radio__circle';
 const VERTICAL_CLASSNAME = 'radio-wrapper--vertical';
-const ITEMS_SELECTOR = { ref: 'items' };
 
 const wrapperBuilder = wrapperFactoryBuilder(HdRadio, {
   props: {
@@ -40,7 +41,7 @@ describe('HdRadio', () => {
     const wrapper = wrapperBuilder();
     const ITEM_INDEX = 1;
 
-    wrapper.findAll(ITEMS_SELECTOR).at(ITEM_INDEX).trigger('click');
+    wrapper.findAll(ITEM_SELECTOR).at(ITEM_INDEX).trigger('click');
 
     expect(wrapper.emitted('input')[0][0]).toEqual(ITEMS[ITEM_INDEX].value);
   });
@@ -55,7 +56,7 @@ describe('HdRadio', () => {
     const getLastInputEventPayload = () => getLastEventPayload({ wrapper, eventName: 'input' });
     // The keydown event handler is the same for all the items
     // so it doesn't matter which items fires it. We pick the first one in this test
-    const itemWrapper = wrapper.find(ITEMS_SELECTOR);
+    const itemWrapper = wrapper.find(ITEM_SELECTOR);
 
     // We test the "next" keys
     ['Down', 'Right'].forEach((key) => {
@@ -102,7 +103,7 @@ describe('HdRadio', () => {
       },
     });
 
-    expect(wrapper.classes()).toContain(VERTICAL_CLASSNAME);
+    expect(wrapper.find(ITEMS_SELECTOR).classes()).toContain(VERTICAL_CLASSNAME);
   });
 
   it('validates requiredness', () => {

@@ -3,9 +3,16 @@
 exports[`HdTooltipped renders empty 1`] = `<span></span>`;
 
 exports[`HdTooltipped renders full 1`] = `
-<div class="field field--input">
-  <!----> <input autocomplete="on" type="text" id="testInput" name="testInput" placeholder="" data-lpignore="true" class="field__input"> <label for="testInput" class="field__label">
-    dolor sit ammet
-  </label>
-  <!----> <span class="field__border"></span></div>
+<div class="field text-field">
+  <!---->
+  <div class="field__body">
+    <div class="field__main"><input autocomplete="on" type="text" id="testInput" name="testInput" placeholder="" data-lpignore="true" label="dolor sit ammet" class="input"> <label for="testInput" class="field__label">
+        dolor sit ammet
+      </label>
+      <div class="field__input-right"></div>
+      <div class="field__border"></div>
+    </div>
+    <p class="field__helper">‍</p>
+  </div>
+</div>
 `;

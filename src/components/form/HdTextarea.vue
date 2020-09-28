@@ -124,7 +124,7 @@ export default {
     },
   },
   methods: {
-    clearInput() {
+    clearTextarea() {
       this.focusTextarea();
       this.$emit('input', '');
     },
