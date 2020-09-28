@@ -1,41 +1,41 @@
 <template>
   <div
-    class="x-field"
+    class="field"
     :class="{
-      ['x-field--errored']: hasError,
-      ['x-field--active']: active,
-      ['x-field--filled']: filled,
-      ['x-field--minimized-label']: minimizedLabel,
-      ['x-field--disabled']: disabled,
-      ['x-field--grouped']: grouped,
+      ['field--errored']: hasError,
+      ['field--active']: active,
+      ['field--filled']: filled,
+      ['field--minimized-label']: minimizedLabel,
+      ['field--disabled']: disabled,
+      ['field--grouped']: grouped,
     }"
   >
     <HdIcon
       v-if="icon"
       :src="icon"
       role="presentation"
-      class="x-field__icon"
+      class="field__icon"
     />
-    <div class="x-field__body">
-      <div class="x-field__main">
+    <div class="field__body">
+      <div class="field__main">
         <slot v-bind="{ hasError }" />
         <label
           v-if="label"
           :for="name"
-          class="x-field__label"
+          class="field__label"
         >
           {{ label }}
         </label>
-        <div class="x-field__input-right">
+        <div class="field__input-right">
           <slot name="input-right"/>
         </div>
         <div
           v-if="!grouped"
-          class="x-field__border"
+          class="field__border"
         />
       </div>
       <p
-        class="x-field__helper"
+        class="field__helper"
         v-html="helperText"
       />
     </div>
@@ -115,7 +115,7 @@ export default {
   line-height: 16px;
 }
 
-.x-field {
+.field {
   $root: &;
   display: flex;
   align-items: flex-start;
