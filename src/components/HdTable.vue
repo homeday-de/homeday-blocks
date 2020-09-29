@@ -8,7 +8,7 @@
     <tbody>
       <tr v-for="(tr, i) in body" :key="`row-${i}`">
         <td v-for="(value, i) in tr" :key="`cell-${i}`">
-          <slot :name="i" :value="value">{{ value }}</slot>
+          <slot :name="i" :value="value"><span>{{ value }}</span></slot>
         </td>
       </tr>
     </tbody>
