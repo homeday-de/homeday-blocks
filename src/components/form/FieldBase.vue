@@ -11,7 +11,7 @@
     }"
   >
     <div
-       v-if="icon"
+      v-if="icon"
       class="field__icon"
     >
       <HdIcon
