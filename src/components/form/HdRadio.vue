@@ -279,8 +279,6 @@ export default {
 
   position: relative;
 
-  transition: outline $time-s ease-in-out;
-
   &:not(:first-of-type) {
     margin-left: $inline-m;
   }
