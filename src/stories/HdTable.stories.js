@@ -50,7 +50,13 @@ storiesOf('Components/HdTable', module)
       HdTable,
       HdTagsList,
     },
-    template: '<hd-table :header="header" :body="body"></hd-table>',
+    template: `
+      <hd-table :header="header" :body="body">
+        <template #stars="{value}">
+          <HdTagsList :items="value"></HdTagsList>
+        </template>
+      </hd-table>
+    `,
     data() {
       return {
         header: MOVIES_TABLE.header,
@@ -60,12 +66,7 @@ storiesOf('Components/HdTable', module)
           title,
           year,
           rating,
-          theNameDoesntMatter: {
-            component: HdTagsList,
-            props: {
-              items: stars.split(','),
-            },
-          },
+          stars: stars.split(','),
         })),
       };
     },
