@@ -1,25 +1,32 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import { storiesOf } from '@storybook/vue';
-import { boolean } from '@storybook/addon-knobs';
 import { HdDashedList } from 'homeday-blocks';
 import ITEMS from './mocks/DASHED_LIST_ITEMS';
 
-const stories = storiesOf('Components/HdDashedList', module);
-
-stories.add('Playground 🎛', () => ({
-  components: { HdDashedList },
-  props: {
+export default {
+  title: 'Components/HdDashedList',
+  component: HdDashedList,
+  argTypes: {
+    items: {
+      control: 'object',
+    },
     expandedLabel: {
-      type: Boolean,
-      default: boolean('expandedLabel', false),
+      control: 'boolean',
     },
   },
-  data() {
-    return {
-      items: ITEMS,
-    };
+  args: {
+    items: ITEMS,
+    expandedLabel: false,
   },
+};
+
+const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { HdDashedList },
   template: `
-    <HdDashedList :items="items" :expandedLabel="expandedLabel" />
+    <HdDashedList
+      :items="items"
+      :expandedLabel="expandedLabel"
+    />
   `,
-}));
+});
+
+export const Default = Template.bind({});
