@@ -26,7 +26,7 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build:storybook -- -o /dist/${{ env.REPO_NAME }}/${{ env.PR_NUMBER }}
+        run: sudo npm run build:storybook -- -o /dist/${{ env.REPO_NAME }}/${{ env.PR_NUMBER }}
         env:
           BASE_URL: '/${{ env.REPO_NAME }}/${{ env.PR_NUMBER }}'
 
