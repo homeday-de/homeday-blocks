@@ -46,4 +46,4 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           message: |
-            🚀 This PR has been deployed here: https://frontend-pulls.homeday.dev/${{ env.REPO_NAME }}/${{ env.PR_NUMBER }}
+            🚀 This PR has been deployed here: https://frontend-pulls.homeday.de/${{ env.REPO_NAME }}/${{ env.PR_NUMBER }}
