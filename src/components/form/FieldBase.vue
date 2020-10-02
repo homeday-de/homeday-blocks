@@ -242,6 +242,11 @@ export default {
     position: absolute;
     top: $stack-m;
     right: $inline-m;
+    pointer-events: none;
+
+    > ::v-deep * {
+      pointer-events: all;
+    }
   }
   &__helper {
     width: 100%;

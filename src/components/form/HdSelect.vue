@@ -154,6 +154,7 @@ export default {
 .select {
   &__arrow {
     transform: rotateZ(90deg);
+    pointer-events: none;
   }
 }
 </style>
