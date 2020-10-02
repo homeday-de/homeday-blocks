@@ -11,7 +11,7 @@
     }"
   >
     <div
-       v-if="icon"
+      v-if="icon"
       class="field__icon"
     >
       <HdIcon
@@ -97,7 +97,7 @@ export default {
   },
   computed: {
     helperText() {
-      // We default to an uinvisible character to keep the same element height
+      // We default to an invisible character to keep the same element height
       // and avoid content shift
       return this.error || this.helper || '&#8205;';
     },
