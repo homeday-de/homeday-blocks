@@ -7,8 +7,8 @@ import HdRadio from '@/components/form/HdRadio.vue';
 import ITEMS from '@/stories/mocks/FORM_ITEMS';
 
 // list of selectors we depend on
-const SELECTED_ITEM_SELECTOR = '.isSelected';
-const VERTICAL_CLASSNAME = 'radio-wrapper--vertical';
+const SELECTED_ITEM_SELECTOR = '.radio--selected';
+const VERTICAL_ITEM_SELECTOR = '.radio-wrapper--vertical';
 const ITEMS_SELECTOR = { ref: 'items' };
 
 const wrapperBuilder = wrapperFactoryBuilder(HdRadio, {
@@ -102,7 +102,7 @@ describe('HdRadio', () => {
       },
     });
 
-    expect(wrapper.classes()).toContain(VERTICAL_CLASSNAME);
+    expect(wrapper.find(VERTICAL_ITEM_SELECTOR).exists()).toBe(true);
   });
 
   it('validates requiredness', () => {

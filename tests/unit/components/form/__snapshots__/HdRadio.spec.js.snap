@@ -1,27 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HdRadio is rendered as expected 1`] = `
-<section class="radio-wrapper"><label id="testRadio--label" tabindex="-1" class="radio-wrapper__label">test radio label</label>
-  <div id="testRadio" aria-labelledby="testRadio--label" role="radiogroup" class="radio-wrapper__items">
-    <div aria-checked="false" tabindex="0" role="radio" class="radio"><input name="testRadio" type="radio" class="radio__input" value="jon">
-      <div class="radio__circle"></div>
-      <p class="radio__label">Jon "Snow"</p>
+<section label="test radio label">
+  <div role="radiogroup" class="radio-wrapper">
+    <div aria-checked="false" tabindex="0" class="radio"><input id="testRadio-jon" name="testRadio-jon" type="radio" value="jon">
+      <div class="radio__circle"></div> <label for="testRadio-jon" class="radio__label">
+        Jon "Snow"
+      </label>
     </div>
-    <div aria-checked="false" tabindex="-1" role="radio" class="radio"><input name="testRadio" type="radio" class="radio__input" value="daenerys">
-      <div class="radio__circle"></div>
-      <p class="radio__label">Daenerys</p>
+    <div aria-checked="false" tabindex="-1" class="radio"><input id="testRadio-daenerys" name="testRadio-daenerys" type="radio" value="daenerys">
+      <div class="radio__circle"></div> <label for="testRadio-daenerys" class="radio__label">
+        Daenerys
+      </label>
     </div>
-    <div aria-checked="false" tabindex="-1" role="radio" class="radio"><input name="testRadio" type="radio" class="radio__input" value="nightKing">
-      <div class="radio__circle"></div>
-      <p class="radio__label">The Night King</p>
+    <div aria-checked="false" tabindex="-1" class="radio"><input id="testRadio-nightKing" name="testRadio-nightKing" type="radio" value="nightKing">
+      <div class="radio__circle"></div> <label for="testRadio-nightKing" class="radio__label">
+        The Night King
+      </label>
     </div>
-    <div aria-checked="false" tabindex="-1" role="radio" class="radio"><input name="testRadio" type="radio" class="radio__input" value="arya">
-      <div class="radio__circle"></div>
-      <p class="radio__label">Arya</p>
+    <div aria-checked="false" tabindex="-1" class="radio"><input id="testRadio-arya" name="testRadio-arya" type="radio" value="arya">
+      <div class="radio__circle"></div> <label for="testRadio-arya" class="radio__label">
+        Arya
+      </label>
     </div>
-    <div aria-checked="false" tabindex="-1" role="radio" class="radio"><input name="testRadio" type="radio" class="radio__input" value="cersei">
-      <div class="radio__circle"></div>
-      <p class="radio__label">Cersei</p>
+    <div aria-checked="false" tabindex="-1" class="radio"><input id="testRadio-cersei" name="testRadio-cersei" type="radio" value="cersei">
+      <div class="radio__circle"></div> <label for="testRadio-cersei" class="radio__label">
+        Cersei
+      </label>
     </div>
   </div>
   <!---->
