@@ -6,6 +6,7 @@ export { default as bankIcon } from './ic_bank.svg';
 export { default as bellOffIcon } from './ic_bell-off.svg';
 export { default as bellIcon } from './ic_bell.svg';
 export { default as berlinIcon } from './ic_berlin.svg';
+export { default as bookIcon } from './ic_book.svg';
 export { default as bookmarksIcon } from './ic_bookmarks.svg';
 export { default as buildingsIcon } from './ic_buildings.svg';
 export { default as buyIcon } from './ic_buy.svg';
