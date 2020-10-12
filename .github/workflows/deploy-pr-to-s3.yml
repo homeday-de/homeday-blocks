@@ -4,11 +4,10 @@ on: [pull_request]
 env:
   PR_NUMBER: ${{ github.event.pull_request.number }}
   REPO_NAME: ${{ github.event.repository.name }}
-  hasTheNeededSecrets: ${{ secrets.AWS_S3_PR_DEPLOYMENT_BUCKET && secrets.AWS_ACCESS_KEY_ID && secrets.AWS_SECRET_ACCESS_KEY }}
 
 jobs:
   deploy-to-s3:
-    if: env.hasTheNeededSecrets
+    if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
