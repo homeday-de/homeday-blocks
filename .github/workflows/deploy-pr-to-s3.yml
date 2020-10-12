@@ -7,6 +7,7 @@ env:
 
 jobs:
   deploy-to-s3:
+    if: secrets.AWS_S3_PR_DEPLOYMENT_BUCKET && secrets.AWS_ACCESS_KEY_ID && secrets.AWS_SECRET_ACCESS_KEY
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
