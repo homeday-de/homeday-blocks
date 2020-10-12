@@ -1,0 +1,117 @@
+@function pow($number, $exponent) {
+  $value: 1;
+
+  @if $exponent > 0 {
+    @for $i from 1 through $exponent {
+      $value: $value * $number;
+    }
+  } @else if $exponent < 0 {
+    @for $i from 1 through -$exponent {
+      $value: $value / $number;
+    }
+  }
+
+  @return $value;
+}
+
+@function rem-calc($size) {
+  $remSize: $size / 16;
+  @return #{$remSize}rem;
+}
+
+@mixin font($style) {
+  @if ($style == "DS-400") {
+    font-size: rem-calc(16);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  @if ($style == "DS-500") {
+    font-size: rem-calc(18);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  @if ($style == "DS-800") {
+    font-size: rem-calc(40);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  @if ($style == "DS-900") {
+    font-size: rem-calc(45);
+    font-weight: 700;
+    line-height: 1;
+  }
+}
+
+@mixin document-typography($scale) {
+  font-size: 100%;
+
+  body {
+    font-weight: 400;
+    line-height: 1.65;
+  }
+
+  p {
+    // margin-bottom: 1.15rem;
+  }
+
+  h1, h2, h3, h4, h5 {
+    // margin: 2.75rem 0 1.05rem;
+    line-height: 1.15;
+  }
+
+  h1 {
+    margin-top: 0;
+    font-size: pow($scale, 5) * 1em;
+  }
+
+  h2 {
+    font-size: pow($scale, 4) * 1em;
+  }
+
+  h3 {
+    font-size: pow($scale, 3) * 1em;
+  }
+
+  h4 {
+    font-size: pow($scale, 2) * 1em;
+  }
+
+  h5 {
+    font-size: $scale * 1em;
+  }
+
+  small, .text_small {
+    font-size: pow($scale, -1) * 1em;
+  }
+}
+
+.ty-minor-second {
+  @include document-typography(1.125);
+}
+
+.ty-minor-third {
+  @include document-typography(1.2);
+}
+
+.ty-major-third {
+  @include document-typography(1.25);
+}
+
+.ty-perfect-fourth {
+  @include document-typography(1.333);
+}
+
+.ty-augmented-fourth {
+  @include document-typography(1.414);
+}
+
+.ty-perfect-fifth {
+  @include document-typography(1.5);
+}
+
+.ty-golden-ratio {
+  @include document-typography(1.618);
+}
