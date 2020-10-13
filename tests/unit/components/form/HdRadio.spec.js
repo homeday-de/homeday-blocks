@@ -7,10 +7,9 @@ import HdRadio from '@/components/form/HdRadio.vue';
 import ITEMS from '@/stories/mocks/FORM_ITEMS';
 
 // list of selectors we depend on
-const SELECTED_ITEM_SELECTOR = '.isSelected';
-const ITEMS_SELECTOR = '.radio-wrapper';
-const ITEM_SELECTOR = '.radio__circle';
-const VERTICAL_CLASSNAME = 'radio-wrapper--vertical';
+const ITEM_SELECTOR = '.radio';
+const SELECTED_ITEM_SELECTOR = '.radio--selected';
+const VERTICAL_ITEM_SELECTOR = '.radio-wrapper--vertical';
 
 const wrapperBuilder = wrapperFactoryBuilder(HdRadio, {
   props: {
@@ -103,7 +102,7 @@ describe('HdRadio', () => {
       },
     });
 
-    expect(wrapper.find(ITEMS_SELECTOR).classes()).toContain(VERTICAL_CLASSNAME);
+    expect(wrapper.find(VERTICAL_ITEM_SELECTOR).exists()).toBe(true);
   });
 
   it('validates requiredness', () => {

@@ -8,6 +8,7 @@
       ['field--minimized-label']: minimizedLabel,
       ['field--disabled']: disabled,
       ['field--grouped']: grouped,
+      ['field--unlabelled']: unlabelled,
     }"
   >
     <div
@@ -104,6 +105,9 @@ export default {
     hasError() {
       return Boolean(this.error);
     },
+    unlabelled() {
+      return this.label === '';
+    },
   },
 };
 </script>
@@ -141,7 +145,7 @@ export default {
     flex: 1;
     position: relative;
 
-    #{$root}--grouped & {
+    #{$root}--grouped:not(#{$root}--unlabelled) & {
       padding-top: $stack-m;
       margin-top: $stack-s;
     }

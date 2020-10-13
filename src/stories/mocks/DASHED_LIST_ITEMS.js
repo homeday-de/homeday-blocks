@@ -1,10 +1,10 @@
 export default [
   {
-    label: 'item 1',
+    label: 'Kaltmiete (wohnen) (pro Monat)',
     value: '1 (value)',
   },
   {
-    label: 'Item 2',
+    label: 'Kaltmiete (Kosten) (Wohnen) (pro Monat)',
     value: '2 (value)',
     secondaryValue: '2 (secondaryValue)',
   },

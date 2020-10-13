@@ -3,6 +3,7 @@
  */
 module.exports = {
   globalSetup: '<rootDir>/tests/unit/globalSetup.js',
+  setupFiles: ['<rootDir>/tests/unit/setup.js'],
   collectCoverageFrom: [
     'src/components/**/*.vue',
     'src/services/**/*.js',
