@@ -128,9 +128,6 @@ export default {
       this.validate();
     },
   },
-  mounted() {
-    console.log('attrs', this.$attrs);
-  },
   methods: {
     getItemName({ value }) {
       return `${this.name}-${value}`;
