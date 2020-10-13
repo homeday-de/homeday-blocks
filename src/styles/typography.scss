@@ -1,53 +1,62 @@
-@function pow($number, $exponent) {
-  $value: 1;
-
-  @if $exponent > 0 {
-    @for $i from 1 through $exponent {
-      $value: $value * $number;
-    }
-  } @else if $exponent < 0 {
-    @for $i from 1 through -$exponent {
-      $value: $value / $number;
-    }
-  }
-
-  @return $value;
-}
-
 @function rem-calc($size) {
   $remSize: $size / 16;
   @return #{$remSize}rem;
 }
 
 @mixin font($style) {
-  @if ($style == "DS-400") {
-    font-size: rem-calc(16);
-    font-weight: 400;
+  @if ($style == "DS-60") {
+    font-size: rem-calc(12);
     line-height: 1.5;
+  }
+
+  @if ($style == "DS-80") {
+    font-size: rem-calc(8);
+    line-height: 1.334;
+  }
+
+  @if ($style == "DS-100") {
+    font-size: rem-calc(16);
+    line-height: 1.5;
+  }
+
+  @if ($style == "DS-200") {
+    font-size: rem-calc(20);
+    line-height: 1.6;
+  }
+
+  @if ($style == "DS-300") {
+    font-size: rem-calc(24);
+    line-height: 1.334;
+  }
+
+  @if ($style == "DS-400") {
+    font-size: rem-calc(32);
+    line-height: 1.25;
   }
 
   @if ($style == "DS-500") {
-    font-size: rem-calc(18);
-    font-weight: 400;
-    line-height: 1.5;
+    font-size: rem-calc(40);
+    line-height: 1.2;
+  }
+
+  @if ($style == "DS-600") {
+    font-size: rem-calc(48);
+    line-height: 1.1667;
+  }
+
+  @if ($style == "DS-700") {
+    font-size: rem-calc(64);
+    line-height: 1.125;
   }
 
   @if ($style == "DS-800") {
-    font-size: rem-calc(40);
-    font-weight: 700;
-    line-height: 1;
-  }
-
-  @if ($style == "DS-900") {
-    font-size: rem-calc(45);
-    font-weight: 700;
-    line-height: 1;
+    font-size: rem-calc(76);
+    line-height: 1.157;
   }
 }
 
 @mixin document-typography($scale) {
   font-size: 100%;
-  font-weight: 400;
   line-height: 1.65;
 
   p {
