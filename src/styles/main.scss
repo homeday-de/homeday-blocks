@@ -13,6 +13,12 @@ body {
   color: $primary-color;
 }
 
+hr {
+  border: 0;
+  width: 100%;
+  height: 2px;
+  background: getShade($quaternary-color, 60);
+}
 
 /** SPACING **/
 /* CLASSES UTILITIES GENERATION */

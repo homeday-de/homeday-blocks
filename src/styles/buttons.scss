@@ -37,6 +37,7 @@ $button-transition: all $time-s ease-in-out;
 }
 
 .btn {
+  position: relative;
   box-sizing: border-box;
   display: inline-flex;
   align-items: center;
@@ -58,6 +59,18 @@ $button-transition: all $time-s ease-in-out;
 
   &:hover {
     cursor: pointer;
+  }
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    border: 2px solid transparent;
+    transition: border-color .3s ease-in-out;
   }
 }
 
@@ -107,13 +120,9 @@ $button-transition: all $time-s ease-in-out;
 
 .btn--secondary {
   @include btn-ripple;
-
-  padding: #{$stack-s - 2px} #{$inline-l - 2px}; // adjustment for the border-width of 2px
-  border: 2px solid getShade($secondary-color, 110);
   color: getShade($secondary-color, 110);
   transition: 
     background-color 0.3s ease-in-out,
-    border 0.3s ease-in-out,
     box-shadow 0.3s ease-in-out,
     color 0.3s ease-in-out;
 
@@ -133,24 +142,36 @@ $button-transition: all $time-s ease-in-out;
     background-color: getShade($secondary-color, 110);
   }
 
+  &::before {
+    border-color: getShade($secondary-color, 110);
+  }
+  
   &.btn--dark-background {
-    border: 2px solid $white;
     color: $white;
 
     &:hover,
     &:focus {
-      border: 2px solid getShade($secondary-color, 110);
+      &::before {
+        border-color: getShade($secondary-color, 110);
+      }
+    }
+
+    &::before {
+      border-color: $white;
     }
   }
 
   &[disabled],
   &.btn--disabled {
-    border: 2px solid getShade($neutral-gray, 60);
     color: getShade($neutral-gray, 70);
     box-shadow: none;
 
-    &:after {
+    &::after {
       display: none;
+    }
+    
+    &::before {
+      border-color: getShade($neutral-gray, 60);
     }
 
     &:hover,
@@ -171,28 +192,32 @@ $button-transition: all $time-s ease-in-out;
 .btn--tertiary {
   @include btn-ripple(getShade($secondary-color, 80), multiply, 0.4);
 
-  padding: #{$stack-s - 2px} #{$inline-l - 2px}; // adjustment for the border-width of 2px
-  border: 2px solid transparent;
   background-color: getShade($secondary-color, 70);
   color: getShade($secondary-color, 110);
   transition: 
     background-color 0.3s ease-in-out,
-    border 0.3s ease-in-out,
     padding 0.3s ease-in-out;
 
   &:hover {
     background-color: transparent;
-    border: 2px solid getShade($secondary-color, 110);
+
+    &::before {
+      border-color: getShade($secondary-color, 110);
+    }
   }
 
   &:focus {
     background-color: transparent;
-    border: 2px solid getShade($secondary-color, 110);
+    &::before {
+      border-color: getShade($secondary-color, 110);
+    }
   }
 
   &:active {
     background-color: getShade($secondary-color, 70);
-    border: 2px solid transparent;
+    &::before {
+      border-color: transparent;
+    }
   }
 
   &.btn--dark-background {
@@ -201,29 +226,37 @@ $button-transition: all $time-s ease-in-out;
 
     &:hover,
     &:focus {
-      border: 2px solid white;
+      &::before {
+        border-color: $white;
+      }
     }
   }
 
   &[disabled],
   &.btn--disabled {
     background-color: getShade($neutral-gray, 40);
-    border: 2px solid transparent;
     color: getShade($neutral-gray, 70);
     box-shadow: none;
 
-    &:after {
+    &::after {
       display: none;
+    }
+
+    &::before {
+      border-color: transparent;
     }
 
     &:hover,
     &:active,
     &:focus {
       background-color: getShade($neutral-gray, 40);
-      border: 2px solid transparent;
       cursor: default;
       box-shadow: none;
       transform: none;
+
+      &::before {
+        border-color: transparent;
+      }
     }
 
     &.btn--dark-background {
@@ -291,12 +324,15 @@ $button-transition: all $time-s ease-in-out;
 }
 
 .btn--ghost {
-  border: 2px solid getShade($secondary-color, 110);
   font-size: 16px;
   padding: 0 $inline-m;
   color: getShade($secondary-color, 110);
   transition: $button-transition;
   height: 52px;
+
+  &::before {
+    border-color: getShade($secondary-color, 110);
+  }
 
   &:hover {
     transform: translateY(-1px);
@@ -315,11 +351,14 @@ $button-transition: all $time-s ease-in-out;
   &--white {
     background-color: transparent;
     color: $white;
-    border: 2px solid $white;
     
     &:hover {
       border-color: $white;
       background-color: inherit;
+    }
+
+    &::before {
+      border-color: $white;
     }
   }
 }
