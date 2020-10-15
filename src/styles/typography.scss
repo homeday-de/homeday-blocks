@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 @import './_variables';
 @import './deprecated_font';
 
-=======
->>>>>>> :lipstick: DS Typography mixin
 @function rem-calc($size) {
   $remSize: $size / 16;
   @return #{$remSize}rem;
@@ -14,7 +11,6 @@
     font-size: rem-calc(12);
     line-height: 1.5;
   }
-<<<<<<< HEAD
   @else if ($style == "DS-80") {
     font-size: rem-calc(12);
     line-height: 1.334;
@@ -58,58 +54,6 @@
 
 @mixin hd-typography() {
   font-family: $font-primary;
-=======
-
-  @if ($style == "DS-80") {
-    font-size: rem-calc(8);
-    line-height: 1.334;
-  }
-
-  @if ($style == "DS-100") {
-    font-size: rem-calc(16);
-    line-height: 1.5;
-  }
-
-  @if ($style == "DS-200") {
-    font-size: rem-calc(20);
-    line-height: 1.6;
-  }
-
-  @if ($style == "DS-300") {
-    font-size: rem-calc(24);
-    line-height: 1.334;
-  }
-
-  @if ($style == "DS-400") {
-    font-size: rem-calc(32);
-    line-height: 1.25;
-  }
-
-  @if ($style == "DS-500") {
-    font-size: rem-calc(40);
-    line-height: 1.2;
-  }
-
-  @if ($style == "DS-600") {
-    font-size: rem-calc(48);
-    line-height: 1.1667;
-  }
-
-  @if ($style == "DS-700") {
-    font-size: rem-calc(64);
-    line-height: 1.125;
-  }
-
-  @if ($style == "DS-800") {
-    font-size: rem-calc(76);
-    line-height: 1.157;
-  }
-}
-
-@mixin document-typography($scale) {
-  font-size: 100%;
-  line-height: 1.65;
->>>>>>> :lipstick: DS Typography mixin
 
   // h1, h2, h3, h4, h5 {
   //   margin-bottom: .7em; // TBD
