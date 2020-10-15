@@ -194,16 +194,28 @@ export default {
     #{$root}--errored & {
       color: $error-color;
     }
+
+    @mixin minimized {
+      transform: translateY(-50%) scale(0.75);
+    }
+
     #{$root}--active &,
     #{$root}--filled &,
     #{$root}--minimized-label & {
-      transform: translateY(-50%) scale(0.75);
+      @include minimized;
     }
+    // We are seperating this declaration from the block above
+    // because non-webkit engines will ignore the whole block, e.g. Gecko
+    input:-webkit-autofill + & {
+      @include minimized;
+    }
+
     #{$root}:hover:not(#{$root}--active) &,
     #{$root}--filled &,
     #{$root}--disabled & {
       color: getShade($quaternary-color, 80);
     }
+
     #{$root}--active & {
       color: getShade($secondary-color, 110);
     }
