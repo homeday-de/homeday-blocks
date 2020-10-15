@@ -58,6 +58,10 @@ import {
 
 export default {
   name: 'HdInput',
+  inject: [
+    'addFormField',
+    'removeFormField',
+  ],
   inheritAttrs: false,
   props: {
     label: {
@@ -159,6 +163,12 @@ export default {
     customRules() {
       if (this.error) this.validate();
     },
+  },
+  created() {
+    this.addFormField(this);
+  },
+  beforeDestroy() {
+    this.removeFormField(this);
   },
   methods: {
     clearInput() {

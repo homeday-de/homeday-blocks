@@ -69,6 +69,10 @@ import { checkIcon } from 'homeday-blocks/src/assets/small-icons';
 
 export default {
   name: 'HdCheckbox',
+  inject: [
+    'addFormField',
+    'removeFormField',
+  ],
   components: {
     HdIcon,
   },
@@ -125,6 +129,12 @@ export default {
     isChecked() {
       return this.value;
     },
+  },
+  created() {
+    this.addFormField(this);
+  },
+  beforeDestroy() {
+    this.removeFormField(this);
   },
   methods: {
     toggle() {
