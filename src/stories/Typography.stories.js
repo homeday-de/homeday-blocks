@@ -1,11 +1,15 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
 import { withKnobs, select, number } from '@storybook/addon-knobs';
+import { component as VueCodeHighlight } from 'vue-code-highlight';
 import './styles/Typography.scss';
 
 storiesOf('Typography/Typographies', module)
   .addDecorator(withKnobs)
   .add('Typography mixins 🎛', () => ({
+    components: {
+      VueCodeHighlight,
+    },
     props: {
       variation: {
         default: select('Font variation', [
@@ -27,26 +31,31 @@ storiesOf('Typography/Typographies', module)
       <p :class="variation">
         <b>{{variation}}</b>: Die heiße Zypernsonne quälte Max und Victoria ja böse auf dem Weg bis zur Küste.
       </p>
-      <p style="margin-top: 1em;">
-        Usage: 
-      </p>
-      <p style="font-family: 'Courier New', courier, sans; background: #f6f6f6; padding: 1em 0.7em;">
-        <b>@include font(</b>'{{ variation }}'<b>)</b>;
+      <p style="margin-top: 3em;">
+        Usage:
+        <vue-code-highlight language="scss">
+<pre>myElementSelector {
+  @include font('{{ variation }}'): 
+}</pre>
+        </vue-code-highlight>
       </p>
     </div>
     `,
   }))
-  .add('Ready to use Typographies 🎛', () => ({
+  .add('Scale Ratio Typographies 🎛', () => ({
+    components: {
+      VueCodeHighlight,
+    },
     props: {
       variation: {
         default: select('Typography variation', {
-          'Minor Second': 'ty-minor-second',
-          'Minor Third': 'ty-minor-third',
-          'Major Third': 'ty-major-third',
-          'Perfect Fourth': 'ty-perfect-fourth',
-          'Augmented fourth': 'ty-augmented-fourth',
-          'Perfect Fifth': 'ty-perfect-fifth',
-          'Golden Ration': 'ty-golden-ratio',
+          'Minor Second (1.125)': 'ty-minor-second',
+          'Minor Third (1.2)': 'ty-minor-third',
+          'Major Third (1.25)': 'ty-major-third',
+          'Perfect Fourth (1.333)': 'ty-perfect-fourth',
+          'Augmented fourth (1.414)': 'ty-augmented-fourth',
+          'Perfect Fifth (1.5)': 'ty-perfect-fifth',
+          'Golden Ration (1.618)': 'ty-golden-ratio',
         },
         'ty-minor-second'),
       },
@@ -61,7 +70,15 @@ storiesOf('Typography/Typographies', module)
       },
     },
     template: `
-    <div>
+      <div>
+        <p>
+        Usage: 
+        <vue-code-highlight language="scss">
+<pre>bodyOrMyElementSelector {
+  @include document-typography(1.333); // Perfect Fourth
+}</pre>
+        </vue-code-highlight>
+        </p>
         <div :class="variation" :style="style">
           <h1>H1. Hello, world!</h1>
           <p>
