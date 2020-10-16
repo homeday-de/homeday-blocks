@@ -249,7 +249,6 @@ export default {
 
 <style lang="scss" scoped>
 @import 'homeday-blocks/src/styles/mixins.scss';
-@import 'homeday-blocks/src/styles/inputs.scss';
 
 @keyframes pager-ripple {
   0% {

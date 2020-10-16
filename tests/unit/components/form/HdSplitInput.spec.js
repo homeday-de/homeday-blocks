@@ -1,11 +1,10 @@
 import { wrapperFactoryBuilder } from 'tests/unit/helpers';
-import FIELD_CLASSES from './FIELD_CLASSES';
 import HdSplitInput from '@/components/form/HdSplitInput.vue';
 
-const ERROR_SELECTOR = '.field__error';
-const HELPER_SELECTOR = '.field__error--helper';
+const HELPER_SELECTOR = '.field__helper';
 const SEPARATOR_SELECTOR = '.field__double-input__separator__symbol';
 const ICON_SELECTOR = '.field__icon';
+const FIELD_ERROR_CLASS = 'field--errored';
 
 const TEST_VALUE = 'new value';
 const TEST_FIELDS = [
@@ -115,8 +114,10 @@ describe('HdSplitInput', () => {
 
     await wrapper.vm.$nextTick();
 
-    expect(wrapper.find(ERROR_SELECTOR).text()).toBeTruthy();
-    expect(wrapper.classes()).toContain(FIELD_CLASSES.INVALID);
+    const $helper = wrapper.find(HELPER_SELECTOR);
+
+    expect($helper.text().length).toBeGreaterThan(1);
+    expect(wrapper.classes()).toContain(FIELD_ERROR_CLASS);
 
     wrapper.setProps({
       required: false,
@@ -140,9 +141,8 @@ describe('HdSplitInput', () => {
 
   it('Can render an icon', async () => {
     const wrapper = wrapperBuilder();
-    const ICON_PATH = 'fake/icon.svg';
+    const ICON_PATH = 'https://placeholder.pics/svg/24';
 
-    expect(wrapper.classes()).not.toContain(FIELD_CLASSES.HAS_ICON);
     expect(wrapper.find(ICON_SELECTOR).exists()).toBe(false);
 
     wrapper.setProps({
@@ -151,7 +151,6 @@ describe('HdSplitInput', () => {
 
     await wrapper.vm.$nextTick();
 
-    expect(wrapper.classes()).toContain(FIELD_CLASSES.HAS_ICON);
     expect(wrapper.find(ICON_SELECTOR).exists()).toBe(true);
   });
 });
