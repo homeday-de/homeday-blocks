@@ -66,6 +66,10 @@ export default {
       type: Array,
       default: () => [],
     },
+    name: {
+      type: String,
+      required: true,
+    },
     // Array of items, each item (Object) should have `label` and `value` properties
     items: {
       type: Array,

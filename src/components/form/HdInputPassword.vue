@@ -2,6 +2,7 @@
   <HdInput
     ref="input"
     :type="type"
+    :name="name"
     v-model="computedValue"
     v-bind="$attrs"
     class="password-input"
@@ -43,6 +44,10 @@ export default {
     value: {
       type: String,
       default: '',
+    },
+    name: {
+      type: String,
+      required: true,
     },
   },
   data() {

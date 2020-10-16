@@ -1,7 +1,7 @@
 <template>
   <FieldBase
     v-bind="$attrs"
-    :name="fields[0].name"
+    :name="name"
     :error="error"
     :helper="helper"
     :active="isActive"
@@ -65,6 +65,10 @@ export default {
     value: {
       type: Object,
       default: () => ({}),
+    },
+    name: {
+      type: String,
+      required: true,
     },
     separator: {
       type: String,
