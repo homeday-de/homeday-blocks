@@ -27,9 +27,13 @@
 import HdInput from 'homeday-blocks/src/components/form/HdInput.vue';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import { visibilityOnIcon } from 'homeday-blocks/src/assets/small-icons';
+import formField from './formFieldMixin';
 
 export default {
   name: 'HdInputPassword',
+  mixins: [
+    formField,
+  ],
   inheritAttrs: false,
   components: {
     HdInput,

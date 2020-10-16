@@ -39,9 +39,13 @@
 import merge from 'lodash/merge';
 import { getMessages } from 'homeday-blocks/src/lang';
 import FieldBase from './FieldBase.vue';
+import formField from './formFieldMixin';
 
 export default {
   name: 'HdSplitInput',
+  mixins: [
+    formField,
+  ],
   components: {
     FieldBase,
   },

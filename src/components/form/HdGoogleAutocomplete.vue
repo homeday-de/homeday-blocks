@@ -38,9 +38,13 @@ import merge from 'lodash/merge';
 import { getMessages } from 'homeday-blocks/src/lang';
 import { getGoogleAPI } from 'homeday-blocks/src/services/googleAPI';
 import TextFieldBase from './TextFieldBase.vue';
+import formField from './formFieldMixin';
 
 export default {
   name: 'HdGoogleAutocomplete',
+  mixins: [
+    formField,
+  ],
   components: {
     TextFieldBase,
   },

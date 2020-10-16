@@ -42,14 +42,14 @@ import {
   date as validateDate,
 } from 'homeday-blocks/src/services/formValidation';
 import TextFieldBase from './TextFieldBase.vue';
+import formField from './formFieldMixin';
 
 export default {
   name: 'HdInput',
-  inject: [
-    'addFormField',
-    'removeFormField',
-  ],
   inheritAttrs: false,
+  mixins: [
+    formField,
+  ],
   components: {
     TextFieldBase,
   },
@@ -136,12 +136,6 @@ export default {
     customRules() {
       if (this.error) this.validate();
     },
-  },
-  created() {
-    this.addFormField(this);
-  },
-  beforeDestroy() {
-    this.removeFormField(this);
   },
   methods: {
     clearInput() {

@@ -7,6 +7,7 @@
 <script>
 import _cloneDeep from 'lodash/cloneDeep';
 import _isEqual from 'lodash/isEqual';
+import _isNil from 'lodash/isNil';
 import { scrollToEl } from 'homeday-blocks/src/services/scrolling';
 
 export default {
@@ -68,6 +69,11 @@ export default {
       }
     },
     addField(fieldToAdd) {
+      if (_isNil(fieldToAdd.name)) {
+        console.warn('A field must have a `name` property to be added to the HdForm');
+        return;
+      }
+
       this.fields.push(fieldToAdd);
 
       // If a new field was dynamically added to the form, we add its value to the initial form data
