@@ -1,17 +1,23 @@
 <template>
-
-  <section
-    @keydown="setUsingMouse(false)"
-    @mousedown="setUsingMouse(true)"
+  <FieldBase
+    v-bind="$attrs"
+    :name="name"
+    :error="error"
+    :helper="helper"
+    :active="isActive"
+    :filled="isFilled"
+    :disabled="disabled"
+    minimized-label
+    grouped
+    #default="{ hasError }"
   >
     <div
       role="radiogroup"
       class="radio-wrapper"
       :class="{
-        'radio-wrapper--errored': hasError,
-        'radio-wrapper--disabled': disabled,
-        'radio-wrapper--vertical': vertical,
-        'radio-wrapper--using-mouse': isUsingMouse,
+        ['radio-wrapper--errored']: hasError,
+        ['radio-wrapper--disabled']: disabled,
+        ['radio-wrapper--vertical']: vertical,
       }"
     >
       <div
@@ -47,16 +53,19 @@
         </label>
       </div>
     </div>
-    <p v-if="error && !disabled" class="field__error">{{ error }}</p>
-  </section>
+  </FieldBase>
 </template>
 
 <script>
 import merge from 'lodash/merge';
 import { getMessages } from 'homeday-blocks/src/lang';
+import FieldBase from './FieldBase.vue';
 
 export default {
   name: 'HdRadio',
+  components: {
+    FieldBase,
+  },
   props: {
     name: {
       type: String,
@@ -94,8 +103,8 @@ export default {
   data() {
     return {
       error: null,
+      helper: null,
       isActive: false,
-      isUsingMouse: false,
     };
   },
   computed: {
@@ -107,14 +116,11 @@ export default {
         return this.value;
       },
       set(value) {
-        this.radioSelect(value);
+        this.$emit('input', value);
       },
     },
     isFilled() {
       return this.value !== null && this.value !== undefined && this.value !== '';
-    },
-    hasError() {
-      return !!this.error;
     },
   },
   watch: {
@@ -198,6 +204,12 @@ export default {
     hideError() {
       this.error = null;
     },
+    showHelper(helper) {
+      this.helper = helper;
+    },
+    hideHelper() {
+      this.helper = null;
+    },
     validate() {
       if (this.required && !this.isFilled) {
         this.showError(this.t.FORM.VALIDATION.REQUIRED);
@@ -207,27 +219,17 @@ export default {
 
       return !this.error;
     },
-    setUsingMouse(usingMouse) {
-      this.isUsingMouse = usingMouse;
-    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-@import "homeday-blocks/src/styles/mixins.scss";
-@import "homeday-blocks/src/styles/inputs.scss";
-
-.field__error {
-  position: relative;
-  display: block;
-}
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .radio-wrapper {
   position: relative;
   flex: 1;
   display: flex;
-  flex-direction: row;
 }
 
 .radio-wrapper--vertical {
@@ -303,7 +305,7 @@ export default {
     &:active,
     &:focus {
       transition: ease-in-out $time-s;
-      box-shadow: 0 0 0 7px getShade($dodger-blue, 90);
+      box-shadow: 0 0 0 7px getShade($secondary-color, 90);
     }
 
     &::before {
@@ -335,13 +337,13 @@ export default {
 }
 
 .radio--selected > .radio__circle {
-  border-color: getShade($dodger-blue, 110);
-  background-color: getShade($dodger-blue, 110);
+  border-color: getShade($secondary-color, 110);
+  background-color: getShade($secondary-color, 110);
 
   &:hover,
   &:active,
   &:focus {
-    box-shadow: 0 0 0 7px rgba(getShade($dodger-blue, 110), 0.15);
+    box-shadow: 0 0 0 7px rgba(getShade($secondary-color, 110), 0.15);
   }
 
   &:before {

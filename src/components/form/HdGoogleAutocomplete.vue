@@ -1,7 +1,15 @@
 <template>
-  <div
-    :class="fieldClasses"
-    class="field field--input"
+  <TextFieldBase
+    v-bind="$attrs"
+    :name="name"
+    :error="error"
+    :helper="helper"
+    :active="isActive"
+    :filled="isFilled"
+    :valid="isValid"
+    :disabled="disabled"
+    @clear-click="clearInput"
+    @status-click="focusInput"
   >
     <input
       ref="input"
@@ -19,41 +27,25 @@
       @focus="handleFocus"
       @blur="handleBlur"
     >
-    <label
-      v-if="label"
-      :for="name"
-      class="field__label"
-    >
-      {{ label }}
-    </label>
-    <p
-      v-if="error"
-      class="field__error"
-    >
-      {{ error }}
-    </p>
-    <p
-      v-else-if="helper"
-      class="field__error field__error--helper"
-      v-html="helper"
-    />
-    <span class="field__border"/>
-  </div>
+    <template #input-right>
+      <slot name="input-right" />
+    </template>
+  </TextFieldBase>
 </template>
 
 <script>
 import merge from 'lodash/merge';
 import { getMessages } from 'homeday-blocks/src/lang';
 import { getGoogleAPI } from 'homeday-blocks/src/services/googleAPI';
+import TextFieldBase from './TextFieldBase.vue';
 
 export default {
   name: 'HdGoogleAutocomplete',
+  components: {
+    TextFieldBase,
+  },
   props: {
     apiKey: {
-      type: String,
-      default: '',
-    },
-    label: {
       type: String,
       default: '',
     },
@@ -112,16 +104,8 @@ export default {
     t() {
       return merge(getMessages(this.lang), this.texts);
     },
-    isEmpty() {
-      return this.value === null || this.value === undefined || this.value === '';
-    },
-    fieldClasses() {
-      return {
-        'field--active': this.isActive,
-        'field--filled': !this.isEmpty,
-        'field--invalid': this.isValid === false,
-        'field--disabled': this.disabled,
-      };
+    isFilled() {
+      return this.value !== null && this.value !== undefined && this.value !== '';
     },
   },
   watch: {
@@ -227,9 +211,12 @@ export default {
       });
     },
     clearInput() {
-      this.$refs.input.focus();
+      this.focusInput();
       this.hideError();
       this.$emit('input', '');
+    },
+    focusInput() {
+      this.$refs.input.focus();
     },
     handleFocus() {
       this.isActive = true;
@@ -252,10 +239,13 @@ export default {
       this.isValid = true;
       this.error = null;
     },
+    hideHelper() {
+      this.helper = null;
+    },
     validate() {
-      if (this.required && this.isEmpty) {
+      if (this.required && !this.isFilled) {
         this.showError(this.t.FORM.VALIDATION.REQUIRED);
-      } else if (this.customRules.length && !this.isEmpty) {
+      } else if (this.customRules.length && this.isFilled) {
         this.validateCustomRules();
       } else {
         this.hideError();
@@ -273,21 +263,3 @@ export default {
   },
 };
 </script>
-
-<style scoped lang="scss">
-@import 'homeday-blocks/src/styles/mixins.scss';
-@import 'homeday-blocks/src/styles/inputs.scss';
-.field {
-  &__label {
-    left: 0;
-  }
-  &__error {
-    width: 100%;
-    text-align: left;
-    &--helper {
-      display: block;
-      color: getShade($quaternary-color, 80);
-    }
-  }
-}
-</style>
