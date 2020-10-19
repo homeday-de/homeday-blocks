@@ -1,9 +1,12 @@
 @import '../typography';
 
+<<<<<<< HEAD
 .hd-typography {
   @include hd-typography();
 }
 
+=======
+>>>>>>> :recycle: refactoring based on PR comments
 .font-DS-60 {
   @include font('DS-60');
 }
