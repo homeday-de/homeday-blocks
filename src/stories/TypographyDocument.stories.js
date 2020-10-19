@@ -1,54 +1,22 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { storiesOf } from '@storybook/vue';
-import { withKnobs, select, number } from '@storybook/addon-knobs';
 import { component as VueCodeHighlight } from 'vue-code-highlight';
 import './styles/Typography.scss';
+import '../styles/utility/typographyUtility.scss';
 
-storiesOf('Typography/Typographies', module)
-  .addDecorator(withKnobs)
-  .add('Typography mixins 🎛', () => ({
-    components: {
-      VueCodeHighlight,
-    },
-    props: {
-      variation: {
-        default: select('Font variation', [
-          'DS-60',
-          'DS-80',
-          'DS-100',
-          'DS-200',
-          'DS-300',
-          'DS-400',
-          'DS-500',
-          'DS-600',
-          'DS-700',
-          'DS-800',
-        ], 'DS-60'),
+export default {
+  title: 'Typography/Document Typography',
+  argTypes: {
+    variation: {
+      description: 'Examples of ratios to be used as parameter for the _document-typography_ SCSS mixin',
+      table: {
+        type: {
+          summary: 'something short',
+          detail: 'something really really long',
+        },
       },
-    },
-    template: `
-    <div>
-      <p :class="variation">
-        <b>{{variation}}</b>: Die heiße Zypernsonne quälte Max und Victoria ja böse auf dem Weg bis zur Küste.
-      </p>
-      <p style="margin-top: 3em;">
-        Usage:
-        <vue-code-highlight language="scss">
-<pre>myElementSelector {
-  @include font('{{ variation }}'): 
-}</pre>
-        </vue-code-highlight>
-      </p>
-    </div>
-    `,
-  }))
-  .add('Scale Ratio Typographies 🎛', () => ({
-    components: {
-      VueCodeHighlight,
-    },
-    props: {
-      variation: {
-        default: select('Typography variation', {
+      control: {
+        type: 'select',
+        options: {
           'Minor Second (1.125)': 'ty-minor-second',
           'Minor Third (1.2)': 'ty-minor-third',
           'Major Third (1.25)': 'ty-major-third',
@@ -57,26 +25,56 @@ storiesOf('Typography/Typographies', module)
           'Perfect Fifth (1.5)': 'ty-perfect-fifth',
           'Golden Ration (1.618)': 'ty-golden-ratio',
         },
-        'ty-minor-second'),
-      },
-      fontSize: {
-        type: Number,
-        default: number('fontSize', 16, { min: 0, max: 900 }),
       },
     },
-    computed: {
-      style() {
-        return `margin-bottom: 30px; font-size: ${this.fontSize}px`;
+    fontSize: {
+      control: {
+        type: 'number',
       },
     },
-    template: `
+  },
+  args: {
+    variation: 'ty-minor-second',
+    fontSize: 16,
+  },
+};
+
+const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: {
+    VueCodeHighlight,
+  },
+  computed: {
+    ratio() {
+      switch (this.variation) {
+        case 'ty-minor-second':
+          return '1.125';
+        case 'ty-minor-third':
+          return '1.2';
+        case 'ty-major-third':
+          return '1.25';
+        case 'ty-perfect-fourth':
+          return '1.333';
+        case 'ty-augmented-fourth':
+          return '1.414';
+        case 'ty-perfect-fifth':
+          return '1.5';
+        default:
+          return '1.618';
+      }
+    },
+    style() {
+      return `margin-bottom: 30px; font-size: ${this.fontSize}px`;
+    },
+  },
+  template: `
       <div>
         <p>
-        Usage: 
+        This mixins returns a set of typography rules for most of the typography HTML elements.
         <vue-code-highlight language="scss">
-<pre>bodyOrMyElementSelector {
-  @include document-typography(1.333); // Perfect Fourth
-}</pre>
+bodyOrMyElementSelector {
+  @include document-typography({{ratio}});
+}
         </vue-code-highlight>
         </p>
         <div :class="variation" :style="style">
@@ -113,8 +111,8 @@ storiesOf('Typography/Typographies', module)
           </p>
         </div>
       </div>
-    `,
-    style: `
-      color: red;
-    `,
-  }));
+  `,
+});
+
+
+export const DocumentTypography = Template.bind({});
