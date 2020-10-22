@@ -26,6 +26,7 @@
         <label
           v-if="label"
           :for="name"
+          :id="name+'-label'"
           class="field__label"
         >
           {{ label }}

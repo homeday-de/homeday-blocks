@@ -1,55 +1,31 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import { storiesOf } from '@storybook/vue';
 import { HdCheckbox } from 'homeday-blocks';
 
-storiesOf('Components/Form/HdCheckbox', module)
-  .add('required', () => ({
-    components: { HdCheckbox },
-    template: `
-      <HdCheckbox
-        v-model="isChecked"
-        :required="true"
-        name="test"
-        label="T&C"
-        inner-label="I agree"
-      />
-    `,
-    data() {
-      return {
-        isChecked: false,
-      };
-    },
-  }))
-  .add('checked', () => ({
-    components: { HdCheckbox },
-    template: `
-      <HdCheckbox
-        v-model="isChecked"
-        name="test"
-        label="T&C"
-        inner-label="I agree"
-      />
-    `,
-    data() {
-      return {
-        isChecked: true,
-      };
-    },
-  }))
-  .add('disabled', () => ({
-    components: { HdCheckbox },
-    template: `
-      <HdCheckbox
-        v-model="isChecked"
-        :disabled="true"
-        name="test"
-        label="T&C"
-        inner-label="I agree"
-      />
-    `,
-    data() {
-      return {
-        isChecked: true,
-      };
-    },
-  }));
+export default {
+  title: 'Components/Form/HdCheckbox',
+  component: HdCheckbox,
+  args: {
+    name: 'test',
+    label: 'Terms and Conditions',
+    innerLabel: 'Accept',
+  },
+};
+
+export const Default = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { HdCheckbox },
+  data: () => ({
+    isChecked: false,
+  }),
+  template: `
+  <HdCheckbox
+    v-model="isChecked"
+    :name="name"
+    :label="label"
+    :innerLabel="innerLabel"
+    :required="required"
+    lang="de"
+    :disabled="disabled"
+    :indeterminate="indeterminate"
+  />
+  `,
+});

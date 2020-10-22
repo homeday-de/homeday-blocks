@@ -4,7 +4,7 @@ exports[`HdTextarea is rendered as expected 1`] = `
 <div class="field text-field">
   <!---->
   <div class="field__body">
-    <div class="field__main"><textarea autocomplete="on" id="test name" name="test name" placeholder="" class="textarea" style="height: 100px;"></textarea> <label for="test name" class="field__label">
+    <div class="field__main"><textarea autocomplete="on" id="test name" name="test name" placeholder="" class="textarea" style="height: 100px;"></textarea> <label for="test name" id="test name-label" class="field__label">
         test label
       </label>
       <div class="field__input-right"></div>

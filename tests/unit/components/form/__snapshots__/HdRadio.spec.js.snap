@@ -31,7 +31,7 @@ exports[`HdRadio is rendered as expected 1`] = `
             Cersei
           </label>
         </div>
-      </div> <label for="testRadio" class="field__label">
+      </div> <label for="testRadio" id="testRadio-label" class="field__label">
         test radio label
       </label>
       <div class="field__input-right"></div>
