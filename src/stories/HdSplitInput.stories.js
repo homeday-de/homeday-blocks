@@ -81,7 +81,7 @@ storiesOf('Components/Form/HdSplitInput', module)
       <HdSplitInput
         v-model="value"
         :fields="fields"
-        :icon="icon"
+        icon="fake/icon.svg"
         name="test"
         label="Label"
       />

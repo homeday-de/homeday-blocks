@@ -1,11 +1,10 @@
 import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import HdSelect from '@/components/form/HdSelect.vue';
 import ITEMS from '@/stories/mocks/FORM_ITEMS';
-import FIELD_CLASSES from './FIELD_CLASSES';
 
-const ERROR_SELECTOR = '.field__error';
-const HELPER_SELECTOR = '.field__error--helper';
+const HELPER_SELECTOR = '.field__helper';
 const ICON_SELECTOR = '.field__icon';
+const FIELD_ERROR_CLASS = 'field--errored';
 
 const wrapperBuilder = wrapperFactoryBuilder(HdSelect, {
   props: {
@@ -78,8 +77,8 @@ describe('HdSelect', () => {
 
     await wrapper.vm.$nextTick();
 
-    expect(wrapper.find(ERROR_SELECTOR).text()).toBeTruthy();
-    expect(wrapper.classes()).toContain(FIELD_CLASSES.INVALID);
+    expect(wrapper.find(HELPER_SELECTOR).text()).toBeTruthy();
+    expect(wrapper.classes()).toContain(FIELD_ERROR_CLASS);
 
     wrapper.setProps({
       required: false,
@@ -102,7 +101,6 @@ describe('HdSelect', () => {
     const wrapper = wrapperBuilder();
     const ICON_PATH = 'fake/icon.svg';
 
-    expect(wrapper.classes()).not.toContain(FIELD_CLASSES.HAS_ICON);
     expect(wrapper.find(ICON_SELECTOR).exists()).toBe(false);
 
     wrapper.setProps({
@@ -111,7 +109,6 @@ describe('HdSelect', () => {
 
     await wrapper.vm.$nextTick();
 
-    expect(wrapper.classes()).toContain(FIELD_CLASSES.HAS_ICON);
     expect(wrapper.find(ICON_SELECTOR).exists()).toBe(true);
   });
 });

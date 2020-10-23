@@ -7,9 +7,9 @@ import HdRadio from '@/components/form/HdRadio.vue';
 import ITEMS from '@/stories/mocks/FORM_ITEMS';
 
 // list of selectors we depend on
+const ITEM_SELECTOR = '.radio';
 const SELECTED_ITEM_SELECTOR = '.radio--selected';
 const VERTICAL_ITEM_SELECTOR = '.radio-wrapper--vertical';
-const ITEMS_SELECTOR = { ref: 'items' };
 
 const wrapperBuilder = wrapperFactoryBuilder(HdRadio, {
   props: {
@@ -40,7 +40,7 @@ describe('HdRadio', () => {
     const wrapper = wrapperBuilder();
     const ITEM_INDEX = 1;
 
-    wrapper.findAll(ITEMS_SELECTOR).at(ITEM_INDEX).trigger('click');
+    wrapper.findAll(ITEM_SELECTOR).at(ITEM_INDEX).trigger('click');
 
     expect(wrapper.emitted('input')[0][0]).toEqual(ITEMS[ITEM_INDEX].value);
   });
@@ -55,7 +55,7 @@ describe('HdRadio', () => {
     const getLastInputEventPayload = () => getLastEventPayload({ wrapper, eventName: 'input' });
     // The keydown event handler is the same for all the items
     // so it doesn't matter which items fires it. We pick the first one in this test
-    const itemWrapper = wrapper.find(ITEMS_SELECTOR);
+    const itemWrapper = wrapper.find(ITEM_SELECTOR);
 
     // We test the "next" keys
     ['Down', 'Right'].forEach((key) => {

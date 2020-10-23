@@ -5,6 +5,9 @@ export default {
   title: 'Components/Form/HdRadio',
   component: HdRadio,
   argTypes: {
+    label: {
+      control: { type: 'text' },
+    },
     disabled: {
       control: { type: 'boolean' },
     },
@@ -34,6 +37,7 @@ export default {
     },
   },
   args: {
+    label: 'Label',
     disabled: false,
     items: ITEMS,
     lang: 'de',
@@ -51,6 +55,7 @@ export default {
   <HdRadio
     v-model="myDataProperty"
     :name="name"
+    :label="label"
     :items="items"
     :required="required"
     :vertical="vertical"
@@ -76,6 +81,7 @@ const Template = (args, { argTypes }) => ({
       <HdRadio
         v-model="selectedValue"
         :name="name"
+        :label="label"
         :items="items"
         :required="required"
         :vertical="vertical"
@@ -198,6 +204,31 @@ Check the code bellow for a better example.
     },
   }
 </script>
+      `,
+    },
+  },
+};
+
+export const Unlabelled = Template.bind({});
+Unlabelled.args = {
+  label: '',
+};
+Unlabelled.parameters = {
+  docs: {
+    description: {
+      story: `If no value or an empty string is passed as the \`label\` prop,
+       the component trims the label area to avoid unneeded empty space`,
+    },
+    source: {
+      code: `
+<template>
+  <HdRadio
+    v-model="myDataProperty"
+    :name="name"
+    :items="items"
+    label=""
+  />
+</template>
       `,
     },
   },
