@@ -9,6 +9,7 @@ import _cloneDeep from 'lodash/cloneDeep';
 import _isEqual from 'lodash/isEqual';
 import _isNil from 'lodash/isNil';
 import { scrollToEl } from 'homeday-blocks/src/services/scrolling';
+import { formatNestedData } from 'homeday-blocks/src/services/utils';
 
 export default {
   name: 'HdForm',
@@ -54,7 +55,7 @@ export default {
     submit() {
       const invalidFields = this.getInvalidFields();
       const isValid = invalidFields.length === 0;
-      const formData = this.getFormData();
+      const formData = formatNestedData(this.getFormData());
       const hasChanged = !_isEqual(formData, this.initialFormData);
 
       this.$emit('submit', {
