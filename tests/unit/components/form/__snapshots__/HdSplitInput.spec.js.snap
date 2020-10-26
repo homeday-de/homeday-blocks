@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HdSplitInput is rendered as expected 1`] = `
-<div class="field field--minimized-label" name="test name" label="test label">
+<div class="field field--minimized-label" label="test label">
   <!---->
   <div class="field__body">
     <div class="field__main">
@@ -10,7 +10,7 @@ exports[`HdSplitInput is rendered as expected 1`] = `
           <div class="split-input__separator-symbol">–</div>
         </div><input placeholder="Input 2" name="input2" class="split-input__input">
         <!---->
-      </div> <label for="input1" class="field__label">
+      </div> <label for="test name" class="field__label">
         test label
       </label>
       <div class="field__input-right"></div>

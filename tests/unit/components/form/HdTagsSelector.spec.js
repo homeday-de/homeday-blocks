@@ -11,6 +11,7 @@ const ADD_BUTTON_SELECTOR = 'panelToggle';
 const wrapperBuilder = wrapperFactoryBuilder(HdTagsSelector, {
   props: {
     items: ITEMS,
+    name: 'test-tags-selector',
     value: [ITEMS[0], ITEMS[1]],
   },
 });
