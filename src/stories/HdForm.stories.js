@@ -11,7 +11,7 @@ export default {
   argTypes: {
     scrollToInvalidField: {
       control: 'boolean',
-      description: 'If set to true and the form as an invalid field, the window will scroll to the latter when the form is submitted',
+      description: 'If set to true and the form is invalid, the window will scroll to the first invalid field when the form is submitted',
     },
   },
   args: {

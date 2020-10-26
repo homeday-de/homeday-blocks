@@ -70,7 +70,7 @@ export default {
     },
     addField(fieldToAdd) {
       if (_isNil(fieldToAdd.name)) {
-        console.warn('A field must have a `name` property to be added to the HdForm');
+        console.warn('The field must have a `name` property to be added to the HdForm', fieldToAdd);
         return;
       }
 

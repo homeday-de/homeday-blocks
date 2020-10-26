@@ -8,7 +8,7 @@ export default {
     },
   },
   // We overwrite the injected methods for the children
-  // to avoid add the children fields to the form as well
+  // to avoid adding the children fields to the form as well
   // in case the component is composed of other form field, e.g. HdInputFormatter
   provide: {
     addFormField: () => {},
