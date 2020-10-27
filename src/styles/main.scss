@@ -121,3 +121,11 @@ $font-list: ('headline', 'headline'),
     @include font($font-name);
   }
 }
+
+
+/** Elevation **/
+@for $level from 0 through length($elevation-levels) {
+  .elevation-#{$level} {
+    @include elevation($level);
+  }
+}
