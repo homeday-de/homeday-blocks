@@ -95,43 +95,6 @@ export default {
   place-self: center;
   border-radius: 2px;
 
-  &--level-0 {
-    @include elevation(0);
-  }
-  &--level-1 {
-    @include elevation(1);
-  }
-  &--level-2 {
-    @include elevation(2);
-  }
-  &--level-3 {
-    @include elevation(3);
-  }
-  &--level-4 {
-    @include elevation(4);
-  }
-  &--level-5 {
-    @include elevation(5);
-  }
-  &--level-6 {
-    @include elevation(6);
-  }
-  &--level-7 {
-    @include elevation(7);
-  }
-  &--level-8 {
-    @include elevation(8);
-  }
-  &--level-9 {
-    @include elevation(9);
-  }
-  &--level-10 {
-    @include elevation(10);
-  }
-  &--level-11 {
-    @include elevation(11);
-  }
-
   &__label {
     position: absolute;
     top: 50%;
