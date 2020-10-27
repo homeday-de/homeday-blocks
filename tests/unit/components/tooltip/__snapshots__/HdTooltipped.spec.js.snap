@@ -6,7 +6,7 @@ exports[`HdTooltipped renders full 1`] = `
 <div class="field text-field">
   <!---->
   <div class="field__body">
-    <div class="field__main"><input autocomplete="on" type="text" id="testInput" name="testInput" placeholder="" data-lpignore="true" label="dolor sit ammet" class="input"> <label for="testInput" id="testInput-label" class="field__label">
+    <div class="field__main"><input autocomplete="on" type="text" id="testInput" name="testInput" placeholder="" data-lpignore="true" label="dolor sit ammet" class="input"> <label for="testInput" id="test-input-label" class="field__label">
         dolor sit ammet
       </label>
       <div class="field__input-right"></div>

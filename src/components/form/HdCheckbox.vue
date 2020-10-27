@@ -9,6 +9,7 @@
     :disabled="disabled"
     minimized-label
     grouped
+    #default="{ labelId }"
   >
     <div
       @keydown="setUsingMouse(false)"
@@ -31,7 +32,7 @@
         v-model="isChecked"/>
       <div
         :aria-checked="isChecked"
-        :aria-labelledby="label ? `${name}-label` : null"
+        :aria-labelledby="labelId"
         :tabindex="disabled ? -1 : 0"
         class="checkbox__inner"
         role="checkbox"
@@ -128,8 +129,8 @@ export default {
       return this.value;
     },
     statusIcon() {
-      if (this.isChecked) return checkIcon;
       if (this.indeterminate) return minusIcon;
+      if (this.isChecked) return checkIcon;
       return null;
     },
   },
@@ -157,6 +158,11 @@ export default {
       this.isUsingMouse = usingMouse;
     },
   },
+  watch: {
+    isChecked() {
+      this.indeterminate = false;
+    },
+  },
 };
 </script>
 
@@ -164,14 +170,16 @@ export default {
 @import 'homeday-blocks/src/styles/mixins.scss';
 
 .field {
-  margin-bottom: $stack-m;;
+  margin-bottom: $stack-m;
 }
 
 .field--errored {
   .checkbox {
-    &__circle:hover {
-      transition: ease-in $time-s;
-      box-shadow: 0 0 0 7px rgba($error-color, 0.15);
+    &:hover, &:focus, &.checkbox--active {
+      .checkbox__circle {
+        transition: ease-in $time-s;
+        box-shadow: 0 0 0 7px rgba($error-color, 0.15);
+      }
     }
     &__border {
       border-color: $error-color;
@@ -183,6 +191,16 @@ export default {
   $c: &;
   position: relative;
   cursor: default;
+
+  &:hover, &:focus, &.checkbox--active {
+    outline: 0;
+
+    .checkbox__circle {
+      transition: ease-in 0.1s;
+      border-radius: 100%;
+      box-shadow: 0 0 0 7px rgba(getShade($dodger-blue, 110), 0.15);
+    }
+  }
 
   &__overlay {
     display: block;
@@ -279,14 +297,6 @@ export default {
     outline-width: 0;
   }
 
-  &__circle {
-    &:hover, &:active, &:focus {
-      transition: ease-in 0.1s;
-      border-radius: 100%;
-      box-shadow: 0 0 0 7px rgba(getShade($dodger-blue, 110), 0.15);
-    }
-  }
-
   &__border {
     display: block;
     position: absolute;
@@ -310,6 +320,10 @@ export default {
     display: flex;
     align-items: center;
     transition: outline 0.1s ease-in-out;
+
+    &:focus {
+      outline: 0;
+    }
   }
   &__error {
     @include font('text-xxsmall');
