@@ -22,10 +22,11 @@
     </div>
     <div class="field__body">
       <div class="field__main">
-        <slot v-bind="{ hasError }" />
+        <slot v-bind="{ hasError, labelId }" />
         <label
           v-if="label"
           :for="name"
+          :id="labelId"
           class="field__label"
         >
           {{ label }}
@@ -48,6 +49,7 @@
 
 <script>
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
+import kebabCase from 'lodash/kebabCase';
 
 export default {
   name: 'FieldBase',
@@ -107,6 +109,12 @@ export default {
     },
     unlabelled() {
       return this.label === '';
+    },
+    labelId() {
+      if (this.name && this.label) {
+        return `${kebabCase(this.name.trim())}-label`;
+      }
+      return null;
     },
   },
 };

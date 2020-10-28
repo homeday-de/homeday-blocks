@@ -2,9 +2,11 @@ import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import { getMessages } from '@/lang';
 import HdCheckbox from '@/components/form/HdCheckbox.vue';
 
+const checkboxClass = 'checkbox';
 const activeClass = 'checkbox--active';
-const usingMouseClass = 'isUsingMouse';
-const errorClass = 'hasError';
+const usingMouseClass = 'checkout--use-mouse';
+const errorClass = 'field--errored';
+const indeterminateClass = 'checkbox--indeterminate';
 
 const wrapperBuilder = wrapperFactoryBuilder(HdCheckbox, {
   props: {
@@ -29,7 +31,7 @@ describe('HdCheckbox', () => {
     });
 
     expect(wrapper.html()).toMatchSnapshot();
-    expect(wrapper.find('.checkbox__inner__label').text()).toBe(innerLabelParsed);
+    expect(wrapper.find('.checkbox__description').text()).toBe(innerLabelParsed);
   });
 
   it('At blur, the validation method is fired and the input element is not styled as active', () => {
@@ -82,17 +84,17 @@ describe('HdCheckbox', () => {
 
     await wrapper.vm.$nextTick();
 
-    expect(wrapper.classes()).toContain(activeClass);
+    expect(wrapper.get(`.${checkboxClass}`).classes()).toContain(activeClass);
   });
 
   it('On user input interaction, the proper kind of input device is detected', async () => {
     const wrapper = wrapperBuilder();
 
-    wrapper.trigger('mousedown');
+    wrapper.get(`.${checkboxClass}`).trigger('mousedown');
 
     await wrapper.vm.$nextTick();
 
-    expect(wrapper.classes()).toContain(usingMouseClass);
+    expect(wrapper.get(`.${usingMouseClass}`).classes()).toContain(usingMouseClass);
 
     wrapper.trigger('keydown');
 
@@ -134,5 +136,14 @@ describe('HdCheckbox', () => {
     });
 
     expect(wrapper.find('input').attributes().disabled).toBe('disabled');
+  });
+
+  it('Supports indeterminate state', () => {
+    const wrapper = wrapperBuilder({
+      props: {
+        indeterminate: true,
+      },
+    });
+    expect(wrapper.get(`.${checkboxClass}`).classes()).toContain(indeterminateClass);
   });
 });
