@@ -76,11 +76,13 @@ export default {
       }
 
       this.fields.push(fieldToAdd);
-
-      // If a new field was dynamically added to the form, we add its value to the initial form data
-      if (this.initialFormData[fieldToAdd.name] === undefined) {
+      
+      if (this.isDynamicallyAddedField(fieldToAdd.name)) {
         this.initialFormData[fieldToAdd.name] = _cloneDeep(fieldToAdd.value);
       }
+    },
+    isDynamicallyAddedField(fieldName) {
+      return this.initialFormData[fieldName] === undefined;
     },
     removeField(fieldToRemove) {
       this.fields = this.fields.filter(field => field.name === fieldToRemove.name);
