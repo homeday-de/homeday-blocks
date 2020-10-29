@@ -1,6 +1,7 @@
-@import './_colors';
-@import './_variables';
-@import './_fonts';
+@import './colors';
+@import './variables';
+@import './fonts';
+@import './elevation';
 
 
 @mixin only-ie {

@@ -1,0 +1,28 @@
+$umbra-color: rgba(0, 0, 0, 0.2);
+$penumbra-color: rgba(0, 0, 0, 0.14);
+$ambient-shadow-color: rgba(0, 0, 0, 0.12);
+
+$elevation-levels:
+  #{0 0 0 $umbra-color, 0 0 0 $penumbra-color, 0 0 0 $ambient-shadow-color},
+  #{0px 1px 3px $umbra-color, 0px 0px 2px $penumbra-color, 0px 2px 2px $ambient-shadow-color},
+  #{0px 1px 5px $umbra-color, 0px 2px 4px $penumbra-color, 0px 3px 4px $ambient-shadow-color},
+  #{0px 1px 8px $umbra-color, 0px 3px 3px $penumbra-color, 0px 3px 4px $ambient-shadow-color},
+  #{0px 1px 10px $umbra-color, 0px 2px 4px $penumbra-color, 0px 4px 5px $ambient-shadow-color},
+  #{0px 3px 5px $umbra-color, 0px 6px 10px $penumbra-color, 0px 1px 18px $ambient-shadow-color},
+  #{0px 4px 5px $umbra-color, 0px 8px 10px $penumbra-color, 0px 3px 14px $ambient-shadow-color},
+  #{0px 5px 6px $umbra-color, 0px 9px 12px $penumbra-color, 0px 3px 16px $ambient-shadow-color},
+  #{0px 7px 8px $umbra-color, 0px 12px 17px $penumbra-color, 0px 5px 22px $ambient-shadow-color},
+  #{0px 8px 10px $umbra-color, 0px 16px 24px $penumbra-color, 0px 6px 30px $ambient-shadow-color},
+  #{0px 11px 15px $umbra-color, 0px 24px 38px $penumbra-color, 0px 9px 46px $ambient-shadow-color};
+
+@mixin elevation($level) {  
+  @if $level >= 0 and $level < length($elevation-levels) {
+    box-shadow: nth($elevation-levels, $level + 1);
+  } @else {
+    @warn "Elevation level '#{$level}' is invalid, it should be a number between 0 and #{length($elevation-levels) - 1}.";
+  }
+}
+
+:export {
+  numberOfLevels : length($elevation-levels);
+}
