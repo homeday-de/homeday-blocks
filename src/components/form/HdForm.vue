@@ -76,7 +76,7 @@ export default {
       }
 
       this.fields.push(fieldToAdd);
-      
+
       if (this.isDynamicallyAddedField(fieldToAdd.name)) {
         this.initialFormData[fieldToAdd.name] = _cloneDeep(fieldToAdd.value);
       }
