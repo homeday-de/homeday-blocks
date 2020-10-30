@@ -31,6 +31,7 @@
         :disabled="disabled"
         v-model="isChecked"/>
       <div
+        :ref="name"
         :aria-checked="isChecked"
         :aria-labelledby="labelId"
         :tabindex="disabled ? -1 : 0"
@@ -137,7 +138,10 @@ export default {
   methods: {
     toggle() {
       this.$emit('input', !this.isChecked);
-      this.$nextTick(this.validate);
+      this.$nextTick(() => {
+        this.validate();
+        this.$refs[this.name].focus();
+      });
     },
     handleFocus() {
       this.isActive = true;

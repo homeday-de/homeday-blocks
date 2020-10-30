@@ -111,10 +111,7 @@ export default {
       return this.label === '';
     },
     labelId() {
-      if (this.name && this.label) {
-        return `${kebabCase(this.name.trim())}-label`;
-      }
-      return null;
+      return `${kebabCase(this.name.trim())}-label`;
     },
   },
 };
