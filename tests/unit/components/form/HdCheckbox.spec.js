@@ -3,6 +3,8 @@ import { getMessages } from '@/lang';
 import HdCheckbox from '@/components/form/HdCheckbox.vue';
 
 const checkboxClass = 'checkbox';
+const checkboxInnerSelector = '.checkbox__inner';
+const checkboxLabelSelector = '.field__label';
 const activeClass = 'checkbox--active';
 const usingMouseClass = 'checkout--use-mouse';
 const errorClass = 'field--errored';
@@ -41,7 +43,7 @@ describe('HdCheckbox', () => {
         validate: mockedValidate,
       },
     });
-    const checkboxInner = wrapper.get('.checkbox__inner');
+    const checkboxInner = wrapper.get(checkboxInnerSelector);
 
     checkboxInner.trigger('blur');
 
@@ -56,7 +58,7 @@ describe('HdCheckbox', () => {
         value: false,
       },
     });
-    const checkboxInner = wrapper.get('.checkbox__inner');
+    const checkboxInner = wrapper.get(checkboxInnerSelector);
 
     checkboxInner.trigger('blur');
 
@@ -78,7 +80,7 @@ describe('HdCheckbox', () => {
 
   it('At focus, the input element is styled as active', async () => {
     const wrapper = wrapperBuilder();
-    const checkboxInner = wrapper.get('.checkbox__inner');
+    const checkboxInner = wrapper.get(checkboxInnerSelector);
 
     checkboxInner.trigger('focus');
 
@@ -114,7 +116,7 @@ describe('HdCheckbox', () => {
         validate: mockedValidate,
       },
     });
-    const checkboxInner = wrapper.get('.checkbox__inner');
+    const checkboxInner = wrapper.get(checkboxInnerSelector);
 
     checkboxInner.trigger('click');
 
@@ -145,5 +147,19 @@ describe('HdCheckbox', () => {
       },
     });
     expect(wrapper.get(`.${checkboxClass}`).classes()).toContain(indeterminateClass);
+  });
+
+  it('Populate aria-labelledby with id generated on label', async () => {
+    const wrapper = wrapperBuilder({
+      props: {
+        name: 'testLabel',
+        label: 'Test',
+      },
+    });
+    const computedLabelId = wrapper.vm.$children[0].labelId;
+    const labelIdAttribute = wrapper.get(checkboxLabelSelector).attributes('id');
+    const ariaLabelledBy = wrapper.get(checkboxInnerSelector).attributes('aria-labelledby');
+    expect(labelIdAttribute).toContain(computedLabelId);
+    expect(ariaLabelledBy).toContain(labelIdAttribute);
   });
 });
