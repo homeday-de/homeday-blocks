@@ -45,7 +45,7 @@ describe('HdRadio', () => {
     expect(wrapper.emitted('input')[0][0]).toEqual(ITEMS[ITEM_INDEX].value);
   });
 
-  it('emits `input` event with the right payload on arrows keydown', () => {
+  it('emits `input` event with the right payload on arrows keydown', async () => {
     const INITIAL_ITEM_INDEX = 2;
     const wrapper = wrapperBuilder({
       props: {
@@ -84,6 +84,8 @@ describe('HdRadio', () => {
       expect(getLastInputEventPayload())
         .toEqual(ITEMS[0].value);
     });
+
+    await wrapper.vm.$nextTick();
 
     wrapper.setProps({ value: ITEMS[0].value });
     ['Up', 'Left'].forEach((key) => {
