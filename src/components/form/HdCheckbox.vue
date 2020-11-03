@@ -126,8 +126,13 @@ export default {
     t() {
       return merge(getMessages(this.lang), this.texts);
     },
-    isChecked() {
-      return this.value;
+    isChecked: {
+      get() {
+        return this.value;
+      },
+      set() {
+        this.toggle();
+      },
     },
   },
   methods: {
