@@ -53,6 +53,7 @@
 }
 
 @mixin hd-typography() {
+<<<<<<< HEAD
   font-family: $font-primary;
 
   // h1, h2, h3, h4, h5 {
@@ -70,6 +71,23 @@
     // & + h5 {
     //   margin-top: 1.2em; // TBD
     // }
+=======
+  h1, h2, h3, h4, h5 {
+    margin-bottom: .7em;
+  }
+
+  p {
+    @include font('DS-100');
+    margin-bottom: 1em;
+
+    & + h1,
+    & + h2,
+    & + h3,
+    & + h4,
+    & + h5 {
+      margin-top: 1.2em;
+    }
+>>>>>>> :fire: clean
   }
 
   h1 {
