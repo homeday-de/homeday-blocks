@@ -14,7 +14,7 @@ const Template = () => ({
         <p>
         This mixins returns a set of typography rules for most of the typography HTML elements.
         <vue-code-highlight language="scss">
-body {
+html {
   @include hd-typography;
   font-size: 16px;
 }
