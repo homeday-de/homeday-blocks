@@ -1,5 +1,9 @@
 @import '../typography';
 
+.hd-typography {
+  @include hd-typography();
+}
+
 .font-DS-60 {
   @include font('DS-60');
 }

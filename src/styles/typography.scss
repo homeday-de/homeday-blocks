@@ -57,41 +57,59 @@
   }
 }
 
-@mixin document-typography($scale) {
-  font-size: 100%;
-  line-height: 1.65;
-
-  p {
-    margin-bottom: 1.15rem;
+@mixin hd-typography($base: 16) {
+  h1, h2, h3, h4, h5 {
+    margin-bottom: .7em;
   }
 
-  h1, h2, h3, h4, h5 {
-    margin: 2.75rem 0 1.05rem;
-    line-height: 1.15;
+  p {
+    @include font('DS-100');
+      margin-bottom: 1em;
+
+    & + h1,
+    & + h2,
+    & + h3,
+    & + h4,
+    & + h5 {
+      margin-top: 1.2em;
+    }
   }
 
   h1 {
-    margin-top: 0;
-    font-size: pow($scale, 5) * 1em;
+    @include font('DS-300');
+    font-weight: 900;
+
+    @media (min-width: $break-tablet) {
+      @include font('DS-500');
+    }
+
+    @media (min-width: $break-desktop) {
+      @include font('DS-600');
+    }
   }
 
   h2 {
-    font-size: pow($scale, 4) * 1em;
+    @include font('DS-300');
+    font-weight: bold;
+
+    @media (min-width: $break-tablet) {
+      @include font('DS-400');
+      font-weight: 900;
+    }
   }
 
   h3 {
-    font-size: pow($scale, 3) * 1em;
+    @include font('DS-200');
+    font-weight: bold;
   }
 
   h4 {
-    font-size: pow($scale, 2) * 1em;
+    @include font('DS-100');
+    font-weight: bold;
   }
 
   h5 {
-    font-size: $scale * 1em;
-  }
-
-  small, .text_small {
-    font-size: pow($scale, -1) * 1em;
+    @include font('DS-100');
+    font-weight: 600;
   }
 }

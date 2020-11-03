@@ -1,6 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { component as VueCodeHighlight } from 'vue-code-highlight';
-import './styles/Typography.scss';
 import '../styles/utility/typographyUtility.scss';
 
 export default {
