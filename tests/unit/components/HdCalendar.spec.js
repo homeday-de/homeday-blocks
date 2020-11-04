@@ -61,17 +61,17 @@ describe('HdCalendar', () => {
   });
 
   it('when the disabled indexes are updated, the first available date is selected', () => {
-    const selectFirstAvialableMock = jest.fn();
+    const selectFirstAvailableMock = jest.fn();
     const wrapper = wrapperBuilder({
       methods: {
-        selectFirstAvialable: selectFirstAvialableMock,
+        selectFirstAvailable: selectFirstAvailableMock,
       },
     });
 
     wrapper.setProps({
-      disabledIndexes: [],
+      disabledDates: [],
     });
 
-    expect(selectFirstAvialableMock).toHaveBeenCalled();
+    expect(selectFirstAvailableMock).toHaveBeenCalled();
   });
 });

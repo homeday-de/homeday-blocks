@@ -81,7 +81,7 @@ export default {
       // Check if passed array contains only valid dates
       validator: dates => dates.filter(d => typeof d.getMonth === 'function').length === dates.length,
     },
-    disabledIndexes: {
+    disabledDates: {
       type: Array,
       default() {
         return [];
@@ -110,7 +110,7 @@ export default {
     // Slice dates array into week chunks
     this.availableWeeks = chunk(this.dates, WEEK_DAYS);
 
-    this.selectFirstAvialable();
+    this.selectFirstAvailable();
   },
   computed: {
     displayedWeeks() {
@@ -121,12 +121,12 @@ export default {
     },
   },
   watch: {
-    disabledIndexes() {
-      this.selectFirstAvialable();
+    disabledDates() {
+      this.selectFirstAvailable();
     },
   },
   methods: {
-    selectFirstAvialable() {
+    selectFirstAvailable() {
       const firstAvialableDay = this.displayedWeeks[0]
         .find(day => this.isDisabled(day) === false);
 
@@ -146,19 +146,11 @@ export default {
       setTimeout(() => {
         this.selectedWeekIndexTail += indexDiff;
         this.animateCalendar = !this.animateCalendar;
-        this.selectFirstAvialable();
+        this.selectFirstAvailable();
       }, 0);
     },
     isDisabled(date) {
-      const dateIndex = this.dates.indexOf(date);
-      const isDisabledIndex = this.disabledIndexes.indexOf(dateIndex) !== -1;
-
-      return isDisabledIndex || this.isWeekend(date);
-    },
-    isWeekend(date) {
-      // IE's Date.toLocaleString is includes left-to-right marks in it (U+200E), so we have to trim that
-      const dateDayString = date.toLocaleString('en-GB', { weekday: 'short' }).replace(/[^ -~]/g, '');
-      return dateDayString === 'Sun' || dateDayString === 'Sat';
+      return this.disabledDates.indexOf(date) !== -1;
     },
     selectDate(date) {
       if (this.isDisabled(date)) return;
