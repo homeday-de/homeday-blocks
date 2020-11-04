@@ -9,7 +9,7 @@
         <div class="timeslots__slots" :key="currentPageIndex">
           <span
             class="timeslots__slot"
-            :class="{'timeslots__slot--isUnavailable': timeslot.isAvialable === false, 'timeslots__slot--isSelected': timeslot.time === selectedTime}"
+            :class="{'timeslots__slot--isUnavailable': timeslot.isAvailable === false, 'timeslots__slot--isSelected': timeslot.time === selectedTime}"
             v-for="timeslot in activeTimeslotPage"
             :key="timeslot.time"
             @click="selectTimeslot(timeslot)"
@@ -77,7 +77,7 @@ export default {
     selectFirstAvialable() {
       this.currentPageIndex = 0;
       const firstAvialableTimeslot = this.activeTimeslotPage
-        .find(timeslot => timeslot.isAvialable);
+        .find(timeslot => timeslot.isAvailable);
 
       this.selectTimeslot(firstAvialableTimeslot);
     },
@@ -91,7 +91,7 @@ export default {
       this.currentPageIndex += indexMod;
     },
     selectTimeslot(timeslot) {
-      if (timeslot && timeslot.isAvialable) this.selectedTime = timeslot.time;
+      if (timeslot && timeslot.isAvailable) this.selectedTime = timeslot.time;
     },
   },
   watch: {

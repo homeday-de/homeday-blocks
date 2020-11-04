@@ -6,7 +6,6 @@ export default (endStartDeltaMins, duration) => range(1, (endStartDeltaMins / du
     const mins = duration * slot;
     // We have to make sure to also set the seconds and milliseconds to 0
     date.setMinutes(mins, 0, 0);
-    const isAvialable = true;
 
     const hours = date.getHours();
     // Pad minutes with trailing zero
@@ -14,6 +13,6 @@ export default (endStartDeltaMins, duration) => range(1, (endStartDeltaMins / du
     const time = `${hours}:${minutes}`;
     return {
       time,
-      isAvialable,
+      isAvailable: true,
     };
   });

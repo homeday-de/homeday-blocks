@@ -91,7 +91,6 @@ You can also follow build statuses in https://percy.io/Homeday/homeday-blocks
 
 #### Gotchas
 - `tests/` is an alias for `<rootDir>/tests/`
-- The form components share many classes (mostly `field--*`), to avoid repeatedly defining some of them in each form test, [FIELD_CLASSES.js](https://github.com/homeday-de/homeday-blocks/blob/develop/tests/unit/components/form/FIELD_CLASSES.js) contains the most common classes we need for testing. Feel free to add more classes.
 
 ## Generators
 

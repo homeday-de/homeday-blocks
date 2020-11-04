@@ -302,6 +302,13 @@ export default {
     }
   }
   &__error {
+    @include font('text-xxsmall');
+    position: absolute;
+    top: calc(100% + #{$inline-xs});
+    margin-left: $inline-m;
+    color: $error-color;
+    display: none;
+
     #{$c}.hasError & {
       display: block;
     }

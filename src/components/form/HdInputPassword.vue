@@ -1,25 +1,26 @@
 <template>
-  <div class="password-input">
-    <HdInput
-      ref="input"
-      :type="type"
-      v-model="computedValue"
-      v-bind="$attrs"
-      :class="{ 'field--hasControl': this.showVisibilityToggle }"
-    />
-
-    <span v-if="showVisibilityToggle"
-      class="field__visibilityToggle"
-      :class="{'field__visibilityToggle--visible': type === 'text'}"
-      @click="toggleVisibility"
-    >
-      <HdIcon
-        :src="visibilityOnIcon"
-        width="100%"
-        height="100%"
-      />
-    </span>
-  </div>
+  <HdInput
+    ref="input"
+    :type="type"
+    v-model="computedValue"
+    v-bind="$attrs"
+    class="password-input"
+  >
+    <template #input-right>
+      <button v-if="isVisibilityToggleVisible"
+        class="password-input__visibility-toggle"
+        :class="{'password-input__visibility-toggle--visible': type === 'text'}"
+        @click="toggleVisibility"
+      >
+        <HdIcon
+          :src="visibilityOnIcon"
+          width="24"
+          height="24"
+          class="password-input__visibility-toggle-icon"
+        />
+      </button>
+    </template>
+  </HdInput>
 </template>
 
 <script>
@@ -53,7 +54,7 @@ export default {
         this.$emit('input', value);
       },
     },
-    showVisibilityToggle() {
+    isVisibilityToggleVisible() {
       return this.value.length !== 0;
     },
   },
@@ -80,21 +81,16 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
-@import 'homeday-blocks/src/styles/inputs.scss';
 
-$icon-color: getShade($quaternary-color, 80);
+$icon-color: $quaternary-color;
 
 .password-input {
-  position: relative;
-
-  .field__visibilityToggle {
-
-    position: absolute;
-    top: $inputPaddingTop;
-    right: $inline-s;
-    width: 24px;
-    height: 24px;
+  &__visibility-toggle {
+    background-color: transparent;
+    padding: 0;
+    border: 0;
     cursor: pointer;
+
     &:after {
       display: block;
       content: '';
@@ -105,7 +101,7 @@ $icon-color: getShade($quaternary-color, 80);
       width: calc(100% - 1px);
       height: 0px;
       border-bottom: 2px solid $icon-color;
-      border-top: 1px solid $inputBackground;
+      border-top: 1px solid $secondary-bg;
       transform-origin: left;
       transform: rotateZ(45deg) scaleX(1);
       transition: transform .3s;
@@ -114,6 +110,10 @@ $icon-color: getShade($quaternary-color, 80);
       &:after {
         transform: rotateZ(45deg) scaleX(0);
       }
+    }
+
+    &-icon {
+      display: block;
     }
 
     &::v-deep path {

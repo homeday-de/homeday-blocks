@@ -1,16 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HdSplitInput is rendered as expected 1`] = `
-<div class="field field--double" name="test name">
-  <!----> <span class="field__border"></span>
-  <div class="field__double-input"><input placeholder="Input 1" name="input1" class="field__input">
-    <div class="field__double-input__separator">
-      <div class="field__double-input__separator__symbol">–</div>
-    </div><input placeholder="Input 2" name="input2" class="field__input">
-    <!---->
-  </div> <label class="field__label">
-    test label
-  </label>
+<div class="field field--minimized-label" name="test name" label="test label">
   <!---->
+  <div class="field__body">
+    <div class="field__main">
+      <div class="split-input"><input placeholder="Input 1" name="input1" class="split-input__input">
+        <div class="split-input__separator">
+          <div class="split-input__separator-symbol">–</div>
+        </div><input placeholder="Input 2" name="input2" class="split-input__input">
+        <!---->
+      </div> <label for="input1" class="field__label">
+        test label
+      </label>
+      <div class="field__input-right"></div>
+      <div class="field__border"></div>
+    </div>
+    <p class="field__helper">‍</p>
+  </div>
 </div>
 `;

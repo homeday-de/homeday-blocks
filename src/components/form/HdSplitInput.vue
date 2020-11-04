@@ -1,16 +1,16 @@
 <template>
-  <div
-    :class="fieldClasses"
-    class="field field--double"
+  <FieldBase
+    v-bind="$attrs"
+    :name="fields[0].name"
+    :error="error"
+    :helper="helper"
+    :active="isActive"
+    :filled="isFilled"
+    :disabled="disabled"
+    :valid="isValid"
+    minimized-label
   >
-    <img
-      v-if="icon"
-      :src="icon"
-      role="presentation"
-      class="field__icon"
-    >
-    <span class="field__border"/>
-    <div class="field__double-input">
+    <div class="split-input">
       <template
         v-for="(field, index) in fields">
         <input
@@ -19,50 +19,33 @@
           v-model="fieldsValues[field.name]"
           v-bind="field"
           :disabled="disabled"
-          class="field__input"
+          class="split-input__input"
           @focus="handleFocus(field)"
           @blur="handleBlur(field)">
         <div
           v-if="index < fields.length - 1"
           :key="`split-input-separator-${index}`"
-          class="field__double-input__separator">
+          class="split-input__separator">
           <div
-            class="field__double-input__separator__symbol"
+            class="split-input__separator-symbol"
             v-text="separator"/>
         </div>
       </template>
     </div>
-    <label
-      v-if="label"
-      class="field__label"
-    >
-      {{ label }}
-    </label>
-    <p
-      v-if="error"
-      class="field__error"
-    >
-      {{ error }}
-    </p>
-    <p
-      v-else-if="helper"
-      class="field__error field__error--helper"
-      v-html="helper"
-    />
-  </div>
+  </FieldBase>
 </template>
 
 <script>
 import merge from 'lodash/merge';
 import { getMessages } from 'homeday-blocks/src/lang';
+import FieldBase from './FieldBase.vue';
 
 export default {
   name: 'HdSplitInput',
+  components: {
+    FieldBase,
+  },
   props: {
-    label: {
-      type: String,
-      default: '',
-    },
     fields: {
       type: Array,
       default: () => [],
@@ -95,10 +78,6 @@ export default {
       type: Boolean,
       default: false,
     },
-    icon: {
-      type: String,
-      default: '',
-    },
     lang: {
       type: String,
       default: 'de',
@@ -121,18 +100,9 @@ export default {
     t() {
       return merge(getMessages(this.lang), this.texts);
     },
-    isEmpty() {
+    isFilled() {
       return Object.values(this.fieldsValues || {})
-        .some(value => value === null || value === undefined || value === '');
-    },
-    fieldClasses() {
-      return {
-        'field--active': this.isActive,
-        'field--filled': !this.isEmpty,
-        'field--invalid': this.isValid === false,
-        'field--disabled': this.disabled,
-        'field--hasIcon': this.icon,
-      };
+        .some(value => value !== null && value !== undefined && value !== '');
     },
   },
   watch: {
@@ -171,7 +141,7 @@ export default {
       this.error = null;
     },
     validate() {
-      if (this.required && this.isEmpty) {
+      if (this.required && !this.isFilled) {
         this.showError(this.t.FORM.VALIDATION.REQUIRED);
       } else {
         this.hideError();
@@ -188,43 +158,30 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
-@import 'homeday-blocks/src/styles/inputs.scss';
 
-.field {
-  $f: &;
-  &__double-input {
-    &::before, &::after {
-      display: none;
-    }
-    &__separator {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex: 0 0 $inline-m;
-      z-index: 1;
-      background-color: $inputBackground;
-      color: getShade($quaternary-color, 80);
-      font-size: 20px;
-      font-weight: 700;
+.split-input {
+  display: flex;
 
-      &__symbol {
-        margin-top: $stack-m;
-      }
-    }
-  }
-  &__error {
+  &__input {
     width: 100%;
-    text-align: left;
-    &--helper {
-      display: block;
-      color: getShade($quaternary-color, 80);
+  }
+
+  &__separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 $inline-m;
+    z-index: 1;
+    background-color: $secondary-bg;
+    color: getShade($quaternary-color, 80);
+    font-size: 20px;
+    font-weight: 700;
+
+    &-symbol {
+      margin-top: $stack-m;
     }
   }
-}
-.field--double .field__input {
-  width: 100%;
 }
 </style>
