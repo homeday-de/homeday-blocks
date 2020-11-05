@@ -21,6 +21,7 @@
       />
       <button
         v-else-if="isClearButtonVisible"
+        type="button"
         class="text-field__clear-button"
         @click="$emit('clear-click')"
         @focus="onClearButtonFocus"
