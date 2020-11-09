@@ -242,6 +242,7 @@ export default {
     #{$_root}__wrap {
       padding: 0 0 $inline-xs 0;
       position: absolute;
+      z-index: 2;
       bottom: 0;
       width: 100%;
     }
