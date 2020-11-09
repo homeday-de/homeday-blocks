@@ -11,6 +11,7 @@
       @keydown.self="maybeSelectItem"
     >
       <flickity
+        v-if="!pagerInside"
         ref="flickity"
         :options="flickityOptions"
       >
@@ -235,16 +236,14 @@ export default {
     @media (min-width: $break-tablet) {
       margin-top: $stack-m;
     }
+  }
 
-    #{$_root}--with-pager-inside & {
+  &--with-pager-inside {
+    #{$_root}__wrap {
+      padding: 0 0 $inline-xs 0;
       position: absolute;
-      bottom: 0px;
+      bottom: 0;
       width: 100%;
-      background: linear-gradient(to top, rgba($quaternary-color, .45), rgba($quaternary-color, 0));
-
-      @media (min-width: $break-tablet) {
-        display: none;
-      }
     }
   }
 
@@ -280,7 +279,7 @@ export default {
       width: calc(100% / 7);
       margin-right: $inline-m;
     }
-    }
+  }
 
   &__picture {
       position: absolute;

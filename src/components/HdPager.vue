@@ -291,6 +291,7 @@ export default {
       cursor: pointer;
       user-select: none;
       -webkit-tap-highlight-color: transparent;
+      opacity: .6;
       &::before {
         position: absolute;
         top: 50%;
@@ -309,8 +310,11 @@ export default {
           background-color: $primary-bg;
         }
       }
-      &.isActive::before {
-        background-color: getShade($secondary-color, 110);
+      &.isActive {
+        opacity: 1;
+        &:before {
+          background-color: getShade($secondary-color, 110);
+        }
       }
       &--size-regular::before {
         width: 8px;
