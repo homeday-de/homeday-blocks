@@ -113,3 +113,4 @@ export { default as warningIcon } from './ic_warning.svg';
 export { default as whatappIcon } from './ic_whatapp.svg';
 export { default as workIcon } from './ic_work.svg';
 export { default as xingIcon } from './ic_xing.svg';
+export { default as contractIcon } from './ic_contract.svg';
