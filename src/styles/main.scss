@@ -124,7 +124,7 @@ $font-list: ('headline', 'headline'),
 
 
 /** Elevation **/
-@for $level from 0 through length($elevation-levels) {
+@for $level from 0 to length($elevation-levels) {
   .elevation-#{$level} {
     @include elevation($level);
   }
