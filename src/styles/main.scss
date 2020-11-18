@@ -1,6 +1,7 @@
 @import './mixins';
 @import './buttons';
 @import './typography';
+@import './_variables';
 
 * {
   box-sizing: border-box;
@@ -9,7 +10,7 @@
 }
 
 body {
-  @include font('body');
+  font-family: $font-primary;
   color: $primary-color;
 }
 
