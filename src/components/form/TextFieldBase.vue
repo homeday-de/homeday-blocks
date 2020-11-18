@@ -78,7 +78,7 @@ export default {
   },
   computed: {
     isClearButtonVisible() {
-      return this.$attrs.filled && this.hasFocus;
+      return this.$attrs.filled && this.hasError && this.hasFocus;
     },
     isErrorStatusVisible() {
       return this.hasError && !this.$attrs.active;
