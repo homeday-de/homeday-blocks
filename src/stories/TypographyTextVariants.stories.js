@@ -47,6 +47,9 @@ myElementSelector {
         </vue-code-highlight>
       </p>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> :sparkles: :sparkles: manage legacy mixin
       <p>
         The <b> font </b> mixin allows the user to implement the text aesthetics from our current design system. 
         Each of the availailable variant values describes a font-size and a line-height.
@@ -54,8 +57,11 @@ myElementSelector {
       <p>
         Please, use the <b>Controls</b> panel down here to check the variants.
       </p>
+<<<<<<< HEAD
 =======
 >>>>>>> :recycle: refactoring based on PR comments
+=======
+>>>>>>> :sparkles: :sparkles: manage legacy mixin
     </div>
   `,
 });
