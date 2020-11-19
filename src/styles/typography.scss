@@ -60,6 +60,7 @@
   // h1, h2, h3, h4, h5 {
   //   margin-bottom: .7em; // TBD
   // }
+<<<<<<< HEAD
 
   p {
     @include font('DS-100');
@@ -93,6 +94,20 @@
       margin-top: 1.2em;
     }
 >>>>>>> :fire: clean
+=======
+
+  p {
+    @include font('DS-100');
+    // margin-bottom: 1em; // TBD
+
+    // & + h1,
+    // & + h2,
+    // & + h3,
+    // & + h4,
+    // & + h5 {
+    //   margin-top: 1.2em; // TBD
+    // }
+>>>>>>> :recycle: commented  margins on typography. Those are still to be defined
   }
 
   h1 {
