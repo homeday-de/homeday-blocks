@@ -55,21 +55,21 @@
 @mixin hd-typography() {
   font-family: $font-primary;
 
-  h1, h2, h3, h4, h5 {
-    margin-bottom: .7em;
-  }
+  // h1, h2, h3, h4, h5 {
+  //   margin-bottom: .7em; // TBD
+  // }
 
   p {
     @include font('DS-100');
-    margin-bottom: 1em;
+    // margin-bottom: 1em; // TBD
 
-    & + h1,
-    & + h2,
-    & + h3,
-    & + h4,
-    & + h5 {
-      margin-top: 1.2em;
-    }
+    // & + h1,
+    // & + h2,
+    // & + h3,
+    // & + h4,
+    // & + h5 {
+    //   margin-top: 1.2em; // TBD
+    // }
   }
 
   h1 {
@@ -109,4 +109,36 @@
     @include font('DS-100');
     font-weight: 600;
   }
+}
+
+@mixin link {
+  transition: all $time-s ease-in-out;
+  position: relative;
+  // Link underline
+  box-shadow: none; // remove old .link pls
+
+  &:active,
+  &:hover {
+    color: getShade($secondary-color, 110);
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: -2px;
+    right: -2px;
+    bottom: -3px;
+    height: 2px;
+    background-color: getShade($secondary-color, 110);
+    border-radius: 2px;
+  }
+}
+
+@mixin link-dark {
+  @include link;
+  color: $white;
+}
+
+.link {
+  @include link;
 }
