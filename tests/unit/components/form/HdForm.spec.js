@@ -191,4 +191,58 @@ describe('HdForm', () => {
     expect(scrollToEl).toHaveBeenCalledTimes(1);
     expect(scrollToEl).toHaveBeenCalledWith({ el: expectedScrollElement });
   });
+
+  test('a HdForm tracks dynamic added fields', async () => {
+    const { wrapper } = hdFormFactory()
+      .withDefaultSlot({
+        data: () => ({
+          name: '',
+          hasTermsAgreed: false,
+          favoriteBand: '',
+        }),
+        template: `
+          <div>
+            <HdCheckbox inner-label="Are you agree with our terms?" name="hasTermsAgreed" v-model="hasTermsAgreed" />
+
+            <HdInput
+              v-if="hasTermsAgreed"
+              label="What is your favorite band?"
+              name="favoriteBand"
+              v-model="favoriteBand"
+            />
+
+            <button type="submit">Submit</button>
+          </div>
+        `,
+
+      })
+      .build();
+
+    const selectors = {
+      hasTermsAgreed: () => wrapper.find('input[name="hasTermsAgreed"]'),
+      favoriteBand: () => wrapper.find('input[name="favoriteBand"]'),
+      submit: () => wrapper.find('button[type="submit"]'),
+    };
+
+    expect(selectors.hasTermsAgreed().exists()).toBe(true);
+    expect(selectors.favoriteBand().exists()).toBe(false);
+
+    await selectors.submit().trigger('submit');
+
+    expect(wrapper.emitted().submit[0][0].formData).toEqual({
+      hasTermsAgreed: false,
+    });
+
+    await selectors.hasTermsAgreed().setChecked();
+
+    expect(selectors.favoriteBand().exists()).toBe(true);
+
+    await selectors.favoriteBand().setValue('Muse');
+    await selectors.submit().trigger('submit');
+
+    expect(wrapper.emitted().submit[1][0].formData).toEqual({
+      hasTermsAgreed: true,
+      favoriteBand: 'Muse',
+    });
+  });
 });
