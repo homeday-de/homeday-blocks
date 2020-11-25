@@ -50,6 +50,15 @@ jobs:
                     "text": "'"$NOTES"'",
                     "emoji": true
                   }
+                },
+                {
+                  "type": "context",
+                  "elements": [
+                    {
+                      "type": "plain_text",
+                      "text": "Homeday Blocks"
+                    }
+                  ]
                 }
               ]
             }' \
