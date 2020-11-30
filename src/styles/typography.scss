@@ -53,14 +53,11 @@
 }
 
 @mixin hd-typography() {
-<<<<<<< HEAD
-<<<<<<< HEAD
   font-family: $font-primary;
 
   // h1, h2, h3, h4, h5 {
   //   margin-bottom: .7em; // TBD
   // }
-<<<<<<< HEAD
 
   p {
     @include font('DS-100');
@@ -73,41 +70,6 @@
     // & + h5 {
     //   margin-top: 1.2em; // TBD
     // }
-=======
-=======
-  font-family: $font-primary;
-
->>>>>>> :sparkles: :sparkles: manage legacy mixin
-  h1, h2, h3, h4, h5 {
-    margin-bottom: .7em;
-  }
-
-  p {
-    @include font('DS-100');
-    margin-bottom: 1em;
-
-    & + h1,
-    & + h2,
-    & + h3,
-    & + h4,
-    & + h5 {
-      margin-top: 1.2em;
-    }
->>>>>>> :fire: clean
-=======
-
-  p {
-    @include font('DS-100');
-    // margin-bottom: 1em; // TBD
-
-    // & + h1,
-    // & + h2,
-    // & + h3,
-    // & + h4,
-    // & + h5 {
-    //   margin-top: 1.2em; // TBD
-    // }
->>>>>>> :recycle: commented  margins on typography. Those are still to be defined
   }
 
   h1 {
