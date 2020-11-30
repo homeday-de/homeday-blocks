@@ -2,6 +2,8 @@
 export const TYPES = [
   'primary',
   'secondary',
+  'dark',
+  'secondary-dark',
 ];
 
 export default {
@@ -49,3 +51,23 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+@import "../styles/typography";
+
+.link {
+  @include link;
+
+  &--secondary {
+    @include link-secondary;
+  }
+
+  &--dark {
+    @include link-dark;
+  }
+
+  &--secondary-dark {
+    @include link-secondary-dark;
+  }
+}
+</style>
