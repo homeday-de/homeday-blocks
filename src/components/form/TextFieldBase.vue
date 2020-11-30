@@ -21,6 +21,7 @@
       />
       <button
         v-else-if="isClearButtonVisible"
+        type="button"
         class="text-field__clear-button"
         @click="$emit('clear-click')"
         @focus="onClearButtonFocus"
@@ -77,7 +78,7 @@ export default {
   },
   computed: {
     isClearButtonVisible() {
-      return this.$attrs.filled && this.hasFocus;
+      return this.$attrs.filled && this.hasError && this.hasFocus;
     },
     isErrorStatusVisible() {
       return this.hasError && !this.$attrs.active;

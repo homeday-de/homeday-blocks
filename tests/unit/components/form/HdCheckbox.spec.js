@@ -2,9 +2,13 @@ import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import { getMessages } from '@/lang';
 import HdCheckbox from '@/components/form/HdCheckbox.vue';
 
+const checkboxClass = 'checkbox';
+const checkboxInnerSelector = '.checkbox__inner';
+const checkboxLabelSelector = '.field__label';
 const activeClass = 'checkbox--active';
-const usingMouseClass = 'isUsingMouse';
-const errorClass = 'hasError';
+const usingMouseClass = 'checkout--use-mouse';
+const errorClass = 'field--errored';
+const indeterminateClass = 'checkbox--indeterminate';
 
 const wrapperBuilder = wrapperFactoryBuilder(HdCheckbox, {
   props: {
@@ -29,7 +33,7 @@ describe('HdCheckbox', () => {
     });
 
     expect(wrapper.html()).toMatchSnapshot();
-    expect(wrapper.find('.checkbox__inner__label').text()).toBe(innerLabelParsed);
+    expect(wrapper.find('.checkbox__description').text()).toBe(innerLabelParsed);
   });
 
   it('At blur, the validation method is fired and the input element is not styled as active', () => {
@@ -39,7 +43,7 @@ describe('HdCheckbox', () => {
         validate: mockedValidate,
       },
     });
-    const checkboxInner = wrapper.get('.checkbox__inner');
+    const checkboxInner = wrapper.get(checkboxInnerSelector);
 
     checkboxInner.trigger('blur');
 
@@ -54,7 +58,7 @@ describe('HdCheckbox', () => {
         value: false,
       },
     });
-    const checkboxInner = wrapper.get('.checkbox__inner');
+    const checkboxInner = wrapper.get(checkboxInnerSelector);
 
     checkboxInner.trigger('blur');
 
@@ -76,23 +80,23 @@ describe('HdCheckbox', () => {
 
   it('At focus, the input element is styled as active', async () => {
     const wrapper = wrapperBuilder();
-    const checkboxInner = wrapper.get('.checkbox__inner');
+    const checkboxInner = wrapper.get(checkboxInnerSelector);
 
     checkboxInner.trigger('focus');
 
     await wrapper.vm.$nextTick();
 
-    expect(wrapper.classes()).toContain(activeClass);
+    expect(wrapper.get(`.${checkboxClass}`).classes()).toContain(activeClass);
   });
 
   it('On user input interaction, the proper kind of input device is detected', async () => {
     const wrapper = wrapperBuilder();
 
-    wrapper.trigger('mousedown');
+    wrapper.get(`.${checkboxClass}`).trigger('mousedown');
 
     await wrapper.vm.$nextTick();
 
-    expect(wrapper.classes()).toContain(usingMouseClass);
+    expect(wrapper.get(`.${usingMouseClass}`).classes()).toContain(usingMouseClass);
 
     wrapper.trigger('keydown');
 
@@ -112,7 +116,7 @@ describe('HdCheckbox', () => {
         validate: mockedValidate,
       },
     });
-    const checkboxInner = wrapper.get('.checkbox__inner');
+    const checkboxInner = wrapper.get(checkboxInnerSelector);
 
     checkboxInner.trigger('click');
 
@@ -134,5 +138,28 @@ describe('HdCheckbox', () => {
     });
 
     expect(wrapper.find('input').attributes().disabled).toBe('disabled');
+  });
+
+  it('Supports indeterminate state', () => {
+    const wrapper = wrapperBuilder({
+      props: {
+        indeterminate: true,
+      },
+    });
+    expect(wrapper.get(`.${checkboxClass}`).classes()).toContain(indeterminateClass);
+  });
+
+  it('Populate aria-labelledby with id generated on label', async () => {
+    const wrapper = wrapperBuilder({
+      props: {
+        name: 'testLabel',
+        label: 'Test',
+      },
+    });
+    const computedLabelId = wrapper.vm.$children[0].labelId;
+    const labelIdAttribute = wrapper.get(checkboxLabelSelector).attributes('id');
+    const ariaLabelledBy = wrapper.get(checkboxInnerSelector).attributes('aria-labelledby');
+    expect(labelIdAttribute).toContain(computedLabelId);
+    expect(ariaLabelledBy).toContain(labelIdAttribute);
   });
 });
