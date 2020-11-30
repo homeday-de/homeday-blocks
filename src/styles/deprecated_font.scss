@@ -1,4 +1,6 @@
-@mixin font($style) {
+@mixin deprecated_font($style) {
+  @warn "Please use the new 'font' mixin in the typography style sheet. You can read more about it on https://blocks.homeday.dev/?path=/story/typography-typography-text-variants--font-sizes";
+
   @if ($style == 'headline') {
     font-family: $font-primary;
     color: inherit;
@@ -11,7 +13,7 @@
       line-height: 42px;
     }
   }
-  @elseif ($style == 'subhead') {
+  @else if ($style == 'subhead') {
     font-family: $font-primary;
     color: inherit;
     font-size: 23px;
@@ -23,7 +25,7 @@
       line-height: 40px;
     }
   }
-  @elseif ($style == 'title') {
+  @else if ($style == 'title') {
     font-family: $font-primary;
     color: inherit;
     font-size: 21px;
@@ -31,7 +33,7 @@
     font-weight: 900;
   }
 
-  @elseif ($style == 'subtitle') {
+  @else if ($style == 'subtitle') {
     font-family: $font-primary;
     color: inherit;
     font-size: 18px;
@@ -39,7 +41,7 @@
     font-weight: bold;
   }
 
-  @elseif ($style == 'xsheadline') {
+  @else if ($style == 'xsheadline') {
     font-family: $font-primary;
     color: $quaternary-color;
     font-size: 14px;
@@ -47,7 +49,7 @@
     font-weight: 600;
   }
 
-  @elseif ($style == 'body') {
+  @else if ($style == 'body') {
     font-family: $font-primary;
     color: inherit;
     font-size: 18px;
@@ -59,29 +61,29 @@
     }
   }
 
-  @elseif ($style == 'body--primary') {
+  @else if ($style == 'body--primary') {
     font-family: $font-primary;
   }
 
-  @elseif ($style == 'body--secondary') {
+  @else if ($style == 'body--secondary') {
     font-family: $font-secondary;
   }
 
-  @elseif ($style == 'text-small') {
+  @else if ($style == 'text-small') {
     font-family: $font-primary;
     color: inherit;
     font-size: 18px;
     line-height: 28px;
   }
 
-  @elseif ($style == 'text-xsmall') { // check in kirby for xs-small
+  @else if ($style == 'text-xsmall') { // check in kirby for xs-small
     font-family: $font-primary;
     color: inherit;
     font-size: 14px;
     line-height: 18px;
   }
 
-  @elseif ($style == 'text-xxsmall') { // check in kirby for xxs-tiny
+  @else if ($style == 'text-xxsmall') { // check in kirby for xxs-tiny
     font-family: $font-primary;
     color: inherit;
     font-size: 11px;
@@ -110,7 +112,7 @@
     box-shadow: none;
   }
 
-  @elseif ($style == 'quote') {
+  @else if ($style == 'quote') {
     font-family: $font-primary;
     font-style: italic;
     color: inherit;
@@ -124,13 +126,13 @@
     }
   }
 
-  @elseif ($style == 'code') {
+  @else if ($style == 'code') {
     font-family: monospace;
     font-size: 18px;
     line-height: 28px;
   }
 
-  @elseif ($style=='number') {
+  @else if ($style=='number') {
     font-family: $font-primary;
     color: inherit;
     font-size: 21px;
@@ -138,7 +140,7 @@
     font-weight: 700;
   }
 
-  @elseif ($style=='showcase-link') {
+  @else if ($style=='showcase-link') {
     font-family: $font-primary;
     color: getShade($secondary-color, 110);
     font-size: 21px;
@@ -147,7 +149,7 @@
     text-decoration: underline;
   }
 
-  @elseif ($style=='table') {
+  @else if ($style=='table') {
     font-family: $font-secondary;
     font-size: 16px;
     line-height: 28px;
