@@ -1,4 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
+import './styles/StoryContainers.css';
 import { component as VueCodeHighlight } from 'vue-code-highlight';
 
 export default {
@@ -21,7 +22,7 @@ html {
         </vue-code-highlight>
 
         </p>
-        <div style="background: #f5f2f0; padding: 32px;">
+        <div class="story-container story-container--light">
           <div class="hd-typography" style="background: white;">
             <h1>H1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis congue nulla. Duis dolor justo, commodo eu vulputate sed, ultrices non dui. Sed vel ligula a quam laoreet lacinia. </h1>
             <p>

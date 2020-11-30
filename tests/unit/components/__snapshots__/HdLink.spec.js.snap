@@ -4,6 +4,10 @@ exports[`HdLink should have link class 1`] = `<a class="link link--primary"><spa
 
 exports[`HdLink should render <router-link> on :to 1`] = `<a class="link link--primary"><span>Text</span></a>`;
 
+exports[`HdLink should render link--dark 1`] = `<a class="link link--dark"><span>Text</span></a>`;
+
 exports[`HdLink should render link--primary 1`] = `<a class="link link--primary"><span>Text</span></a>`;
 
 exports[`HdLink should render link--secondary 1`] = `<a class="link link--secondary"><span>Text</span></a>`;
+
+exports[`HdLink should render link--secondary-dark 1`] = `<a class="link link--secondary-dark"><span>Text</span></a>`;

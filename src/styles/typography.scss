@@ -154,6 +154,8 @@
   position: relative;
   // Link underline
   box-shadow: none; // remove old .link pls
+  font-size: 1em;
+  line-height: 1.33em;
 
   &:active,
   &:hover {
@@ -165,7 +167,7 @@
     position: absolute;
     left: -2px;
     right: -2px;
-    bottom: -3px;
+    bottom: -2px;
     height: 2px;
     background-color: getShade($secondary-color, 110);
     border-radius: 2px;
@@ -177,6 +179,14 @@
   color: $white;
 }
 
-.link {
+@mixin link-secondary {
   @include link;
+  &:after {
+    content: none;
+  }
+}
+
+@mixin link-secondary-dark {
+  @include link-secondary;
+  color: $white;
 }
