@@ -10,7 +10,7 @@ exports[`HdSplitInput is rendered as expected 1`] = `
           <div class="split-input__separator-symbol">–</div>
         </div><input placeholder="Input 2" name="input2" class="split-input__input">
         <!---->
-      </div> <label for="input1" id="input-1-label" class="field__label">
+      </div> <label for="test name" id="test-name-label" class="field__label">
         test label
       </label>
       <div class="field__input-right"></div>
