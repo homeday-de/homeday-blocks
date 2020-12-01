@@ -11,7 +11,9 @@ export const parameters = {
     storySort: {
       method: 'alphabetical',
       order: [
-        'Introduction'
+        'Introduction',
+        'Tokens',
+        'Components',
       ]
     },
     showPanel: true,

@@ -29,10 +29,10 @@ exports[`HdCalendar renders component 1`] = `
             <div class="calendar__date calendar__row__item">
               8
             </div>
-            <div class="calendar__date calendar__row__item calendar__date--disabled">
+            <div class="calendar__date calendar__row__item">
               9
             </div>
-            <div class="calendar__date calendar__row__item calendar__date--disabled">
+            <div class="calendar__date calendar__row__item">
               10
             </div>
             <div class="calendar__date calendar__row__item">
@@ -52,10 +52,10 @@ exports[`HdCalendar renders component 1`] = `
             <div class="calendar__date calendar__row__item">
               15
             </div>
-            <div class="calendar__date calendar__row__item calendar__date--disabled">
+            <div class="calendar__date calendar__row__item">
               16
             </div>
-            <div class="calendar__date calendar__row__item calendar__date--disabled">
+            <div class="calendar__date calendar__row__item">
               17
             </div>
             <div class="calendar__date calendar__row__item">

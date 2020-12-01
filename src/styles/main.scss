@@ -1,5 +1,7 @@
 @import './mixins';
 @import './buttons';
+@import './typography';
+@import './_variables';
 
 * {
   box-sizing: border-box;
@@ -8,7 +10,7 @@
 }
 
 body {
-  @include font('body');
+  font-family: $font-primary;
   color: $primary-color;
 }
 
@@ -119,5 +121,13 @@ $font-list: ('headline', 'headline'),
 @each $class-name, $font-name in $font-list {
   .#{$class-name} {
     @include font($font-name);
+  }
+}
+
+
+/** Elevation **/
+@for $level from 0 to length($elevation-levels) {
+  .elevation-#{$level} {
+    @include elevation($level);
   }
 }
