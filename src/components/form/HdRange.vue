@@ -61,13 +61,17 @@
 
 <script>
 import onResize from 'homeday-blocks/src/services/on-resize';
+import formField from './formFieldMixin';
 
 export default {
   name: 'HdRange',
+  mixins: [
+    formField,
+  ],
   props: {
     name: {
       type: String,
-      default: 'range',
+      required: true,
     },
     required: {
       type: Boolean,

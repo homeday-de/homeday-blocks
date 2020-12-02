@@ -2,6 +2,7 @@
   <HdInput
     ref="input"
     :type="type"
+    :name="name"
     v-model="computedValue"
     v-bind="$attrs"
     class="password-input"
@@ -27,9 +28,13 @@
 import HdInput from 'homeday-blocks/src/components/form/HdInput.vue';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import { visibilityOnIcon } from 'homeday-blocks/src/assets/small-icons';
+import formField from './formFieldMixin';
 
 export default {
   name: 'HdInputPassword',
+  mixins: [
+    formField,
+  ],
   inheritAttrs: false,
   components: {
     HdInput,
@@ -39,6 +44,10 @@ export default {
     value: {
       type: String,
       default: '',
+    },
+    name: {
+      type: String,
+      required: true,
     },
   },
   data() {

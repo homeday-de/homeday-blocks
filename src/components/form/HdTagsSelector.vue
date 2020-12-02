@@ -51,9 +51,13 @@
 <script>
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import { plusCircleIcon, closeIcon } from 'homeday-blocks/src/assets/small-icons';
+import formField from './formFieldMixin';
 
 export default {
   name: 'HdTagsSelector',
+  mixins: [
+    formField,
+  ],
   components: {
     HdIcon,
   },
@@ -61,6 +65,10 @@ export default {
     value: {
       type: Array,
       default: () => [],
+    },
+    name: {
+      type: String,
+      required: true,
     },
     // Array of items, each item (Object) should have `label` and `value` properties
     items: {

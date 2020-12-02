@@ -2,6 +2,7 @@
   <hd-input
     ref="input"
     v-bind="$attrs"
+    :name="name"
     :value="valueToShow"
     :type="boundType"
     @blur="handleBlurEvent"
@@ -12,16 +13,24 @@
 
 <script>
 import { HdInput } from 'homeday-blocks';
+import formField from './formFieldMixin';
 
 const defaultInputType = 'text';
 
 export default {
   name: 'HdInputFormatter',
+  mixins: [
+    formField,
+  ],
   components: { HdInput },
   props: {
     value: {
       type: [Number, String],
       default: '',
+    },
+    name: {
+      type: String,
+      required: true,
     },
     type: {
       type: String,

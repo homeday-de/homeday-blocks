@@ -42,10 +42,14 @@ import {
   date as validateDate,
 } from 'homeday-blocks/src/services/formValidation';
 import TextFieldBase from './TextFieldBase.vue';
+import formField from './formFieldMixin';
 
 export default {
   name: 'HdInput',
   inheritAttrs: false,
+  mixins: [
+    formField,
+  ],
   components: {
     TextFieldBase,
   },
