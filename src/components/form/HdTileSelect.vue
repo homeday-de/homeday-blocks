@@ -1,23 +1,33 @@
 <template>
-  <div class="field tile-select">
-    <div class="tile-select__items">
-      <hd-tile-select-item
-        v-for="item in itemsMapped"
-        :key="item.value"
-        :value="item.value"
-        :text="item.text"
-        :model="value"
-        @input="$emit('input', $event)"
-      />
-      <hd-tile-select-editable-item
-        v-if="acceptNewValue"
-        v-bind="$attrs"
-        v-model="customInputModel"
-        :text="customInputText"
-        :model="value"
-      />
+  <FieldBase
+    v-bind="$attrs"
+    :name="name"
+    :error="error"
+    :helper="helper"
+    :filled="isFilled"
+    minimized-label
+    grouped
+  >
+    <div class="field tile-select">
+      <div class="tile-select__items">
+        <hd-tile-select-item
+          v-for="item in itemsMapped"
+          :key="item.value"
+          :value="item.value"
+          :text="item.text"
+          :model="value"
+          @input="emitValue($event)"
+        />
+        <hd-tile-select-editable-item
+          v-if="acceptNewValue"
+          v-bind="$attrs"
+          v-model="customInputModel"
+          :text="customInputText"
+          :model="value"
+        />
+      </div>
     </div>
-  </div>
+  </FieldBase>
 </template>
 
 <script>
@@ -29,8 +39,11 @@
  */
 
 import _get from 'lodash/get';
+import _merge from 'lodash/merge';
+import { getMessages } from 'homeday-blocks/src/lang';
 import HdTileSelectItem from 'homeday-blocks/src/components/HdTileSelectItem.vue';
 import HdTileSelectEditableItem from 'homeday-blocks/src/components/HdTileSelectEditableItem.vue';
+import FieldBase from './FieldBase.vue';
 import formField from './formFieldMixin';
 
 export default {
@@ -42,10 +55,13 @@ export default {
   components: {
     HdTileSelectItem,
     HdTileSelectEditableItem,
+    FieldBase,
   },
   data() {
     return {
       customInputModel: '',
+      error: null,
+      helper: null,
     };
   },
   props: {
@@ -77,13 +93,20 @@ export default {
       type: Boolean,
       default: false,
     },
+    texts: {
+      type: Object,
+      default: () => ({}),
+    },
   },
   watch: {
     customInputModel(newValue) {
-      this.$emit('input', newValue);
+      this.emitValue(newValue);
     },
   },
   computed: {
+    t() {
+      return _merge(getMessages(this.lang), this.texts);
+    },
     itemsMapped() {
       return this.items.map(item => ({
         value: _get(item, 'value', item),
@@ -102,12 +125,27 @@ export default {
     },
   },
   methods: {
+    async emitValue(value) {
+      this.$emit('input', value);
+      await this.$nextTick();
+      this.validate();
+    },
+    showError(errorMessage) {
+      this.error = errorMessage;
+    },
+    showHelper(message) {
+      this.helper = message;
+    },
+    hideError() {
+      this.error = null;
+    },
     validate() {
       if (this.required && !this.isFilled) {
-        return false;
+        this.showError(this.t.FORM.VALIDATION.REQUIRED);
+      } else {
+        this.hideError();
       }
-
-      return true;
+      return !this.error;
     },
   },
 };
@@ -126,6 +164,7 @@ $border-width: 1px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax($item-min-size, 1fr));
     grid-gap: $border-width;
+    flex: 1;
     background-color: getShade($quaternary-color, 60);
     border: $border-width solid getShade($quaternary-color, 60);
     border-radius: 4px;
