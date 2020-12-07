@@ -192,7 +192,7 @@ describe('HdForm', () => {
     expect(scrollToEl).toHaveBeenCalledWith({ el: expectedScrollElement });
   });
 
-  test('a HdForm tracks dynamic added fields', async () => {
+  test('a HdForm tracks dynamically added or removed fields', async () => {
     const { wrapper } = hdFormFactory()
       .withDefaultSlot({
         data: () => ({
@@ -243,6 +243,16 @@ describe('HdForm', () => {
     expect(wrapper.emitted().submit[1][0].formData).toEqual({
       hasTermsAgreed: true,
       favoriteBand: 'Muse',
+    });
+
+    await selectors.hasTermsAgreed().setChecked(false);
+
+    expect(selectors.favoriteBand().exists()).toBe(false);
+
+    await selectors.submit().trigger('submit');
+
+    expect(wrapper.emitted().submit[2][0].formData).toEqual({
+      hasTermsAgreed: false,
     });
   });
 });
