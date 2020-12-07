@@ -1,5 +1,5 @@
 import { wrapperFactoryBuilder } from 'tests/unit/helpers';
-import HdTileSelect from '@/components/HdTileSelect.vue';
+import HdTileSelect from '@/components/form/HdTileSelect.vue';
 
 const items = [1, 2, 3];
 const value = 0;
@@ -7,6 +7,7 @@ const wrapperFactory = wrapperFactoryBuilder(HdTileSelect, {
   props: {
     value,
     items,
+    name: 'myTileSelect',
   },
 });
 

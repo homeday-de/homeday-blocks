@@ -31,10 +31,14 @@
 import _get from 'lodash/get';
 import HdTileSelectItem from 'homeday-blocks/src/components/HdTileSelectItem.vue';
 import HdTileSelectEditableItem from 'homeday-blocks/src/components/HdTileSelectEditableItem.vue';
+import formField from './formFieldMixin';
 
 export default {
   name: 'HdTileSelect',
   inheritAttrs: false,
+  mixins: [
+    formField,
+  ],
   components: {
     HdTileSelectItem,
     HdTileSelectEditableItem,
@@ -57,11 +61,19 @@ export default {
       type: [String, Number, Boolean],
       default: '',
     },
+    name: {
+      type: String,
+      required: true,
+    },
     formatter: {
       type: Function,
       default: value => (String(value)),
     },
     acceptNewValue: {
+      type: Boolean,
+      default: false,
+    },
+    required: {
       type: Boolean,
       default: false,
     },
@@ -84,6 +96,18 @@ export default {
       }
 
       return this.formatter(this.customInputModel);
+    },
+    isFilled() {
+      return this.value !== null && this.value !== undefined && this.value !== '';
+    },
+  },
+  methods: {
+    validate() {
+      if (this.required && !this.isFilled) {
+        return false;
+      }
+
+      return true;
     },
   },
 };
