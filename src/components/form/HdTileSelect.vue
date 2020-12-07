@@ -16,7 +16,7 @@
           :value="item.value"
           :text="item.text"
           :model="value"
-          @input="emitValue($event)"
+          @input="emitValue"
         />
         <hd-tile-select-editable-item
           v-if="acceptNewValue"
