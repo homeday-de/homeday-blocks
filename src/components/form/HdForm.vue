@@ -85,7 +85,7 @@ export default {
       return this.initialFormData[fieldName] === undefined;
     },
     removeField(fieldToRemove) {
-      this.fields = this.fields.filter(field => field.name === fieldToRemove.name);
+      this.fields = this.fields.filter(field => field.name !== fieldToRemove.name);
     },
   },
 };
