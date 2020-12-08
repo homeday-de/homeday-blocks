@@ -10,7 +10,6 @@ export { default as HdResponsive } from './src/components/HdResponsive.vue';
 export { default as HdTable } from './src/components/HdTable.vue';
 export { default as HdTabsMenu } from './src/components/HdTabsMenu.vue';
 export { default as HdTagsList } from './src/components/HdTagsList.vue';
-export { default as HdTileSelect } from './src/components/HdTileSelect.vue';
 export { default as HdTimeslots } from './src/components/HdTimeslots.vue';
 export { default as HdToast } from './src/components/HdToast.vue';
 export { default as HdToggle } from './src/components/HdToggle.vue';
@@ -32,6 +31,7 @@ export { default as HdDetailsTableRow } from './src/components/details-table/HdD
 // Form
 export { default as HdCheckbox } from './src/components/form/HdCheckbox.vue';
 export { default as HdDynamicForm } from './src/components/form/HdDynamicForm.vue';
+export { default as HdForm } from './src/components/form/HdForm.vue';
 export { default as HdGoogleAutocomplete } from './src/components/form/HdGoogleAutocomplete.vue';
 export { default as HdInput } from './src/components/form/HdInput.vue';
 export { default as HdInputFormatter } from './src/components/form/HdInputFormatter.vue';
@@ -43,6 +43,7 @@ export { default as HdSelect } from './src/components/form/HdSelect.vue';
 export { default as HdSplitInput } from './src/components/form/HdSplitInput.vue';
 export { default as HdTagsSelector } from './src/components/form/HdTagsSelector.vue';
 export { default as HdTextarea } from './src/components/form/HdTextarea.vue';
+export { default as HdTileSelect } from './src/components/form/HdTileSelect.vue';
 
 // Tooltip
 export { default as HdTooltip } from './src/components/tooltip/HdTooltip.vue';

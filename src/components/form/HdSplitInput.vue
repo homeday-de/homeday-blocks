@@ -1,7 +1,7 @@
 <template>
   <FieldBase
     v-bind="$attrs"
-    :name="fields[0].name"
+    :name="name"
     :error="error"
     :helper="helper"
     :active="isActive"
@@ -39,9 +39,13 @@
 import merge from 'lodash/merge';
 import { getMessages } from 'homeday-blocks/src/lang';
 import FieldBase from './FieldBase.vue';
+import formField from './formFieldMixin';
 
 export default {
   name: 'HdSplitInput',
+  mixins: [
+    formField,
+  ],
   components: {
     FieldBase,
   },
@@ -61,6 +65,10 @@ export default {
     value: {
       type: Object,
       default: () => ({}),
+    },
+    name: {
+      type: String,
+      required: true,
     },
     separator: {
       type: String,

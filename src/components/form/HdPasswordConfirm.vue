@@ -33,9 +33,13 @@ import merge from 'lodash/merge';
 import { getMessages } from 'homeday-blocks/src/lang';
 import { getPasswordStrength } from 'homeday-blocks/src/services/utils';
 import HdInputPassword from 'homeday-blocks/src/components/form/HdInputPassword.vue';
+import formField from './formFieldMixin';
 
 export default {
   name: 'hd-confirm-password',
+  mixins: [
+    formField,
+  ],
   components: {
     HdInputPassword,
   },

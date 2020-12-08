@@ -35,9 +35,13 @@
 import merge from 'lodash/merge';
 import { getMessages } from 'homeday-blocks/src/lang';
 import TextFieldBase from './TextFieldBase.vue';
+import formField from './formFieldMixin';
 
 export default {
   name: 'HdTextarea',
+  mixins: [
+    formField,
+  ],
   components: {
     TextFieldBase,
   },

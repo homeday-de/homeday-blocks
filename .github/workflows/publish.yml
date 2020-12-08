@@ -9,11 +9,61 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Read .nvmrc
+        run: echo "::set-output name=NODE_VERSION::$(cat .nvmrc)"
+        id: nvm
       - uses: actions/setup-node@v1
         with:
-          node-version: 10.19.0
+          node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
           registry-url: https://registry.npmjs.org/
-      - run: npm ci
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+      - uses: octokit/request-action@v2.0.17
+        id: get_latest_release
+        with:
+          route: GET /repos/:repository/releases/latest
+          repository: ${{ github.repository }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: |
+          curl \
+            -X POST \
+            -H 'Content-type: application/json' \
+            --data \
+            '{
+              "blocks": [
+                {
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "'"$TITLE"'"
+                  }
+                },
+                {
+                  "type": "divider"
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "'"$NOTES"'",
+                    "emoji": true
+                  }
+                },
+                {
+                  "type": "context",
+                  "elements": [
+                    {
+                      "type": "plain_text",
+                      "text": "Homeday Blocks"
+                    }
+                  ]
+                }
+              ]
+            }' \
+            $SLACK_RELEASE_BOT_WEBHOOK_URL
+        env:
+          TITLE: "${{fromJson(steps.get_latest_release.outputs.data).tag_name}} - ${{fromJson(steps.get_latest_release.outputs.data).name}}"
+          NOTES: "${{fromJson(steps.get_latest_release.outputs.data).body}}"
+          SLACK_RELEASE_BOT_WEBHOOK_URL: ${{ secrets.SLACK_RELEASE_BOT_WEBHOOK_URL }}

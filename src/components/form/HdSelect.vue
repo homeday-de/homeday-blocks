@@ -46,9 +46,13 @@ import { getMessages } from 'homeday-blocks/src/lang';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import { smallArrowIcon } from 'homeday-blocks/src/assets/small-icons';
 import FieldBase from './FieldBase.vue';
+import formField from './formFieldMixin';
 
 export default {
   name: 'HdSelect',
+  mixins: [
+    formField,
+  ],
   components: {
     FieldBase,
     HdIcon,

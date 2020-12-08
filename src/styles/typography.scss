@@ -1,0 +1,144 @@
+@import './_variables';
+@import './deprecated_font';
+
+@function rem-calc($size) {
+  $remSize: $size / 16;
+  @return #{$remSize}rem;
+}
+
+@mixin font($style) {
+  @if ($style == "DS-60") {
+    font-size: rem-calc(12);
+    line-height: 1.5;
+  }
+  @else if ($style == "DS-80") {
+    font-size: rem-calc(12);
+    line-height: 1.334;
+  }
+  @else if ($style == "DS-100") {
+    font-size: rem-calc(16);
+    line-height: 1.5;
+  }
+  @else if ($style == "DS-200") {
+    font-size: rem-calc(20);
+    line-height: 1.6;
+  }
+  @else if ($style == "DS-300") {
+    font-size: rem-calc(24);
+    line-height: 1.334;
+  }
+  @else if ($style == "DS-400") {
+    font-size: rem-calc(32);
+    line-height: 1.25;
+  }
+  @else if ($style == "DS-500") {
+    font-size: rem-calc(40);
+    line-height: 1.2;
+  }
+  @else if ($style == "DS-600") {
+    font-size: rem-calc(48);
+    line-height: 1.1667;
+  }
+  @else if ($style == "DS-700") {
+    font-size: rem-calc(64);
+    line-height: 1.125;
+  }
+  @else if ($style == "DS-800") {
+    font-size: rem-calc(76);
+    line-height: 1.157;
+  }
+  @else {
+    @include deprecated_font($style);
+  }
+}
+
+@mixin hd-typography() {
+  font-family: $font-primary;
+
+  // h1, h2, h3, h4, h5 {
+  //   margin-bottom: .7em; // TBD
+  // }
+
+  p {
+    @include font('DS-100');
+    // margin-bottom: 1em; // TBD
+
+    // & + h1,
+    // & + h2,
+    // & + h3,
+    // & + h4,
+    // & + h5 {
+    //   margin-top: 1.2em; // TBD
+    // }
+  }
+
+  h1 {
+    @include font('DS-300');
+    font-weight: 900;
+
+    @media (min-width: $break-tablet) {
+      @include font('DS-500');
+    }
+
+    @media (min-width: $break-desktop) {
+      @include font('DS-600');
+    }
+  }
+
+  h2 {
+    @include font('DS-300');
+    font-weight: bold;
+
+    @media (min-width: $break-tablet) {
+      @include font('DS-400');
+      font-weight: 900;
+    }
+  }
+
+  h3 {
+    @include font('DS-200');
+    font-weight: bold;
+  }
+
+  h4 {
+    @include font('DS-100');
+    font-weight: bold;
+  }
+
+  h5 {
+    @include font('DS-100');
+    font-weight: 600;
+  }
+}
+
+@mixin link {
+  transition: all $time-s ease-in-out;
+  position: relative;
+  // Link underline
+  box-shadow: none; // remove old .link pls
+
+  &:active,
+  &:hover {
+    color: getShade($secondary-color, 110);
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: -2px;
+    right: -2px;
+    bottom: -3px;
+    height: 2px;
+    background-color: getShade($secondary-color, 110);
+    border-radius: 2px;
+  }
+}
+
+@mixin link-dark {
+  @include link;
+  color: $white;
+}
+
+.link {
+  @include link;
+}

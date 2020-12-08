@@ -69,12 +69,17 @@ import merge from 'lodash/merge';
 import { getMessages } from 'homeday-blocks/src/lang';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import { checkIcon, minusIcon } from 'homeday-blocks/src/assets/small-icons';
+import formField from './formFieldMixin';
 import FieldBase from './FieldBase.vue';
 
 export default {
   name: 'HdCheckbox',
+  mixins: [
+    formField,
+  ],
   components: {
-    FieldBase, HdIcon,
+    FieldBase,
+    HdIcon,
   },
   props: {
     name: {
@@ -126,8 +131,13 @@ export default {
     t() {
       return merge(getMessages(this.lang), this.texts);
     },
-    isChecked() {
-      return this.value;
+    isChecked: {
+      get() {
+        return this.value;
+      },
+      set() {
+        this.toggle();
+      },
     },
     statusIcon() {
       if (this.indeterminate) return minusIcon;
