@@ -116,8 +116,7 @@
   position: relative;
   // Link underline
   box-shadow: none; // remove old .link pls
-  font-size: 1em;
-  line-height: 1.33em;
+  font-size: inherit;
 
   &:active,
   &:hover {
@@ -127,8 +126,8 @@
   &:after {
     content: "";
     position: absolute;
-    left: -2px;
-    right: -2px;
+    left: 0;
+    right: 0;
     bottom: -2px;
     height: 2px;
     background-color: getShade($secondary-color, 110);

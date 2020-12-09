@@ -50,7 +50,7 @@ const Template = (args, { argTypes }) => ({
       </div>
 
       <div 
-        class="story-container"
+        class="story-container hd-typography"
         :class="{'story-container--dark': 'dark' === modifier || 'secondary-dark' === modifier }"
       >
         <p>
