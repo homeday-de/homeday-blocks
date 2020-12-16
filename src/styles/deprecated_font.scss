@@ -1,6 +1,4 @@
 @mixin deprecated_font($style) {
-  @warn "Please use the new 'font' mixin in the typography style sheet. You can read more about it on https://blocks.homeday.dev/?path=/story/typography-typography-text-variants--font-sizes";
-
   @if ($style == 'headline') {
     font-family: $font-primary;
     color: inherit;
