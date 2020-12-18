@@ -20,10 +20,20 @@ export default {
         options: TYPES,
       },
     },
+    container: {
+      control: {
+        type: 'select',
+        options: {
+          light: 'story-container--light',
+          dark: 'story-container--dark',
+        },
+      },
+    },
   },
   args: {
     modifier: TYPES[0],
     href: 'https://www.homeday.de',
+    container: 'story-container--light',
   },
 };
 
@@ -39,7 +49,7 @@ const Template = (args, { argTypes }) => ({
     <div>
       <div 
         class="story-container"
-        :class="{'story-container--dark': 'dark' === modifier || 'secondary-dark' === modifier }"
+        :class="container"
       >
         <HdLink
           :modifier="modifier"
@@ -51,7 +61,7 @@ const Template = (args, { argTypes }) => ({
 
       <div 
         class="story-container hd-typography"
-        :class="{'story-container--dark': 'dark' === modifier || 'secondary-dark' === modifier }"
+        :class="container"
       >
         <p>
           Lorem ipsum dolor sit amet, <HdLink :modifier="modifier" :href="href"> consectetur </HdLink>

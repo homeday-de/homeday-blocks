@@ -133,3 +133,43 @@ $font-list: ('headline', 'headline'),
     @include elevation($level);
   }
 }
+
+@mixin link {
+  transition: all $time-s ease-in-out;
+  position: relative;
+  // Link underline
+  box-shadow: none; // remove old .link pls
+  font-size: inherit;
+  color: inherit;
+
+  &:active,
+  &:hover {
+    color: getShade($secondary-color, 110);
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 2px;
+    background-color: getShade($secondary-color, 110);
+    border-radius: 2px;
+  }
+}
+
+@mixin link-secondary {
+  @include link;
+  &:after {
+    content: none;
+  }
+}
+
+.link {
+  @include link;
+
+  &--secondary {
+    @include link-secondary;
+  }
+}
