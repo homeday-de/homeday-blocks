@@ -1,4 +1,4 @@
-You can also use it to render `<router-view>`, just provide the props `to` and it will automatically use `<router-view>` instead of default `<a>`.
+You can also use it to render `<router-link>`, just provide the props `to` and it will automatically use `<router-link>` instead of default `<a>`.
 
 ```js
 <template>

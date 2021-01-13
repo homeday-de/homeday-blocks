@@ -1,0 +1,17 @@
+.story-container {
+  padding: 32px;
+  margin: 8px;
+}
+
+.story-container ol, .story-container ul {
+  list-style: disc;
+}
+
+.story-container--light {
+  background: #f5f2f0;
+}
+
+.story-container--dark {
+  background: #0F1D2E;
+  color: #FFFFFF;
+}
