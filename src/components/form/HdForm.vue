@@ -24,6 +24,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    hasChanged: {
+      type: Boolean,
+      default: null,
+    },
   },
   data() {
     return {
@@ -31,8 +35,22 @@ export default {
       fields: [],
     };
   },
+  computed: {
+    fieldsValues() {
+      return this.fields.map(field => field.value);
+    },
+  },
   created() {
     this.initialFormData = _cloneDeep(this.getFormData());
+  },
+  watch: {
+    fieldsValues() {
+      if (!_isNil(this.hasChanged)) {
+        const formData = formatNestedData(this.getFormData());
+        const hasChanged = !_isEqual(formData, this.initialFormData);
+        this.$emit('update:hasChanged', hasChanged);
+      }
+    },
   },
   methods: {
     getFormData() {
