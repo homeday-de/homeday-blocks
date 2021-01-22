@@ -24,6 +24,7 @@
       :style="{ height }"
       :disabled="disabled"
       class="textarea"
+      data-gramm_editor="false"
       @focus="handleFocus"
       @blur="handleBlur"
       @input="handleInput"
