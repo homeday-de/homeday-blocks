@@ -13,6 +13,10 @@ export default {
       control: 'boolean',
       description: 'If set to true and the form is invalid, the window will scroll to the first invalid field when the form is submitted',
     },
+    hasChanged: {
+      control: 'boolean',
+      description: 'If passed to the component, the watcher for form changes is added (compares changes with initial values) and event to update hasChanged is emitted',
+    },
   },
   args: {
     scrollToInvalidField: false,
@@ -30,6 +34,7 @@ const Template = (args, { argTypes }) => ({
   template: `
     <HdForm
       @submit="onSubmit"
+      :has-changed.sync="hasFormChanged"
       v-bind="$props"
     >
       <h2><b>Personal data:</b></h2>
@@ -60,6 +65,7 @@ const Template = (args, { argTypes }) => ({
       age: 45,
       address: {},
       submittedDataString: '',
+      hasFormChanged: false,
     };
   },
   methods: {
