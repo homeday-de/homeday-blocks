@@ -13,8 +13,8 @@ storiesOf('Components/Tooltipped', module)
     components: { HdTooltipped, HdInput },
     template: `
     <div>
-      <hd-tooltipped value="This is a text input" :component="HdInput" :props="{label: 'Hover over these components'}" />
-      <hd-tooltipped value="This is another text input 🤓" :component="HdInput" :props="{label: 'HdInput is just an example'}" />
+      <hd-tooltipped value="This is a text input" :component="HdInput" :props="{label: 'Hover over these components', name: 'test1'}" />
+      <hd-tooltipped value="This is another text input 🤓" :component="HdInput" :props="{label: 'HdInput is just an example', name: 'test2'}" />
     </div>
     `,
     data() {
@@ -23,7 +23,7 @@ storiesOf('Components/Tooltipped', module)
   }))
   .add('left', () => ({
     components: { HdTooltipped, HdInput },
-    template: '<hd-tooltipped value="Hello from the other side" direction="left" :component="HdInput" :props="{label: \'You can pass props to the component 😉\', \'value\': \'valuuuuue\'}" />',
+    template: '<hd-tooltipped value="Hello from the other side" direction="left" :component="HdInput" :props="{label: \'You can pass props to the component 😉\', \'value\': \'valuuuuue\', name: \'test\'}" />',
     data() {
       return { HdInput };
     },
