@@ -123,7 +123,7 @@ describe('HdForm', () => {
     );
   });
 
-  test('a HdForm detects changes in child inputs', async () => {
+  test('a HdForm detects changes in child inputs on submit', async () => {
     const { wrapper, selectors } = hdFormFactory()
       .withSampleForm()
       .build();
@@ -136,6 +136,33 @@ describe('HdForm', () => {
     await selectors.submit().trigger('submit');
 
     expect(wrapper.emitted().submit[1][0].hasChanged).toBe(true);
+  });
+
+  test('a HdForm detects changes if the parent needs to access the data through hasChanged prop sync', async () => {
+    const { wrapper, selectors } = hdFormFactory()
+      .withProps({ hasChanged: false })
+      .withSampleForm()
+      .build();
+
+    const initialFirstNameValue = selectors.firstName().element.value;
+
+    await selectors.firstName().setValue('Dave Grohl');
+
+    expect(wrapper.emitted()['update:hasChanged'][1][0]).toBe(true);
+
+    await selectors.firstName().setValue(initialFirstNameValue);
+
+    expect(wrapper.emitted()['update:hasChanged'][2][0]).toBe(false);
+  });
+
+  test("a HdForm does not change the hasChanged prop if it's not passed to it", async () => {
+    const { wrapper, selectors } = hdFormFactory()
+      .withSampleForm()
+      .build();
+
+    await selectors.firstName().setValue('Dave Grohl');
+
+    expect(wrapper.emitted()['update:hasChanged']).toBeFalsy();
   });
 
   test("a HdForm does not detect changes in child inputs that don't inject 'addFormField'", async () => {
