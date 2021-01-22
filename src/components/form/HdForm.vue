@@ -42,15 +42,14 @@ export default {
   },
   created() {
     this.initialFormData = _cloneDeep(this.getFormData());
-  },
-  watch: {
-    fieldsValues() {
-      if (!_isNil(this.hasChanged)) {
+
+    if (!_isNil(this.hasChanged)) {
+      this.$watch('fieldsValues', () => {
         const formData = formatNestedData(this.getFormData());
         const hasChanged = !_isEqual(formData, this.initialFormData);
         this.$emit('update:hasChanged', hasChanged);
-      }
-    },
+      });
+    }
   },
   methods: {
     getFormData() {
