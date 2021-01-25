@@ -29,6 +29,7 @@
       @blur="handleBlur"
       @input="handleInput"
     />
+    <!-- `data-gramm_editor` attribute is used to control Grammarly (chrome extension) -->
   </TextFieldBase>
 </template>
 
