@@ -24,10 +24,6 @@ export default {
       type: Boolean,
       default: false,
     },
-    hasChanged: {
-      type: Boolean,
-      default: null,
-    },
   },
   data() {
     return {
@@ -42,14 +38,15 @@ export default {
   },
   created() {
     this.initialFormData = _cloneDeep(this.getFormData());
-
-    if (!_isNil(this.hasChanged)) {
-      this.$watch('fieldsValues', () => {
+  },
+  watch: {
+    fieldsValues() {
+      if (this.$listeners.hasChanged) {
         const formData = formatNestedData(this.getFormData());
         const hasChanged = !_isEqual(formData, this.initialFormData);
-        this.$emit('update:hasChanged', hasChanged);
-      });
-    }
+        this.$emit('hasChanged', hasChanged);
+      }
+    },
   },
   methods: {
     getFormData() {
