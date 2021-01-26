@@ -20,6 +20,7 @@ export { default as chevronIcon } from './ic_chevron.svg';
 export { default as cityIcon } from './ic_city.svg';
 export { default as closeIcon } from './ic_close.svg';
 export { default as cloudDownloadIcon } from './ic_cloud-download.svg';
+export { default as cloudUploadIcon } from './ic_cloud-upload.svg';
 export { default as cologneIcon } from './ic_cologne.svg';
 export { default as commentIcon } from './ic_comment.svg';
 export { default as contractIcon } from './ic_contract.svg';
