@@ -42,7 +42,8 @@ export default {
     if (this.$listeners.hasChanged) {
       this.$watch('fieldsValues', () => {
         const formData = formatNestedData(this.getFormData());
-        const hasChanged = !_isEqual(formData, this.initialFormData);
+        const initialFormData = formatNestedData(this.initialFormData);
+        const hasChanged = !_isEqual(formData, initialFormData);
         this.$emit('hasChanged', hasChanged);
       });
     }
