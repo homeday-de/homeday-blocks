@@ -44,7 +44,7 @@ export default {
       const formData = formatNestedData(this.getFormData());
       const initialFormData = formatNestedData(this.initialFormData);
       const hasChanged = !_isEqual(formData, initialFormData);
-      this.$emit('change', hasChanged);
+      this.$emit('change', { hasChanged });
     },
   },
   methods: {
