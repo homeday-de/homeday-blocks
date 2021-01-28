@@ -38,15 +38,14 @@ export default {
   },
   created() {
     this.initialFormData = _cloneDeep(this.getFormData());
-
-    if (this.$listeners.hasChanged) {
-      this.$watch('fieldsValues', () => {
-        const formData = formatNestedData(this.getFormData());
-        const initialFormData = formatNestedData(this.initialFormData);
-        const hasChanged = !_isEqual(formData, initialFormData);
-        this.$emit('hasChanged', hasChanged);
-      });
-    }
+  },
+  watch: {
+    fieldsValues() {
+      const formData = formatNestedData(this.getFormData());
+      const initialFormData = formatNestedData(this.initialFormData);
+      const hasChanged = !_isEqual(formData, initialFormData);
+      this.$emit('change', hasChanged);
+    },
   },
   methods: {
     getFormData() {

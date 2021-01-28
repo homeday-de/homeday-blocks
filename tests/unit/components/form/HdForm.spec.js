@@ -143,9 +143,9 @@ describe('HdForm', () => {
   });
 
   test('a HdForm detects changes if the parent listens to hasChanged event', async () => {
-    const onHasChanged = jest.fn();
+    const onChange = jest.fn();
     const { wrapper, selectors } = hdFormFactory()
-      .withListeners({ hasChanged: onHasChanged })
+      .withListeners({ change: onChange })
       .withSampleForm()
       .build();
 
@@ -153,21 +153,11 @@ describe('HdForm', () => {
 
     await selectors.firstName().setValue('Dave Grohl');
 
-    expect(wrapper.emitted().hasChanged[1][0]).toBe(true);
+    expect(wrapper.emitted().change[1][0]).toBe(true);
 
     await selectors.firstName().setValue(initialFirstNameValue);
 
-    expect(wrapper.emitted().hasChanged[2][0]).toBe(false);
-  });
-
-  test('a HdForm does not emit hasChanged event if there is no listener', async () => {
-    const { wrapper, selectors } = hdFormFactory()
-      .withSampleForm()
-      .build();
-
-    await selectors.firstName().setValue('Dave Grohl');
-
-    expect(wrapper.emitted().hasChanged).toBeFalsy();
+    expect(wrapper.emitted().change[2][0]).toBe(false);
   });
 
   test("a HdForm does not detect changes in child inputs that don't inject 'addFormField'", async () => {

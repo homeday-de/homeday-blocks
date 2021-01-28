@@ -30,7 +30,7 @@ const Template = (args, { argTypes }) => ({
   template: `
     <HdForm
       @submit="onSubmit"
-      @hasChanged="onFormChange"
+      @change="onFormChange"
       v-bind="$props"
     >
       <h2><b>Personal data:</b></h2>
@@ -76,7 +76,7 @@ const Template = (args, { argTypes }) => ({
     },
     onFormChange(val) {
       this.hasFormChanged = val;
-      console.log('hasChanged', val);
+      console.log('changed', val);
     },
   },
 });
