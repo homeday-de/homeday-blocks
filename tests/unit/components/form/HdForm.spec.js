@@ -153,11 +153,11 @@ describe('HdForm', () => {
 
     await selectors.firstName().setValue('Dave Grohl');
 
-    expect(wrapper.emitted().change[1][0]).toBe(true);
+    expect(wrapper.emitted().change[1][0].hasChanged).toBe(true);
 
     await selectors.firstName().setValue(initialFirstNameValue);
 
-    expect(wrapper.emitted().change[2][0]).toBe(false);
+    expect(wrapper.emitted().change[2][0].hasChanged).toBe(false);
   });
 
   test("a HdForm does not detect changes in child inputs that don't inject 'addFormField'", async () => {
