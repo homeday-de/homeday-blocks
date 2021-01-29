@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { component as VueCodeHighlight } from 'vue-code-highlight';
 import '../styles/utility/typographyUtility.scss';
+import './styles/StoryContainers.css';
 
 export default {
   title: 'Typography/Typography Text Variants',

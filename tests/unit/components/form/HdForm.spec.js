@@ -21,7 +21,7 @@ describe('HdForm', () => {
     props: {},
     selectors: {},
     build() {
-      this.wrapper = wrapperFactory({ slots: this.slots, props: this.props });
+      this.wrapper = wrapperFactory({ slots: this.slots, props: this.props, listeners: this.listeners });
       return {
         wrapper: this.wrapper,
         selectors: this.selectors,
@@ -29,6 +29,10 @@ describe('HdForm', () => {
     },
     withProps(props = {}) {
       this.props = props;
+      return this;
+    },
+    withListeners(listeners = {}) {
+      this.listeners = listeners;
       return this;
     },
     withDefaultSlot(defaultSlot = {}) {
@@ -123,7 +127,7 @@ describe('HdForm', () => {
     );
   });
 
-  test('a HdForm detects changes in child inputs', async () => {
+  test('a HdForm detects changes in child inputs on submit', async () => {
     const { wrapper, selectors } = hdFormFactory()
       .withSampleForm()
       .build();
@@ -136,6 +140,24 @@ describe('HdForm', () => {
     await selectors.submit().trigger('submit');
 
     expect(wrapper.emitted().submit[1][0].hasChanged).toBe(true);
+  });
+
+  test('a HdForm detects changes if the parent listens to hasChanged event', async () => {
+    const onChange = jest.fn();
+    const { wrapper, selectors } = hdFormFactory()
+      .withListeners({ change: onChange })
+      .withSampleForm()
+      .build();
+
+    const initialFirstNameValue = selectors.firstName().element.value;
+
+    await selectors.firstName().setValue('Dave Grohl');
+
+    expect(wrapper.emitted().change[1][0].hasChanged).toBe(true);
+
+    await selectors.firstName().setValue(initialFirstNameValue);
+
+    expect(wrapper.emitted().change[2][0].hasChanged).toBe(false);
   });
 
   test("a HdForm does not detect changes in child inputs that don't inject 'addFormField'", async () => {

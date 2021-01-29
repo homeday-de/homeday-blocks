@@ -30,6 +30,7 @@ const Template = (args, { argTypes }) => ({
   template: `
     <HdForm
       @submit="onSubmit"
+      @change="onFormChange"
       v-bind="$props"
     >
       <h2><b>Personal data:</b></h2>
@@ -60,6 +61,7 @@ const Template = (args, { argTypes }) => ({
       age: 45,
       address: {},
       submittedDataString: '',
+      hasFormChanged: null,
     };
   },
   methods: {
@@ -71,6 +73,10 @@ const Template = (args, { argTypes }) => ({
         '...': 'the other Vue component attributes were suppressed as Storybook struggles to stringify objects with circular references',
       }));
       console.log('submitted', params);
+    },
+    onFormChange(val) {
+      this.hasFormChanged = val;
+      console.log('changed', val);
     },
   },
 });

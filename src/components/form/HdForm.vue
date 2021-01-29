@@ -31,8 +31,21 @@ export default {
       fields: [],
     };
   },
+  computed: {
+    fieldsValues() {
+      return this.fields.map(field => field.value);
+    },
+  },
   created() {
     this.initialFormData = _cloneDeep(this.getFormData());
+  },
+  watch: {
+    fieldsValues() {
+      const formData = formatNestedData(this.getFormData());
+      const initialFormData = formatNestedData(this.initialFormData);
+      const hasChanged = !_isEqual(formData, initialFormData);
+      this.$emit('change', { hasChanged });
+    },
   },
   methods: {
     getFormData() {
