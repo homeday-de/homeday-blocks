@@ -24,10 +24,12 @@
       :style="{ height }"
       :disabled="disabled"
       class="textarea"
+      data-gramm_editor="false"
       @focus="handleFocus"
       @blur="handleBlur"
       @input="handleInput"
     />
+    <!-- `data-gramm_editor` attribute is used to control Grammarly (chrome extension) -->
   </TextFieldBase>
 </template>
 
