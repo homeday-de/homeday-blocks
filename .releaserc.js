@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 const dateFormat = require('dateformat');
 const { readFileSync } = require('fs');
 const { join } = require('path');
@@ -33,12 +34,12 @@ module.exports = {
               let groupedCommits = {};
 
               allCommits.forEach((commit) => {
-                const gitmoji = gitmojis.find(({ emoji }) => emoji == commit.gitmoji);
+                const gitmoji = gitmojis.find(({ emoji }) => emoji === commit.gitmoji);
 
                 groupedCommits = {
                   ...groupedCommits,
                   [gitmoji.semver]: [
-                    ... groupedCommits[gitmoji.semver] || [],
+                    ...groupedCommits[gitmoji.semver] || [],
                     commit,
                   ],
                 };
