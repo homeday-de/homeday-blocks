@@ -30,20 +30,24 @@ module.exports = {
               return dateFormat(new Date(), format);
             },
             groupCommits(commits, options) {
+              console.log('commits', JSON.stringify(commits));
+
               const allCommits = Object.values(commits).flat();
               let groupedCommits = {};
 
-              allCommits.forEach((commit) => {
-                const gitmoji = gitmojis.find(({ emoji }) => emoji === commit.gitmoji);
+              allCommits
+                .filter(commit => commit !== undefined)
+                .forEach((commit) => {
+                  const gitmoji = gitmojis.find(({ emoji }) => emoji === commit.gitmoji);
 
-                groupedCommits = {
-                  ...groupedCommits,
-                  [gitmoji.semver]: [
-                    ...groupedCommits[gitmoji.semver] || [],
-                    commit,
-                  ],
-                };
-              });
+                  groupedCommits = {
+                    ...groupedCommits,
+                    [gitmoji.semver]: [
+                      ...groupedCommits[gitmoji.semver] || [],
+                      commit,
+                    ],
+                  };
+                });
 
               return options.fn(groupedCommits);
             },
