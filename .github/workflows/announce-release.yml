@@ -3,10 +3,10 @@ name: Announce the release on Slack
 
 on:
   release:
-    types: [published]
+    types: [created]
 
 jobs:
-  publish-npm:
+  announce-on-slack:
     runs-on: ubuntu-latest
     steps:
       - name: Announce on Slack 📢
@@ -48,6 +48,6 @@ jobs:
             }' \
             $SLACK_RELEASE_BOT_WEBHOOK_URL
         env:
-          TITLE: "${{ github.event.release.tag_name }} - ${{ github.event.release.name }}"
+          TITLE: "${{ github.event.release.name }}"
           NOTES: "${{ github.event.release.body }}"
           SLACK_RELEASE_BOT_WEBHOOK_URL: ${{ secrets.SLACK_RELEASE_BOT_WEBHOOK_URL }}
