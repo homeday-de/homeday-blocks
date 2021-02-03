@@ -1,5 +1,6 @@
 # This workflow takes care of releasing a new version of the package and publishing it to NPM
-# when a new releasable change (the releasability is detected using the commits Gitmoji) is pushed to master 
+# when a new releasable change is pushed to master (the releasability is detected using the commits' Gitmojis)
+# To learn more about the releasability of the change see: https://github.com/carloscuesta/gitmoji/pull/692
 name: Release and publish
 
 on:
@@ -23,8 +24,8 @@ jobs:
         with:
           node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
 
-      - name: Install dev dependencies ⚙️
-        run: npm ci --only=dev
+      - name: Install dependencies ⚙️
+        run: npm ci
 
       - name: Release and publish 📤
         env:
