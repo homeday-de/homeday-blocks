@@ -1,3 +1,4 @@
+# This workflow takes care of deploying the pull request in an isolated environment for a better QA experience.
 name: Deploy the pull request to AWS S3
 on: [pull_request]
 
@@ -10,26 +11,27 @@ jobs:
     if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout 🚪
         uses: actions/checkout@v2
         with:
           persist-credentials: false
 
-      - name: Read .nvmrc
+      - name: Read .nvmrc 🔍
         run: echo "::set-output name=NODE_VERSION::$(cat .nvmrc)"
         id: nvm
 
-      - uses: actions/setup-node@v1
+      - name: Set up the right node version 📌
+        uses: actions/setup-node@v1
         with:
           node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
 
-      - name: Install dependencies
+      - name: Install dependencies ⚙️
         run: npm ci
 
-      - name: Build
+      - name: Build 📦
         run: npm run build:storybook -- -o ./dist/${{ env.REPO_NAME }}/${{ env.PR_NUMBER }}
 
-      - name: Deploy
+      - name: Deploy 🚀
         uses: jakejarvis/s3-sync-action@master
         with:
           args: --acl public-read
@@ -39,7 +41,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           SOURCE_DIR: 'dist'
 
-      - name: Add comment
+      - name: Add comment 💬
         uses: marocchino/sticky-pull-request-comment@v1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
