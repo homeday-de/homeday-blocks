@@ -7,3 +7,5 @@ update_configs:
     target_branch: "develop"
     default_labels:
       - "bot"
+    commit_message:
+      prefix: "⬆️"
