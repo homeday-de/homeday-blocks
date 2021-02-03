@@ -30,8 +30,6 @@ module.exports = {
               return dateFormat(new Date(), format);
             },
             groupCommits(commits, options) {
-              console.log('commits', JSON.stringify(commits));
-
               const allCommits = Object.values(commits).flat();
               let groupedCommits = {};
 
