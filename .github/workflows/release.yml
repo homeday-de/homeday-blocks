@@ -1,8 +1,9 @@
 name: Release and publish
 
 on:
-  release:
-    types: [created]
+  push:
+    branches:
+      - master
 
 jobs:
   publish-npm:
