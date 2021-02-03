@@ -6,7 +6,7 @@ on:
     types: [created]
 
 jobs:
-  publish-npm:
+  announce-on-slack:
     runs-on: ubuntu-latest
     steps:
       - name: Announce on Slack 📢

@@ -9,7 +9,7 @@ on:
       - master
 
 jobs:
-  publish-npm:
+  release-and-publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout🚪
