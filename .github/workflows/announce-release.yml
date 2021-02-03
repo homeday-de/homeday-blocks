@@ -1,0 +1,53 @@
+# This workflow announces the new release on the Frontend Slack channel
+name: Announce the release on Slack
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish-npm:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Announce on Slack 📢
+        run: |
+          curl \
+            -X POST \
+            -H 'Content-type: application/json' \
+            --data \
+            '{
+              "blocks": [
+                {
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "'"$TITLE"'"
+                  }
+                },
+                {
+                  "type": "divider"
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "'"$NOTES"'",
+                    "emoji": true
+                  }
+                },
+                {
+                  "type": "context",
+                  "elements": [
+                    {
+                      "type": "plain_text",
+                      "text": "Homeday Blocks"
+                    }
+                  ]
+                }
+              ]
+            }' \
+            $SLACK_RELEASE_BOT_WEBHOOK_URL
+        env:
+          TITLE: "${{ github.event.release.tag_name }} - ${{ github.event.release.name }}"
+          NOTES: "${{ github.event.release.body }}"
+          SLACK_RELEASE_BOT_WEBHOOK_URL: ${{ secrets.SLACK_RELEASE_BOT_WEBHOOK_URL }}
