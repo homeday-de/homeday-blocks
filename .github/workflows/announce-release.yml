@@ -36,8 +36,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "'"$NOTES"'",
-                    "emoji": true
+                    "text": "'"$NOTES"'"
                   }
                 },
                 {
