@@ -35,7 +35,7 @@ jobs:
                 {
                   "type": "section",
                   "text": {
-                    "type": "plain_text",
+                    "type": "mrkdwn",
                     "text": "'"$NOTES"'",
                     "emoji": true
                   }
