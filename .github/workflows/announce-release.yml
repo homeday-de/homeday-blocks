@@ -9,6 +9,11 @@ jobs:
   announce-on-slack:
     runs-on: ubuntu-latest
     steps:
+      - name: Slackify the release body
+        id: release_body
+        uses: LoveToKnow/slackify-markdown-action@v1.0.0
+        with:
+          text: ${{ github.event.release.body }}
       - name: Announce on Slack 📢
         run: |
           curl \
@@ -48,6 +53,6 @@ jobs:
             }' \
             $SLACK_RELEASE_BOT_WEBHOOK_URL
         env:
-          TITLE: "${{ github.event.release.name }}"
-          NOTES: "${{ github.event.release.body }}"
+          TITLE: ${{ github.event.release.name }}
+          NOTES: ${{ steps.release_body.outputs.text }}
           SLACK_RELEASE_BOT_WEBHOOK_URL: ${{ secrets.SLACK_RELEASE_BOT_WEBHOOK_URL }}

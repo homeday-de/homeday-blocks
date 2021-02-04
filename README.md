@@ -135,8 +135,8 @@ It is important to follow this convention, because our automated releases are ba
 
 Releasing a new version is as easy as pushing your changes to `master` (usually by opening a PR from `develop`) 😎
 
-- The [CI](https://travis-ci.com/homeday-de/homeday-blocks) will automatically deploy the storybook to our [showcase env](https://blocks.homeday.dev).
-- And this [release workflow](https://github.com/homeday-de/homeday-blocks/tree/develop/.github/workflows/release.yml) will automatically create a [release on Github](https://github.com/homeday-de/homeday-blocks/releases) and publish a new [version to NPM](https://www.npmjs.com/package/homeday-blocks?activeTab=versions). 
+- [Travis](https://travis-ci.com/homeday-de/homeday-blocks) will automatically deploy the storybook to our [showcase env](https://blocks.homeday.dev).
+- And this [Github workflow](https://github.com/homeday-de/homeday-blocks/tree/develop/.github/workflows/release.yml) will automatically create a [release on Github](https://github.com/homeday-de/homeday-blocks/releases) and publish a new [version to NPM](https://www.npmjs.com/package/homeday-blocks?activeTab=versions). 
 
 ## Consuming in other projects
 
