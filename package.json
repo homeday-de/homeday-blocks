@@ -74,7 +74,7 @@
     "eslint": "^6.5.1",
     "eslint-plugin-vue": "5.2.3",
     "gitmoji-cli": "3.2.12",
-    "gitmojis": "^3.1.2",
+    "gitmojis": "^3.2.0",
     "husky": "4.3.0",
     "hygen": "^6.0.4",
     "lint-staged": "9.5.0",
