@@ -1,8 +1,8 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
+/* eslint-disable import/no-extraneous-dependencies */
 const dateFormat = require('dateformat');
 const { readFileSync } = require('fs');
 const { join } = require('path');
-const { gitmojis } = require('./.semantic-release/semantic-gitmojis');
+const { gitmojis } = require('gitmojis');
 
 const TEMPLATE_DIR = './.semantic-release/templates';
 
