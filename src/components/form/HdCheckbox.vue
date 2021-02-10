@@ -150,7 +150,8 @@ export default {
       this.$emit('input', !this.isChecked);
       this.$nextTick(() => {
         this.validate();
-        this.$refs[this.name].focus();
+        const element = this.$refs[this.name];
+        if (element) element.focus();
       });
     },
     handleFocus() {

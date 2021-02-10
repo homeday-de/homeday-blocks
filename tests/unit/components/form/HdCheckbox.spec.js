@@ -162,4 +162,12 @@ describe('HdCheckbox', () => {
     expect(labelIdAttribute).toContain(computedLabelId);
     expect(ariaLabelledBy).toContain(labelIdAttribute);
   });
+
+  it('At toggle, focus should only trigger if element is available', async () => {
+    jest.spyOn(global.console, 'error');
+    const wrapper = wrapperBuilder();
+    wrapper.vm.$refs = {};
+    wrapper.vm.toggle();
+    expect(console.error).not.toHaveBeenCalled();
+  });
 });
