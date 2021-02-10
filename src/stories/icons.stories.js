@@ -4,6 +4,7 @@ import { component as VueCodeHighlight } from 'vue-code-highlight';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import * as smallIcons from 'homeday-blocks/src/assets/small-icons';
 import * as bigIcons from 'homeday-blocks/src/assets/big-icons';
+import * as mediumIcons from 'homeday-blocks/src/assets/medium-icons';
 import * as bicolorIcons from 'homeday-blocks/src/assets/bicolor-icons';
 
 
@@ -31,6 +32,35 @@ storiesOf('Assets/Icons', module)
       <div>
         <vue-code-highlight>{{
           'import { mailIcon } from "homeday-blocks/src/assets/small-icons";'
+        }}</vue-code-highlight>
+        <section style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;">
+          <div
+            v-for="([name, icon]) in icons"
+            style="padding: 16px 8px; display: flex; flex-direction: column; align-items: center; justify-content: center;"
+          >
+          <HdIcon
+            :src="icon"
+          />
+          <p style="font-size: 14px">{{ name }}</p>
+          </div>
+        </section>
+      </div>
+    `,
+  }))
+  .add('Medium icons', () => ({
+    components: {
+      HdIcon,
+      VueCodeHighlight,
+    },
+    data() {
+      return {
+        icons: Object.entries(mediumIcons),
+      };
+    },
+    template: `
+      <div>
+        <vue-code-highlight>{{
+          'import { elevatorIcon } from "homeday-blocks/src/assets/medium-icons";'
         }}</vue-code-highlight>
         <section style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;">
           <div
