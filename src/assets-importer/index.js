@@ -16,7 +16,7 @@ if (require.main == module) {
 }
 
 /**
- * @param  {string} endpoint - the figma endpoint
+ * @param  {string} endpoint - the Figma endpoint
  */
 function fetchFromFigma(endpoint) {
   return fetch(`https://api.figma.com/v1${endpoint}`, {
@@ -27,8 +27,8 @@ function fetchFromFigma(endpoint) {
 }
 
 /**
- * @param  {string} {name - the file name
- * @param  {RegExp} regex} - the regex used to normalize the file
+ * @param  {string} name - the file name
+ * @param  {RegExp} regex - the regex used to normalize the file
  */
 function normalizeFilename({ name, regex }) {
   const matches = name.match(regex);
@@ -37,9 +37,9 @@ function normalizeFilename({ name, regex }) {
 }
 
 /**
- * @param  {string} {url - the url where the icon can be downloaded
+ * @param  {string} url - the url where the icon can be downloaded
  * @param  {string} filename - the file name
- * @param  {string} dist} - the folder where the file will be downloaded
+ * @param  {string} dist - the folder where the file will be downloaded
  */
 async function download({
   url,
@@ -66,11 +66,11 @@ async function download({
 }
 
 /**
- * @param  {string} {fileKey - the key to fetch the icons on Figma
+ * @param  {string} fileKey - the key to fetch the icons on Figma
  * @param  {string} format - the file format
  * @param  {string} dist - the path where the file will live
  * @param  {RegExp} filenameRegex - the regex used to rename the file
- * @param  {RegExp} matchingRegex} - the regex used to group the files from Figma
+ * @param  {RegExp} matchingRegex - the regex used to group the files from Figma
  */
 async function importAssetsFromFigma({
   fileKey,
@@ -130,8 +130,8 @@ async function importAssetsFromFigma({
 /**
  * @param  {object[]} files - the list of files imported from Figma
  * @param  {string} dist - the path where the icon will live
- * @param  {RegExp} exportNameRegex='*' - the regex the file name should match
- * @param  {string} suffix=''} - the suffix appended to the icon name
+ * @param  {RegExp} exportNameRegex - the regex the file name should match
+ * @param  {string} suffix - the suffix appended to the icon name
  */
 function createIndexFile({ files, dist, exportNameRegex = '*', suffix = '' }) {
   const fileContent = [...new Set(files)]
