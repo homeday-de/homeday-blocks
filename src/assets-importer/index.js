@@ -39,7 +39,7 @@ function normalizeFilename({ name, regex }) {
 /**
  * @param  {string} {url - the url where the icon can be downloaded
  * @param  {string} filename - the file name
- * @param  {string} dist=''} - the folder where the file will be downloaded
+ * @param  {string} dist} - the folder where the file will be downloaded
  */
 async function download({
   url,

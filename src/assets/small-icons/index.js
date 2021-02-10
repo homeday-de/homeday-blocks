@@ -40,6 +40,7 @@ export { default as eventIcon } from './ic_event.svg';
 export { default as facebookIcon } from './ic_facebook.svg';
 export { default as fanOffIcon } from './ic_fan-off.svg';
 export { default as favoriteBorderIcon } from './ic_favorite-border.svg';
+export { default as favoriteFilledIcon } from './ic_favorite-filled.svg';
 export { default as feedbackIcon } from './ic_feedback.svg';
 export { default as folderIcon } from './ic_folder.svg';
 export { default as fullscreenExitIcon } from './ic_fullscreen-exit.svg';
