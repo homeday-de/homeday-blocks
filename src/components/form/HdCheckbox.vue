@@ -150,7 +150,8 @@ export default {
       this.$emit('input', !this.isChecked);
       this.$nextTick(() => {
         this.validate();
-        this.$refs[this.name].focus();
+        // eslint-disable-next-line no-unused-expressions
+        this.$refs[this.name]?.focus();
       });
     },
     handleFocus() {
