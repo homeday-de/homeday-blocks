@@ -15,6 +15,9 @@ if (require.main == module) {
   }
 }
 
+/**
+ * @param  {string} endpoint - the Figma endpoint
+ */
 function fetchFromFigma(endpoint) {
   return fetch(`https://api.figma.com/v1${endpoint}`, {
     headers: {
@@ -23,12 +26,21 @@ function fetchFromFigma(endpoint) {
   }).then(res => res.json());
 }
 
+/**
+ * @param  {string} name - the file name
+ * @param  {RegExp} regex - the regex used to normalize the file
+ */
 function normalizeFilename({ name, regex }) {
   const matches = name.match(regex);
 
   return matches ? matches.pop() : null;
 }
 
+/**
+ * @param  {string} url - the url where the icon can be downloaded
+ * @param  {string} filename - the file name
+ * @param  {string} dist - the folder where the file will be downloaded
+ */
 async function download({
   url,
   filename,
@@ -53,6 +65,13 @@ async function download({
   }
 }
 
+/**
+ * @param  {string} fileKey - the key to fetch the icons on Figma
+ * @param  {string} format - the file format
+ * @param  {string} dist - the path where the file will live
+ * @param  {RegExp} filenameRegex - the regex used to rename the file
+ * @param  {RegExp} matchingRegex - the regex used to group the files from Figma
+ */
 async function importAssetsFromFigma({
   fileKey,
   format,
@@ -108,6 +127,12 @@ async function importAssetsFromFigma({
   });
 }
 
+/**
+ * @param  {object[]} files - the list of files imported from Figma
+ * @param  {string} dist - the path where the icon will live
+ * @param  {RegExp} exportNameRegex - the regex the file name should match
+ * @param  {string} suffix - the suffix appended to the icon name
+ */
 function createIndexFile({ files, dist, exportNameRegex = '*', suffix = '' }) {
   const fileContent = [...new Set(files)]
     // To have a consistent order and avoid unnecessary line changes, we sort the array
@@ -127,6 +152,9 @@ function createIndexFile({ files, dist, exportNameRegex = '*', suffix = '' }) {
   });
 }
 
+/**
+ * @param  {Object<string, object>} collection - the object representing the collection of icons - can be found on assets-importer/CONFIG.js
+ */
 async function importCollection(collection) {
   console.log(`📦 Importing collection "${collection.name}"...`);
   await importAssetsFromFigma({
@@ -141,6 +169,9 @@ function importAllCollections() {
   CONFIG.COLLECTIONS.forEach(collection => importCollection(collection));
 }
 
+/**
+ * @param  {string} collectionName - the name of the collection to be imported
+ */
 function importCollectionByName(collectionName) {
   const collection = CONFIG.COLLECTIONS.find(({ name }) => name === collectionName);
 
