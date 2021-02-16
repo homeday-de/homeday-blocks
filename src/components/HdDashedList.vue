@@ -83,8 +83,6 @@ $leaders-border: 1px dashed getShade($neutral-gray, 50);
     position: relative;
     display: flex;
     align-items: flex-end;
-    overflow: hidden;
-
   }
 
   > dt {
@@ -105,6 +103,11 @@ $leaders-border: 1px dashed getShade($neutral-gray, 50);
 
 @media (min-width: $break-tablet) {
   .dashed-list__item {
+    > dt,
+    > dd {
+      overflow: hidden;
+    }
+
     > dt {
       position: relative;
       width: 40%;
