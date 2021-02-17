@@ -1,3 +1,4 @@
+import { mount } from '@vue/test-utils';
 import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import { getMessages } from '@/lang';
 import HdCheckbox from '@/components/form/HdCheckbox.vue';
@@ -165,9 +166,20 @@ describe('HdCheckbox', () => {
 
   it('At toggle, focus should only trigger if element is available', async () => {
     jest.spyOn(global.console, 'error');
-    const wrapper = wrapperBuilder();
-    wrapper.vm.$refs = {};
-    wrapper.vm.toggle();
+
+    const myComponent = {
+      components: { HdCheckbox },
+      data: () => ({
+        isChecked: true,
+      }),
+      template: '<HdCheckbox v-if="isChecked" v-model="isChecked" name="myCheckbox" />',
+    };
+    const wrapper = mount(myComponent);
+    const checkbox = wrapper.find(checkboxInnerSelector);
+
+    checkbox.trigger('click');
+    await wrapper.vm.$nextTick();
+
     expect(console.error).not.toHaveBeenCalled();
   });
 });
