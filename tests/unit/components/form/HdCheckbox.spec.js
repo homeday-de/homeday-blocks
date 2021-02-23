@@ -1,3 +1,4 @@
+import { mount, createLocalVue } from '@vue/test-utils';
 import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import { getMessages } from '@/lang';
 import HdCheckbox from '@/components/form/HdCheckbox.vue';
@@ -161,5 +162,27 @@ describe('HdCheckbox', () => {
     const ariaLabelledBy = wrapper.get(checkboxInnerSelector).attributes('aria-labelledby');
     expect(labelIdAttribute).toContain(computedLabelId);
     expect(ariaLabelledBy).toContain(labelIdAttribute);
+  });
+
+  it('At toggle, focus should only trigger if element is available', async () => {
+    const errorHandler = jest.fn().mockImplementation(() => {});
+    const localVue = createLocalVue({
+      errorHandler,
+    });
+
+    const myComponent = {
+      components: { HdCheckbox },
+      data: () => ({
+        isChecked: true,
+      }),
+      template: '<HdCheckbox v-if="isChecked" v-model="isChecked" name="myCheckbox" />',
+    };
+    const wrapper = mount(myComponent, { localVue });
+    const checkbox = wrapper.find(checkboxInnerSelector);
+
+    checkbox.trigger('click');
+    await wrapper.vm.$nextTick();
+
+    expect(errorHandler).not.toHaveBeenCalled();
   });
 });

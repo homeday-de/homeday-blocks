@@ -9,15 +9,21 @@ const debouncedResize = debounce(() => {
   EventEmitter.$emit('resize.debounced');
 }, 300);
 
-window.addEventListener('resize', () => {
-  throttledResize();
-  debouncedResize();
-}, false);
+function addEventListener() {
+  window.addEventListener('resize', () => {
+    throttledResize();
+    debouncedResize();
+  }, false);
 
-window.addEventListener('orientationchange', () => {
-  throttledResize();
-  debouncedResize();
-}, false);
+  window.addEventListener('orientationchange', () => {
+    throttledResize();
+    debouncedResize();
+  }, false);
+}
+
+if (typeof window === 'object') {
+  addEventListener();
+}
 
 export default {
   onThrottled: (cb) => {
