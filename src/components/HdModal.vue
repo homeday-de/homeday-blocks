@@ -75,7 +75,7 @@
 
 <script>
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
-import { closeIcon } from 'homeday-blocks/src/assets/small-icons';
+import { close as closeIcon } from 'homeday-assets';
 
 export default {
   name: 'HdModal',

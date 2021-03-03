@@ -1,5 +1,5 @@
 import { HdGallery } from 'homeday-blocks';
-import { picturesIcon } from 'homeday-blocks/src/assets/big-icons';
+import { pictures as picturesIcon } from 'homeday-assets/L';
 import ITEMS from './mocks/GALLERY_ITEMS';
 
 export default {

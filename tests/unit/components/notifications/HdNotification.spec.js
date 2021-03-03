@@ -4,11 +4,11 @@ import {
   bellIcon,
   infoIcon,
   checkCircleIcon,
-} from 'homeday-blocks/src/assets/small-icons';
+} from 'homeday-assets';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import HdNotification, { TYPES } from '@/components/notifications/HdNotification.vue';
 
-jest.mock('homeday-blocks/src/assets/small-icons', () => ({
+jest.mock('homeday-assets', () => ({
   errorIcon: 'errorIcon.svg',
   bellIcon: 'bellIcon.svg',
   infoIcon: 'infoIcon.svg',

@@ -2,13 +2,13 @@
 import { storiesOf } from '@storybook/vue';
 import { component as VueCodeHighlight } from 'vue-code-highlight';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
-import * as smallIcons from 'homeday-blocks/src/assets/small-icons';
-import * as bigIcons from 'homeday-blocks/src/assets/big-icons';
-import * as mediumIcons from 'homeday-blocks/src/assets/medium-icons';
-import * as bicolorIcons from 'homeday-blocks/src/assets/bicolor-icons';
+import * as smallIcons from 'homeday-assets';
+import * as bigIcons from 'homeday-assets/L';
+import * as mediumIcons from 'homeday-assets/M';
+import * as bicolorIcons from 'homeday-assets/M-old';
 
 
-storiesOf('Assets/Icons', module)
+storiesOf('Assets/Icons & Illustrations', module)
   .addParameters({
     options: {
       showPanel: false,
@@ -18,7 +18,7 @@ storiesOf('Assets/Icons', module)
       skip: true,
     },
   })
-  .add('Small icons', () => ({
+  .add('Small', () => ({
     components: {
       HdIcon,
       VueCodeHighlight,
@@ -31,7 +31,7 @@ storiesOf('Assets/Icons', module)
     template: `
       <div>
         <vue-code-highlight>{{
-          'import { mailIcon } from "homeday-blocks/src/assets/small-icons";'
+          'import { mail } from "homeday-assets";'
         }}</vue-code-highlight>
         <section style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;">
           <div
@@ -47,7 +47,7 @@ storiesOf('Assets/Icons', module)
       </div>
     `,
   }))
-  .add('Medium icons', () => ({
+  .add('Medium', () => ({
     components: {
       HdIcon,
       VueCodeHighlight,
@@ -60,7 +60,7 @@ storiesOf('Assets/Icons', module)
     template: `
       <div>
         <vue-code-highlight>{{
-          'import { elevatorIcon } from "homeday-blocks/src/assets/medium-icons";'
+          'import { elevator } from "homeday-assets/M";'
         }}</vue-code-highlight>
         <section style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;">
           <div
@@ -76,7 +76,7 @@ storiesOf('Assets/Icons', module)
       </div>
     `,
   }))
-  .add('Big icons', () => ({
+  .add('Large', () => ({
     components: {
       HdIcon,
       VueCodeHighlight,
@@ -89,7 +89,7 @@ storiesOf('Assets/Icons', module)
     template: `
       <div>
         <vue-code-highlight>{{
-          'import { mailIcon } from "homeday-blocks/src/assets/big-icons";'
+          'import { mail } from "homeday-assets/L";'
         }}</vue-code-highlight>
         <section style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;">
           <div
@@ -105,7 +105,7 @@ storiesOf('Assets/Icons', module)
       </div>
     `,
   }))
-  .add('Bicolor icons', () => ({
+  .add('Medium (deprecated)', () => ({
     components: {
       HdIcon,
       VueCodeHighlight,
@@ -118,7 +118,7 @@ storiesOf('Assets/Icons', module)
     template: `
       <div>
         <vue-code-highlight>{{
-          'import { mailIcon } from "homeday-blocks/src/assets/bicolor-icons";'
+          'import { elevator } from "homeday-assets/M-old";'
         }}</vue-code-highlight>
         <section style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;">
           <div

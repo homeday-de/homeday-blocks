@@ -1,6 +1,6 @@
 import './styles/HdIcon.css';
 import { HdIcon } from 'homeday-blocks';
-import { apartmentFloorIcon as bigIcon } from 'homeday-blocks/src/assets/big-icons';
+import { apartmentFloor as bigIcon } from 'homeday-assets/L';
 import multiColorIcon from './assets/ic_multi-color.svg';
 import multiColorIconWithClasses from './assets/ic_multi-color--with-classes.svg';
 import classFromFillNote from '../notes/HdIconClassFromFill.md';
