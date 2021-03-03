@@ -33,12 +33,12 @@
     "test:unit:coverage": "npm run test:unit -- --coverage && open coverage/lcov-report/index.html",
     "test:percy": "if [ $PERCY_TOKEN ]; then percy-storybook; else echo 'Skipping test: PERCY_TOKEN is not defined'; fi",
     "coverage": "cat ./coverage/lcov.info | coveralls -v",
-    "import-assets": "node src/assets-importer",
     "new": "hygen new",
     "semantic-release": "semantic-release"
   },
   "dependencies": {
     "body-scroll-lock": "2.6.4",
+    "homeday-assets": "^4.0.18",
     "lodash": "4.17.20",
     "natural-scroll": "0.2.2",
     "vue": "2.6.12",
