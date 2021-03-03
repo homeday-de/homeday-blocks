@@ -1,18 +1,18 @@
 import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import {
-  errorIcon,
-  bellIcon,
-  infoIcon,
-  checkCircleIcon,
+  error as errorIcon,
+  bell as bellIcon,
+  info as infoIcon,
+  checkCircle as checkCircleIcon,
 } from 'homeday-assets';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import HdNotification, { TYPES } from '@/components/notifications/HdNotification.vue';
 
 jest.mock('homeday-assets', () => ({
-  errorIcon: 'errorIcon.svg',
-  bellIcon: 'bellIcon.svg',
-  infoIcon: 'infoIcon.svg',
-  checkCircleIcon: 'checkCircleIcon.svg',
+  error: 'error.svg',
+  bell: 'bell.svg',
+  info: 'info.svg',
+  checkCircle: 'checkCircle.svg',
 }));
 
 const ICONS_LOOKUP_TABLE = {
