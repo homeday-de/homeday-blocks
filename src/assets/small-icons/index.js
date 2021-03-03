@@ -1,3 +1,6 @@
+console.warn(`The assets will be removed soon from 'homeday-blocks', please use the new assets package: 'homeday-assets'.
+'import { mailIcon } from "homeday-blocks/src/assets/small-icons"' ➡️ 'import { mail } from "homeday-assets"'`);
+
 export { default as addNoteIcon } from './ic_add-note.svg';
 export { default as apartmentIcon } from './ic_apartment.svg';
 export { default as arrowIcon } from './ic_arrow.svg';
