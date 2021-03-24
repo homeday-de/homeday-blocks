@@ -34,7 +34,7 @@ module.exports = {
               let groupedCommits = {};
 
               allCommits
-                .filter(commit => commit !== undefined)
+                .filter((commit) => commit !== undefined)
                 .forEach((commit) => {
                   const gitmoji = gitmojis.find(({ emoji }) => emoji === commit.gitmoji);
 

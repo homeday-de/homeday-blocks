@@ -32,8 +32,8 @@ export default {
     const SPACING_HORIZONTAL = 8;
     const SPACING_VERTICAL = 2;
 
-    eventsIn.forEach(event => el.addEventListener(event, show));
-    eventsOut.forEach(event => el.addEventListener(event, hide));
+    eventsIn.forEach((event) => el.addEventListener(event, show));
+    eventsOut.forEach((event) => el.addEventListener(event, hide));
 
     parent.style.position = parent.style.position || 'relative'; // To position the tooltip reltively to its parent
     parent.appendChild(tooltipElm);

@@ -46,7 +46,7 @@ export default {
     type: {
       type: String,
       default: TYPES.NOTIFICATION,
-      validator: type => Object.values(TYPES).includes(type),
+      validator: (type) => Object.values(TYPES).includes(type),
     },
     message: {
       type: String,

@@ -258,7 +258,7 @@ describe('HdInput', () => {
     const wrapper = wrapperBuilder({
       props: {
         customRules: [{
-          validate: value => value === 'custom',
+          validate: (value) => value === 'custom',
           errorMessage: errorMsg,
         }],
         value: customKeyword,

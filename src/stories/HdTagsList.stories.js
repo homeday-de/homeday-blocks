@@ -4,7 +4,6 @@ import { array } from '@storybook/addon-knobs';
 import { HdTagsList } from 'homeday-blocks';
 import ITEMS from './mocks/FORM_ITEMS';
 
-
 storiesOf('Components/HdTagsList', module)
   .add('default 🎛', () => ({
     components: { HdTagsList },
