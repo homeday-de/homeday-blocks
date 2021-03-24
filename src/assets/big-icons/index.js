@@ -1,3 +1,6 @@
+console.warn(`The assets will be removed soon from 'homeday-blocks', please use the new assets package: 'homeday-assets'.
+'import { elevatorIcon } from "homeday-blocks/src/assets/big-icons"' ➡️ 'import { elevator } from "homeday-assets/L"'`);
+
 export { default as apartmentCommercialIcon } from './ic_apartment-commercial.svg';
 export { default as apartmentFloorIcon } from './ic_apartment-floor.svg';
 export { default as apartmentGroundFloorIcon } from './ic_apartment-ground-floor.svg';

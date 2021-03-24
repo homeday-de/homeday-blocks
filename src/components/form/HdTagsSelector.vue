@@ -50,7 +50,7 @@
 
 <script>
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
-import { plusCircleIcon, closeIcon } from 'homeday-blocks/src/assets/small-icons';
+import { plusCircle as plusCircleIcon, close as closeIcon } from 'homeday-assets';
 import formField from './formFieldMixin';
 
 export default {

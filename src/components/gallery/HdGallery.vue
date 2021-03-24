@@ -78,8 +78,8 @@ import HdGalleryCarousel from 'homeday-blocks/src/components/gallery/HdGalleryCa
 import HdGalleryMedia from 'homeday-blocks/src/components/gallery/HdGalleryMedia.vue';
 import HdGalleryPlaceholder from 'homeday-blocks/src/components/gallery/HdGalleryPlaceholder.vue';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
-import { chevronIcon } from 'homeday-blocks/src/assets/small-icons';
-import { picturesIcon } from 'homeday-blocks/src/assets/big-icons';
+import { chevron as chevronIcon } from 'homeday-assets';
+import { pictures as picturesIcon } from 'homeday-assets/L';
 
 export default {
   name: 'HdGallery',

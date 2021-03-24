@@ -2,7 +2,7 @@ import {
   HdButton,
   HdButtonTypes as TYPES,
 } from 'homeday-blocks';
-import { plusIcon } from 'homeday-blocks/src/assets/small-icons';
+import { plus as plusIcon } from 'homeday-assets';
 
 export default {
   title: 'Components/HdButton',

@@ -66,7 +66,7 @@ import flatten from 'lodash/flatten';
 import chunk from 'lodash/chunk';
 import { getIntlDateString } from 'homeday-blocks/src/services/date';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
-import { chevronIcon } from 'homeday-blocks/src/assets/small-icons';
+import { chevron as chevronIcon } from 'homeday-assets';
 
 const WEEK_DAYS = 7;
 export default {
