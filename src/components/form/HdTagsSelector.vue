@@ -123,7 +123,7 @@ export default {
       }
     },
     toggleTag(tag) {
-      const tagIndex = this.selectedTags.findIndex(t => t.value === tag.value);
+      const tagIndex = this.selectedTags.findIndex((t) => t.value === tag.value);
       if (tagIndex > -1) {
         this.removeTag(tagIndex);
       } else {
@@ -183,7 +183,7 @@ export default {
     getTagClasses(tag) {
       return {
         'tags-selector__panel__tag--isSelected':
-          this.selectedTags.some(item => item.value === tag.value),
+          this.selectedTags.some((item) => item.value === tag.value),
       };
     },
   },

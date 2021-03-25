@@ -34,7 +34,6 @@ stories.add('Default', () => ({
   `,
 }));
 
-
 stories
   .add('Playground 🎛', () => ({
     components: { HdToggle },

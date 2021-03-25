@@ -78,7 +78,7 @@ export default {
     };
   },
   methods: {
-    setBackgroundImage: path => ({ 'background-image': `url(${path})` }),
+    setBackgroundImage: (path) => ({ 'background-image': `url(${path})` }),
     select() {
       this.$emit('select', {
         value: this.value,

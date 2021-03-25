@@ -33,7 +33,6 @@ describe('HdLink', () => {
     });
   });
 
-
   it('should render <router-link> on :to', () => {
     const to = 'www.homeday.de';
     const wrapper = wrapperBuilder({
