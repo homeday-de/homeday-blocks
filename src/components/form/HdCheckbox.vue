@@ -19,7 +19,7 @@
         ['checkbox--active']: isActive,
         ['checkbox--disabled']: disabled,
         ['checkbox--checked']: isChecked,
-        ['checkbox--indeterminate']: indeterminate,
+        ['checkbox--indeterminate']: boundIndeterminate,
         ['checkout--use-mouse']: isUsingMouse,
       }"
       :key="name+error+isChecked"
@@ -125,6 +125,7 @@ export default {
       isActive: false,
       isUsingMouse: false,
       helper: null,
+      boundIndeterminate: this.indeterminate,
     };
   },
   computed: {
@@ -140,7 +141,7 @@ export default {
       },
     },
     statusIcon() {
-      if (this.indeterminate) return minusIcon;
+      if (this.boundIndeterminate) return minusIcon;
       if (this.isChecked) return checkIcon;
       return null;
     },
@@ -175,7 +176,12 @@ export default {
   },
   watch: {
     isChecked() {
-      this.indeterminate = false;
+      if (this.boundIndeterminate) {
+        this.boundIndeterminate = false;
+      }
+    },
+    indeterminate(newIndeterminate) {
+      this.boundIndeterminate = newIndeterminate;
     },
   },
 };
