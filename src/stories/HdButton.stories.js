@@ -40,7 +40,6 @@ export default {
   },
 };
 
-
 const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { HdButton },
@@ -74,13 +73,11 @@ const Template = (args, { argTypes }) => ({
   },
 });
 
-
 export const Primary = Template.bind({});
 Primary.args = {
   modifier: TYPES.PRIMARY,
   text: 'Primary',
 };
-
 
 export const Secondary = Template.bind({});
 Secondary.args = {
@@ -88,13 +85,11 @@ Secondary.args = {
   text: 'Secondary',
 };
 
-
 export const Tertiary = Template.bind({});
 Tertiary.args = {
   modifier: TYPES.TERTIARY,
   text: 'Tertiary',
 };
-
 
 export const IconButton = Template.bind({});
 IconButton.args = {
@@ -103,13 +98,11 @@ IconButton.args = {
   iconSrc: true,
 };
 
-
 export const Flat = Template.bind({});
 Flat.args = {
   modifier: TYPES.FLAT,
   text: 'Flat',
 };
-
 
 export const Ghost = Template.bind({});
 Ghost.args = {

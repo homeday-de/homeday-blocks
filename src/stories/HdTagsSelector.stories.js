@@ -4,7 +4,6 @@ import { action } from '@storybook/addon-actions';
 import { HdTagsSelector } from 'homeday-blocks';
 import ITEMS from './mocks/FORM_ITEMS';
 
-
 storiesOf('Components/Form/HdTagsSelector', module)
   .add('prefilled', () => ({
     components: { HdTagsSelector },

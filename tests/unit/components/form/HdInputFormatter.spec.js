@@ -127,7 +127,7 @@ describe('HdInputFormatter', () => {
         value: VALUE,
         customRules: [
           {
-            validate: value => value < 50,
+            validate: (value) => value < 50,
             errorMessage: 'error',
           },
         ],

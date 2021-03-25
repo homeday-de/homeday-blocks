@@ -175,6 +175,9 @@ export default {
   },
   watch: {
     isChecked() {
+      // TODO: Don't mutate the prop
+      // https://homeday.atlassian.net/browse/FET-245
+      // eslint-disable-next-line vue/no-mutating-props
       this.indeterminate = false;
     },
   },

@@ -63,7 +63,7 @@ export default {
         cellAlign: 'center',
         freeScroll: true,
         contain: true,
-        initialIndex: this.items.findIndex(item => item.value === this.value),
+        initialIndex: this.items.findIndex((item) => item.value === this.value),
         on: {
           ready: hidePaginationWhenNotNeeded,
           resize: hidePaginationWhenNotNeeded,
@@ -73,7 +73,7 @@ export default {
   },
   watch: {
     value(value) {
-      this.$refs.flickity.select(this.items.findIndex(item => item.value === value));
+      this.$refs.flickity.select(this.items.findIndex((item) => item.value === value));
     },
   },
   mounted() {

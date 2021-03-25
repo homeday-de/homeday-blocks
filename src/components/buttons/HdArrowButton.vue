@@ -28,7 +28,7 @@ export default {
     direction: {
       type: String,
       default: 'right',
-      validator: direction => ['right', 'left'].includes(direction),
+      validator: (direction) => ['right', 'left'].includes(direction),
     },
     disabled: {
       type: Boolean,

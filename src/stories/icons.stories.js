@@ -7,7 +7,6 @@ import * as bigIcons from 'homeday-assets/L';
 import * as mediumIcons from 'homeday-assets/M';
 import * as bicolorIcons from 'homeday-assets/M-old';
 
-
 storiesOf('Assets/Icons & Illustrations', module)
   .addParameters({
     options: {

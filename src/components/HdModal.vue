@@ -86,7 +86,7 @@ export default {
     closeIconColor: {
       type: String,
       default: 'dark',
-      validator: closeIconColor => ['dark', 'light'].includes(closeIconColor),
+      validator: (closeIconColor) => ['dark', 'light'].includes(closeIconColor),
     },
     showCloseIcon: {
       type: Boolean,
@@ -99,17 +99,17 @@ export default {
     overlayColor: {
       type: String,
       default: 'dark',
-      validator: overlayColor => ['dark', 'light'].includes(overlayColor),
+      validator: (overlayColor) => ['dark', 'light'].includes(overlayColor),
     },
     width: {
       type: Number,
       default: 0,
-      validator: maxWidth => maxWidth >= 0,
+      validator: (maxWidth) => maxWidth >= 0,
     },
     spacingSize: {
       type: String,
       default: 'large',
-      validator: spacingSize => ['large', 'normal'].includes(spacingSize),
+      validator: (spacingSize) => ['large', 'normal'].includes(spacingSize),
     },
     noSpacing: {
       type: Boolean,
@@ -122,7 +122,7 @@ export default {
     mobileAlign: {
       type: String,
       default: 'center',
-      validator: mobileAlign => ['center', 'bottom'].includes(mobileAlign),
+      validator: (mobileAlign) => ['center', 'bottom'].includes(mobileAlign),
     },
     actions: {
       type: Array,

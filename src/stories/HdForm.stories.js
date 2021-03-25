@@ -68,7 +68,7 @@ const Template = (args, { argTypes }) => ({
     onSubmit(params) {
       this.submittedDataString = JSON.stringify(params.formData, null, 4);
       // eslint-disable-next-line no-param-reassign
-      params.invalidFields = params.invalidFields.map(field => ({
+      params.invalidFields = params.invalidFields.map((field) => ({
         name: field.name,
         '...': 'the other Vue component attributes were suppressed as Storybook struggles to stringify objects with circular references',
       }));

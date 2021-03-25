@@ -55,7 +55,7 @@ describe('HdSplitInput', () => {
     });
     const wrongSeparators = wrapper
       .findAll(SEPARATOR_SELECTOR)
-      .filter(separator => separator.text() !== CUSTOM_SEPARATOR);
+      .filter((separator) => separator.text() !== CUSTOM_SEPARATOR);
 
     expect(wrongSeparators.length).toBe(0);
   });
@@ -134,7 +134,7 @@ describe('HdSplitInput', () => {
     });
     const enabledInputs = wrapper
       .findAll('input')
-      .filter(input => input.attributes().disabled !== 'disabled');
+      .filter((input) => input.attributes().disabled !== 'disabled');
 
     expect(enabledInputs.length).toBe(0);
   });

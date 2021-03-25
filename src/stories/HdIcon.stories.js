@@ -24,7 +24,7 @@ export default {
   },
 };
 
-const Template = template => (args, { argTypes }) => ({
+const Template = (template) => (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { HdIcon },
   template,

@@ -44,7 +44,7 @@ export default {
       type: Array,
       required: true,
       // Make sure that all the passed slots contain time
-      validator: slots => slots.filter(s => s.time).length === slots.length,
+      validator: (slots) => slots.filter((s) => s.time).length === slots.length,
     },
     timeslotsPerPage: {
       type: Number,
@@ -77,7 +77,7 @@ export default {
     selectFirstAvialable() {
       this.currentPageIndex = 0;
       const firstAvialableTimeslot = this.activeTimeslotPage
-        .find(timeslot => timeslot.isAvailable);
+        .find((timeslot) => timeslot.isAvailable);
 
       this.selectTimeslot(firstAvialableTimeslot);
     },
