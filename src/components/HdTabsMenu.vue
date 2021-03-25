@@ -63,7 +63,7 @@ export default {
         cellAlign: 'center',
         freeScroll: true,
         contain: true,
-        initialIndex: this.items.findIndex(item => item.value === this.value),
+        initialIndex: this.items.findIndex((item) => item.value === this.value),
         on: {
           ready: hidePaginationWhenNotNeeded,
           resize: hidePaginationWhenNotNeeded,
@@ -73,7 +73,7 @@ export default {
   },
   watch: {
     value(value) {
-      this.$refs.flickity.select(this.items.findIndex(item => item.value === value));
+      this.$refs.flickity.select(this.items.findIndex((item) => item.value === value));
     },
   },
   mounted() {
@@ -170,7 +170,7 @@ export default {
       width: 24px;
       height: 100%;
       background-color: $primary-bg;
-      background-image: url('~homeday-blocks/src/assets/small-icons/ic_chevron.svg');
+      background-image: url('~homeday-assets/S/chevron.svg');
       background-repeat: no-repeat;
       background-position: center left;
       background-size: contain;

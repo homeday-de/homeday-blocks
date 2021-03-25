@@ -89,7 +89,7 @@ export default {
     loadingState: {
       type: String,
       default: LOADING_STATE.IDLE,
-      validator: val => Object.values(
+      validator: (val) => Object.values(
         omit(LOADING_STATE, 'LOADING'),
       ).indexOf(val) !== -1,
     },
@@ -113,7 +113,7 @@ export default {
       type: Number,
       default: 46,
       // If height of the button is bigger than 80px the svg scaling is going to break
-      validator: val => val <= 80,
+      validator: (val) => val <= 80,
     },
     loadingCircleStrokeWidth: {
       type: Number,
@@ -166,7 +166,7 @@ export default {
       };
     },
     buttonStyles() {
-      const setIfLoading = val => (this.isLoading ? `${val}px` : undefined);
+      const setIfLoading = (val) => (this.isLoading ? `${val}px` : undefined);
 
       return {
         // We want to make button a circle on loading so we use same dimensions for height and width
@@ -404,7 +404,6 @@ export default {
     &--progressCircle path {
       fill: transparent;
       stroke: $success-color;
-
 
       #{$lB}--error & {
         display: none;

@@ -55,5 +55,4 @@ html {
   `,
 });
 
-
 export const DocumentTypography = Template.bind({});

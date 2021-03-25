@@ -13,7 +13,7 @@ const wrapperBuilder = wrapperFactoryBuilder(HdTimeslots, {
 });
 
 describe('HdTimeslots', () => {
-  const getDisplayedTimeslots = wrapper => wrapper.findAll('.timeslots__slot');
+  const getDisplayedTimeslots = (wrapper) => wrapper.findAll('.timeslots__slot');
 
   it('once the component is mounted, the first slot is selected', async () => {
     const wrapper = wrapperBuilder();

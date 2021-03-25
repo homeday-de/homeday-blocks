@@ -42,7 +42,7 @@
 
 <script>
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
-import { chevronIcon } from 'homeday-blocks/src/assets/small-icons';
+import { chevron as chevronIcon } from 'homeday-assets';
 
 export default {
   name: 'hdRadioButton',
@@ -78,7 +78,7 @@ export default {
     };
   },
   methods: {
-    setBackgroundImage: path => ({ 'background-image': `url(${path})` }),
+    setBackgroundImage: (path) => ({ 'background-image': `url(${path})` }),
     select() {
       this.$emit('select', {
         value: this.value,

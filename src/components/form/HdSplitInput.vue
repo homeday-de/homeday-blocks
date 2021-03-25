@@ -53,7 +53,7 @@ export default {
     fields: {
       type: Array,
       default: () => [],
-      validator: fields => fields.every(({ name }) => {
+      validator: (fields) => fields.every(({ name }) => {
         if (name === undefined || name === null) {
           // eslint-disable-next-line no-console
           console.warn('All fields must have a non-null `name` property');
@@ -110,7 +110,7 @@ export default {
     },
     isFilled() {
       return Object.values(this.fieldsValues || {})
-        .some(value => value !== null && value !== undefined && value !== '');
+        .some((value) => value !== null && value !== undefined && value !== '');
     },
   },
   watch: {

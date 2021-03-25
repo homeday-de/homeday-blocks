@@ -27,7 +27,7 @@
 <script>
 import HdInput from 'homeday-blocks/src/components/form/HdInput.vue';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
-import { visibilityOnIcon } from 'homeday-blocks/src/assets/small-icons';
+import { visibilityOn as visibilityOnIcon } from 'homeday-assets';
 import formField from './formFieldMixin';
 
 export default {

@@ -17,7 +17,7 @@
 
 <script>
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
-import { chevronIcon } from 'homeday-blocks/src/assets/small-icons';
+import { chevron as chevronIcon } from 'homeday-assets';
 
 export default {
   name: 'HdArrowButton',
@@ -28,7 +28,7 @@ export default {
     direction: {
       type: String,
       default: 'right',
-      validator: direction => ['right', 'left'].includes(direction),
+      validator: (direction) => ['right', 'left'].includes(direction),
     },
     disabled: {
       type: Boolean,

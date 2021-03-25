@@ -23,7 +23,7 @@ module.exports = {
     '^.+\\.jsx?$': '<rootDir>/node_modules/babel-jest',
   },
   transformIgnorePatterns: [
-    'node_modules/(?!(vue-flickity|vue-zoomer)/)',
+    'node_modules/(?!(vue-flickity|vue-zoomer|homeday-assets)/)',
   ],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',

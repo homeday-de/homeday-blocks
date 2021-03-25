@@ -22,11 +22,11 @@
 <script>
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import {
-  checkCircleIcon as successIcon,
-  infoIcon,
-  warningIcon,
-  errorIcon,
-} from 'homeday-blocks/src/assets/small-icons';
+  checkCircle as successIcon,
+  info as infoIcon,
+  warning as warningIcon,
+  error as errorIcon,
+} from 'homeday-assets';
 
 // The first item is the default
 export const TYPES = {
