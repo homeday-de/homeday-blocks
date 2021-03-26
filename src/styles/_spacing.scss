@@ -1,0 +1,13 @@
+$standards: (xxs, 2px),
+(xs, 4px),
+(s, 8px),
+(m, 16px),
+(l, 32px),
+(xl, 64px);
+
+$sp-xxs: nth(nth($standards, 1), 2);
+$sp-xs:  nth(nth($standards, 2), 2);
+$sp-s:   nth(nth($standards, 3), 2);
+$sp-m:   nth(nth($standards, 4), 2);
+$sp-l:   nth(nth($standards, 5), 2);
+$sp-xl:  nth(nth($standards, 6), 2);
