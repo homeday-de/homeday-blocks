@@ -137,7 +137,7 @@ export default {
   &__close {
     position: absolute;
     top: $sp-s;
-    right: $inline-s;
+    right: $sp-s;
     width: 24px;
     height: 24px;
     background: transparent;

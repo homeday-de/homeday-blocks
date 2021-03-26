@@ -137,7 +137,7 @@ export default {
 
   &__icon {
     margin-top: $sp-m;
-    margin-right: $inline-s;
+    margin-right: $sp-s;
     flex: 0 0 24px;
 
     #{$root}--disabled & {
@@ -167,9 +167,9 @@ export default {
 
     input, textarea, select {
       padding-top: $sp-l - $sp-s;
-      padding-right: $inline-s;
+      padding-right: $sp-s;
       padding-bottom: $sp-s;
-      padding-left: $inline-m;
+      padding-left: $sp-m;
       background: inherit;
       color: inherit;
       font-size: inherit;
@@ -187,7 +187,7 @@ export default {
   &__label {
     position: absolute;
     top: $sp-m;
-    left: $inline-m;
+    left: $sp-m;
     transform-origin: left;
     transition: transform .3s, color .2s;
     pointer-events: none;
@@ -262,7 +262,7 @@ export default {
   &__input-right {
     position: absolute;
     top: $sp-m;
-    right: $inline-m;
+    right: $sp-m;
     pointer-events: none;
 
     > ::v-deep * {
@@ -273,8 +273,8 @@ export default {
     width: 100%;
     color: getShade($quaternary-color, 80);
     @include typography-small;
-    padding-right: $inline-m;
-    padding-left: $inline-m;
+    padding-right: $sp-m;
+    padding-left: $sp-m;
 
     #{$root}--errored:not(#{$root}--active) & {
       color: $error-color;

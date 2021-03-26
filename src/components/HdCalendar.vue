@@ -228,7 +228,7 @@ export default {
       width: calc(100% / 7);
       text-align: center;
       &:not(:last-child) {
-        margin-right: $inline-m;
+        margin-right: $sp-m;
       }
     }
   }

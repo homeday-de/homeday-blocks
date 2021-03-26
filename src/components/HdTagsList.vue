@@ -36,8 +36,8 @@ export default {
     height: $sp-l;
     background-color: getShade($quaternary-color, 50);
     border-radius: 3px;
-    padding: 0 $inline-s;
-    margin: $sp-s $inline-s 0 0;
+    padding: 0 $sp-s;
+    margin: $sp-s $sp-s 0 0;
   }
 }
 </style>

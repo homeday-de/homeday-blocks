@@ -79,7 +79,7 @@ export default {
 
   &__caption {
     margin-bottom: $sp-s;
-    margin-left: $inline-m;
+    margin-left: $sp-m;
     transition: opacity .5s ease-in-out;
 
     #{$_root}.isZoomed & {
@@ -89,10 +89,10 @@ export default {
 
   &__info {
     position: absolute;
-    right: $inline-m;
+    right: $sp-m;
     bottom: $sp-xs;
-    padding-right: $inline-s;
-    padding-left: $inline-s;
+    padding-right: $sp-s;
+    padding-left: $sp-s;
     background-color: rgba(0, 0, 0, 0.8);
     @include font('text-xsmall');
     font-weight: 600;

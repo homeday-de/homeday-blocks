@@ -180,7 +180,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex: 0 0 $inline-m;
+    flex: 0 0 $sp-m;
     z-index: 1;
     background-color: $secondary-bg;
     color: getShade($quaternary-color, 80);

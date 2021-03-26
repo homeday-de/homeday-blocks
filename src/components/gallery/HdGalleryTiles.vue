@@ -252,7 +252,7 @@ export default {
   &__more-photos {
     position: absolute;
     bottom: $sp-m;
-    right: $inline-m;
+    right: $sp-m;
     background-color: $primary-bg;
     padding: $sp-s;
     @include font('text-xsmall');
@@ -265,7 +265,7 @@ export default {
     cursor: pointer;
 
     @media (min-width: $break-tablet) {
-      right: $inline-l;
+      right: $sp-l;
     }
     @media (min-width: $break-desktop) {
       display: none;

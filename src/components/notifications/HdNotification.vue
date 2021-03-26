@@ -75,7 +75,7 @@ export default {
 
 .notification {
   display: flex;
-  padding: $sp-m $inline-s;
+  padding: $sp-m $sp-s;
   color: $white;
 
   &--notification {
@@ -97,7 +97,7 @@ export default {
   &__icon {
     width: 24px;
     height: 24px;
-    margin-right: $inline-s;
+    margin-right: $sp-s;
 
     path {
       fill: currentColor;

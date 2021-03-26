@@ -124,7 +124,7 @@ $iconWidth: 48px;
   &:not(:last-child) {
     @media(max-width: $break-mobile - 1) {
       &:before {
-        $leftPos: $iconWidth + $inline-s;
+        $leftPos: $iconWidth + $sp-s;
         content: "";
         position: absolute;
         left: $leftPos;
@@ -166,7 +166,7 @@ $iconWidth: 48px;
   }
   &__iconWrapper {
     display: none;
-    margin-right: $inline-s;
+    margin-right: $sp-s;
     &--mobile {
       display: block;
 

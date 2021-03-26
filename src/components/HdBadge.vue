@@ -132,7 +132,7 @@ export default {
       font-size: 18px;
       line-height: 28px;
       border-radius: 4px;
-      padding: $sp-xs $inline-s;
+      padding: $sp-xs $sp-s;
       cursor: default;
     }
 
@@ -140,8 +140,8 @@ export default {
       display: none;
       width: 24px;
       height: 24px;
-      margin-left: $inline-m;
-      margin-right: $inline-s;
+      margin-left: $sp-m;
+      margin-right: $sp-s;
 
       &::v-deep path {
         fill: currentColor;
@@ -151,7 +151,7 @@ export default {
     ::v-deep  &__icon{
       width: 14px;
       height: 14px;
-      margin-right: $inline-s;
+      margin-right: $sp-s;
     }
 
     &__details{
@@ -162,8 +162,8 @@ export default {
 
       padding: $sp-s;
       padding-top: 0;
-      border-bottom-left-radius: $inline-xs;
-      border-bottom-right-radius: $inline-xs;
+      border-bottom-left-radius: $sp-xs;
+      border-bottom-right-radius: $sp-xs;
       border-top-left-radius: 0;
       border-top-right-radius: 0;
       font-weight: normal;

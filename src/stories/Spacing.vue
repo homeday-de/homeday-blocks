@@ -38,7 +38,7 @@ export default {
 padding: $sp-s;
 
 // use stack for vertical spacing (top, bottom)
-padding-left: $inline-s;
+padding-left: $sp-s;
 
 // use inline for horizontal spacing (left, right)
 padding-top: $sp-s;`,
@@ -67,7 +67,7 @@ padding-top: $sp-s;`,
   }
 
   ul {
-      margin-left: $inline-m;
+      margin-left: $sp-m;
       list-style: inside;
       list-style-type: disc;
   }

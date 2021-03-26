@@ -217,10 +217,10 @@ export default {
 
     &__info {
       position: absolute;
-      right: $inline-xs;
+      right: $sp-xs;
       bottom: $sp-xs;
-      padding-right: $inline-s;
-      padding-left: $inline-s;
+      padding-right: $sp-s;
+      padding-left: $sp-s;
       background-color: rgba(0, 0, 0, 0.8);
       @include font('text-xsmall');
       font-weight: 600;
@@ -280,10 +280,10 @@ export default {
 
   &__info {
     position: absolute;
-    right: $inline-xs;
+    right: $sp-xs;
     bottom: $sp-xs;
-    padding-right: $inline-s;
-    padding-left: $inline-s;
+    padding-right: $sp-s;
+    padding-left: $sp-s;
     background-color: rgba(0, 0, 0, 0.8);
     @include font('text-xsmall');
     font-weight: 600;

@@ -114,7 +114,7 @@ export default {
   &__icon {
     width: 24px;
     height: 24px;
-    margin-right: $inline-xs;
+    margin-right: $sp-xs;
 
     #{$root}--icon-button & {
       width: 28px;

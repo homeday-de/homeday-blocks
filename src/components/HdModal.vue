@@ -186,7 +186,7 @@ export default {
   &__close {
     position: absolute;
     top: $sp-s;
-    right: $inline-s;
+    right: $sp-s;
     width: 24px;
     height: 24px;
     background-color: transparent;
@@ -197,7 +197,7 @@ export default {
 
     @media (min-width: $break-tablet){
       top: $sp-m;
-      right: $inline-m;
+      right: $sp-m;
     }
 
     #{$_root}--external-close-icon & {
@@ -249,12 +249,12 @@ export default {
 
   &__actions {
     display: flex;
-    padding: $sp-m ($sp-m - ($inline-xs * 2));
+    padding: $sp-m ($sp-m - ($sp-xs * 2));
 
     &__action {
       width: auto;
-      margin-left: $inline-xs;
-      margin-right: $inline-xs;
+      margin-left: $sp-xs;
+      margin-right: $sp-xs;
       flex-grow: 1;
       flex-shrink: 0;
 

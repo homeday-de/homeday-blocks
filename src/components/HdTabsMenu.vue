@@ -118,7 +118,7 @@ export default {
   &__item {
     padding-left: 0;
     padding-right: 0;
-    margin-right: $inline-l;
+    margin-right: $sp-l;
     white-space: nowrap;
     font-weight: 400;
     text-align: left;

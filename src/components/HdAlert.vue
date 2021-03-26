@@ -110,7 +110,7 @@ export default {
   }
 
   &--no-icon {
-    padding: $sp-s $inline-m;
+    padding: $sp-s $sp-m;
   }
 
   &__icon {
@@ -118,7 +118,7 @@ export default {
     align-self: flex-start;
     flex-shrink: 0;
     margin-top: $sp-xxs;
-    margin-right: $inline-s;
+    margin-right: $sp-s;
 
     ::v-deep path {
       #{$root}--success & {

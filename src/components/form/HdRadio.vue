@@ -286,7 +286,7 @@ export default {
   position: relative;
 
   &:not(:first-of-type) {
-    margin-left: $inline-m;
+    margin-left: $sp-m;
   }
 
   > input[type="radio"] {
@@ -333,7 +333,7 @@ export default {
 
   > .radio__label {
     flex: 1;
-    padding-left: $inline-s;
+    padding-left: $sp-s;
     cursor: pointer;
     text-align: left;
     @include font("text-small");

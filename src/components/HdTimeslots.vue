@@ -146,7 +146,7 @@ export default {
   &__controls {
     position: absolute;
     display: flex;
-    padding: 0 $inline-xs;
+    padding: 0 $sp-xs;
     width: 100%;
     height: 100%;
     align-items: center;
@@ -159,7 +159,7 @@ export default {
 
   }
   &__inner {
-    width: calc(100% - #{$inline-xl});
+    width: calc(100% - #{$sp-xl});
     margin: auto;
     overflow: hidden;
     position: relative;
@@ -172,18 +172,18 @@ export default {
   }
   &__slots {
     height: 100%;
-    margin-right: -$inline-s;
+    margin-right: -$sp-s;
   }
 
   &__slot {
-    width: calc(100% / 4 - #{$inline-s});
+    width: calc(100% / 4 - #{$sp-s});
     display: inline-block;
     padding: $sp-s;
     font-size: 14px;
     line-height: 10px;
     border: 1px solid getShade($secondary-color, 110);
     border-radius: 2px;
-    margin-right: $inline-s;
+    margin-right: $sp-s;
     margin-bottom: $sp-s;
     text-align: center;
     color: $primary-color;
@@ -192,7 +192,7 @@ export default {
     z-index: 1;
 
     @media (min-width: $break-mobile) {
-      width: calc(100% / 6 - #{$inline-s});
+      width: calc(100% / 6 - #{$sp-s});
       margin-bottom: $sp-xs;
       font-size: 18px;
       border-width: 2px;
@@ -240,7 +240,7 @@ export default {
         width: 10px;
         border: 1px solid getShade($quaternary-color, 50);
         background: getShade($quaternary-color, 50);
-        margin-right: $inline-s;
+        margin-right: $sp-s;
         border-radius: 2px;
 
         @media (min-width: $break-mobile) {
@@ -253,10 +253,10 @@ export default {
         border-color: getShade($secondary-color, 110);
       }
       &:first-child {
-        margin-right: $inline-m;
+        margin-right: $sp-m;
 
         @media (min-width: $break-mobile) {
-          margin-right: $inline-l;
+          margin-right: $sp-l;
         }
       }
     }

@@ -169,7 +169,7 @@ export default {
       display: flex;
       align-items: center;
       padding: 0;
-      margin-left: $inline-m;
+      margin-left: $sp-m;
       cursor: pointer;
       &--edit {
         color: getShade($secondary-color, 110);
@@ -184,7 +184,7 @@ export default {
         font-size: 18px;
         font-weight: 400;
         line-height: 26px;
-        margin-left: $inline-xs;
+        margin-left: $sp-xs;
       }
       &__icon path {
         fill: currentColor;
@@ -210,7 +210,7 @@ export default {
 
     &__label {
       display: none;
-      margin-left: $inline-s;
+      margin-left: $sp-s;
       font-size: 18px;
       line-height: 26px;
 

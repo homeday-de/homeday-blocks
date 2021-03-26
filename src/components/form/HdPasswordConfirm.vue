@@ -175,7 +175,7 @@ export default {
   &__strengthMeter {
     height: 14px;
     width: 100%;
-    padding-left: $inline-s;
+    padding-left: $sp-s;
     position: absolute;
     top: 66px; // input height + margin
     display: flex;

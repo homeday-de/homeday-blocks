@@ -251,7 +251,7 @@ export default {
   &__item {
     position: relative;
     width: 100%;
-    margin-right: $inline-xs;
+    margin-right: $sp-xs;
     cursor: pointer;
     border-radius: 2px;
     overflow: hidden;
@@ -263,7 +263,7 @@ export default {
 
     @media (min-width: $break-tablet) {
       width: calc(100% / 5);
-      margin-right: $inline-m;
+      margin-right: $sp-m;
       box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
 
       &:hover,
@@ -278,7 +278,7 @@ export default {
 
     @media (min-width: $break-desktop) {
       width: calc(100% / 7);
-      margin-right: $inline-m;
+      margin-right: $sp-m;
     }
     }
 

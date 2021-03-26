@@ -429,7 +429,7 @@ export default {
     color: $white;
     background: url('~homeday-blocks/src/assets/tooltip.svg') no-repeat;
     background-size: 100% 100%;
-    padding: $sp-s $inline-m #{$sp-m + $sp-s};
+    padding: $sp-s $sp-m #{$sp-m + $sp-s};
     pointer-events: none;
   }
 }
