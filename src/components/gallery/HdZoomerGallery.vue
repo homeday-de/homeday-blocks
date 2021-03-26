@@ -78,7 +78,7 @@ export default {
   }
 
   &__caption {
-    margin-bottom: $stack-s;
+    margin-bottom: $sp-s;
     margin-left: $inline-m;
     transition: opacity .5s ease-in-out;
 
@@ -90,7 +90,7 @@ export default {
   &__info {
     position: absolute;
     right: $inline-m;
-    bottom: $stack-xs;
+    bottom: $sp-xs;
     padding-right: $inline-s;
     padding-left: $inline-s;
     background-color: rgba(0, 0, 0, 0.8);

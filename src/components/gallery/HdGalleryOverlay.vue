@@ -104,7 +104,7 @@ export default {
   left: 0;
   display: flex;
   z-index: 100;
-  padding: $stack-m 0;
+  padding: $sp-m 0;
   overflow-x: hidden;
   overflow-y: auto;
   background-color: rgba(white, .9);
@@ -136,7 +136,7 @@ export default {
 
   &__close {
     position: absolute;
-    top: $stack-s;
+    top: $sp-s;
     right: $inline-s;
     width: 24px;
     height: 24px;

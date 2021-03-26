@@ -204,7 +204,7 @@ export default {
   }
 
   &__caption {
-    margin-bottom: $stack-s;
+    margin-bottom: $sp-s;
   }
 
   &__main {
@@ -218,7 +218,7 @@ export default {
     &__info {
       position: absolute;
       right: $inline-xs;
-      bottom: $stack-xs;
+      bottom: $sp-xs;
       padding-right: $inline-s;
       padding-left: $inline-s;
       background-color: rgba(0, 0, 0, 0.8);
@@ -281,7 +281,7 @@ export default {
   &__info {
     position: absolute;
     right: $inline-xs;
-    bottom: $stack-xs;
+    bottom: $sp-xs;
     padding-right: $inline-s;
     padding-left: $inline-s;
     background-color: rgba(0, 0, 0, 0.8);

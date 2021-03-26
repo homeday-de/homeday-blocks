@@ -250,7 +250,7 @@ export default {
     &::before {
       content: '';
       position: absolute;
-      bottom: $stack-xs;
+      bottom: $sp-xs;
       left: 0;
       width: calc(100% - #{$inline-xs + $_icon-size});
       height: 1px;

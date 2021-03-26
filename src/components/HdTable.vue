@@ -48,7 +48,7 @@ export default {
 @import 'homeday-blocks/src/styles/mixins.scss';
 
 .hd-table {
-  margin-top: $stack-s;
+  margin-top: $sp-s;
   @include font('text-xsmall');
   border-collapse: collapse;
   width: 100%;

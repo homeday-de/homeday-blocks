@@ -215,7 +215,7 @@ export default {
 
 .range {
   $range: &;
-  height: $stack-l;
+  height: $sp-l;
   position: relative;
   display: flex;
   align-items: center;
@@ -225,7 +225,7 @@ export default {
   }
 
   &.hasTooltip {
-    margin-top: $stack-xl;
+    margin-top: $sp-xl;
   }
 
   input[type=range] {
@@ -347,7 +347,7 @@ export default {
 
   &__step-label {
     position: absolute;
-    top: #{$stack-l + $stack-s};
+    top: #{$sp-l + $sp-s};
     transform: translateX(-50%);
     @include font('text-xsmall');
     color: getShade($quaternary-color, 80);
@@ -424,12 +424,12 @@ export default {
 
   &__tooltip {
     position: absolute;
-    bottom: $stack-m;
+    bottom: $sp-m;
     transform: translateX(-50%);
     color: $white;
     background: url('~homeday-blocks/src/assets/tooltip.svg') no-repeat;
     background-size: 100% 100%;
-    padding: $stack-s $inline-m #{$stack-m + $stack-s};
+    padding: $sp-s $inline-m #{$sp-m + $sp-s};
     pointer-events: none;
   }
 }

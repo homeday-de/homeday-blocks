@@ -188,7 +188,7 @@ export default {
     font-weight: 700;
 
     &-symbol {
-      margin-top: $stack-m;
+      margin-top: $sp-m;
     }
   }
 }

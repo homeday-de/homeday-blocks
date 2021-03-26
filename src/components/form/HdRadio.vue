@@ -240,7 +240,7 @@ export default {
   flex-direction: column;
 
   > .radio:not(:first-of-type) {
-    margin-top: $stack-m;
+    margin-top: $sp-m;
     margin-left: 0;
   }
 }

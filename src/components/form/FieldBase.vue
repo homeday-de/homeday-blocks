@@ -136,7 +136,7 @@ export default {
   @include typography-regular;
 
   &__icon {
-    margin-top: $stack-m;
+    margin-top: $sp-m;
     margin-right: $inline-s;
     flex: 0 0 24px;
 
@@ -151,8 +151,8 @@ export default {
     position: relative;
 
     #{$root}--grouped:not(#{$root}--unlabelled) & {
-      padding-top: $stack-m;
-      margin-top: $stack-s;
+      padding-top: $sp-m;
+      margin-top: $sp-s;
     }
   }
   &:not(#{$root}--grouped) &__main {
@@ -166,9 +166,9 @@ export default {
     }
 
     input, textarea, select {
-      padding-top: $stack-l - $stack-s;
+      padding-top: $sp-l - $sp-s;
       padding-right: $inline-s;
-      padding-bottom: $stack-s;
+      padding-bottom: $sp-s;
       padding-left: $inline-m;
       background: inherit;
       color: inherit;
@@ -186,7 +186,7 @@ export default {
   }
   &__label {
     position: absolute;
-    top: $stack-m;
+    top: $sp-m;
     left: $inline-m;
     transform-origin: left;
     transition: transform .3s, color .2s;
@@ -261,7 +261,7 @@ export default {
   }
   &__input-right {
     position: absolute;
-    top: $stack-m;
+    top: $sp-m;
     right: $inline-m;
     pointer-events: none;
 

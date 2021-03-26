@@ -41,7 +41,7 @@ padding: $sp-s;
 padding-left: $inline-s;
 
 // use inline for horizontal spacing (left, right)
-padding-top: $stack-s;`,
+padding-top: $sp-s;`,
     };
   },
 };
@@ -59,11 +59,11 @@ padding-top: $stack-s;`,
   }
   > h3 {
     @include font('title');
-    margin-top: $stack-l;
+    margin-top: $sp-l;
   }
 
   > p {
-      margin-top: $stack-m;
+      margin-top: $sp-m;
   }
 
   ul {

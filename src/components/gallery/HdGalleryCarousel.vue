@@ -223,7 +223,7 @@ export default {
     overflow: hidden;
 
     @media (min-width: $break-tablet) {
-      padding: $stack-m 0;
+      padding: $sp-m 0;
     }
 
     .flickity-viewport {
@@ -233,7 +233,7 @@ export default {
 
   &__pager {
     @media (min-width: $break-tablet) {
-      margin-top: $stack-m;
+      margin-top: $sp-m;
     }
 
     #{$_root}--with-pager-inside & {

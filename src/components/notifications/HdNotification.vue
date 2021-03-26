@@ -75,7 +75,7 @@ export default {
 
 .notification {
   display: flex;
-  padding: $stack-m $inline-s;
+  padding: $sp-m $inline-s;
   color: $white;
 
   &--notification {

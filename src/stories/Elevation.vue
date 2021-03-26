@@ -67,7 +67,7 @@ export default {
   }
   > h3 {
     @include font('title');
-    margin-top: $stack-l;
+    margin-top: $sp-l;
   }
 
   &__code {

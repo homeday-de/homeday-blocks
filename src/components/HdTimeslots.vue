@@ -154,7 +154,7 @@ export default {
     z-index: 0;
 
     @media (min-width: $break-mobile) {
-      margin-top: -$stack-m;
+      margin-top: -$sp-m;
     }
 
   }
@@ -164,7 +164,7 @@ export default {
     overflow: hidden;
     position: relative;
     height: 100%;
-    padding-top: $stack-s;
+    padding-top: $sp-s;
 
     @media (min-width: $break-mobile) {
       padding-top: 0;
@@ -184,7 +184,7 @@ export default {
     border: 1px solid getShade($secondary-color, 110);
     border-radius: 2px;
     margin-right: $inline-s;
-    margin-bottom: $stack-s;
+    margin-bottom: $sp-s;
     text-align: center;
     color: $primary-color;
     cursor: pointer;
@@ -193,7 +193,7 @@ export default {
 
     @media (min-width: $break-mobile) {
       width: calc(100% / 6 - #{$inline-s});
-      margin-bottom: $stack-xs;
+      margin-bottom: $sp-xs;
       font-size: 18px;
       border-width: 2px;
     }
@@ -224,7 +224,7 @@ export default {
     font-size: 11px;
     line-height: 14px;
     color: $primary-color;
-    margin-top: $stack-s;
+    margin-top: $sp-s;
     position: absolute;
     bottom: 0;
     @media (min-width: $break-mobile) {

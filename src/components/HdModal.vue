@@ -166,7 +166,7 @@ export default {
   }
 
   &--external-close-icon {
-    padding-top: $stack-s + 24px;
+    padding-top: $sp-s + 24px;
   }
 
   &__overlay {
@@ -185,7 +185,7 @@ export default {
   }
   &__close {
     position: absolute;
-    top: $stack-s;
+    top: $sp-s;
     right: $inline-s;
     width: 24px;
     height: 24px;
@@ -196,7 +196,7 @@ export default {
     z-index: 2;
 
     @media (min-width: $break-tablet){
-      top: $stack-m;
+      top: $sp-m;
       right: $inline-m;
     }
 

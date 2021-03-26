@@ -251,7 +251,7 @@ export default {
 
   &__more-photos {
     position: absolute;
-    bottom: $stack-m;
+    bottom: $sp-m;
     right: $inline-m;
     background-color: $primary-bg;
     padding: $sp-s;

@@ -195,19 +195,19 @@ export default {
 
 .tags-selector {
   position: relative;
-  margin-bottom: $stack-m;
+  margin-bottom: $sp-m;
   &__selected-tags {
     display: flex;
     flex-wrap: wrap;
-    min-height: #{$stack-l + $stack-s};
+    min-height: #{$sp-l + $sp-s};
     &__tag {
       display: flex;
       align-items: center;
-      height: $stack-l;
+      height: $sp-l;
       background-color: getShade($quaternary-color, 50);
       border-radius: 3px;
       padding: 0 $inline-s;
-      margin: $stack-s $inline-s 0 0;
+      margin: $sp-s $inline-s 0 0;
       &__remove {
         display: flex;
         justify-content: center;
@@ -216,7 +216,7 @@ export default {
         height: 24px;
         background-color: transparent;
         padding: 0;
-        margin-left: $stack-s;
+        margin-left: $sp-s;
         border: 0;
         border-radius: 50%;
         cursor: pointer;
@@ -232,7 +232,7 @@ export default {
       height: 24px;
       background: transparent;
       padding: 0;
-      margin-top: #{$stack-s + $stack-xs};
+      margin-top: #{$sp-s + $sp-xs};
       margin-left: $sp-xs;
       border: 0;
       cursor: pointer;
@@ -254,7 +254,7 @@ export default {
     max-width: 300px;
     background-color: $secondary-bg;
     border-radius: 3px;
-    padding: $stack-xs;
+    padding: $sp-xs;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.23);
     opacity: 0;
     z-index: 5;
@@ -264,7 +264,7 @@ export default {
       border: 1px solid getShade($secondary-color, 110);
       border-radius: 3px;
       padding: 0 $inline-s;
-      margin: $stack-xs;
+      margin: $sp-xs;
       cursor: pointer;
       transition: background-color $time-s ease-in-out;
       &--isSelected {

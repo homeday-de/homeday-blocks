@@ -36,8 +36,8 @@ export default {
 @import 'homeday-blocks/src/styles/mixins.scss';
 
 .details-table__row {
-  margin-top: $stack-s;
-  margin-bottom: $stack-s;
+  margin-top: $sp-s;
+  margin-bottom: $sp-s;
   display: flex;
   flex-flow: row nowrap;
   word-wrap: break-word;
@@ -77,11 +77,11 @@ export default {
     }
 
     .field {
-      margin-bottom: $stack-m;
+      margin-bottom: $sp-m;
       word-wrap: normal;
 
       &__input {
-        padding-top: $stack-s;
+        padding-top: $sp-s;
       }
     }
   }

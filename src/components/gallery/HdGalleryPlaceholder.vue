@@ -48,7 +48,7 @@ export default {
 
 .gallery-placeholder {
   position: relative;
-  margin-bottom: $stack-s;
+  margin-bottom: $sp-s;
   background-color: $secondary-bg;
   &__content {
     position: absolute;
@@ -67,9 +67,9 @@ export default {
       }
     }
     &-text {
-      margin-top: $stack-xs;
+      margin-top: $sp-xs;
       @media (min-width: $break-tablet) {
-        margin-top: $stack-l;
+        margin-top: $sp-l;
       }
     }
   }

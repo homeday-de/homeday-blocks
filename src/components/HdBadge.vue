@@ -132,7 +132,7 @@ export default {
       font-size: 18px;
       line-height: 28px;
       border-radius: 4px;
-      padding: $stack-xs $inline-s;
+      padding: $sp-xs $inline-s;
       cursor: default;
     }
 

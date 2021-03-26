@@ -188,7 +188,7 @@ export default {
 @import 'homeday-blocks/src/styles/mixins.scss';
 
 .field {
-  margin-bottom: $stack-m;
+  margin-bottom: $sp-m;
 }
 
 .field--errored {

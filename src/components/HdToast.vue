@@ -88,12 +88,12 @@ $toastWidth: 288px;
     transform: none;
     left: auto;
     right: $inline-m;
-    top: $stack-m;
+    top: $sp-m;
   }
 
   @media (min-width: $break-tablet) {
     right: $inline-l;
-    top: $stack-m;
+    top: $sp-m;
   }
 
   // Appereance
@@ -112,7 +112,7 @@ $toastWidth: 288px;
     animation: slide-out-top 0.45s cubic-bezier(0.755, 0.050, 0.855, 0.060) both;
   }
   &__text {
-    padding: $stack-s $inline-m;
+    padding: $sp-s $inline-m;
 
     border-bottom: 1px solid #E1E1E1;
   }
