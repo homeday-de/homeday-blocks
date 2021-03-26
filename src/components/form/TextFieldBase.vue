@@ -122,7 +122,7 @@ export default {
     border: 0;
     outline: 0;
     background: transparent;
-    padding: $inset-xxs;
+    padding: $sp-xxs;
     cursor: pointer;
 
     &::before {

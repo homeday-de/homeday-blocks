@@ -27,8 +27,8 @@ $time-s: 150ms;
 /* RANGE INPUT */
 $range-height: $stack-l;
 $shadow: 0 2px 4px 0 rgba(0,0,0,0.25);
-$range-thumb-size: $inset-l;
-$range-thumb-height: $inset-l;
+$range-thumb-size: $sp-l;
+$range-thumb-height: $sp-l;
 $range-bar-height: 6px;
 $range-thumb-border: 2px;
 $activeColor: getShade($secondary-color, 110);

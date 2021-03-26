@@ -82,8 +82,8 @@ export default {
 .elevated-blocks {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: $inset-xl;
-  padding: $inset-l;
+  gap: $sp-xl;
+  padding: $sp-l;
 }
 
 .elevated-block {

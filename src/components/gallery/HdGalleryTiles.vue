@@ -74,7 +74,7 @@ export default {
   &__container {
     display: -ms-grid;
     display: grid;
-    grid-gap: $inset-s;
+    grid-gap: $sp-s;
     -ms-grid-columns: 1fr 1fr 1fr;
     -ms-grid-rows: 1fr 1fr;
     grid-template-columns: repeat(3, 1fr);
@@ -110,7 +110,7 @@ export default {
   }
 
   @include only-ie {
-    margin: $inset-xs;
+    margin: $sp-xs;
   }
 
   &:nth-child(1) {
@@ -254,7 +254,7 @@ export default {
     bottom: $stack-m;
     right: $inline-m;
     background-color: $primary-bg;
-    padding: $inset-s;
+    padding: $sp-s;
     @include font('text-xsmall');
     font-weight: bold;
     border: 0;

@@ -53,7 +53,7 @@ export default {
   width: 100%;
   background-color: white;
   border: 0;
-  padding: $inset-m;
+  padding: $sp-m;
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;

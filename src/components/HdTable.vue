@@ -55,7 +55,7 @@ export default {
   z-index: -1;
   text-align: center;
   th, td {
-    padding: $inset-s;
+    padding: $sp-s;
     border-top: 1px solid getShade($quaternary-color, 60);
     color: $quaternary-color;
     font-weight: 600;
@@ -88,7 +88,7 @@ export default {
     }
     td:after {
       content: '';
-      width: $inset-s;
+      width: $sp-s;
       height: 100%;
       position: absolute;
       right: 0;

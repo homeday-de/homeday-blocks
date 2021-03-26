@@ -178,7 +178,7 @@ export default {
   &__slot {
     width: calc(100% / 4 - #{$inline-s});
     display: inline-block;
-    padding: $inset-s;
+    padding: $sp-s;
     font-size: 14px;
     line-height: 10px;
     border: 1px solid getShade($secondary-color, 110);

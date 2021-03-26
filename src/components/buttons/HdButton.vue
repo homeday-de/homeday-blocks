@@ -108,7 +108,7 @@ export default {
   $root: &;
 
   &--icon-button {
-    padding: $inset-s;
+    padding: $sp-s;
   }
 
   &__icon {

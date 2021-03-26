@@ -35,7 +35,7 @@ export default {
   data() {
     return {
       codeExample: `// use inset for uniform vertical and horizontal spacing (top, right,bottom, left)
-padding: $inset-s;
+padding: $sp-s;
 
 // use stack for vertical spacing (top, bottom)
 padding-left: $inline-s;

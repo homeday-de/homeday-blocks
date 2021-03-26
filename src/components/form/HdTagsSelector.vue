@@ -233,7 +233,7 @@ export default {
       background: transparent;
       padding: 0;
       margin-top: #{$stack-s + $stack-xs};
-      margin-left: $inset-xs;
+      margin-left: $sp-xs;
       border: 0;
       cursor: pointer;
       transition: transform $time-s ease-in-out;

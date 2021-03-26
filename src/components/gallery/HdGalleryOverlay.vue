@@ -111,7 +111,7 @@ export default {
   animation: fadeIn .5s;
 
   @media (min-width: $break-tablet) and (min-height: 800px) {
-    padding: $inset-xl;
+    padding: $sp-xl;
   }
 
   &__gallery {

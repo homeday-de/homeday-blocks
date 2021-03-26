@@ -80,7 +80,7 @@ export default {
 .alert {
   $root: &;
   display: flex;
-  padding: $inset-s;
+  padding: $sp-s;
   @include font('text-small');
   border-width: 1px;
   border-style: solid;

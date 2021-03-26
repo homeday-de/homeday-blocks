@@ -391,7 +391,7 @@ export default {
       max-height: $range-thumb-inner-bullet-size;
       max-width: $range-thumb-inner-bullet-size;
 
-      border-radius: $inset-m;
+      border-radius: $sp-m;
       transition: transform .1s ease-in-out;
       transform-origin: center center;
 

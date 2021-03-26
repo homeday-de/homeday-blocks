@@ -154,7 +154,7 @@ export default {
   left: 0;
   display: flex;
   flex-direction: column;
-  padding: $inset-s;
+  padding: $sp-s;
   z-index: 100;
   animation: fadeIn .3s forwards;
   overflow: auto;
@@ -236,10 +236,10 @@ export default {
 
   &__body {
     background-color: white;
-    padding: $inset-l;
+    padding: $sp-l;
 
     #{$_root}--spacing-normal & {
-      padding: $inset-m;
+      padding: $sp-m;
     }
 
     #{$_root}--no-spacing & {
@@ -249,7 +249,7 @@ export default {
 
   &__actions {
     display: flex;
-    padding: $inset-m ($inset-m - ($inline-xs * 2));
+    padding: $sp-m ($sp-m - ($inline-xs * 2));
 
     &__action {
       width: auto;
@@ -282,7 +282,7 @@ export default {
     border-bottom: 1px solid getShade($quaternary-color, 60);
 
     &::v-deep > *:first-child {
-      padding: $inset-m;
+      padding: $sp-m;
     }
   }
 

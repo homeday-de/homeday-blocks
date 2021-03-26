@@ -160,7 +160,7 @@ export default {
       white-space: nowrap;
       overflow: hidden;
 
-      padding: $inset-s;
+      padding: $sp-s;
       padding-top: 0;
       border-bottom-left-radius: $inline-xs;
       border-bottom-right-radius: $inline-xs;

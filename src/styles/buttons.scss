@@ -304,10 +304,10 @@ $button-transition: all $time-s ease-in-out;
 .btn--flat--compact {
   font-size: 21px;
   line-height: 33px;
-  padding: $inset-xs;
+  padding: $sp-xs;
 
   &:after {
-    width: calc(100% - #{2 * $inset-xs});
+    width: calc(100% - #{2 * $sp-xs});
   }
 
 }
