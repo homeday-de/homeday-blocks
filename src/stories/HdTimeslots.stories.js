@@ -5,7 +5,6 @@ import TimeslotsWrapper from 'homeday-blocks/src/storiesWrappers/TimeslotsWrappe
 import { HdTimeslots } from 'homeday-blocks';
 import generateSlots from './mocks/generateTimeSlots';
 
-
 storiesOf('Components/HdTimeslots', module)
   .addParameters({ percy: { skip: true } })
   .addDecorator(TimeslotsWrapper)

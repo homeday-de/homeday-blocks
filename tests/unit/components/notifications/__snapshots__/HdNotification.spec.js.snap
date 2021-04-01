@@ -2,7 +2,7 @@
 
 exports[`HdNotification renders the component 1`] = `
 <div class="notification notification--notification">
-  <hdicon-stub src="bellIcon.svg" class="notification__icon"></hdicon-stub>
+  <hdicon-stub src="bell.svg" class="notification__icon"></hdicon-stub>
   <div class="notification__content">
 
   </div>

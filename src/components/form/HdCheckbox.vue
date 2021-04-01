@@ -68,7 +68,7 @@
 import merge from 'lodash/merge';
 import { getMessages } from 'homeday-blocks/src/lang';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
-import { checkIcon, minusIcon } from 'homeday-blocks/src/assets/small-icons';
+import { check as checkIcon, minus as minusIcon } from 'homeday-assets';
 import formField from './formFieldMixin';
 import FieldBase from './FieldBase.vue';
 
@@ -175,6 +175,9 @@ export default {
   },
   watch: {
     isChecked() {
+      // TODO: Don't mutate the prop
+      // https://homeday.atlassian.net/browse/FET-245
+      // eslint-disable-next-line vue/no-mutating-props
       this.indeterminate = false;
     },
   },

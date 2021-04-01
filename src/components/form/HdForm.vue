@@ -33,7 +33,7 @@ export default {
   },
   computed: {
     fieldsValues() {
-      return this.fields.map(field => field.value);
+      return this.fields.map((field) => field.value);
     },
   },
   created() {
@@ -98,7 +98,7 @@ export default {
       return this.initialFormData[fieldName] === undefined;
     },
     removeField(fieldToRemove) {
-      this.fields = this.fields.filter(field => field.name !== fieldToRemove.name);
+      this.fields = this.fields.filter((field) => field.name !== fieldToRemove.name);
     },
   },
 };

@@ -60,13 +60,12 @@
   </div>
 </template>
 
-
 <script>
 import flatten from 'lodash/flatten';
 import chunk from 'lodash/chunk';
 import { getIntlDateString } from 'homeday-blocks/src/services/date';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
-import { chevronIcon } from 'homeday-blocks/src/assets/small-icons';
+import { chevron as chevronIcon } from 'homeday-assets';
 
 const WEEK_DAYS = 7;
 export default {
@@ -79,7 +78,7 @@ export default {
       type: Array,
       required: true,
       // Check if passed array contains only valid dates
-      validator: dates => dates.filter(d => typeof d.getMonth === 'function').length === dates.length,
+      validator: (dates) => dates.filter((d) => typeof d.getMonth === 'function').length === dates.length,
     },
     disabledDates: {
       type: Array,
@@ -128,7 +127,7 @@ export default {
   methods: {
     selectFirstAvailable() {
       const firstAvialableDay = this.displayedWeeks[0]
-        .find(day => this.isDisabled(day) === false);
+        .find((day) => this.isDisabled(day) === false);
 
       this.selectDate(firstAvialableDay);
     },
@@ -154,7 +153,7 @@ export default {
     },
     selectDate(date) {
       if (this.isDisabled(date)) return;
-      const dateIndex = this.dates.findIndex(d => d === date);
+      const dateIndex = this.dates.findIndex((d) => d === date);
       this.selectedDate = date;
       this.$emit('dateSelected', {
         date,
@@ -280,7 +279,6 @@ export default {
       transform: scale(0);
       transition: transform ease 200ms;
     }
-
 
     &:not(&--disabled):hover {
       &:after {

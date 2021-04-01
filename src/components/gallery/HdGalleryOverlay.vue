@@ -38,7 +38,7 @@ import {
 import HdGallery from 'homeday-blocks/src/components/gallery/HdGallery.vue';
 import HdZoomerGallery from 'homeday-blocks/src/components/gallery/HdZoomerGallery.vue';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
-import { closeIcon } from 'homeday-blocks/src/assets/small-icons';
+import { close as closeIcon } from 'homeday-assets';
 
 export default {
   name: 'HdGalleryOverlay',

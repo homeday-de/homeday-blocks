@@ -159,7 +159,7 @@ export default {
         }
 
         const currentIndex = this.items.findIndex(
-          item => item.value === this.value,
+          (item) => item.value === this.value,
         );
 
         if (currentIndex === -1 || currentIndex === this.items.length - 1) {
@@ -178,7 +178,7 @@ export default {
         }
 
         const currentIndex = this.items.findIndex(
-          item => item.value === this.value,
+          (item) => item.value === this.value,
         );
 
         if (currentIndex === -1 || currentIndex === 0) {

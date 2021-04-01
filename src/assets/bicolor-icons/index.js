@@ -1,3 +1,6 @@
+console.warn(`The assets will be removed soon from 'homeday-blocks', please use the new assets package: 'homeday-assets'.
+'import { elevatorIcon } from "homeday-blocks/src/assets/bicolor-icons"' ➡️ 'import { elevator } from "homeday-assets/M"'`);
+
 export { default as amountOfRoomsSimplifiedIcon } from './ic_amount-of-rooms-simplified.svg';
 export { default as amountOfRoomsIcon } from './ic_amount-of-rooms.svg';
 export { default as atticSimplifiedIcon } from './ic_attic-simplified.svg';

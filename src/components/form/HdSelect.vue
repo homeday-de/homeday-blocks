@@ -44,7 +44,7 @@
 import merge from 'lodash/merge';
 import { getMessages } from 'homeday-blocks/src/lang';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
-import { smallArrowIcon } from 'homeday-blocks/src/assets/small-icons';
+import { smallArrow as smallArrowIcon } from 'homeday-assets';
 import FieldBase from './FieldBase.vue';
 import formField from './formFieldMixin';
 

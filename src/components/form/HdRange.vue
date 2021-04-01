@@ -395,7 +395,6 @@ export default {
       transition: transform .1s ease-in-out;
       transform-origin: center center;
 
-
       #{$range}:not(.field--disabled):hover &{
         background-color: $activeColor;
         transform: scale(1.25);

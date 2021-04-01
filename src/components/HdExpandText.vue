@@ -40,7 +40,7 @@ import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import { getMessages } from 'homeday-blocks/src/lang';
 import { mediaMatches } from 'homeday-blocks/src/services/breakpoints';
 import onResize from 'homeday-blocks/src/services/on-resize';
-import { chevronIcon } from 'homeday-blocks/src/assets/small-icons';
+import { chevron as chevronIcon } from 'homeday-assets';
 
 export default {
   name: 'HdExpandText',

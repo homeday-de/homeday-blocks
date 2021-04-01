@@ -62,7 +62,7 @@ describe('HdTileSelect', () => {
   });
 
   it('applies formatter to text', () => {
-    const formatter = text => (`formatted ${text}`);
+    const formatter = (text) => (`formatted ${text}`);
     const wrapper = wrapperFactory({
       props: { formatter },
     });

@@ -86,7 +86,6 @@ describe('HdToast', () => {
         const wrapper = wrapperBuilder();
         const { vm } = wrapper;
 
-
         expect(vm.isOpen).toBe(false);
 
         vm.open();

@@ -48,10 +48,10 @@
 <script>
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import {
-  closeIcon,
-  errorIcon,
-  checkIcon,
-} from 'homeday-blocks/src/assets/small-icons';
+  close as closeIcon,
+  error as errorIcon,
+  check as checkIcon,
+} from 'homeday-assets';
 import FieldBase from './FieldBase.vue';
 
 export default {

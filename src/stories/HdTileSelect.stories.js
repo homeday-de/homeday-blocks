@@ -75,7 +75,7 @@ stories.add('Custom formatter', () => ({
     return {
       items: [1, 2, 3],
       value: 0,
-      formatter: value => (`Formatted ${value}`),
+      formatter: (value) => (`Formatted ${value}`),
     };
   },
   watch,

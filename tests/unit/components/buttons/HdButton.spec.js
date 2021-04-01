@@ -37,7 +37,7 @@ describe('HdButton', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  Object.values(TYPES).filter(modifier => modifier).forEach((modifier) => {
+  Object.values(TYPES).filter((modifier) => modifier).forEach((modifier) => {
     it(`should render component with btn--${modifier} class`, () => {
       const className = `btn--${modifier}`;
       const wrapper = wrapperBuilder({

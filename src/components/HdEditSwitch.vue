@@ -81,10 +81,10 @@ import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import merge from 'lodash/merge';
 import { getMessages } from 'homeday-blocks/src/lang';
 import {
-  editIcon,
-  checkIcon,
-  closeIcon,
-} from 'homeday-blocks/src/assets/small-icons';
+  edit as editIcon,
+  check as checkIcon,
+  close as closeIcon,
+} from 'homeday-assets';
 
 const BUTTONS = {
   edit: {

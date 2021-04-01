@@ -13,7 +13,7 @@ export const getNDaysFromDate = (initialDate, amountOfDays) => {
   return resetDateTime(new Date(startDate.setDate(initialDate.getDate() + amountOfDays)));
 };
 
-export const convertMsToDays = ms => Math.round(ms / 1000 / 60 / 60 / 24);
+export const convertMsToDays = (ms) => Math.round(ms / 1000 / 60 / 60 / 24);
 
 export const getDaysDateRange = (startDate, endDate) => {
   const dateDiffDays = convertMsToDays(endDate.getTime() - startDate.getTime());

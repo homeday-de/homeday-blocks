@@ -83,7 +83,7 @@ export default {
     },
     formatter: {
       type: Function,
-      default: value => (String(value)),
+      default: (value) => (String(value)),
     },
     acceptNewValue: {
       type: Boolean,
@@ -108,7 +108,7 @@ export default {
       return _merge(getMessages(this.lang), this.texts);
     },
     itemsMapped() {
-      return this.items.map(item => ({
+      return this.items.map((item) => ({
         value: _get(item, 'value', item),
         text: this.formatter(_get(item, 'text', item)),
       }));

@@ -23,11 +23,11 @@
 <script>
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import {
-  errorIcon,
-  bellIcon,
-  infoIcon,
-  checkCircleIcon,
-} from 'homeday-blocks/src/assets/small-icons';
+  error as errorIcon,
+  bell as bellIcon,
+  info as infoIcon,
+  checkCircle as checkCircleIcon,
+} from 'homeday-assets';
 
 export const TYPES = {
   ERROR: 'error',
@@ -46,7 +46,7 @@ export default {
     type: {
       type: String,
       default: TYPES.NOTIFICATION,
-      validator: type => Object.values(TYPES).includes(type),
+      validator: (type) => Object.values(TYPES).includes(type),
     },
     message: {
       type: String,
