@@ -3,11 +3,11 @@
 [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/Homeday/homeday-blocks)
 
 # Homeday Blocks
-A library of Vue components used across Homeday projects - [here](https://blocks.homeday.dev)
+A library of Vue components and tokens used across Homeday projects - [here](https://blocks.homeday.dev)
 
 ## Local setup
 
-Fork the main repository, clone it to your local machine and add main repo as upstream.
+Fork the main repository, clone your fork to your local machine and add the main repo as upstream.
 
 ```
 $ git clone git@github.com:YOUR_USERNAME/homeday-blocks.git
