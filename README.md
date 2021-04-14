@@ -1,13 +1,13 @@
-[![Build Status](https://travis-ci.com/homeday-de/homeday-blocks.svg?token=rxKqgsBkMR5FqNpvxBcx&branch=develop)](https://travis-ci.com/homeday-de/homeday-blocks)
+[![Build Status](https://travis-ci.com/homeday-de/homeday-blocks.svg?token=rxKqgsBkMR5FqNpvxBcx&branch=master)](https://travis-ci.com/homeday-de/homeday-blocks)
 [![Coverage Status](https://coveralls.io/repos/github/homeday-de/homeday-blocks/badge.svg?t=Kbz7Vb)](https://coveralls.io/github/homeday-de/homeday-blocks)
 [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/Homeday/homeday-blocks)
 
 # Homeday Blocks
-A library of Vue components used across Homeday projects - [here](https://blocks.homeday.dev)
+A library of Vue components and tokens used across Homeday projects - [here](https://blocks.homeday.dev)
 
 ## Local setup
 
-Fork the main repository, clone it to your local machine and add main repo as upstream.
+Fork the main repository, clone your fork to your local machine and add the main repo as upstream.
 
 ```
 $ git clone git@github.com:YOUR_USERNAME/homeday-blocks.git
@@ -39,7 +39,7 @@ To install all our dependencies on OSX, run `scripts/setup.osx.sh`.
 
 To install all our dependencies on Ubuntu, run `scripts/setup.ubuntu.sh`.
 
-It is recommended to run the setup script everytime you pull from the `develop` branch. This way you can always be sure to have all the project dependencies up to date.
+It is recommended to run the setup script everytime you pull from the `master` branch. This way you can always be sure to have all the project dependencies up to date.
 
 ### Lints and fixes files
 ```
@@ -107,7 +107,7 @@ And follow the wizzard in order to generate a base component structure or a serv
 
 ## Contribution guide
 
-This project follows [forking workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow). See [project setup](#project-setup) to get started locally. That means that all code changes enter the project by PR to `develop` branch. Once you open the PR with suggested changes, the checks for `build` and `coverage` will run. If those fail, your PR needs some more work. :) 
+This project follows [forking workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow). See [project setup](#project-setup) to get started locally. That means that all code changes enter the project by PR to `master` branch. Once you open the PR with suggested changes, the checks for `build` and `coverage` will run. If those fail, your PR needs some more work. :) 
 
 Each PR should be reviewed by at least two team members. Once reviewed and approved, it can be merged. Please follow the following convention when merging the PR: 
 
@@ -133,10 +133,10 @@ It is important to follow this convention, because our automated releases are ba
 
 ## Version release
 
-Releasing a new version is as easy as pushing your changes to `master` (usually by opening a PR from `develop`) 😎
+Releasing a new version is as easy as pushing your changes to `master` 😎
 
 - [Travis](https://travis-ci.com/homeday-de/homeday-blocks) will automatically deploy the storybook to our [showcase env](https://blocks.homeday.dev).
-- And this [Github workflow](https://github.com/homeday-de/homeday-blocks/tree/develop/.github/workflows/release.yml) will automatically create a [release on Github](https://github.com/homeday-de/homeday-blocks/releases) and publish a new [version to NPM](https://www.npmjs.com/package/homeday-blocks?activeTab=versions). 
+- And this [Github workflow](https://github.com/homeday-de/homeday-blocks/tree/master/.github/workflows/release.yml) will automatically create a [release on Github](https://github.com/homeday-de/homeday-blocks/releases) and publish a new [version to NPM](https://www.npmjs.com/package/homeday-blocks?activeTab=versions). 
 
 ## Consuming in other projects
 
@@ -148,4 +148,4 @@ import { HdDynamicForm } from 'homeday-blocks';
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Services
-Together with the components, Homeday Blocks also provides useful services that can be reused across projects. You can read more about them in the services [documentation](https://github.com/homeday-de/homeday-blocks/tree/develop/src/services).
+Together with the components, Homeday Blocks also provides useful services that can be reused across projects. You can read more about them in the services [documentation](https://github.com/homeday-de/homeday-blocks/tree/master/src/services).

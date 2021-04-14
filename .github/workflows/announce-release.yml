@@ -23,21 +23,10 @@ jobs:
             '{
               "blocks": [
                 {
-                  "type": "header",
-                  "text": {
-                    "type": "plain_text",
-                    "text": "'"$TITLE"'"
-                  }
-                },
-                {
-                  "type": "divider"
-                },
-                {
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "'"$NOTES"'",
-                    "emoji": true
+                    "text": "'"$NOTES"'"
                   }
                 },
                 {

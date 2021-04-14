@@ -37,5 +37,4 @@ deploy:
 
 branches:
   only:
-  - develop
   - master
