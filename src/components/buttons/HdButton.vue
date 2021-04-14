@@ -108,13 +108,13 @@ export default {
   $root: &;
 
   &--icon-button {
-    padding: $inset-s;
+    padding: $sp-s;
   }
 
   &__icon {
     width: 24px;
     height: 24px;
-    margin-right: $inline-xs;
+    margin-right: $sp-xs;
 
     #{$root}--icon-button & {
       width: 28px;

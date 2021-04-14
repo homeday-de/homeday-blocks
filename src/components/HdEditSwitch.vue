@@ -164,12 +164,12 @@ export default {
   &__actions {
     display: flex;
     justify-content: flex-end;
-    margin-bottom: $stack-s;
+    margin-bottom: $sp-s;
     &__button {
       display: flex;
       align-items: center;
       padding: 0;
-      margin-left: $inline-m;
+      margin-left: $sp-m;
       cursor: pointer;
       &--edit {
         color: getShade($secondary-color, 110);
@@ -184,7 +184,7 @@ export default {
         font-size: 18px;
         font-weight: 400;
         line-height: 26px;
-        margin-left: $inline-xs;
+        margin-left: $sp-xs;
       }
       &__icon path {
         fill: currentColor;
@@ -196,7 +196,7 @@ export default {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin-bottom: $stack-s;
+    margin-bottom: $sp-s;
 
     &__icon {
       width: 20px;
@@ -210,7 +210,7 @@ export default {
 
     &__label {
       display: none;
-      margin-left: $inline-s;
+      margin-left: $sp-s;
       font-size: 18px;
       line-height: 26px;
 
@@ -232,11 +232,11 @@ export default {
 
   &--editing-allowed .details-table-wrap:first-child {
     padding-top: 0;
-    margin-top: $stack-s * -1;
+    margin-top: $sp-s * -1;
   }
 
   h3 + .field {
-    margin-top: $stack-s;
+    margin-top: $sp-s;
   }
 }
 

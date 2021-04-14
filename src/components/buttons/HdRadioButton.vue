@@ -124,7 +124,7 @@ $iconWidth: 48px;
   &:not(:last-child) {
     @media(max-width: $break-mobile - 1) {
       &:before {
-        $leftPos: $iconWidth + $inline-s;
+        $leftPos: $iconWidth + $sp-s;
         content: "";
         position: absolute;
         left: $leftPos;
@@ -140,7 +140,7 @@ $iconWidth: 48px;
   @media(min-width: $break-mobile) {
     flex-direction: column;
     border-radius: 4px;
-    padding: $inset-m;
+    padding: $sp-m;
     box-shadow: 0 6px 12px 0 rgba(0,0,0,.3);
 
     &:hover, &:focus {
@@ -166,7 +166,7 @@ $iconWidth: 48px;
   }
   &__iconWrapper {
     display: none;
-    margin-right: $inline-s;
+    margin-right: $sp-s;
     &--mobile {
       display: block;
 

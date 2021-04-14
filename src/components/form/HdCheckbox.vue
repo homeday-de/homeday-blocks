@@ -191,7 +191,7 @@ export default {
 @import 'homeday-blocks/src/styles/mixins.scss';
 
 .field {
-  margin-bottom: $stack-m;
+  margin-bottom: $sp-m;
 }
 
 .field--errored {
@@ -277,7 +277,7 @@ export default {
 
   &__description {
     flex: 1;
-    margin: 0 0 0 $inline-s;
+    margin: 0 0 0 $sp-s;
     text-align: left;
     @include font('text-small');
   }
@@ -349,15 +349,15 @@ export default {
   &__error {
     @include font('text-xxsmall');
     position: absolute;
-    top: calc(100% + #{$inline-xs});
-    margin-left: $inline-m;
+    top: calc(100% + #{$sp-xs});
+    margin-left: $sp-m;
     color: $error-color;
     display: none;
   }
   &__label {
     display: block;
     flex: 1;
-    margin: 0 0 0 $inline-s;
+    margin: 0 0 0 $sp-s;
 
     text-align: left;
     font-size: 14px;

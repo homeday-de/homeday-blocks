@@ -196,7 +196,7 @@ export default {
   &__header {
     text-align: center;
     position: relative;
-    margin-bottom: $stack-m;
+    margin-bottom: $sp-m;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -204,7 +204,7 @@ export default {
       font-size: 14px;
       line-height: 20px;
       font-weight: bold;
-      margin: 0 $stack-xl;
+      margin: 0 $sp-xl;
 
       @media (min-width: $break-mobile) {
         font-size: 18px;
@@ -213,30 +213,30 @@ export default {
     }
 
     @media (min-width: $break-mobile) {
-      margin-bottom: $stack-s * 3;
+      margin-bottom: $sp-s * 3;
     }
   }
   &__row {
     display: flex;
-    margin-bottom: $stack-m;
+    margin-bottom: $sp-m;
 
     @media (min-width: $break-mobile) {
-      margin-bottom: $stack-m;
+      margin-bottom: $sp-m;
     }
 
     &__item {
       width: calc(100% / 7);
       text-align: center;
       &:not(:last-child) {
-        margin-right: $inline-m;
+        margin-right: $sp-m;
       }
     }
   }
   &__days {
-    margin-bottom: $stack-m;
+    margin-bottom: $sp-m;
 
     @media (min-width: $break-mobile) {
-      margin-bottom: $stack-s * 3;
+      margin-bottom: $sp-s * 3;
     }
   }
   &__day {

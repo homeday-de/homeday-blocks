@@ -136,8 +136,8 @@ export default {
   @include typography-regular;
 
   &__icon {
-    margin-top: $stack-m;
-    margin-right: $inline-s;
+    margin-top: $sp-m;
+    margin-right: $sp-s;
     flex: 0 0 24px;
 
     #{$root}--disabled & {
@@ -151,8 +151,8 @@ export default {
     position: relative;
 
     #{$root}--grouped:not(#{$root}--unlabelled) & {
-      padding-top: $stack-m;
-      margin-top: $stack-s;
+      padding-top: $sp-m;
+      margin-top: $sp-s;
     }
   }
   &:not(#{$root}--grouped) &__main {
@@ -166,10 +166,10 @@ export default {
     }
 
     input, textarea, select {
-      padding-top: $stack-l - $stack-s;
-      padding-right: $inline-s;
-      padding-bottom: $stack-s;
-      padding-left: $inline-m;
+      padding-top: $sp-l - $sp-s;
+      padding-right: $sp-s;
+      padding-bottom: $sp-s;
+      padding-left: $sp-m;
       background: inherit;
       color: inherit;
       font-size: inherit;
@@ -186,8 +186,8 @@ export default {
   }
   &__label {
     position: absolute;
-    top: $stack-m;
-    left: $inline-m;
+    top: $sp-m;
+    left: $sp-m;
     transform-origin: left;
     transition: transform .3s, color .2s;
     pointer-events: none;
@@ -261,8 +261,8 @@ export default {
   }
   &__input-right {
     position: absolute;
-    top: $stack-m;
-    right: $inline-m;
+    top: $sp-m;
+    right: $sp-m;
     pointer-events: none;
 
     > ::v-deep * {
@@ -273,8 +273,8 @@ export default {
     width: 100%;
     color: getShade($quaternary-color, 80);
     @include typography-small;
-    padding-right: $inline-m;
-    padding-left: $inline-m;
+    padding-right: $sp-m;
+    padding-left: $sp-m;
 
     #{$root}--errored:not(#{$root}--active) & {
       color: $error-color;

@@ -1,24 +1,49 @@
 <template>
   <section class="spacing-story">
-    <h1>Spacing</h1>
-    <h3>Usage:</h3>
-    <p>Spacing values range from 2px to 64px:</p>
-    <ul>
-        <li>xxs - 2px</li>
-        <li>xs - 4px</li>
-        <li>s - 8px</li>
-        <li>m - 16px</li>
-        <li>l - 32px</li>
-        <li>xl - 64px</li>
-    </ul>
-    <p>Spacing can be used with SASS variables.</p>
-    <p>Spacing variables are composed of:
-        <ul>
-            <li>the position where we want to apply padding/margin (inset, inline, stack)</li>
-            <li>the size of spacing (xxs - xl).</li>
-        </ul>
-    </p>
-    <h3>Examples:</h3>
+    <h1 class="font-DS-400">Spacing</h1>
+    <p>Spacing values range from 2px to 64px and all of them are defined as SASS variables.</p>
+    <table class="spacing-table">
+      <thead>
+        <tr>
+          <th>-</th>
+          <th>Value</th>
+          <th>Variable</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>XXS</td>
+          <td>2px</td>
+          <td>$sp-xxs</td>
+        </tr>
+        <tr>
+          <td>XS</td>
+          <td>4px</td>
+          <td>$sp-xs</td>
+        </tr>
+        <tr>
+          <td>S</td>
+          <td>8px</td>
+          <td>$sp-s</td>
+        </tr>
+        <tr>
+          <td>M</td>
+          <td>16px</td>
+          <td>$sp-m</td>
+        </tr>
+        <tr>
+          <td>L</td>
+          <td>32px</td>
+          <td>$sp-l</td>
+        </tr>
+        <tr>
+          <td>XL</td>
+          <td>64px</td>
+          <td>$sp-xl</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 class="font-DS-200">Usage examples:</h3>
     <VueCodeHighlight language="css" class="spacing-story__code">{{ codeExample }}</VueCodeHighlight>
   </section>
 </template>
@@ -34,14 +59,9 @@ export default {
   },
   data() {
     return {
-      codeExample: `// use inset for uniform vertical and horizontal spacing (top, right,bottom, left)
-padding: $inset-s;
+      codeExample: `padding: $sp-s $sp-l;
 
-// use stack for vertical spacing (top, bottom)
-padding-left: $inline-s;
-
-// use inline for horizontal spacing (left, right)
-padding-top: $stack-s;`,
+margin-bottom: $sp-xl;`,
     };
   },
 };
@@ -54,29 +74,41 @@ padding-top: $stack-s;`,
   margin-right: auto;
   margin-left: auto;
 
-  > h1 {
-    @include font('headline');
-  }
-  > h3 {
-    @include font('title');
-    margin-top: $stack-l;
+  h3 {
+    margin-top: $sp-l;
   }
 
-  > p {
-      margin-top: $stack-m;
+  h1, h3 {
+    font-weight: 900;
   }
 
-  ul {
-      margin-left: $inline-m;
-      list-style: inside;
-      list-style-type: disc;
+  p {
+    margin-top: $sp-m;
   }
 
   &__code {
-    font-size: 14px;
+    @include font('DS-100');
+
     ::v-deep pre {
       background-color: $secondary-bg;
     }
+  }
+}
+
+.spacing-table {
+  margin-top: $sp-m;
+
+  th, td {
+    padding: $sp-s $sp-l;
+  }
+
+  th, td, tr {
+    border: 1px solid $quaternary-color;
+  }
+
+  th, td:nth-child(1) {
+    text-align: center;
+    font-weight: 600;
   }
 }
 </style>

@@ -57,8 +57,8 @@ $leaders-border: 1px dashed getShade($neutral-gray, 50);
   background-color: inherit;
 
   &__title {
-    margin-top: $stack-l;
-    margin-bottom: $stack-s;
+    margin-top: $sp-l;
+    margin-bottom: $sp-s;
     color: $neutral-gray;
     font-weight: 700;
   }
@@ -76,7 +76,7 @@ $leaders-border: 1px dashed getShade($neutral-gray, 50);
 .dashed-list__item {
   display: flex;
   flex-flow: wrap;
-  margin-bottom: $stack-s;
+  margin-bottom: $sp-s;
 
   > dt,
   > dd {

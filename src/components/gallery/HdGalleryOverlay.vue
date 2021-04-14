@@ -104,14 +104,14 @@ export default {
   left: 0;
   display: flex;
   z-index: 100;
-  padding: $stack-m 0;
+  padding: $sp-m 0;
   overflow-x: hidden;
   overflow-y: auto;
   background-color: rgba(white, .9);
   animation: fadeIn .5s;
 
   @media (min-width: $break-tablet) and (min-height: 800px) {
-    padding: $inset-xl;
+    padding: $sp-xl;
   }
 
   &__gallery {
@@ -136,8 +136,8 @@ export default {
 
   &__close {
     position: absolute;
-    top: $stack-s;
-    right: $inline-s;
+    top: $sp-s;
+    right: $sp-s;
     width: 24px;
     height: 24px;
     background: transparent;

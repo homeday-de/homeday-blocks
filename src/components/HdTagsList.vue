@@ -28,16 +28,16 @@ export default {
 .tags-list {
   display: flex;
   flex-wrap: wrap;
-  min-height: #{$stack-l + $stack-s};
-  margin-bottom: $stack-m;
+  min-height: #{$sp-l + $sp-s};
+  margin-bottom: $sp-m;
   &__tag {
     display: flex;
     align-items: center;
-    height: $stack-l;
+    height: $sp-l;
     background-color: getShade($quaternary-color, 50);
     border-radius: 3px;
-    padding: 0 $inline-s;
-    margin: $stack-s $inline-s 0 0;
+    padding: 0 $sp-s;
+    margin: $sp-s $sp-s 0 0;
   }
 }
 </style>

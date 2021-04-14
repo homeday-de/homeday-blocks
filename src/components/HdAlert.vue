@@ -80,7 +80,7 @@ export default {
 .alert {
   $root: &;
   display: flex;
-  padding: $inset-s;
+  padding: $sp-s;
   @include font('text-small');
   border-width: 1px;
   border-style: solid;
@@ -110,15 +110,15 @@ export default {
   }
 
   &--no-icon {
-    padding: $stack-s $inline-m;
+    padding: $sp-s $sp-m;
   }
 
   &__icon {
     width: 24px;
     align-self: flex-start;
     flex-shrink: 0;
-    margin-top: $stack-xxs;
-    margin-right: $inline-s;
+    margin-top: $sp-xxs;
+    margin-right: $sp-s;
 
     ::v-deep path {
       #{$root}--success & {

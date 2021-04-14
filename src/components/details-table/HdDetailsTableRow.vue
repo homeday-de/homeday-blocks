@@ -36,8 +36,8 @@ export default {
 @import 'homeday-blocks/src/styles/mixins.scss';
 
 .details-table__row {
-  margin-top: $stack-s;
-  margin-bottom: $stack-s;
+  margin-top: $sp-s;
+  margin-bottom: $sp-s;
   display: flex;
   flex-flow: row nowrap;
   word-wrap: break-word;
@@ -55,7 +55,7 @@ export default {
   &__label {
     flex: 0 0 152px;
     min-width: 0;
-    margin-right: $inline-s;
+    margin-right: $sp-s;
     color: getShade($quaternary-color, 80);
 
     @media (min-width: $break-tablet) {
@@ -77,11 +77,11 @@ export default {
     }
 
     .field {
-      margin-bottom: $stack-m;
+      margin-bottom: $sp-m;
       word-wrap: normal;
 
       &__input {
-        padding-top: $stack-s;
+        padding-top: $sp-s;
       }
     }
   }
@@ -89,14 +89,14 @@ export default {
   &:not(&--single-column):nth-child(odd) #{&}__content {
 
     @media (min-width: $break-desktop) {
-      margin-right: $inline-xs;
+      margin-right: $sp-xs;
     }
   }
 
   &:not(&--single-column):nth-child(even) #{&}__label {
 
     @media (min-width: $break-desktop) {
-      margin-left: $inline-xs;
+      margin-left: $sp-xs;
     }
   }
 }

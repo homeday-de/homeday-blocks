@@ -32,11 +32,11 @@ export default {
 @import 'homeday-blocks/src/styles/mixins.scss';
 
 .details-table-wrap {
-  padding-top: $stack-m;
-  padding-bottom: $stack-s;
+  padding-top: $sp-m;
+  padding-bottom: $sp-s;
 
   + #{&} {
-    padding-top: $stack-s;
+    padding-top: $sp-s;
   }
 }
 
@@ -47,14 +47,14 @@ export default {
       display: block;
       height: 2px;
       background-color: getShade($quaternary-color, 60);
-      margin-top: $stack-s;
+      margin-top: $sp-s;
     }
   }
 
   &__before {
 
     @media (min-width: $break-desktop) {
-      margin-bottom: $stack-s;
+      margin-bottom: $sp-s;
     }
   }
 

@@ -67,7 +67,7 @@ export default {
   }
   > h3 {
     @include font('title');
-    margin-top: $stack-l;
+    margin-top: $sp-l;
   }
 
   &__code {
@@ -82,8 +82,8 @@ export default {
 .elevated-blocks {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: $inset-xl;
-  padding: $inset-l;
+  gap: $sp-xl;
+  padding: $sp-l;
 }
 
 .elevated-block {

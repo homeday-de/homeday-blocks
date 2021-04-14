@@ -1,0 +1,23 @@
+// INSET = margin or padding applied top, right, bottom and left, [vertically and horizontaly]
+$inset-xxs: $sp-xxs;
+$inset-xs:  $sp-xs;
+$inset-s:   $sp-s;
+$inset-m:   $sp-m;
+$inset-l:   $sp-l;
+$inset-xl:  $sp-xl;
+
+// STACK = margin or padding applied top and bottom, [vertically]
+$stack-xxs: $sp-xxs;
+$stack-xs:  $sp-xs;
+$stack-s:   $sp-s;
+$stack-m:   $sp-m;
+$stack-l:   $sp-l;
+$stack-xl:  $sp-xl;
+
+// INLINE = margin or padding applied left and right, [horizontally]
+$inline-xxs: $sp-xxs;
+$inline-xs:  $sp-xs;
+$inline-s:   $sp-s;
+$inline-m:   $sp-m;
+$inline-l:   $sp-l;
+$inline-xl:  $sp-xl;

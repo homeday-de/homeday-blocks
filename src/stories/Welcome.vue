@@ -57,8 +57,8 @@ export default {
 @import "~vue-code-highlight/themes/prism.css";
 
 .welcome {
-  padding-top: $stack-m;
-  padding-bottom: $stack-l;
+  padding-top: $sp-m;
+  padding-bottom: $sp-l;
 
   &__title {
     display: inline-block;
@@ -67,8 +67,8 @@ export default {
     line-height: 80px;
     font-weight: 900;
     color: $primary-color;
-    margin-top: $stack-m;
-    margin-bottom: $stack-m;
+    margin-top: $sp-m;
+    margin-bottom: $sp-m;
 
     &::before {
       content: '';
@@ -85,11 +85,11 @@ export default {
 
   &__subtitle {
     @include font('title');
-    margin-top: $stack-l;
+    margin-top: $sp-l;
   }
 
   &__paragraph {
-    margin-top: $stack-m;
+    margin-top: $sp-m;
   }
 
   &__code {

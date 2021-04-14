@@ -225,7 +225,7 @@ export default {
     align-items: center;
     position: relative;
     padding: 0;
-    margin-right: $inline-m;
+    margin-right: $sp-m;
     font-size: 18px;
     line-height: 28px;
     font-family: inherit;
@@ -250,9 +250,9 @@ export default {
     &::before {
       content: '';
       position: absolute;
-      bottom: $stack-xs;
+      bottom: $sp-xs;
       left: 0;
-      width: calc(100% - #{$inline-xs + $_icon-size});
+      width: calc(100% - #{$sp-xs + $_icon-size});
       height: 1px;
       background-color: getShade($secondary-color, 110);
     }
@@ -261,7 +261,7 @@ export default {
       position: relative;
       width: $_icon-size;
       height: $_icon-size;
-      margin-left: $inline-xs;
+      margin-left: $sp-xs;
       transition: transform ($time-s * 2) ease-in-out;
 
       path {

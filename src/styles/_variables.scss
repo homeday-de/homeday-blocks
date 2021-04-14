@@ -1,42 +1,12 @@
 @import './colors';
+@import './spacing';
+@import './deprecated_spacing';
 
 $default-border-radius: 2px;
 
 /* FONTS */
 $font-primary: 'Source Sans Pro', sans-serif;
 $font-secondary: 'Charter', serif;
-
-/* SPACING */
-$standards: (xxs, 2px),
-(xs, 4px),
-(s, 8px),
-(m, 16px),
-(l, 32px),
-(xl, 64px);
-
-// INSET = margin or padding applied top, right, bottom and left, [vertically and horizontaly]
-$inset-xxs: nth(nth($standards, 1), 2);
-$inset-xs:  nth(nth($standards, 2), 2);
-$inset-s:   nth(nth($standards, 3), 2);
-$inset-m:   nth(nth($standards, 4), 2);
-$inset-l:   nth(nth($standards, 5), 2);
-$inset-xl:  nth(nth($standards, 6), 2);
-
-// STACK = margin or padding applied top and bottom, [vertically]
-$stack-xxs: nth(nth($standards, 1), 2);
-$stack-xs:  nth(nth($standards, 2), 2);
-$stack-s:   nth(nth($standards, 3), 2);
-$stack-m:   nth(nth($standards, 4), 2);
-$stack-l:   nth(nth($standards, 5), 2);
-$stack-xl:  nth(nth($standards, 6), 2);
-
-// INLINE = margin or padding applied left and right, [horizontally]
-$inline-xxs: nth(nth($standards, 1), 2);
-$inline-xs:  nth(nth($standards, 2), 2);
-$inline-s:   nth(nth($standards, 3), 2);
-$inline-m:   nth(nth($standards, 4), 2);
-$inline-l:   nth(nth($standards, 5), 2);
-$inline-xl:  nth(nth($standards, 6), 2);
 
 /* WIDTH */
 $max-width: 1152px;
@@ -55,10 +25,10 @@ $break-desktop-wide: 1440px !default;
 $time-s: 150ms;
 
 /* RANGE INPUT */
-$range-height: $stack-l;
+$range-height: $sp-l;
 $shadow: 0 2px 4px 0 rgba(0,0,0,0.25);
-$range-thumb-size: $inset-l;
-$range-thumb-height: $inset-l;
+$range-thumb-size: $sp-l;
+$range-thumb-height: $sp-l;
 $range-bar-height: 6px;
 $range-thumb-border: 2px;
 $activeColor: getShade($secondary-color, 110);

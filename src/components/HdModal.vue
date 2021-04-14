@@ -154,7 +154,7 @@ export default {
   left: 0;
   display: flex;
   flex-direction: column;
-  padding: $inset-s;
+  padding: $sp-s;
   z-index: 100;
   animation: fadeIn .3s forwards;
   overflow: auto;
@@ -166,7 +166,7 @@ export default {
   }
 
   &--external-close-icon {
-    padding-top: $stack-s + 24px;
+    padding-top: $sp-s + 24px;
   }
 
   &__overlay {
@@ -185,8 +185,8 @@ export default {
   }
   &__close {
     position: absolute;
-    top: $stack-s;
-    right: $inline-s;
+    top: $sp-s;
+    right: $sp-s;
     width: 24px;
     height: 24px;
     background-color: transparent;
@@ -196,8 +196,8 @@ export default {
     z-index: 2;
 
     @media (min-width: $break-tablet){
-      top: $stack-m;
-      right: $inline-m;
+      top: $sp-m;
+      right: $sp-m;
     }
 
     #{$_root}--external-close-icon & {
@@ -236,10 +236,10 @@ export default {
 
   &__body {
     background-color: white;
-    padding: $inset-l;
+    padding: $sp-l;
 
     #{$_root}--spacing-normal & {
-      padding: $inset-m;
+      padding: $sp-m;
     }
 
     #{$_root}--no-spacing & {
@@ -249,12 +249,12 @@ export default {
 
   &__actions {
     display: flex;
-    padding: $inset-m ($inset-m - ($inline-xs * 2));
+    padding: $sp-m ($sp-m - ($sp-xs * 2));
 
     &__action {
       width: auto;
-      margin-left: $inline-xs;
-      margin-right: $inline-xs;
+      margin-left: $sp-xs;
+      margin-right: $sp-xs;
       flex-grow: 1;
       flex-shrink: 0;
 
@@ -282,7 +282,7 @@ export default {
     border-bottom: 1px solid getShade($quaternary-color, 60);
 
     &::v-deep > *:first-child {
-      padding: $inset-m;
+      padding: $sp-m;
     }
   }
 

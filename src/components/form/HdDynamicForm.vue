@@ -154,8 +154,8 @@ export default {
     display: flex;
     &__item {
       flex: 1;
-      margin-left: $inline-xs;
-      margin-right: $inline-xs;
+      margin-left: $sp-xs;
+      margin-right: $sp-xs;
       &:first-of-type {
         margin-left: 0;
       }
