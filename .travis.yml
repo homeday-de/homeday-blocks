@@ -23,9 +23,8 @@ after_success:
 
 deploy:
   provider: s3
-  access_key_id: AKIAI3XOIWNY6PBLTBQQ
-  secret_access_key:
-    secure: sFtXZwrIBq/dfXA72kOZTn3kkiV6CknMfTxYnC5yo+MFi7Dbqgf+S7QC6MWVERwCvZwuWFKcbz5supyPjeDKvfTBdSVPnvjsazeKX35CPreE/xyfkWcTumSTTS5Zr+Fp3w0c7M3ewcDxWiIrSjQfQdOeRrVJ0ITF6mLuQq6L/K+N/Gd7dAtgFe+vY6qy+aLAOi/jOWBsAQyrsEwNphigKU+EK2dLnKrlR7WA8UVgqO8Znx7Lh4tzKo5CCTXFT1DAihiGjA2WEcwpaOmiY/yrZ+lnQetlpmTq8fgNwrK9LngD8xkcTyNsx6alFXGDlLV/dZDgtjXSweldV8eKF7vP4rRydTIwHLw7bOIUsWyd/IOGRgef2T9n6uwzytqWKo92DsOqHedXuyUOgYfg3cUjepRK5uCL1QzduKryPqFnLZDBJCeaZmL4bAG1x3eiWI9/eSgqXgyYFdJntLfdr8nF6t6x0+YXhvny4bFY1dSRTAwhFIzQI0Z94B8liZ+wKxm8ciAVnV4J0NRs7DG6TrMwgOR/z1v3bxiX6oGWWwcZTxCOfsEe5+G6s6Ls+MjH/g82Kr+m508gifCIPJmShCIS55yU8mVZfzPqvopo2DnHSGOwfypAHZT7RQBqbgx6Oixtxrd9boFqifQsSscSCI+4P8LYIXcxay1pfGMQ+xmEr6I=
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
   bucket: hd-storybook
   region: eu-central-1
   skip_cleanup: true
