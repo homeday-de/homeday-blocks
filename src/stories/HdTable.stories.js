@@ -55,6 +55,10 @@ storiesOf('Components/HdTable', module)
         <template #stars="{value}">
           <HdTagsList :items="value"></HdTagsList>
         </template>
+        <template #year="{value, rowContext}">
+          {{value}}
+          <span v-if="Number(rowContext.rating) >= 9">✨</span> 
+        </template>
       </hd-table>
     `,
     data() {
