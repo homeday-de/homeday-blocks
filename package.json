@@ -50,7 +50,7 @@
     "@percy/storybook": "3.3.1",
     "@storybook/addon-actions": "6.1.16",
     "@storybook/addon-console": "1.2.1",
-    "@storybook/addon-essentials": "6.0.21",
+    "@storybook/addon-essentials": "6.2.9",
     "@storybook/addon-knobs": "6.0.21",
     "@storybook/addon-links": "6.0.21",
     "@storybook/addon-viewport": "6.1.16",
