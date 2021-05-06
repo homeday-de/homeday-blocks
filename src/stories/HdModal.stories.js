@@ -1,117 +1,80 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { storiesOf } from '@storybook/vue';
 import { HdModal } from 'homeday-blocks';
+import { checkCircle as checkCircleIcon } from 'homeday-assets/M';
 
-const stories = storiesOf('Components/HdModal', module);
+export default {
+  title: 'Components/HdModal',
+  component: HdModal,
+  argTypes: {
+    withIcon: {
+      control: 'boolean',
+    },
+    isWide: {
+      control: 'boolean',
+    },
+    showCloseIcon: {
+      control: 'boolean',
+    },
+  },
+  args: {
+    withIcon: false,
+    isWide: false,
+    showCloseIcon: true,
+  },
+};
 
-stories.add('Default', () => ({
+const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
   components: { HdModal },
-  data() {
-    return {
-      modalOpen: false,
-    };
-  },
-  methods: {
-    showModal() {
-      this.modalOpen = true;
-    },
-    hideModal() {
-      this.modalOpen = false;
-    },
-  },
   template: `
     <div>
       <button @click="showModal">show modal</button>
-      <HdModal
-        v-if="modalOpen"
+      <hd-modal
+        v-if="isOpen"
         @close="hideModal"
+        :icon-src="modalIcon"
+        :is-wide="isWide"
+        :show-close-icon="showCloseIcon"
       >
-        <div slot="header">This is the modal header.</div>
-        <div slot="content">This is the modal content.</div>
-       </HdModal>
+        <template slot="title">This is the modal title.</template>
+        <p slot="body">This is the <b>modal</b> body.</p>
+      </hd-modal>
     </div>
   `,
-}));
-
-stories.add('Light', () => ({
-  components: { HdModal },
   data() {
     return {
-      modalOpen: false,
+      isOpen: false,
     };
+  },
+  computed: {
+    modalIcon() {
+      return this.withIcon ? checkCircleIcon : '';
+    },
   },
   methods: {
     showModal() {
-      this.modalOpen = true;
+      this.isOpen = true;
     },
     hideModal() {
-      this.modalOpen = false;
+      console.log('Closing modal');
+      this.isOpen = false;
     },
   },
-  template: `
-    <div>
-      <button @click="showModal">show modal</button>
-      <HdModal
-        v-if="modalOpen"
-        @close="hideModal"
-        closeIconColor="light"
-        overlayColor="light"
-      >
-        <div
-        slot="header"
-        style="background:#2988ff;"
-        >This is the modal header.
-        </div>
-        <div
-        slot="content"
-        >This is the modal content.
-        </div>
-       </HdModal>
-    </div>
-  `,
-}));
+});
 
-stories.add('With Actions', () => ({
-  components: { HdModal },
-  data() {
-    return {
-      modalOpen: false,
-    };
-  },
-  methods: {
-    showModal() {
-      this.modalOpen = true;
-    },
-    hideModal() {
-      this.modalOpen = false;
-    },
-    save() {
-      this.hideModal();
-      // eslint-disable-next-line no-alert
-      alert('saved!');
-    },
-  },
-  template: `
-    <div>
-      <button @click="showModal">show modal</button>
-      <HdModal
-        v-if="modalOpen"
-        @close="hideModal"
-        :actions="[
-          {
-            label: 'Cancel',
-            callback: hideModal,
-          },
-          {
-            label: 'Save',
-            callback: save,
-            type: 'primary',
-          },
-        ]"
-      >
-        <div slot="header">This is the modal header.</div>
-        <div slot="content">This is the modal content.</div>
-       </HdModal>
-    </div>
-  `,
-}));
+export const Default = Template.bind({});
+
+export const WithIcon = Template.bind({});
+WithIcon.args = {
+  withIcon: true,
+};
+
+export const WideButtons = Template.bind({});
+WideButtons.args = {
+  isWide: true,
+};
+
+export const WithoutCloseButton = Template.bind({});
+WithoutCloseButton.args = {
+  showCloseIcon: false,
+};
