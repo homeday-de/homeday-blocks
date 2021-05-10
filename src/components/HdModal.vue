@@ -139,13 +139,7 @@ export default {
 
 .hd-modal__header {
   display: flex;
-  // flex-direction: column;
-  // align-items: center;
   margin-bottom: $sp-xs;
-
-  // @media (min-width: $break-tablet) {
-  //   flex-direction: row;
-  // }
 }
 
 .hd-modal__modal-icon {
@@ -228,6 +222,7 @@ export default {
   padding: 0;
   background: rgba(255, 255, 255, 0.1);
   border: 0;
+  cursor: pointer;
 }
 
 .hd-modal--with-icon {
