@@ -20,6 +20,7 @@ const wrapperBuilder = wrapperFactoryBuilder(HdModal, {
     title: TITLE,
     body: BODY,
     actions: ACTIONS,
+    lang: 'de',
   },
   shallow: true,
 });

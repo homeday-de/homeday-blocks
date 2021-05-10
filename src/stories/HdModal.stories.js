@@ -34,6 +34,7 @@ const Template = (args, { argTypes }) => ({
         @close="hideModal"
         :icon-src="modalIcon"
         :is-wide="isWide"
+        :lang="'de'"
         :show-close-icon="showCloseIcon"
       >
         <template slot="title">This is the modal title.</template>
