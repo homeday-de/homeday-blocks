@@ -9,7 +9,7 @@ export default {
     withIcon: {
       control: 'boolean',
     },
-    isWide: {
+    isButtonsInline: {
       control: 'boolean',
     },
     showCloseIcon: {
@@ -18,7 +18,7 @@ export default {
   },
   args: {
     withIcon: false,
-    isWide: false,
+    isButtonsInline: false,
     showCloseIcon: true,
   },
 };
@@ -33,7 +33,7 @@ const Template = (args, { argTypes }) => ({
         v-if="isOpen"
         @close="hideModal"
         :icon-src="modalIcon"
-        :is-wide="isWide"
+        :is-buttons-inline="isButtonsInline"
         :lang="'de'"
         :show-close-icon="showCloseIcon"
       >
@@ -77,7 +77,7 @@ WithIcon.args = {
 
 export const WideButtons = Template.bind({});
 WideButtons.args = {
-  isWide: true,
+  isButtonsInline: true,
 };
 
 export const WithoutCloseButton = Template.bind({});

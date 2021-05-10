@@ -24,7 +24,7 @@
 
         <footer
           class="hd-modal__footer"
-          :class="{ 'hd-modal__footer--inline-buttons': !isWide }"
+          :class="{ 'hd-modal__footer--inline-buttons': isButtonsInline }"
         >
           <slot name="actions">
             <hd-button
@@ -68,7 +68,7 @@ export default {
       type: String,
       default: '',
     },
-    isWide: {
+    isButtonsInline: {
       type: Boolean,
       default: false,
     },
