@@ -24,7 +24,7 @@
 
         <footer
           class="hd-modal__footer"
-          :class="{ 'hd-modal__footer--is-wide': isWide }"
+          :class="{ 'hd-modal__footer--inline-buttons': !isWide }"
         >
           <slot name="actions">
             <hd-button
@@ -178,45 +178,26 @@ export default {
 }
 
 .hd-modal__footer {
+  width: 100%;
   display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 
-  button {
-    width: 100%;
-
-    &:not(:first-child) {
-      margin-left: $sp-s;
-    }
-  }
-
-  @media (min-width: $break-tablet) {
-    justify-content: flex-end;
-
-    button {
-      width: auto;
+  ::v-deep {
+    > *:not(:last-child) {
+      margin-bottom: $sp-s;
     }
   }
 }
 
-.hd-modal__footer--is-wide {
-  flex-direction: column;
+.hd-modal__footer--inline-buttons {
+  flex-direction: row;
+  justify-content: flex-end;
 
-  button {
-    &:not(:first-child) {
-      margin-left: 0;
-      margin-top: $sp-s;
-    }
-  }
-
-  @media (min-width: $break-tablet) {
-    flex-direction: row;
-
-    button {
-      width: 100%;
-
-      &:not(:first-child) {
-        margin-left: $sp-s;
-        margin-top: 0;
-      }
+  ::v-deep {
+    > *:not(:last-child) {
+      margin-right: $sp-s;
+      margin-bottom: 0px;
     }
   }
 }
@@ -250,6 +231,32 @@ export default {
 
     @media (min-width: $break-tablet) {
       align-items: flex-start;
+    }
+  }
+
+  .hd-modal__footer:not(.hd-modal__footer--inline-buttons) {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    @media (min-width: $break-tablet) {
+      align-items: flex-start;
+    }
+
+    ::v-deep {
+      > * {
+        width: 100%;
+        margin-bottom: $sp-s;
+        margin-right: 0;
+      }
+    }
+  }
+
+  .hd-modal__footer--inline-buttons {
+    justify-content: center;
+
+    @media (min-width: $break-tablet) {
+      justify-content: flex-end;
     }
   }
 }

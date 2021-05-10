@@ -39,6 +39,11 @@ const Template = (args, { argTypes }) => ({
       >
         <template slot="title">This is the modal title.</template>
         <p slot="body">This is the <b>modal</b> body.</p>
+        <template slot="actions">
+          <button> action one </button>
+          <button> action two </button>
+          <button> action three </button>
+        </template>
       </hd-modal>
     </div>
   `,
