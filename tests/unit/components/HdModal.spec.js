@@ -9,7 +9,7 @@ const CLOSE_BUTTON_SELECTOR = '.hd-modal__close-button';
 const HEADER_SELECTOR = '.hd-modal__header';
 const ICON_SELECTOR = 'hd-icon-stub';
 const WITH_ICON_SELECTOR = '.hd-modal--with-icon';
-const WIDE_ACTIONS_CLASS_NAME = 'hd-modal__footer--is-wide';
+const INLINE_ACTIONS_CLASS_NAME = 'hd-modal__footer--inline-buttons';
 
 const TITLE = '<div>This is the modal title.</div>';
 const BODY = '<div>This is the modal body.</div>';
@@ -90,17 +90,17 @@ describe('HdModal', () => {
     expect(wrapper.find(HEADER_SELECTOR).find(ICON_SELECTOR).attributes('src')).toBe(iconSrc);
   });
 
-  it('renders the actions wide if the `isWide` prop is true', async () => {
+  it('renders the inline actions if `isButtonsInline` prop is true', async () => {
     const wrapper = wrapperBuilder();
 
-    expect(wrapper.find(ACTIONS_SELECTOR).attributes('class').includes(WIDE_ACTIONS_CLASS_NAME)).toBe(false);
+    expect(wrapper.find(ACTIONS_SELECTOR).attributes('class').includes(INLINE_ACTIONS_CLASS_NAME)).toBe(false);
 
     wrapper.setProps({
-      isWide: true,
+      isButtonsInline: true,
     });
 
     await wrapper.vm.$nextTick();
 
-    expect(wrapper.find(ACTIONS_SELECTOR).attributes('class').includes(WIDE_ACTIONS_CLASS_NAME)).toBe(true);
+    expect(wrapper.find(ACTIONS_SELECTOR).attributes('class').includes(INLINE_ACTIONS_CLASS_NAME)).toBe(true);
   });
 });
