@@ -70,7 +70,7 @@ const Template = (args, { argTypes }) => ({
       isOpen: false,
       data() {
         return {
-          actions: ['test', 'gel'],
+          actions: actionList,
         };
       },
     };
