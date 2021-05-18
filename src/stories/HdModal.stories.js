@@ -1,6 +1,22 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { HdModal } from 'homeday-blocks';
 import { checkCircle as checkCircleIcon } from 'homeday-assets/M';
+import { bank } from 'homeday-assets';
+
+const actionList = [{
+  name: 'saveData',
+  modifier: 'tertiary',
+  text: 'Save Data',
+  isInDarkBackground: false,
+  disabled: false,
+  iconSrc: bank,
+}, {
+  name: 'refreshPage',
+  modifier: 'primary',
+  text: 'Refresh Page',
+  isInDarkBackground: false,
+  disabled: false,
+}];
 
 export default {
   title: 'Components/HdModal',
@@ -9,17 +25,22 @@ export default {
     withIcon: {
       control: 'boolean',
     },
-    isButtonsInline: {
+    isWide: {
       control: 'boolean',
     },
     showCloseIcon: {
       control: 'boolean',
     },
+    actions: {
+      control: 'object',
+      defaultValue: actionList,
+    },
   },
   args: {
     withIcon: false,
-    isButtonsInline: false,
+    isWide: false,
     showCloseIcon: true,
+    actions: actionList,
   },
 };
 
@@ -33,23 +54,25 @@ const Template = (args, { argTypes }) => ({
         v-if="isOpen"
         @close="hideModal"
         :icon-src="modalIcon"
-        :is-buttons-inline="isButtonsInline"
+        :is-wide="isWide"
         :lang="'de'"
         :show-close-icon="showCloseIcon"
+        :actions="actions"
+        @action="clickedAction"
       >
         <template slot="title">This is the modal title.</template>
         <p slot="body">This is the <b>modal</b> body.</p>
-        <template slot="actions">
-          <button> action one </button>
-          <button> action two </button>
-          <button> action three </button>
-        </template>
       </hd-modal>
     </div>
   `,
   data() {
     return {
       isOpen: false,
+      data() {
+        return {
+          actions: ['test', 'gel'],
+        };
+      },
     };
   },
   computed: {
@@ -65,6 +88,15 @@ const Template = (args, { argTypes }) => ({
       console.log('Closing modal');
       this.isOpen = false;
     },
+    clickedAction(actionName) {
+      console.log(`the user clicked "${actionName}" action`);
+
+      if (actionName === 'saveData') {
+        console.log('the data is saving...');
+      } else if (actionName === 'refreshPage') {
+        console.log('page is refreshing');
+      }
+    },
   },
 });
 
@@ -77,7 +109,7 @@ WithIcon.args = {
 
 export const WideButtons = Template.bind({});
 WideButtons.args = {
-  isButtonsInline: true,
+  isWide: true,
 };
 
 export const WithoutCloseButton = Template.bind({});

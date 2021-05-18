@@ -24,16 +24,25 @@
 
         <footer
           class="hd-modal__footer"
-          :class="{ 'hd-modal__footer--inline-buttons': isButtonsInline }"
+          :class="{ 'hd-modal__footer--wide': isWide }"
         >
-          <slot name="actions">
-            <hd-button
-              modifier="primary"
-              @click="$emit('close')"
-            >
-              {{ t.GENERAL.OK }}
-            </hd-button>
-          </slot>
+          <div
+            class="hd-modal__action"
+            v-for="(button, name) in actions"
+            :key="`action-${name}`"
+          >
+            <slot :name="name" :value="button">
+              <hd-button
+                :modifier="button.modifier"
+                :is-in-dark-background="button.isInDarkBackground"
+                :disabled="button.disabled"
+                :icon-src="button.iconSrc"
+                @click="$emit('action', button.name)"
+              >
+                {{ button.text }}
+              </hd-button>
+            </slot>
+          </div>
         </footer>
 
         <button
@@ -68,7 +77,7 @@ export default {
       type: String,
       default: '',
     },
-    isButtonsInline: {
+    isWide: {
       type: Boolean,
       default: false,
     },
@@ -79,6 +88,10 @@ export default {
     lang: {
       type: String,
       default: 'de',
+    },
+    actions: {
+      type: Array,
+      default: () => [],
     },
   },
   data() {
@@ -181,25 +194,6 @@ export default {
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-
-  ::v-deep {
-    > *:not(:last-child) {
-      margin-bottom: $sp-s;
-    }
-  }
-}
-
-.hd-modal__footer--inline-buttons {
-  flex-direction: row;
-  justify-content: flex-end;
-
-  ::v-deep {
-    > *:not(:last-child) {
-      margin-right: $sp-s;
-      margin-bottom: 0px;
-    }
-  }
 }
 
 .hd-modal__close-button {
@@ -233,31 +227,44 @@ export default {
       align-items: flex-start;
     }
   }
+}
 
-  .hd-modal__footer:not(.hd-modal__footer--inline-buttons) {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+.hd-modal__footer:not(.hd-modal__footer--wide) {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 
-    @media (min-width: $break-tablet) {
-      align-items: flex-start;
-    }
-
-    ::v-deep {
-      > * {
-        width: 100%;
-        margin-bottom: $sp-s;
-        margin-right: 0;
-      }
-    }
+  @media (min-width: $break-tablet) {
+    flex-direction: row;
+    justify-content: flex-end;
   }
 
-  .hd-modal__footer--inline-buttons {
-    justify-content: center;
+  .hd-modal__action {
+    display: flex;
+    flex-direction: column;
+    margin-top: $sp-s;
 
     @media (min-width: $break-tablet) {
-      justify-content: flex-end;
+      display: flex;
+      margin-top: 0;
+      margin-left: $sp-s;
+      flex-direction: column;
     }
+  }
+}
+
+.hd-modal__footer--wide {
+  display: flex;
+  flex-direction: row;
+
+  .hd-modal__action {
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+  }
+
+  .hd-modal__action:not(:first-child) {
+    margin-left: $sp-s;
   }
 }
 </style>
