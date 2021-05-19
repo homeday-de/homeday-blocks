@@ -92,12 +92,14 @@ export default {
     actions: {
       type: Array,
       default: () => [],
-      validator: (entry) => {
-        entry.forEach((action, index) => {
-          if (typeof action.name !== 'string') {
-            console.error(`The attribute "name" is required on ${index}. action`);
-          }
-        });
+      validator: (actions) => {
+        const indexOfActionMissingName = actions.findIndex((action) => typeof action.name !== 'string');
+
+        if (indexOfActionMissingName >= 0) {
+          console.warn(`The attribute "name" is required on actions[${indexOfActionMissingName}]`);
+          return false;
+        }
+
         return true;
       },
     },
