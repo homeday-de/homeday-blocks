@@ -100,6 +100,46 @@ const Template = (args, { argTypes }) => ({
   },
 });
 
+const TemplateWithCustomFooter = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { HdModal },
+  template: `
+    <div>
+      <button @click="showModal">show modal</button>
+      <hd-modal
+        v-if="isOpen"
+        @close="hideModal"
+        :icon-src="modalIcon"
+        :lang="'de'"
+        :is-close-button-visible="isCloseButtonVisible"
+      >
+        <template slot="title">This is the modal title.</template>
+        <p slot="body">This is the <b>modal</b> body.</p>
+        <template slot="footer">This is the modal with <b> custom footer</b>.</template>
+      </hd-modal>
+    </div>
+  `,
+  data() {
+    return {
+      isOpen: false,
+    };
+  },
+  computed: {
+    modalIcon() {
+      return this.withIcon ? checkCircleIcon : '';
+    },
+  },
+  methods: {
+    showModal() {
+      this.isOpen = true;
+    },
+    hideModal() {
+      console.log('Closing modal');
+      this.isOpen = false;
+    },
+  },
+});
+
 export const Default = Template.bind({});
 
 export const WithIcon = Template.bind({});
@@ -116,3 +156,5 @@ export const WithoutCloseButton = Template.bind({});
 WithoutCloseButton.args = {
   isCloseButtonVisible: false,
 };
+
+export const WithCustomFooter = TemplateWithCustomFooter.bind({});

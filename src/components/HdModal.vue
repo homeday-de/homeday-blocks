@@ -23,23 +23,27 @@
         </div>
 
         <footer
-          class="hd-modal__footer"
-          :class="{ 'hd-modal__footer--wide': isWide }"
+          :class="{
+            'hd-modal__footer': !isCustomFooter,
+            'hd-modal__footer--wide': isWide && !isCustomFooter,
+          }"
         >
-          <div
-            class="hd-modal__action"
-            v-for="(button, name) in actions"
-            :key="`action-${name}`"
-          >
-            <slot :name="name" :value="button">
-              <hd-button
-                v-bind="button"
-                @click="$emit('action', button)"
-              >
-                {{ button.text }}
-              </hd-button>
-            </slot>
-          </div>
+          <slot name="footer">
+            <div
+              class="hd-modal__action"
+              v-for="(button, name) in actions"
+              :key="`action-${name}`"
+            >
+              <slot :name="name" :value="button">
+                <hd-button
+                  v-bind="button"
+                  @click="$emit('action', button)"
+                >
+                  {{ button.text }}
+                </hd-button>
+              </slot>
+            </div>
+          </slot>
         </footer>
 
         <button
@@ -106,6 +110,9 @@ export default {
   computed: {
     withIcon() {
       return this.iconSrc.length > 0;
+    },
+    isCustomFooter() {
+      return Boolean(this.actions.length === 0);
     },
   },
   methods: {
