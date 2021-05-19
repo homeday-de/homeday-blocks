@@ -89,6 +89,14 @@ export default {
     actions: {
       type: Array,
       default: () => [],
+      validator: (entry) => {
+        entry.forEach((action, index) => {
+          if (typeof action.name !== 'string') {
+            console.error(`The attribute "name" is required on ${index}. action`);
+          }
+        });
+        return true;
+      },
     },
   },
   data() {
