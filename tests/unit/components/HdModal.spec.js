@@ -76,6 +76,26 @@ describe('HdModal', () => {
   it('renders the wide actions if `isWide` prop is true', async () => {
     const wrapper = wrapperBuilder();
 
+    const actionList = [{
+      name: 'saveData',
+      modifier: 'tertiary',
+      text: 'Save Data',
+      isInDarkBackground: false,
+      disabled: false,
+    }, {
+      name: 'refreshPage',
+      modifier: 'primary',
+      text: 'Refresh Page',
+      isInDarkBackground: false,
+      disabled: false,
+    }];
+
+    wrapper.setProps({
+      actions: actionList,
+    });
+
+    await wrapper.vm.$nextTick();
+
     expect(wrapper.find(ACTIONS_SELECTOR).attributes('class').includes(WIDE_ACTIONS_CLASS_NAME)).toBe(false);
 
     wrapper.setProps({

@@ -14,7 +14,7 @@ exports[`HdModal renders component 1`] = `
       <div class="hd-modal__body">
         <div>This is the modal body.</div>
       </div>
-      <footer class="hd-modal__footer"></footer> <button class="hd-modal__close-button">
+      <footer class=""></footer> <button class="hd-modal__close-button">
         <hd-icon-stub src="" class="hd-modal__close-icon"></hd-icon-stub>
       </button>
     </div>
