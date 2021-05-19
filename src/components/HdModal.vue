@@ -61,7 +61,6 @@
 import HdButton from 'homeday-blocks/src/components/buttons/HdButton.vue';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import { close as closeIcon } from 'homeday-assets';
-import { getMessages } from 'homeday-blocks/src/lang';
 
 export default {
   name: 'HdModal',
@@ -107,9 +106,6 @@ export default {
   computed: {
     withIcon() {
       return this.iconSrc.length > 0;
-    },
-    t() {
-      return getMessages(this.lang);
     },
   },
   methods: {
