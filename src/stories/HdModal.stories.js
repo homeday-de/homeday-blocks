@@ -88,12 +88,12 @@ const Template = (args, { argTypes }) => ({
       console.log('Closing modal');
       this.isOpen = false;
     },
-    clickedAction(actionName) {
-      console.log(`the user clicked "${actionName}" action`);
+    clickedAction(button) {
+      console.log(`the user clicked "${button.name}" action`);
 
-      if (actionName === 'saveData') {
+      if (button.name === 'saveData') {
         console.log('the data is saving...');
-      } else if (actionName === 'refreshPage') {
+      } else if (button.name === 'refreshPage') {
         console.log('page is refreshing');
       }
     },

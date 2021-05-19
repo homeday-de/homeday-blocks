@@ -33,11 +33,8 @@
           >
             <slot :name="name" :value="button">
               <hd-button
-                :modifier="button.modifier"
-                :is-in-dark-background="button.isInDarkBackground"
-                :disabled="button.disabled"
-                :icon-src="button.iconSrc"
-                @click="$emit('action', button.name)"
+                v-bind="button"
+                @click="$emit('action', button)"
               >
                 {{ button.text }}
               </hd-button>
