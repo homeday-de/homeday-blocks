@@ -43,7 +43,7 @@
         </footer>
 
         <button
-          v-if="showCloseIcon"
+          v-if="isCloseButtonVisible"
           class="hd-modal__close-button"
           @click="$emit('close')"
         >
@@ -78,7 +78,7 @@ export default {
       type: Boolean,
       default: false,
     },
-    showCloseIcon: {
+    isCloseButtonVisible: {
       type: Boolean,
       default: true,
     },

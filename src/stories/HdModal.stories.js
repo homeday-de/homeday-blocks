@@ -28,7 +28,7 @@ export default {
     isWide: {
       control: 'boolean',
     },
-    showCloseIcon: {
+    isCloseButtonVisible: {
       control: 'boolean',
     },
     actions: {
@@ -39,7 +39,7 @@ export default {
   args: {
     withIcon: false,
     isWide: false,
-    showCloseIcon: true,
+    isCloseButtonVisible: true,
     actions: actionList,
   },
 };
@@ -56,7 +56,7 @@ const Template = (args, { argTypes }) => ({
         :icon-src="modalIcon"
         :is-wide="isWide"
         :lang="'de'"
-        :show-close-icon="showCloseIcon"
+        :is-close-button-visible="isCloseButtonVisible"
         :actions="actions"
         @action="clickedAction"
       >
@@ -114,5 +114,5 @@ WideButtons.args = {
 
 export const WithoutCloseButton = Template.bind({});
 WithoutCloseButton.args = {
-  showCloseIcon: false,
+  isCloseButtonVisible: false,
 };
