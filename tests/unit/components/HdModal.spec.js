@@ -41,13 +41,13 @@ describe('HdModal', () => {
     expect(wrapper.find(CLOSE_BUTTON_SELECTOR).exists()).toBe(true);
   });
 
-  it('doesn\'t renders the close button if the `showCloseIcon` is false', async () => {
+  it('doesn\'t renders the close button if the `isCloseButtonVisible` is false', async () => {
     const wrapper = wrapperBuilder();
 
     expect(wrapper.find(CLOSE_BUTTON_SELECTOR).exists()).toBe(true);
 
     wrapper.setProps({
-      showCloseIcon: false,
+      isCloseButtonVisible: false,
     });
 
     await wrapper.vm.$nextTick();
