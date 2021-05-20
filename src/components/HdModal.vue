@@ -1,138 +1,121 @@
 <template>
   <transition name="modal">
-    <section
-      ref="modal"
-      :class="{
-        'modal--no-spacing': noSpacing,
-        'modal--no-external-spacing': noExternalSpacing,
-        'modal--no-close-icon': !showCloseIcon,
-        'modal--external-close-icon': externalCloseIcon,
-        [`modal--mobile-align-${mobileAlign}`]: true,
-        [`modal--spacing-${spacingSize}`]: true,
-      }"
-      class="modal"
-      @click="onCloseClick"
+    <article
+      ref="hd-modal"
+      class="hd-modal"
+      :class="{ 'hd-modal--with-icon': withIcon }"
     >
-      <div
-        :class="`modal__overlay--${overlayColor}`"
-        class="modal__overlay"
-      />
-      <div
-        :style="{
-          width: width > 0 ? `${width}px` : null,
-        }"
-        class="modal__inner"
-        @click.stop
-      >
-        <header
-          v-if="$slots.header"
-          class="modal__header"
-        >
-          <slot name="header" />
+      <div class="hd-modal__overlay" />
+      <div class="hd-modal__container">
+        <header class="hd-modal__header">
+          <hd-icon
+            v-if="withIcon"
+            :src="iconSrc"
+            class="hd-modal__modal-icon"
+          />
+          <h3 class="hd-modal__title">
+            <slot name="title" />
+          </h3>
         </header>
 
-        <div
-          v-if="$slots.content"
-          class="modal__body"
-        >
-          <slot name="content" />
+        <div class="hd-modal__body">
+          <slot name="body" />
         </div>
 
-        <div
-          v-if="actions.length > 0"
-          class="modal__actions"
+        <footer
+          :class="{
+            'hd-modal__footer': !isCustomFooter,
+            'hd-modal__footer--wide': isWide && !isCustomFooter,
+          }"
         >
-          <button
-            v-for="(action, i) in actions"
-            :key="i"
-            :disabled="action.disabled"
-            :class="{
-              'btn--primary': action.type === 'primary',
-              'btn--ghost': action.type !== 'primary',
-            }"
-            class="modal__actions__action btn"
-            type="button"
-            @click="action.callback"
-          >
-            {{ action.label }}
-          </button>
-        </div>
+          <slot name="footer">
+            <div
+              class="hd-modal__action"
+              v-for="(button, name) in actions"
+              :key="`action-${name}`"
+            >
+              <slot :name="name" :value="button">
+                <hd-button
+                  v-bind="button"
+                  @click="$emit('action', button)"
+                >
+                  {{ button.text }}
+                </hd-button>
+              </slot>
+            </div>
+          </slot>
+        </footer>
+
         <button
-          v-if="showCloseIcon"
-          :class="`modal__close--${closeIconColor}`"
-          class="modal__close"
-          @click="onCloseClick"
+          v-if="isCloseButtonVisible"
+          class="hd-modal__close-button"
+          @click="$emit('close')"
         >
-          <HdIcon
+          <hd-icon
             :src="closeIcon"
-            width="100%"
+            class="hd-modal__close-icon"
           />
         </button>
       </div>
-    </section>
+    </article>
   </transition>
 </template>
 
 <script>
+import HdButton from 'homeday-blocks/src/components/buttons/HdButton.vue';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import { close as closeIcon } from 'homeday-assets';
 
 export default {
   name: 'HdModal',
   components: {
+    HdButton,
     HdIcon,
   },
   props: {
-    closeIconColor: {
+    iconSrc: {
       type: String,
-      default: 'dark',
-      validator: (closeIconColor) => ['dark', 'light'].includes(closeIconColor),
+      default: '',
     },
-    showCloseIcon: {
+    isWide: {
+      type: Boolean,
+      default: false,
+    },
+    isCloseButtonVisible: {
       type: Boolean,
       default: true,
     },
-    externalCloseIcon: {
-      type: Boolean,
-      default: false,
-    },
-    overlayColor: {
+    lang: {
       type: String,
-      default: 'dark',
-      validator: (overlayColor) => ['dark', 'light'].includes(overlayColor),
-    },
-    width: {
-      type: Number,
-      default: 0,
-      validator: (maxWidth) => maxWidth >= 0,
-    },
-    spacingSize: {
-      type: String,
-      default: 'large',
-      validator: (spacingSize) => ['large', 'normal'].includes(spacingSize),
-    },
-    noSpacing: {
-      type: Boolean,
-      default: false,
-    },
-    noExternalSpacing: {
-      type: Boolean,
-      default: false,
-    },
-    mobileAlign: {
-      type: String,
-      default: 'center',
-      validator: (mobileAlign) => ['center', 'bottom'].includes(mobileAlign),
+      default: 'de',
     },
     actions: {
       type: Array,
       default: () => [],
+      validator: (actions) => {
+        const indexOfActionMissingName = actions.findIndex((action) => typeof action.name !== 'string');
+
+        if (indexOfActionMissingName >= 0) {
+          console.warn(`The attribute "name" is required on actions[${indexOfActionMissingName}]`);
+          return false;
+        }
+
+        return true;
+      },
     },
   },
   data() {
     return {
       closeIcon,
     };
+  },
+  computed: {
+    withIcon() {
+      return this.iconSrc.length > 0;
+    },
+    isCustomFooter() {
+      return Boolean(this.actions.length === 0);
+    },
   },
   methods: {
     onCloseClick() {
@@ -145,152 +128,153 @@ export default {
 <style lang="scss" scoped>
 @import 'homeday-blocks/src/styles/mixins.scss';
 
-.modal {
-  $_root: &;
+.hd-modal {
   position: fixed;
+  display: flex;
   top: 0;
-  right: 0;
-  bottom: 0;
   left: 0;
+  width: 100%;
+  height: 100vh;
+  align-items: flex-end;
+  justify-content: center;
+  padding: #{$sp-m + $sp-s} $sp-m;
+
+  @media (min-width: $break-tablet) {
+    align-items: center;
+  }
+}
+
+.hd-modal__overlay {
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: getShade($primary-color, 110);
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.hd-modal__container {
+  @include elevation(9);
+
+  position: relative;
+  z-index: 9999;
+  width: 100%;
+  max-width: 568px;
+  padding: #{$sp-l + $sp-s} $sp-m $sp-m;
+  background-color: $white;
+  border-radius: 4px;
+}
+
+.hd-modal__header {
+  display: flex;
+  margin-bottom: $sp-xs;
+}
+
+.hd-modal__modal-icon {
+  width: #{$sp-l + $sp-m + $sp-s};
+  height: #{$sp-l + $sp-m + $sp-s};
+  margin-bottom: $sp-s;
+
+  @media (min-width: $break-tablet) {
+    width: #{$sp-l};
+    height: #{$sp-l};
+    margin-bottom: 0;
+    margin-right: $sp-s;
+  }
+}
+
+.hd-modal__title {
+  @include font('DS-200');
+  font-weight: bold;
+}
+
+.hd-modal__body {
+  @include font('DS-100');
+  margin-bottom: $sp-s;
+
+  @media (min-width: $break-tablet) {
+    margin-bottom: $sp-m;
+  }
+}
+
+.hd-modal__footer {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  padding: $sp-s;
-  z-index: 100;
-  animation: fadeIn .3s forwards;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
+}
 
-  &--no-external-spacing {
-    padding-right: 0;
-    padding-left: 0;
-  }
+.hd-modal__close-button {
+  position: absolute;
+  right: $sp-m;
+  top: $sp-m;
+  width: #{$sp-m + $sp-s};
+  height: #{$sp-m + $sp-s};
+  padding: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border: 0;
+  cursor: pointer;
+}
 
-  &--external-close-icon {
-    padding-top: $sp-s + 24px;
-  }
+.hd-modal--with-icon {
+  .hd-modal__header {
+    flex-direction: column;
+    align-items: center;
 
-  &__overlay {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.4);
-    z-index: 0;
-    pointer-events: none;
-
-    &--light {
-      background-color: rgba(255, 255, 255, 0.85);
-    }
-  }
-  &__close {
-    position: absolute;
-    top: $sp-s;
-    right: $sp-s;
-    width: 24px;
-    height: 24px;
-    background-color: transparent;
-    padding: 0;
-    border: 0;
-    cursor: pointer;
-    z-index: 2;
-
-    @media (min-width: $break-tablet){
-      top: $sp-m;
-      right: $sp-m;
-    }
-
-    #{$_root}--external-close-icon & {
-      top: -24px;
-      right: 0;
-      background-color: $primary-color;
-      &::v-deep path {
-        fill: white;
-      }
-    }
-
-    &--light {
-      &::v-deep path {
-        fill: white;
-      }
-    }
-  }
-  &__inner {
-    position: relative;
-    max-width: 100%;
-    margin: auto;
-    z-index: 1;
-    animation: fadeIn .5s forwards, bottomToNormal .5s forwards;
-    background-color: white;
-    border-radius: 3px;
-    box-shadow: 0 5px 40px 0 rgba(0, 0, 0, 0.4);
-
-    #{$_root}--mobile-align-bottom & {
-      margin-bottom: 0;
-
-      @media (min-width: $break-tablet) {
-        margin-bottom: auto;
-      }
+    @media (min-width: $break-tablet) {
+      flex-direction: row;
     }
   }
 
-  &__body {
-    background-color: white;
-    padding: $sp-l;
-
-    #{$_root}--spacing-normal & {
-      padding: $sp-m;
-    }
-
-    #{$_root}--no-spacing & {
-      padding: 0;
-    }
-  }
-
-  &__actions {
+  .hd-modal__body {
     display: flex;
-    padding: $sp-m ($sp-m - ($sp-xs * 2));
+    align-items: center;
+    flex-direction: column;
 
-    &__action {
-      width: auto;
-      margin-left: $sp-xs;
-      margin-right: $sp-xs;
-      flex-grow: 1;
-      flex-shrink: 0;
-
-      &.btn {
-        box-shadow:
-          0 1px 3px rgba(0, 0, 0, 0.24),
-          0 0 2px rgba(0, 0, 0, 0.12);
-      }
-
-      &.btn--ghost {
-        box-shadow:
-          0 1px 3px rgba(0, 0, 0, 0.24),
-          0 0 2px rgba(0, 0, 0, 0.12);
-
-        @media (min-width: $break-tablet) {
-          background-color: transparent;
-          color: getShade($secondary-color, 110);
-        }
-      }
+    @media (min-width: $break-tablet) {
+      align-items: flex-start;
     }
   }
+}
 
-  &__header {
-    text-align: center;
-    border-bottom: 1px solid getShade($quaternary-color, 60);
+.hd-modal__footer:not(.hd-modal__footer--wide) {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 
-    &::v-deep > *:first-child {
-      padding: $sp-m;
-    }
+  @media (min-width: $break-tablet) {
+    flex-direction: row;
+    justify-content: flex-end;
   }
 
-  &-leave-active {
-    animation: fadeOut .3s forwards;
-    #{$_root}__inner {
-      animation: fadeOut .15s forwards, normalToBottom .15s forwards;
+  .hd-modal__action {
+    display: flex;
+    flex-direction: column;
+    margin-top: $sp-s;
+
+    @media (min-width: $break-tablet) {
+      display: flex;
+      margin-top: 0;
+      margin-left: $sp-s;
+      flex-direction: column;
     }
+  }
+}
+
+.hd-modal__footer--wide {
+  display: flex;
+  flex-direction: row;
+
+  .hd-modal__action {
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+  }
+
+  .hd-modal__action:not(:first-child) {
+    margin-left: $sp-s;
   }
 }
 </style>

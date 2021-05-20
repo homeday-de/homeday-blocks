@@ -1,31 +1,23 @@
 import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import HdModal from '@/components/HdModal.vue';
 
-const HEADER_SELECTOR = '.modal__header';
-const CONTENT_SELECTOR = '.modal__body';
-const ACTIONS_SELECTOR = '.modal__actions';
-const MODAL_WITHOUT_CLOSE_ICON_SELECTOR = 'modal--no-close-icon';
-const MODAL_WITHOUT_SPACING = 'modal--no-spacing';
-const MODAL_WITHOUT_EXTERNAL_SPACING = 'modal--no-external-spacing';
+const TITLE_SELECTOR = '.hd-modal__title';
+const BODY_SELECTOR = '.hd-modal__body';
+const ACTIONS_SELECTOR = '.hd-modal__footer';
+const CLOSE_BUTTON_SELECTOR = '.hd-modal__close-button';
+const HEADER_SELECTOR = '.hd-modal__header';
+const ICON_SELECTOR = 'hd-icon-stub';
+const WITH_ICON_SELECTOR = '.hd-modal--with-icon';
+const WIDE_ACTIONS_CLASS_NAME = 'hd-modal__footer--wide';
 
-const HEADER = '<div>This is the modal header.</div>';
-const CONTENT = '<div>This is the modal content.</div>';
-const ACTIONS = [
-  {
-    label: 'Cancel',
-    callback: () => console.log('Cancel'),
-  },
-  {
-    label: 'Save',
-    callback: () => console.log('Save'),
-    type: 'primary',
-  },
-];
+const TITLE = '<div>This is the modal title.</div>';
+const BODY = '<div>This is the modal body.</div>';
 
 const wrapperBuilder = wrapperFactoryBuilder(HdModal, {
   slots: {
-    header: HEADER,
-    content: CONTENT,
+    title: TITLE,
+    body: BODY,
+    lang: 'de',
   },
   shallow: true,
 });
@@ -40,55 +32,78 @@ describe('HdModal', () => {
   it('renders the slots correctly', () => {
     const wrapper = wrapperBuilder();
 
-    expect(wrapper.find(HEADER_SELECTOR).element.innerHTML).toBe(HEADER);
-    expect(wrapper.find(CONTENT_SELECTOR).element.innerHTML).toBe(CONTENT);
+    expect(wrapper.find(TITLE_SELECTOR).element.innerHTML).toBe(TITLE);
+    expect(wrapper.find(BODY_SELECTOR).element.innerHTML).toBe(BODY);
   });
 
-  it('renders the actions correctly', async () => {
+  it('renders the close button by default', () => {
+    const wrapper = wrapperBuilder();
+    expect(wrapper.find(CLOSE_BUTTON_SELECTOR).exists()).toBe(true);
+  });
+
+  it('doesn\'t renders the close button if the `isCloseButtonVisible` is false', async () => {
     const wrapper = wrapperBuilder();
 
-    expect(wrapper.find(ACTIONS_SELECTOR).exists()).toBeFalsy();
+    expect(wrapper.find(CLOSE_BUTTON_SELECTOR).exists()).toBe(true);
 
     wrapper.setProps({
-      actions: ACTIONS,
+      isCloseButtonVisible: false,
     });
 
     await wrapper.vm.$nextTick();
 
-    expect(wrapper.find(ACTIONS_SELECTOR).exists()).toBeTruthy();
-    expect(wrapper.find(ACTIONS_SELECTOR).element.children.length).toBe(ACTIONS.length);
+    expect(wrapper.find(CLOSE_BUTTON_SELECTOR).exists()).toBe(false);
   });
 
-  it('doesn\'t render the close icon if the prop `show-close-icon` is true', () => {
-    const wrapper = wrapperBuilder({
-      props: {
-        showCloseIcon: true,
-      },
-    });
-    const modal = wrapper.get({ ref: 'modal' });
+  it('renders the icon within the header only if the `iconSrc` prop has a value', async () => {
+    const wrapper = wrapperBuilder();
+    const iconSrc = 'https://dummy.url';
 
-    expect(modal.classes(MODAL_WITHOUT_CLOSE_ICON_SELECTOR)).toBeFalsy();
+    expect(wrapper.find(WITH_ICON_SELECTOR).exists()).toBe(false);
+    expect(wrapper.find(HEADER_SELECTOR).find(ICON_SELECTOR).exists()).toBe(false);
+
+    wrapper.setProps({
+      iconSrc,
+    });
+
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find(WITH_ICON_SELECTOR).exists()).toBe(true);
+    expect(wrapper.find(HEADER_SELECTOR).find(ICON_SELECTOR).exists()).toBe(true);
+    expect(wrapper.find(HEADER_SELECTOR).find(ICON_SELECTOR).attributes('src')).toBe(iconSrc);
   });
 
-  it('doesn\'t render spacing if the prop `no-spacing` is true', async () => {
-    const wrapper = wrapperBuilder({
-      props: {
-        noSpacing: true,
-      },
+  it('renders the wide actions if `isWide` prop is true', async () => {
+    const wrapper = wrapperBuilder();
+
+    const actionList = [{
+      name: 'saveData',
+      modifier: 'tertiary',
+      text: 'Save Data',
+      isInDarkBackground: false,
+      disabled: false,
+    }, {
+      name: 'refreshPage',
+      modifier: 'primary',
+      text: 'Refresh Page',
+      isInDarkBackground: false,
+      disabled: false,
+    }];
+
+    wrapper.setProps({
+      actions: actionList,
     });
-    const modal = wrapper.get({ ref: 'modal' });
 
-    expect(modal.classes(MODAL_WITHOUT_SPACING)).toBeTruthy();
-  });
+    await wrapper.vm.$nextTick();
 
-  it('doesn\'t render external spacing if the prop `no-external-spacing` is true', () => {
-    const wrapper = wrapperBuilder({
-      props: {
-        noExternalSpacing: true,
-      },
+    expect(wrapper.find(ACTIONS_SELECTOR).attributes('class').includes(WIDE_ACTIONS_CLASS_NAME)).toBe(false);
+
+    wrapper.setProps({
+      isWide: true,
     });
-    const modal = wrapper.get({ ref: 'modal' });
 
-    expect(modal.classes(MODAL_WITHOUT_EXTERNAL_SPACING)).toBeTruthy();
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find(ACTIONS_SELECTOR).attributes('class').includes(WIDE_ACTIONS_CLASS_NAME)).toBe(true);
   });
 });

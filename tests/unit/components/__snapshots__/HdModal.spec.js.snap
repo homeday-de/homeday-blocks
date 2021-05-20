@@ -2,19 +2,22 @@
 
 exports[`HdModal renders component 1`] = `
 <transition-stub name="modal">
-  <section class="modal modal--mobile-align-center modal--spacing-large">
-    <div class="modal__overlay modal__overlay--dark"></div>
-    <div class="modal__inner">
-      <header class="modal__header">
-        <div>This is the modal header.</div>
+  <article class="hd-modal">
+    <div class="hd-modal__overlay"></div>
+    <div class="hd-modal__container">
+      <header class="hd-modal__header">
+        <!---->
+        <h3 class="hd-modal__title">
+          <div>This is the modal title.</div>
+        </h3>
       </header>
-      <div class="modal__body">
-        <div>This is the modal content.</div>
+      <div class="hd-modal__body">
+        <div>This is the modal body.</div>
       </div>
-      <!----> <button class="modal__close modal__close--dark">
-        <hdicon-stub src="" width="100%"></hdicon-stub>
+      <footer class=""></footer> <button class="hd-modal__close-button">
+        <hd-icon-stub src="" class="hd-modal__close-icon"></hd-icon-stub>
       </button>
     </div>
-  </section>
+  </article>
 </transition-stub>
 `;
