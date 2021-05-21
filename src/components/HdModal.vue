@@ -131,6 +131,7 @@ $mobile-browser-footer-buffer: 75px;
 
 .hd-modal {
   position: fixed;
+  z-index: 100;
   display: flex;
   top: 0;
   left: 0;
