@@ -127,9 +127,11 @@ export default {
 
 <style lang="scss" scoped>
 @import 'homeday-blocks/src/styles/mixins.scss';
+$mobile-browser-footer-buffer: 75px;
 
 .hd-modal {
   position: fixed;
+  z-index: 100;
   display: flex;
   top: 0;
   left: 0;
@@ -137,7 +139,7 @@ export default {
   height: 100vh;
   align-items: flex-end;
   justify-content: center;
-  padding: #{$sp-m + $sp-s} $sp-m;
+  padding: #{$sp-m + $sp-s} $sp-m #{$sp-m + $mobile-browser-footer-buffer} $sp-m;
 
   @media (min-width: $break-tablet) {
     align-items: center;
@@ -166,6 +168,7 @@ export default {
   padding: #{$sp-l + $sp-s} $sp-m $sp-m;
   background-color: $white;
   border-radius: 4px;
+  overflow: hidden;
 }
 
 .hd-modal__header {
