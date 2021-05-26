@@ -168,7 +168,8 @@ $mobile-browser-footer-buffer: 75px;
   padding: #{$sp-l + $sp-s} $sp-m $sp-m;
   background-color: $white;
   border-radius: 4px;
-  overflow: hidden;
+  max-height: 90%;
+  overflow: scroll;
 }
 
 .hd-modal__header {
