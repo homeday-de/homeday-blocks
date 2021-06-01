@@ -29,20 +29,20 @@
           }"
         >
           <slot name="footer">
-            <div
-              class="hd-modal__action"
+            <slot
               v-for="(button, name) in actions"
-              :key="`action-${name}`"
+              :name="name"
+              :value="button"
             >
-              <slot :name="name" :value="button">
-                <hd-button
-                  v-bind="button"
-                  @click="$emit('action', button)"
-                >
-                  {{ button.text }}
-                </hd-button>
-              </slot>
-            </div>
+              <hd-button
+                :key="`action-${name}`"
+                v-bind="button"
+                class="hd-modal__action"
+                @click="$emit('action', button)"
+              >
+                {{ button.text }}
+              </hd-button>
+            </slot>
           </slot>
         </footer>
 
@@ -207,7 +207,46 @@ $mobile-browser-footer-buffer: 75px;
 .hd-modal__footer {
   width: 100%;
   display: flex;
+
+  .hd-modal__action {
+    flex: 1;
+
+    &:not(:last-child) {
+      margin-right: $sp-s;
+    }
+  }
+
+  @media (min-width: $break-tablet) {
+    justify-content: flex-end;
+
+    .hd-modal__action {
+      flex: 0 1 auto;
+    }
+  }
+}
+
+.hd-modal__footer--wide {
   flex-direction: column;
+
+  .hd-modal__action {
+    &:not(:last-child) {
+      margin-right: 0;
+      margin-bottom: $sp-s;
+    }
+  }
+
+  @media (min-width: $break-tablet) {
+    flex-direction: row;
+
+    .hd-modal__action {
+      flex: 1;
+
+      &:not(:last-child) {
+        margin-right: $sp-s;
+        margin-bottom: 0;
+      }
+    }
+  }
 }
 
 .hd-modal__close-button {
@@ -240,45 +279,6 @@ $mobile-browser-footer-buffer: 75px;
     @media (min-width: $break-tablet) {
       align-items: flex-start;
     }
-  }
-}
-
-.hd-modal__footer:not(.hd-modal__footer--wide) {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-
-  @media (min-width: $break-tablet) {
-    flex-direction: row;
-    justify-content: flex-end;
-  }
-
-  .hd-modal__action {
-    display: flex;
-    flex-direction: column;
-    margin-top: $sp-s;
-
-    @media (min-width: $break-tablet) {
-      display: flex;
-      margin-top: 0;
-      margin-left: $sp-s;
-      flex-direction: column;
-    }
-  }
-}
-
-.hd-modal__footer--wide {
-  display: flex;
-  flex-direction: row;
-
-  .hd-modal__action {
-    display: flex;
-    flex: auto;
-    flex-direction: column;
-  }
-
-  .hd-modal__action:not(:first-child) {
-    margin-left: $sp-s;
   }
 }
 </style>
