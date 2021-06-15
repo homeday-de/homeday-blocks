@@ -224,14 +224,20 @@ export default {
       }
     },
     maybeSelectItem(e) {
-      if (['ArrowDown', 'ArrowRight'].includes(e.key)) {
+      const keyNames = {
+        left: ['ArrowLeft', 'Left'],
+        right: ['ArrowRight', 'Right'],
+        up: ['ArrowUp', 'Up'],
+        down: ['ArrowDown', 'Down'],
+      };
+      if ([...keyNames.down, ...keyNames.right].includes(e.key)) {
         const currentIndex = this.value;
         if (currentIndex === this.count - 1) {
           this.$emit('input', 0);
           return;
         }
         this.$emit('input', currentIndex + 1);
-      } else if (['ArrowUp', 'ArrowLeft'].includes(e.key)) {
+      } else if ([...keyNames.up, ...keyNames.left].includes(e.key)) {
         const currentIndex = this.value;
         if (currentIndex === 0) {
           this.$emit('input', this.count - 1);
