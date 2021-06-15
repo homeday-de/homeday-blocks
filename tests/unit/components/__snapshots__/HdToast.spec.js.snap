@@ -4,7 +4,8 @@ exports[`HdToast 'primaryLabel' text binds to primary <button> 1`] = `
 <div class="toast">
   <p class="toast__text"></p>
   <section class="toast__controls">
-    <!----> <button class="toast__control toast__control--primary">random-text</button></section>
+    <!----> <button class="toast__control toast__control--primary">random-text</button>
+  </section>
 </div>
 `;
 
@@ -27,7 +28,7 @@ exports[`HdToast renders component 1`] = `
 exports[`HdToast renders default slot 1`] = `
 <div class="toast">
   <p class="toast__text">
-    <div id="slot"></div>
+  <div id="slot"></div>
   </p>
   <!---->
 </div>
