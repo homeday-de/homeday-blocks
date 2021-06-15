@@ -119,7 +119,7 @@ describe('HdSplitInput', () => {
     expect($helper.text().length).toBeGreaterThan(1);
     expect(wrapper.classes()).toContain(FIELD_ERROR_CLASS);
 
-    wrapper.setProps({
+    await wrapper.setProps({
       required: false,
     });
 
