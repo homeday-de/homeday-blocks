@@ -62,9 +62,7 @@ export default {
   watch: {
     item(oldValue, newValue) {
       if (oldValue.image !== newValue.image) {
-        this.$nextTick(() => {
-          this.showThumbnail = true;
-        });
+        this.showThumbnail = true;
       }
     },
   },
