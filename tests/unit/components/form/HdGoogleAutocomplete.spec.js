@@ -83,7 +83,7 @@ describe('HdGoogleAutocomplete', () => {
     const startsWithSpaceErrorMessage = 'should start with empty space';
     const startsWithSpace = { validate: (value) => value[0] === ' ', errorMessage: startsWithSpaceErrorMessage };
 
-    it('Simple case', () => {
+    it('Simple case', async () => {
       // invalid
       const wrapper = wrapperBuilder({
         props: {
@@ -98,7 +98,7 @@ describe('HdGoogleAutocomplete', () => {
       expect(wrapper.vm.error).toBe(atLeastTenCharsErrorMessage);
 
       // valid
-      wrapper.setProps({
+      await wrapper.setProps({
         customRules: [atLeastTenChars],
         value: 'this one is long enough',
       });
@@ -109,7 +109,7 @@ describe('HdGoogleAutocomplete', () => {
       expect(wrapper.vm.error).toBeFalsy();
     });
 
-    it('Multiple custom validators: first one has highest importance', () => {
+    it('Multiple custom validators: first one has highest importance', async () => {
       // both invalid
       const wrapper = wrapperBuilder({
         props: {
@@ -124,7 +124,7 @@ describe('HdGoogleAutocomplete', () => {
       expect(wrapper.vm.error).toBe(startsWithSpaceErrorMessage);
 
       // first one valid, second one invalid
-      wrapper.setProps({
+      await wrapper.setProps({
         customRules: [startsWithSpace, atLeastTenChars],
         value: ' short',
       });
