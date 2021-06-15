@@ -122,6 +122,36 @@ describe('Date service', () => {
     expect(daysInIntervalShort[0]).toBe('Sun');
   });
 
+  it('`getIntlDateString` get dates in the language of the given locale', () => {
+    const datesList = [
+      '1988-02-28T00:00:00.000Z',
+      '1988-02-29T00:00:00.000Z',
+      '1988-03-01T00:00:00.000Z',
+      '1988-03-02T00:00:00.000Z',
+      '1988-03-03T00:00:00.000Z',
+      '1988-03-04T00:00:00.000Z',
+      '1988-03-05T00:00:00.000Z',
+    ];
+
+    const daysInIntervalLongEnglish = getIntlDateString('en-US', datesList, { weekday: 'long' });
+    expect(daysInIntervalLongEnglish[0]).toBe('Sunday');
+
+    const daysInIntervalShortEnglish = getIntlDateString('en-US', datesList, { weekday: 'short' });
+    expect(daysInIntervalShortEnglish[0]).toBe('Sun');
+
+    const daysInIntervalLongGerman = getIntlDateString('de', datesList, { weekday: 'long' });
+    expect(daysInIntervalLongGerman[0]).toBe('Sonntag');
+
+    const daysInIntervalShortGerman = getIntlDateString('de', datesList, { weekday: 'short' });
+    expect(daysInIntervalShortGerman[0]).toBe('So');
+
+    const daysInIntervalLongSpanish = getIntlDateString('es', datesList, { weekday: 'long' });
+    expect(daysInIntervalLongSpanish[0]).toBe('domingo');
+
+    const daysInIntervalShortSpanish = getIntlDateString('es', datesList, { weekday: 'short' });
+    expect(daysInIntervalShortSpanish[0]).toBe('dom');
+  });
+
   it('generateDateCycles returns the list if N weeks, from now', () => {
     const cycleLengthWeeks = 2;
     const amountOfCycles = 2;

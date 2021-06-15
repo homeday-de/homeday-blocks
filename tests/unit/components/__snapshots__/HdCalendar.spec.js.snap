@@ -5,19 +5,19 @@ exports[`HdCalendar renders component 1`] = `
   <header class="calendar__header"><button class="calendar__button calendar__header__button calendar__button--prev calendar__button--disabled">
       <hdicon-stub src="" transform="rotate(180)" width="100%" height="100%"></hdicon-stub>
     </button> <span class="calendar__header__month">
-        May
+        Mai
       </span> <button class="calendar__button calendar__header__button calendar__button--next">
       <hdicon-stub src="" width="100%" height="100%"></hdicon-stub>
     </button></header>
   <section class="calendar__body">
     <header class="calendar__days calendar__row">
-      <div class="calendar__row__item calendar__day">Thu</div>
-      <div class="calendar__row__item calendar__day">Fri</div>
-      <div class="calendar__row__item calendar__day">Sat</div>
-      <div class="calendar__row__item calendar__day">Sun</div>
-      <div class="calendar__row__item calendar__day">Mon</div>
-      <div class="calendar__row__item calendar__day">Tue</div>
-      <div class="calendar__row__item calendar__day">Wed</div>
+      <div class="calendar__row__item calendar__day">Do</div>
+      <div class="calendar__row__item calendar__day">Fr</div>
+      <div class="calendar__row__item calendar__day">Sa</div>
+      <div class="calendar__row__item calendar__day">So</div>
+      <div class="calendar__row__item calendar__day">Mo</div>
+      <div class="calendar__row__item calendar__day">Di</div>
+      <div class="calendar__row__item calendar__day">Mi</div>
     </header>
     <div class="calendar__body__inner">
       <transition-stub name="calendar-right">
