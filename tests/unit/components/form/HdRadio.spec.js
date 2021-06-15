@@ -62,7 +62,8 @@ describe('HdRadio', () => {
       itemWrapper.trigger('keydown', {
         key,
       });
-      expect(getLastInputEventPayload())
+      const payload = getLastInputEventPayload();
+      expect(payload)
         .toEqual(ITEMS[INITIAL_ITEM_INDEX + 1].value);
     });
 
@@ -71,28 +72,31 @@ describe('HdRadio', () => {
       itemWrapper.trigger('keydown', {
         key,
       });
-      expect(getLastInputEventPayload())
+      const payload = getLastInputEventPayload();
+      expect(payload)
         .toEqual(ITEMS[INITIAL_ITEM_INDEX - 1].value);
     });
 
     // We test the handling of the items' array bounds
-    wrapper.setProps({ value: ITEMS[ITEMS.length - 1].value });
+    await wrapper.setProps({ value: ITEMS[ITEMS.length - 1].value });
     ['Down', 'Right'].forEach((key) => {
       itemWrapper.trigger('keydown', {
         key,
       });
-      expect(getLastInputEventPayload())
+      const payload = getLastInputEventPayload();
+      expect(payload)
         .toEqual(ITEMS[0].value);
     });
 
     await wrapper.vm.$nextTick();
 
-    wrapper.setProps({ value: ITEMS[0].value });
+    await wrapper.setProps({ value: ITEMS[0].value });
     ['Up', 'Left'].forEach((key) => {
       itemWrapper.trigger('keydown', {
         key,
       });
-      expect(getLastInputEventPayload())
+      const payload = getLastInputEventPayload();
+      expect(payload)
         .toEqual(ITEMS[ITEMS.length - 1].value);
     });
   });
@@ -107,7 +111,7 @@ describe('HdRadio', () => {
     expect(wrapper.find(VERTICAL_ITEM_SELECTOR).exists()).toBe(true);
   });
 
-  it('validates requiredness', () => {
+  it('validates requiredness', async () => {
     const wrapper = wrapperBuilder({
       props: {
         value: undefined,
@@ -117,7 +121,7 @@ describe('HdRadio', () => {
     expect(wrapper.findAll(SELECTED_ITEM_SELECTOR).length).toBe(0);
     expect(wrapper.vm.validate()).toBe(true);
 
-    wrapper.setProps({
+    await wrapper.setProps({
       required: true,
     });
 
