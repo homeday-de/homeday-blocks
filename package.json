@@ -27,7 +27,7 @@
   ],
   "dependencies": {
     "body-scroll-lock": "3.1.5",
-    "homeday-assets": "^4.0.18",
+    "homeday-assets": "^4.10.0",
     "lodash": "4.17.21",
     "natural-scroll": "0.2.2",
     "vue": "2.6.12",
