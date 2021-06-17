@@ -2,40 +2,28 @@
   "name": "homeday-blocks",
   "version": "0.0.0-development",
   "description": "A Vue component library built by Homeday's frontend team.",
-  "main": "main.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/homeday-de/homeday-blocks.git"
-  },
-  "keywords": [
-    "vue",
-    "javascript",
-    "component library",
-    "storybook",
-    "homeday-blocks",
-    "services"
-  ],
-  "bugs": {
-    "url": "https://github.com/homeday-de/homeday-blocks/issues"
-  },
-  "homepage": "https://blocks.homeday.dev",
-  "license": "MIT",
   "scripts": {
     "lint": "vue-cli-service lint",
     "lint:ci": "vue-cli-service lint --no-fix",
     "build:lib": "vue-cli-service build --target lib --name homeday-blocks ./src/components/index.js",
     "build:storybook": "build-storybook",
     "serve:storybook": "start-storybook -p 6006",
-    "test:unit": "vue-cli-service test:unit",
-    "test:unit:snapshot": "vue-cli-service test:unit -u",
-    "test:unit:watch": "vue-cli-service test:unit --watchAll",
-    "test:unit:ci": "npm run test:unit -- --ci --coverage",
-    "test:unit:coverage": "npm run test:unit -- --coverage && open coverage/lcov-report/index.html",
-    "test:percy": "if [ $PERCY_TOKEN ]; then percy-storybook; else echo 'Skipping test: PERCY_TOKEN is not defined'; fi",
     "coverage": "cat ./coverage/lcov.info | coveralls -v",
     "new": "hygen new",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "test:percy": "if [ $PERCY_TOKEN ]; then percy-storybook; else echo 'Skipping test: PERCY_TOKEN is not defined'; fi",
+    "test:unit": "vue-cli-service test:unit",
+    "test:unit:ci": "npm run test:unit -- --ci --coverage",
+    "test:unit:coverage": "npm run test:unit -- --coverage && open coverage/lcov-report/index.html",
+    "test:unit:snapshot": "vue-cli-service test:unit -u",
+    "test:unit:watch": "vue-cli-service test:unit --watchAll"
   },
+  "main": "main.js",
+  "files": [
+    "src/*",
+    "*.json",
+    "*.js"
+  ],
   "dependencies": {
     "body-scroll-lock": "3.1.5",
     "homeday-assets": "^4.0.18",
@@ -59,10 +47,10 @@
     "@storybook/addon-viewport": "6.1.16",
     "@storybook/theming": "6.1.20",
     "@storybook/vue": "6.0.26",
-    "@vue/cli-plugin-babel": "4.1.2",
-    "@vue/cli-plugin-eslint": "4.5.6",
-    "@vue/cli-plugin-unit-jest": "4.5.12",
-    "@vue/cli-service": "4.5.6",
+    "@vue/cli-plugin-babel": "~4.5.13",
+    "@vue/cli-plugin-eslint": "~4.5.13",
+    "@vue/cli-plugin-unit-jest": "~4.5.13",
+    "@vue/cli-service": "~4.5.13",
     "@vue/eslint-config-airbnb": "^5.3.0",
     "@vue/test-utils": "^1.0.5",
     "babel-jest": "^24.9.0",
@@ -89,11 +77,10 @@
     "vue-code-highlight": "^0.7.2",
     "vue-template-compiler": "2.6.12"
   },
-  "files": [
-    "src/*",
-    "*.json",
-    "*.js"
-  ],
+  "bugs": {
+    "url": "https://github.com/homeday-de/homeday-blocks/issues"
+  },
+  "homepage": "https://blocks.homeday.dev",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
@@ -101,6 +88,15 @@
       "pre-push": "npm run test:unit"
     }
   },
+  "keywords": [
+    "vue",
+    "javascript",
+    "component library",
+    "storybook",
+    "homeday-blocks",
+    "services"
+  ],
+  "license": "MIT",
   "lint-staged": {
     "*.js": [
       "vue-cli-service lint",
@@ -110,5 +106,9 @@
       "vue-cli-service lint",
       "git add"
     ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/homeday-de/homeday-blocks.git"
   }
 }
