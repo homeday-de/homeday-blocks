@@ -2,6 +2,7 @@
   <inline-svg
     :src="src"
     :id="id"
+    :title="title"
     :transform-source="transform"
     v-bind="$attrs"
   />
@@ -42,6 +43,11 @@ export default {
       default: null,
     },
   },
+  data() {
+    return {
+      hasAddedAccessibilityTags: false,
+    };
+  },
   methods: {
     transform(svg) {
       this.addAccessibilityTags(svg);
@@ -66,17 +72,11 @@ export default {
       return svg;
     },
     addAccessibilityTags(svg) {
-      const randId = Math.floor(Math.random() * 1000);
-      if (this.title) this.addTitleTag(svg, randId);
-      if (this.description) this.addDescTag(svg, randId);
-    },
-    addTitleTag(svg, randId) {
-      const titleId = `${this.id || randId}-title`;
-      const titleTag = document.createElementNS('http://www.w3.org/2000/svg', 'title');
-      titleTag.textContent = this.title;
-      titleTag.id = titleId;
-      svg.insertBefore(titleTag, svg.firstChild);
-      svg.setAttribute('aria-labelledby', titleId);
+      if (!this.hasAddedAccessibilityTags) {
+        const randId = Math.floor(Math.random() * 1000);
+        if (this.description) this.addDescTag(svg, randId);
+        this.hasAddedAccessibilityTags = true;
+      }
     },
     addDescTag(svg, randId) {
       const descId = `${this.id || randId}-desc`;

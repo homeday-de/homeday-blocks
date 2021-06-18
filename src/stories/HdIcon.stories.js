@@ -32,7 +32,7 @@ const Template = (template) => (args, { argTypes }) => ({
 
 export const Default = Template(`
   <div>
-    <p>The <b>&lt;svg&gt;</svg></b> element is the root of the component,
+    <p>The <b>${'svg'}</b> element is the root of the component,
       so you can use its native attributes, like <b>width</b> and <b>height</b> in this example:</p>
     <HdIcon
       :src="src"
