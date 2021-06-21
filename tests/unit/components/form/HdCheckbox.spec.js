@@ -73,8 +73,6 @@ describe('HdCheckbox', () => {
     });
     await checkboxInner.trigger('blur');
 
-    // await wrapper.vm.$nextTick();
-
     expect(wrapper.vm.error).toBe(null);
     expect(wrapper.classes()).not.toContain(errorClass);
   });
