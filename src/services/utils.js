@@ -70,12 +70,24 @@ export function getArrayOfSize(size = 0) {
   return Array.from(Array(size), (_, x) => x);
 }
 
-export function loadScript({ url = '', first = false, head = false }) {
+/**
+ * create and load a script tag in html
+ * @param url (string) src attribute
+ * @param first (boolean) prepend/append status
+ * @param head (boolean) adding to head/body status
+ * @param props (object) set of script tag attributes
+ * @returns {Promise<void>}
+ */
+export function loadScript({ url = '', first = false, head = false, props = {} }) {
   return new Promise((resolve) => {
     const script = document.createElement('script');
     script.onload = resolve;
     script.type = 'text/javascript';
     script.src = url;
+
+    for (const prop in props) {
+      script[prop] = props[prop];
+    }
 
     const parent = document[head ? 'head' : 'body'];
     if (first) {
