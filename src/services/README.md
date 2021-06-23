@@ -230,7 +230,7 @@ Create and add a script tag in html.
 
 `param {Boolean} head: adding to head/body status`
 
-`param {object} props: set of script tag attributes`
+`param {object} attributes: set of script tag attributes`
 
 ```javascript
 loadScript({ url: '/example', first: true, head: true, props: { id: '1', 'data-whatever': '123' } })

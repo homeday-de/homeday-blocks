@@ -75,19 +75,19 @@ export function getArrayOfSize(size = 0) {
  * @param url (string) src attribute
  * @param first (boolean) prepend/append status
  * @param head (boolean) adding to head/body status
- * @param props (object) set of script tag attributes
+ * @param attributes (object) set of script tag attributes
  * @returns {Promise<void>}
  */
-export function loadScript({ url = '', first = false, head = false, props = {} }) {
+export function loadScript({ url = '', first = false, head = false, attributes = {} }) {
   return new Promise((resolve) => {
     const script = document.createElement('script');
     script.onload = resolve;
     script.type = 'text/javascript';
     script.src = url;
 
-    for (const prop in props) {
-      script[prop] = props[prop];
-    }
+    Object.entries(attributes).forEach(([key, value]) => {
+      script.setAttribute(key, value);
+    });
 
     const parent = document[head ? 'head' : 'body'];
     if (first) {
