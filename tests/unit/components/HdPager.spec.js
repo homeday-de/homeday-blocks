@@ -61,25 +61,25 @@ describe('HdPager', () => {
     const pagerItems = wrapper.find(PAGER_ITEMS_SELECTOR);
     let payload;
     // Left arrow
-    pagerItems.trigger('keydown.left', { key: 'ArrowLeft' });
+    pagerItems.trigger('keydown.left');
     expect(wrapper.emitted('input')).toBeTruthy();
     // eslint-disable-next-line prefer-destructuring
     payload = wrapper.emitted('input')[0][0];
     expect(payload).toBe(2);
     // Up arrow
-    pagerItems.trigger('keydown.up', { key: 'ArrowUp' });
+    pagerItems.trigger('keydown.up');
     expect(wrapper.emitted('input')).toBeTruthy();
     // eslint-disable-next-line prefer-destructuring
     payload = wrapper.emitted('input')[1][0];
     expect(payload).toBe(2);
     // Right arrow
-    pagerItems.trigger('keydown.right', { key: 'ArrowRight' });
+    pagerItems.trigger('keydown.right');
     expect(wrapper.emitted('input')).toBeTruthy();
     // eslint-disable-next-line prefer-destructuring
     payload = wrapper.emitted('input')[2][0];
     expect(payload).toBe(4);
     // Down arrow
-    pagerItems.trigger('keydown.down', { key: 'ArrowDown' });
+    pagerItems.trigger('keydown.down');
     expect(wrapper.emitted('input')).toBeTruthy();
     // eslint-disable-next-line prefer-destructuring
     payload = wrapper.emitted('input')[3][0];

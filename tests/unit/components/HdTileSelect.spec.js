@@ -98,7 +98,7 @@ describe('HdTileSelect', () => {
     expect(wrapper.find(HELPER_SELECTOR).text().length).toBeGreaterThan(1);
     expect(wrapper.classes()).toContain(FIELD_ERROR_CLASS);
 
-    wrapper.setProps({
+    await wrapper.setProps({
       required: false,
     });
 

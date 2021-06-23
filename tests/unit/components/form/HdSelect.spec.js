@@ -80,7 +80,7 @@ describe('HdSelect', () => {
     expect(wrapper.find(HELPER_SELECTOR).text()).toBeTruthy();
     expect(wrapper.classes()).toContain(FIELD_ERROR_CLASS);
 
-    wrapper.setProps({
+    await wrapper.setProps({
       required: false,
     });
 
@@ -103,7 +103,7 @@ describe('HdSelect', () => {
 
     expect(wrapper.find(ICON_SELECTOR).exists()).toBe(false);
 
-    wrapper.setProps({
+    await wrapper.setProps({
       icon: ICON_PATH,
     });
 

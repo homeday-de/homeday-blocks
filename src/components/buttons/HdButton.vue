@@ -1,3 +1,7 @@
+// Apparently there is a bug on Storybook actions with `$listeners`
+// This will throw the error `method "toJSON" is not defined` on JS console 🙇‍♂️
+// https://github.com/storybookjs/storybook/issues/14933
+// This error appeared when bumping node from v12 to v14
 <template>
   <button
     v-on="$listeners"
