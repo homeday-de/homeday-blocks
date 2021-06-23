@@ -15,7 +15,7 @@ jobs:
         with:
           text: ${{ github.event.release.body }}
       - name: Announce on Slack 📢 
-        uses: homeday-de/slack-release-bot-action@0.0.1
+        uses: homeday-de/slack-release-bot-action@v0.0.1
         with:
           webhook_url: ${{ secrets.SLACK_RELEASE_BOT_WEBHOOK_URL }}
           title: ${{ github.event.release.name }}
