@@ -50,7 +50,7 @@ describe('HdPasswordConfirm', () => {
 
     expect(wrapper.find(STRENGTH_METER_SELECTOR).classes()).not.toContain(STRENGTH_BAR_VISIBLE_CLASS);
 
-    wrapper.setProps({ strengthBarStyle: true });
+    await wrapper.setProps({ strengthBarStyle: true });
 
     await wrapper.vm.validate();
 

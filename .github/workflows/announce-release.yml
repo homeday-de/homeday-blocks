@@ -14,34 +14,10 @@ jobs:
         uses: LoveToKnow/slackify-markdown-action@v1.0.0
         with:
           text: ${{ github.event.release.body }}
-      - name: Announce on Slack 📢
-        run: |
-          curl \
-            -X POST \
-            -H 'Content-type: application/json' \
-            --data \
-            '{
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "'"$NOTES"'"
-                  }
-                },
-                {
-                  "type": "context",
-                  "elements": [
-                    {
-                      "type": "plain_text",
-                      "text": "Homeday Blocks"
-                    }
-                  ]
-                }
-              ]
-            }' \
-            $SLACK_RELEASE_BOT_WEBHOOK_URL
-        env:
-          TITLE: ${{ github.event.release.name }}
-          NOTES: ${{ steps.release_body.outputs.text }}
-          SLACK_RELEASE_BOT_WEBHOOK_URL: ${{ secrets.SLACK_RELEASE_BOT_WEBHOOK_URL }}
+      - name: Announce on Slack 📢 
+        uses: homeday-de/slack-release-bot-action@v0.0.1
+        with:
+          webhook_url: ${{ secrets.SLACK_RELEASE_BOT_WEBHOOK_URL }}
+          title: ${{ github.event.release.name }}
+          body: ${{ steps.release_body.outputs.text }}
+          context: Homeday Blocks

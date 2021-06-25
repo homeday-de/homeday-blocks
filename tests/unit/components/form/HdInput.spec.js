@@ -79,7 +79,7 @@ describe('HdInput', () => {
     expect(wrapper.find(HELPER_SELECTOR).text()).toBeTruthy();
     expect(wrapper.classes()).toContain(FIELD_ERROR_CLASS);
 
-    wrapper.setProps({ required: false });
+    await wrapper.setProps({ required: false });
 
     expect(wrapper.vm.validate()).toBe(true);
   });
@@ -108,16 +108,13 @@ describe('HdInput', () => {
 
       expect(wrapper.vm.validate()).toBe(true);
 
-      wrapper.setProps({ value: INVALID_EMAIL });
+      await wrapper.setProps({ value: INVALID_EMAIL });
 
       expect(wrapper.vm.validate()).toBe(false);
-
-      await wrapper.vm.$nextTick();
-
       expect(wrapper.find(HELPER_SELECTOR).text()).toBeTruthy();
       expect(wrapper.classes()).toContain(FIELD_ERROR_CLASS);
 
-      wrapper.setProps({ value: VALID_EMAIL });
+      await wrapper.setProps({ value: VALID_EMAIL });
       expect(wrapper.vm.validate()).toBe(true);
     });
   });
@@ -146,16 +143,13 @@ describe('HdInput', () => {
 
       expect(wrapper.vm.validate()).toBe(true);
 
-      wrapper.setProps({ value: INVALID_DATE });
+      await wrapper.setProps({ value: INVALID_DATE });
 
       expect(wrapper.vm.validate()).toBe(false);
-
-      await wrapper.vm.$nextTick();
-
       expect(wrapper.find(HELPER_SELECTOR).text()).toBeTruthy();
       expect(wrapper.classes()).toContain(FIELD_ERROR_CLASS);
 
-      wrapper.setProps({ value: VALID_DATE });
+      await wrapper.setProps({ value: VALID_DATE });
       expect(wrapper.vm.validate()).toBe(true);
     });
   });
@@ -226,11 +220,9 @@ describe('HdInput', () => {
 
     expect(wrapper.find(ICON_SELECTOR).exists()).toBe(false);
 
-    wrapper.setProps({
+    await wrapper.setProps({
       icon: ICON_PATH,
     });
-
-    await wrapper.vm.$nextTick();
 
     expect(wrapper.find(ICON_SELECTOR).exists()).toBe(true);
   });
@@ -269,11 +261,9 @@ describe('HdInput', () => {
     expect(wrapper.vm.$data.error).toBeNull();
 
     // Change value and look for error message
-    wrapper.setProps({
+    await wrapper.setProps({
       value: TEST_VALUE,
     });
-
-    await wrapper.vm.$nextTick();
 
     expect(wrapper.find(HELPER_SELECTOR).text()).toBe(errorMsg);
   });

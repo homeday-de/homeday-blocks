@@ -14,7 +14,8 @@ exports[`HdRange Labels renders 1`] = `
     </button><button type="button" class="range__step">
       <p class="range__step-label">label4</p>
     </button><button type="button" class="range__step">
-      <!----></button></div>
+      <!---->
+    </button></div>
   <div class="range__thumb" style="transform: translateX(0px);">
     <!---->
     <div class="range__thumb__inner">
@@ -30,11 +31,16 @@ exports[`HdRange renders as expected 1`] = `
     <div class="range__progress" style="transform: scaleX(0.5);"></div>
   </div>
   <div class="range__steps"><button type="button" class="range__step">
-      <!----></button><button type="button" class="range__step">
-      <!----></button><button type="button" class="range__step">
-      <!----></button><button type="button" class="range__step">
-      <!----></button><button type="button" class="range__step">
-      <!----></button></div>
+      <!---->
+    </button><button type="button" class="range__step">
+      <!---->
+    </button><button type="button" class="range__step">
+      <!---->
+    </button><button type="button" class="range__step">
+      <!---->
+    </button><button type="button" class="range__step">
+      <!---->
+    </button></div>
   <div class="range__thumb" style="transform: translateX(0px);">
     <!---->
     <div class="range__thumb__inner">

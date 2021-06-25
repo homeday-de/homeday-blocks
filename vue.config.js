@@ -1,4 +1,4 @@
-const webpackConfig = require('./config/webpack.config.js');
+const webpackConfig = require('./config/webpack.config');
 
 module.exports = {
   assetsDir: 'static',

@@ -4,7 +4,8 @@ exports[`HdToggle renders the component 1`] = `
 <div class="hd-toggle"><button type="button" class="hd-toggle__control">
     HdToggle
 
-    <hdicon-stub src="" class="hd-toggle__control-icon"></hdicon-stub></button>
+    <hdicon-stub src="" class="hd-toggle__control-icon"></hdicon-stub>
+  </button>
   <div class="hd-toggle__body" style="max-height: 0px; transition-duration: 300ms;"><b>This is the HdToggle body.</b></div>
 </div>
 `;

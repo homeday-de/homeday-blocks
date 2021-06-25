@@ -86,21 +86,31 @@ describe('HdIcon', () => {
   });
 
   it('adds title and desc tag to the svg', async () => {
+    const testProps = {
+      src: 'fake/icon4.svg',
+      title: 'This make me accessible.',
+      description: 'Some description.',
+      id: 'icon-id',
+    };
     const wrapper = wrapperBuilder({
       props: {
-        src: 'fake/icon4.svg',
-        title: 'This make me accessible.',
-        description: 'Some description.',
-        id: 'icon-id',
+        ...testProps,
       },
     });
 
     await wrapper.vm.$nextTick();
 
+    const titleTag = wrapper.find('title');
+    const descTag = wrapper.find('desc');
+
+    expect(titleTag.exists()).toBe(true);
+    expect(descTag.exists()).toBe(true);
+    expect(titleTag.text()).toEqual(testProps.title);
+    expect(descTag.text()).toEqual(testProps.description);
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  it("generates the title and desc id if it's not provided", async () => {
+  it("generates desc id if it's not provided", async () => {
     const wrapper = wrapperBuilder({
       props: {
         src: 'fake/icon5.svg',
@@ -111,9 +121,7 @@ describe('HdIcon', () => {
 
     await wrapper.vm.$nextTick();
 
-    const titleTag = wrapper.find('title');
     const descTag = wrapper.find('desc');
-    expect(titleTag.element.id).toMatch(/\d+-title/);
     expect(descTag.element.id).toMatch(/\d+-desc/);
   });
 });

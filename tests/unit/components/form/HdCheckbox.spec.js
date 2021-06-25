@@ -68,12 +68,10 @@ describe('HdCheckbox', () => {
     expect(wrapper.vm.error).toBe(getMessages('de').FORM.VALIDATION.REQUIRED);
     expect(wrapper.classes()).toContain(errorClass);
 
-    wrapper.setProps({
+    await wrapper.setProps({
       value: true,
     });
-    checkboxInner.trigger('blur');
-
-    await wrapper.vm.$nextTick();
+    await checkboxInner.trigger('blur');
 
     expect(wrapper.vm.error).toBe(null);
     expect(wrapper.classes()).not.toContain(errorClass);
