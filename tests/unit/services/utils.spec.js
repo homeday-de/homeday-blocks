@@ -1,5 +1,4 @@
 import { generateUniqueNumbers, loadScript } from '@/services/utils';
-import { JSDOM } from 'jsdom';
 
 describe('Utils service', () => {
   describe('generateRandomNumbers', () => {
@@ -22,11 +21,6 @@ describe('Utils service', () => {
     });
 
     it('appends a script tag in the head of html', () => {
-      // Consider using beforeEach later for same test cases.
-      const dom = new JSDOM();
-      global.window = dom.window;
-      global.document = dom.window.document;
-
       loadScript({
         url: '/example', attributes: { id: 10, 'data-test': 20 }, head: true, first: true,
       });
