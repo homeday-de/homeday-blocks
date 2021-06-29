@@ -201,7 +201,7 @@ const dateCycles = generateDateCycles(cycleLengthWeeks, amountOfCycles, startDat
 
 ## Utils
 
-#### generateUniqueNumbers
+### generateUniqueNumbers
 
 Returns array of N(`count`) indexes on `min` to `max` closed(including `min` and `max`) interval. In case that requested `amount` is larger then different between `min` and `max` (`amount > (max - min + 1)`), function returns an empty array (`[]`).
 
@@ -218,6 +218,24 @@ const amount = 3;
 
 const randomInts = generateUniqueNumbers(amount, min, max);
 // [2, 3, 5]
+```
+
+
+### loadScript
+Create and add a script tag in html.
+
+`param {String} url: src attribute`
+
+`param {Boolean} first: prepend/append status`
+
+`param {Boolean} head: adding to head/body status`
+
+`param {object} attributes: set of script tag attributes`
+
+```javascript
+loadScript({ url: '/example', first: true, head: true, props: { id: '1', 'data-whatever': '123' } })
+// Output:
+// <script src="/example" id="1" data-whatever="123" />
 ```
 
 

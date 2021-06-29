@@ -1,4 +1,4 @@
-import { generateUniqueNumbers } from '@/services/utils';
+import { generateUniqueNumbers, loadScript } from '@/services/utils';
 
 describe('Utils service', () => {
   describe('generateRandomNumbers', () => {
@@ -18,6 +18,18 @@ describe('Utils service', () => {
       const amount = max - min + 2;
       const randomInts = generateUniqueNumbers(amount, min, max);
       expect(randomInts.length).toBe(0);
+    });
+
+    it('appends a script tag in the head of html', () => {
+      loadScript({
+        url: '/example', attributes: { id: 10, 'data-test': 20 }, head: true, first: true,
+      });
+
+      const scriptTag = document.querySelector('[data-test="20"]');
+
+      expect(scriptTag.getAttribute('id')).toEqual('10');
+      expect(scriptTag.parentElement.tagName).toEqual('HEAD');
+      expect(scriptTag.parentElement.firstChild.getAttribute('src')).toEqual('/example');
     });
   });
 });
