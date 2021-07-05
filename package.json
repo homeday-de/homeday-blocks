@@ -44,7 +44,7 @@
     "@storybook/addon-console": "1.2.3",
     "@storybook/addon-essentials": "6.2.9",
     "@storybook/addon-knobs": "6.2.9",
-    "@storybook/addon-links": "6.2.9",
+    "@storybook/addon-links": "6.3.2",
     "@storybook/addon-viewport": "6.2.9",
     "@storybook/theming": "6.2.9",
     "@storybook/vue": "6.2.9",
