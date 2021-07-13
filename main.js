@@ -30,6 +30,8 @@ export { default as HdDetailsTableRow } from './src/components/details-table/HdD
 
 // Form
 export { default as HdCheckbox } from './src/components/form/HdCheckbox.vue';
+export { default as HdCheckboxCard } from './src/components/form/HdCheckboxCard.vue';
+export { default as HdCheckboxCardGroup } from './src/components/form/HdCheckboxCardGroup.vue';
 export { default as HdDynamicForm } from './src/components/form/HdDynamicForm.vue';
 export { default as HdForm } from './src/components/form/HdForm.vue';
 export { default as HdGoogleAutocomplete } from './src/components/form/HdGoogleAutocomplete.vue';
