@@ -2,7 +2,11 @@
   "compilerOptions": {
     "target": "es2017",
     "baseUrl": ".",
+    "moduleResolution": "node",
+    "strictNullChecks": true,
+    "resolveJsonModule": true,
     "paths": {
+      "homeday-blocks/*": ["./*"],
       "src/*": ["./src/*"],
       "services/*": ["./src/services/*"],
       "config/*": ["./src/config/*"],
