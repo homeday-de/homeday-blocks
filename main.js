@@ -40,6 +40,8 @@ export { default as HdInputFormatter } from './src/components/form/HdInputFormat
 export { default as HdInputPassword } from './src/components/form/HdInputPassword.vue';
 export { default as HdPasswordConfirm } from './src/components/form/HdPasswordConfirm.vue';
 export { default as HdRadio } from './src/components/form/HdRadio.vue';
+export { default as HdRadioCard } from './src/components/form/HdRadioCard.vue';
+export { default as HdRadioCardGroup } from './src/components/form/HdRadioCardGroup.vue';
 export { default as HdRange } from './src/components/form/HdRange.vue';
 export { default as HdSelect } from './src/components/form/HdSelect.vue';
 export { default as HdSplitInput } from './src/components/form/HdSplitInput.vue';

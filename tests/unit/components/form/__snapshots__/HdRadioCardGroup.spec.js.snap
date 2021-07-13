@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HdRadioCardGroup renders correctly 1`] = `
+<div class="radio-group">
+  <div><label for="property-apartment" tabindex="0"><input type="radio" id="property-apartment" name="property" aria-label="" aria-labelledby="" value="apartment">
+      <div class="card">
+        <div class="indicator card__indicator"></div>
+        <hdicon-stub src="apartmentCommercialIcon"></hdicon-stub> <span class="card__control-label">
+
+          Apartment
+        </span>
+      </div>
+      <!---->
+    </label></div>
+  <div><label for="property-castle" tabindex="0"><input type="radio" id="property-castle" name="property" aria-label="" aria-labelledby="" value="castle">
+      <div class="card">
+        <div class="indicator card__indicator"></div>
+        <hdicon-stub src="houseCastleIcon"></hdicon-stub> <span class="card__control-label">
+
+          Castle
+        </span>
+      </div>
+      <!---->
+    </label></div>
+  <div><label for="property-space" tabindex="0"><input type="radio" id="property-space" name="property" aria-label="" aria-labelledby="" value="space">
+      <div class="card">
+        <div class="indicator card__indicator"></div>
+        <hdicon-stub src="rocketIcon"></hdicon-stub> <span class="card__control-label">
+
+          Space
+        </span>
+      </div>
+      <!---->
+    </label></div>
+  <!---->
+</div>
+`;
