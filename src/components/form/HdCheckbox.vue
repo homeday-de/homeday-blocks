@@ -42,17 +42,12 @@
         @focus="handleFocus"
         @blur="handleBlur"
       >
-        <div class="checkbox__circle">
-          <div class="checkbox__box">
-            <div class="checkbox__overlay"></div>
-            <div class="checkbox__border"></div>
-            <HdIcon
-              v-if="statusIcon"
-              :src="statusIcon"
-              class="checkbox__icon"
-            />
-          </div>
-        </div>
+        <HdCheckboxIndicator
+          :checked="isChecked"
+          :disabled="disabled"
+          :invalid="Boolean(error)"
+          :indeterminated="boundIndeterminate"
+        />
 
         <p
           v-if="innerLabel"
@@ -67,10 +62,9 @@
 <script>
 import merge from 'lodash/merge';
 import { getMessages } from 'homeday-blocks/src/lang';
-import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
-import { check as checkIcon, minus as minusIcon } from 'homeday-assets';
 import formField from './formFieldMixin';
 import FieldBase from './FieldBase.vue';
+import HdCheckboxIndicator from './HdCheckboxIndicator.vue';
 
 export default {
   name: 'HdCheckbox',
@@ -79,7 +73,7 @@ export default {
   ],
   components: {
     FieldBase,
-    HdIcon,
+    HdCheckboxIndicator,
   },
   props: {
     name: {
@@ -140,11 +134,6 @@ export default {
         this.toggle();
       },
     },
-    statusIcon() {
-      if (this.boundIndeterminate) return minusIcon;
-      if (this.isChecked) return checkIcon;
-      return null;
-    },
   },
   methods: {
     toggle() {
@@ -194,20 +183,6 @@ export default {
   margin-bottom: $sp-m;
 }
 
-.field--errored {
-  .checkbox {
-    &:hover, &:focus, &.checkbox--active {
-      .checkbox__circle {
-        transition: ease-in $time-s;
-        box-shadow: 0 0 0 7px rgba($error-color, 0.15);
-      }
-    }
-    &__border {
-      border-color: $error-color;
-    }
-  }
-}
-
 .checkbox {
   $c: &;
   position: relative;
@@ -215,60 +190,11 @@ export default {
 
   &:hover, &:focus, &.checkbox--active {
     outline: 0;
-
-    .checkbox__circle {
-      transition: ease-in 0.1s;
-      border-radius: 100%;
-      box-shadow: 0 0 0 7px rgba(getShade($dodger-blue, 110), 0.15);
-    }
-  }
-
-  &__overlay {
-    display: block;
-    position: absolute;
-    top:0; left:0;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    transform: scale(0);
-    opacity: 0;
-    transition: transform .3s, opacity .2s;
-    .checkbox--checked & {
-      background-color: getShade($secondary-color, 110);
-      transform: scale(1.3);
-      opacity: 1;
-    }
-    #{$c}--disabled & {
-      background-color: transparent;
-    }
   }
 
   &--disabled {
     pointer-events: none;
     color: getShade($quaternary-color, 70);
-
-    .checkbox__border {
-      border-color: getShade($quaternary-color, 70);
-    }
-    .checkout__icon::v-deep path {
-      fill: getShade($quaternary-color, 70);
-    }
-  }
-
-  &--indeterminate {
-    .checkbox__overlay {
-      background-color: getShade($secondary-color, 110);
-      transform: scale(1.3);
-      opacity: 1;
-    }
-    &.checkbox--disabled {
-      .checkbox__overlay {
-        background-color: transparent;
-      }
-    }
-    .checkout__icon::v-deep path {
-      fill: getShade($quaternary-color, 70);
-    }
   }
 
   &__input {
@@ -280,57 +206,6 @@ export default {
     margin: 0 0 0 $sp-s;
     text-align: left;
     @include font('text-small');
-  }
-
-  &__icon {
-    position: absolute;
-    top:0;
-    left:0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity .2s;
-    #{$c}.checkbox--checked &, #{$c}.checkbox--indeterminate & {
-      opacity: 1;
-    }
-    #{$c}--disabled & {
-      top:1px;
-      left:1px;
-      width: 90%;
-      height: 90%;
-      &::v-deep path {
-        fill: getShade($quaternary-color, 70);
-      }
-    }
-    &::v-deep path {
-      fill: $white;
-    }
-  }
-
-  &__box {
-    position: relative;
-    flex: 0 0 20px;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    border-radius: 3px;
-    overflow: hidden;
-    outline-width: 0;
-  }
-
-  &__border {
-    display: block;
-    position: absolute;
-    top:0; left:0;
-    width: 100%;
-    height: 100%;
-    border-radius: 3px;
-    border: 2px solid $quaternary-color;
-    transition: border-color .3s;
-
-    #{$c}:not(#{$c}--disabled).checkbox--checked &, #{$c}:not(#{$c}--disabled).checkbox--indeterminate & {
-      border-color: transparent;
-    }
   }
 
   &__use-mouse {
