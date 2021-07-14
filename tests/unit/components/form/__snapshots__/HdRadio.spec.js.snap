@@ -7,27 +7,27 @@ exports[`HdRadio is rendered as expected 1`] = `
     <div class="field__main">
       <div role="radiogroup" class="radio-wrapper">
         <div aria-checked="false" tabindex="0" class="radio"><input id="testRadio-jon" name="testRadio-jon" type="radio" value="jon">
-          <div class="radio__circle"></div> <label for="testRadio-jon" class="radio__label">
+          <div class="indicator"></div> <label for="testRadio-jon" class="radio__label">
             Jon "Snow"
           </label>
         </div>
         <div aria-checked="false" tabindex="-1" class="radio"><input id="testRadio-daenerys" name="testRadio-daenerys" type="radio" value="daenerys">
-          <div class="radio__circle"></div> <label for="testRadio-daenerys" class="radio__label">
+          <div class="indicator"></div> <label for="testRadio-daenerys" class="radio__label">
             Daenerys
           </label>
         </div>
         <div aria-checked="false" tabindex="-1" class="radio"><input id="testRadio-nightKing" name="testRadio-nightKing" type="radio" value="nightKing">
-          <div class="radio__circle"></div> <label for="testRadio-nightKing" class="radio__label">
+          <div class="indicator"></div> <label for="testRadio-nightKing" class="radio__label">
             The Night King
           </label>
         </div>
         <div aria-checked="false" tabindex="-1" class="radio"><input id="testRadio-arya" name="testRadio-arya" type="radio" value="arya">
-          <div class="radio__circle"></div> <label for="testRadio-arya" class="radio__label">
+          <div class="indicator"></div> <label for="testRadio-arya" class="radio__label">
             Arya
           </label>
         </div>
         <div aria-checked="false" tabindex="-1" class="radio"><input id="testRadio-cersei" name="testRadio-cersei" type="radio" value="cersei">
-          <div class="radio__circle"></div> <label for="testRadio-cersei" class="radio__label">
+          <div class="indicator"></div> <label for="testRadio-cersei" class="radio__label">
             Cersei
           </label>
         </div>

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HdCheckboxCard renders correctly 1`] = `
+<label for="property-house" tabindex="0"><input type="checkbox" id="property-house" name="property" true-value="true" value="house">
+  <div class="card">
+    <div class="indicator card__indicator">
+      <div class="indicator__box">
+        <!---->
+      </div>
+    </div>
+    <hdicon-stub src="house-icon"></hdicon-stub> <span class="card__control-label">House</span>
+  </div>
+  <!---->
+</label>
+`;

@@ -119,6 +119,54 @@ export const generateUniqueNumbers = (amount, min, max) => {
   return indexes;
 };
 
+/**
+ * Clones a single VNode
+ * @param {import("vue").VNode} vnodes VNode to be cloned
+ * @param {Function} createElement Render function
+ * @returns {import("vue").VNode} Cloned VNodes
+ */
+ export function cloneVNode (vnode, createElement) {
+  const clonedChildren = vnode.children && vnode.children.map(vnode => cloneVNode(vnode, createElement))
+  const cloned = createElement(vnode.tag, vnode.data, clonedChildren)
+  cloned.text = vnode.text
+  cloned.isComment = vnode.isComment
+  cloned.componentOptions = vnode.componentOptions
+  cloned.fnOptions = vnode.fnOptions
+  cloned.fnContext = vnode.fnContext
+  cloned.elm = vnode.elm
+  cloned.context = vnode.context
+  cloned.ns = vnode.ns
+  cloned.isStatic = vnode.isStatic
+  cloned.key = vnode.key
+  cloned.data = vnode.data
+  return cloned
+}
+
+/**
+ * Clones VNode with merged data
+ * @param {import("vue").VNode} vnode VNode
+ * @param {Object} data VNode data
+ * @param {import("vue").CreateElement} h Render function
+ * @returns {import("vue").VNode}
+ */
+export function cloneVNodeElement (vnode, { props, attrs, children, ...rest }, h) {
+  const cloned = cloneVNode(vnode, h)
+  return h(cloned.componentOptions.Ctor, {
+    ...cloned.data,
+    ...(cloned.componentOptions.listeners || {}),
+    props: {
+      ...(cloned.data.props || {}),
+      ...cloned.componentOptions.propsData,
+      ...props
+    },
+    attrs: {
+      ...(cloned.data.attrs || {}),
+      ...attrs
+    },
+    ...rest
+  }, cloned.componentOptions.children || children)
+}
+
 export default {
   populateTemplate,
   getPasswordStrength,
