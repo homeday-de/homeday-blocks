@@ -264,8 +264,8 @@ label:active > .card:not(.card--disabled)  > .card__border {
 }
 
 .card--tile ::v-deep svg {
-  max-width: 44px;
-  max-height: 44px;
+  max-width: rem-calc(44);
+  max-height: rem-calc(44);
 }
 
 .error {
