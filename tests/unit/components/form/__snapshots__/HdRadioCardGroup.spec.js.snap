@@ -6,7 +6,9 @@ exports[`HdRadioCardGroup renders correctly 1`] = `
       <div class="card">
         <div class="card__border"></div>
         <div class="indicator card__indicator"></div>
-        <hdicon-stub src="apartmentCommercialIcon"></hdicon-stub> <span class="card__control-label">
+        <div class="card__icon">
+          <hdicon-stub src="apartmentCommercialIcon"></hdicon-stub>
+        </div> <span class="card__control-label">
 
           Apartment
         </span>
@@ -17,7 +19,9 @@ exports[`HdRadioCardGroup renders correctly 1`] = `
       <div class="card">
         <div class="card__border"></div>
         <div class="indicator card__indicator"></div>
-        <hdicon-stub src="houseCastleIcon"></hdicon-stub> <span class="card__control-label">
+        <div class="card__icon">
+          <hdicon-stub src="houseCastleIcon"></hdicon-stub>
+        </div> <span class="card__control-label">
 
           Castle
         </span>
@@ -28,7 +32,9 @@ exports[`HdRadioCardGroup renders correctly 1`] = `
       <div class="card">
         <div class="card__border"></div>
         <div class="indicator card__indicator"></div>
-        <hdicon-stub src="rocketIcon"></hdicon-stub> <span class="card__control-label">
+        <div class="card__icon">
+          <hdicon-stub src="rocketIcon"></hdicon-stub>
+        </div> <span class="card__control-label">
 
           Space
         </span>

@@ -41,7 +41,7 @@
         :indeterminate="indeterminate && !hasValue"
       />
 
-      <slot name="icon" />
+      <div class="card__icon"><slot name="icon" /></div>
 
       <span class="card__control-label"><slot /></span>
     </div>
@@ -236,18 +236,12 @@ label:focus > .card--disabled {
   @include elevation(0);
 }
 
-.card--disabled ::v-deep path {
-  fill: getShade($quaternary-color, 50);
+.card--disabled > .card__icon ::v-deep svg {
+  opacity: 0.4;
 }
 
-// TODO: improve this nasty hack, since the icons must have two distinct colors and we are using slots there
-.card--disabled ::v-deep path[fill="#1C3553"] {
-  fill: getShade($quaternary-color, 70);
-}
-
-// TODO: improve this nasty hack, since the icons must have two distinct colors and we are using slots there
-.card--tile.card--disabled ::v-deep path[fill="#0F1D2E"] {
-  fill: getShade($quaternary-color, 80);
+.card--disabled > .card__icon ::v-deep path {
+  filter: grayscale(0.95);
 }
 
 .card__border {

@@ -9,7 +9,9 @@ exports[`HdCheckboxCard renders correctly 1`] = `
         <!---->
       </div>
     </div>
-    <hdicon-stub src="house-icon"></hdicon-stub> <span class="card__control-label">House</span>
+    <div class="card__icon">
+      <hdicon-stub src="house-icon"></hdicon-stub>
+    </div> <span class="card__control-label">House</span>
   </div>
   <!---->
 </label>
