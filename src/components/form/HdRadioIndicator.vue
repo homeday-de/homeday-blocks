@@ -1,3 +1,14 @@
+<template>
+  <div
+    class="indicator"
+    :class="{
+      ['indicator--selected']: checked,
+      ['indicator--disabled']: disabled,
+      ['indicator--invalid']: invalid,
+    }"
+  ></div>
+</template>
+
 <script>
 export default {
   name: 'HdRadioIndicator',
@@ -17,17 +28,6 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div
-    class="indicator"
-    :class="{
-      ['indicator--selected']: checked,
-      ['indicator--disabled']: disabled,
-      ['indicator--invalid']: invalid,
-    }"
-  ></div>
-</template>
 
 <style lang="scss" scoped>
 @import "homeday-blocks/src/styles/mixins.scss";
