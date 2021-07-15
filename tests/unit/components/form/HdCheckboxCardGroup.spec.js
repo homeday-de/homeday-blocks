@@ -156,16 +156,7 @@ describe('HdCheckboxCardGroup', () => {
       expect(view.emitted().input).toHaveLength(1);
     });
 
-    it('when user press enter in label', async () => {
-      const { view, labels } = build();
-
-      await labels().at(1).trigger('keydown.enter');
-
-      expect(view.emitted().input).toBeTruthy();
-      expect(view.emitted().input).toHaveLength(1);
-    });
-
-    it('when user press enter in label', async () => {
+    it('when user press space in label', async () => {
       const { view, labels } = build();
 
       await labels().at(1).trigger('keydown.space');

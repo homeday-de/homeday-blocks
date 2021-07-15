@@ -3,7 +3,6 @@
     ref="label"
     :for="inputName"
     @click="$refs.checkbox.focus()"
-    @keydown.prevent.enter="$refs.label.click()"
     @keydown.prevent.space="$refs.label.click()"
     :tabindex="disabled ? -1 : 0"
   >

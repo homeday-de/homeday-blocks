@@ -109,16 +109,7 @@ describe('HdRadioCard', () => {
       expect(view.emitted().input).toHaveLength(1);
     });
 
-    it('user press enter in label', async () => {
-      const { view, label } = build();
-
-      await label().trigger('keydown.enter');
-
-      expect(view.emitted().input).toBeTruthy();
-      expect(view.emitted().input).toHaveLength(1);
-    });
-
-    it('user press enter in label', async () => {
+    it('user press space in label', async () => {
       const { view, label } = build();
 
       await label().trigger('keydown.space');
