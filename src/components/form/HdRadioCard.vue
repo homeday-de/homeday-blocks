@@ -210,9 +210,6 @@ label:focus > .card--disabled {
 
 .card--disabled > .card__icon ::v-deep svg {
   opacity: 0.4;
-}
-
-.card--disabled > .card__icon ::v-deep path {
   filter: grayscale(0.95);
 }
 
