@@ -1,15 +1,15 @@
 <template>
   <div
-    class="indicator"
+    class="checkbox-indicator"
     :class="{
-      ['indicator--selected']: checked,
-      ['indicator--disabled']: disabled,
-      ['indicator--invalid']: invalid,
-      ['indicator--indeterminate']: indeterminate,
+      ['checkbox-indicator--selected']: checked,
+      ['checkbox-indicator--disabled']: disabled,
+      ['checkbox-indicator--invalid']: invalid,
+      ['checkbox-indicator--indeterminate']: indeterminate,
     }"
   >
-    <div class="indicator__box">
-      <HdIcon v-if="statusIcon" :src="statusIcon" class="indicator__icon" />
+    <div class="checkbox-indicator__box">
+      <HdIcon v-if="statusIcon" :src="statusIcon" class="checkbox-indicator__icon" />
     </div>
   </div>
 </template>
@@ -52,10 +52,10 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "homeday-blocks/src/styles/mixins.scss";
 
-.indicator {
+.checkbox-indicator {
   position: relative;
   border-radius: 50%;
   transition: box-shadow ease-in-out $time-s;
@@ -67,7 +67,7 @@ export default {
   }
 }
 
-.indicator--invalid {
+.checkbox-indicator--invalid {
   &:hover,
   &:active,
   &:focus {
@@ -75,8 +75,8 @@ export default {
   }
 }
 
-.indicator--selected,
-.indicator--indeterminate {
+.checkbox-indicator--selected,
+.checkbox-indicator--indeterminate {
   &:hover,
   &:active,
   &:focus {
@@ -84,7 +84,7 @@ export default {
   }
 }
 
-.indicator--disabled {
+.checkbox-indicator--disabled {
   &:hover,
   &:active,
   &:focus {
@@ -92,7 +92,7 @@ export default {
   }
 }
 
-.indicator__box {
+.checkbox-indicator__box {
   position: relative;
   cursor: pointer;
   width: 20px;
@@ -108,29 +108,29 @@ export default {
   transition: background ease $time-s;
 }
 
-.indicator--invalid > .indicator__box {
+.checkbox-indicator--invalid > .checkbox-indicator__box {
   border-color: $error-color;
 }
 
-.indicator--selected > .indicator__box,
-.indicator--indeterminate > .indicator__box {
+.checkbox-indicator--selected > .checkbox-indicator__box,
+.checkbox-indicator--indeterminate > .checkbox-indicator__box {
   border-width: 0;
   background-color: getShade($secondary-color, 110);
 }
 
-.indicator--disabled > .indicator__box {
+.checkbox-indicator--disabled > .checkbox-indicator__box {
   cursor: not-allowed;
   border-color: getShade($neutral-gray, 70);
 }
 
-.indicator--disabled.indicator--selected > .indicator__box,
-.indicator--disabled.indicator--indeterminate> .indicator__box {
+.checkbox-indicator--disabled.checkbox-indicator--selected > .checkbox-indicator__box,
+.checkbox-indicator--disabled.checkbox-indicator--indeterminate> .checkbox-indicator__box {
   border-width: 2px;
   border-color: getShade($neutral-gray, 70);
   background-color: transparent;
 }
 
-.indicator__icon {
+.checkbox-indicator__icon {
   position: absolute;
   top: 0;
   left: 0;
@@ -143,7 +143,7 @@ export default {
   }
 }
 
-.indicator--disabled .indicator__icon::v-deep path {
+.checkbox-indicator--disabled .checkbox-indicator__icon::v-deep path {
   fill: getShade($quaternary-color, 70);
   top: 1px;
   left: 1px;

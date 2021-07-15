@@ -1,10 +1,10 @@
 <template>
   <div
-    class="indicator"
+    class="radio-indicator"
     :class="{
-      ['indicator--selected']: checked,
-      ['indicator--disabled']: disabled,
-      ['indicator--invalid']: invalid,
+      ['radio-indicator--selected']: checked,
+      ['radio-indicator--disabled']: disabled,
+      ['radio-indicator--invalid']: invalid,
     }"
   ></div>
 </template>
@@ -29,10 +29,10 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "homeday-blocks/src/styles/mixins.scss";
 
-.indicator {
+.radio-indicator {
   position: relative;
   cursor: pointer;
   width: 20px;
@@ -72,7 +72,7 @@ export default {
   }
 }
 
-.indicator--invalid {
+.radio-indicator--invalid {
   border-color: $error-color;
 
   &:hover {
@@ -80,7 +80,7 @@ export default {
   }
 }
 
-.indicator--selected {
+.radio-indicator--selected {
   border-color: getShade($secondary-color, 110);
   background-color: getShade($secondary-color, 110);
 
@@ -96,7 +96,7 @@ export default {
   }
 }
 
-.indicator--disabled {
+.radio-indicator--disabled {
   cursor: not-allowed;
   border-color: getShade($neutral-gray, 70);
 
@@ -107,7 +107,7 @@ export default {
   }
 }
 
-.indicator--disabled.indicator--selected {
+.radio-indicator--disabled.radio-indicator--selected {
   border-color: getShade($neutral-gray, 70);
   background-color: transparent;
 
