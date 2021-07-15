@@ -7,6 +7,11 @@ import {
   houseCastle as houseCastleIcon,
   rocket as rocketIcon,
 } from 'homeday-assets/L';
+import {
+  apartmentCommercial as apartmentCommercialIconM,
+  houseCastle as houseCastleIconM,
+  rocket as rocketIconM,
+} from 'homeday-assets/M';
 
 export default {
   title: 'Components/Form/HdRadioCard',
@@ -101,8 +106,11 @@ export const Default = (args, { argTypes }) => ({
   data: () => ({
     propertyType: null,
     apartmentCommercialIcon,
+    apartmentCommercialIconM,
     houseCastleIcon,
+    houseCastleIconM,
     rocketIcon,
+    rocketIconM,
   }),
   methods: {
     onSubmit(result) {
@@ -127,7 +135,7 @@ export const Default = (args, { argTypes }) => ({
         :required="required"
       >
         <template #icon>
-          <HdIcon :src="apartmentCommercialIcon" />
+          <HdIcon :src="mode === 'card' ? apartmentCommercialIcon : apartmentCommercialIconM" />
         </template>
 
         Apartment
@@ -142,7 +150,7 @@ export const Default = (args, { argTypes }) => ({
         :required="required"
       >
         <template #icon>
-          <HdIcon :src="houseCastleIcon" />
+          <HdIcon :src="mode === 'card' ? houseCastleIcon : houseCastleIconM" />
         </template>
 
         Castle
@@ -157,7 +165,7 @@ export const Default = (args, { argTypes }) => ({
         :required="required"
       >
         <template #icon>
-          <HdIcon :src="rocketIcon" />
+          <HdIcon :src="mode === 'card' ? rocketIcon : rocketIconM" />
         </template>
 
         Space
@@ -247,8 +255,11 @@ export const Group = (args, { argTypes }) => ({
   data: () => ({
     propertyType: null,
     apartmentCommercialIcon,
+    apartmentCommercialIconM,
     houseCastleIcon,
+    houseCastleIconM,
     rocketIcon,
+    rocketIconM,
   }),
   methods: {
     onSubmit(result) {
@@ -275,7 +286,7 @@ export const Group = (args, { argTypes }) => ({
       >
         <HdRadioCard native-value="apartment">
           <template #icon>
-            <HdIcon :src="apartmentCommercialIcon" />
+            <HdIcon :src="mode === 'card' ? apartmentCommercialIcon : apartmentCommercialIconM" />
           </template>
 
           Apartment
@@ -283,7 +294,7 @@ export const Group = (args, { argTypes }) => ({
 
         <HdRadioCard native-value="castle">
           <template #icon>
-            <HdIcon :src="houseCastleIcon" />
+            <HdIcon :src="mode === 'card' ? houseCastleIcon : houseCastleIconM" />
           </template>
 
           Castle
@@ -291,7 +302,7 @@ export const Group = (args, { argTypes }) => ({
 
         <HdRadioCard native-value="space">
           <template #icon>
-            <HdIcon :src="rocketIcon" />
+            <HdIcon :src="mode === 'card' ? rocketIcon : rocketIconM" />
           </template>
 
           Space

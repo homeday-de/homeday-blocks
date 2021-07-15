@@ -7,6 +7,11 @@ import {
   houseCastle as houseCastleIcon,
   rocket as rocketIcon,
 } from 'homeday-assets/L';
+import {
+  apartmentCommercial as apartmentCommercialIconM,
+  houseCastle as houseCastleIconM,
+  rocket as rocketIconM,
+} from 'homeday-assets/M';
 
 export default {
   title: 'Components/Form/HdCheckboxCard',
@@ -104,8 +109,11 @@ export const Default = (args, { argTypes }) => ({
   data: () => ({
     propertyType: ['apartment'],
     apartmentCommercialIcon,
+    apartmentCommercialIconM,
     houseCastleIcon,
+    houseCastleIconM,
     rocketIcon,
+    rocketIconM,
   }),
   methods: {
     onSubmit(result) {
@@ -132,7 +140,7 @@ export const Default = (args, { argTypes }) => ({
         :false-value="falseValue"
       >
         <template #icon>
-          <HdIcon :src="apartmentCommercialIcon" />
+          <HdIcon :src="mode === 'card' ? apartmentCommercialIcon : apartmentCommercialIconM" />
         </template>
 
         Apartment
@@ -150,7 +158,7 @@ export const Default = (args, { argTypes }) => ({
         :false-value="falseValue"
       >
         <template #icon>
-          <HdIcon :src="houseCastleIcon" />
+          <HdIcon :src="mode === 'card' ? houseCastleIcon : houseCastleIconM" />
         </template>
 
         Castle
@@ -168,7 +176,7 @@ export const Default = (args, { argTypes }) => ({
         :false-value="falseValue"
       >
         <template #icon>
-          <HdIcon :src="rocketIcon" />
+          <HdIcon :src="mode === 'card' ? rocketIcon : rocketIconM" />
         </template>
 
         Space
@@ -197,7 +205,7 @@ Default.parameters = {
     :false-value="falseValue"
   >
     <template #icon>
-      <HdIcon :src="apartmentCommercialIcon" />
+      <HdIcon :src="mode === 'card' ? apartmentCommercialIcon : apartmentCommercialIconM" />
     </template>
 
     Apartment
@@ -215,7 +223,7 @@ Default.parameters = {
     :false-value="falseValue"
   >
     <template #icon>
-      <HdIcon :src="houseCastleIcon" />
+      <HdIcon :src="mode === 'card' ? houseCastleIcon : houseCastleIconM" />
     </template>
 
     Castle
@@ -233,7 +241,7 @@ Default.parameters = {
     :false-value="falseValue"
   >
     <template #icon>
-      <HdIcon :src="rocketIcon" />
+      <HdIcon :src="mode === 'card' ? rocketIcon : rocketIconM" />
     </template>
 
     Space
@@ -268,8 +276,11 @@ export const Boolean = (args, { argTypes }) => ({
   data: () => ({
     booleanValue: null,
     apartmentCommercialIcon,
+    apartmentCommercialIconM,
     houseCastleIcon,
+    houseCastleIconM,
     rocketIcon,
+    rocketIconM,
   }),
   methods: {
     onSubmit(result) {
@@ -293,7 +304,7 @@ export const Boolean = (args, { argTypes }) => ({
         :indeterminate="indeterminate"
       >
         <template #icon>
-          <HdIcon :src="apartmentCommercialIcon" />
+          <HdIcon :src="mode === 'card' ? apartmentCommercialIcon : apartmentCommercialIconM" />
         </template>
 
         Apartment
@@ -319,7 +330,7 @@ Boolean.parameters = {
     :indeterminate="indeterminate"
   >
     <template #icon>
-      <HdIcon :src="apartmentCommercialIcon" />
+      <HdIcon :src="mode === 'card' ? apartmentCommercialIcon : apartmentCommercialIconM" />
     </template>
 
     Apartment
@@ -348,8 +359,11 @@ export const CustomTrueFalse = (args, { argTypes }) => ({
   data: () => ({
     customTrueFalse: null,
     apartmentCommercialIcon,
+    apartmentCommercialIconM,
     houseCastleIcon,
+    houseCastleIconM,
     rocketIcon,
+    rocketIconM,
   }),
   methods: {
     onSubmit(result) {
@@ -375,7 +389,7 @@ export const CustomTrueFalse = (args, { argTypes }) => ({
         :false-value="falseValue"
       >
         <template #icon>
-          <HdIcon :src="apartmentCommercialIcon" />
+          <HdIcon :src="mode === 'card' ? apartmentCommercialIcon : apartmentCommercialIconM" />
         </template>
 
         Apartment
@@ -408,7 +422,7 @@ CustomTrueFalse.parameters = {
     false-value="off"
   >
     <template #icon>
-      <HdIcon :src="apartmentCommercialIcon" />
+      <HdIcon :src="mode === 'card' ? apartmentCommercialIcon : apartmentCommercialIconM" />
     </template>
 
     Apartment
@@ -438,8 +452,11 @@ export const Group = (args, { argTypes }) => ({
   data: () => ({
     propertyType: [],
     apartmentCommercialIcon,
+    apartmentCommercialIconM,
     houseCastleIcon,
+    houseCastleIconM,
     rocketIcon,
+    rocketIconM,
   }),
   methods: {
     onSubmit(result) {
@@ -466,7 +483,7 @@ export const Group = (args, { argTypes }) => ({
       >
         <HdCheckboxCard native-value="apartment">
           <template #icon>
-            <HdIcon :src="apartmentCommercialIcon" />
+            <HdIcon :src="mode === 'card' ? apartmentCommercialIcon : apartmentCommercialIconM" />
           </template>
 
           Apartment
@@ -474,7 +491,7 @@ export const Group = (args, { argTypes }) => ({
 
         <HdCheckboxCard native-value="castle">
           <template #icon>
-            <HdIcon :src="houseCastleIcon" />
+            <HdIcon :src="mode === 'card' ? houseCastleIcon : houseCastleIconM" />
           </template>
 
           Castle
@@ -482,7 +499,7 @@ export const Group = (args, { argTypes }) => ({
 
         <HdCheckboxCard native-value="space">
           <template #icon>
-            <HdIcon :src="rocketIcon" />
+            <HdIcon :src="mode === 'card' ? rocketIcon : rocketIconM" />
           </template>
 
           Space
@@ -512,7 +529,7 @@ Group.parameters = {
   >
     <HdCheckboxCard native-value="apartment">
       <template #icon>
-        <HdIcon :src="apartmentCommercialIcon" />
+        <HdIcon :src="mode === 'card' ? apartmentCommercialIcon : apartmentCommercialIconM" />
       </template>
 
       Apartment
@@ -520,7 +537,7 @@ Group.parameters = {
 
     <HdCheckboxCard native-value="castle">
       <template #icon>
-        <HdIcon :src="houseCastleIcon" />
+        <HdIcon :src="mode === 'card' ? houseCastleIcon : houseCastleIconM" />
       </template>
 
       Castle
@@ -528,7 +545,7 @@ Group.parameters = {
 
     <HdCheckboxCard native-value="space">
       <template #icon>
-        <HdIcon :src="rocketIcon" />
+        <HdIcon :src="mode === 'card' ? rocketIcon : rocketIconM" />
       </template>
 
       Space

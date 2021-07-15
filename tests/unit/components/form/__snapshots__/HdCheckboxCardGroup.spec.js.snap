@@ -4,6 +4,7 @@ exports[`HdCheckboxCardGroup renders correctly 1`] = `
 <div class="checkbox-group">
   <div><label for="property-apartment" tabindex="0"><input type="checkbox" id="property-apartment" name="property" aria-label="" aria-labelledby="" true-value="true" value="apartment">
       <div class="card">
+        <div class="card__border"></div>
         <div class="indicator card__indicator">
           <div class="indicator__box">
             <!---->
@@ -18,6 +19,7 @@ exports[`HdCheckboxCardGroup renders correctly 1`] = `
     </label></div>
   <div><label for="property-castle" tabindex="0"><input type="checkbox" id="property-castle" name="property" aria-label="" aria-labelledby="" true-value="true" value="castle">
       <div class="card">
+        <div class="card__border"></div>
         <div class="indicator card__indicator">
           <div class="indicator__box">
             <!---->
@@ -32,6 +34,7 @@ exports[`HdCheckboxCardGroup renders correctly 1`] = `
     </label></div>
   <div><label for="property-space" tabindex="0"><input type="checkbox" id="property-space" name="property" aria-label="" aria-labelledby="" true-value="true" value="space">
       <div class="card">
+        <div class="card__border"></div>
         <div class="indicator card__indicator">
           <div class="indicator__box">
             <!---->

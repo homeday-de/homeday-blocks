@@ -210,7 +210,17 @@ label:focus > .card--disabled {
 }
 
 .card--disabled ::v-deep path {
-  fill: getShade($quaternary-color, 60);
+  fill: getShade($quaternary-color, 50);
+}
+
+// TODO: improve this nasty hack, since the icons must have two distinct colors and we are using slots here
+.card--disabled ::v-deep path[fill="#1C3553"] {
+  fill: getShade($quaternary-color, 70);
+}
+
+// TODO: improve this nasty hack, since the icons must have two distinct colors and we are using slots here
+.card--tile.card--disabled ::v-deep path[fill="#0F1D2E"] {
+  fill: getShade($quaternary-color, 80);
 }
 
 .card__border {
