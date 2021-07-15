@@ -22,7 +22,7 @@
       :true-value="trueValue"
       :false-value="falseValue"
       :indeterminate.prop="indeterminate"
-      @change="$emit('input', internalValue)"
+      @change="changed"
     />
 
     <div
@@ -180,6 +180,11 @@ export default {
     validate() {
       this.error = this.validateForm();
       return !this.hasValidationErrors;
+    },
+    changed() {
+      this.$emit('input', this.internalValue);
+      // @ts-ignore
+      this.$nextTick(() => !this.isChecked && this.$refs?.label?.blur());
     },
   },
 };
