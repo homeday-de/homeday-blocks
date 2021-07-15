@@ -33,6 +33,7 @@
         ['card--tile']: mode === 'tile',
       }"
     >
+      <div class="card__border"></div>
       <HdCheckboxIndicator
         class="card__indicator"
         :checked="isChecked"
@@ -204,36 +205,27 @@ input[type="checkbox"] {
   flex-direction: column;
   align-items: center;
   padding: $sp-m;
-  transition: box-shadow ($time-s * 2), border ($time-s * 2), outline ($time-s * 2);
+  transition: box-shadow ($time-s * 2), border ($time-s * 2);
   @include elevation(0);
 }
 
-label:hover > .card {
-  border-color: transparent;
-  @include elevation(2);
+.card--selected {
+  @include elevation(0);
 }
 
+label:hover > .card,
 label:active > .card {
-  outline: 2px solid getShade($dodger-blue, 110);
   @include elevation(2);
 }
 
 label:focus > .card {
-  outline: 4px solid getShade($dodger-blue, 110);
-  @include elevation(0);
   box-shadow: 0px 0px 14px getShade($dodger-blue, 110), 0px 0px 1px getShade($dodger-blue, 110);
-}
-
-.card--selected {
-  outline: 4px solid getShade($dodger-blue, 110);
-  @include elevation(0);
 }
 
 .card--disabled,
 label:hover > .card--disabled,
 label:active > .card--disabled,
 label:focus > .card--disabled {
-  outline: none;
   cursor: not-allowed;
   border-color: getShade($quaternary-color, 60);
   border-width: 1px;
@@ -242,6 +234,24 @@ label:focus > .card--disabled {
 
 .card--disabled ::v-deep path {
   fill: getShade($quaternary-color, 60);
+}
+
+.card__border {
+  position: absolute;
+  inset: -1px;
+  border-radius: 4px;
+  transition: border ($time-s * 2);
+  border: 4px solid transparent;
+}
+
+.card--selected:not(.card--disabled) > .card__border,
+label:focus > .card:not(.card--disabled) > .card__border {
+  border-color: getShade($dodger-blue, 110);
+}
+
+label:active > .card:not(.card--disabled)  > .card__border {
+  border-width: 2px;
+  border-color: getShade($dodger-blue, 110);
 }
 
 .card__control-label {
