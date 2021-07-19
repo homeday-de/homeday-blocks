@@ -137,20 +137,17 @@ export default {
   width: 100%;
   height: 100%;
   transition: opacity 0.2s;
-
-  &::v-deep path {
-    fill: $white;
-  }
 }
 
-.checkbox-indicator--disabled .checkbox-indicator__icon::v-deep path {
+.checkbox-indicator__icon path {
+  fill: $white;
+}
+
+.checkbox-indicator--disabled .checkbox-indicator__icon path {
   fill: getShade($quaternary-color, 70);
   top: 1px;
   left: 1px;
   width: 90%;
   height: 90%;
-  &::v-deep path {
-    fill: getShade($quaternary-color, 70);
-  }
 }
 </style>
