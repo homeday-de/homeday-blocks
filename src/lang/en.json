@@ -28,7 +28,8 @@
           "Strong",
           "Very strong"
         ]
-      }
+      },
+      "SELECT_ONE_OPTION": "Please select (at least) one option"
     }
   },
   "EXPAND_TEXT": {

@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HdCheckboxCardGroup renders correctly 1`] = `
+<div class="checkbox-group">
+  <div><label for="property-apartment" tabindex="0"><input type="checkbox" id="property-apartment" name="property" aria-label="" aria-labelledby="" true-value="true" value="apartment">
+      <div class="card">
+        <div class="card__border"></div>
+        <div class="checkbox-indicator card__indicator">
+          <div class="checkbox-indicator__box">
+            <!---->
+          </div>
+        </div>
+        <div class="card__icon">
+          <hdicon-stub src="apartmentCommercialIcon"></hdicon-stub>
+        </div> <span class="card__control-label">
+
+          Apartment
+        </span>
+      </div>
+      <!---->
+    </label></div>
+  <div><label for="property-castle" tabindex="0"><input type="checkbox" id="property-castle" name="property" aria-label="" aria-labelledby="" true-value="true" value="castle">
+      <div class="card">
+        <div class="card__border"></div>
+        <div class="checkbox-indicator card__indicator">
+          <div class="checkbox-indicator__box">
+            <!---->
+          </div>
+        </div>
+        <div class="card__icon">
+          <hdicon-stub src="houseCastleIcon"></hdicon-stub>
+        </div> <span class="card__control-label">
+
+          Castle
+        </span>
+      </div>
+      <!---->
+    </label></div>
+  <div><label for="property-space" tabindex="0"><input type="checkbox" id="property-space" name="property" aria-label="" aria-labelledby="" true-value="true" value="space">
+      <div class="card">
+        <div class="card__border"></div>
+        <div class="checkbox-indicator card__indicator">
+          <div class="checkbox-indicator__box">
+            <!---->
+          </div>
+        </div>
+        <div class="card__icon">
+          <hdicon-stub src="rocketIcon"></hdicon-stub>
+        </div> <span class="card__control-label">
+
+          Space
+        </span>
+      </div>
+      <!---->
+    </label></div>
+  <!---->
+</div>
+`;
