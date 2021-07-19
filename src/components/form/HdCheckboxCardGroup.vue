@@ -85,8 +85,8 @@ export default {
     },
     /** @returns {string?} */
     validateForm() {
-      if (this.required && !this.value) return this.t.FORM.VALIDATION.REQUIRED;
-      if (this.required && Array.isArray(this.value) && this.value.length <= 0) return this.t.FORM.VALIDATION.REQUIRED;
+      if (this.required && !this.value) return this.t.FORM.VALIDATION.SELECT_ONE_OPTION;
+      if (this.required && Array.isArray(this.value) && this.value.length <= 0) return this.t.FORM.VALIDATION.SELECT_ONE_OPTION;
 
       const firstFailingRule = this.customRules.find(({ validate }) => !validate(this.value));
       if (firstFailingRule) return firstFailingRule.errorMessage;

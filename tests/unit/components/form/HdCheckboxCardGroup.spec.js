@@ -113,7 +113,7 @@ describe('HdCheckboxCardGroup', () => {
     });
 
     expect(error().exists()).toBeTruthy();
-    expect(error().text()).toContain(t().FORM.VALIDATION.REQUIRED);
+    expect(error().text()).toContain(t().FORM.VALIDATION.SELECT_ONE_OPTION);
   });
 
   it('displays validation error for custom validation rules', async () => {

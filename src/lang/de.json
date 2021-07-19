@@ -29,7 +29,8 @@
           "Stark",
           "Sehr stark"
         ]
-      }
+      },
+      "SELECT_ONE_OPTION": "Bitte wählen Sie (mindestens) eine Option aus"
     }
   },
   "EXPAND_TEXT": {
