@@ -30,3 +30,12 @@ exports[`HdModal renders the modal with custom root element 1`] = `
   </article>
 </transition-stub>
 `;
+
+exports[`HdModal renders the modal with overriding default slot 1`] = `
+<transition-stub name="modal">
+  <article class="hd-modal">
+    <div class="hd-modal__overlay"></div>
+    <div>This is the modal custom content</div>
+  </article>
+</transition-stub>
+`;
