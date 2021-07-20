@@ -12,11 +12,20 @@ const WIDE_ACTIONS_CLASS_NAME = 'hd-modal__footer--wide';
 
 const TITLE = '<div>This is the modal title.</div>';
 const BODY = '<div>This is the modal body.</div>';
+const ROOT = '<div>This is the modal root element</div>';
 
 const wrapperBuilder = wrapperFactoryBuilder(HdModal, {
   slots: {
     title: TITLE,
     body: BODY,
+    lang: 'de',
+  },
+  shallow: true,
+});
+
+const wrapperWithCustomRootBuilder = wrapperFactoryBuilder(HdModal, {
+  slots: {
+    root: ROOT,
     lang: 'de',
   },
   shallow: true,
@@ -105,5 +114,11 @@ describe('HdModal', () => {
     await wrapper.vm.$nextTick();
 
     expect(wrapper.find(ACTIONS_SELECTOR).attributes('class').includes(WIDE_ACTIONS_CLASS_NAME)).toBe(true);
+  });
+
+  it('renders the modal with custom root element', async () => {
+    const wrapper = wrapperWithCustomRootBuilder();
+
+    expect(wrapper.html()).toMatchSnapshot();
   });
 });
