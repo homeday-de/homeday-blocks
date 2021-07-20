@@ -176,7 +176,6 @@ const TemplateWithCleanSheet = (args, { argTypes }) => ({
   },
 });
 
-
 export const Default = Template.bind({});
 
 export const WithIcon = Template.bind({});

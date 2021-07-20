@@ -12,7 +12,7 @@ const WIDE_ACTIONS_CLASS_NAME = 'hd-modal__footer--wide';
 
 const TITLE = '<div>This is the modal title.</div>';
 const BODY = '<div>This is the modal body.</div>';
-const ROOT = '<div>This is the modal root element</div>'
+const ROOT = '<div>This is the modal root element</div>';
 
 const wrapperBuilder = wrapperFactoryBuilder(HdModal, {
   slots: {
@@ -119,5 +119,5 @@ describe('HdModal', () => {
     await wrapper.vm.$nextTick();
 
     expect(wrapper.html()).toMatchSnapshot();
-  })
+  });
 });
