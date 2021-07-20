@@ -6,7 +6,7 @@
       :class="{ 'hd-modal--with-icon': withIcon }"
     >
       <div class="hd-modal__overlay" />
-      <div class="hd-modal__container">
+      <div class="hd-modal__container" v-if="!isCleanSheet">
         <header class="hd-modal__header">
           <hd-icon
             v-if="withIcon"
@@ -57,6 +57,7 @@
           />
         </button>
       </div>
+      <slot name="root" v-else />
     </article>
   </transition>
 </template>
@@ -73,6 +74,10 @@ export default {
     HdIcon,
   },
   props: {
+    isCleanSheet: {
+      type: Boolean,
+      default: false,
+    },
     iconSrc: {
       type: String,
       default: '',

@@ -21,3 +21,12 @@ exports[`HdModal renders component 1`] = `
   </article>
 </transition-stub>
 `;
+
+exports[`HdModal renders the modal with custom root element if \`isCleanSheet\` prop is true 1`] = `
+<transition-stub name="modal">
+  <article class="hd-modal">
+    <div class="hd-modal__overlay"></div>
+    <div>This is the modal root element</div>
+  </article>
+</transition-stub>
+`;

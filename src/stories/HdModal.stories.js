@@ -140,6 +140,43 @@ const TemplateWithCustomFooter = (args, { argTypes }) => ({
   },
 });
 
+const TemplateWithCleanSheet = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { HdModal },
+  template: `
+    <div>
+      <button @click="showModal">show modal</button>
+      <hd-modal
+        v-if="isOpen"
+        is-clean-sheet="true"
+      >
+        <template slot="root">
+          <div :style="{ position: 'relative', 'z-index': 9999, background: '#fafafa', padding: '10px' }">
+            <p>This is a modal with <b> custom root element</b>.</p>
+            <br />
+            <button class="button" @click="hideModal">Custom Hide Button</button>
+          </div>
+        </template>
+      </hd-modal>
+    </div>
+  `,
+  data() {
+    return {
+      isOpen: false,
+    };
+  },
+  methods: {
+    showModal() {
+      this.isOpen = true;
+    },
+    hideModal() {
+      console.log('Closing modal');
+      this.isOpen = false;
+    },
+  },
+});
+
+
 export const Default = Template.bind({});
 
 export const WithIcon = Template.bind({});
@@ -156,5 +193,7 @@ export const WithoutCloseButton = Template.bind({});
 WithoutCloseButton.args = {
   isCloseButtonVisible: false,
 };
+
+export const WithCleanSheet = TemplateWithCleanSheet.bind({});
 
 export const WithCustomFooter = TemplateWithCustomFooter.bind({});
