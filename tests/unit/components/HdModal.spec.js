@@ -18,6 +18,13 @@ const wrapperBuilder = wrapperFactoryBuilder(HdModal, {
   slots: {
     title: TITLE,
     body: BODY,
+    lang: 'de',
+  },
+  shallow: true,
+});
+
+const wrapperWithCustomRootBuilder = wrapperFactoryBuilder(HdModal, {
+  slots: {
     root: ROOT,
     lang: 'de',
   },
@@ -109,14 +116,8 @@ describe('HdModal', () => {
     expect(wrapper.find(ACTIONS_SELECTOR).attributes('class').includes(WIDE_ACTIONS_CLASS_NAME)).toBe(true);
   });
 
-  it('renders the modal with custom root element if `isCleanSheet` prop is true', async () => {
-    const wrapper = wrapperBuilder();
-
-    wrapper.setProps({
-      isCleanSheet: true,
-    });
-
-    await wrapper.vm.$nextTick();
+  it('renders the modal with custom root element', async () => {
+    const wrapper = wrapperWithCustomRootBuilder();
 
     expect(wrapper.html()).toMatchSnapshot();
   });

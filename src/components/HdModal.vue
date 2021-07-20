@@ -74,10 +74,6 @@ export default {
     HdIcon,
   },
   props: {
-    isCleanSheet: {
-      type: Boolean,
-      default: false,
-    },
     iconSrc: {
       type: String,
       default: '',
@@ -120,6 +116,9 @@ export default {
     },
     isCustomFooter() {
       return Boolean(this.actions.length === 0);
+    },
+    isCleanSheet() {
+      return !!this.$slots.root;
     },
   },
   methods: {

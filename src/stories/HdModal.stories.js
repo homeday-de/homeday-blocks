@@ -148,7 +148,6 @@ const TemplateWithCleanSheet = (args, { argTypes }) => ({
       <button @click="showModal">show modal</button>
       <hd-modal
         v-if="isOpen"
-        is-clean-sheet="true"
       >
         <template slot="root">
           <div :style="{ position: 'relative', 'z-index': 9999, background: '#fafafa', padding: '10px' }">
