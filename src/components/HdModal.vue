@@ -6,58 +6,59 @@
       :class="{ 'hd-modal--with-icon': withIcon }"
     >
       <div class="hd-modal__overlay" />
-      <div class="hd-modal__container" v-if="!isCleanSheet">
-        <header class="hd-modal__header">
-          <hd-icon
-            v-if="withIcon"
-            :src="iconSrc"
-            class="hd-modal__modal-icon"
-          />
-          <h3 class="hd-modal__title">
-            <slot name="title" />
-          </h3>
-        </header>
+      <slot>
+        <div class="hd-modal__container">
+          <header class="hd-modal__header">
+            <hd-icon
+              v-if="withIcon"
+              :src="iconSrc"
+              class="hd-modal__modal-icon"
+            />
+            <h3 class="hd-modal__title">
+              <slot name="title" />
+            </h3>
+          </header>
 
-        <div class="hd-modal__body">
-          <slot name="body" />
-        </div>
+          <div class="hd-modal__body">
+            <slot name="body" />
+          </div>
 
-        <footer
-          :class="{
+          <footer
+            :class="{
             'hd-modal__footer': !isCustomFooter,
             'hd-modal__footer--wide': isWide && !isCustomFooter,
           }"
-        >
-          <slot name="footer">
-            <slot
-              v-for="(button, name) in actions"
-              :name="name"
-              :value="button"
-            >
-              <hd-button
-                :key="`action-${name}`"
-                v-bind="button"
-                class="hd-modal__action"
-                @click="$emit('action', button)"
+          >
+            <slot name="footer">
+              <slot
+                v-for="(button, name) in actions"
+                :name="name"
+                :value="button"
               >
-                {{ button.text }}
-              </hd-button>
+                <hd-button
+                  :key="`action-${name}`"
+                  v-bind="button"
+                  class="hd-modal__action"
+                  @click="$emit('action', button)"
+                >
+                  {{ button.text }}
+                </hd-button>
+              </slot>
             </slot>
-          </slot>
-        </footer>
+          </footer>
 
-        <button
-          v-if="isCloseButtonVisible"
-          class="hd-modal__close-button"
-          @click="$emit('close')"
-        >
-          <hd-icon
-            :src="closeIcon"
-            class="hd-modal__close-icon"
-          />
-        </button>
-      </div>
-      <slot name="root" v-else />
+          <button
+            v-if="isCloseButtonVisible"
+            class="hd-modal__close-button"
+            @click="$emit('close')"
+          >
+            <hd-icon
+              :src="closeIcon"
+              class="hd-modal__close-icon"
+            />
+          </button>
+        </div>
+      </slot>
     </article>
   </transition>
 </template>
@@ -116,9 +117,6 @@ export default {
     },
     isCustomFooter() {
       return Boolean(this.actions.length === 0);
-    },
-    isCleanSheet() {
-      return !!this.$slots.root;
     },
   },
   methods: {

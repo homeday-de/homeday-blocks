@@ -140,7 +140,7 @@ const TemplateWithCustomFooter = (args, { argTypes }) => ({
   },
 });
 
-const TemplateWithCleanSheet = (args, { argTypes }) => ({
+const TemplateWithOverrideDefaultSlot = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { HdModal },
   template: `
@@ -149,13 +149,11 @@ const TemplateWithCleanSheet = (args, { argTypes }) => ({
       <hd-modal
         v-if="isOpen"
       >
-        <template slot="root">
-          <div :style="{ position: 'relative', 'z-index': 9999, background: '#fafafa', padding: '10px' }">
-            <p>This is a modal with <b> custom root element</b>.</p>
-            <br />
-            <button class="button" @click="hideModal">Custom Hide Button</button>
-          </div>
-        </template>
+        <div :style="{ position: 'relative', 'z-index': 9999, background: '#fafafa', padding: '10px' }">
+          <p>This is a custom modal with <b> overriding default slot</b>.</p>
+          <br />
+          <button class="button" @click="hideModal">Custom Hide Button</button>
+        </div>
       </hd-modal>
     </div>
   `,
@@ -192,6 +190,6 @@ WithoutCloseButton.args = {
   isCloseButtonVisible: false,
 };
 
-export const WithCleanSheet = TemplateWithCleanSheet.bind({});
+export const WithOverrideDefaultSlot = TemplateWithOverrideDefaultSlot.bind({});
 
 export const WithCustomFooter = TemplateWithCustomFooter.bind({});
