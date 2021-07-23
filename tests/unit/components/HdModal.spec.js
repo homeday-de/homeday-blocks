@@ -5,6 +5,7 @@ const TITLE_SELECTOR = '.hd-modal__title';
 const BODY_SELECTOR = '.hd-modal__body';
 const ACTIONS_SELECTOR = '.hd-modal__footer';
 const CLOSE_BUTTON_SELECTOR = '.hd-modal__close-button';
+const OVERLAY_SELECTOR = '.hd-modal__overlay';
 const HEADER_SELECTOR = '.hd-modal__header';
 const ICON_SELECTOR = 'hd-icon-stub';
 const WITH_ICON_SELECTOR = '.hd-modal--with-icon';
@@ -120,5 +121,13 @@ describe('HdModal', () => {
     const wrapper = wrapperWithOverridingDefaultSlotBuilder();
 
     expect(wrapper.html()).toMatchSnapshot();
+  });
+
+  it('renders the modal and trigger a click on the overlay', async () => {
+    const wrapper = wrapperBuilder();
+
+    await wrapper.find(OVERLAY_SELECTOR).trigger('click');
+
+    expect(wrapper.emitted().close).toBeTruthy();
   });
 });

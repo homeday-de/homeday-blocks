@@ -5,7 +5,7 @@
       class="hd-modal"
       :class="{ 'hd-modal--with-icon': withIcon }"
     >
-      <div class="hd-modal__overlay" />
+      <div class="hd-modal__overlay" @click="onClose" />
       <slot>
         <div class="hd-modal__container">
           <header class="hd-modal__header">
@@ -50,7 +50,7 @@
           <button
             v-if="isCloseButtonVisible"
             class="hd-modal__close-button"
-            @click="$emit('close')"
+            @click="onClose()"
           >
             <hd-icon
               :src="closeIcon"
@@ -120,7 +120,7 @@ export default {
     },
   },
   methods: {
-    onCloseClick() {
+    onClose() {
       this.$emit('close');
     },
   },
