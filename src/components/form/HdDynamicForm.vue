@@ -13,6 +13,7 @@
         class="dynamicForm__line__item"
         :lang="lang"
         @blur="handleBlur(item)"
+        @focus="handleFocus(item)"
       />
     </div>
     <slot name="before-button" />
@@ -145,6 +146,9 @@ export default {
     },
     handleBlur(item) {
       this.$emit('blur', item);
+    },
+    handleFocus(item) {
+      this.$emit('focus', item);
     },
   },
 };
