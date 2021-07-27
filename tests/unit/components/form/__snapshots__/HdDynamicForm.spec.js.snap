@@ -33,7 +33,7 @@ exports[`HdDynamicForm renders slots 1`] = `
   </div>
   <div>The before button slot</div> <button class="dynamicForm__submit btn btn--primary">
     <!----> <span class="btn__content">
-  submit
+    submit
   </span>
   </button>
   <div>The after slot</div>
