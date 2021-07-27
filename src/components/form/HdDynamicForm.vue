@@ -3,26 +3,27 @@
     <slot name="before"/>
     <div v-for="(line, i) in lines" class="dynamicForm__line" :key="`line-${i}`">
       <component
-      v-for="item in getItemsArray(line)"
-      ref="fields"
-      :is="getComponent(item.type)"
-      :key="`input-${item.name}`"
-      v-model="formData[item.name]"
-      v-bind="item.props"
-      :name="item.name"
-      class="dynamicForm__line__item"
-      :lang="lang"
+        v-for="item in getItemsArray(line)"
+        ref="fields"
+        :is="getComponent(item.type)"
+        :key="`input-${item.name}`"
+        v-model="formData[item.name]"
+        v-bind="item.props"
+        :name="item.name"
+        class="dynamicForm__line__item"
+        :lang="lang"
+        @blur="handleBlur(item)"
       />
     </div>
-    <slot name="before-button"/>
+    <slot name="before-button" />
     <HdButton
-    v-if="submitLabel"
-    modifier="primary"
-    class="dynamicForm__submit"
+      v-if="submitLabel"
+      modifier="primary"
+      class="dynamicForm__submit"
     >
-    {{ submitLabel }}
+      {{ submitLabel }}
     </HdButton>
-    <slot name="after"/>
+    <slot name="after" />
   </form>
 </template>
 
@@ -141,6 +142,9 @@ export default {
         default:
           return null;
       }
+    },
+    handleBlur(item) {
+      this.$emit('blur', item);
     },
   },
 };
