@@ -3,7 +3,7 @@ import {
   loadScript,
   cloneVNodeElement,
   keysToCamelCase,
-  keysToSnakeCase
+  keysToSnakeCase,
 } from '@/services/utils';
 import { mount } from '@vue/test-utils';
 
