@@ -13,7 +13,7 @@ storiesOf('Components/Form/HdDynamicForm', module)
   .addDecorator(FormWrapper)
   .add('profile', () => ({
     components: { HdDynamicForm },
-    template: '<hd-dynamic-form :items="config" submitLabel="Submit Label" @submit="onSubmit"/>',
+    template: '<hd-dynamic-form :items="config" submitLabel="Submit Label" @submit="onSubmit" @blur="onBlur" @focus="onFocus"/>',
     data() {
       return {
         config: CONFIG.PROFILE,
@@ -29,11 +29,17 @@ storiesOf('Components/Form/HdDynamicForm', module)
           formatNestedData(data),
         );
       },
+      onBlur(item) {
+        console.log('blur', item);
+      },
+      onFocus(item) {
+        console.log('focus', item);
+      },
     },
   }))
   .add('signup', () => ({
     components: { HdDynamicForm },
-    template: '<hd-dynamic-form :items="config" submitLabel="Submit Label" @submit="onSubmit"/>',
+    template: '<hd-dynamic-form :items="config" submitLabel="Submit Label" @submit="onSubmit" @blur="onBlur" @focus="onFocus"/>',
     data() {
       return {
         config: CONFIG.SIGNUP,
@@ -49,11 +55,17 @@ storiesOf('Components/Form/HdDynamicForm', module)
           formatNestedData(data),
         );
       },
+      onBlur(item) {
+        console.log('blur', item);
+      },
+      onFocus(item) {
+        console.log('focus', item);
+      },
     },
   }))
   .add('login', () => ({
     components: { HdDynamicForm },
-    template: '<hd-dynamic-form :items="config" submitLabel="Submit Label" @submit="onSubmit"/>',
+    template: '<hd-dynamic-form :items="config" submitLabel="Submit Label" @submit="onSubmit" @blur="onBlur" @focus="onFocus"/>',
     data() {
       return {
         config: CONFIG.LOGIN,
@@ -69,11 +81,17 @@ storiesOf('Components/Form/HdDynamicForm', module)
           formatNestedData(data),
         );
       },
+      onBlur(item) {
+        console.log('blur', item);
+      },
+      onFocus(item) {
+        console.log('focus', item);
+      },
     },
   }))
   .add('specified language', () => ({
     components: { HdDynamicForm },
-    template: '<hd-dynamic-form :items="config" submitLabel="Submit Label" lang="en" @submit="onSubmit"/>',
+    template: '<hd-dynamic-form :items="config" submitLabel="Submit Label" lang="en" @submit="onSubmit" @blur="onBlur" @focus="onFocus"/>',
     data() {
       return {
         config: CONFIG.LOGIN_EN,
@@ -88,6 +106,12 @@ storiesOf('Components/Form/HdDynamicForm', module)
           'Nested data',
           formatNestedData(data),
         );
+      },
+      onBlur(item) {
+        console.log('blur', item);
+      },
+      onFocus(item) {
+        console.log('focus', item);
       },
     },
   }));
