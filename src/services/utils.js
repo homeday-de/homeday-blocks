@@ -1,5 +1,9 @@
 /* eslint-disable */
 import merge from 'lodash/merge';
+import _isArray from 'lodash/isArray';
+import _isPlainObject from 'lodash/isPlainObject';
+import _camelCase from 'lodash/camelCase';
+import _snakeCase from 'lodash/snakeCase';
 
 /** Replace all the occurrences in a string */
 export function populateTemplate(template, map) {
@@ -167,6 +171,44 @@ export function cloneVNodeElement (vnode, { props, attrs, children, ...rest }, h
   }, cloned.componentOptions.children || children)
 }
 
+export function keysToCamelCase(collection) {
+  if (_isPlainObject(collection)) {
+    const newCollection = {};
+
+    Object.keys(collection)
+      .forEach((item) => {
+        newCollection[_camelCase(item)] = keysToCamelCase(collection[item]);
+      });
+
+    return newCollection;
+  }
+
+  if (_isArray(collection)) {
+    return collection.map((item) => keysToCamelCase(item));
+  }
+
+  return collection;
+}
+
+export function keysToSnakeCase(collection) {
+  if (_isPlainObject(collection)) {
+    const newCollection = {};
+
+    Object.keys(collection)
+      .forEach((item) => {
+        newCollection[_snakeCase(item)] = keysToSnakeCase(collection[item]);
+      });
+
+    return newCollection;
+  }
+
+  if (_isArray(collection)) {
+    return collection.map((item) => keysToSnakeCase(item));
+  }
+
+  return collection;
+}
+
 export default {
   populateTemplate,
   getPasswordStrength,
@@ -176,4 +218,6 @@ export default {
   getArrayOfSize,
   loadScript,
   generateUniqueNumbers,
+  keysToCamelCase,
+  keysToSnakeCase,
 };
