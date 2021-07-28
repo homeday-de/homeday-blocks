@@ -1,5 +1,5 @@
 /* eslint-disable */
-import merge from 'lodash/merge';
+import _merge from 'lodash/merge';
 import _isArray from 'lodash/isArray';
 import _isPlainObject from 'lodash/isPlainObject';
 import _camelCase from 'lodash/camelCase';
@@ -23,10 +23,10 @@ export function formatNestedData(data, nestingString = '.') {
         acc[currentKey] = value;
         return acc;
       }
-      acc = merge({}, { [currentKey]: acc });
+      acc = _merge({}, { [currentKey]: acc });
       return acc;
     }, {});
-    merge(formattedObj, nestedSubObj);
+    _merge(formattedObj, nestedSubObj);
   });
   return formattedObj;
 }
