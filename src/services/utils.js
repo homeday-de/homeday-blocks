@@ -171,6 +171,7 @@ export function cloneVNodeElement (vnode, { props, attrs, children, ...rest }, h
   }, cloned.componentOptions.children || children)
 }
 
+// Deeply converts the keys of a given object to camelCase
 export function keysToCamelCase(collection) {
   if (_isPlainObject(collection)) {
     const newCollection = {};
@@ -190,6 +191,7 @@ export function keysToCamelCase(collection) {
   return collection;
 }
 
+// Deeply converts the keys of a given object to snake_case
 export function keysToSnakeCase(collection) {
   if (_isPlainObject(collection)) {
     const newCollection = {};
