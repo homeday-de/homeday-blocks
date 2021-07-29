@@ -1,5 +1,9 @@
 /* eslint-disable */
-import merge from 'lodash/merge';
+import _merge from 'lodash/merge';
+import _isArray from 'lodash/isArray';
+import _isPlainObject from 'lodash/isPlainObject';
+import _camelCase from 'lodash/camelCase';
+import _snakeCase from 'lodash/snakeCase';
 
 /** Replace all the occurrences in a string */
 export function populateTemplate(template, map) {
@@ -19,10 +23,10 @@ export function formatNestedData(data, nestingString = '.') {
         acc[currentKey] = value;
         return acc;
       }
-      acc = merge({}, { [currentKey]: acc });
+      acc = _merge({}, { [currentKey]: acc });
       return acc;
     }, {});
-    merge(formattedObj, nestedSubObj);
+    _merge(formattedObj, nestedSubObj);
   });
   return formattedObj;
 }
@@ -167,6 +171,46 @@ export function cloneVNodeElement (vnode, { props, attrs, children, ...rest }, h
   }, cloned.componentOptions.children || children)
 }
 
+// Deeply converts the keys of a given object to camelCase
+export function keysToCamelCase(collection) {
+  if (_isPlainObject(collection)) {
+    const newCollection = {};
+
+    Object.keys(collection)
+      .forEach((item) => {
+        newCollection[_camelCase(item)] = keysToCamelCase(collection[item]);
+      });
+
+    return newCollection;
+  }
+
+  if (_isArray(collection)) {
+    return collection.map((item) => keysToCamelCase(item));
+  }
+
+  return collection;
+}
+
+// Deeply converts the keys of a given object to snake_case
+export function keysToSnakeCase(collection) {
+  if (_isPlainObject(collection)) {
+    const newCollection = {};
+
+    Object.keys(collection)
+      .forEach((item) => {
+        newCollection[_snakeCase(item)] = keysToSnakeCase(collection[item]);
+      });
+
+    return newCollection;
+  }
+
+  if (_isArray(collection)) {
+    return collection.map((item) => keysToSnakeCase(item));
+  }
+
+  return collection;
+}
+
 export default {
   populateTemplate,
   getPasswordStrength,
@@ -176,4 +220,6 @@ export default {
   getArrayOfSize,
   loadScript,
   generateUniqueNumbers,
+  keysToCamelCase,
+  keysToSnakeCase,
 };
