@@ -20,6 +20,8 @@
     "prepare": "husky install"
   },
   "main": "main.js",
+  "module": "main.js",
+  "sideEffects": false,
   "files": [
     "src/*",
     "*.json",
