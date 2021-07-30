@@ -21,7 +21,7 @@
   },
   "main": "main.js",
   "module": "main.js",
-  "sideEffects": false,
+  "sideEffects": ["*.vue"],
   "files": [
     "src/*",
     "*.json",
