@@ -21,7 +21,7 @@
   },
   "main": "main.js",
   "module": "main.js",
-  "sideEffects": ["*.vue"],
+  "sideEffects": ["*.vue", "src/styles/main.scss"],
   "files": [
     "src/*",
     "*.json",
