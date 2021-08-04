@@ -3,7 +3,7 @@
     <h1 class="welcome__title">Homeday-Blocks</h1>
     <p class="welcome__paragraph">A Vue component library built by Homeday's frontend team.</p>
 
-    <h3 class="welcome__subtitle">Start using the library in 2 quick steps</h3>
+    <h3 class="welcome__subtitle">Start using the library in 3 quick steps</h3>
     <p class="welcome__paragraph">
       1- Install the library:
       <vue-code-highlight class="welcome__code">{{
@@ -12,6 +12,10 @@
       2- Consume the components
       <vue-code-highlight class="welcome__code">{{
         "import { HdGallery } from 'homeday-blocks';"
+      }}</vue-code-highlight>
+      3- Import global css file
+      <vue-code-highlight class="welcome__code">{{
+        "import 'homeday-blocks/src/styles/main.scss';"
       }}</vue-code-highlight>
     </p>
 
