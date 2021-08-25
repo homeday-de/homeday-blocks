@@ -27,11 +27,11 @@
           <!-- the item.thumbnail field is used as default value for the item image -->
           <!-- IE11 uses this value only because do not support the picture element -->
           <picture class="gallery-carousel__picture">
-              <source v-for="(source, media) in item.thumbnailPictureSources"
-                :key="media"
-                :media="`(${media})`" :srcset="source"
-              >
-            <img :src="item.thumbnail" :alt="item.caption" :srcset="item.thumbnailSrcSet">
+            <source v-for="(source, media) in item.thumbnailPictureSources"
+                    :key="media"
+                    :media="`(${media})`" :srcset="source"
+            >
+            <img :src="item.thumbnail" :alt="item.caption" :srcset="item.thumbnailSrcSet" :style="{objectFit}">
           </picture>
         </div>
       </flickity>
@@ -79,6 +79,10 @@ export default {
     disableKeyEvents: {
       type: Boolean,
       default: false,
+    },
+    objectFit: {
+      type: String,
+      default: 'cover',
     },
   },
   data() {
@@ -280,22 +284,22 @@ export default {
       width: calc(100% / 7);
       margin-right: $sp-m;
     }
-    }
+  }
 
   &__picture {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
 
     img {
+      width: 100%;
       height: 100%;
-      object-fit: cover;
     }
   }
 }
