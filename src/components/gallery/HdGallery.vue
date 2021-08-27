@@ -67,6 +67,7 @@
       :pager-inside="pagerInside"
       :aspect-ratio="aspectRatio"
       :disable-key-events="disableKeyEvents"
+      :object-fit="carouselObjectFit"
       class="gallery__carousel"
       @itemClick="onCarouselItemClick"
     />
@@ -121,6 +122,11 @@ export default {
     placeholderText: {
       type: String,
       default: '',
+    },
+    carouselObjectFit: {
+      type: String,
+      default: 'cover',
+      validator: (value) => ['cover', 'contain', 'fill', 'scale-down', 'none'].includes(value),
     },
   },
   data() {

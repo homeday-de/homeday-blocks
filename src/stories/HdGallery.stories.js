@@ -54,24 +54,28 @@ const Template = (args, { argTypes }) => ({
   components: { HdGallery },
   template: `
     <div style="max-width: 800px; padding-left: 16px; padding-right: 16px; margin: auto;">
-      <HdGallery
-        :items="items"
-        :pager-inside="pagerInside"
-        :aspect-ratio="aspectRatio"
-        :disable-key-events="disableKeyEvents"
-        :start-index="startIndex"
-        :show-caption="showCaption"
-        :placeholder-icon="placeholderIcon"
-        :placeholder-text="placeholderText"
-        @carouselItemClick="carouselItemClick"
-        @currentItemClick="currentItemClick"
-        @input="input"
-      />
+    <HdGallery
+      :items="items"
+      :pager-inside="pagerInside"
+      :aspect-ratio="aspectRatio"
+      :disable-key-events="disableKeyEvents"
+      :start-index="startIndex"
+      :show-caption="showCaption"
+      :placeholder-icon="placeholderIcon"
+      :placeholder-text="placeholderText"
+      :carousel-object-fit="carouselObjectFit"
+      @carouselItemClick="carouselItemClick"
+      @currentItemClick="currentItemClick"
+      @input="input"
+    />
     </div>
   `,
 });
 
 export const Default = Template.bind({});
+Default.args = {
+  carouselObjectFit: 'cover',
+};
 
 export const OnePhoto = Template.bind({});
 OnePhoto.args = {
