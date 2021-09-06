@@ -11,6 +11,9 @@
     :disabled="disabled"
     @clear-click="clearTextarea"
     @status-click="focusTextarea"
+    :class="{
+      'field--maxlength-indicator-visible': Boolean(maxlength)
+    }"
   >
     <textarea
       ref="textarea"
@@ -23,12 +26,19 @@
       :autofocus="autofocus"
       :style="{ height }"
       :disabled="disabled"
+      :maxlength="maxlength"
       class="textarea"
       data-gramm_editor="false"
       @focus="handleFocus"
       @blur="handleBlur"
       @input="handleInput"
     />
+    <span
+      v-if="maxlength"
+      class="maxlength-indicator"
+    >
+      {{ value.length }}/{{maxlength}}
+    </span>
     <!-- `data-gramm_editor` attribute is used to control Grammarly (chrome extension) -->
   </TextFieldBase>
 </template>
@@ -79,6 +89,10 @@ export default {
     height: {
       type: String,
       default: '100px',
+    },
+    maxlength: {
+      type: [String, Number],
+      default: '',
     },
     lang: {
       type: String,
@@ -171,8 +185,25 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import 'homeday-blocks/src/styles/mixins.scss';
+
 .textarea {
   display: block;
   resize: vertical;
+}
+.maxlength-indicator {
+  position: absolute;
+  right: 0;
+  bottom: -#{($sp-s * 2) + ($sp-xs / 2)};
+  @include font("DS-60");
+  padding: 0px $sp-s;
+  color: getShade($neutral-gray, 70);
+}
+.field--maxlength-indicator-visible {
+  ::v-deep {
+    .field__helper {
+      padding-right: $sp-xl;
+    }
+  }
 }
 </style>

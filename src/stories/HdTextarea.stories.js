@@ -13,6 +13,7 @@ storiesOf('Components/Form/HdTextarea', module)
       <HdTextarea
         v-model="value"
         :required="true"
+        :maxlength="500"
         name="test"
         label="Label"
         placeholder="Placeholder..."
@@ -86,6 +87,23 @@ storiesOf('Components/Form/HdTextarea', module)
       <HdTextarea
         v-model="value"
         :disabled="true"
+        name="test"
+        label="Label"
+        placeholder="Placeholder..."
+      />
+    `,
+    data() {
+      return {
+        value: '',
+      };
+    },
+  }))
+  .add('maxlength', () => ({
+    components: { HdTextarea },
+    template: `
+      <HdTextarea
+        v-model="value"
+        :maxlength="500"
         name="test"
         label="Label"
         placeholder="Placeholder..."
