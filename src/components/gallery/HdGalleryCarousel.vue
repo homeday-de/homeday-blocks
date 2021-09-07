@@ -14,26 +14,28 @@
         ref="flickity"
         :options="flickityOptions"
       >
-        <div
-          class="gallery-carousel__item"
-          v-for="(item, i) in items"
-          :key="i"
-          :class="{
-            'is-active': shouldShowActiveState(i),
-          } "
-        >
-          <div :style="sizerStyles" />
+        <slot>
+          <div
+            class="gallery-carousel__item"
+            v-for="(item, i) in items"
+            :key="i"
+            :class="{
+              'is-active': shouldShowActiveState(i),
+            } "
+          >
+            <div :style="sizerStyles" />
 
-          <!-- the item.thumbnail field is used as default value for the item image -->
-          <!-- IE11 uses this value only because do not support the picture element -->
-          <picture class="gallery-carousel__picture">
-            <source v-for="(source, media) in item.thumbnailPictureSources"
-                    :key="media"
-                    :media="`(${media})`" :srcset="source"
-            >
-            <img :src="item.thumbnail" :alt="item.caption" :srcset="item.thumbnailSrcSet" :style="{objectFit}">
-          </picture>
-        </div>
+            <!-- the item.thumbnail field is used as default value for the item image -->
+            <!-- IE11 uses this value only because do not support the picture element -->
+            <picture class="gallery-carousel__picture">
+              <source v-for="(source, media) in item.thumbnailPictureSources"
+                      :key="media"
+                      :media="`(${media})`" :srcset="source"
+              >
+              <img :src="item.thumbnail" :alt="item.caption" :srcset="item.thumbnailSrcSet" :style="{objectFit}">
+            </picture>
+          </div>
+        </slot>
       </flickity>
       <div class="gallery-carousel__pager">
         <HdPager
