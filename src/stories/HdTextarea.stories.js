@@ -13,7 +13,6 @@ storiesOf('Components/Form/HdTextarea', module)
       <HdTextarea
         v-model="value"
         :required="true"
-        :maxlength="500"
         name="test"
         label="Label"
         placeholder="Placeholder..."

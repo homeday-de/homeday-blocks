@@ -12,7 +12,7 @@
     @clear-click="clearTextarea"
     @status-click="focusTextarea"
     :class="{
-      'field--maxlength-indicator-visible': Boolean(maxlength)
+      'field--maxlength-indicator-visible': isMaxlengthIndicatorVisible
     }"
   >
     <textarea
@@ -34,10 +34,10 @@
       @input="handleInput"
     />
     <span
-      v-if="maxlength"
+      v-if="isMaxlengthIndicatorVisible"
       class="maxlength-indicator"
     >
-      {{ value.length }}/{{maxlength}}
+      {{ maxlengthIndicator }}
     </span>
     <!-- `data-gramm_editor` attribute is used to control Grammarly (chrome extension) -->
   </TextFieldBase>
@@ -91,8 +91,8 @@ export default {
       default: '100px',
     },
     maxlength: {
-      type: [String, Number],
-      default: '',
+      type: Number,
+      default: () => Number.POSITIVE_INFINITY,
     },
     lang: {
       type: String,
@@ -125,6 +125,12 @@ export default {
     },
     isFilled() {
       return this.value !== null && this.value !== undefined && this.value !== '';
+    },
+    maxlengthIndicator() {
+      return `${this.value.length}/${this.maxlength}`;
+    },
+    isMaxlengthIndicatorVisible() {
+      return this.maxlength < Number.POSITIVE_INFINITY;
     },
     placeholderAttr() {
       if (!this.placeholder) {
@@ -197,7 +203,7 @@ export default {
   bottom: -#{($sp-s * 2) + ($sp-xs / 2)};
   @include font("DS-60");
   padding: 0px $sp-s;
-  color: getShade($neutral-gray, 70);
+  color: getShade($quaternary-color, 70);
 }
 .field--maxlength-indicator-visible {
   ::v-deep {
