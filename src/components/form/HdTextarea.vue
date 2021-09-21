@@ -92,7 +92,7 @@ export default {
     },
     maxlength: {
       type: Number,
-      default: () => Number.POSITIVE_INFINITY,
+      default: Number.POSITIVE_INFINITY,
     },
     lang: {
       type: String,
