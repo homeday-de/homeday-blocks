@@ -192,6 +192,7 @@ export default {
 
 <style scoped lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
+$distanceFromTextareaToIndicator: -18px;
 
 .textarea {
   display: block;
@@ -200,7 +201,7 @@ export default {
 .maxlength-indicator {
   position: absolute;
   right: 0;
-  bottom: -#{($sp-s * 2) + ($sp-xs / 2)};
+  bottom: $distanceFromTextareaToIndicator;
   @include font("DS-60");
   padding: 0px $sp-s;
   color: getShade($quaternary-color, 70);
