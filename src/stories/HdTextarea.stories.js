@@ -97,6 +97,23 @@ storiesOf('Components/Form/HdTextarea', module)
       };
     },
   }))
+  .add('maxlength', () => ({
+    components: { HdTextarea },
+    template: `
+      <HdTextarea
+        v-model="value"
+        :maxlength="500"
+        name="test"
+        label="Label"
+        placeholder="Placeholder..."
+      />
+    `,
+    data() {
+      return {
+        value: '',
+      };
+    },
+  }))
   .add('with icon', () => ({
     components: { HdTextarea },
     template: `

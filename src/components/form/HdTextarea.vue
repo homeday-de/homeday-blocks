@@ -11,6 +11,9 @@
     :disabled="disabled"
     @clear-click="clearTextarea"
     @status-click="focusTextarea"
+    :class="{
+      'field--maxlength-indicator-visible': isMaxlengthIndicatorVisible
+    }"
   >
     <textarea
       ref="textarea"
@@ -23,12 +26,19 @@
       :autofocus="autofocus"
       :style="{ height }"
       :disabled="disabled"
+      :maxlength="maxlength"
       class="textarea"
       data-gramm_editor="false"
       @focus="handleFocus"
       @blur="handleBlur"
       @input="handleInput"
     />
+    <span
+      v-if="isMaxlengthIndicatorVisible"
+      class="maxlength-indicator"
+    >
+      {{ maxlengthIndicator }}
+    </span>
     <!-- `data-gramm_editor` attribute is used to control Grammarly (chrome extension) -->
   </TextFieldBase>
 </template>
@@ -80,6 +90,10 @@ export default {
       type: String,
       default: '100px',
     },
+    maxlength: {
+      type: Number,
+      default: Number.POSITIVE_INFINITY,
+    },
     lang: {
       type: String,
       default: 'de',
@@ -111,6 +125,12 @@ export default {
     },
     isFilled() {
       return this.value !== null && this.value !== undefined && this.value !== '';
+    },
+    maxlengthIndicator() {
+      return `${this.value.length}/${this.maxlength}`;
+    },
+    isMaxlengthIndicatorVisible() {
+      return this.maxlength < Number.POSITIVE_INFINITY;
     },
     placeholderAttr() {
       if (!this.placeholder) {
@@ -171,8 +191,26 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import 'homeday-blocks/src/styles/mixins.scss';
+$distanceFromTextareaToIndicator: -18px;
+
 .textarea {
   display: block;
   resize: vertical;
+}
+.maxlength-indicator {
+  position: absolute;
+  right: 0;
+  bottom: $distanceFromTextareaToIndicator;
+  @include font("DS-60");
+  padding: 0px $sp-s;
+  color: getShade($quaternary-color, 70);
+}
+.field--maxlength-indicator-visible {
+  ::v-deep {
+    .field__helper {
+      padding-right: $sp-xl;
+    }
+  }
 }
 </style>
