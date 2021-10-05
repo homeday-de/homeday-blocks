@@ -1,4 +1,5 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-exec < /dev/tty && gitmoji --hook $1 || true
+exec < /dev/tty
+npx gitmoji --hook $1 $2
