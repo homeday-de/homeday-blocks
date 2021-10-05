@@ -39,6 +39,7 @@ export const TYPES = {
 
 export default {
   name: 'HdButton',
+  inheritAttrs: false,
   components: {
     HdIcon,
   },

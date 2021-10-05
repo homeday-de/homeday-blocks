@@ -101,4 +101,14 @@ describe('HdButton', () => {
 
     expect(click).toHaveBeenCalled();
   });
+
+  it('does not inherit attributes', async () => {
+    const wrapper = wrapperBuilder({
+      props: {
+        myFakeProp: 'HUEBR',
+      },
+    });
+
+    expect(wrapper.attributes('myfakeprop')).toBeUndefined();
+  });
 });
