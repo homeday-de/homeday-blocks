@@ -24,7 +24,7 @@ export default {
       this.setListeners();
     },
   },
-  mounded() {
+  mounted() {
     this.setListeners();
     this.$forceUpdate();
   },
