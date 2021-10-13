@@ -38,18 +38,6 @@ describe('HdResponsive', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  it('provides "matches" object as part of a scoped slot', () => {
-    setBreakpoints(BREAKPOINTS);
-
-    const wrapper = wrapperBuilder({
-      scopedSlots: {
-        default: '<div>{{Object.keys(props.matches)}}</div>',
-      },
-    });
-
-    expect(wrapper.html()).toMatchSnapshot();
-  });
-
   it('provides "indeterminate" flag as part of a scoped slot', () => {
     setBreakpoints(BREAKPOINTS);
 
