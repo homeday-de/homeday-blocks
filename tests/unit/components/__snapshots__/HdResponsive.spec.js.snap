@@ -2,13 +2,6 @@
 
 exports[`HdResponsive provides "indeterminate" flag as part of a scoped slot 1`] = `<div>true</div>`;
 
-exports[`HdResponsive provides "matches" object as part of a scoped slot 1`] = `
-<div>[
-  "s",
-  "m",
-  "l",
-  "xl"
-  ]</div>
-`;
+exports[`HdResponsive provides "matches" object as part of a scoped slot 1`] = `<div>[]</div>`;
 
 exports[`HdResponsive renders no markup 1`] = `""`;
