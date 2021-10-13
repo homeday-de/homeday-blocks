@@ -24,8 +24,9 @@ export default {
       this.setListeners();
     },
   },
-  created() {
+  mounded() {
     this.setListeners();
+    this.$forceUpdate();
   },
   methods: {
     /* istanbul ignore next */
