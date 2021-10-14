@@ -47,7 +47,7 @@ describe('HdResponsive', () => {
       },
     });
 
-    await wrapper.vm.$nextTick()
+    await wrapper.vm.$nextTick();
 
     expect(wrapper.html()).toMatchSnapshot();
   });
@@ -64,7 +64,7 @@ describe('HdResponsive', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  it('breakpoints set and change is managed', async () => {
+  it('breakpoints set and change are managed', async () => {
     setBreakpoints(BREAKPOINTS);
 
     const mockedSetListeners = jest.fn();
@@ -81,14 +81,14 @@ describe('HdResponsive', () => {
 
     // first at the mount...
     expect(mockedSetListeners).toHaveBeenCalledTimes(1);
-    
+
     const modifiedBreakpoints = BREAKPOINTS;
     delete modifiedBreakpoints.s;
-    
+
     wrapper.setProps({ breakpoints: modifiedBreakpoints });
-    
-    await wrapper.vm.$nextTick()
-    
+
+    await wrapper.vm.$nextTick();
+
     // ...then by the watch
     expect(mockedSetListeners).toHaveBeenCalledTimes(2);
   });
