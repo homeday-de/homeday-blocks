@@ -12,6 +12,7 @@
         class="password-input__visibility-toggle"
         :class="{'password-input__visibility-toggle--visible': type === 'text'}"
         @click="toggleVisibility"
+        type="button"
       >
         <HdIcon
           :src="visibilityOnIcon"
