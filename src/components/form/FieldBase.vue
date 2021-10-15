@@ -153,7 +153,9 @@ export default {
       width: 100%;
       background: $secondary-bg;
       border-radius: 4px 4px 0 0;
-      overflow: hidden;
+      &:not(textarea) {
+        overflow: hidden;
+      }
     }
 
     input, textarea, select {

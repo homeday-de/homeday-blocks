@@ -33,6 +33,10 @@
       @blur="handleBlur"
       @input="handleInput"
     />
+    <div
+      v-if="label && (isActive || value)"
+      class="textarea__label-background"
+    />
     <span
       v-if="isMaxlengthIndicatorVisible"
       class="maxlength-indicator"
@@ -193,6 +197,15 @@ export default {
 <style scoped lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
 $distanceFromTextareaToIndicator: -18px;
+
+.textarea__label-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $sp-l - $sp-s; // Same as the padding top from the textarea, defined on FieldBase
+  background-color: $secondary-bg;
+}
 
 .textarea {
   display: block;
