@@ -12,6 +12,7 @@ export default {
         options: [
           'DS-60',
           'DS-80',
+          'DS-90',
           'DS-100',
           'DS-200',
           'DS-300',

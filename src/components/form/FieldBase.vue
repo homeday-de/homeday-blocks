@@ -120,20 +120,11 @@ export default {
 <style scoped lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
 
-@mixin typography-regular {
-  font-size: 16px;
-  line-height: 24px;
-}
-@mixin typography-small {
-  font-size: 12px;
-  line-height: 16px;
-}
-
 .field {
   $root: &;
   display: flex;
   align-items: flex-start;
-  @include typography-regular;
+  @include font("DS-100");
 
   &__icon {
     margin-top: $sp-m;
@@ -151,8 +142,8 @@ export default {
     position: relative;
 
     #{$root}--grouped:not(#{$root}--unlabelled) & {
-      padding-top: $sp-m;
-      margin-top: $sp-s;
+      padding-top: #{$sp-m + $sp-xs};
+      margin-top: $sp-xs;
     }
   }
   &:not(#{$root}--grouped) &__main {
@@ -272,7 +263,7 @@ export default {
   &__helper {
     width: 100%;
     color: getShade($quaternary-color, 80);
-    @include typography-small;
+    @include font("DS-80");
     padding-right: $sp-m;
     padding-left: $sp-m;
 

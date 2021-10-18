@@ -59,11 +59,11 @@ export default {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 8px;
-    height: 8px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
-
-    background-color: $white;
+    border: 2px solid $white;
+    background-color: getShade($secondary-color, 110);
 
     opacity: 0;
     transform: scale(0) translate(-50%, -50%);
