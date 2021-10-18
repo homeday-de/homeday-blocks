@@ -179,8 +179,13 @@ export default {
 <style lang="scss" scoped>
 @import 'homeday-blocks/src/styles/mixins.scss';
 
+$checkbox-width: 20px;
+
 .field {
   margin-bottom: $sp-m;
+  ::v-deep .field__helper {
+    padding-left: #{$checkbox-width + $sp-s};
+  }
 }
 
 .checkbox {
@@ -205,7 +210,7 @@ export default {
     flex: 1;
     margin: 0 0 0 $sp-s;
     text-align: left;
-    @include font('text-small');
+    @include font("DS-100");
   }
 
   &__use-mouse {
@@ -220,26 +225,6 @@ export default {
     &:focus {
       outline: 0;
     }
-  }
-  &__error {
-    @include font('text-xxsmall');
-    position: absolute;
-    top: calc(100% + #{$sp-xs});
-    margin-left: $sp-m;
-    color: $error-color;
-    display: none;
-  }
-  &__label {
-    display: block;
-    flex: 1;
-    margin: 0 0 0 $sp-s;
-
-    text-align: left;
-    font-size: 14px;
-    line-height: 18px;
-    color: $quaternary-color;
-    transition: color 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940);
-    pointer-events: none;
   }
 }
 </style>
