@@ -179,6 +179,7 @@ export default {
   }
   &__label {
     position: absolute;
+    z-index: 2;
     top: $sp-m;
     left: $sp-m;
     transform-origin: left;
