@@ -12,7 +12,8 @@
     @clear-click="clearTextarea"
     @status-click="focusTextarea"
     :class="{
-      'field--maxlength-indicator-visible': isMaxlengthIndicatorVisible
+      'field--maxlength-indicator-visible': isMaxlengthIndicatorVisible,
+      'field--label-background-visible': shouldShowLabelBackground,
     }"
   >
     <textarea
@@ -132,6 +133,9 @@ export default {
     isMaxlengthIndicatorVisible() {
       return this.maxlength < Number.POSITIVE_INFINITY;
     },
+    shouldShowLabelBackground() {
+      return this.label && (this.isActive || this.value);
+    },
     placeholderAttr() {
       if (!this.placeholder) {
         return '';
@@ -213,4 +217,20 @@ $distanceFromTextareaToIndicator: -18px;
     }
   }
 }
+
+.field--label-background-visible {
+  ::v-deep {
+    .field__main::after {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: $sp-l - $sp-s; // Same as the padding top from the textarea, defined on FieldBase
+      background-color: $secondary-bg;
+    }
+  }
+}
+
 </style>
