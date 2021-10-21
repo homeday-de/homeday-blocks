@@ -15,20 +15,20 @@ describe('HdLink', () => {
   it('should have link class', () => {
     const wrapper = wrapperBuilder();
 
-    expect(wrapper.classes()).toContain('link');
-    expect(wrapper.classes()).toContain('link--primary');
+    expect(wrapper.classes()).toContain('hd-link');
+    expect(wrapper.classes()).toContain('hd-link--primary');
     expect(wrapper.html()).toMatchSnapshot();
   });
 
   TYPES.forEach((modifier) => {
-    it(`should render link--${modifier}`, () => {
+    it(`should render hd-link--${modifier}`, () => {
       const wrapper = wrapperBuilder({
         props: {
           modifier,
         },
       });
 
-      expect(wrapper.classes()).toContain(`link--${modifier}`);
+      expect(wrapper.classes()).toContain(`hd-link--${modifier}`);
       expect(wrapper.html()).toMatchSnapshot();
     });
   });
