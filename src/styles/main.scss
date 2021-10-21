@@ -139,6 +139,7 @@ $font-list: ('headline', 'headline'),
   transition: all $time-s ease-in-out;
   position: relative;
   // Link underline
+  text-decoration: none;
   font-size: inherit;
   color: inherit;
 
@@ -152,7 +153,7 @@ $font-list: ('headline', 'headline'),
     position: absolute;
     left: 0;
     right: 0;
-    bottom: -2px;
+    bottom: -1px;
     height: 2px;
     background-color: getShade($secondary-color, 110);
     border-radius: 2px;
@@ -166,7 +167,7 @@ $font-list: ('headline', 'headline'),
   }
 }
 
-.link {
+.hd-link {
   @include link;
 
   &--secondary {
