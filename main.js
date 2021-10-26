@@ -70,6 +70,7 @@ export {
   TYPES as HdNotificationsTypes,
 } from './src/components/notifications/HdNotification.vue';
 
+export { default as HdInputPhone } from './src/components/form/HdInputPhone.vue';
 // Services
 export { default as BreakpointsService } from './src/services/breakpoints';
 export { default as DateService } from './src/services/date';
