@@ -20,7 +20,7 @@ export default {
   },
   computed: {
     computedClasses() {
-      const baseClass = 'link';
+      const baseClass = 'hd-link';
       const classes = [
         baseClass,
         `${baseClass}--${this.modifier}`,
