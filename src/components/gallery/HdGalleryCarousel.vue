@@ -230,7 +230,7 @@ export default {
       padding: $sp-m 0;
     }
 
-    .flickity-viewport {
+    ::v-deep .flickity-viewport {
       overflow: visible;
     }
   }
