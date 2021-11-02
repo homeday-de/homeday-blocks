@@ -13,8 +13,7 @@ storiesOf('Components/Form/HdInputPhone', module)
         v-model="value"
         name="test"
         label="Telefonnumer"
-        :required="true"
-        :countryCodes="[{ code: '+49' }, { code: '+43' }, { code: '+32' }]"
+        :preferredCountries="['DE', 'AT', 'BE']"
       />
     `,
     data() {

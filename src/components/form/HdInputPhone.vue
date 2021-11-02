@@ -5,7 +5,7 @@
       @click="toggleDropdown"
       type="button"
     >
-      <span>{{countryCode}}</span>
+      <span>{{selectedCountry.flag}}</span>
       <!-- <HdIcon
         :src="smallArrowIcon"
         width="24px"
@@ -13,20 +13,31 @@
         class="phone-input__selector__arrow"
       /> -->
     </button>
-    <HdInput
-      ref="input"
+    <HdInputFormatter
       type="tel"
-      :name="name"
-      v-model="computedValue"
-      v-bind="$attrs"
+      label="Telefonnumer"
+      name="phoneNumber"
+      v-model="phoneNumber"
+      :formatter="phoneFormatter"
       class="phone-input__field"
+      placeholder="+55 (0) 555 55555555"
     >
-    </HdInput>
+    </HdInputFormatter>
     <div v-if="showDropdown" class="phone-input__drowpdown">
       <ul>
-        <li v-for="country in countryCodes" :key="country.code">
-          <button @click="selectCountryCode(country.code)">
-            {{country.code}}
+        <li v-for="country in preferredCountriesList" :key="country.name">
+          <button @click="selectCountry(country)">
+            {{country.dial_code}}
+            {{country.flag}}
+            {{country.name}}
+          </button>
+        </li>
+        <hr v-if="preferredCountriesList.length" />
+        <li v-for="country in restOfCountriesList" :key="country.name">
+          <button @click="selectCountry(country)">
+            {{country.dial_code}}
+            {{country.flag}}
+            {{country.name}}
           </button>
         </li>
       </ul>
@@ -35,9 +46,15 @@
 </template>
 
 <script>
-import HdInput from 'homeday-blocks/src/components/form/HdInput.vue';
+/* eslint-disable import/no-extraneous-dependencies */
+import HdInputFormatter from 'homeday-blocks/src/components/form/HdInputFormatter.vue';
 // import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
+import { action } from '@storybook/addon-actions';
+import COUNTRY_PHONE_CODES from 'homeday-blocks/src/assets/countries/country-phone-codes';
+import { formatPhoneNumber } from 'homeday-blocks/src/services/utils';
 import formField from './formFieldMixin';
+
+const MAX_DIGITS_DIAL_CODE = 4;
 
 export default {
   name: 'HdInputPhone',
@@ -46,10 +63,18 @@ export default {
   ],
   inheritAttrs: false,
   components: {
-    HdInput,
+    HdInputFormatter,
     // HdIcon,
   },
   props: {
+    defaultCountry: {
+      type: String,
+      default: 'DE',
+    },
+    preferredCountries: {
+      type: Array,
+      default: () => ([]),
+    },
     value: {
       type: String,
       default: '',
@@ -58,32 +83,65 @@ export default {
       type: String,
       required: true,
     },
-    countryCodes: {
-      type: Array,
-      required: true,
-    },
   },
   data() {
     return {
       showDropdown: false,
-      countryCode: this.countryCodes[0].code,
+      phoneNumber: '',
+      selectedCountry: COUNTRY_PHONE_CODES.find((country) => country.code === this.defaultCountry),
     };
   },
   computed: {
-    computedValue: {
-      get() { return this.value; },
-      set(value) {
-        this.$emit('input', value);
-      },
+    preferredCountriesList() {
+      if (this.preferredCountries.length) {
+        return COUNTRY_PHONE_CODES.filter((country) => (
+          this.preferredCountries.includes(country.code)
+        ));
+      }
+      return COUNTRY_PHONE_CODES;
+    },
+    restOfCountriesList() {
+      if (this.preferredCountries.length) {
+        return COUNTRY_PHONE_CODES.filter((country) => (
+          !this.preferredCountries.includes(country.code)
+        ));
+      }
+      return COUNTRY_PHONE_CODES;
+    },
+
+  },
+  watch: {
+    phoneNumber(newPhoneNumber) {
+      const newSelectedCountry = COUNTRY_PHONE_CODES.find((country) => (
+        country.dial_code === newPhoneNumber.substring(0, 3)
+        || country.dial_code === newPhoneNumber.substring(0, 4)
+        || country.dial_code === newPhoneNumber.substring(0, 5)
+      ));
+      if (newSelectedCountry) this.selectedCountry = newSelectedCountry;
+      action('input')(newPhoneNumber);
+    },
+    selectedCountry(newCountry, prevCountry) {
+      if (this.phoneNumber.length >= MAX_DIGITS_DIAL_CODE + 1) {
+        this.phoneNumber = this.phoneNumber.replace(prevCountry.dial_code, newCountry.dial_code);
+      } else {
+        this.phoneNumber = newCountry.dial_code;
+      }
     },
   },
   methods: {
     toggleDropdown() {
       this.showDropdown = !this.showDropdown;
     },
-    selectCountryCode(countryCode) {
-      this.countryCode = countryCode;
+    selectCountry(country) {
+      this.selectedCountry = country;
       this.toggleDropdown();
+    },
+    phoneFormatter(phone) {
+      const formattedPhone = formatPhoneNumber(this.selectedCountry.dial_code, phone);
+      if (phone) {
+        return formattedPhone;
+      }
+      return phone;
     },
     showError(...args) {
       return this.$refs.input.showError(...args);

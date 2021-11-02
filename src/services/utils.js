@@ -211,7 +211,30 @@ export function keysToSnakeCase(collection) {
   return collection;
 }
 
-export default {
+/**
+ * Formats phone number with this mask: +XX (0) XXX XXXX
+ * @param countryCode {String} Phone number
+ * @param phoneNumber {String} Phone number
+ * @returns {String} Formatted Phone number
+ */
+
+export function formatPhoneNumber(countryCode, phoneNumber) {
+  const trimmedPhone = phoneNumber.replace(/[ +()]/g, '');
+  const trimmedPhoneLength = trimmedPhone.length;
+  const countryCodeDigits = countryCode.length - 1;
+
+  if (trimmedPhoneLength <= countryCodeDigits) {
+    return `${phoneNumber}`;
+  } else if (trimmedPhoneLength === countryCodeDigits + 1) {
+    return `${countryCode} (${trimmedPhone.substr(countryCodeDigits, 1)})`
+  } else if (trimmedPhoneLength > countryCodeDigits + 1 && trimmedPhoneLength <= countryCodeDigits + 4) {
+    return `${countryCode} (${trimmedPhone.substr(countryCodeDigits, 1)}) ${trimmedPhone.substr(countryCodeDigits + 1, 3)}`;
+  } else {
+    return `${countryCode} (${trimmedPhone.substr(countryCodeDigits, 1)}) ${trimmedPhone.substr(countryCodeDigits + 1, 3)} ${trimmedPhone.substr(countryCodeDigits + 4)}`;
+  }
+}
+
+ export default {
   populateTemplate,
   getPasswordStrength,
   formatNestedData,
