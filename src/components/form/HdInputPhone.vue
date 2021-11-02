@@ -28,13 +28,15 @@
       </template>
     </ul>
     <HdInputFormatter
+      ref="input"
       type="tel"
-      label="Telefonnumer"
       name="phoneNumber"
+      label="Telefonnumer"
       v-model="phoneNumber"
-      :formatter="phoneFormatter"
       class="phone-input__field"
       placeholder="+55 (0) 555 55555555"
+      :custom-rules="[rule]"
+      :formatter="phoneFormatter"
     />
   </div>
 </template>
@@ -85,6 +87,15 @@ export default {
       showDropdown: false,
       phoneNumber: '',
       selectedCountry: COUNTRY_PHONE_CODES.find((country) => country.code === this.defaultCountry),
+      rule: {
+        validate(value) {
+          const hasMoreThan8Digits = value.length >= 8;
+          const hasPlusDigit = value.includes('+');
+          const isValid = hasPlusDigit && hasMoreThan8Digits;
+          return isValid;
+        },
+        errorMessage: 'e.g. +55 (0) 555 55555555',
+      },
       smallArrowIcon,
     };
   },
@@ -134,21 +145,12 @@ export default {
     selectCountry(country) {
       this.selectedCountry = country;
       this.toggleDropdown();
+      if (!this.phoneNumber) {
+        this.$refs.input.$refs.input.$refs.input.focus();
+      }
     },
     phoneFormatter(phone) {
       return formatPhoneNumber(this.selectedCountry.dial_code, phone);
-    },
-    showError(...args) {
-      return this.$refs.input.showError(...args);
-    },
-    showHelper(...args) {
-      return this.$refs.input.showHelper(...args);
-    },
-    validate(...args) {
-      return this.$refs.input.validate(...args);
-    },
-    hideError(...args) {
-      return this.$refs.input.hideError(...args);
     },
   },
 };
