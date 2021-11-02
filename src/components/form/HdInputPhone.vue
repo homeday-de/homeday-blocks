@@ -13,6 +13,20 @@
         :class="arrowClassNames"
       />
     </button>
+    <ul v-if="showDropdown" class="phone-input__dropdown">
+      <template>
+        <li v-for="(country, index) in sortedCountriesList" :key="country.name" class="phone-input__dropdown__option">
+          <button @click="selectCountry(country)" class="option-country">
+            <span class="option-country__flag">{{country.flag}}</span>
+            <p class="option-country__name-and-code">
+              <span class="option-country__name">{{country.name}}</span>
+              <span class="option-country__dial-code">{{country.dial_code}}</span>
+            </p>
+          </button>
+          <hr v-if="index === preferredCountries.length - 1" class="phone-input__dropdown__divider" />
+        </li>
+      </template>
+    </ul>
     <HdInputFormatter
       type="tel"
       label="Telefonnumer"
@@ -21,27 +35,7 @@
       :formatter="phoneFormatter"
       class="phone-input__field"
       placeholder="+55 (0) 555 55555555"
-    >
-    </HdInputFormatter>
-    <div v-if="showDropdown" class="phone-input__drowpdown">
-      <ul>
-        <li v-for="country in preferredCountriesList" :key="country.name">
-          <button @click="selectCountry(country)">
-            {{country.dial_code}}
-            {{country.flag}}
-            {{country.name}}
-          </button>
-        </li>
-        <hr v-if="preferredCountriesList.length" />
-        <li v-for="country in restOfCountriesList" :key="country.name">
-          <button @click="selectCountry(country)">
-            {{country.dial_code}}
-            {{country.flag}}
-            {{country.name}}
-          </button>
-        </li>
-      </ul>
-    </div>
+    />
   </div>
 </template>
 
@@ -95,19 +89,17 @@ export default {
     };
   },
   computed: {
-    preferredCountriesList() {
+    sortedCountriesList() {
+      // Preferred countries first
       if (this.preferredCountries.length) {
-        return COUNTRY_PHONE_CODES.filter((country) => (
-          this.preferredCountries.includes(country.code)
-        ));
-      }
-      return COUNTRY_PHONE_CODES;
-    },
-    restOfCountriesList() {
-      if (this.preferredCountries.length) {
-        return COUNTRY_PHONE_CODES.filter((country) => (
-          !this.preferredCountries.includes(country.code)
-        ));
+        return COUNTRY_PHONE_CODES.sort((a, b) => {
+          if (this.preferredCountries.includes(a.code)) {
+            return -1;
+          } if (this.preferredCountries.includes(b.code)) {
+            return 1;
+          }
+          return 0;
+        });
       }
       return COUNTRY_PHONE_CODES;
     },
@@ -164,6 +156,10 @@ export default {
 
 <style lang="scss" scoped>
 @import 'homeday-blocks/src/styles/mixins.scss';
+
+$dropdown-button-width: 74px;
+$dropdown-button-height: 55px;
+
 .phone-input {
   position: relative;
   display: flex;
@@ -173,38 +169,34 @@ export default {
       border-top-left-radius: 0 !important;
     }
     .field__border {
-      left: -74px;
-      width: calc(100% + 74px);
+      left: -$dropdown-button-width;
+      width: calc(100% + #{$dropdown-button-width});
     }
     .field__helper {
-      transform: translateX(-74px);
-      width: calc(100% + 74px);
+      transform: translateX(-$dropdown-button-width);
+      width: calc(100% + #{$dropdown-button-width});
     }
   }
 
   &__selector {
-    width: 74px;
-    height: 55px;
+    width: $dropdown-button-width;
+    height: $dropdown-button-height;
     padding: 0;
     display: flex;
     align-items: center;
     justify-content: flex-end;
     background: $secondary-bg;
     border: none;
-    border-top-left-radius: 4px;
-    border-right: 2px solid getShade($quaternary-color, 60);
+    border-top-left-radius: $sp-xs;
+    border-right: $sp-xxs solid getShade($quaternary-color, 60);
 
     &:focus-visible {
       z-index: 1;
       border-color: transparent;
-      box-shadow: 0px 0px 14px getShade($dodger-blue, 110), 0px 0px 1px getShade($dodger-blue, 110)
     }
-
     &__flag {
-      display: block;
       font-size: 30px;
     }
-
     &__arrow {
       &--up {
         transform: rotate(90deg);
@@ -222,12 +214,49 @@ export default {
     flex: 1;
   }
 
-  &__drowpdown {
+  &__dropdown {
     position: absolute;
-    top: 56px;
+    top: $dropdown-button-height + 1;
     left: 0;
     width: 100%;
+    max-height: 264px;
+    overflow: auto;
+    border-radius: $sp-xs;
     background-color: $white;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+    &__option {
+      .option-country {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 44px;
+        font-family: inherit;
+        border: none;
+        background-color: $white;
+        &:hover,
+        &:focus {
+          cursor: pointer;
+          background-color: getShade($neutral-gray, 40);
+        }
+        &__flag {
+          font-size: 30px;
+          margin-right: $sp-s;
+        }
+        &__name-and-code {
+          text-align: left;
+        }
+        &__name {
+          @include font("DS-100");
+        }
+        &__dial-code {
+          @include font("DS-100");
+          color: getShade($neutral-gray, 85);
+        }
+      }
+    }
+    &__divider {
+      margin: 0;
+    }
   }
 }
 
