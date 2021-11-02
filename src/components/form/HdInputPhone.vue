@@ -5,13 +5,13 @@
       @click="toggleDropdown"
       type="button"
     >
-      <span>{{selectedCountry.flag}}</span>
-      <!-- <HdIcon
+      <span class="phone-input__selector__flag">{{selectedCountry.flag}}</span>
+      <HdIcon
         :src="smallArrowIcon"
         width="24px"
         height="24px"
-        class="phone-input__selector__arrow"
-      /> -->
+        :class="arrowClassNames"
+      />
     </button>
     <HdInputFormatter
       type="tel"
@@ -48,13 +48,15 @@
 <script>
 /* eslint-disable import/no-extraneous-dependencies */
 import HdInputFormatter from 'homeday-blocks/src/components/form/HdInputFormatter.vue';
-// import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
+import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import { action } from '@storybook/addon-actions';
 import COUNTRY_PHONE_CODES from 'homeday-blocks/src/assets/countries/country-phone-codes';
 import { formatPhoneNumber } from 'homeday-blocks/src/services/utils';
+import { smallArrow as smallArrowIcon } from 'homeday-assets';
 import formField from './formFieldMixin';
 
-const MAX_DIGITS_DIAL_CODE = 4;
+const MAX_DIGITS_DIAL_CODE = 5;
+const MIN_DIGITS_DIAL_CODE = 3;
 
 export default {
   name: 'HdInputPhone',
@@ -64,7 +66,7 @@ export default {
   inheritAttrs: false,
   components: {
     HdInputFormatter,
-    // HdIcon,
+    HdIcon,
   },
   props: {
     defaultCountry: {
@@ -89,6 +91,7 @@ export default {
       showDropdown: false,
       phoneNumber: '',
       selectedCountry: COUNTRY_PHONE_CODES.find((country) => country.code === this.defaultCountry),
+      smallArrowIcon,
     };
   },
   computed: {
@@ -108,20 +111,24 @@ export default {
       }
       return COUNTRY_PHONE_CODES;
     },
-
+    arrowClassNames() {
+      const baseClass = 'phone-input__selector__arrow';
+      const directionClass = this.showDropdown ? 'phone-input__selector__arrow--down' : 'phone-input__selector__arrow--up';
+      return [baseClass, directionClass];
+    },
   },
   watch: {
     phoneNumber(newPhoneNumber) {
       const newSelectedCountry = COUNTRY_PHONE_CODES.find((country) => (
-        country.dial_code === newPhoneNumber.substring(0, 3)
-        || country.dial_code === newPhoneNumber.substring(0, 4)
-        || country.dial_code === newPhoneNumber.substring(0, 5)
+        country.dial_code === newPhoneNumber.substring(0, MIN_DIGITS_DIAL_CODE)
+        || country.dial_code === newPhoneNumber.substring(0, MIN_DIGITS_DIAL_CODE + 1)
+        || country.dial_code === newPhoneNumber.substring(0, MAX_DIGITS_DIAL_CODE)
       ));
       if (newSelectedCountry) this.selectedCountry = newSelectedCountry;
       action('input')(newPhoneNumber);
     },
     selectedCountry(newCountry, prevCountry) {
-      if (this.phoneNumber.length >= MAX_DIGITS_DIAL_CODE + 1) {
+      if (this.phoneNumber.length >= MAX_DIGITS_DIAL_CODE) {
         this.phoneNumber = this.phoneNumber.replace(prevCountry.dial_code, newCountry.dial_code);
       } else {
         this.phoneNumber = newCountry.dial_code;
@@ -137,11 +144,7 @@ export default {
       this.toggleDropdown();
     },
     phoneFormatter(phone) {
-      const formattedPhone = formatPhoneNumber(this.selectedCountry.dial_code, phone);
-      if (phone) {
-        return formattedPhone;
-      }
-      return phone;
+      return formatPhoneNumber(this.selectedCountry.dial_code, phone);
     },
     showError(...args) {
       return this.$refs.input.showError(...args);
@@ -166,6 +169,9 @@ export default {
   display: flex;
 
   ::v-deep {
+    .field__main .input {
+      border-top-left-radius: 0 !important;
+    }
     .field__border {
       left: -74px;
       width: calc(100% + 74px);
@@ -178,11 +184,38 @@ export default {
 
   &__selector {
     width: 74px;
-    height: 56px;
+    height: 55px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
     background: $secondary-bg;
     border: none;
+    border-top-left-radius: 4px;
     border-right: 2px solid getShade($quaternary-color, 60);
-    border-bottom: 2px solid getShade($quaternary-color, 60);
+
+    &:focus-visible {
+      z-index: 1;
+      border-color: transparent;
+      box-shadow: 0px 0px 14px getShade($dodger-blue, 110), 0px 0px 1px getShade($dodger-blue, 110)
+    }
+
+    &__flag {
+      display: block;
+      font-size: 30px;
+    }
+
+    &__arrow {
+      &--up {
+        transform: rotate(90deg);
+      }
+      &--down {
+        transform: rotate(-90deg);
+      }
+      ::v-deep path {
+        fill: $neutral-gray;
+      }
+    }
   }
 
   &__field {
@@ -194,7 +227,7 @@ export default {
     top: 56px;
     left: 0;
     width: 100%;
-    background-color: pink;
+    background-color: $white;
   }
 }
 
