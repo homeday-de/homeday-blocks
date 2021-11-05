@@ -2,21 +2,37 @@
   <div class="phone-input">
     <button
       class="phone-input__selector"
+      aria-haspopup="listbox"
+      aria-label="Choose a country code:"
       @click="toggleDropdown"
-      type="button"
     >
       <span class="phone-input__selector__flag">{{selectedCountry.flag}}</span>
       <HdIcon
-        :src="smallArrowIcon"
         width="24px"
         height="24px"
+        :src="smallArrowIcon"
         :class="arrowClassNames"
       />
     </button>
-    <ul v-if="showDropdown" class="phone-input__dropdown">
+    <ul
+      id="country-codes-list"
+      tabindex="-1"
+      role="listbox"
+      v-show="showDropdown"
+      aria-label="Choose a country code:"
+      class="phone-input__dropdown"
+      :aria-activedescendant="`${selectedCountry.dial_code}, ${selectedCountry.name}`"
+    >
       <template>
-        <li v-for="(country, index) in sortedCountriesList" :key="country.name" class="phone-input__dropdown__option">
-          <button @click="selectCountry(country)" class="option-country">
+        <li
+          v-for="(country, index) in sortedCountriesList"
+          :key="country.code"
+          :id="country.code"
+          class="phone-input__dropdown__option"
+          role="option"
+          :aria-selected="selectedCountry.code === country.code"
+        >
+          <button @click="selectCountry(country)" class="option-country" :ref="country.code">
             <span class="option-country__flag">{{country.flag}}</span>
             <p class="option-country__name-and-code">
               <span class="option-country__name">{{country.name}}</span>
@@ -53,6 +69,9 @@ import formField from './formFieldMixin';
 
 const MAX_DIGITS_DIAL_CODE = 5;
 const MIN_DIGITS_DIAL_CODE = 3;
+const ARROW_UP_KEY_CODE = 38;
+const ARROW_DOWN_KEY_CODE = 40;
+const ESC_KEY_CODE = 27;
 
 export default {
   name: 'HdInputPhone',
@@ -87,6 +106,7 @@ export default {
       showDropdown: false,
       phoneNumber: '',
       selectedCountry: COUNTRY_PHONE_CODES.find((country) => country.code === this.defaultCountry),
+      focusedCountry: null,
       rule: {
         validate(value) {
           const hasMoreThan8Digits = value.length >= 8;
@@ -137,6 +157,14 @@ export default {
         this.phoneNumber = newCountry.dial_code;
       }
     },
+    showDropdown(isShown) {
+      let selectKeys;
+      if (isShown) {
+        selectKeys = window.addEventListener('keyup', this.keysHandler);
+      } else {
+        window.removeEventListener('keyup', selectKeys);
+      }
+    },
   },
   methods: {
     toggleDropdown() {
@@ -145,12 +173,55 @@ export default {
     selectCountry(country) {
       this.selectedCountry = country;
       this.toggleDropdown();
-      if (!this.phoneNumber) {
+      if (this.phoneNumber.length <= MAX_DIGITS_DIAL_CODE) {
         this.$refs.input.$refs.input.$refs.input.focus();
       }
     },
     phoneFormatter(phone) {
       return formatPhoneNumber(this.selectedCountry.dial_code, phone);
+    },
+    keysHandler(event) {
+      console.log(event.keyCode);
+      const firstCountryCode = this.sortedCountriesList[0].code;
+      const lastCountryCode = this.sortedCountriesList[this.sortedCountriesList.length - 1].code;
+      switch (event.keyCode) {
+        case ARROW_DOWN_KEY_CODE:
+          // If there is no focus yet, focus first option
+          if (this.focusedCountry === null) {
+            const [firstChild] = this.$refs[firstCountryCode];
+            firstChild.focus();
+            this.focusedCountry = firstChild.parentNode.id;
+          } else if (this.focusedCountry !== lastCountryCode) {
+          // Focus next option
+            const [focusedOption] = this.$refs[this.focusedCountry];
+            const nextOption = focusedOption.parentNode.nextSibling;
+            nextOption.firstChild.focus();
+            this.focusedCountry = nextOption.id;
+          }
+          break;
+
+        case ARROW_UP_KEY_CODE:
+          // If there is no focus yet, focus last option
+          if (this.focusedCountry === null) {
+            const [lastChild] = this.$refs[lastCountryCode];
+            lastChild.focus();
+            this.focusedCountry = lastChild.parentNode.id;
+          } else if (this.focusedCountry !== firstCountryCode) {
+          // Focus prev option
+            const [focusedOption] = this.$refs[this.focusedCountry];
+            const prevOption = focusedOption.parentNode.previousSibling;
+            prevOption.firstChild.focus();
+            this.focusedCountry = prevOption.id;
+          }
+          break;
+
+        case ESC_KEY_CODE:
+          this.toggleDropdown();
+          break;
+
+        default:
+          break;
+      }
     },
   },
 };
@@ -220,6 +291,7 @@ $dropdown-button-height: 55px;
     position: absolute;
     top: $dropdown-button-height + 1;
     left: 0;
+    z-index: 10;
     width: 100%;
     max-height: 264px;
     overflow: auto;
