@@ -212,25 +212,30 @@ export function keysToSnakeCase(collection) {
 }
 
 /**
- * Formats phone number with this mask: +XX (0) XXX XXXX
- * @param countryCode {String} Phone number
+ * Formats phone number with this mask: +55 555 555 5555
+ * @param countryCode {String} Selected country code
  * @param phoneNumber {String} Phone number
  * @returns {String} Formatted Phone number
  */
 
 export function formatPhoneNumber(countryCode, phoneNumber) {
-  const trimmedPhone = phoneNumber.replace(/[ +()]/g, '');
-  const trimmedPhoneLength = trimmedPhone.length;
-  const countryCodeDigits = countryCode.length - 1;
-
-  if (trimmedPhoneLength <= countryCodeDigits) {
-    return `${phoneNumber}`;
-  } else if (trimmedPhoneLength === countryCodeDigits + 1) {
-    return `${countryCode} (${trimmedPhone.substr(countryCodeDigits, 1)})`
-  } else if (trimmedPhoneLength > countryCodeDigits + 1 && trimmedPhoneLength <= countryCodeDigits + 4) {
-    return `${countryCode} (${trimmedPhone.substr(countryCodeDigits, 1)}) ${trimmedPhone.substr(countryCodeDigits + 1, 3)}`;
+  const countryCodeDigits = countryCode.length;
+  if (!phoneNumber) {
+    return '';
+  } else if (phoneNumber.length === countryCodeDigits) {
+    return countryCode;
+  } else if (phoneNumber.length > countryCodeDigits && phoneNumber.length <= countryCodeDigits + 3) {
+    const groupsOfNumbers = phoneNumber.substring(countryCodeDigits).match(/(\d{0,3})/);
+    return `${countryCode} ${groupsOfNumbers[1]}`;
+  } else if (phoneNumber.length > countryCodeDigits + 3 && phoneNumber.length <= countryCodeDigits + 6) {
+    const groupsOfNumbers = phoneNumber.substring(countryCodeDigits).match(/(\d{0,3})(\d{0,3})/);
+    return `${countryCode} ${groupsOfNumbers[1]} ${groupsOfNumbers[2]}`;
+  } else if (phoneNumber.length > countryCodeDigits + 6 && phoneNumber.length <= countryCodeDigits + 10) {
+    const groupsOfNumbers = phoneNumber.substring(countryCodeDigits).match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+    return `${countryCode} ${groupsOfNumbers[1]} ${groupsOfNumbers[2]} ${groupsOfNumbers[3]}`;
   } else {
-    return `${countryCode} (${trimmedPhone.substr(countryCodeDigits, 1)}) ${trimmedPhone.substr(countryCodeDigits + 1, 3)} ${trimmedPhone.substr(countryCodeDigits + 4)}`;
+    const groupsOfNumbers = phoneNumber.substring(countryCodeDigits).match(/(\d{0,3})(\d{0,3})(\d{0,4})(\d{0,10})/);
+    return `${countryCode} ${groupsOfNumbers[1]} ${groupsOfNumbers[2]} ${groupsOfNumbers[3]}${groupsOfNumbers[4]}`;
   }
 }
 

@@ -50,7 +50,7 @@
       label="Telefonnumer"
       v-model="phoneNumber"
       class="phone-input__field"
-      placeholder="+55 (0) 555 55555555"
+      placeholder="+55 555 555 5555"
       :custom-rules="[rule]"
       :formatter="phoneFormatter"
     />
@@ -104,17 +104,18 @@ export default {
   data() {
     return {
       showDropdown: false,
-      phoneNumber: '',
+      phoneNumber: COUNTRY_PHONE_CODES.find((country) => country.code === this.defaultCountry).dial_code,
       selectedCountry: COUNTRY_PHONE_CODES.find((country) => country.code === this.defaultCountry),
       focusedCountry: null,
       rule: {
-        validate(value) {
+        validate: (value) => {
           const hasMoreThan8Digits = value.length >= 8;
           const hasPlusDigit = value.includes('+');
+          // const hasCorrectFormat = value.substring(this.selectedCountry.dial_code.length).match(/(\d{3})(\d{3})(\d{4})/);
           const isValid = hasPlusDigit && hasMoreThan8Digits;
           return isValid;
         },
-        errorMessage: 'e.g. +55 (0) 555 55555555',
+        errorMessage: 'e.g. +55 555 555 5555',
       },
       smallArrowIcon,
     };
@@ -181,9 +182,9 @@ export default {
       return formatPhoneNumber(this.selectedCountry.dial_code, phone);
     },
     keysHandler(event) {
-      console.log(event.keyCode);
       const firstCountryCode = this.sortedCountriesList[0].code;
       const lastCountryCode = this.sortedCountriesList[this.sortedCountriesList.length - 1].code;
+
       switch (event.keyCode) {
         case ARROW_DOWN_KEY_CODE:
           // If there is no focus yet, focus first option
