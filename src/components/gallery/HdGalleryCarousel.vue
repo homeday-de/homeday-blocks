@@ -216,7 +216,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "homeday-blocks/src/styles/mixins.scss";
 
 .gallery-carousel {
@@ -230,7 +230,7 @@ export default {
       padding: $sp-m 0;
     }
 
-    .flickity-viewport {
+    ::v-deep .flickity-viewport {
       overflow: visible;
     }
   }
