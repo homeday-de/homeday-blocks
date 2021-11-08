@@ -212,6 +212,9 @@ $_controlIconSize: 32px;
     text-align: left;
     transition: outline $time-s ease-in-out;
 
+    // avoids to expand out of the content due to animation
+    overflow: hidden;
+
     @media (min-width: $break-tablet) {
       @include font('title');
     }
