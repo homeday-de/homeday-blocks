@@ -5,6 +5,7 @@
       aria-haspopup="listbox"
       aria-label="Choose a country code:"
       @click="toggleDropdown"
+      :aria-activedescendant="`${selectedCountry.dial_code}, ${selectedCountry.name}`"
     >
       <span class="phone-input__selector__flag">{{selectedCountry.flag}}</span>
       <HdIcon
@@ -21,7 +22,6 @@
       v-show="showDropdown"
       aria-label="Choose a country code:"
       class="phone-input__dropdown"
-      :aria-activedescendant="`${selectedCountry.dial_code}, ${selectedCountry.name}`"
     >
       <template>
         <li
@@ -53,6 +53,7 @@
       placeholder="+55 555 555 5555"
       :custom-rules="[rule]"
       :formatter="phoneFormatter"
+      @input="handleInputEvent"
     />
   </div>
 </template>
@@ -111,7 +112,6 @@ export default {
         validate: (value) => {
           const hasMoreThan8Digits = value.length >= 8;
           const hasPlusDigit = value.includes('+');
-          // const hasCorrectFormat = value.substring(this.selectedCountry.dial_code.length).match(/(\d{3})(\d{3})(\d{4})/);
           const isValid = hasPlusDigit && hasMoreThan8Digits;
           return isValid;
         },
@@ -223,6 +223,9 @@ export default {
         default:
           break;
       }
+    },
+    handleInputEvent(value) {
+      this.$emit('input', formatPhoneNumber(this.selectedCountry.dial_code, value));
     },
   },
 };
