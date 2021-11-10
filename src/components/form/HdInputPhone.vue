@@ -125,6 +125,9 @@ export default {
       // Preferred countries first
       if (this.preferredCountries.length) {
         return COUNTRY_PHONE_CODES.sort((a, b) => {
+          if (this.preferredCountries.includes(a.code) && this.preferredCountries.includes(b.code)) {
+            return a.name > b.name;
+          }
           if (this.preferredCountries.includes(a.code)) {
             return -1;
           } if (this.preferredCountries.includes(b.code)) {

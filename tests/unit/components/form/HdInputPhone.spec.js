@@ -37,7 +37,7 @@ describe('HdInputPhone', () => {
   it('should render the preferred countries first', () => {
     const { wrapper } = build({
       defaultCountry: 'DE',
-      preferredCountries: ['BE', 'DE', 'AT'],
+      preferredCountries: ['AT', 'DE', 'BE'],
     });
 
     // The countries are going to be rendered in alphabetical order
@@ -48,10 +48,9 @@ describe('HdInputPhone', () => {
     ];
 
     const $listItems = wrapper.findAll('li');
-    const firstItems = $listItems.wrappers.slice(0, preferredCountriesNames.length).map((item) => item.element);
-
+    const firstItems = $listItems.wrappers.slice(0, preferredCountriesNames.length);
     firstItems.forEach((item, index) => {
-      expect(item).toHaveTextContent(preferredCountriesNames[index]);
+      expect(item.element).toHaveTextContent(preferredCountriesNames[index]);
     });
   });
 
