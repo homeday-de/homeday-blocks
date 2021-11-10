@@ -52,7 +52,7 @@
     "@storybook/addon-knobs": "6.2.9",
     "@storybook/addon-links": "6.2.9",
     "@storybook/addon-viewport": "6.2.9",
-    "@storybook/theming": "6.2.9",
+    "@storybook/theming": "6.3.12",
     "@storybook/vue": "6.2.9",
     "@testing-library/jest-dom": "^5.14.1",
     "@types/lodash": "^4.14.171",
