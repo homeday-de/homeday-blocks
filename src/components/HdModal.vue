@@ -49,6 +49,7 @@
 
           <button
             v-if="isCloseButtonVisible"
+            type="button"
             class="hd-modal__close-button"
             @click="onClose()"
           >
