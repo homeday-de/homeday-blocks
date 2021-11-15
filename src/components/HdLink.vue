@@ -17,6 +17,11 @@ export default {
     to: {
       type: [String, Object],
     },
+    customTag: {
+      type: String,
+      required: false,
+      default: 'router-link',
+    },
   },
   computed: {
     computedClasses() {
@@ -30,7 +35,7 @@ export default {
     },
   },
   render(createElement) {
-    const tag = this.to ? 'nuxt-link' : 'a';
+    const tag = this.to ? this.customTag : 'a';
     const data = {
       class: this.computedClasses,
     };
