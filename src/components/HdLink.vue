@@ -30,7 +30,7 @@ export default {
     },
   },
   render(createElement) {
-    const tag = this.to ? 'router-link' : 'a';
+    const tag = this.to ? 'nuxt-link' : 'a';
     const data = {
       class: this.computedClasses,
     };
