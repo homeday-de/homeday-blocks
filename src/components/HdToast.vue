@@ -6,12 +6,14 @@
   <section v-if="hasLabels" class="toast__controls">
     <button
       v-if="secondaryLabel"
+      type="button"
       class="toast__control toast__control--secondary"
       @click="secondaryClick"
       v-text="secondaryLabel"
     />
     <button
       v-if="primaryLabel"
+      type="button"
       class="toast__control toast__control--primary"
       @click="primaryClick"
       v-text="primaryLabel"
