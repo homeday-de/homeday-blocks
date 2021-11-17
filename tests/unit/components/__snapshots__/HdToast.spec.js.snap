@@ -4,7 +4,7 @@ exports[`HdToast 'primaryLabel' text binds to primary <button> 1`] = `
 <div class="toast">
   <p class="toast__text"></p>
   <section class="toast__controls">
-    <!----> <button class="toast__control toast__control--primary">random-text</button>
+    <!----> <button type="button" class="toast__control toast__control--primary">random-text</button>
   </section>
 </div>
 `;
@@ -12,7 +12,7 @@ exports[`HdToast 'primaryLabel' text binds to primary <button> 1`] = `
 exports[`HdToast 'secondaryLabel' text binds to secondary <button> 1`] = `
 <div class="toast">
   <p class="toast__text"></p>
-  <section class="toast__controls"><button class="toast__control toast__control--secondary">random-text</button>
+  <section class="toast__controls"><button type="button" class="toast__control toast__control--secondary">random-text</button>
     <!---->
   </section>
 </div>
