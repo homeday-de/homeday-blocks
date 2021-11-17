@@ -6,6 +6,7 @@
     }"
     autocomplete="off"
     :disabled="disabled"
+    type="button"
   >
     <HdIcon
       :src="chevronIcon"
