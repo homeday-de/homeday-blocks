@@ -2,11 +2,11 @@
 
 exports[`HdCalendar renders component 1`] = `
 <div class="calendar">
-  <header class="calendar__header"><button class="calendar__button calendar__header__button calendar__button--prev calendar__button--disabled">
+  <header class="calendar__header"><button type="button" class="calendar__button calendar__header__button calendar__button--prev calendar__button--disabled">
       <hdicon-stub src="" transform="rotate(180)" width="100%" height="100%"></hdicon-stub>
     </button> <span class="calendar__header__month">
         Mai
-      </span> <button class="calendar__button calendar__header__button calendar__button--next">
+      </span> <button type="button" class="calendar__button calendar__header__button calendar__button--next">
       <hdicon-stub src="" width="100%" height="100%"></hdicon-stub>
     </button></header>
   <section class="calendar__body">
