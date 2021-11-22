@@ -31,8 +31,9 @@
           class="phone-input__dropdown__option"
           role="option"
           :aria-selected="selectedCountry.code === country.code"
+          :ref="country.code"
         >
-          <button @click="selectCountry(country)" class="option-country" :ref="country.code">
+          <button @click="selectCountry(country)" class="option-country">
             <span class="option-country__flag">{{country.flag}}</span>
             <p class="option-country__name-and-code">
               <span class="option-country__name">{{country.name}}</span>
@@ -73,6 +74,15 @@ const MIN_DIGITS_DIAL_CODE = 3;
 const ARROW_UP_KEY_CODE = 38;
 const ARROW_DOWN_KEY_CODE = 40;
 const ESC_KEY_CODE = 27;
+
+const ALPHABET_UPPERCASE_CODES = [65, 90];
+const ALPHABET_LOWERCASE_CODES = [97, 122];
+
+const isAlphabetKey = (key) => {
+  const [A, Z] = ALPHABET_UPPERCASE_CODES;
+  const [a, z] = ALPHABET_LOWERCASE_CODES;
+  return (key >= A && key <= Z) || (key >= a && key <= z);
+};
 
 export default {
   name: 'HdInputPhone',
@@ -185,46 +195,37 @@ export default {
       return formatPhoneNumber(this.selectedCountry.dial_code, phone);
     },
     keysHandler(event) {
+      const { keyCode } = event;
       const firstCountryCode = this.sortedCountriesList[0].code;
       const lastCountryCode = this.sortedCountriesList[this.sortedCountriesList.length - 1].code;
+      let countryNode = null;
 
-      switch (event.keyCode) {
-        case ARROW_DOWN_KEY_CODE:
-          // If there is no focus yet, focus first option
-          if (this.focusedCountry === null) {
-            const [firstChild] = this.$refs[firstCountryCode];
-            firstChild.focus();
-            this.focusedCountry = firstChild.parentNode.id;
-          } else if (this.focusedCountry !== lastCountryCode) {
-          // Focus next option
-            const [focusedOption] = this.$refs[this.focusedCountry];
-            const nextOption = focusedOption.parentNode.nextSibling;
-            nextOption.firstChild.focus();
-            this.focusedCountry = nextOption.id;
-          }
-          break;
+      const foucsCountryCode = () => {
+        countryNode.firstChild.focus();
+        this.focusedCountry = countryNode.id;
+      };
 
-        case ARROW_UP_KEY_CODE:
-          // If there is no focus yet, focus last option
-          if (this.focusedCountry === null) {
-            const [lastChild] = this.$refs[lastCountryCode];
-            lastChild.focus();
-            this.focusedCountry = lastChild.parentNode.id;
-          } else if (this.focusedCountry !== firstCountryCode) {
-          // Focus prev option
-            const [focusedOption] = this.$refs[this.focusedCountry];
-            const prevOption = focusedOption.parentNode.previousSibling;
-            prevOption.firstChild.focus();
-            this.focusedCountry = prevOption.id;
-          }
-          break;
-
-        case ESC_KEY_CODE:
-          this.toggleDropdown();
-          break;
-
-        default:
-          break;
+      if (keyCode === ARROW_DOWN_KEY_CODE) {
+        if (this.focusedCountry === null) { // If there is no focus yet, focus first option
+          [countryNode] = this.$refs[firstCountryCode];
+        } else if (this.focusedCountry !== lastCountryCode) { // If there is, focus next option
+          countryNode = this.$refs[this.focusedCountry][0].nextSibling;
+        }
+        foucsCountryCode();
+      } else if (keyCode === ARROW_UP_KEY_CODE) {
+        if (this.focusedCountry === null) { // If there is no focus yet, focus last option
+          [countryNode] = this.$refs[lastCountryCode];
+        } else if (this.focusedCountry !== firstCountryCode) { // If there is, focus prev option
+          countryNode = this.$refs[this.focusedCountry][0].previousSibling;
+        }
+        foucsCountryCode();
+      } else if (isAlphabetKey(keyCode)) {
+        const keyString = event.key.toUpperCase();
+        const firstMatchingCountryCode = this.sortedCountriesList.find((country) => country.name.charAt(0) === keyString).code;
+        [countryNode] = this.$refs[firstMatchingCountryCode];
+        foucsCountryCode();
+      } else if (keyCode === ESC_KEY_CODE) {
+        this.toggleDropdown();
       }
     },
     handleInputEvent(value) {

@@ -5,6 +5,7 @@ import { action } from '@storybook/addon-actions';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 
 storiesOf('Components/Form/HdInputPhone', module)
+  .addParameters({ options: { enableShortcuts: false } })
   .addDecorator(FormWrapper)
   .add('simple', () => ({
     components: { HdInputPhone },
