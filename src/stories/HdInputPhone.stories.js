@@ -14,6 +14,7 @@ storiesOf('Components/Form/HdInputPhone', module)
         v-model="value"
         name="test"
         label="Telefonnumer"
+        lang="de"
         :preferredCountries="['DE', 'AT', 'BE']"
       />
     `,

@@ -5,9 +5,9 @@
       aria-haspopup="listbox"
       aria-label="Choose a country code:"
       @click="toggleDropdown"
-      :aria-activedescendant="`${selectedCountry.dial_code}, ${selectedCountry.name}`"
+      :aria-activedescendant="`${selectedCountry.dial_code}, ${t.COUNTRIES[selectedCountry.code]}`"
     >
-      <span class="phone-input__selector__flag">{{selectedCountry.flag}}</span>
+      <span :class="`phone-input__selector__flag flag-icon flag-icon-${selectedCountry.code.toLowerCase()}`"></span>
       <HdIcon
         width="24px"
         height="24px"
@@ -34,9 +34,9 @@
           :ref="country.code"
         >
           <button @click="selectCountry(country)" class="option-country">
-            <span class="option-country__flag">{{country.flag}}</span>
+            <span :class="`option-country__flag flag-icon flag-icon-${country.code.toLowerCase()}`"></span>
             <p class="option-country__name-and-code">
-              <span class="option-country__name">{{country.name}}</span>
+              <span class="option-country__name">{{t.COUNTRIES[country.code]}}</span>
               <span class="option-country__dial-code">{{country.dial_code}}</span>
             </p>
           </button>
@@ -61,13 +61,17 @@
 
 <script>
 /* eslint-disable import/no-extraneous-dependencies */
+import { action } from '@storybook/addon-actions';
 import HdInputFormatter from 'homeday-blocks/src/components/form/HdInputFormatter.vue';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
-import { action } from '@storybook/addon-actions';
-import COUNTRY_PHONE_CODES from 'homeday-blocks/src/assets/countries/country-phone-codes';
+import { getMessages } from 'homeday-blocks/src/lang';
 import { formatPhoneNumber } from 'homeday-blocks/src/services/utils';
 import { smallArrow as smallArrowIcon } from 'homeday-assets';
+import countryCodes from 'country-codes-list';
 import formField from './formFieldMixin';
+
+const COUNTRY_PHONE_CODES = countryCodes
+  .customArray({ code: '{countryCode}', dial_code: '+{countryCallingCode}' });
 
 const MAX_DIGITS_DIAL_CODE = 5;
 const MIN_DIGITS_DIAL_CODE = 3;
@@ -111,11 +115,15 @@ export default {
       type: String,
       required: true,
     },
+    lang: {
+      type: String,
+      default: 'de',
+    },
   },
   data() {
     return {
       showDropdown: false,
-      phoneNumber: COUNTRY_PHONE_CODES.find((country) => country.code === this.defaultCountry).dial_code,
+      phoneNumber: COUNTRY_PHONE_CODES.find((country) => country.code === this.defaultCountry)?.dial_code,
       selectedCountry: COUNTRY_PHONE_CODES.find((country) => country.code === this.defaultCountry),
       focusedCountry: null,
       rule: {
@@ -136,12 +144,14 @@ export default {
       if (this.preferredCountries.length) {
         return COUNTRY_PHONE_CODES.sort((a, b) => {
           if (this.preferredCountries.includes(a.code) && this.preferredCountries.includes(b.code)) {
-            return a.name > b.name;
+            return this.t.COUNTRIES[a.code] > this.t.COUNTRIES[b.code];
           }
           if (this.preferredCountries.includes(a.code)) {
             return -1;
           } if (this.preferredCountries.includes(b.code)) {
             return 1;
+          } if (!this.preferredCountries.includes(a.code) && !this.preferredCountries.includes(b.code)) {
+            return (this.t.COUNTRIES[a.code] > this.t.COUNTRIES[b.code]) ? 1 : -1;
           }
           return 0;
         });
@@ -152,6 +162,9 @@ export default {
       const baseClass = 'phone-input__selector__arrow';
       const directionClass = this.showDropdown ? 'phone-input__selector__arrow--down' : 'phone-input__selector__arrow--up';
       return [baseClass, directionClass];
+    },
+    t() {
+      return getMessages(this.lang);
     },
   },
   watch: {
@@ -201,29 +214,35 @@ export default {
       let countryNode = null;
 
       const foucsCountryCode = () => {
-        countryNode.firstChild.focus();
-        this.focusedCountry = countryNode.id;
+        if (countryNode !== null) {
+          countryNode.firstChild.focus();
+          this.focusedCountry = countryNode.id;
+        }
       };
 
       if (keyCode === ARROW_DOWN_KEY_CODE) {
         if (this.focusedCountry === null) { // If there is no focus yet, focus first option
           [countryNode] = this.$refs[firstCountryCode];
         } else if (this.focusedCountry !== lastCountryCode) { // If there is, focus next option
-          countryNode = this.$refs[this.focusedCountry][0].nextSibling;
+          countryNode = this.$refs[this.focusedCountry][0]?.nextSibling;
         }
         foucsCountryCode();
       } else if (keyCode === ARROW_UP_KEY_CODE) {
         if (this.focusedCountry === null) { // If there is no focus yet, focus last option
           [countryNode] = this.$refs[lastCountryCode];
         } else if (this.focusedCountry !== firstCountryCode) { // If there is, focus prev option
-          countryNode = this.$refs[this.focusedCountry][0].previousSibling;
+          countryNode = this.$refs[this.focusedCountry][0]?.previousSibling;
         }
         foucsCountryCode();
       } else if (isAlphabetKey(keyCode)) {
         const keyString = event.key.toUpperCase();
-        const firstMatchingCountryCode = this.sortedCountriesList.find((country) => country.name.charAt(0) === keyString).code;
-        [countryNode] = this.$refs[firstMatchingCountryCode];
-        foucsCountryCode();
+        const firstMatchingCountryCode = this.sortedCountriesList.find(
+          (country) => this.t.COUNTRIES[country.code].charAt(0) === keyString,
+        )?.code;
+        if (firstMatchingCountryCode) {
+          [countryNode] = this.$refs[firstMatchingCountryCode];
+          foucsCountryCode();
+        }
       } else if (keyCode === ESC_KEY_CODE) {
         this.toggleDropdown();
       }
@@ -237,6 +256,10 @@ export default {
 
 <style lang="scss" scoped>
 @import 'homeday-blocks/src/styles/mixins.scss';
+
+$flag-icons-path: '../../../node_modules/flag-icons-svg/svg';
+@import './node_modules/flag-icons-svg/sass/_variables.scss';
+@import './node_modules/flag-icons-svg/sass/flag-icons.scss';
 
 $dropdown-button-width: 74px;
 $dropdown-button-height: 55px;
@@ -276,7 +299,7 @@ $dropdown-button-height: 55px;
       border-color: transparent;
     }
     &__flag {
-      font-size: 30px;
+      font-size: 18px;
     }
     &__arrow {
       &--up {
@@ -321,7 +344,7 @@ $dropdown-button-height: 55px;
           background-color: getShade($neutral-gray, 40);
         }
         &__flag {
-          font-size: 30px;
+          font-size: 18px;
           margin-right: $sp-s;
         }
         &__name-and-code {
