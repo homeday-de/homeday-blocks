@@ -64,16 +64,15 @@ import { action } from '@storybook/addon-actions';
 import HdInputFormatter from 'homeday-blocks/src/components/form/HdInputFormatter.vue';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import { getMessages } from 'homeday-blocks/src/lang';
-import { formatPhoneNumber } from 'homeday-blocks/src/services/utils';
 import { smallArrow as smallArrowIcon } from 'homeday-assets';
 import countryCodes from 'country-codes-list';
+import PhoneNumber from 'awesome-phonenumber';
 import formField from './formFieldMixin';
 
 const COUNTRY_PHONE_CODES = countryCodes
   .customArray({ code: '{countryCode}', dial_code: '+{countryCallingCode}' });
 
 const MAX_DIGITS_DIAL_CODE = 5;
-const MIN_DIGITS_DIAL_CODE = 3;
 const ARROW_UP_KEY_CODE = 38;
 const ARROW_DOWN_KEY_CODE = 40;
 const ESC_KEY_CODE = 27;
@@ -127,10 +126,8 @@ export default {
       focusedCountry: null,
       rule: {
         validate: (value) => {
-          const hasMoreThan8Digits = value.length >= 8;
-          const hasPlusDigit = value.includes('+');
-          const isValid = hasPlusDigit && hasMoreThan8Digits;
-          return isValid;
+          const phoneNumber = new PhoneNumber(value);
+          return phoneNumber.isValid() && phoneNumber.isMobile() && phoneNumber.canBeInternationallyDialled();
         },
         errorMessage: 'e.g. +55 555 555 5555',
       },
@@ -142,6 +139,7 @@ export default {
       // Preferred countries first
       if (this.preferredCountries.length) {
         return COUNTRY_PHONE_CODES.sort((a, b) => {
+          // Alphabetical order on preferred countries
           if (this.preferredCountries.includes(a.code) && this.preferredCountries.includes(b.code)) {
             return this.t.COUNTRIES[a.code] > this.t.COUNTRIES[b.code];
           }
@@ -149,6 +147,7 @@ export default {
             return -1;
           } if (this.preferredCountries.includes(b.code)) {
             return 1;
+          // Alphabetical order on rest of countries
           } if (!this.preferredCountries.includes(a.code) && !this.preferredCountries.includes(b.code)) {
             return (this.t.COUNTRIES[a.code] > this.t.COUNTRIES[b.code]) ? 1 : -1;
           }
@@ -167,7 +166,6 @@ export default {
       const countryClass = `flag-icon flag-icon-${this.selectedCountry.code.toLowerCase()}`;
       return [baseClass, countryClass];
     },
-
     activeCountryCodeAndName() {
       return `${this.selectedCountry.dial_code}, ${this.t.COUNTRIES[this.selectedCountry.code]}`;
     },
@@ -177,11 +175,10 @@ export default {
   },
   watch: {
     phoneNumber(newPhoneNumber) {
-      const newSelectedCountry = COUNTRY_PHONE_CODES.find((country) => (
-        country.dial_code === newPhoneNumber.substring(0, MIN_DIGITS_DIAL_CODE)
-        || country.dial_code === newPhoneNumber.substring(0, MIN_DIGITS_DIAL_CODE + 1)
-        || country.dial_code === newPhoneNumber.substring(0, MAX_DIGITS_DIAL_CODE)
-      ));
+      const phoneNumber = new PhoneNumber(newPhoneNumber);
+      const phoneCountryCode = `+${phoneNumber.getCountryCode()}`;
+      const newSelectedCountry = COUNTRY_PHONE_CODES.find((country) => country.dial_code === phoneCountryCode);
+
       if (newSelectedCountry) this.selectedCountry = newSelectedCountry;
       action('input')(newPhoneNumber);
     },
@@ -202,11 +199,6 @@ export default {
     },
   },
   methods: {
-    getOptionFlagClassNames(code) {
-      const baseClass = 'option__flag';
-      const countryClass = `flag-icon flag-icon-${code.toLowerCase()}`;
-      return [baseClass, countryClass];
-    },
     toggleDropdown() {
       this.showDropdown = !this.showDropdown;
     },
@@ -217,8 +209,13 @@ export default {
         this.$refs.input.$refs.input.$refs.input.focus();
       }
     },
+    handleInputEvent(value) {
+      const phoneNumber = new PhoneNumber(value);
+      this.$emit('input', phoneNumber.getNumber('international'));
+    },
     phoneFormatter(phone) {
-      return formatPhoneNumber(this.selectedCountry.dial_code, phone);
+      const phoneNumber = new PhoneNumber(phone);
+      return phoneNumber.getNumber('international');
     },
     keysHandler(event) {
       const { keyCode } = event;
@@ -260,8 +257,10 @@ export default {
         this.toggleDropdown();
       }
     },
-    handleInputEvent(value) {
-      this.$emit('input', formatPhoneNumber(this.selectedCountry.dial_code, value));
+    getOptionFlagClassNames(code) {
+      const baseClass = 'option__flag';
+      const countryClass = `flag-icon flag-icon-${code.toLowerCase()}`;
+      return [baseClass, countryClass];
     },
   },
 };
