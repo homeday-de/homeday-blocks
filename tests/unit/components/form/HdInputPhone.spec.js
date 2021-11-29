@@ -55,7 +55,7 @@ describe('HdInputPhone', () => {
   });
 
   it('should emit the formatted value', () => {
-    const formattedValue = '+49 555 555 5555';
+    const formattedValue = '+49 5555 555555';
     const { wrapper } = build({
       defaultCountry: 'DE',
     });
@@ -128,6 +128,6 @@ describe('HdInputPhone', () => {
 
     await wrapper.vm.$nextTick();
 
-    expect($input.element.value).toBe('+52 555 555 5555');
+    expect($input.element.value).toBe('+52 55 5555 5555');
   });
 });

@@ -1,1252 +1,1252 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HdInputPhone is rendered as expected 1`] = `
-<div class="phone-input"><button aria-haspopup="listbox" aria-label="Choose a country code:" aria-activedescendant="+49, Deutschland" class="phone-input__selector"><span class="phone-input__selector__flag flag-icon flag-icon-de"></span>
+<div class="phone-input"><button aria-haspopup="listbox" aria-label="Wählen Sie einen Ländercode:" aria-activedescendant="+49, Deutschland" class="phone-input__selector"><span class="phone-input__selector__flag flag-icon flag-icon-de"></span>
     <!---->
   </button>
-  <ul id="country-codes-list" tabindex="-1" role="listbox" aria-label="Choose a country code:" class="phone-input__dropdown" style="display: none;">
-    <li id="AD" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ad"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Andorra</span> <span class="option-country__dial-code">+376</span></p>
+  <ul tabindex="-1" role="listbox" aria-label="Wählen Sie einen Ländercode:" class="phone-input__dropdown" style="display: none;">
+    <li id="AD" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ad"></span>
+        <p><span class="option__name">Andorra</span> <span class="option__dial-code">+376</span></p>
       </button>
       <!---->
     </li>
-    <li id="AF" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-af"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Afghanistan</span> <span class="option-country__dial-code">+93</span></p>
+    <li id="AF" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-af"></span>
+        <p><span class="option__name">Afghanistan</span> <span class="option__dial-code">+93</span></p>
       </button>
       <!---->
     </li>
-    <li id="AG" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ag"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Antigua und Barbuda</span> <span class="option-country__dial-code">+1268</span></p>
+    <li id="AG" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ag"></span>
+        <p><span class="option__name">Antigua und Barbuda</span> <span class="option__dial-code">+1268</span></p>
       </button>
       <!---->
     </li>
-    <li id="AI" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ai"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Anguilla</span> <span class="option-country__dial-code">+1264</span></p>
+    <li id="AI" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ai"></span>
+        <p><span class="option__name">Anguilla</span> <span class="option__dial-code">+1264</span></p>
       </button>
       <!---->
     </li>
-    <li id="AL" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-al"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Albanien</span> <span class="option-country__dial-code">+355</span></p>
+    <li id="AL" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-al"></span>
+        <p><span class="option__name">Albanien</span> <span class="option__dial-code">+355</span></p>
       </button>
       <!---->
     </li>
-    <li id="AM" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-am"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Armenien</span> <span class="option-country__dial-code">+374</span></p>
+    <li id="AM" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-am"></span>
+        <p><span class="option__name">Armenien</span> <span class="option__dial-code">+374</span></p>
       </button>
       <!---->
     </li>
-    <li id="AO" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ao"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Angola</span> <span class="option-country__dial-code">+244</span></p>
+    <li id="AO" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ao"></span>
+        <p><span class="option__name">Angola</span> <span class="option__dial-code">+244</span></p>
       </button>
       <!---->
     </li>
-    <li id="AQ" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-aq"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Antarktis</span> <span class="option-country__dial-code">+672</span></p>
+    <li id="AQ" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-aq"></span>
+        <p><span class="option__name">Antarktis</span> <span class="option__dial-code">+672</span></p>
       </button>
       <!---->
     </li>
-    <li id="AR" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ar"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Argentinien</span> <span class="option-country__dial-code">+54</span></p>
+    <li id="AR" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ar"></span>
+        <p><span class="option__name">Argentinien</span> <span class="option__dial-code">+54</span></p>
       </button>
       <!---->
     </li>
-    <li id="AS" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-as"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Amerikanisch-Samoa</span> <span class="option-country__dial-code">+1684</span></p>
+    <li id="AS" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-as"></span>
+        <p><span class="option__name">Amerikanisch-Samoa</span> <span class="option__dial-code">+1684</span></p>
       </button>
       <!---->
     </li>
-    <li id="AT" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-at"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Österreich</span> <span class="option-country__dial-code">+43</span></p>
+    <li id="AT" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-at"></span>
+        <p><span class="option__name">Österreich</span> <span class="option__dial-code">+43</span></p>
       </button>
       <!---->
     </li>
-    <li id="AU" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-au"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Australien</span> <span class="option-country__dial-code">+61</span></p>
+    <li id="AU" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-au"></span>
+        <p><span class="option__name">Australien</span> <span class="option__dial-code">+61</span></p>
       </button>
       <!---->
     </li>
-    <li id="AW" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-aw"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Aruba</span> <span class="option-country__dial-code">+297</span></p>
+    <li id="AW" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-aw"></span>
+        <p><span class="option__name">Aruba</span> <span class="option__dial-code">+297</span></p>
       </button>
       <!---->
     </li>
-    <li id="AX" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ax"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Åland</span> <span class="option-country__dial-code">+358</span></p>
+    <li id="AX" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ax"></span>
+        <p><span class="option__name">Åland</span> <span class="option__dial-code">+358</span></p>
       </button>
       <!---->
     </li>
-    <li id="AZ" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-az"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Aserbaidschan</span> <span class="option-country__dial-code">+994</span></p>
+    <li id="AZ" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-az"></span>
+        <p><span class="option__name">Aserbaidschan</span> <span class="option__dial-code">+994</span></p>
       </button>
       <!---->
     </li>
-    <li id="BA" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ba"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Bosnien und Herzegowina</span> <span class="option-country__dial-code">+387</span></p>
+    <li id="BA" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ba"></span>
+        <p><span class="option__name">Bosnien und Herzegowina</span> <span class="option__dial-code">+387</span></p>
       </button>
       <!---->
     </li>
-    <li id="BB" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-bb"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Barbados</span> <span class="option-country__dial-code">+1246</span></p>
+    <li id="BB" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-bb"></span>
+        <p><span class="option__name">Barbados</span> <span class="option__dial-code">+1246</span></p>
       </button>
       <!---->
     </li>
-    <li id="BD" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-bd"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Bangladesch</span> <span class="option-country__dial-code">+880</span></p>
+    <li id="BD" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-bd"></span>
+        <p><span class="option__name">Bangladesch</span> <span class="option__dial-code">+880</span></p>
       </button>
       <!---->
     </li>
-    <li id="BE" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-be"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Belgien</span> <span class="option-country__dial-code">+32</span></p>
+    <li id="BE" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-be"></span>
+        <p><span class="option__name">Belgien</span> <span class="option__dial-code">+32</span></p>
       </button>
       <!---->
     </li>
-    <li id="BF" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-bf"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Burkina Faso</span> <span class="option-country__dial-code">+226</span></p>
+    <li id="BF" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-bf"></span>
+        <p><span class="option__name">Burkina Faso</span> <span class="option__dial-code">+226</span></p>
       </button>
       <!---->
     </li>
-    <li id="BG" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-bg"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Bulgarien</span> <span class="option-country__dial-code">+359</span></p>
+    <li id="BG" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-bg"></span>
+        <p><span class="option__name">Bulgarien</span> <span class="option__dial-code">+359</span></p>
       </button>
       <!---->
     </li>
-    <li id="BH" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-bh"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Bahrain</span> <span class="option-country__dial-code">+973</span></p>
+    <li id="BH" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-bh"></span>
+        <p><span class="option__name">Bahrain</span> <span class="option__dial-code">+973</span></p>
       </button>
       <!---->
     </li>
-    <li id="BI" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-bi"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Burundi</span> <span class="option-country__dial-code">+257</span></p>
+    <li id="BI" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-bi"></span>
+        <p><span class="option__name">Burundi</span> <span class="option__dial-code">+257</span></p>
       </button>
       <!---->
     </li>
-    <li id="BJ" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-bj"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Benin</span> <span class="option-country__dial-code">+229</span></p>
+    <li id="BJ" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-bj"></span>
+        <p><span class="option__name">Benin</span> <span class="option__dial-code">+229</span></p>
       </button>
       <!---->
     </li>
-    <li id="BL" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-bl"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Saint-Barthélemy</span> <span class="option-country__dial-code">+590</span></p>
+    <li id="BL" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-bl"></span>
+        <p><span class="option__name">Saint-Barthélemy</span> <span class="option__dial-code">+590</span></p>
       </button>
       <!---->
     </li>
-    <li id="BM" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-bm"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Bermuda</span> <span class="option-country__dial-code">+1441</span></p>
+    <li id="BM" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-bm"></span>
+        <p><span class="option__name">Bermuda</span> <span class="option__dial-code">+1441</span></p>
       </button>
       <!---->
     </li>
-    <li id="BN" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-bn"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Brunei Darussalam</span> <span class="option-country__dial-code">+673</span></p>
+    <li id="BN" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-bn"></span>
+        <p><span class="option__name">Brunei Darussalam</span> <span class="option__dial-code">+673</span></p>
       </button>
       <!---->
     </li>
-    <li id="BO" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-bo"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Bolivien</span> <span class="option-country__dial-code">+591</span></p>
+    <li id="BO" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-bo"></span>
+        <p><span class="option__name">Bolivien</span> <span class="option__dial-code">+591</span></p>
       </button>
       <!---->
     </li>
-    <li id="BQ" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-bq"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Bonaire</span> <span class="option-country__dial-code">+5997</span></p>
+    <li id="BQ" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-bq"></span>
+        <p><span class="option__name">Bonaire</span> <span class="option__dial-code">+5997</span></p>
       </button>
       <!---->
     </li>
-    <li id="BR" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-br"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Brasilien</span> <span class="option-country__dial-code">+55</span></p>
+    <li id="BR" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-br"></span>
+        <p><span class="option__name">Brasilien</span> <span class="option__dial-code">+55</span></p>
       </button>
       <!---->
     </li>
-    <li id="BT" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-bt"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Bhutan</span> <span class="option-country__dial-code">+975</span></p>
+    <li id="BT" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-bt"></span>
+        <p><span class="option__name">Bhutan</span> <span class="option__dial-code">+975</span></p>
       </button>
       <!---->
     </li>
-    <li id="BV" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-bv"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Bouvetinsel</span> <span class="option-country__dial-code">+47</span></p>
+    <li id="BV" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-bv"></span>
+        <p><span class="option__name">Bouvetinsel</span> <span class="option__dial-code">+47</span></p>
       </button>
       <!---->
     </li>
-    <li id="BW" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-bw"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Botswana</span> <span class="option-country__dial-code">+267</span></p>
+    <li id="BW" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-bw"></span>
+        <p><span class="option__name">Botswana</span> <span class="option__dial-code">+267</span></p>
       </button>
       <!---->
     </li>
-    <li id="BY" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-by"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Belarus</span> <span class="option-country__dial-code">+375</span></p>
+    <li id="BY" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-by"></span>
+        <p><span class="option__name">Belarus</span> <span class="option__dial-code">+375</span></p>
       </button>
       <!---->
     </li>
-    <li id="BZ" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-bz"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Belize</span> <span class="option-country__dial-code">+501</span></p>
+    <li id="BZ" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-bz"></span>
+        <p><span class="option__name">Belize</span> <span class="option__dial-code">+501</span></p>
       </button>
       <!---->
     </li>
-    <li id="CA" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ca"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Kanada</span> <span class="option-country__dial-code">+1</span></p>
+    <li id="CA" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ca"></span>
+        <p><span class="option__name">Kanada</span> <span class="option__dial-code">+1</span></p>
       </button>
       <!---->
     </li>
-    <li id="CH" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ch"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Schweiz</span> <span class="option-country__dial-code">+41</span></p>
+    <li id="CH" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ch"></span>
+        <p><span class="option__name">Schweiz</span> <span class="option__dial-code">+41</span></p>
       </button>
       <!---->
     </li>
-    <li id="CI" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ci"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Elfenbeinküste</span> <span class="option-country__dial-code">+225</span></p>
+    <li id="CI" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ci"></span>
+        <p><span class="option__name">Elfenbeinküste</span> <span class="option__dial-code">+225</span></p>
       </button>
       <!---->
     </li>
-    <li id="CL" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-cl"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Chile</span> <span class="option-country__dial-code">+56</span></p>
+    <li id="CL" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-cl"></span>
+        <p><span class="option__name">Chile</span> <span class="option__dial-code">+56</span></p>
       </button>
       <!---->
     </li>
-    <li id="CM" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-cm"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Kamerun</span> <span class="option-country__dial-code">+237</span></p>
+    <li id="CM" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-cm"></span>
+        <p><span class="option__name">Kamerun</span> <span class="option__dial-code">+237</span></p>
       </button>
       <!---->
     </li>
-    <li id="CN" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-cn"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">China</span> <span class="option-country__dial-code">+86</span></p>
+    <li id="CN" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-cn"></span>
+        <p><span class="option__name">China</span> <span class="option__dial-code">+86</span></p>
       </button>
       <!---->
     </li>
-    <li id="CO" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-co"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Kolumbien</span> <span class="option-country__dial-code">+57</span></p>
+    <li id="CO" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-co"></span>
+        <p><span class="option__name">Kolumbien</span> <span class="option__dial-code">+57</span></p>
       </button>
       <!---->
     </li>
-    <li id="CR" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-cr"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Costa Rica</span> <span class="option-country__dial-code">+506</span></p>
+    <li id="CR" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-cr"></span>
+        <p><span class="option__name">Costa Rica</span> <span class="option__dial-code">+506</span></p>
       </button>
       <!---->
     </li>
-    <li id="CU" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-cu"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Kuba</span> <span class="option-country__dial-code">+53</span></p>
+    <li id="CU" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-cu"></span>
+        <p><span class="option__name">Kuba</span> <span class="option__dial-code">+53</span></p>
       </button>
       <!---->
     </li>
-    <li id="CV" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-cv"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Kap Verde</span> <span class="option-country__dial-code">+238</span></p>
+    <li id="CV" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-cv"></span>
+        <p><span class="option__name">Kap Verde</span> <span class="option__dial-code">+238</span></p>
       </button>
       <!---->
     </li>
-    <li id="CW" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-cw"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Curaçao</span> <span class="option-country__dial-code">+599</span></p>
+    <li id="CW" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-cw"></span>
+        <p><span class="option__name">Curaçao</span> <span class="option__dial-code">+599</span></p>
       </button>
       <!---->
     </li>
-    <li id="CX" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-cx"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Weihnachtsinsel</span> <span class="option-country__dial-code">+61</span></p>
+    <li id="CX" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-cx"></span>
+        <p><span class="option__name">Weihnachtsinsel</span> <span class="option__dial-code">+61</span></p>
       </button>
       <!---->
     </li>
-    <li id="CY" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-cy"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Zypern</span> <span class="option-country__dial-code">+357</span></p>
+    <li id="CY" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-cy"></span>
+        <p><span class="option__name">Zypern</span> <span class="option__dial-code">+357</span></p>
       </button>
       <!---->
     </li>
-    <li id="DE" role="option" aria-selected="true" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-de"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Deutschland</span> <span class="option-country__dial-code">+49</span></p>
+    <li id="DE" role="option" aria-selected="true" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-de"></span>
+        <p><span class="option__name">Deutschland</span> <span class="option__dial-code">+49</span></p>
       </button>
       <!---->
     </li>
-    <li id="DJ" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-dj"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Dschibuti</span> <span class="option-country__dial-code">+253</span></p>
+    <li id="DJ" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-dj"></span>
+        <p><span class="option__name">Dschibuti</span> <span class="option__dial-code">+253</span></p>
       </button>
       <!---->
     </li>
-    <li id="DK" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-dk"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Dänemark</span> <span class="option-country__dial-code">+45</span></p>
+    <li id="DK" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-dk"></span>
+        <p><span class="option__name">Dänemark</span> <span class="option__dial-code">+45</span></p>
       </button>
       <!---->
     </li>
-    <li id="DM" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-dm"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Dominica</span> <span class="option-country__dial-code">+767</span></p>
+    <li id="DM" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-dm"></span>
+        <p><span class="option__name">Dominica</span> <span class="option__dial-code">+767</span></p>
       </button>
       <!---->
     </li>
-    <li id="DZ" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-dz"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Algerien</span> <span class="option-country__dial-code">+213</span></p>
+    <li id="DZ" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-dz"></span>
+        <p><span class="option__name">Algerien</span> <span class="option__dial-code">+213</span></p>
       </button>
       <!---->
     </li>
-    <li id="EC" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ec"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Ecuador</span> <span class="option-country__dial-code">+593</span></p>
+    <li id="EC" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ec"></span>
+        <p><span class="option__name">Ecuador</span> <span class="option__dial-code">+593</span></p>
       </button>
       <!---->
     </li>
-    <li id="EE" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ee"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Estland</span> <span class="option-country__dial-code">+372</span></p>
+    <li id="EE" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ee"></span>
+        <p><span class="option__name">Estland</span> <span class="option__dial-code">+372</span></p>
       </button>
       <!---->
     </li>
-    <li id="EG" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-eg"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Ägypten</span> <span class="option-country__dial-code">+20</span></p>
+    <li id="EG" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-eg"></span>
+        <p><span class="option__name">Ägypten</span> <span class="option__dial-code">+20</span></p>
       </button>
       <!---->
     </li>
-    <li id="EH" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-eh"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Westsahara</span> <span class="option-country__dial-code">+212</span></p>
+    <li id="EH" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-eh"></span>
+        <p><span class="option__name">Westsahara</span> <span class="option__dial-code">+212</span></p>
       </button>
       <!---->
     </li>
-    <li id="ER" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-er"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Eritrea</span> <span class="option-country__dial-code">+291</span></p>
+    <li id="ER" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-er"></span>
+        <p><span class="option__name">Eritrea</span> <span class="option__dial-code">+291</span></p>
       </button>
       <!---->
     </li>
-    <li id="ES" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-es"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Spanien</span> <span class="option-country__dial-code">+34</span></p>
+    <li id="ES" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-es"></span>
+        <p><span class="option__name">Spanien</span> <span class="option__dial-code">+34</span></p>
       </button>
       <!---->
     </li>
-    <li id="ET" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-et"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Äthiopien</span> <span class="option-country__dial-code">+251</span></p>
+    <li id="ET" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-et"></span>
+        <p><span class="option__name">Äthiopien</span> <span class="option__dial-code">+251</span></p>
       </button>
       <!---->
     </li>
-    <li id="FI" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-fi"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Finnland</span> <span class="option-country__dial-code">+358</span></p>
+    <li id="FI" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-fi"></span>
+        <p><span class="option__name">Finnland</span> <span class="option__dial-code">+358</span></p>
       </button>
       <!---->
     </li>
-    <li id="FJ" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-fj"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Fidschi</span> <span class="option-country__dial-code">+679</span></p>
+    <li id="FJ" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-fj"></span>
+        <p><span class="option__name">Fidschi</span> <span class="option__dial-code">+679</span></p>
       </button>
       <!---->
     </li>
-    <li id="FM" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-fm"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Mikronesien</span> <span class="option-country__dial-code">+691</span></p>
+    <li id="FM" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-fm"></span>
+        <p><span class="option__name">Mikronesien</span> <span class="option__dial-code">+691</span></p>
       </button>
       <!---->
     </li>
-    <li id="FR" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-fr"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Frankreich</span> <span class="option-country__dial-code">+33</span></p>
+    <li id="FR" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-fr"></span>
+        <p><span class="option__name">Frankreich</span> <span class="option__dial-code">+33</span></p>
       </button>
       <!---->
     </li>
-    <li id="GA" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ga"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Gabun</span> <span class="option-country__dial-code">+241</span></p>
+    <li id="GA" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ga"></span>
+        <p><span class="option__name">Gabun</span> <span class="option__dial-code">+241</span></p>
       </button>
       <!---->
     </li>
-    <li id="GD" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-gd"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Grenada</span> <span class="option-country__dial-code">+1473</span></p>
+    <li id="GD" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-gd"></span>
+        <p><span class="option__name">Grenada</span> <span class="option__dial-code">+1473</span></p>
       </button>
       <!---->
     </li>
-    <li id="GE" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ge"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Georgien</span> <span class="option-country__dial-code">+995</span></p>
+    <li id="GE" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ge"></span>
+        <p><span class="option__name">Georgien</span> <span class="option__dial-code">+995</span></p>
       </button>
       <!---->
     </li>
-    <li id="GF" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-gf"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Französisch-Guayana</span> <span class="option-country__dial-code">+594</span></p>
+    <li id="GF" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-gf"></span>
+        <p><span class="option__name">Französisch-Guayana</span> <span class="option__dial-code">+594</span></p>
       </button>
       <!---->
     </li>
-    <li id="GG" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-gg"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Guernsey</span> <span class="option-country__dial-code">+44</span></p>
+    <li id="GG" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-gg"></span>
+        <p><span class="option__name">Guernsey</span> <span class="option__dial-code">+44</span></p>
       </button>
       <!---->
     </li>
-    <li id="GH" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-gh"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Ghana</span> <span class="option-country__dial-code">+233</span></p>
+    <li id="GH" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-gh"></span>
+        <p><span class="option__name">Ghana</span> <span class="option__dial-code">+233</span></p>
       </button>
       <!---->
     </li>
-    <li id="GI" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-gi"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Gibraltar</span> <span class="option-country__dial-code">+350</span></p>
+    <li id="GI" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-gi"></span>
+        <p><span class="option__name">Gibraltar</span> <span class="option__dial-code">+350</span></p>
       </button>
       <!---->
     </li>
-    <li id="GL" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-gl"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Grönland</span> <span class="option-country__dial-code">+299</span></p>
+    <li id="GL" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-gl"></span>
+        <p><span class="option__name">Grönland</span> <span class="option__dial-code">+299</span></p>
       </button>
       <!---->
     </li>
-    <li id="GN" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-gn"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Guinea</span> <span class="option-country__dial-code">+224</span></p>
+    <li id="GN" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-gn"></span>
+        <p><span class="option__name">Guinea</span> <span class="option__dial-code">+224</span></p>
       </button>
       <!---->
     </li>
-    <li id="GP" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-gp"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Guadeloupe</span> <span class="option-country__dial-code">+590</span></p>
+    <li id="GP" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-gp"></span>
+        <p><span class="option__name">Guadeloupe</span> <span class="option__dial-code">+590</span></p>
       </button>
       <!---->
     </li>
-    <li id="GQ" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-gq"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Äquatorialguinea</span> <span class="option-country__dial-code">+240</span></p>
+    <li id="GQ" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-gq"></span>
+        <p><span class="option__name">Äquatorialguinea</span> <span class="option__dial-code">+240</span></p>
       </button>
       <!---->
     </li>
-    <li id="GR" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-gr"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Griechenland</span> <span class="option-country__dial-code">+30</span></p>
+    <li id="GR" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-gr"></span>
+        <p><span class="option__name">Griechenland</span> <span class="option__dial-code">+30</span></p>
       </button>
       <!---->
     </li>
-    <li id="GS" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-gs"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Südgeorgien und die Südlichen Sandwichinseln</span> <span class="option-country__dial-code">+500</span></p>
+    <li id="GS" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-gs"></span>
+        <p><span class="option__name">Südgeorgien und die Südlichen Sandwichinseln</span> <span class="option__dial-code">+500</span></p>
       </button>
       <!---->
     </li>
-    <li id="GT" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-gt"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Guatemala</span> <span class="option-country__dial-code">+502</span></p>
+    <li id="GT" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-gt"></span>
+        <p><span class="option__name">Guatemala</span> <span class="option__dial-code">+502</span></p>
       </button>
       <!---->
     </li>
-    <li id="GU" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-gu"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Guam</span> <span class="option-country__dial-code">+1</span></p>
+    <li id="GU" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-gu"></span>
+        <p><span class="option__name">Guam</span> <span class="option__dial-code">+1</span></p>
       </button>
       <!---->
     </li>
-    <li id="GW" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-gw"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Guinea-Bissau</span> <span class="option-country__dial-code">+245</span></p>
+    <li id="GW" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-gw"></span>
+        <p><span class="option__name">Guinea-Bissau</span> <span class="option__dial-code">+245</span></p>
       </button>
       <!---->
     </li>
-    <li id="GY" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-gy"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Guyana</span> <span class="option-country__dial-code">+592</span></p>
+    <li id="GY" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-gy"></span>
+        <p><span class="option__name">Guyana</span> <span class="option__dial-code">+592</span></p>
       </button>
       <!---->
     </li>
-    <li id="HK" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-hk"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Hongkong</span> <span class="option-country__dial-code">+852</span></p>
+    <li id="HK" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-hk"></span>
+        <p><span class="option__name">Hongkong</span> <span class="option__dial-code">+852</span></p>
       </button>
       <!---->
     </li>
-    <li id="HN" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-hn"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Honduras</span> <span class="option-country__dial-code">+504</span></p>
+    <li id="HN" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-hn"></span>
+        <p><span class="option__name">Honduras</span> <span class="option__dial-code">+504</span></p>
       </button>
       <!---->
     </li>
-    <li id="HR" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-hr"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Kroatien</span> <span class="option-country__dial-code">+385</span></p>
+    <li id="HR" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-hr"></span>
+        <p><span class="option__name">Kroatien</span> <span class="option__dial-code">+385</span></p>
       </button>
       <!---->
     </li>
-    <li id="HT" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ht"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Haiti</span> <span class="option-country__dial-code">+509</span></p>
+    <li id="HT" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ht"></span>
+        <p><span class="option__name">Haiti</span> <span class="option__dial-code">+509</span></p>
       </button>
       <!---->
     </li>
-    <li id="HU" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-hu"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Ungarn</span> <span class="option-country__dial-code">+36</span></p>
+    <li id="HU" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-hu"></span>
+        <p><span class="option__name">Ungarn</span> <span class="option__dial-code">+36</span></p>
       </button>
       <!---->
     </li>
-    <li id="ID" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-id"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Indonesien</span> <span class="option-country__dial-code">+62</span></p>
+    <li id="ID" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-id"></span>
+        <p><span class="option__name">Indonesien</span> <span class="option__dial-code">+62</span></p>
       </button>
       <!---->
     </li>
-    <li id="IE" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ie"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Irland</span> <span class="option-country__dial-code">+353</span></p>
+    <li id="IE" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ie"></span>
+        <p><span class="option__name">Irland</span> <span class="option__dial-code">+353</span></p>
       </button>
       <!---->
     </li>
-    <li id="IL" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-il"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Israel</span> <span class="option-country__dial-code">+972</span></p>
+    <li id="IL" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-il"></span>
+        <p><span class="option__name">Israel</span> <span class="option__dial-code">+972</span></p>
       </button>
       <!---->
     </li>
-    <li id="IM" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-im"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Insel Man</span> <span class="option-country__dial-code">+44</span></p>
+    <li id="IM" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-im"></span>
+        <p><span class="option__name">Insel Man</span> <span class="option__dial-code">+44</span></p>
       </button>
       <!---->
     </li>
-    <li id="IN" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-in"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Indien</span> <span class="option-country__dial-code">+91</span></p>
+    <li id="IN" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-in"></span>
+        <p><span class="option__name">Indien</span> <span class="option__dial-code">+91</span></p>
       </button>
       <!---->
     </li>
-    <li id="IQ" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-iq"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Irak</span> <span class="option-country__dial-code">+964</span></p>
+    <li id="IQ" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-iq"></span>
+        <p><span class="option__name">Irak</span> <span class="option__dial-code">+964</span></p>
       </button>
       <!---->
     </li>
-    <li id="IR" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ir"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Iran</span> <span class="option-country__dial-code">+98</span></p>
+    <li id="IR" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ir"></span>
+        <p><span class="option__name">Iran</span> <span class="option__dial-code">+98</span></p>
       </button>
       <!---->
     </li>
-    <li id="IS" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-is"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Island</span> <span class="option-country__dial-code">+354</span></p>
+    <li id="IS" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-is"></span>
+        <p><span class="option__name">Island</span> <span class="option__dial-code">+354</span></p>
       </button>
       <!---->
     </li>
-    <li id="IT" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-it"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Italien</span> <span class="option-country__dial-code">+39</span></p>
+    <li id="IT" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-it"></span>
+        <p><span class="option__name">Italien</span> <span class="option__dial-code">+39</span></p>
       </button>
       <!---->
     </li>
-    <li id="JE" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-je"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Jersey</span> <span class="option-country__dial-code">+44</span></p>
+    <li id="JE" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-je"></span>
+        <p><span class="option__name">Jersey</span> <span class="option__dial-code">+44</span></p>
       </button>
       <!---->
     </li>
-    <li id="JM" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-jm"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Jamaika</span> <span class="option-country__dial-code">+876</span></p>
+    <li id="JM" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-jm"></span>
+        <p><span class="option__name">Jamaika</span> <span class="option__dial-code">+876</span></p>
       </button>
       <!---->
     </li>
-    <li id="JO" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-jo"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Jordanien</span> <span class="option-country__dial-code">+962</span></p>
+    <li id="JO" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-jo"></span>
+        <p><span class="option__name">Jordanien</span> <span class="option__dial-code">+962</span></p>
       </button>
       <!---->
     </li>
-    <li id="JP" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-jp"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Japan</span> <span class="option-country__dial-code">+81</span></p>
+    <li id="JP" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-jp"></span>
+        <p><span class="option__name">Japan</span> <span class="option__dial-code">+81</span></p>
       </button>
       <!---->
     </li>
-    <li id="KE" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ke"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Kenia</span> <span class="option-country__dial-code">+254</span></p>
+    <li id="KE" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ke"></span>
+        <p><span class="option__name">Kenia</span> <span class="option__dial-code">+254</span></p>
       </button>
       <!---->
     </li>
-    <li id="KG" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-kg"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Kirgisistan</span> <span class="option-country__dial-code">+996</span></p>
+    <li id="KG" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-kg"></span>
+        <p><span class="option__name">Kirgisistan</span> <span class="option__dial-code">+996</span></p>
       </button>
       <!---->
     </li>
-    <li id="KH" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-kh"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Kambodscha</span> <span class="option-country__dial-code">+855</span></p>
+    <li id="KH" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-kh"></span>
+        <p><span class="option__name">Kambodscha</span> <span class="option__dial-code">+855</span></p>
       </button>
       <!---->
     </li>
-    <li id="KP" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-kp"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Nordkorea</span> <span class="option-country__dial-code">+850</span></p>
+    <li id="KP" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-kp"></span>
+        <p><span class="option__name">Nordkorea</span> <span class="option__dial-code">+850</span></p>
       </button>
       <!---->
     </li>
-    <li id="KR" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-kr"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Südkorea</span> <span class="option-country__dial-code">+82</span></p>
+    <li id="KR" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-kr"></span>
+        <p><span class="option__name">Südkorea</span> <span class="option__dial-code">+82</span></p>
       </button>
       <!---->
     </li>
-    <li id="KI" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ki"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Kiribati</span> <span class="option-country__dial-code">+686</span></p>
+    <li id="KI" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ki"></span>
+        <p><span class="option__name">Kiribati</span> <span class="option__dial-code">+686</span></p>
       </button>
       <!---->
     </li>
-    <li id="KN" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-kn"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">St. Kitts und Nevis</span> <span class="option-country__dial-code">+1869</span></p>
+    <li id="KN" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-kn"></span>
+        <p><span class="option__name">St. Kitts und Nevis</span> <span class="option__dial-code">+1869</span></p>
       </button>
       <!---->
     </li>
-    <li id="KW" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-kw"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Kuwait</span> <span class="option-country__dial-code">+965</span></p>
+    <li id="KW" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-kw"></span>
+        <p><span class="option__name">Kuwait</span> <span class="option__dial-code">+965</span></p>
       </button>
       <!---->
     </li>
-    <li id="KZ" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-kz"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Kasachstan</span> <span class="option-country__dial-code">+7</span></p>
+    <li id="KZ" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-kz"></span>
+        <p><span class="option__name">Kasachstan</span> <span class="option__dial-code">+7</span></p>
       </button>
       <!---->
     </li>
-    <li id="LB" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-lb"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Libanon</span> <span class="option-country__dial-code">+961</span></p>
+    <li id="LB" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-lb"></span>
+        <p><span class="option__name">Libanon</span> <span class="option__dial-code">+961</span></p>
       </button>
       <!---->
     </li>
-    <li id="LC" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-lc"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">St. Lucia</span> <span class="option-country__dial-code">+1758</span></p>
+    <li id="LC" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-lc"></span>
+        <p><span class="option__name">St. Lucia</span> <span class="option__dial-code">+1758</span></p>
       </button>
       <!---->
     </li>
-    <li id="LI" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-li"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Liechtenstein</span> <span class="option-country__dial-code">+423</span></p>
+    <li id="LI" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-li"></span>
+        <p><span class="option__name">Liechtenstein</span> <span class="option__dial-code">+423</span></p>
       </button>
       <!---->
     </li>
-    <li id="LK" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-lk"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Sri Lanka</span> <span class="option-country__dial-code">+94</span></p>
+    <li id="LK" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-lk"></span>
+        <p><span class="option__name">Sri Lanka</span> <span class="option__dial-code">+94</span></p>
       </button>
       <!---->
     </li>
-    <li id="LR" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-lr"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Liberia</span> <span class="option-country__dial-code">+231</span></p>
+    <li id="LR" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-lr"></span>
+        <p><span class="option__name">Liberia</span> <span class="option__dial-code">+231</span></p>
       </button>
       <!---->
     </li>
-    <li id="LS" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ls"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Lesotho</span> <span class="option-country__dial-code">+266</span></p>
+    <li id="LS" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ls"></span>
+        <p><span class="option__name">Lesotho</span> <span class="option__dial-code">+266</span></p>
       </button>
       <!---->
     </li>
-    <li id="LT" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-lt"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Litauen</span> <span class="option-country__dial-code">+370</span></p>
+    <li id="LT" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-lt"></span>
+        <p><span class="option__name">Litauen</span> <span class="option__dial-code">+370</span></p>
       </button>
       <!---->
     </li>
-    <li id="LU" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-lu"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Luxemburg</span> <span class="option-country__dial-code">+352</span></p>
+    <li id="LU" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-lu"></span>
+        <p><span class="option__name">Luxemburg</span> <span class="option__dial-code">+352</span></p>
       </button>
       <!---->
     </li>
-    <li id="LV" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-lv"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Lettland</span> <span class="option-country__dial-code">+371</span></p>
+    <li id="LV" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-lv"></span>
+        <p><span class="option__name">Lettland</span> <span class="option__dial-code">+371</span></p>
       </button>
       <!---->
     </li>
-    <li id="LY" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ly"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Libyen</span> <span class="option-country__dial-code">+218</span></p>
+    <li id="LY" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ly"></span>
+        <p><span class="option__name">Libyen</span> <span class="option__dial-code">+218</span></p>
       </button>
       <!---->
     </li>
-    <li id="MA" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ma"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Marokko</span> <span class="option-country__dial-code">+212</span></p>
+    <li id="MA" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ma"></span>
+        <p><span class="option__name">Marokko</span> <span class="option__dial-code">+212</span></p>
       </button>
       <!---->
     </li>
-    <li id="MC" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-mc"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Monaco</span> <span class="option-country__dial-code">+377</span></p>
+    <li id="MC" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-mc"></span>
+        <p><span class="option__name">Monaco</span> <span class="option__dial-code">+377</span></p>
       </button>
       <!---->
     </li>
-    <li id="ME" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-me"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Montenegro</span> <span class="option-country__dial-code">+382</span></p>
+    <li id="ME" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-me"></span>
+        <p><span class="option__name">Montenegro</span> <span class="option__dial-code">+382</span></p>
       </button>
       <!---->
     </li>
-    <li id="MF" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-mf"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Saint-Martin</span> <span class="option-country__dial-code">+590</span></p>
+    <li id="MF" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-mf"></span>
+        <p><span class="option__name">Saint-Martin</span> <span class="option__dial-code">+590</span></p>
       </button>
       <!---->
     </li>
-    <li id="MG" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-mg"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Madagaskar</span> <span class="option-country__dial-code">+261</span></p>
+    <li id="MG" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-mg"></span>
+        <p><span class="option__name">Madagaskar</span> <span class="option__dial-code">+261</span></p>
       </button>
       <!---->
     </li>
-    <li id="ML" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ml"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Mali</span> <span class="option-country__dial-code">+223</span></p>
+    <li id="ML" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ml"></span>
+        <p><span class="option__name">Mali</span> <span class="option__dial-code">+223</span></p>
       </button>
       <!---->
     </li>
-    <li id="MM" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-mm"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Myanmar</span> <span class="option-country__dial-code">+95</span></p>
+    <li id="MM" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-mm"></span>
+        <p><span class="option__name">Myanmar</span> <span class="option__dial-code">+95</span></p>
       </button>
       <!---->
     </li>
-    <li id="MN" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-mn"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Mongolei</span> <span class="option-country__dial-code">+976</span></p>
+    <li id="MN" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-mn"></span>
+        <p><span class="option__name">Mongolei</span> <span class="option__dial-code">+976</span></p>
       </button>
       <!---->
     </li>
-    <li id="MO" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-mo"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Macao</span> <span class="option-country__dial-code">+853</span></p>
+    <li id="MO" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-mo"></span>
+        <p><span class="option__name">Macao</span> <span class="option__dial-code">+853</span></p>
       </button>
       <!---->
     </li>
-    <li id="MQ" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-mq"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Martinique</span> <span class="option-country__dial-code">+596</span></p>
+    <li id="MQ" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-mq"></span>
+        <p><span class="option__name">Martinique</span> <span class="option__dial-code">+596</span></p>
       </button>
       <!---->
     </li>
-    <li id="MR" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-mr"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Mauretanien</span> <span class="option-country__dial-code">+222</span></p>
+    <li id="MR" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-mr"></span>
+        <p><span class="option__name">Mauretanien</span> <span class="option__dial-code">+222</span></p>
       </button>
       <!---->
     </li>
-    <li id="MS" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ms"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Montserrat</span> <span class="option-country__dial-code">+1664</span></p>
+    <li id="MS" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ms"></span>
+        <p><span class="option__name">Montserrat</span> <span class="option__dial-code">+1664</span></p>
       </button>
       <!---->
     </li>
-    <li id="MT" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-mt"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Malta</span> <span class="option-country__dial-code">+356</span></p>
+    <li id="MT" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-mt"></span>
+        <p><span class="option__name">Malta</span> <span class="option__dial-code">+356</span></p>
       </button>
       <!---->
     </li>
-    <li id="MU" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-mu"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Mauritius</span> <span class="option-country__dial-code">+230</span></p>
+    <li id="MU" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-mu"></span>
+        <p><span class="option__name">Mauritius</span> <span class="option__dial-code">+230</span></p>
       </button>
       <!---->
     </li>
-    <li id="MV" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-mv"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Malediven</span> <span class="option-country__dial-code">+960</span></p>
+    <li id="MV" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-mv"></span>
+        <p><span class="option__name">Malediven</span> <span class="option__dial-code">+960</span></p>
       </button>
       <!---->
     </li>
-    <li id="MW" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-mw"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Malawi</span> <span class="option-country__dial-code">+265</span></p>
+    <li id="MW" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-mw"></span>
+        <p><span class="option__name">Malawi</span> <span class="option__dial-code">+265</span></p>
       </button>
       <!---->
     </li>
-    <li id="MX" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-mx"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Mexiko</span> <span class="option-country__dial-code">+52</span></p>
+    <li id="MX" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-mx"></span>
+        <p><span class="option__name">Mexiko</span> <span class="option__dial-code">+52</span></p>
       </button>
       <!---->
     </li>
-    <li id="MY" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-my"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Malaysia</span> <span class="option-country__dial-code">+60</span></p>
+    <li id="MY" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-my"></span>
+        <p><span class="option__name">Malaysia</span> <span class="option__dial-code">+60</span></p>
       </button>
       <!---->
     </li>
-    <li id="MZ" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-mz"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Mosambik</span> <span class="option-country__dial-code">+258</span></p>
+    <li id="MZ" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-mz"></span>
+        <p><span class="option__name">Mosambik</span> <span class="option__dial-code">+258</span></p>
       </button>
       <!---->
     </li>
-    <li id="NA" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-na"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Namibia</span> <span class="option-country__dial-code">+264</span></p>
+    <li id="NA" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-na"></span>
+        <p><span class="option__name">Namibia</span> <span class="option__dial-code">+264</span></p>
       </button>
       <!---->
     </li>
-    <li id="NC" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-nc"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Neukaledonien</span> <span class="option-country__dial-code">+687</span></p>
+    <li id="NC" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-nc"></span>
+        <p><span class="option__name">Neukaledonien</span> <span class="option__dial-code">+687</span></p>
       </button>
       <!---->
     </li>
-    <li id="NF" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-nf"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Norfolkinsel</span> <span class="option-country__dial-code">+672</span></p>
+    <li id="NF" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-nf"></span>
+        <p><span class="option__name">Norfolkinsel</span> <span class="option__dial-code">+672</span></p>
       </button>
       <!---->
     </li>
-    <li id="NG" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ng"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Nigeria</span> <span class="option-country__dial-code">+234</span></p>
+    <li id="NG" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ng"></span>
+        <p><span class="option__name">Nigeria</span> <span class="option__dial-code">+234</span></p>
       </button>
       <!---->
     </li>
-    <li id="NI" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ni"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Nicaragua</span> <span class="option-country__dial-code">+505</span></p>
+    <li id="NI" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ni"></span>
+        <p><span class="option__name">Nicaragua</span> <span class="option__dial-code">+505</span></p>
       </button>
       <!---->
     </li>
-    <li id="NO" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-no"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Norwegen</span> <span class="option-country__dial-code">+47</span></p>
+    <li id="NO" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-no"></span>
+        <p><span class="option__name">Norwegen</span> <span class="option__dial-code">+47</span></p>
       </button>
       <!---->
     </li>
-    <li id="NP" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-np"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Nepal</span> <span class="option-country__dial-code">+977</span></p>
+    <li id="NP" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-np"></span>
+        <p><span class="option__name">Nepal</span> <span class="option__dial-code">+977</span></p>
       </button>
       <!---->
     </li>
-    <li id="NR" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-nr"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Nauru</span> <span class="option-country__dial-code">+674</span></p>
+    <li id="NR" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-nr"></span>
+        <p><span class="option__name">Nauru</span> <span class="option__dial-code">+674</span></p>
       </button>
       <!---->
     </li>
-    <li id="NU" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-nu"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Niue</span> <span class="option-country__dial-code">+683</span></p>
+    <li id="NU" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-nu"></span>
+        <p><span class="option__name">Niue</span> <span class="option__dial-code">+683</span></p>
       </button>
       <!---->
     </li>
-    <li id="NZ" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-nz"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Neuseeland</span> <span class="option-country__dial-code">+64</span></p>
+    <li id="NZ" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-nz"></span>
+        <p><span class="option__name">Neuseeland</span> <span class="option__dial-code">+64</span></p>
       </button>
       <!---->
     </li>
-    <li id="OM" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-om"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Oman</span> <span class="option-country__dial-code">+968</span></p>
+    <li id="OM" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-om"></span>
+        <p><span class="option__name">Oman</span> <span class="option__dial-code">+968</span></p>
       </button>
       <!---->
     </li>
-    <li id="PA" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-pa"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Panama</span> <span class="option-country__dial-code">+507</span></p>
+    <li id="PA" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-pa"></span>
+        <p><span class="option__name">Panama</span> <span class="option__dial-code">+507</span></p>
       </button>
       <!---->
     </li>
-    <li id="PE" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-pe"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Peru</span> <span class="option-country__dial-code">+51</span></p>
+    <li id="PE" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-pe"></span>
+        <p><span class="option__name">Peru</span> <span class="option__dial-code">+51</span></p>
       </button>
       <!---->
     </li>
-    <li id="PF" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-pf"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Französisch-Polynesien</span> <span class="option-country__dial-code">+689</span></p>
+    <li id="PF" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-pf"></span>
+        <p><span class="option__name">Französisch-Polynesien</span> <span class="option__dial-code">+689</span></p>
       </button>
       <!---->
     </li>
-    <li id="PG" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-pg"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Papua-Neuguinea</span> <span class="option-country__dial-code">+675</span></p>
+    <li id="PG" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-pg"></span>
+        <p><span class="option__name">Papua-Neuguinea</span> <span class="option__dial-code">+675</span></p>
       </button>
       <!---->
     </li>
-    <li id="PK" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-pk"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Pakistan</span> <span class="option-country__dial-code">+92</span></p>
+    <li id="PK" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-pk"></span>
+        <p><span class="option__name">Pakistan</span> <span class="option__dial-code">+92</span></p>
       </button>
       <!---->
     </li>
-    <li id="PL" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-pl"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Polen</span> <span class="option-country__dial-code">+48</span></p>
+    <li id="PL" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-pl"></span>
+        <p><span class="option__name">Polen</span> <span class="option__dial-code">+48</span></p>
       </button>
       <!---->
     </li>
-    <li id="PM" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-pm"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Saint-Pierre und Miquelon</span> <span class="option-country__dial-code">+508</span></p>
+    <li id="PM" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-pm"></span>
+        <p><span class="option__name">Saint-Pierre und Miquelon</span> <span class="option__dial-code">+508</span></p>
       </button>
       <!---->
     </li>
-    <li id="PN" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-pn"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Pitcairninseln</span> <span class="option-country__dial-code">+64</span></p>
+    <li id="PN" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-pn"></span>
+        <p><span class="option__name">Pitcairninseln</span> <span class="option__dial-code">+64</span></p>
       </button>
       <!---->
     </li>
-    <li id="PR" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-pr"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Puerto Rico</span> <span class="option-country__dial-code">+1</span></p>
+    <li id="PR" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-pr"></span>
+        <p><span class="option__name">Puerto Rico</span> <span class="option__dial-code">+1</span></p>
       </button>
       <!---->
     </li>
-    <li id="PS" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ps"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Staat Palästina</span> <span class="option-country__dial-code">+970</span></p>
+    <li id="PS" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ps"></span>
+        <p><span class="option__name">Staat Palästina</span> <span class="option__dial-code">+970</span></p>
       </button>
       <!---->
     </li>
-    <li id="PT" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-pt"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Portugal</span> <span class="option-country__dial-code">+351</span></p>
+    <li id="PT" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-pt"></span>
+        <p><span class="option__name">Portugal</span> <span class="option__dial-code">+351</span></p>
       </button>
       <!---->
     </li>
-    <li id="PW" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-pw"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Palau</span> <span class="option-country__dial-code">+680</span></p>
+    <li id="PW" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-pw"></span>
+        <p><span class="option__name">Palau</span> <span class="option__dial-code">+680</span></p>
       </button>
       <!---->
     </li>
-    <li id="PY" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-py"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Paraguay</span> <span class="option-country__dial-code">+595</span></p>
+    <li id="PY" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-py"></span>
+        <p><span class="option__name">Paraguay</span> <span class="option__dial-code">+595</span></p>
       </button>
       <!---->
     </li>
-    <li id="QA" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-qa"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Katar</span> <span class="option-country__dial-code">+974</span></p>
+    <li id="QA" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-qa"></span>
+        <p><span class="option__name">Katar</span> <span class="option__dial-code">+974</span></p>
       </button>
       <!---->
     </li>
-    <li id="RE" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-re"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Réunion</span> <span class="option-country__dial-code">+262</span></p>
+    <li id="RE" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-re"></span>
+        <p><span class="option__name">Réunion</span> <span class="option__dial-code">+262</span></p>
       </button>
       <!---->
     </li>
-    <li id="RO" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ro"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Rumänien</span> <span class="option-country__dial-code">+40</span></p>
+    <li id="RO" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ro"></span>
+        <p><span class="option__name">Rumänien</span> <span class="option__dial-code">+40</span></p>
       </button>
       <!---->
     </li>
-    <li id="RS" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-rs"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Serbien</span> <span class="option-country__dial-code">+381</span></p>
+    <li id="RS" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-rs"></span>
+        <p><span class="option__name">Serbien</span> <span class="option__dial-code">+381</span></p>
       </button>
       <!---->
     </li>
-    <li id="RU" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ru"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Russische Föderation</span> <span class="option-country__dial-code">+7</span></p>
+    <li id="RU" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ru"></span>
+        <p><span class="option__name">Russische Föderation</span> <span class="option__dial-code">+7</span></p>
       </button>
       <!---->
     </li>
-    <li id="RW" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-rw"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Ruanda</span> <span class="option-country__dial-code">+250</span></p>
+    <li id="RW" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-rw"></span>
+        <p><span class="option__name">Ruanda</span> <span class="option__dial-code">+250</span></p>
       </button>
       <!---->
     </li>
-    <li id="SA" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-sa"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Saudi-Arabien</span> <span class="option-country__dial-code">+966</span></p>
+    <li id="SA" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-sa"></span>
+        <p><span class="option__name">Saudi-Arabien</span> <span class="option__dial-code">+966</span></p>
       </button>
       <!---->
     </li>
-    <li id="SB" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-sb"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Salomonen</span> <span class="option-country__dial-code">+677</span></p>
+    <li id="SB" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-sb"></span>
+        <p><span class="option__name">Salomonen</span> <span class="option__dial-code">+677</span></p>
       </button>
       <!---->
     </li>
-    <li id="SC" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-sc"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Seychellen</span> <span class="option-country__dial-code">+248</span></p>
+    <li id="SC" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-sc"></span>
+        <p><span class="option__name">Seychellen</span> <span class="option__dial-code">+248</span></p>
       </button>
       <!---->
     </li>
-    <li id="SE" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-se"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Schweden</span> <span class="option-country__dial-code">+46</span></p>
+    <li id="SE" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-se"></span>
+        <p><span class="option__name">Schweden</span> <span class="option__dial-code">+46</span></p>
       </button>
       <!---->
     </li>
-    <li id="SG" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-sg"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Singapur</span> <span class="option-country__dial-code">+65</span></p>
+    <li id="SG" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-sg"></span>
+        <p><span class="option__name">Singapur</span> <span class="option__dial-code">+65</span></p>
       </button>
       <!---->
     </li>
-    <li id="SH" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-sh"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">St. Helena</span> <span class="option-country__dial-code">+290</span></p>
+    <li id="SH" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-sh"></span>
+        <p><span class="option__name">St. Helena</span> <span class="option__dial-code">+290</span></p>
       </button>
       <!---->
     </li>
-    <li id="SI" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-si"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Slowenien</span> <span class="option-country__dial-code">+386</span></p>
+    <li id="SI" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-si"></span>
+        <p><span class="option__name">Slowenien</span> <span class="option__dial-code">+386</span></p>
       </button>
       <!---->
     </li>
-    <li id="SJ" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-sj"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Svalbard und Jan Mayen</span> <span class="option-country__dial-code">+4779</span></p>
+    <li id="SJ" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-sj"></span>
+        <p><span class="option__name">Svalbard und Jan Mayen</span> <span class="option__dial-code">+4779</span></p>
       </button>
       <!---->
     </li>
-    <li id="SK" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-sk"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Slowakei</span> <span class="option-country__dial-code">+421</span></p>
+    <li id="SK" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-sk"></span>
+        <p><span class="option__name">Slowakei</span> <span class="option__dial-code">+421</span></p>
       </button>
       <!---->
     </li>
-    <li id="SL" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-sl"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Sierra Leone</span> <span class="option-country__dial-code">+232</span></p>
+    <li id="SL" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-sl"></span>
+        <p><span class="option__name">Sierra Leone</span> <span class="option__dial-code">+232</span></p>
       </button>
       <!---->
     </li>
-    <li id="SM" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-sm"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">San Marino</span> <span class="option-country__dial-code">+378</span></p>
+    <li id="SM" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-sm"></span>
+        <p><span class="option__name">San Marino</span> <span class="option__dial-code">+378</span></p>
       </button>
       <!---->
     </li>
-    <li id="SN" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-sn"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Senegal</span> <span class="option-country__dial-code">+221</span></p>
+    <li id="SN" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-sn"></span>
+        <p><span class="option__name">Senegal</span> <span class="option__dial-code">+221</span></p>
       </button>
       <!---->
     </li>
-    <li id="SO" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-so"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Somalia</span> <span class="option-country__dial-code">+252</span></p>
+    <li id="SO" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-so"></span>
+        <p><span class="option__name">Somalia</span> <span class="option__dial-code">+252</span></p>
       </button>
       <!---->
     </li>
-    <li id="SR" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-sr"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Suriname</span> <span class="option-country__dial-code">+597</span></p>
+    <li id="SR" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-sr"></span>
+        <p><span class="option__name">Suriname</span> <span class="option__dial-code">+597</span></p>
       </button>
       <!---->
     </li>
-    <li id="SS" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ss"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Südsudan</span> <span class="option-country__dial-code">+211</span></p>
+    <li id="SS" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ss"></span>
+        <p><span class="option__name">Südsudan</span> <span class="option__dial-code">+211</span></p>
       </button>
       <!---->
     </li>
-    <li id="ST" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-st"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">São Tomé und Príncipe</span> <span class="option-country__dial-code">+239</span></p>
+    <li id="ST" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-st"></span>
+        <p><span class="option__name">São Tomé und Príncipe</span> <span class="option__dial-code">+239</span></p>
       </button>
       <!---->
     </li>
-    <li id="SV" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-sv"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">El Salvador</span> <span class="option-country__dial-code">+503</span></p>
+    <li id="SV" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-sv"></span>
+        <p><span class="option__name">El Salvador</span> <span class="option__dial-code">+503</span></p>
       </button>
       <!---->
     </li>
-    <li id="SX" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-sx"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Sint Maarten</span> <span class="option-country__dial-code">+1721</span></p>
+    <li id="SX" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-sx"></span>
+        <p><span class="option__name">Sint Maarten</span> <span class="option__dial-code">+1721</span></p>
       </button>
       <!---->
     </li>
-    <li id="SY" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-sy"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Syrien, Arabische Republik</span> <span class="option-country__dial-code">+963</span></p>
+    <li id="SY" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-sy"></span>
+        <p><span class="option__name">Syrien, Arabische Republik</span> <span class="option__dial-code">+963</span></p>
       </button>
       <!---->
     </li>
-    <li id="TD" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-td"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Tschad</span> <span class="option-country__dial-code">+235</span></p>
+    <li id="TD" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-td"></span>
+        <p><span class="option__name">Tschad</span> <span class="option__dial-code">+235</span></p>
       </button>
       <!---->
     </li>
-    <li id="TG" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-tg"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Togo</span> <span class="option-country__dial-code">+228</span></p>
+    <li id="TG" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-tg"></span>
+        <p><span class="option__name">Togo</span> <span class="option__dial-code">+228</span></p>
       </button>
       <!---->
     </li>
-    <li id="TH" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-th"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Thailand</span> <span class="option-country__dial-code">+66</span></p>
+    <li id="TH" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-th"></span>
+        <p><span class="option__name">Thailand</span> <span class="option__dial-code">+66</span></p>
       </button>
       <!---->
     </li>
-    <li id="TJ" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-tj"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Tadschikistan</span> <span class="option-country__dial-code">+992</span></p>
+    <li id="TJ" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-tj"></span>
+        <p><span class="option__name">Tadschikistan</span> <span class="option__dial-code">+992</span></p>
       </button>
       <!---->
     </li>
-    <li id="TK" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-tk"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Tokelau</span> <span class="option-country__dial-code">+690</span></p>
+    <li id="TK" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-tk"></span>
+        <p><span class="option__name">Tokelau</span> <span class="option__dial-code">+690</span></p>
       </button>
       <!---->
     </li>
-    <li id="TL" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-tl"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Osttimor</span> <span class="option-country__dial-code">+670</span></p>
+    <li id="TL" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-tl"></span>
+        <p><span class="option__name">Osttimor</span> <span class="option__dial-code">+670</span></p>
       </button>
       <!---->
     </li>
-    <li id="TM" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-tm"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Turkmenistan</span> <span class="option-country__dial-code">+993</span></p>
+    <li id="TM" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-tm"></span>
+        <p><span class="option__name">Turkmenistan</span> <span class="option__dial-code">+993</span></p>
       </button>
       <!---->
     </li>
-    <li id="TN" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-tn"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Tunesien</span> <span class="option-country__dial-code">+216</span></p>
+    <li id="TN" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-tn"></span>
+        <p><span class="option__name">Tunesien</span> <span class="option__dial-code">+216</span></p>
       </button>
       <!---->
     </li>
-    <li id="TO" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-to"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Tonga</span> <span class="option-country__dial-code">+676</span></p>
+    <li id="TO" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-to"></span>
+        <p><span class="option__name">Tonga</span> <span class="option__dial-code">+676</span></p>
       </button>
       <!---->
     </li>
-    <li id="TR" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-tr"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Türkei</span> <span class="option-country__dial-code">+90</span></p>
+    <li id="TR" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-tr"></span>
+        <p><span class="option__name">Türkei</span> <span class="option__dial-code">+90</span></p>
       </button>
       <!---->
     </li>
-    <li id="TT" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-tt"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Trinidad und Tobago</span> <span class="option-country__dial-code">+868</span></p>
+    <li id="TT" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-tt"></span>
+        <p><span class="option__name">Trinidad und Tobago</span> <span class="option__dial-code">+868</span></p>
       </button>
       <!---->
     </li>
-    <li id="TV" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-tv"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Tuvalu</span> <span class="option-country__dial-code">+688</span></p>
+    <li id="TV" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-tv"></span>
+        <p><span class="option__name">Tuvalu</span> <span class="option__dial-code">+688</span></p>
       </button>
       <!---->
     </li>
-    <li id="TZ" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-tz"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Tansania, Vereinigte Republik</span> <span class="option-country__dial-code">+255</span></p>
+    <li id="TZ" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-tz"></span>
+        <p><span class="option__name">Tansania, Vereinigte Republik</span> <span class="option__dial-code">+255</span></p>
       </button>
       <!---->
     </li>
-    <li id="UA" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ua"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Ukraine</span> <span class="option-country__dial-code">+380</span></p>
+    <li id="UA" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ua"></span>
+        <p><span class="option__name">Ukraine</span> <span class="option__dial-code">+380</span></p>
       </button>
       <!---->
     </li>
-    <li id="UG" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ug"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Uganda</span> <span class="option-country__dial-code">+256</span></p>
+    <li id="UG" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ug"></span>
+        <p><span class="option__name">Uganda</span> <span class="option__dial-code">+256</span></p>
       </button>
       <!---->
     </li>
-    <li id="US" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-us"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Vereinigte Staaten</span> <span class="option-country__dial-code">+1</span></p>
+    <li id="US" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-us"></span>
+        <p><span class="option__name">Vereinigte Staaten</span> <span class="option__dial-code">+1</span></p>
       </button>
       <!---->
     </li>
-    <li id="UY" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-uy"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Uruguay</span> <span class="option-country__dial-code">+598</span></p>
+    <li id="UY" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-uy"></span>
+        <p><span class="option__name">Uruguay</span> <span class="option__dial-code">+598</span></p>
       </button>
       <!---->
     </li>
-    <li id="UZ" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-uz"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Usbekistan</span> <span class="option-country__dial-code">+998</span></p>
+    <li id="UZ" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-uz"></span>
+        <p><span class="option__name">Usbekistan</span> <span class="option__dial-code">+998</span></p>
       </button>
       <!---->
     </li>
-    <li id="VC" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-vc"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">St. Vincent und die Grenadinen</span> <span class="option-country__dial-code">+1784</span></p>
+    <li id="VC" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-vc"></span>
+        <p><span class="option__name">St. Vincent und die Grenadinen</span> <span class="option__dial-code">+1784</span></p>
       </button>
       <!---->
     </li>
-    <li id="VE" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ve"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Venezuela</span> <span class="option-country__dial-code">+58</span></p>
+    <li id="VE" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ve"></span>
+        <p><span class="option__name">Venezuela</span> <span class="option__dial-code">+58</span></p>
       </button>
       <!---->
     </li>
-    <li id="VG" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-vg"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Britische Jungferninseln</span> <span class="option-country__dial-code">+1284</span></p>
+    <li id="VG" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-vg"></span>
+        <p><span class="option__name">Britische Jungferninseln</span> <span class="option__dial-code">+1284</span></p>
       </button>
       <!---->
     </li>
-    <li id="VI" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-vi"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Amerikanische Jungferninseln</span> <span class="option-country__dial-code">+1340</span></p>
+    <li id="VI" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-vi"></span>
+        <p><span class="option__name">Amerikanische Jungferninseln</span> <span class="option__dial-code">+1340</span></p>
       </button>
       <!---->
     </li>
-    <li id="VN" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-vn"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Vietnam</span> <span class="option-country__dial-code">+84</span></p>
+    <li id="VN" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-vn"></span>
+        <p><span class="option__name">Vietnam</span> <span class="option__dial-code">+84</span></p>
       </button>
       <!---->
     </li>
-    <li id="VU" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-vu"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Vanuatu</span> <span class="option-country__dial-code">+678</span></p>
+    <li id="VU" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-vu"></span>
+        <p><span class="option__name">Vanuatu</span> <span class="option__dial-code">+678</span></p>
       </button>
       <!---->
     </li>
-    <li id="WF" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-wf"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Wallis und Futuna</span> <span class="option-country__dial-code">+681</span></p>
+    <li id="WF" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-wf"></span>
+        <p><span class="option__name">Wallis und Futuna</span> <span class="option__dial-code">+681</span></p>
       </button>
       <!---->
     </li>
-    <li id="WS" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ws"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Samoa</span> <span class="option-country__dial-code">+685</span></p>
+    <li id="WS" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ws"></span>
+        <p><span class="option__name">Samoa</span> <span class="option__dial-code">+685</span></p>
       </button>
       <!---->
     </li>
-    <li id="YE" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ye"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Jemen</span> <span class="option-country__dial-code">+967</span></p>
+    <li id="YE" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ye"></span>
+        <p><span class="option__name">Jemen</span> <span class="option__dial-code">+967</span></p>
       </button>
       <!---->
     </li>
-    <li id="YT" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-yt"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Mayotte</span> <span class="option-country__dial-code">+262</span></p>
+    <li id="YT" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-yt"></span>
+        <p><span class="option__name">Mayotte</span> <span class="option__dial-code">+262</span></p>
       </button>
       <!---->
     </li>
-    <li id="ZA" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-za"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Südafrika</span> <span class="option-country__dial-code">+27</span></p>
+    <li id="ZA" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-za"></span>
+        <p><span class="option__name">Südafrika</span> <span class="option__dial-code">+27</span></p>
       </button>
       <!---->
     </li>
-    <li id="ZM" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-zm"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Sambia</span> <span class="option-country__dial-code">+260</span></p>
+    <li id="ZM" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-zm"></span>
+        <p><span class="option__name">Sambia</span> <span class="option__dial-code">+260</span></p>
       </button>
       <!---->
     </li>
-    <li id="ZW" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-zw"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Simbabwe</span> <span class="option-country__dial-code">+263</span></p>
+    <li id="ZW" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-zw"></span>
+        <p><span class="option__name">Simbabwe</span> <span class="option__dial-code">+263</span></p>
       </button>
       <!---->
     </li>
-    <li id="SZ" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-sz"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Eswatini</span> <span class="option-country__dial-code">+268</span></p>
+    <li id="SZ" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-sz"></span>
+        <p><span class="option__name">Eswatini</span> <span class="option__dial-code">+268</span></p>
       </button>
       <!---->
     </li>
-    <li id="MK" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-mk"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Nordmazedonien</span> <span class="option-country__dial-code">+389</span></p>
+    <li id="MK" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-mk"></span>
+        <p><span class="option__name">Nordmazedonien</span> <span class="option__dial-code">+389</span></p>
       </button>
       <!---->
     </li>
-    <li id="PH" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ph"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Philippinen</span> <span class="option-country__dial-code">+63</span></p>
+    <li id="PH" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ph"></span>
+        <p><span class="option__name">Philippinen</span> <span class="option__dial-code">+63</span></p>
       </button>
       <!---->
     </li>
-    <li id="NL" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-nl"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Niederlande</span> <span class="option-country__dial-code">+31</span></p>
+    <li id="NL" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-nl"></span>
+        <p><span class="option__name">Niederlande</span> <span class="option__dial-code">+31</span></p>
       </button>
       <!---->
     </li>
-    <li id="AE" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ae"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Vereinigte Arabische Emirate</span> <span class="option-country__dial-code">+971</span></p>
+    <li id="AE" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ae"></span>
+        <p><span class="option__name">Vereinigte Arabische Emirate</span> <span class="option__dial-code">+971</span></p>
       </button>
       <!---->
     </li>
-    <li id="MD" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-md"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Moldawien</span> <span class="option-country__dial-code">+373</span></p>
+    <li id="MD" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-md"></span>
+        <p><span class="option__name">Moldawien</span> <span class="option__dial-code">+373</span></p>
       </button>
       <!---->
     </li>
-    <li id="GM" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-gm"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Gambia</span> <span class="option-country__dial-code">+220</span></p>
+    <li id="GM" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-gm"></span>
+        <p><span class="option__name">Gambia</span> <span class="option__dial-code">+220</span></p>
       </button>
       <!---->
     </li>
-    <li id="DO" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-do"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Dominikanische Republik</span> <span class="option-country__dial-code">+1</span></p>
+    <li id="DO" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-do"></span>
+        <p><span class="option__name">Dominikanische Republik</span> <span class="option__dial-code">+1</span></p>
       </button>
       <!---->
     </li>
-    <li id="SD" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-sd"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Sudan</span> <span class="option-country__dial-code">+249</span></p>
+    <li id="SD" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-sd"></span>
+        <p><span class="option__name">Sudan</span> <span class="option__dial-code">+249</span></p>
       </button>
       <!---->
     </li>
-    <li id="LA" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-la"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Laos</span> <span class="option-country__dial-code">+856</span></p>
+    <li id="LA" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-la"></span>
+        <p><span class="option__name">Laos</span> <span class="option__dial-code">+856</span></p>
       </button>
       <!---->
     </li>
-    <li id="TW" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-tw"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Taiwan</span> <span class="option-country__dial-code">+886</span></p>
+    <li id="TW" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-tw"></span>
+        <p><span class="option__name">Taiwan</span> <span class="option__dial-code">+886</span></p>
       </button>
       <!---->
     </li>
-    <li id="CG" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-cg"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Republik Kongo</span> <span class="option-country__dial-code">+242</span></p>
+    <li id="CG" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-cg"></span>
+        <p><span class="option__name">Republik Kongo</span> <span class="option__dial-code">+242</span></p>
       </button>
       <!---->
     </li>
-    <li id="CZ" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-cz"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Tschechische Republik</span> <span class="option-country__dial-code">+420</span></p>
+    <li id="CZ" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-cz"></span>
+        <p><span class="option__name">Tschechische Republik</span> <span class="option__dial-code">+420</span></p>
       </button>
       <!---->
     </li>
-    <li id="GB" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-gb"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Großbritannien</span> <span class="option-country__dial-code">+44</span></p>
+    <li id="GB" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-gb"></span>
+        <p><span class="option__name">Großbritannien</span> <span class="option__dial-code">+44</span></p>
       </button>
       <!---->
     </li>
-    <li id="NE" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ne"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Niger</span> <span class="option-country__dial-code">+227</span></p>
+    <li id="NE" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ne"></span>
+        <p><span class="option__name">Niger</span> <span class="option__dial-code">+227</span></p>
       </button>
       <!---->
     </li>
-    <li id="CD" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-cd"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Kongo</span> <span class="option-country__dial-code">+243</span></p>
+    <li id="CD" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-cd"></span>
+        <p><span class="option__name">Kongo</span> <span class="option__dial-code">+243</span></p>
       </button>
       <!---->
     </li>
-    <li id="BS" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-bs"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Bahamas</span> <span class="option-country__dial-code">+1 242</span></p>
+    <li id="BS" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-bs"></span>
+        <p><span class="option__name">Bahamas</span> <span class="option__dial-code">+1 242</span></p>
       </button>
       <!---->
     </li>
-    <li id="CC" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-cc"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Kokosinseln</span> <span class="option-country__dial-code">+61 891</span></p>
+    <li id="CC" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-cc"></span>
+        <p><span class="option__name">Kokosinseln</span> <span class="option__dial-code">+61 891</span></p>
       </button>
       <!---->
     </li>
-    <li id="CF" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-cf"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Zentralafrikanische Republik</span> <span class="option-country__dial-code">+236</span></p>
+    <li id="CF" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-cf"></span>
+        <p><span class="option__name">Zentralafrikanische Republik</span> <span class="option__dial-code">+236</span></p>
       </button>
       <!---->
     </li>
-    <li id="CK" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ck"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Cookinseln</span> <span class="option-country__dial-code">+682</span></p>
+    <li id="CK" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ck"></span>
+        <p><span class="option__name">Cookinseln</span> <span class="option__dial-code">+682</span></p>
       </button>
       <!---->
     </li>
-    <li id="FK" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-fk"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Falklandinseln</span> <span class="option-country__dial-code">+500</span></p>
+    <li id="FK" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-fk"></span>
+        <p><span class="option__name">Falklandinseln</span> <span class="option__dial-code">+500</span></p>
       </button>
       <!---->
     </li>
-    <li id="FO" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-fo"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Färöer</span> <span class="option-country__dial-code">+298</span></p>
+    <li id="FO" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-fo"></span>
+        <p><span class="option__name">Färöer</span> <span class="option__dial-code">+298</span></p>
       </button>
       <!---->
     </li>
-    <li id="HM" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-hm"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Heard und McDonaldinseln</span> <span class="option-country__dial-code">+672</span></p>
+    <li id="HM" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-hm"></span>
+        <p><span class="option__name">Heard und McDonaldinseln</span> <span class="option__dial-code">+672</span></p>
       </button>
       <!---->
     </li>
-    <li id="IO" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-io"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Britisches Territorium im Indischen Ozean</span> <span class="option-country__dial-code">+246</span></p>
+    <li id="IO" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-io"></span>
+        <p><span class="option__name">Britisches Territorium im Indischen Ozean</span> <span class="option__dial-code">+246</span></p>
       </button>
       <!---->
     </li>
-    <li id="KM" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-km"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Komoren</span> <span class="option-country__dial-code">+269</span></p>
+    <li id="KM" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-km"></span>
+        <p><span class="option__name">Komoren</span> <span class="option__dial-code">+269</span></p>
       </button>
       <!---->
     </li>
-    <li id="KY" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-ky"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Kaimaninseln</span> <span class="option-country__dial-code">+1 345</span></p>
+    <li id="KY" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ky"></span>
+        <p><span class="option__name">Kaimaninseln</span> <span class="option__dial-code">+1 345</span></p>
       </button>
       <!---->
     </li>
-    <li id="MH" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-mh"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Marshallinseln</span> <span class="option-country__dial-code">+692</span></p>
+    <li id="MH" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-mh"></span>
+        <p><span class="option__name">Marshallinseln</span> <span class="option__dial-code">+692</span></p>
       </button>
       <!---->
     </li>
-    <li id="MP" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-mp"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Nördliche Marianen</span> <span class="option-country__dial-code">+1 670</span></p>
+    <li id="MP" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-mp"></span>
+        <p><span class="option__name">Nördliche Marianen</span> <span class="option__dial-code">+1 670</span></p>
       </button>
       <!---->
     </li>
-    <li id="TC" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-tc"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Turks- und Caicosinseln</span> <span class="option-country__dial-code">+1 649</span></p>
+    <li id="TC" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-tc"></span>
+        <p><span class="option__name">Turks- und Caicosinseln</span> <span class="option__dial-code">+1 649</span></p>
       </button>
       <!---->
     </li>
-    <li id="TF" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-tf"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Französische Süd- und Antarktisgebiete</span> <span class="option-country__dial-code">+672</span></p>
+    <li id="TF" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-tf"></span>
+        <p><span class="option__name">Französische Süd- und Antarktisgebiete</span> <span class="option__dial-code">+672</span></p>
       </button>
       <!---->
     </li>
-    <li id="UM" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-um"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">United States Minor Outlying Islands</span> <span class="option-country__dial-code">+246</span></p>
+    <li id="UM" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-um"></span>
+        <p><span class="option__name">United States Minor Outlying Islands</span> <span class="option__dial-code">+246</span></p>
       </button>
       <!---->
     </li>
-    <li id="VA" role="option" class="phone-input__dropdown__option"><button class="option-country"><span class="option-country__flag flag-icon flag-icon-va"></span>
-        <p class="option-country__name-and-code"><span class="option-country__name">Vatikanstadt</span> <span class="option-country__dial-code">+39</span></p>
+    <li id="VA" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-va"></span>
+        <p><span class="option__name">Vatikanstadt</span> <span class="option__dial-code">+39</span></p>
       </button>
       <!---->
     </li>

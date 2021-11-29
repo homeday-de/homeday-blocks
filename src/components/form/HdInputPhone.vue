@@ -215,6 +215,9 @@ export default {
     },
     phoneFormatter(phone) {
       const phoneNumber = new PhoneNumber(phone);
+      if (phone === `+${phoneNumber.getCountryCode()}`) {
+        return phone;
+      }
       return phoneNumber.getNumber('international');
     },
     keysHandler(event) {
