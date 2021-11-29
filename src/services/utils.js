@@ -211,34 +211,6 @@ export function keysToSnakeCase(collection) {
   return collection;
 }
 
-/**
- * Formats phone number with this mask: +55 555 555 5555
- * @param countryCode {String} Selected country code
- * @param phoneNumber {String} Phone number
- * @returns {String} Formatted Phone number
- */
-
-export function formatPhoneNumber(countryCode, phoneNumber) {
-  const countryCodeDigits = countryCode.length;
-  if (!phoneNumber) {
-    return '';
-  } else if (phoneNumber.length === countryCodeDigits) {
-    return countryCode;
-  } else if (phoneNumber.length > countryCodeDigits && phoneNumber.length <= countryCodeDigits + 3) {
-    const groupsOfNumbers = phoneNumber.substring(countryCodeDigits).match(/(\d{0,3})/);
-    return `${countryCode} ${groupsOfNumbers[1]}`;
-  } else if (phoneNumber.length > countryCodeDigits + 3 && phoneNumber.length <= countryCodeDigits + 6) {
-    const groupsOfNumbers = phoneNumber.substring(countryCodeDigits).match(/(\d{0,3})(\d{0,3})/);
-    return `${countryCode} ${groupsOfNumbers[1]} ${groupsOfNumbers[2]}`;
-  } else if (phoneNumber.length > countryCodeDigits + 6 && phoneNumber.length <= countryCodeDigits + 10) {
-    const groupsOfNumbers = phoneNumber.substring(countryCodeDigits).match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
-    return `${countryCode} ${groupsOfNumbers[1]} ${groupsOfNumbers[2]} ${groupsOfNumbers[3]}`;
-  } else {
-    const groupsOfNumbers = phoneNumber.substring(countryCodeDigits).match(/(\d{0,3})(\d{0,3})(\d{0,4})(\d{0,10})/);
-    return `${countryCode} ${groupsOfNumbers[1]} ${groupsOfNumbers[2]} ${groupsOfNumbers[3]}${groupsOfNumbers[4]}`;
-  }
-}
-
  export default {
   populateTemplate,
   getPasswordStrength,
