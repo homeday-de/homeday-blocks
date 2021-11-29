@@ -3,11 +3,11 @@
     <button
       class="phone-input__selector"
       aria-haspopup="listbox"
-      aria-label="Choose a country code:"
       @click="toggleDropdown"
-      :aria-activedescendant="`${selectedCountry.dial_code}, ${t.COUNTRIES[selectedCountry.code]}`"
+      :aria-label="t.FORM.PHONE.LABEL"
+      :aria-activedescendant="activeCountryCodeAndName"
     >
-      <span :class="`phone-input__selector__flag flag-icon flag-icon-${selectedCountry.code.toLowerCase()}`"></span>
+      <span :class="selectedFlagClassNames"></span>
       <HdIcon
         width="24px"
         height="24px"
@@ -16,12 +16,11 @@
       />
     </button>
     <ul
-      id="country-codes-list"
       tabindex="-1"
       role="listbox"
       v-show="showDropdown"
-      aria-label="Choose a country code:"
       class="phone-input__dropdown"
+      :aria-label="t.FORM.PHONE.LABEL"
     >
       <template>
         <li
@@ -33,11 +32,11 @@
           :aria-selected="selectedCountry.code === country.code"
           :ref="country.code"
         >
-          <button @click="selectCountry(country)" class="option-country">
-            <span :class="`option-country__flag flag-icon flag-icon-${country.code.toLowerCase()}`"></span>
-            <p class="option-country__name-and-code">
-              <span class="option-country__name">{{t.COUNTRIES[country.code]}}</span>
-              <span class="option-country__dial-code">{{country.dial_code}}</span>
+          <button @click="selectCountry(country)" class="option">
+            <span :class="getOptionFlagClassNames(country.code)"></span>
+            <p>
+              <span class="option__name">{{t.COUNTRIES[country.code]}}</span>
+              <span class="option__dial-code">{{country.dial_code}}</span>
             </p>
           </button>
           <hr v-if="index === preferredCountries.length - 1" class="phone-input__dropdown__divider" />
@@ -163,6 +162,15 @@ export default {
       const directionClass = this.showDropdown ? 'phone-input__selector__arrow--down' : 'phone-input__selector__arrow--up';
       return [baseClass, directionClass];
     },
+    selectedFlagClassNames() {
+      const baseClass = 'phone-input__selector__flag';
+      const countryClass = `flag-icon flag-icon-${this.selectedCountry.code.toLowerCase()}`;
+      return [baseClass, countryClass];
+    },
+
+    activeCountryCodeAndName() {
+      return `${this.selectedCountry.dial_code}, ${this.t.COUNTRIES[this.selectedCountry.code]}`;
+    },
     t() {
       return getMessages(this.lang);
     },
@@ -194,6 +202,11 @@ export default {
     },
   },
   methods: {
+    getOptionFlagClassNames(code) {
+      const baseClass = 'option__flag';
+      const countryClass = `flag-icon flag-icon-${code.toLowerCase()}`;
+      return [baseClass, countryClass];
+    },
     toggleDropdown() {
       this.showDropdown = !this.showDropdown;
     },
@@ -213,7 +226,7 @@ export default {
       const lastCountryCode = this.sortedCountriesList[this.sortedCountriesList.length - 1].code;
       let countryNode = null;
 
-      const foucsCountryCode = () => {
+      const focusCountryCode = () => {
         if (countryNode !== null) {
           countryNode.firstChild.focus();
           this.focusedCountry = countryNode.id;
@@ -226,14 +239,14 @@ export default {
         } else if (this.focusedCountry !== lastCountryCode) { // If there is, focus next option
           countryNode = this.$refs[this.focusedCountry][0]?.nextSibling;
         }
-        foucsCountryCode();
+        focusCountryCode();
       } else if (keyCode === ARROW_UP_KEY_CODE) {
         if (this.focusedCountry === null) { // If there is no focus yet, focus last option
           [countryNode] = this.$refs[lastCountryCode];
         } else if (this.focusedCountry !== firstCountryCode) { // If there is, focus prev option
           countryNode = this.$refs[this.focusedCountry][0]?.previousSibling;
         }
-        foucsCountryCode();
+        focusCountryCode();
       } else if (isAlphabetKey(keyCode)) {
         const keyString = event.key.toUpperCase();
         const firstMatchingCountryCode = this.sortedCountriesList.find(
@@ -241,7 +254,7 @@ export default {
         )?.code;
         if (firstMatchingCountryCode) {
           [countryNode] = this.$refs[firstMatchingCountryCode];
-          foucsCountryCode();
+          focusCountryCode();
         }
       } else if (keyCode === ESC_KEY_CODE) {
         this.toggleDropdown();
@@ -269,8 +282,8 @@ $dropdown-button-height: 55px;
   display: flex;
 
   ::v-deep {
-    .field__main .input {
-      border-top-left-radius: 0 !important;
+    .field .field__body .field__main .input {
+      border-top-left-radius: 0;
     }
     .field__border {
       left: -$dropdown-button-width;
@@ -293,7 +306,9 @@ $dropdown-button-height: 55px;
     border: none;
     border-top-left-radius: $sp-xs;
     border-right: $sp-xxs solid getShade($quaternary-color, 60);
-
+    &:hover {
+      cursor: pointer;
+    }
     &:focus-visible {
       z-index: 1;
       border-color: transparent;
@@ -330,7 +345,7 @@ $dropdown-button-height: 55px;
     background-color: $white;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
     &__option {
-      .option-country {
+      .option {
         display: flex;
         align-items: center;
         width: 100%;
@@ -338,6 +353,7 @@ $dropdown-button-height: 55px;
         font-family: inherit;
         border: none;
         background-color: $white;
+        text-align: left;
         &:hover,
         &:focus {
           cursor: pointer;
@@ -346,9 +362,6 @@ $dropdown-button-height: 55px;
         &__flag {
           font-size: 18px;
           margin-right: $sp-s;
-        }
-        &__name-and-code {
-          text-align: left;
         }
         &__name {
           @include font("DS-100");

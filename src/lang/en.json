@@ -30,6 +30,9 @@
         ]
       },
       "SELECT_ONE_OPTION": "Please select (at least) one option"
+    },
+    "PHONE": {
+      "LABEL": "Choose a country code:"
     }
   },
   "EXPAND_TEXT": {

@@ -31,6 +31,9 @@
         ]
       },
       "SELECT_ONE_OPTION": "Bitte wählen Sie (mindestens) eine Option aus"
+    },
+    "PHONE": {
+      "LABEL": "Wählen Sie einen Ländercode:"
     }
   },
   "EXPAND_TEXT": {
