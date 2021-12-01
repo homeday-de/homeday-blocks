@@ -1,5 +1,6 @@
 <template>
   <div
+    role="alert"
     class="notification"
     :class="[`notification--${type}`]"
   >
@@ -17,15 +18,29 @@
         {{ message }}
       </slot>
     </div>
+    <button
+      v-if="closable"
+      data-dismiss="alert"
+      :aria-label="t.GENERAL.CLOSE"
+      class="notification__close"
+    >
+      <HdIcon
+        :src="closeIcon"
+        class="notification__close__icon"
+      />
+    </button>
   </div>
 </template>
 
 <script>
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
+import { getMessages } from 'homeday-blocks/src/lang';
+
 import {
   error as errorIcon,
   bell as bellIcon,
   info as infoIcon,
+  close as closeIcon,
   checkCircle as checkCircleIcon,
 } from 'homeday-assets';
 
@@ -56,6 +71,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    closable: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     icon() {
@@ -65,6 +84,12 @@ export default {
         [TYPES.INFO]: infoIcon,
         [TYPES.SUCCESS]: checkCircleIcon,
       }[this.type];
+    },
+    closeIcon() {
+      return closeIcon;
+    },
+    t() {
+      return getMessages(this.lang);
     },
   },
 };
@@ -113,6 +138,15 @@ export default {
     &--centered {
       text-align: center;
     }
+  }
+
+  &__close {
+    background-color: transparent;
+    border: none;
+    &__icon path {
+      fill: $white;
+    }
+
   }
 }
 </style>

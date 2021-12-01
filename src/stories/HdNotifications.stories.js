@@ -20,6 +20,7 @@ export default {
         id: 0,
         type: TYPES.NOTIFICATION,
         message: 'My notification.',
+        closable: true,
       },
     ],
   },
