@@ -5,7 +5,7 @@ import _getOr from 'lodash/fp/getOr';
 import { customRules } from '@/@types/global';
 import { getMessages, Messages } from 'homeday-blocks/src/lang';
 import { cloneVNodeElement } from 'homeday-blocks/src/services/utils';
-import { HdCheckboxCard } from 'homeday-blocks/main';
+import { name as HdCheckboxCardName } from 'homeday-blocks/src/components/form/HdCheckboxCard.vue';
 import formFieldMixin from './formFieldMixin';
 
 const getPropsDataFor = (vnode: VNode) => <T extends unknown>(defaultValue: T, field: string): T => _getOr(defaultValue, `componentOptions.propsData.${field}`, vnode);
@@ -108,7 +108,7 @@ export default Vue.extend({
     const children: VNode[] = this.$slots.default || [];
 
     const clones: VNode[] = children
-      .filter(({ tag, componentOptions }) => Boolean(tag) && componentOptions?.tag === HdCheckboxCard.name)
+      .filter(({ tag, componentOptions }) => Boolean(tag) && componentOptions?.tag === HdCheckboxCardName)
       .map((vnode) => {
         const getPropsData = getPropsDataFor(vnode);
         const clone = cloneVNodeElement(

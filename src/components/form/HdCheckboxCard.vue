@@ -59,8 +59,10 @@ import { customRules } from '@/@types/global';
 import formFieldMixin from './formFieldMixin';
 import HdCheckboxIndicator from './HdCheckboxIndicator.vue';
 
+export const name = 'HdCheckboxCard';
+
 export default Vue.extend({
-  name: 'HdCheckboxCard',
+  name,
   mixins: [formFieldMixin],
   components: {
     HdCheckboxIndicator,
