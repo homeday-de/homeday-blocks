@@ -5,7 +5,7 @@ import _getOr from 'lodash/fp/getOr';
 import { customRules } from '@/@types/global';
 import { getMessages, Messages } from 'homeday-blocks/src/lang';
 import { cloneVNodeElement } from 'homeday-blocks/src/services/utils';
-import { HdRadioCard } from 'homeday-blocks/main';
+import { name as HdRadioCardName } from 'homeday-blocks/src/components/form/HdRadioCard.vue';
 import formFieldMixin from './formFieldMixin';
 
 const getPropsDataFor = (vnode: VNode) => <T extends unknown>(defaultValue: T, field: string): T => _getOr(defaultValue, `componentOptions.propsData.${field}`, vnode);
@@ -105,7 +105,7 @@ export default Vue.extend({
     const children: VNode[] = this.$slots.default || [];
 
     const clones: VNode[] = children
-      .filter(({ tag, componentOptions }) => Boolean(tag) && componentOptions?.tag === HdRadioCard.name)
+      .filter(({ tag, componentOptions }) => Boolean(tag) && componentOptions?.tag === HdRadioCardName)
       .map((vnode) => {
         const getPropsData = getPropsDataFor(vnode);
         const clone = cloneVNodeElement(

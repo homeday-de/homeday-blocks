@@ -54,8 +54,10 @@ import { getMessages, Messages } from 'homeday-blocks/src/lang';
 import formFieldMixin from './formFieldMixin';
 import HdRadioIndicator from './HdRadioIndicator.vue';
 
+export const name = 'HdRadioCard';
+
 export default Vue.extend({
-  name: 'HdRadioCard',
+  name,
   mixins: [formFieldMixin],
   components: {
     HdRadioIndicator,
