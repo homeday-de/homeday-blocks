@@ -11,8 +11,8 @@ export default {
   // to avoid adding the children fields to the form as well
   // in case the component is composed of other form field, e.g. HdInputFormatter
   provide: {
-    addFormField: () => {},
-    removeFormField: () => {},
+    addFormField: () => ({}),
+    removeFormField: () => ({}),
   },
   created() {
     if (typeof this.addFormField === 'function') {
