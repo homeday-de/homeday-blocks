@@ -1,5 +1,3 @@
-// @ts-check
-
 import { mount } from '@vue/test-utils';
 import deepmerge from 'deepmerge';
 import { HdRadioCardGroup, HdRadioCard } from 'homeday-blocks/main';
@@ -53,7 +51,6 @@ describe('HdRadioCardGroup', () => {
       inputChecked: () => view.find('input[type="radio"]:checked'),
       labels: () => view.findAll('label'),
       error: () => view.find('.radio-group__error'),
-      /** @returns {import('homeday-blocks/src/lang').Messages} */
       t: (lang = 'de') => getMessages(lang),
     };
   };
