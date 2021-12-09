@@ -1,5 +1,3 @@
-// @ts-check
-
 import { mount } from '@vue/test-utils';
 import deepmerge from 'deepmerge';
 import { HdCheckboxCard } from 'homeday-blocks/main';
@@ -27,7 +25,6 @@ describe('HdCheckboxCard', () => {
       input: () => view.find('input[type="checkbox"]'),
       label: () => view.find('label'),
       error: () => view.find('.error'),
-      /** @returns {import('homeday-blocks/src/lang').Messages} */
       t: (lang = 'de') => getMessages(lang),
     };
   };
