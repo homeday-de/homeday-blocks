@@ -50,15 +50,16 @@
   </label>
 </template>
 
-<script>
-// @ts-check
+<script lang="ts">
+import Vue, { PropOptions } from 'vue';
 import _isBoolean from 'lodash/fp/isBoolean';
 import deepmerge from 'deepmerge';
-import { getMessages } from 'homeday-blocks/src/lang';
+import { getMessages, Messages } from 'homeday-blocks/src/lang';
+import { customRules } from '@/@types/global';
 import formFieldMixin from './formFieldMixin';
 import HdCheckboxIndicator from './HdCheckboxIndicator.vue';
 
-export default {
+export default Vue.extend({
   name: 'HdCheckboxCard',
   mixins: [formFieldMixin],
   components: {
@@ -101,20 +102,20 @@ export default {
       type: String,
       default: 'de',
     },
-    /** @type {import('vue').PropOptions<{ validate: (value: unknown) => boolean, errorMessage: string }[]>} */
     customRules: {
       type: Array,
       default: () => [],
       validator: (rulesProvided) => rulesProvided.every(
         ({ validate, errorMessage }) => typeof validate === 'function' && typeof errorMessage === 'string',
       ),
-    },
+    } as PropOptions<customRules>,
   },
-  data() {
+  data(): {
+    error: null | string;
+    internalValue: string | number | boolean | unknown[];
+    } {
     return {
-    /** @type {string?} */
       error: null,
-      /** @type {string | number | boolean | unknown[]} */
       internalValue: this.value,
     };
   },
@@ -131,28 +132,23 @@ export default {
     },
   },
   computed: {
-    /** @returns {import('homeday-blocks/src/lang').Messages} */
-    t() {
+    t(): Messages {
       return deepmerge(getMessages(this.lang), this.texts);
     },
-    /** @returns {boolean} */
-    isChecked() {
+    isChecked(): boolean {
       if (Array.isArray(this.value) && this.nativeValue) return this.value.includes(this.nativeValue);
       return this.value === this.trueValue;
     },
-    /** @returns {boolean} */
-    hasValue() {
+    hasValue(): boolean {
       if (_isBoolean(this.value)) return this.value;
       if (Array.isArray(this.value)) return this.value.length > 0;
 
       return false;
     },
-    /** @returns {boolean} */
-    hasValidationErrors() {
+    hasValidationErrors(): boolean {
       return Boolean(this.error);
     },
-    /** @returns {string} */
-    inputName() {
+    inputName(): string {
       return `${this.name}-${this.nativeValue}`;
     },
   },
@@ -172,11 +168,10 @@ export default {
      * invoked by HdForm.
      *
      * By surrounding HdCheckboxCard with a HdCheckboxCardGroup
-     * this function is automatically overriden.
+     * this function is automatically overridden.
      *
-     * @returns {boolean}
      */
-    validate() {
+    validate(): boolean {
       this.error = this.validateForm();
       return !this.hasValidationErrors;
     },
@@ -186,7 +181,7 @@ export default {
       this.$nextTick(() => !this.isChecked && this.$refs?.label?.blur());
     },
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>
