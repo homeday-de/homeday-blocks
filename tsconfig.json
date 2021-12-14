@@ -22,7 +22,8 @@
     "paths": {
       "@/*": ["src/*"],
       "@tests/*": ["./tests/*"],
-      "homeday-blocks/*": ["./*"]
+      "homeday-blocks/*": ["./*"],
+      "*": ["src/@types/*.d.ts"]
     },
     "lib": [
       "es2019",
