@@ -20,7 +20,7 @@
     "test:unit:watch": "vue-cli-service test:unit --watchAll",
     "prepare": "husky install"
   },
-  "main": "main.ts",
+  "main": "main.js",
   "module": "main.ts",
   "sideEffects": [
     "*.vue",
