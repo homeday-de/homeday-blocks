@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { OnResizeService } from 'homeday-blocks';
+import { OnResizeService } from 'homeday-blocks/main';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import { chevron as chevronIcon } from 'homeday-assets';
 

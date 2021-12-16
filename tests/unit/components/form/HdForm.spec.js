@@ -1,7 +1,7 @@
 import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import {
   HdForm, HdInput, HdInputFormatter, HdCheckbox,
-} from 'homeday-blocks';
+} from 'homeday-blocks/main';
 import { scrollToEl } from 'homeday-blocks/src/services/scrolling';
 
 jest.mock('homeday-blocks/src/services/scrolling');
