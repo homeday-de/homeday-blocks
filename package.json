@@ -6,7 +6,7 @@
     "lint": "vue-cli-service lint",
     "lint:ci": "vue-cli-service lint --no-fix",
     "build:tsc": "tsc",
-    "build:lib": "vue-cli-service build --target lib --name homeday-blocks ./src/components/index.js",
+    "build:lib": "vue-cli-service build --target lib --name homeday-blocks main.ts",
     "build:storybook": "build-storybook",
     "serve:storybook": "start-storybook -p 6006",
     "coverage": "cat ./coverage/lcov.info | coveralls -v",
