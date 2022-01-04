@@ -45,15 +45,8 @@
 
 <script>
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
+import { TYPES } from 'homeday-blocks/src/components/HdBadgeTypes';
 import { chevron as chevronIcon } from 'homeday-assets';
-
-export const TYPES = {
-  DEFAULT: '',
-  PRIMARY: 'primary',
-  SECONDARY: 'secondary',
-  TERTIARY: 'tertiary',
-  DISABLED: 'disabled',
-};
 
 export default {
   name: 'HdBadge',

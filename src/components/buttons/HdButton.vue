@@ -28,14 +28,7 @@
 
 <script>
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
-
-export const TYPES = {
-  PRIMARY: 'primary',
-  SECONDARY: 'secondary',
-  TERTIARY: 'tertiary',
-  FLAT: 'flat',
-  GHOST: 'ghost',
-};
+import { TYPES } from 'homeday-blocks/src/components/buttons/HdButtonTypes';
 
 export default {
   name: 'HdButton',

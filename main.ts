@@ -1,13 +1,13 @@
-// @ts-ignore
-export { default as HdAlert, TYPES as HdAlertTypes } from './src/components/HdAlert.vue';
-// @ts-ignore
-export { default as HdBadge, TYPES as HdBadgeTypes } from './src/components/HdBadge.vue';
+export { default as HdAlert } from './src/components/HdAlert.vue';
+export { TYPES as HdAlertTypes } from './src/components/HdAlertTypes';
+export { default as HdBadge } from './src/components/HdBadge.vue';
+export { TYPES as HdBadgeTypes } from './src/components/HdBadgeTypes';
 export { default as HdCalendar } from './src/components/HdCalendar.vue';
 export { default as HdEditSwitch } from './src/components/HdEditSwitch.vue';
 export { default as HdExpandText } from './src/components/HdExpandText.vue';
 export { default as HdLazyImage } from './src/components/HdLazyImage.vue';
-// @ts-ignore
-export { default as HdLink, TYPES as HdLinkTypes } from './src/components/HdLink.vue';
+export { default as HdLink } from './src/components/HdLink.vue';
+export { TYPES as HdLinkTypes } from './src/components/HdLinkTypes';
 export { default as HdPager } from './src/components/HdPager.vue';
 export { default as HdResponsive } from './src/components/HdResponsive.vue';
 export { default as HdTable } from './src/components/HdTable.vue';
@@ -23,8 +23,8 @@ export { default as HdLoadingSpinner } from './src/components/HdLoadingSpinner.v
 
 // Buttons
 export { default as HdArrowButton } from './src/components/buttons/HdArrowButton.vue';
-// @ts-ignore
-export { default as HdButton, TYPES as HdButtonTypes } from './src/components/buttons/HdButton.vue';
+export { default as HdButton } from './src/components/buttons/HdButton.vue';
+export { TYPES as HdButtonTypes } from './src/components/buttons/HdButtonTypes';
 export { default as HdLoaderButton } from './src/components/buttons/HdLoaderButton.vue';
 export { default as HdRadioButton } from './src/components/buttons/HdRadioButton.vue';
 
@@ -69,11 +69,8 @@ export { default as HdZoomerGallery } from './src/components/gallery/HdZoomerGal
 
 // Notifications
 export { default as HdNotifications } from './src/components/notifications/HdNotifications.vue';
-export {
-  default as HdNotification,
-  // @ts-ignore
-  TYPES as HdNotificationsTypes,
-} from './src/components/notifications/HdNotification.vue';
+export { default as HdNotification } from './src/components/notifications/HdNotification.vue';
+export { TYPES as HdNotificationsTypes } from './src/components/notifications/HdNotificationsTypes';
 
 // Services
 export { default as BreakpointsService } from './src/services/breakpoints';

@@ -21,28 +21,7 @@
 
 <script>
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
-import {
-  checkCircle as successIcon,
-  info as infoIcon,
-  warning as warningIcon,
-  error as errorIcon,
-} from 'homeday-assets';
-
-// The first item is the default
-export const TYPES = {
-  info: {
-    icon: infoIcon,
-  },
-  success: {
-    icon: successIcon,
-  },
-  warning: {
-    icon: warningIcon,
-  },
-  error: {
-    icon: errorIcon,
-  },
-};
+import { TYPES } from 'homeday-blocks/src/components/HdAlertTypes';
 
 export default {
   name: 'HdAlert',

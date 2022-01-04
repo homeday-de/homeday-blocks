@@ -1,5 +1,6 @@
 import { wrapperFactoryBuilder } from 'tests/unit/helpers';
-import HdAlert, { TYPES } from '@/components/HdAlert.vue';
+import HdAlert from '@/components/HdAlert.vue';
+import { TYPES } from '@/components/HdAlertTypes';
 
 const defaultSlot = '<b>Default slot</b>';
 
