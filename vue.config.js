@@ -14,4 +14,7 @@ module.exports = {
       });
   },
   transpileDependencies: ['vue-zoomer'],
+  css: {
+    extract: false,
+  },
 };
