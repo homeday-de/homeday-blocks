@@ -36,7 +36,8 @@
       "NOT_INTERNATIONAL_NUMBER": "Verwenden Sie das internationale Format."
     },
     "PHONE": {
-      "LABEL": "Wählen Sie einen Ländercode:"
+      "ARIA_LABEL": "Wählen Sie einen Ländercode:",
+      "LABEL": "Telefonnummer"
     }
   },
   "EXPAND_TEXT": {

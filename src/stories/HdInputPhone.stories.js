@@ -13,7 +13,6 @@ storiesOf('Components/Form/HdInputPhone', module)
       <HdInputPhone
         v-model="value"
         name="test"
-        label="Telefonnumer"
         lang="de"
         :preferredCountries="['DE', 'AT', 'BE']"
       />

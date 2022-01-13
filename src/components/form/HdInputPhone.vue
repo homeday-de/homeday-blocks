@@ -4,14 +4,14 @@
       class="phone-input__selector"
       aria-haspopup="listbox"
       @click="toggleDropdown"
-      :aria-label="t.FORM.PHONE.LABEL"
+      :aria-label="t.FORM.PHONE.ARIA_LABEL"
       :aria-activedescendant="activeCountryCodeAndName"
     >
       <span :class="selectedFlagClassNames"></span>
       <HdIcon
         width="24px"
         height="24px"
-        :src="smallArrowIcon"
+        :src="icons.smallArrowIcon"
         :class="arrowClassNames"
       />
     </button>
@@ -50,7 +50,7 @@
       v-model="phoneNumber"
       class="phone-input__field"
       :placeholder="placeholder"
-      :label="label"
+      :label="t.FORM.PHONE.LABEL"
       :custom-rules="[isValidNumber, isMobileNumber, canBeInternationallyDialled]"
       :formatter="phoneFormatter"
       @input="handleInputEvent"
@@ -113,10 +113,6 @@ export default {
       type: String,
       required: true,
     },
-    label: {
-      type: String,
-      required: true,
-    },
     lang: {
       type: String,
       default: 'de',
@@ -128,28 +124,6 @@ export default {
       phoneNumber: COUNTRY_PHONE_CODES.find((country) => country.code === this.defaultCountry)?.dial_code,
       selectedCountry: COUNTRY_PHONE_CODES.find((country) => country.code === this.defaultCountry),
       focusedCountry: null,
-      isValidNumber: {
-        validate: (value) => {
-          const phoneNumber = new PhoneNumber(value);
-          return phoneNumber.isValid();
-        },
-        errorMessage: this.t.FORM.VALIDATION.INVALID_NUMBER,
-      },
-      isMobileNumber: {
-        validate: (value) => {
-          const phoneNumber = new PhoneNumber(value);
-          return phoneNumber.isMobile();
-        },
-        errorMessage: this.t.FORM.VALIDATION.NOT_MOBILE_NUMBER,
-      },
-      canBeInternationallyDialled: {
-        validate: (value) => {
-          const phoneNumber = new PhoneNumber(value);
-          return phoneNumber.canBeInternationallyDialled();
-        },
-        errorMessage: this.t.FORM.VALIDATION.NOT_INTERNATIONAL_NUMBER,
-      },
-      smallArrowIcon,
     };
   },
   computed: {
@@ -189,6 +163,38 @@ export default {
     },
     activeCountryCodeAndName() {
       return `${this.selectedCountry.dial_code}, ${this.t.COUNTRIES[this.selectedCountry.code]}`;
+    },
+    isValidNumber() {
+      return {
+        validate: (value) => {
+          const phoneNumber = new PhoneNumber(value);
+          return phoneNumber.isValid();
+        },
+        errorMessage: this.t.FORM.VALIDATION.INVALID_NUMBER,
+      };
+    },
+    isMobileNumber() {
+      return {
+        validate: (value) => {
+          const phoneNumber = new PhoneNumber(value);
+          return phoneNumber.isMobile();
+        },
+        errorMessage: this.t.FORM.VALIDATION.NOT_MOBILE_NUMBER,
+      };
+    },
+    canBeInternationallyDialled() {
+      return {
+        validate: (value) => {
+          const phoneNumber = new PhoneNumber(value);
+          return phoneNumber.canBeInternationallyDialled();
+        },
+        errorMessage: this.t.FORM.VALIDATION.NOT_INTERNATIONAL_NUMBER,
+      };
+    },
+    icons() {
+      return {
+        smallArrowIcon,
+      };
     },
     t() {
       return getMessages(this.lang);
