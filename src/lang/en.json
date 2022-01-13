@@ -29,7 +29,10 @@
           "Very strong"
         ]
       },
-      "SELECT_ONE_OPTION": "Please select (at least) one option"
+      "SELECT_ONE_OPTION": "Please select (at least) one option",
+      "INVALID_NUMBER": "Please type a valid phone number.",
+      "NOT_MOBILE_NUMBER": "e.g. +55 555 555 5555",
+      "NOT_INTERNATIONAL_NUMBER": "Use international format."
     },
     "PHONE": {
       "LABEL": "Choose a country code:"

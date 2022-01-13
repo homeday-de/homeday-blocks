@@ -211,7 +211,7 @@ export function keysToSnakeCase(collection) {
   return collection;
 }
 
- export default {
+export default {
   populateTemplate,
   getPasswordStrength,
   formatNestedData,

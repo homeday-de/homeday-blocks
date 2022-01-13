@@ -47,11 +47,11 @@
       ref="input"
       type="tel"
       name="phoneNumber"
-      label="Telefonnumer"
       v-model="phoneNumber"
       class="phone-input__field"
-      placeholder="+55 555 555 5555"
-      :custom-rules="[rule]"
+      :placeholder="placeholder"
+      :label="label"
+      :custom-rules="[isValidNumber, isMobileNumber, canBeInternationallyDialled]"
       :formatter="phoneFormatter"
       @input="handleInputEvent"
     />
@@ -113,6 +113,10 @@ export default {
       type: String,
       required: true,
     },
+    label: {
+      type: String,
+      required: true,
+    },
     lang: {
       type: String,
       default: 'de',
@@ -124,12 +128,26 @@ export default {
       phoneNumber: COUNTRY_PHONE_CODES.find((country) => country.code === this.defaultCountry)?.dial_code,
       selectedCountry: COUNTRY_PHONE_CODES.find((country) => country.code === this.defaultCountry),
       focusedCountry: null,
-      rule: {
+      isValidNumber: {
         validate: (value) => {
           const phoneNumber = new PhoneNumber(value);
-          return phoneNumber.isValid() && phoneNumber.isMobile() && phoneNumber.canBeInternationallyDialled();
+          return phoneNumber.isValid();
         },
-        errorMessage: 'e.g. +55 555 555 5555',
+        errorMessage: this.t.FORM.VALIDATION.INVALID_NUMBER,
+      },
+      isMobileNumber: {
+        validate: (value) => {
+          const phoneNumber = new PhoneNumber(value);
+          return phoneNumber.isMobile();
+        },
+        errorMessage: this.t.FORM.VALIDATION.NOT_MOBILE_NUMBER,
+      },
+      canBeInternationallyDialled: {
+        validate: (value) => {
+          const phoneNumber = new PhoneNumber(value);
+          return phoneNumber.canBeInternationallyDialled();
+        },
+        errorMessage: this.t.FORM.VALIDATION.NOT_INTERNATIONAL_NUMBER,
       },
       smallArrowIcon,
     };
@@ -155,6 +173,9 @@ export default {
         });
       }
       return COUNTRY_PHONE_CODES;
+    },
+    placeholder() {
+      return `${this.selectedCountry.dial_code} 555 555 5555`;
     },
     arrowClassNames() {
       const baseClass = 'phone-input__selector__arrow';

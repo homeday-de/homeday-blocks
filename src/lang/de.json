@@ -30,7 +30,10 @@
           "Sehr stark"
         ]
       },
-      "SELECT_ONE_OPTION": "Bitte wählen Sie (mindestens) eine Option aus"
+      "SELECT_ONE_OPTION": "Bitte wählen Sie (mindestens) eine Option aus",
+      "INVALID_NUMBER": "Bitte geben Sie eine gültige Telefonnummer ein.",
+      "NOT_MOBILE_NUMBER": "e.g. +55 555 555 5555",
+      "NOT_INTERNATIONAL_NUMBER": "Verwenden Sie das internationale Format."
     },
     "PHONE": {
       "LABEL": "Wählen Sie einen Ländercode:"
