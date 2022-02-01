@@ -5,8 +5,7 @@
   "scripts": {
     "lint": "vue-cli-service lint",
     "lint:ci": "vue-cli-service lint --no-fix",
-    "build": "vue-cli-service build --no-clean --target lib --name HdInput src/components/form/HdInput.vue && vue-cli-service build --no-clean --target lib --name HdButton src/components/buttons/HdButton.vue",
-    "build:lib": "vue-cli-service build --target lib --name homeday-blocks ./src/components/index.js",
+    "build": "node scripts/build.js",
     "build:storybook": "build-storybook",
     "serve:storybook": "start-storybook -p 6006",
     "coverage": "cat ./coverage/lcov.info | coveralls -v",
