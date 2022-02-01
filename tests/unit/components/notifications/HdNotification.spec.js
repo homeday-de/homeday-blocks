@@ -6,7 +6,8 @@ import {
   checkCircle as checkCircleIcon,
 } from 'homeday-assets';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
-import HdNotification, { TYPES } from '@/components/notifications/HdNotification.vue';
+import HdNotification from '@/components/notifications/HdNotification.vue';
+import TYPES from 'homeday-blocks/src/components/notifications/HdNotificationsTypes';
 
 jest.mock('homeday-assets', () => ({
   error: 'error.svg',

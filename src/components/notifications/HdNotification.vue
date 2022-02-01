@@ -22,19 +22,13 @@
 
 <script>
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
+import TYPES from 'homeday-blocks/src/components/notifications/HdNotificationsTypes';
 import {
   error as errorIcon,
   bell as bellIcon,
   info as infoIcon,
   checkCircle as checkCircleIcon,
 } from 'homeday-assets';
-
-export const TYPES = {
-  ERROR: 'error',
-  NOTIFICATION: 'notification',
-  INFO: 'info',
-  SUCCESS: 'success',
-};
 
 export default {
   name: 'HdNotification',
