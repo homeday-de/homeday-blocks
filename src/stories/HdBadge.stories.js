@@ -1,7 +1,4 @@
-import {
-  HdBadge,
-  HdBadgeTypes as TYPES,
-} from 'homeday-blocks';
+import HdBadge, { TYPES } from 'homeday-blocks/src/components/HdBadge.vue';
 
 export default {
   title: 'Components/HdBadge',

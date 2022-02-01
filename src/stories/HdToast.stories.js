@@ -2,7 +2,7 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import { text } from '@storybook/addon-knobs';
-import { HdToast } from 'homeday-blocks';
+import HdToast from 'homeday-blocks/src/components/HdToast.vue';
 
 storiesOf('Components/HdToast', module)
   .addParameters({ percy: { skip: true } })

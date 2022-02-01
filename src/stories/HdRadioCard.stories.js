@@ -1,7 +1,9 @@
 import './styles/HdRadioCard.scss';
-import {
-  HdRadioCard, HdRadioCardGroup, HdButton, HdIcon, HdForm,
-} from 'homeday-blocks';
+import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
+import HdButton from 'homeday-blocks/src/components/buttons/HdButton.vue';
+import HdForm from 'homeday-blocks/src/components/form/HdForm.vue';
+import HdRadioCard from 'homeday-blocks/src/components/form/HdRadioCard.vue';
+import HdRadioCardGroup from 'homeday-blocks/src/components/form/HdRadioCardGroup.vue';
 import {
   apartmentCommercial as apartmentCommercialIcon,
   houseCastle as houseCastleIcon,

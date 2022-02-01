@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
 import { array } from '@storybook/addon-knobs';
-import { HdTagsList } from 'homeday-blocks';
+import HdTagsList from 'homeday-blocks/src/components/HdTagsList.vue';
 import ITEMS from './mocks/FORM_ITEMS';
 
 storiesOf('Components/HdTagsList', module)

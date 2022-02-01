@@ -1,4 +1,4 @@
-import { HdExpandText } from 'homeday-blocks';
+import HdExpandText from 'homeday-blocks/src/components/HdExpandText.vue';
 
 export default {
   title: 'Components/HdExpandText',

@@ -2,7 +2,7 @@
 
 import { mount } from '@vue/test-utils';
 import deepmerge from 'deepmerge';
-import { HdCheckboxCard } from 'homeday-blocks/main';
+import HdCheckboxCard from 'homeday-blocks/src/components/form/HdCheckboxCard.vue';
 import { getMessages } from 'homeday-blocks/src/lang';
 
 describe('HdCheckboxCard', () => {

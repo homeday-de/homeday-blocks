@@ -4,7 +4,7 @@ import deepmerge from 'deepmerge';
 import _getOr from 'lodash/fp/getOr';
 import { getMessages } from 'homeday-blocks/src/lang';
 import { cloneVNodeElement } from 'homeday-blocks/src/services/utils';
-import { HdCheckboxCard } from 'homeday-blocks/main';
+import HdCheckboxCard from 'homeday-blocks/src/components/form/HdCheckboxCard.vue';
 import formFieldMixin from './formFieldMixin';
 
 /** @type {(vnode: import('vue').VNode) => <T = unknown>(defaultValue: T, field: string) => T} */

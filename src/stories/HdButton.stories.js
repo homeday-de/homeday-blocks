@@ -1,7 +1,4 @@
-import {
-  HdButton,
-  HdButtonTypes as TYPES,
-} from 'homeday-blocks';
+import HdButton, { TYPES } from 'homeday-blocks/src/components/buttons/HdButton.vue';
 import { plus as plusIcon } from 'homeday-assets';
 
 export default {
