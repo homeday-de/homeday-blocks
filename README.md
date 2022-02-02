@@ -55,9 +55,9 @@ npm run serve:storybook
 ```
 npm run build:storybook
 ```
-### Build as a library
+### Build the library
 ```
-npm run build:lib
+npm run build
 ```
 
 ## Testing
