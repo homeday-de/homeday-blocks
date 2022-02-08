@@ -37,7 +37,7 @@ const blackListedFiles = [
   const filesCompiledSuccessfully = [];
   const filesFailedToCompile = [];
   buildResult.forEach((result, index) => {
-    if (result.stdout.includes('Compiled successfully')) {
+    if (result.stdout.includes('Compiled')) {
       filesCompiledSuccessfully.push(filesToBeCompiled[index]);
     } else if (result.stderr) {
       filesFailedToCompile.push(filesToBeCompiled[index]);
