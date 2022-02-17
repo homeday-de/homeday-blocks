@@ -59,6 +59,7 @@ npm run build:storybook
 ```
 npm run build
 ```
+For a brief explanation of how the library is built, checkout [this documentation](/docs/BUILD.md).
 
 ## Testing
 
