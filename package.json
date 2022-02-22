@@ -17,7 +17,8 @@
     "test:unit:coverage": "npm run test:unit -- --coverage && open coverage/lcov-report/index.html",
     "test:unit:snapshot": "vue-cli-service test:unit -u",
     "test:unit:watch": "vue-cli-service test:unit --watchAll",
-    "prepare": "husky install && npm run build"
+    "prepack": "npm run build",
+    "prepare": "husky install"
   },
   "main": "main.js",
   "sideEffects": [
