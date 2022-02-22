@@ -21,6 +21,7 @@
     "prepare": "husky install"
   },
   "main": "main.js",
+  "module": "main.js",
   "sideEffects": [
     "*.vue",
     "src/styles/main.scss"
