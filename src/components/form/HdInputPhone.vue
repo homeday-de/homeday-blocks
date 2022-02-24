@@ -60,7 +60,6 @@
 
 <script>
 /* eslint-disable import/no-extraneous-dependencies */
-import { action } from '@storybook/addon-actions';
 import HdInputFormatter from 'homeday-blocks/src/components/form/HdInputFormatter.vue';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import { getMessages } from 'homeday-blocks/src/lang';
@@ -207,7 +206,6 @@ export default {
       const newSelectedCountry = COUNTRY_PHONE_CODES.find((country) => country.dial_code === phoneCountryCode);
 
       if (newSelectedCountry) this.selectedCountry = newSelectedCountry;
-      action('input')(newPhoneNumber);
     },
     selectedCountry(newCountry, prevCountry) {
       if (this.phoneNumber.length >= MAX_DIGITS_DIAL_CODE) {
