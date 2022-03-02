@@ -18,6 +18,7 @@
           :alt="item.caption"
           :srcset="item.imageSrcSet"
           @load="hideThumbnail"
+          loading="lazy"
         />
       </picture>
 
