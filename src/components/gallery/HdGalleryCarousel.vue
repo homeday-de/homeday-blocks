@@ -27,11 +27,19 @@
           <!-- the item.thumbnail field is used as default value for the item image -->
           <!-- IE11 uses this value only because do not support the picture element -->
           <picture class="gallery-carousel__picture">
-            <source v-for="(source, media) in item.thumbnailPictureSources"
-                    :key="media"
-                    :media="`(${media})`" :srcset="source"
+            <source
+              v-for="(source, media) in item.thumbnailPictureSources"
+              :key="media"
+              :media="`(${media})`"
+              :srcset="source"
             >
-            <img :src="item.thumbnail" :alt="item.caption" :srcset="item.thumbnailSrcSet" :style="{objectFit}">
+            <img
+              :src="item.thumbnail"
+              :alt="item.caption"
+              :srcset="item.thumbnailSrcSet"
+              :style="{objectFit}"
+              loading="lazy"
+            >
           </picture>
         </div>
       </flickity>
