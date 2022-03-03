@@ -60,7 +60,6 @@
 
 <script>
 /* eslint-disable import/no-extraneous-dependencies */
-import { action } from '@storybook/addon-actions';
 import HdInputFormatter from 'homeday-blocks/src/components/form/HdInputFormatter.vue';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import { getMessages } from 'homeday-blocks/src/lang';
@@ -207,7 +206,6 @@ export default {
       const newSelectedCountry = COUNTRY_PHONE_CODES.find((country) => country.dial_code === phoneCountryCode);
 
       if (newSelectedCountry) this.selectedCountry = newSelectedCountry;
-      action('input')(newPhoneNumber);
     },
     selectedCountry(newCountry, prevCountry) {
       if (this.phoneNumber.length >= MAX_DIGITS_DIAL_CODE) {
@@ -299,9 +297,9 @@ export default {
 <style lang="scss" scoped>
 @import 'homeday-blocks/src/styles/mixins.scss';
 
-$flag-icons-path: '../../../node_modules/flag-icons-svg/svg';
-@import './node_modules/flag-icons-svg/sass/_variables.scss';
-@import './node_modules/flag-icons-svg/sass/flag-icons.scss';
+$flag-icons-path: '~flag-icons-svg/svg';
+@import '~flag-icons-svg/sass/_variables.scss';
+@import '~flag-icons-svg/sass/flag-icons.scss';
 
 $dropdown-button-width: 74px;
 $dropdown-button-height: 55px;
