@@ -1,8 +1,5 @@
 <script>
-export const TYPES = [
-  'primary',
-  'secondary',
-];
+import TYPES from 'homeday-blocks/src/components/HdLinkTypes';
 
 export default {
   name: 'HdLink',

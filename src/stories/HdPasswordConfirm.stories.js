@@ -6,7 +6,7 @@ import {
   boolean,
   text,
 } from '@storybook/addon-knobs';
-import { HdPasswordConfirm } from 'homeday-blocks';
+import HdPasswordConfirm from 'homeday-blocks/src/components/form/HdPasswordConfirm.vue';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 import icon from './assets/ic_lock.svg';
 

@@ -2,7 +2,7 @@
 import { storiesOf } from '@storybook/vue';
 import { text } from '@storybook/addon-knobs';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
-import { HdGoogleAutocomplete } from 'homeday-blocks';
+import HdGoogleAutocomplete from 'homeday-blocks/src/components/form/HdGoogleAutocomplete.vue';
 
 storiesOf('Components/Form/HdGoogleAutocomplete', module)
   .addParameters({ percy: { skip: true } })

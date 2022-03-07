@@ -5,7 +5,7 @@ import {
   boolean,
   number,
 } from '@storybook/addon-knobs';
-import { HdToggle } from 'homeday-blocks';
+import HdToggle from 'homeday-blocks/src/components/HdToggle.vue';
 
 const stories = storiesOf('Components/HdToggle', module);
 

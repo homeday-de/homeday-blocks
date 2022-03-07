@@ -1,4 +1,4 @@
-import { HdGallery } from 'homeday-blocks';
+import HdGallery from 'homeday-blocks/src/components/gallery/HdGallery.vue';
 import { pictures as picturesIcon } from 'homeday-assets/L';
 import ITEMS from './mocks/GALLERY_ITEMS';
 

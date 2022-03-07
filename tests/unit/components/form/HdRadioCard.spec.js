@@ -2,7 +2,7 @@
 
 import { mount } from '@vue/test-utils';
 import deepmerge from 'deepmerge';
-import { HdRadioCard } from 'homeday-blocks/main';
+import HdRadioCard from 'homeday-blocks/src/components/form/HdRadioCard.vue';
 import { getMessages } from 'homeday-blocks/src/lang';
 
 describe('HdRadioCard', () => {

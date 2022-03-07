@@ -1,7 +1,9 @@
 import './styles/HdCheckboxCard.scss';
-import {
-  HdCheckboxCard, HdCheckboxCardGroup, HdButton, HdIcon, HdForm,
-} from 'homeday-blocks';
+import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
+import HdButton from 'homeday-blocks/src/components/buttons/HdButton.vue';
+import HdForm from 'homeday-blocks/src/components/form/HdForm.vue';
+import HdCheckboxCard from 'homeday-blocks/src/components/form/HdCheckboxCard.vue';
+import HdCheckboxCardGroup from 'homeday-blocks/src/components/form/HdCheckboxCardGroup.vue';
 import {
   apartmentCommercial as apartmentCommercialIcon,
   houseCastle as houseCastleIcon,

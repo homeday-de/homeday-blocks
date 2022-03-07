@@ -19,17 +19,6 @@
       }}</vue-code-highlight>
     </p>
 
-    <h3 class="welcome__subtitle">Older browsers support</h3>
-    <p class="welcome__paragraph">
-      As we are serving "raw" components, and babel-loader doesn't transpile the dependencies by default,
-      you might want to ask it to do so.<br />
-      Our recommended solution is to use
-      <a class="link" href="https://cli.vuejs.org/config/#transpiledependencies" target="_blank">transpileDependencies</a>
-      in the Vue config file:
-      <vue-code-highlight class="welcome__code">{{
-        "transpileDependencies: ['homeday-blocks', 'vue-zoomer'],"
-      }}</vue-code-highlight>
-    </p>
     <h3 class="welcome__subtitle">How to use our storybook?</h3>
     <h4>You don't have to check all the tabs to see if something is available. We use some suffixes in the story's title:</h4>
     <p class="welcome__paragraph">

@@ -2,7 +2,7 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import { text } from '@storybook/addon-knobs';
-import { HdRadioButton } from 'homeday-blocks';
+import HdRadioButton from 'homeday-blocks/src/components/buttons/HdRadioButton.vue';
 
 storiesOf('Components/HdRadioButton', module).add('base 🎛', () => ({
   components: { HdRadioButton },

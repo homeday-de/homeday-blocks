@@ -1,4 +1,4 @@
-import { HdLoaderButton } from 'homeday-blocks';
+import HdLoaderButton from 'homeday-blocks/src/components/buttons/HdLoaderButton.vue';
 import hdLoaderButtonNote from '../notes/HdLoaderButton.md';
 
 export default {

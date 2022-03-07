@@ -4,7 +4,7 @@ import deepmerge from 'deepmerge';
 import _getOr from 'lodash/fp/getOr';
 import { getMessages } from 'homeday-blocks/src/lang';
 import { cloneVNodeElement } from 'homeday-blocks/src/services/utils';
-import { HdRadioCard } from 'homeday-blocks/main';
+import HdRadioCard from 'homeday-blocks/src/components/form/HdRadioCard.vue';
 import formFieldMixin from './formFieldMixin';
 
 /** @type {(vnode: import('vue').VNode) => <T = unknown>(defaultValue: T, field: string) => T} */

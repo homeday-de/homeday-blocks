@@ -5,7 +5,7 @@
   "scripts": {
     "lint": "vue-cli-service lint",
     "lint:ci": "vue-cli-service lint --no-fix",
-    "build:lib": "vue-cli-service build --target lib --name homeday-blocks ./src/components/index.js",
+    "build": "node scripts/build.js",
     "build:storybook": "build-storybook",
     "serve:storybook": "start-storybook -p 6006",
     "coverage": "cat ./coverage/lcov.info | coveralls -v",
@@ -17,16 +17,17 @@
     "test:unit:coverage": "npm run test:unit -- --coverage && open coverage/lcov-report/index.html",
     "test:unit:snapshot": "vue-cli-service test:unit -u",
     "test:unit:watch": "vue-cli-service test:unit --watchAll",
+    "prepack": "npm run build",
     "prepare": "husky install"
   },
   "main": "main.js",
-  "module": "main.js",
   "sideEffects": [
     "*.vue",
     "src/styles/main.scss"
   ],
   "files": [
-    "src/*",
+    "dist/*",
+    "src/styles/*",
     "*.json",
     "*.js"
   ],

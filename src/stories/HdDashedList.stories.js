@@ -1,4 +1,4 @@
-import { HdDashedList } from 'homeday-blocks';
+import HdDashedList from 'homeday-blocks/src/components/HdDashedList.vue';
 import ITEMS from './mocks/DASHED_LIST_ITEMS';
 
 export default {

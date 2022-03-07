@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
-import { HdInputFormatter } from 'homeday-blocks';
+import HdInputFormatter from 'homeday-blocks/src/components/form/HdInputFormatter.vue';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 
 storiesOf('Components/Form/HdInputFormatter', module)
