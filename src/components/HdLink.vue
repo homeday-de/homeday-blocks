@@ -1,5 +1,5 @@
 <script>
-import { TYPES } from 'homeday-blocks/src/components/HdLinkTypes';
+import TYPES from 'homeday-blocks/src/components/HdLinkTypes';
 
 export default {
   name: 'HdLink',

@@ -1,6 +1,6 @@
 import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import HdBadge from '@/components/HdBadge.vue';
-import { TYPES } from '@/components/HdBadgeTypes';
+import TYPES from '@/components/HdBadgeTypes';
 
 const LABEL_SELECTOR = '.badge__label';
 const DETAILS_SELECTOR = '.badge__details';

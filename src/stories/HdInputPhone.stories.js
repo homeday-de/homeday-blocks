@@ -1,19 +1,20 @@
 /* eslint-disable import/no-extraneous-dependencies */
+import HdInputPhone from 'homeday-blocks/src/components/form/HdInputPhone.vue';
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
-import HdInputPassword from 'homeday-blocks/src/components/form/HdInputPassword.vue';
 
-storiesOf('Components/Form/HdInputPassword', module)
+storiesOf('Components/Form/HdInputPhone', module)
+  .addParameters({ options: { enableShortcuts: false } })
   .addDecorator(FormWrapper)
   .add('simple', () => ({
-    components: { HdInputPassword },
+    components: { HdInputPhone },
     template: `
-      <HdInputPassword
+      <HdInputPhone
         v-model="value"
-        :required="true"
         name="test"
-        label="Ihr Passwort"
+        lang="de"
+        :preferredCountries="['DE', 'AT', 'BE']"
       />
     `,
     data() {

@@ -6,7 +6,7 @@
     "lint": "vue-cli-service lint",
     "lint:ci": "vue-cli-service lint --no-fix",
     "build:tsc": "tsc",
-    "build:lib": "vue-cli-service build --target lib --name homeday-blocks main.ts",
+    "build": "node scripts/build.js",
     "build:storybook": "build-storybook",
     "serve:storybook": "start-storybook -p 6006",
     "coverage": "cat ./coverage/lcov.info | coveralls -v",
@@ -18,22 +18,26 @@
     "test:unit:coverage": "npm run test:unit -- --coverage && open coverage/lcov-report/index.html",
     "test:unit:snapshot": "vue-cli-service test:unit -u",
     "test:unit:watch": "vue-cli-service test:unit --watchAll",
+    "prepack": "npm run build",
     "prepare": "husky install"
   },
   "main": "main.js",
-  "module": "main.ts",
   "sideEffects": [
     "*.vue",
     "src/styles/main.scss"
   ],
   "files": [
-    "src/*",
+    "dist/*",
+    "src/styles/*",
     "*.json",
     "*.js"
   ],
   "dependencies": {
+    "awesome-phonenumber": "^2.64.0",
     "body-scroll-lock": "3.1.5",
+    "country-codes-list": "^1.6.8",
     "deepmerge": "^4.2.2",
+    "flag-icons-svg": "0.0.3",
     "homeday-assets": "^4.10.0",
     "lodash": "4.17.21",
     "natural-scroll": "0.2.2",

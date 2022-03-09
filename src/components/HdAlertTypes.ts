@@ -6,7 +6,7 @@ import {
 } from 'homeday-assets';
 
 // The first item is the default
-export const TYPES = {
+export default {
   info: {
     icon: infoIcon,
   },

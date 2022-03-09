@@ -21,7 +21,7 @@
 
 <script>
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
-import { TYPES } from 'homeday-blocks/src/components/HdAlertTypes';
+import TYPES from 'homeday-blocks/src/components/HdAlertTypes';
 
 export default {
   name: 'HdAlert',

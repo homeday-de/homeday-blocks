@@ -1,4 +1,4 @@
-export const TYPES = {
+export default {
   ERROR: 'error',
   NOTIFICATION: 'notification',
   INFO: 'info',

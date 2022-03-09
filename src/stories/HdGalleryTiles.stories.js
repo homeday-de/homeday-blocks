@@ -2,7 +2,7 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import SizedContainerWrapper from 'homeday-blocks/src/storiesWrappers/SizedContainerWrapper';
-import { HdGalleryTiles } from 'homeday-blocks';
+import HdGalleryTiles from 'homeday-blocks/src/components/gallery/HdGalleryTiles.vue';
 import ITEMS from './mocks/GALLERY_ITEMS';
 
 storiesOf('Components/Gallery/HdGalleryTiles', module)

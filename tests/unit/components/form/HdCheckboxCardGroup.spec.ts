@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils';
 import deepmerge from 'deepmerge';
-import { HdCheckboxCardGroup, HdCheckboxCard } from 'homeday-blocks/main';
+import HdCheckboxCardGroup from 'homeday-blocks/src/components/form/HdCheckboxCardGroup.vue';
+import HdCheckboxCard from 'homeday-blocks/src/components/form/HdCheckboxCard.vue';
 import { getMessages } from 'homeday-blocks/src/lang';
 
 describe('HdCheckboxCardGroup', () => {

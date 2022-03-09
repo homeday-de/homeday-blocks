@@ -17,7 +17,7 @@ $ git remote add upstream git@github.com:homeday-de/homeday-blocks.git
 
 ## Prerequisites
 
-Homeday Blocks requires [Node.js](https://nodejs.org/) version 10.22.0 (.nvmrc). It's recommended to manage multiple versions of Node on the same machine with [nvm](https://github.com/nvm-sh/nvm) or [nvm-windows](https://github.com/coreybutler/nvm-windows).
+Homeday Blocks requires [Node.js](https://nodejs.org/) version 14.17.0 ([.nvmrc](.nvmrc)). It's recommended to manage multiple versions of Node on the same machine with [nvm](https://github.com/nvm-sh/nvm) or [nvm-windows](https://github.com/coreybutler/nvm-windows).
 
 Don't forget to setup the [deeper shell integration](https://github.com/nvm-sh/nvm#deeper-shell-integration) in your console to take full advantage of `nvm`. You can achieve this by adding the following alias into your `~/.bashrc`, or `~/.zshrc` file:
 
@@ -55,10 +55,11 @@ npm run serve:storybook
 ```
 npm run build:storybook
 ```
-### Build as a library
+### Build the library
 ```
-npm run build:lib
+npm run build
 ```
+For a brief explanation of how the library is built, checkout [this documentation](/docs/BUILD.md).
 
 ## Testing
 

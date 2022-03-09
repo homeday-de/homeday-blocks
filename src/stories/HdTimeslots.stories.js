@@ -2,7 +2,7 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import TimeslotsWrapper from 'homeday-blocks/src/storiesWrappers/TimeslotsWrapper';
-import { HdTimeslots } from 'homeday-blocks';
+import HdTimeslots from 'homeday-blocks/src/components/HdTimeslots.vue';
 import generateSlots from './mocks/generateTimeSlots';
 
 storiesOf('Components/HdTimeslots', module)

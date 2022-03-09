@@ -1,4 +1,4 @@
-export const TYPES = {
+export default {
   PRIMARY: 'primary',
   SECONDARY: 'secondary',
   TERTIARY: 'tertiary',

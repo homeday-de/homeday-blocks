@@ -22,7 +22,7 @@
 
 <script>
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
-import { TYPES } from 'homeday-blocks/src/components/notifications/HdNotificationsTypes';
+import TYPES from 'homeday-blocks/src/components/notifications/HdNotificationsTypes';
 import {
   error as errorIcon,
   bell as bellIcon,

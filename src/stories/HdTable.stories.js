@@ -2,10 +2,8 @@
 import { storiesOf } from '@storybook/vue';
 import TableWrapper from 'homeday-blocks/src/storiesWrappers/TableWrapper';
 import MOVIES_TABLE from 'homeday-blocks/src/stories/mocks/tables/movies';
-import {
-  HdTable,
-  HdTagsList,
-} from 'homeday-blocks';
+import HdTable from 'homeday-blocks/src/components/HdTable.vue';
+import HdTagsList from 'homeday-blocks/src/components/HdTagsList.vue';
 
 storiesOf('Components/HdTable', module)
   .addDecorator(TableWrapper)
@@ -57,7 +55,7 @@ storiesOf('Components/HdTable', module)
         </template>
         <template #year="{value, rowContext}">
           {{value}}
-          <span v-if="Number(rowContext.rating) >= 9">✨</span> 
+          <span v-if="Number(rowContext.rating) >= 9">✨</span>
         </template>
       </hd-table>
     `,
