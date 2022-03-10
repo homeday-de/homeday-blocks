@@ -1,8 +1,10 @@
 /* eslint-disable */
 const _camelCase = require('lodash/camelCase');
 const _startCase = require('lodash/startCase');
+const pLimit = require('p-limit');
 const path = require('path');
 const fs = require('fs');
+const os = require('os');
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 
@@ -10,6 +12,7 @@ const basePath = './src/';
 const componentsPath = `${basePath}components/`;
 const servicesPath = `${basePath}services/`;
 const outputDirectory = 'dist';
+const numberOfCpuCores = os.cpus().length;
 
 const blackListedFiles = [
   'tooltipDirective.js',
@@ -83,8 +86,9 @@ const blackListedFiles = [
  */
 function build(filePaths) {
   if (filePaths?.length) {
+    const limit = pLimit(numberOfCpuCores);
     const commands = filePaths.map((filePath) => `npx vue-cli-service build --no-clean --target lib --formats umd-min --name ${getFileName(filePath)} ${filePath}`);
-    const buildPromises = commands.map((command) => exec(command));
+    const buildPromises = commands.map((command) => limit(() => exec(command)));
     return Promise.all(buildPromises);
   }
   return [];

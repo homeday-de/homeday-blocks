@@ -87,6 +87,7 @@
     "hygen": "^6.1.0",
     "node-fetch": "^2.6.1",
     "node-sass": "^5.0.0",
+    "p-limit": "3.1.0",
     "raw-loader": "4.0.2",
     "react-is": "^17.0.2",
     "sass-loader": "10.2.0",
