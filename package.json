@@ -5,7 +5,7 @@
   "scripts": {
     "lint": "vue-cli-service lint",
     "lint:ci": "vue-cli-service lint --no-fix",
-    "build:tsc": "tsc",
+    "build:tsc": "tsc -p tsconfig-build.json",
     "build": "node scripts/build.js",
     "build:storybook": "build-storybook",
     "serve:storybook": "start-storybook -p 6006",
