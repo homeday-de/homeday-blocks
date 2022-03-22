@@ -1,16 +1,16 @@
-<script>
-// @ts-check
+<script lang="ts">
+import Vue, { PropOptions, VNode } from 'vue';
 import deepmerge from 'deepmerge';
 import _getOr from 'lodash/fp/getOr';
-import { getMessages } from 'homeday-blocks/src/lang';
+import { customRules } from '@/@types/global';
+import { getMessages, Messages } from 'homeday-blocks/src/lang';
 import { cloneVNodeElement } from 'homeday-blocks/src/services/utils';
-import HdCheckboxCard from 'homeday-blocks/src/components/form/HdCheckboxCard.vue';
+import { name as HdCheckboxCardName } from 'homeday-blocks/src/components/form/HdCheckboxCard.vue';
 import formFieldMixin from './formFieldMixin';
 
-/** @type {(vnode: import('vue').VNode) => <T = unknown>(defaultValue: T, field: string) => T} */
-const getPropsDataFor = (vnode) => (defaultValue, field) => _getOr(defaultValue, `componentOptions.propsData.${field}`, vnode);
+const getPropsDataFor = (vnode: VNode) => <T extends unknown>(defaultValue: T, field: string): T => _getOr(defaultValue, `componentOptions.propsData.${field}`, vnode);
 
-export default {
+export default Vue.extend({
   name: 'HdCheckboxCardGroup',
   mixins: [formFieldMixin],
   props: {
@@ -40,20 +40,20 @@ export default {
       type: String,
       default: 'de',
     },
-    /** @type {import('vue').PropOptions<{ validate: (value: unknown) => boolean, errorMessage: string }[]>} */
     customRules: {
       type: Array,
       default: () => [],
       validator: (rulesProvided) => rulesProvided.every(
         ({ validate, errorMessage }) => typeof validate === 'function' && typeof errorMessage === 'string',
       ),
-    },
+    } as PropOptions<customRules>,
   },
-  data() {
+  data(): {
+    error: null | string;
+    internalValue: string | number | boolean | unknown[];
+    } {
     return {
-      /** @type {string?} */
       error: null,
-      /** @type {string | number | boolean | unknown[]} */
       internalValue: this.value,
     };
   },
@@ -70,12 +70,10 @@ export default {
     },
   },
   computed: {
-    /** @returns {import('homeday-blocks/src/lang').Messages} */
-    t() {
+    t(): Messages {
       return deepmerge(getMessages(this.lang), this.texts);
     },
-    /** @returns {boolean} */
-    hasValidationErrors() {
+    hasValidationErrors(): boolean {
       return Boolean(this.error);
     },
   },
@@ -83,8 +81,7 @@ export default {
     inputChanged(value) {
       return this.$emit('input', value);
     },
-    /** @returns {string?} */
-    validateForm() {
+    validateForm(): string | null {
       if (this.required && !this.value) return this.t.FORM.VALIDATION.SELECT_ONE_OPTION;
       if (this.required && Array.isArray(this.value) && this.value.length <= 0) return this.t.FORM.VALIDATION.SELECT_ONE_OPTION;
 
@@ -99,22 +96,19 @@ export default {
      * invoked by HdForm.
      *
      * By surrounding HdCheckboxCard with a HdCheckboxCardGroup
-     * this function is automatically overriden.
+     * this function is automatically overridden.
      *
-     * @returns {boolean}
      */
-    validate() {
+    validate(): boolean {
       this.error = this.validateForm();
       return !this.hasValidationErrors;
     },
   },
   render(h) {
-    /** @type {import('vue').VNode[]} */
-    const children = this.$slots.default || [];
+    const children: VNode[] = this.$slots.default || [];
 
-    /** @type {import('vue').VNode[]} */
-    const clones = children
-      .filter(({ tag, componentOptions }) => Boolean(tag) && componentOptions?.tag === HdCheckboxCard.name)
+    const clones: VNode[] = children
+      .filter(({ tag, componentOptions }) => Boolean(tag) && componentOptions?.tag === HdCheckboxCardName)
       .map((vnode) => {
         const getPropsData = getPropsDataFor(vnode);
         const clone = cloneVNodeElement(
@@ -142,15 +136,14 @@ export default {
         return h('div', {}, [clone]);
       });
 
-    /** @type {import('vue').VNode} */
-    const errorVdom = this.hasValidationErrors ? h('div', { class: 'checkbox-group__error' }, this.error) : h();
+    const errorVdom: VNode = this.hasValidationErrors ? h('div', { class: 'checkbox-group__error' }, this.error) : h();
 
     return h('div', { class: 'checkbox-group' }, [
       clones,
       errorVdom,
     ]);
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

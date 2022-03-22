@@ -5,6 +5,7 @@ import {
   error as errorIcon,
 } from 'homeday-assets';
 
+// The first item is the default
 export default {
   info: {
     icon: infoIcon,
