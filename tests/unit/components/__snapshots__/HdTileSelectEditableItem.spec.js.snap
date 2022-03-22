@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`HdTileSelectEditableItem render component editable 1`] = `<input model="1" class="tile-select-editable-item tile-select-editable-item--input">`;
-
-exports[`HdTileSelectEditableItem renders component not editable 1`] = `
-<button type="button" class="tile-select-item tile-select-editable-item">
-  2
-</button>
-`;
