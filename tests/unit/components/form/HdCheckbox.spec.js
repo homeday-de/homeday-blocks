@@ -163,7 +163,7 @@ describe('HdCheckbox', () => {
   });
 
   it('At toggle, focus should only trigger if element is available', async () => {
-    const errorHandler = jest.fn().mockImplementation(() => {});
+    const errorHandler = jest.fn().mockImplementation(() => ({}));
     const localVue = createLocalVue({
       errorHandler,
     });

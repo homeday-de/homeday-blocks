@@ -15,7 +15,6 @@
 </template>
 
 <script>
-// @ts-check
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import { check as checkIcon, minus as minusIcon } from 'homeday-assets';
 
