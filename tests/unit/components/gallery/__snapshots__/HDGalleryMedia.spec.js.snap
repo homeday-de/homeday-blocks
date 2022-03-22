@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HdGalleryMedia renders component 1`] = `
+<div class="gallery-media">
+  <div class="gallery-media__object">
+    <div style="padding-top: 56.25%;"></div>
+    <picture class="gallery-media__object-picture">
+      <source media="(max-width: 600px)" srcset="https://dummyimage.com/306x172?text=1+mw+600px">
+      <source media="(max-width: 900px)" srcset="https://dummyimage.com/768x432?text=1+mw+900px">
+      <source media="(max-width: 1200px)" srcset="https://dummyimage.com/768x432?text=1+mw+1200px"> <img src="https://dummyimage.com/1536x364?text=1" alt="Image 1" loading="lazy">
+    </picture>
+    <div class="gallery-media__object-thumbnail isVisible" style="background-image: url(https://dummyimage.com/154x86?text=1+thumb);"></div>
+  </div>
+</div>
+`;

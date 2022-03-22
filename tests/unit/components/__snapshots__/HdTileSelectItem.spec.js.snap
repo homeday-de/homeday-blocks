@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HdTileSelectItem renders component not selected 1`] = `
+<button type="button" class="tile-select-item">
+  2
+</button>
+`;
+
+exports[`HdTileSelectItem renders component selected 1`] = `
+<button type="button" class="tile-select-item tile-select-item--selected">
+  1
+</button>
+`;

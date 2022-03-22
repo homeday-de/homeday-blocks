@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HdInput is rendered as expected 1`] = `
+<div class="field text-field">
+  <!---->
+  <div class="field__body">
+    <div class="field__main"><input autocomplete="on" type="text" id="test name" name="test name" placeholder="" data-lpignore="true" label="test label" class="input"> <label for="test name" id="test-name-label" class="field__label">
+        test label
+      </label>
+      <div class="field__input-right"></div>
+      <div class="field__border"></div>
+    </div>
+    <p class="field__helper">‍</p>
+  </div>
+</div>
+`;

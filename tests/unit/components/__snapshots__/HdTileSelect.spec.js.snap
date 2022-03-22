@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HdTileSelect allows custom new value 1`] = `
+<div class="field field--filled field--minimized-label field--grouped field--unlabelled">
+  <!---->
+  <div class="field__body">
+    <div class="field__main">
+      <div class="field tile-select">
+        <div class="tile-select__items"><button type="button" class="tile-select-item">
+            1
+          </button><button type="button" class="tile-select-item">
+            2
+          </button><button type="button" class="tile-select-item">
+            3
+          </button> <button type="button" class="tile-select-item tile-select-editable-item">
+            +
+          </button></div>
+      </div>
+      <!---->
+      <div class="field__input-right"></div>
+      <!---->
+    </div>
+    <p class="field__helper">‍</p>
+  </div>
+</div>
+`;
+
+exports[`HdTileSelect renders component not selected 1`] = `
+<div class="field field--filled field--minimized-label field--grouped field--unlabelled">
+  <!---->
+  <div class="field__body">
+    <div class="field__main">
+      <div class="field tile-select">
+        <div class="tile-select__items"><button type="button" class="tile-select-item">
+            1
+          </button><button type="button" class="tile-select-item">
+            2
+          </button><button type="button" class="tile-select-item">
+            3
+          </button>
+          <!---->
+        </div>
+      </div>
+      <!---->
+      <div class="field__input-right"></div>
+      <!---->
+    </div>
+    <p class="field__helper">‍</p>
+  </div>
+</div>
+`;
+
+exports[`HdTileSelect renders component selected 1`] = `
+<div class="field field--filled field--minimized-label field--grouped field--unlabelled">
+  <!---->
+  <div class="field__body">
+    <div class="field__main">
+      <div class="field tile-select">
+        <div class="tile-select__items"><button type="button" class="tile-select-item tile-select-item--selected">
+            1
+          </button><button type="button" class="tile-select-item">
+            2
+          </button><button type="button" class="tile-select-item">
+            3
+          </button>
+          <!---->
+        </div>
+      </div>
+      <!---->
+      <div class="field__input-right"></div>
+      <!---->
+    </div>
+    <p class="field__helper">‍</p>
+  </div>
+</div>
+`;

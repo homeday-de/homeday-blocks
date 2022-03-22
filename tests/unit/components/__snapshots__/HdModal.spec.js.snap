@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HdModal renders component 1`] = `
+<transition-stub name="modal">
+  <article class="hd-modal">
+    <div class="hd-modal__overlay"></div>
+    <div class="hd-modal__container">
+      <header class="hd-modal__header">
+        <!---->
+        <h3 class="hd-modal__title">
+          <div>This is the modal title.</div>
+        </h3>
+      </header>
+      <div class="hd-modal__body">
+        <div>This is the modal body.</div>
+      </div>
+      <footer class=""></footer> <button type="button" class="hd-modal__close-button">
+        <hd-icon-stub src="" class="hd-modal__close-icon"></hd-icon-stub>
+      </button>
+    </div>
+  </article>
+</transition-stub>
+`;
+
+exports[`HdModal renders the modal with overriding default slot 1`] = `
+<transition-stub name="modal">
+  <article class="hd-modal">
+    <div class="hd-modal__overlay"></div>
+    <div>This is the modal custom content</div>
+  </article>
+</transition-stub>
+`;

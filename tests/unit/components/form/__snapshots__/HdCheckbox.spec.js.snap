@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HdCheckbox Accepts <html> code as innerLabel 1`] = `
+<div class="field field--minimized-label field--grouped field--unlabelled">
+  <!---->
+  <div class="field__body">
+    <div class="field__main">
+      <div class="checkbox"><input type="checkbox" name="Test checkbox" class="checkbox__input">
+        <div aria-labelledby="test-checkbox-label" tabindex="0" role="checkbox" class="checkbox__inner">
+          <div class="checkbox-indicator">
+            <div class="checkbox-indicator__box">
+              <!---->
+            </div>
+          </div>
+          <p class="checkbox__description">Hello <b>World!</b></p>
+        </div>
+      </div>
+      <!---->
+      <div class="field__input-right"></div>
+      <!---->
+    </div>
+    <p class="field__helper">‍</p>
+  </div>
+</div>
+`;
+
+exports[`HdCheckbox renders component 1`] = `
+<div class="field field--minimized-label field--grouped field--unlabelled">
+  <!---->
+  <div class="field__body">
+    <div class="field__main">
+      <div class="checkbox"><input type="checkbox" name="Test checkbox" class="checkbox__input">
+        <div aria-labelledby="test-checkbox-label" tabindex="0" role="checkbox" class="checkbox__inner">
+          <div class="checkbox-indicator">
+            <div class="checkbox-indicator__box">
+              <!---->
+            </div>
+          </div>
+          <!---->
+        </div>
+      </div>
+      <!---->
+      <div class="field__input-right"></div>
+      <!---->
+    </div>
+    <p class="field__helper">‍</p>
+  </div>
+</div>
+`;

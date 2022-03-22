@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HdRange Labels renders 1`] = `
+<div class="range field"><input type="range" id="testrange" name="testrange" min="-100" max="100" step="50">
+  <div class="range__track">
+    <div class="range__progress" style="transform: scaleX(0.5);"></div>
+  </div>
+  <div class="range__steps"><button type="button" class="range__step">
+      <p class="range__step-label">label1</p>
+    </button><button type="button" class="range__step">
+      <p class="range__step-label">label<br>2</p>
+    </button><button type="button" class="range__step">
+      <p class="range__step-label">label3</p>
+    </button><button type="button" class="range__step">
+      <p class="range__step-label">label4</p>
+    </button><button type="button" class="range__step">
+      <!---->
+    </button></div>
+  <div class="range__thumb" style="transform: translateX(0px);">
+    <!---->
+    <div class="range__thumb__inner">
+      <div class="range__thumb__bullet"></div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`HdRange renders as expected 1`] = `
+<div class="range field"><input type="range" id="testRange" name="testRange" min="-100" max="100" step="50">
+  <div class="range__track">
+    <div class="range__progress" style="transform: scaleX(0.5);"></div>
+  </div>
+  <div class="range__steps"><button type="button" class="range__step">
+      <!---->
+    </button><button type="button" class="range__step">
+      <!---->
+    </button><button type="button" class="range__step">
+      <!---->
+    </button><button type="button" class="range__step">
+      <!---->
+    </button><button type="button" class="range__step">
+      <!---->
+    </button></div>
+  <div class="range__thumb" style="transform: translateX(0px);">
+    <!---->
+    <div class="range__thumb__inner">
+      <div class="range__thumb__bullet"></div>
+    </div>
+  </div>
+</div>
+`;

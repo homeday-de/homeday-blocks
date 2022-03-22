@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HdTagsList renders component 1`] = `
+<section class="tags-list">
+  <div class="tags-list__tag">
+    foo
+  </div>
+  <div class="tags-list__tag">
+    bar
+  </div>
+</section>
+`;

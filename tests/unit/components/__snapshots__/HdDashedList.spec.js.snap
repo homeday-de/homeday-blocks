@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HdDashedList renders component 1`] = `
+<dl class="dashed-list">
+  <!---->
+  <div class="dashed-list__item">
+    <dt><span>Kaltmiete (wohnen) (pro Monat)</span></dt>
+    <dd><span>1 (value)</span></dd>
+    <!---->
+  </div>
+  <!---->
+  <div class="dashed-list__item">
+    <dt><span>Kaltmiete (Kosten) (Wohnen) (pro Monat)</span></dt>
+    <dd><span>2 (value)</span></dd>
+    <dd>
+      <div class="dashed-list__dash"></div> <span>2 (secondaryValue)</span>
+    </dd>
+  </div>
+  <h4 class="dashed-list__title">
+    Title
+  </h4>
+  <div class="dashed-list__item">
+    <dt><span>Item 3</span></dt>
+    <dd><span>3</span></dd>
+    <dd>
+      <div class="dashed-list__dash"></div> <span>3 (secondaryValue)</span>
+    </dd>
+  </div>
+  <div class="dashed-list__item">
+    <dt><span>Item 4</span></dt>
+    <dd><span>4</span></dd>
+    <dd>
+      <div class="dashed-list__dash"></div> <span>4 (secondaryValue)</span>
+    </dd>
+  </div>
+</dl>
+`;
