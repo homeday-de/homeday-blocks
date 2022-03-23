@@ -5,7 +5,7 @@
   "scripts": {
     "lint": "vue-cli-service lint",
     "lint:ci": "vue-cli-service lint --no-fix",
-    "build:tsc": "tsc",
+    "build:tsc": "tsc -p tsconfig-build.json",
     "build": "node scripts/build.js",
     "build:storybook": "build-storybook",
     "serve:storybook": "start-storybook -p 6006",
@@ -38,7 +38,7 @@
     "country-codes-list": "^1.6.8",
     "deepmerge": "^4.2.2",
     "flag-icons-svg": "0.0.3",
-    "homeday-assets": "^4.39.7",
+    "homeday-assets": "^4.41.0",
     "lodash": "4.17.21",
     "natural-scroll": "0.2.2",
     "vue": "2.6.14",
