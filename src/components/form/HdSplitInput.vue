@@ -171,6 +171,7 @@ export default {
 
 .split-input {
   display: flex;
+  overflow: hidden;
 
   &__input {
     width: 100%;

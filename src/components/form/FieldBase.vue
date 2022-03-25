@@ -149,15 +149,6 @@ export default {
   &:not(#{$root}--grouped) &__main {
     position: relative;
 
-    & > :first-child {
-      width: 100%;
-      background: $secondary-bg;
-      border-radius: 4px 4px 0 0;
-      &:not(textarea) {
-        overflow: hidden;
-      }
-    }
-
     input, textarea, select {
       padding-top: $sp-l - $sp-s;
       padding-right: $sp-s;
@@ -176,7 +167,19 @@ export default {
         color: getShade($quaternary-color, 60);
       }
     }
+
+    & > {
+      .split-input,
+      input[type]:not([type="checkbox"]):not([type="radio"]),
+      textarea,
+      select {
+        width: 100%;
+        background: $secondary-bg;
+        border-radius: 4px 4px 0 0;
+      }
+    }
   }
+
   &__label {
     position: absolute;
     z-index: 2;

@@ -29,7 +29,6 @@
       :disabled="disabled"
       :maxlength="maxlength"
       class="textarea"
-      data-gramm_editor="false"
       @focus="handleFocus"
       @blur="handleBlur"
       @input="handleInput"
