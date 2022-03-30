@@ -194,4 +194,24 @@ storiesOf('Components/Form/HdRange', module)
         currentValue: 2,
       };
     },
-  }));
+  }))
+  .add('float precision', () => ({
+    components: { HdRange },
+    template: `
+      <div>
+        <HdRange
+          v-model="currentValue"
+          :min="0"
+          :max="4"
+          :step="0.1"
+          :fixed-precision="2"
+        />
+        <p>Value: {{ currentValue }}</p>
+      </div>
+    `,
+    data() {
+      return {
+        currentValue: 2,
+      };
+    },
+}));

@@ -121,6 +121,14 @@ export default {
       type: String,
       default: '', // falls back to the internal styles
     },
+    progressBackground: {
+      type: String,
+      default: '', // falls back to the internal styles
+    },
+    fixedPrecision: {
+      type: Number,
+      default: 0,
+    },
   },
   data() {
     return {
@@ -135,7 +143,8 @@ export default {
       },
       set(value) {
         if (value !== this.computedValue) {
-          this.$emit('input', value);
+          let newValue = this.fixedPrecision ? value.toFixed(this.fixedPrecision) : value;
+          this.$emit('input', newValue);
         }
       },
     },
