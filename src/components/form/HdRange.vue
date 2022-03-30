@@ -143,8 +143,7 @@ export default {
       },
       set(value) {
         if (value !== this.computedValue) {
-          let newValue = this.fixedPrecision ? value.toFixed(this.fixedPrecision) : value;
-          this.$emit('input', newValue);
+          this.$emit('input', this.fixedPrecision ? value.toFixed(this.fixedPrecision) : value);
         }
       },
     },
