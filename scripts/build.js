@@ -32,8 +32,10 @@ const blackListedFiles = [
   cleanUpOutputDirectory();
 
   const components = findFilesByExtension(componentsPath, 'vue');
-  const componentTypes = findFilesByExtension(componentsPath, 'ts');
-  const services = findFilesByExtension(servicesPath, 'js');
+  const componentTypes = findFilesByExtension(componentsPath, 'js')
+    .concat(findFilesByExtension(componentsPath, 'ts'));
+  const services = findFilesByExtension(servicesPath, 'js')
+    .concat(findFilesByExtension(servicesPath, 'ts'));;
   const filesToBeCompiled = omitBlackListedFiles(components.concat(componentTypes, services));
 
   const buildResult = await build(filesToBeCompiled);
