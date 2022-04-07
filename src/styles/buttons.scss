@@ -72,6 +72,13 @@ $button-transition: all $time-s ease-in-out;
     border: 2px solid transparent;
     transition: border-color .3s ease-in-out;
   }
+
+  &::before,
+  &::after,
+  &__icon,
+  &__content {
+    pointer-events: none;
+  }
 }
 
 .btn--primary {
