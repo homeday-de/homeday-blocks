@@ -1,0 +1,53 @@
+name: Storybook deployment
+
+on:
+  # This allows us to manually trigger the deployment through GitHub
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+concurrency:
+  group: storybook_deployment
+  cancel-in-progress: true
+
+env:
+  S3_BUCKET: homeday-blocks-production
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v2.4.0
+      
+      - name: Set node version 🏗
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      
+      - name: Install dependencies ⬇️
+        run: npm ci
+
+      - name: Lint 📝
+        run: npm run lint:ci
+
+      - name: Unit test 🧪
+        run: npm run test:unit:ci
+      
+      - name: Build Storybook 📦
+        run: npm run build:storybook
+      
+      - name: Configure AWS Credentials 🔧
+        uses: aws-actions/configure-aws-credentials@v1.6.1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_SB }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_SB }}
+          aws-region: eu-central-1
+      
+      - name: Deploy assets 📄
+        run: aws s3 cp storybook-static/ s3://${{ env.S3_BUCKET }} --recursive --exclude "*.html"
+      
+      - name: Deploy index 📄
+        run: aws s3 cp storybook-static/ s3://${{ env.S3_BUCKET }} --recursive --exclude "*" --include "*.html"

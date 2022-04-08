@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/homeday-de/homeday-blocks.svg?token=rxKqgsBkMR5FqNpvxBcx&branch=master)](https://travis-ci.com/homeday-de/homeday-blocks)
+![Build Status](https://github.com/homeday-de/homeday-blocks/actions/workflows/deploy-storybook.yml/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/homeday-de/homeday-blocks/badge.svg?t=Kbz7Vb)](https://coveralls.io/github/homeday-de/homeday-blocks)
 [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/Homeday/homeday-blocks)
 
@@ -138,7 +138,7 @@ It is important to follow this convention, because our automated releases are ba
 
 Releasing a new version is as easy as pushing your changes to `master` 😎
 
-- [Travis](https://travis-ci.com/homeday-de/homeday-blocks) will automatically deploy the storybook to our [showcase env](https://blocks.homeday.dev).
+- [Github Actions](/.github/workflows/deploy-storybook.yml) will automatically deploy the storybook to our [showcase env](https://blocks.homeday.dev).
 - And this [Github workflow](https://github.com/homeday-de/homeday-blocks/tree/master/.github/workflows/release.yml) will automatically create a [release on Github](https://github.com/homeday-de/homeday-blocks/releases) and publish a new [version to NPM](https://www.npmjs.com/package/homeday-blocks?activeTab=versions). 
 
 ## Consuming in other projects
