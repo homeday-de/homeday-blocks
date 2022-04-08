@@ -98,11 +98,13 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import 'homeday-blocks/src/styles/_variables.scss';
 
 .btn {
-  &--icon-button {
+  $root: &;
+
+  &#{$root}--icon-button {
     padding: $sp-s;
   }
 
@@ -111,13 +113,13 @@ export default {
     height: 24px;
     margin-right: $sp-xs;
 
-    .btn--icon-button & {
+    #{$root}--icon-button & {
       width: 28px;
       height: 28px;
       margin-right: 0;
     }
 
-    ::v-deep path {
+    path {
       fill: currentColor;
     }
   }
