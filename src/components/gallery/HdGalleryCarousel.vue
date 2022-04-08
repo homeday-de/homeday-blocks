@@ -130,9 +130,11 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      this.updatePagerItemsCount();
-      this.$refs.flickity.on('change', this.updateCurrentIndex);
-      this.$refs.flickity.on('staticClick', this.onStaticClick);
+      if (this.$refs.flickity) {
+        this.updatePagerItemsCount();
+        this.$refs.flickity.on('change', this.updateCurrentIndex);
+        this.$refs.flickity.on('staticClick', this.onStaticClick);
+      }
     });
     this.addResizeEvents();
   },
