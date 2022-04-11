@@ -66,7 +66,7 @@ margin-bottom: $sp-xl;`,
   },
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 @import '~homeday-blocks/src/styles/mixins.scss';
 
 .spacing-story {
@@ -89,7 +89,7 @@ margin-bottom: $sp-xl;`,
   &__code {
     @include font('DS-100');
 
-    ::v-deep pre {
+    pre {
       background-color: $secondary-bg;
     }
   }

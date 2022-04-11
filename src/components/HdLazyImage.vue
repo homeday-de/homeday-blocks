@@ -79,7 +79,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .lazy-image {
   width: 100%;
   filter: blur(4px);
