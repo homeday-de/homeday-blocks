@@ -117,7 +117,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
 
 .field {
@@ -132,7 +132,7 @@ export default {
     flex: 0 0 24px;
 
     #{$root}--disabled & {
-      ::v-deep path {
+      path {
         fill: getShade($quaternary-color, 70);
       }
     }
@@ -262,7 +262,7 @@ export default {
     right: $sp-m;
     pointer-events: none;
 
-    > ::v-deep * {
+    @at-root .password-input & {
       pointer-events: all;
     }
   }

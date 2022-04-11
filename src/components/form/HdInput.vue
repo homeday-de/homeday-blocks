@@ -229,7 +229,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .input {
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {

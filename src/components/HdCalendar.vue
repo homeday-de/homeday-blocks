@@ -166,7 +166,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
 
 // Transitions
@@ -321,7 +321,7 @@ export default {
       cursor: not-allowed;
     }
 
-    ::v-deep path {
+    path {
       fill: $quaternary-color;
     }
 
