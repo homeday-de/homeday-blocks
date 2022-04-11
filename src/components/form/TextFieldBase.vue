@@ -111,7 +111,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
 
 .text-field {
@@ -152,13 +152,13 @@ export default {
       }
     }
 
-    ::v-deep path {
+    path {
       fill: $quaternary-color;
     }
   }
 
   &__status-icon {
-    ::v-deep path {
+    path {
       fill: currentColor;
     }
     &--error {

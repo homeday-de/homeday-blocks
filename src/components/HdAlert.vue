@@ -53,7 +53,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
 
 .alert {
@@ -69,23 +69,39 @@ export default {
     border-color: $success-color;
     color: $success-color;
     background-color: rgba($success-color, .07);
+
+    #{$root}__icon {
+      fill: $success-color;
+    }
   }
 
   &--info {
     border-color: getShade($quaternary-color, 60);
     color: $quaternary-color;
+
+    #{$root}__icon {
+      fill: $secondary-color;
+    }
   }
 
   &--warning {
     border-color: $tertiary-color;
     color: $tertiary-color;
     background-color: getShade($tertiary-color, 60);
+
+    #{$root}__icon {
+      fill: $tertiary-color;
+    }
   }
 
   &--error {
     border-color: $error-color;
     color: $error-color;
     background-color: rgba($error-color, .07);
+
+    #{$root}__icon {
+      fill: $error-color;
+    }
   }
 
   &--no-icon {
@@ -99,19 +115,8 @@ export default {
     margin-top: $sp-xxs;
     margin-right: $sp-s;
 
-    ::v-deep path {
-      #{$root}--success & {
-        fill: $success-color;
-      }
-      #{$root}--info & {
-        fill: $secondary-color;
-      }
-      #{$root}--warning & {
-        fill: $tertiary-color;
-      }
-      #{$root}--error & {
-        fill: $error-color;
-      }
+    path {
+      fill: currentColor;
     }
   }
 }
