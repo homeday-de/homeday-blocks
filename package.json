@@ -91,7 +91,7 @@
     "raw-loader": "4.0.2",
     "react-is": "^17.0.2",
     "sass-loader": "10.2.0",
-    "semantic-release": "^17.4.4",
+    "semantic-release": "^19.0.2",
     "semantic-release-gitmoji": "^1.4.4",
     "svg-url-loader": "^7.1.1",
     "typescript": "~4.1.5",
