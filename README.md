@@ -152,3 +152,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Services
 Together with the components, Homeday Blocks also provides useful services that can be reused across projects. You can read more about them in the services [documentation](https://github.com/homeday-de/homeday-blocks/tree/master/src/services).
+
+## Infrastructure
+Homeday Blocks has its own infrastructure repository: [blocks-infra](https://github.com/homeday-de/blocks-infra).
+Whenever changes need to be made, you can do it in the repository and "deploy". If it is an emergency, you can also use AWS Console but your next step is to update it in the repository to avoid future inconsistencies.
