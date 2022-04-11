@@ -110,7 +110,7 @@ And follow the wizzard in order to generate a base component structure or a serv
 
 ## Contribution guide
 
-This project follows [forking workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow). See [project setup](#project-setup) to get started locally. That means that all code changes enter the project by PR to `master` branch. Once you open the PR with suggested changes, the checks for `build` and `coverage` will run. If those fail, your PR needs some more work. :) 
+This project follows [Git Feature Branch Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow). See [project setup](#project-setup) to get started locally. That means that all code changes enter the project by PR to `master` branch. Once you open the PR with suggested changes, the checks for `build` and `coverage` will run. If those fail, your PR needs some more work. :) 
 
 Each PR should be reviewed by at least two team members. Once reviewed and approved, it can be merged. Please follow the following convention when merging the PR: 
 
