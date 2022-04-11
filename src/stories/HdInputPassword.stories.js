@@ -2,7 +2,7 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
-import { HdInputPassword } from 'homeday-blocks';
+import HdInputPassword from 'homeday-blocks/src/components/form/HdInputPassword.vue';
 
 storiesOf('Components/Form/HdInputPassword', module)
   .addDecorator(FormWrapper)

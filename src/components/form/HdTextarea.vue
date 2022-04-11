@@ -29,7 +29,6 @@
       :disabled="disabled"
       :maxlength="maxlength"
       class="textarea"
-      data-gramm_editor="false"
       @focus="handleFocus"
       @blur="handleBlur"
       @input="handleInput"
@@ -194,7 +193,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
 $distanceFromTextareaToIndicator: -18px;
 
@@ -211,25 +210,21 @@ $distanceFromTextareaToIndicator: -18px;
   color: getShade($quaternary-color, 70);
 }
 .field--maxlength-indicator-visible {
-  ::v-deep {
-    .field__helper {
-      padding-right: $sp-xl;
-    }
+  .field__helper {
+    padding-right: $sp-xl;
   }
 }
 
 .field--label-background-visible {
-  ::v-deep {
-    .field__main::after {
-      content: '';
-      position: absolute;
-      z-index: 1;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: $sp-l - $sp-s; // Same as the padding top from the textarea, defined on FieldBase
-      background-color: $secondary-bg;
-    }
+  .field__main::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $sp-l - $sp-s; // Same as the padding top from the textarea, defined on FieldBase
+    background-color: $secondary-bg;
   }
 }
 

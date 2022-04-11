@@ -28,14 +28,7 @@
 
 <script>
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
-
-export const TYPES = {
-  PRIMARY: 'primary',
-  SECONDARY: 'secondary',
-  TERTIARY: 'tertiary',
-  FLAT: 'flat',
-  GHOST: 'ghost',
-};
+import TYPES from 'homeday-blocks/src/components/buttons/HdButtonTypes';
 
 export default {
   name: 'HdButton',
@@ -105,11 +98,13 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import 'homeday-blocks/src/styles/_variables.scss';
 
 .btn {
-  &--icon-button {
+  $root: &;
+
+  &#{$root}--icon-button {
     padding: $sp-s;
   }
 
@@ -118,13 +113,13 @@ export default {
     height: 24px;
     margin-right: $sp-xs;
 
-    .btn--icon-button & {
+    #{$root}--icon-button & {
       width: 28px;
       height: 28px;
       margin-right: 0;
     }
 
-    ::v-deep path {
+    path {
       fill: currentColor;
     }
   }

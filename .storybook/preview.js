@@ -1,7 +1,7 @@
 import 'homeday-blocks/src/styles/main.scss';
 import '@storybook/addon-console';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
-import { HdTooltipInstaller } from 'homeday-blocks';
+import HdTooltipInstaller from 'homeday-blocks/src/components/tooltip/HdTooltipInstaller';
 
 HdTooltipInstaller();
 

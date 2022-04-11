@@ -1,7 +1,5 @@
-import {
-  HdNotification,
-  HdNotificationsTypes as TYPES,
-} from 'homeday-blocks';
+import HdNotification from 'homeday-blocks/src/components/notifications/HdNotification.vue';
+import TYPES from 'homeday-blocks/src/components/notifications/HdNotificationsTypes';
 
 export default {
   title: 'Components/Notifications/HdNotification',

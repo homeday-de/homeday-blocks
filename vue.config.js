@@ -4,8 +4,21 @@ module.exports = {
   assetsDir: 'static',
   productionSourceMap: false,
   configureWebpack: webpackConfig,
-  // Enabled auto-fix for eslint
   chainWebpack: (config) => {
+    // Reset svg defualt config
+    config.module
+      .rule('svg')
+      .uses.clear();
+
+    // Embed svgs
+    config.module
+      .rule('svg')
+      .test(/\.svg$/)
+      .use('svg-url-loader')
+      .loader('svg-url-loader')
+      .end();
+
+    // Enabled auto-fix for eslint
     config.module
       .rule('eslint')
       .use('eslint-loader')
@@ -14,4 +27,7 @@ module.exports = {
       });
   },
   transpileDependencies: ['vue-zoomer'],
+  css: {
+    extract: false,
+  },
 };

@@ -1,59 +1,57 @@
-// @ts-check
-
 import { mount } from '@vue/test-utils';
 import deepmerge from 'deepmerge';
-import { HdCheckboxCardGroup, HdCheckboxCard } from 'homeday-blocks/main';
+import HdRadioCardGroup from 'homeday-blocks/src/components/form/HdRadioCardGroup.vue';
+import HdRadioCard from 'homeday-blocks/src/components/form/HdRadioCard.vue';
 import { getMessages } from 'homeday-blocks/src/lang';
 
-describe('HdCheckboxCardGroup', () => {
+describe('HdRadioCardGroup', () => {
   const build = (overrideProps = {}, overrideSlots = {}) => {
     const propsData = deepmerge({ name: 'property', value: 'house' }, overrideProps);
 
     const slots = {
       default: [`
-        <HdCheckboxCard native-value="apartment">
+        <HdRadioCard native-value="apartment">
           <template #icon>
             <HdIcon src="apartmentCommercialIcon" />
           </template>
 
           Apartment
-        </HdCheckboxCard>
+        </HdRadioCard>
 
-        <HdCheckboxCard native-value="castle">
+        <HdRadioCard native-value="castle">
           <template #icon>
             <HdIcon src="houseCastleIcon" />
           </template>
 
           Castle
-        </HdCheckboxCard>
+        </HdRadioCard>
 
-        <HdCheckboxCard native-value="space">
+        <HdRadioCard native-value="space">
           <template #icon>
             <HdIcon src="rocketIcon" />
           </template>
 
           Space
-        </HdCheckboxCard>
+        </HdRadioCard>
         `],
       ...overrideSlots,
     };
 
-    const view = mount(HdCheckboxCardGroup, {
+    const view = mount(HdRadioCardGroup, {
       propsData,
       slots,
       stubs: {
         HdIcon: true,
-        HdCheckboxCard,
+        HdRadioCard,
       },
     });
 
     return {
       view,
-      inputs: () => view.findAll('input[type="checkbox"]'),
-      inputChecked: () => view.find('input[type="checkbox"]:checked'),
+      inputs: () => view.findAll('input[type="radio"]'),
+      inputChecked: () => view.find('input[type="radio"]:checked'),
       labels: () => view.findAll('label'),
-      error: () => view.find('.checkbox-group__error'),
-      /** @returns {import('homeday-blocks/src/lang').Messages} */
+      error: () => view.find('.radio-group__error'),
       t: (lang = 'de') => getMessages(lang),
     };
   };
@@ -63,16 +61,16 @@ describe('HdCheckboxCardGroup', () => {
     expect(view.html()).toMatchSnapshot();
   });
 
-  it('renders only checkbox cards', () => {
+  it('renders only radio cards', () => {
     const slots = {
       default: [`
-      <HdCheckboxCard native-value="apartment">
+      <HdRadioCard native-value="apartment">
         <template #icon>
           <HdIcon src="apartmentCommercialIcon" />
         </template>
 
         Apartment
-      </HdCheckboxCard>
+      </HdRadioCard>
 
       <h1>This element should not appear</h1>
       `],
@@ -83,7 +81,7 @@ describe('HdCheckboxCardGroup', () => {
     expect(view.find('h1').exists()).toBeFalsy();
   });
 
-  it('displays disabled checkboxs', async () => {
+  it('displays disabled radios', async () => {
     const { view, inputs } = build({ disabled: true });
 
     await inputs().at(0).setChecked();
@@ -92,13 +90,13 @@ describe('HdCheckboxCardGroup', () => {
     expect(view.emitted().input).toBeFalsy();
   });
 
-  it('displays a checkbox with a checked state', () => {
-    const { inputChecked } = build({ value: ['apartment'] });
+  it('displays a radio with a checked state', () => {
+    const { inputChecked } = build({ value: 'apartment' });
     expect(inputChecked().element).toBeChecked();
   });
 
-  it('displays a checkbox with an unchecked state', () => {
-    const { inputs } = build({ value: ['anotherValue'] });
+  it('displays a radio with an unchecked state', () => {
+    const { inputs } = build({ value: 'anotherValue' });
 
     inputs().wrappers.forEach((input) => expect(input.element).not.toBeChecked());
   });
@@ -146,17 +144,17 @@ describe('HdCheckboxCardGroup', () => {
     expect(error().text()).toContain(customRules[1].errorMessage);
   });
 
-  describe('emits input event', () => {
-    it('when input is checked', async () => {
-      const { view, inputs } = build({ value: ['house'] });
+  describe('emits input event when', () => {
+    it('input is checked', async () => {
+      const { view, inputs } = build({ value: 'house' });
 
-      await inputs().at(1).trigger('change');
+      await inputs().at(1).trigger('input');
 
       expect(view.emitted().input).toBeTruthy();
       expect(view.emitted().input).toHaveLength(1);
     });
 
-    it('when user press space in label', async () => {
+    it('user press space in label', async () => {
       const { view, labels } = build();
 
       await labels().at(1).trigger('keydown.space');

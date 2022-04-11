@@ -1,9 +1,7 @@
-import {
-  HdForm,
-  HdInput,
-  HdInputFormatter,
-  HdCheckbox,
-} from 'homeday-blocks';
+import HdForm from 'homeday-blocks/src/components/form/HdForm.vue';
+import HdInput from 'homeday-blocks/src/components/form/HdInput.vue';
+import HdCheckbox from 'homeday-blocks/src/components/form/HdCheckbox.vue';
+import HdInputFormatter from 'homeday-blocks/src/components/form/HdInputFormatter.vue';
 
 export default {
   title: 'Components/Form/HdForm',

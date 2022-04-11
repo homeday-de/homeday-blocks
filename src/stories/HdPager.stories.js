@@ -2,7 +2,7 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import { number } from '@storybook/addon-knobs';
-import { HdPager } from 'homeday-blocks';
+import HdPager from 'homeday-blocks/src/components/HdPager.vue';
 
 storiesOf('Components/HdPager', module)
   .add('default 🎛', () => ({
