@@ -111,7 +111,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
 
 .badge{
@@ -136,12 +136,12 @@ export default {
       margin-left: $sp-m;
       margin-right: $sp-s;
 
-      &::v-deep path {
+      path {
         fill: currentColor;
       }
     }
 
-    ::v-deep  &__icon{
+    &__icon{
       width: 14px;
       height: 14px;
       margin-right: $sp-s;
