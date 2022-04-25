@@ -28,6 +28,7 @@
         class="checkbox__input"
         type="checkbox"
         :name="name"
+        role="checkbox"
         :disabled="disabled"
         v-model="isChecked"/>
       <div
