@@ -30,7 +30,8 @@
         role="checkbox"
         :name="name"
         :disabled="disabled"
-        v-model="isChecked"/>
+        v-model="isChecked"
+      />
       <div
         :ref="name"
         :aria-checked="isChecked"
