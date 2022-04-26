@@ -26,7 +26,7 @@
     >
       <input
         class="checkbox__input"
-        type="checkbox"
+        role="checkbox"
         :name="name"
         :disabled="disabled"
         v-model="isChecked"
@@ -38,8 +38,8 @@
         :aria-labelledby="labelId"
         :tabindex="disabled ? -1 : 0"
         class="checkbox__inner"
-        role="checkbox"
         @click="toggle"
+        role="checkbox"
         @keydown.space.enter.prevent="toggle"
         @focus="handleFocus"
         @blur="handleBlur"
