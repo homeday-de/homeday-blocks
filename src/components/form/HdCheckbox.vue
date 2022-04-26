@@ -28,9 +28,10 @@
         class="checkbox__input"
         type="checkbox"
         :name="name"
-        role="checkbox"
         :disabled="disabled"
-        v-model="isChecked"/>
+        v-model="isChecked"
+        data-testid="checkbox-element"
+      />
       <div
         :ref="name"
         :aria-checked="isChecked"
