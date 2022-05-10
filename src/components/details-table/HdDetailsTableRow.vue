@@ -6,7 +6,7 @@
     }"
   >
     <dt class="details-table__row__label">
-      {{ label }}:
+      {{ label }}<span class="details-table__row__required" v-if="required">*</span>:
     </dt>
     <dd class="details-table__row__content">
       <div class="details-table__row__content__inside">
