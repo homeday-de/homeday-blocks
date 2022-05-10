@@ -1,5 +1,5 @@
 <template>
-  <div class="details-table-wrap">
+  <div class="details-table-wrap" :id=reference>
     <dl
       :class="{ withDivider }"
       class="details-table">
@@ -23,6 +23,10 @@ export default {
     withDivider: {
       type: Boolean,
       default: true,
+    },
+    reference: {
+      type: String,
+      default: '',
     },
   },
 };
