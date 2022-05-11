@@ -7,6 +7,7 @@
         v-if="$slots.before"
         class="details-table__before"
       >
+        Test
         <slot name="before"/>
       </div>
       <div class="details-table__rows">
