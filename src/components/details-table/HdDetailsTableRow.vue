@@ -3,14 +3,15 @@
     :class="{
       'details-table__row': true,
       'details-table__row--single-column': forceSingleColumn,
+      'details-table__row--hover-enabled': required,
     }"
   >
     <dt class="details-table__row__label">
-      {{ label }}<span class="details-table__row__required" v-if="required">*</span>:
+      {{ label }}<span v-if="required" class="details-table__row__label__required">*</span>:
     </dt>
     <dd class="details-table__row__content">
       <div class="details-table__row__content__inside">
-        <slot/>
+        <slot />
       </div>
     </dd>
   </div>
@@ -38,7 +39,6 @@ export default {
 
 <style lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
-
 .details-table__row {
   margin-top: $sp-s;
   margin-bottom: $sp-s;
@@ -64,6 +64,9 @@ export default {
 
     @media (min-width: $break-tablet) {
       flex-basis: 187px;
+    }
+    &__required {
+      color: getShade($error-color, 90);
     }
   }
 
@@ -91,14 +94,12 @@ export default {
   }
 
   &:not(&--single-column):nth-child(odd) #{&}__content {
-
     @media (min-width: $break-desktop) {
       margin-right: $sp-xs;
     }
   }
 
   &:not(&--single-column):nth-child(even) #{&}__label {
-
     @media (min-width: $break-desktop) {
       margin-left: $sp-xs;
     }
