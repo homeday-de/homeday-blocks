@@ -4,6 +4,7 @@
       'details-table__row': true,
       'details-table__row--single-column': forceSingleColumn,
       'details-table__row--hover-enabled': required,
+      [customClass]: customClass,
     }"
   >
     <dt class="details-table__row__label">
@@ -28,6 +29,10 @@ export default {
     forceSingleColumn: {
       type: Boolean,
       default: false,
+    },
+    customClass: {
+      type: String,
+      default: null,
     },
     required: {
       type: Boolean,
