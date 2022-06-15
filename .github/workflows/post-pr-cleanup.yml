@@ -9,7 +9,7 @@ on:
 
 env:
   BUILD_DEST_DIR: ${{ github.event.repository.name }}/${{ github.event.pull_request.number }}
-  S3_BUCKET: frontend-pulls
+  S3_BUCKET: ${{ secrets.AWS_S3_PR_DEPLOYMENT_BUCKET }}
 
 jobs:
   post-pr-cleanup:
