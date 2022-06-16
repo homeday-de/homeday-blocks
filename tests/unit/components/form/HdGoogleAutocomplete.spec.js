@@ -1,16 +1,15 @@
 import { wrapperFactoryBuilder } from 'tests/unit/helpers';
-import HdGoogleAutocomplete from '@/components/form/HdGoogleAutocomplete.vue';
+import HdGoogleAutocomplete, { DEFAULT_LOCATION_DATA } from '@/components/form/HdGoogleAutocomplete.vue';
 
 const TEST_VALUE = 'Berlin';
 const BERLIN_LOCATION = {
-  lat: 52.520008,
+  lat: 52.52000659999999,
   lng: 13.404954,
+  east: 13.76111748460941,
+  north: 52.67545420869131,
+  south: 52.33823404386677,
+  west: 13.08834600183454,
   name: 'Berlin',
-};
-const DEFAULT_LOCATION = {
-  lat: null,
-  lng: null,
-  name: '',
 };
 
 const wrapperBuilder = wrapperFactoryBuilder(HdGoogleAutocomplete, {
@@ -51,7 +50,7 @@ describe('HdGoogleAutocomplete', () => {
     const wrapper = wrapperBuilder();
     const location = await wrapper.vm.getLocation();
 
-    expect(location).toEqual(DEFAULT_LOCATION);
+    expect(location).toEqual(DEFAULT_LOCATION_DATA);
   });
 
   it('Supports clearing of the input', () => {

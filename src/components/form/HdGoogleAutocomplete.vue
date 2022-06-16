@@ -40,6 +40,16 @@ import { getGoogleAPI } from 'homeday-blocks/src/services/googleAPI';
 import TextFieldBase from './TextFieldBase.vue';
 import formField from './formFieldMixin';
 
+export const DEFAULT_LOCATION_DATA = {
+  lat: null,
+  lng: null,
+  east: null,
+  north: null,
+  south: null,
+  west: null,
+  name: '',
+};
+
 export default {
   name: 'HdGoogleAutocomplete',
   mixins: [
@@ -149,41 +159,30 @@ export default {
 
         // If the selected the whole Germany, we ignore the lat and lng
         if (place.address_components[0].short_name === 'DE') {
-          this.emitLocation({
-            lat: null,
-            lng: null,
-            name: place.name,
-          });
+          this.emitLocation({ name: place.name });
           return;
         }
 
         this.emitLocation({
-          lat: place.geometry.location.lat(),
-          lng: place.geometry.location.lng(),
+          ...place.geometry.location.toJSON(),
+          ...place.geometry.viewport.toJSON(),
           name: place.name,
         });
       });
     },
-    emitLocation({ lat = null, lng = null, name = '' }) {
-      this.lastLocation = {
-        lat,
-        lng,
-        name,
+    emitLocation(location) {
+      const data = {
+        ...DEFAULT_LOCATION_DATA,
+        ...location,
       };
 
-      this.$emit('locationChanged', {
-        lat,
-        lng,
-        name,
-      });
+      this.lastLocation = data;
+
+      this.$emit('locationChanged', data);
     },
     async getLocation() {
       if (!this.value) {
-        return {
-          lat: null,
-          lng: null,
-          name: '',
-        };
+        return DEFAULT_LOCATION_DATA;
       }
 
       if (this.lastLocation && this.lastLocation.name === this.value) {
@@ -198,15 +197,14 @@ export default {
         this.geocoderInstance.geocode({ address: this.value }, (results, status) => {
           if (status !== window.google.maps.GeocoderStatus.OK) {
             resolve({
-              lat: null,
-              lng: null,
+              ...DEFAULT_LOCATION_DATA,
               name: this.value,
             });
           }
 
           this.lastLocation = {
-            lat: results[0].geometry.location.lat(),
-            lng: results[0].geometry.location.lng(),
+            ...results[0].geometry.location.toJSON(),
+            ...results[0].geometry.viewport.toJSON(),
             name: this.value,
           };
 
