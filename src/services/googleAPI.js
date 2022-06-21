@@ -11,7 +11,7 @@ export function getGoogleAPI(key) {
     // Check Google Maps version documentation: https://developers.google.com/maps/documentation/javascript/versions
     const version = '3.42';
     const url = `https://maps.googleapis.com/maps/api/js?v=${version}&key=${key}&libraries=places&region=DE`;
-    if (document.querySelector(`script[src="${url}"]`)) {
+    if (window?.google) {
       resolve();
     } else {
       loadScript({ url }).then(() => {
