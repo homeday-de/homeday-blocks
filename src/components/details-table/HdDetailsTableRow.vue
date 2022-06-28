@@ -1,11 +1,6 @@
 <template>
   <div
-    :class="{
-      'details-table__row': true,
-      'details-table__row--single-column': forceSingleColumn,
-      'details-table__row--hover-enabled': required,
-      [customClass]: customClass,
-    }"
+    :class="classes"
   >
     <dt class="details-table__row__label">
       {{ label }}<span v-if="required" class="details-table__row__label__required">*</span>:
@@ -30,13 +25,29 @@ export default {
       type: Boolean,
       default: false,
     },
-    customClass: {
-      type: String,
-      default: null,
-    },
     required: {
       type: Boolean,
       default: false,
+    },
+  },
+  data() {
+    return {
+      customClass: false,
+    };
+  },
+  computed: {
+    classes() {
+      return {
+        'details-table__row': true,
+        'details-table__row--single-column': this.forceSingleColumn,
+        'details-table__row--hover-enabled': this.required,
+        [this.customClass]: this.customClass,
+      };
+    },
+  },
+  methods: {
+    setCustomClass(customClass) {
+      this.customClass = customClass;
     },
   },
 };
