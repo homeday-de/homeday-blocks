@@ -39,6 +39,7 @@ import HdSelect from 'homeday-blocks/src/components/form/HdSelect.vue';
 import HdTagsSelector from 'homeday-blocks/src/components/form/HdTagsSelector.vue';
 import HdSplitInput from 'homeday-blocks/src/components/form/HdSplitInput.vue';
 import HdGoogleAutocomplete from 'homeday-blocks/src/components/form/HdGoogleAutocomplete.vue';
+import HdInputFormatter from 'homeday-blocks/src/components/form/HdInputFormatter.vue';
 import HdButton from 'homeday-blocks/src/components/buttons/HdButton.vue';
 
 export default {
@@ -124,6 +125,8 @@ export default {
           return HdInput;
         case 'inputPassword':
           return HdInputPassword;
+        case 'inputFormatter':
+          return HdInputFormatter;
         case 'checkbox':
           return HdCheckbox;
         case 'radio':
