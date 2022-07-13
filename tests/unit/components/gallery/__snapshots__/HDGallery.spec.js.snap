@@ -45,7 +45,7 @@ exports[`HdGallery renders the component 1`] = `
             </div>
             <div class="gallery-carousel__item is-selected" style="position: absolute;">
               <div style="padding-top: 56.25%;"></div>
-              <picture class="gallery-carousel__picture"> <img src="https://dummyimage.com/154x86?text=3+thumb" alt="Image 3" loading="lazy" style="object-fit: cover;"></picture>
+              <picture class="gallery-carousel__picture"> <img src="https://dummyimage.com/154x86?text=video+3+thumb" alt="Video 3" loading="lazy" style="object-fit: cover;"></picture>
               <!---->
             </div>
             <div class="gallery-carousel__item is-selected" style="position: absolute;">
