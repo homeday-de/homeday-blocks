@@ -45,6 +45,7 @@ export default {
     disableKeyEvents: false,
     showCaption: true,
     startIndex: 0,
+    mobileCounterBadge: false,
   },
   parameters: { percy: { widths: [375] } },
 };
@@ -55,18 +56,7 @@ const Template = (args, { argTypes }) => ({
   template: `
     <div style="max-width: 800px; padding-left: 16px; padding-right: 16px; margin: auto;">
     <HdGallery
-      :items="items"
-      :pager-inside="pagerInside"
-      :aspect-ratio="aspectRatio"
-      :disable-key-events="disableKeyEvents"
-      :start-index="startIndex"
-      :show-caption="showCaption"
-      :placeholder-icon="placeholderIcon"
-      :placeholder-text="placeholderText"
-      :carousel-object-fit="carouselObjectFit"
-      @carouselItemClick="carouselItemClick"
-      @currentItemClick="currentItemClick"
-      @input="input"
+      v-bind="$props"
     />
     </div>
   `,
@@ -95,4 +85,9 @@ export const WithPagerInside = Template.bind({});
 WithPagerInside.args = {
   pagerInside: true,
   showCaption: false,
+};
+
+export const WithMobileCounterBadge = Template.bind({});
+WithMobileCounterBadge.args = {
+  mobileCounterBadge: true,
 };
