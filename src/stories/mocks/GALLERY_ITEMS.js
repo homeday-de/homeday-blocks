@@ -23,7 +23,7 @@ export default [
     caption: 'Video 3',
     image: 'https://dummyimage.com/1536x364?text=Video+3',
     video: 'https://www.youtube-nocookie.com/embed/QwyOS8DSkYc?rel=0&start=18&end=51',
-    thumbnail: 'https://dummyimage.com/154x86?text=3+thumb',
+    thumbnail: 'https://dummyimage.com/154x86?text=video+3+thumb',
   },
   {
     caption: 'Image 4',
