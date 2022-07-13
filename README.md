@@ -1,4 +1,5 @@
-[![Build Status](https://github.com/homeday-de/homeday-blocks/workflows/deploy-storybook/badge.svg)](https://github.com/homeday-de/homeday-blocks/actions)
+[![Release and publish](https://github.com/homeday-de/homeday-blocks/actions/workflows/release.yml/badge.svg)](https://github.com/homeday-de/homeday-blocks/actions/workflows/release.yml)
+[![Storybook deployment](https://github.com/homeday-de/homeday-blocks/actions/workflows/deploy-storybook.yml/badge.svg)](https://github.com/homeday-de/homeday-blocks/actions/workflows/deploy-storybook.yml)
 [![Coverage Status](https://coveralls.io/repos/github/homeday-de/homeday-blocks/badge.svg?t=Kbz7Vb)](https://coveralls.io/github/homeday-de/homeday-blocks)
 [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/Homeday/homeday-blocks)
 
