@@ -33,6 +33,13 @@
             >
             <img :src="item.thumbnail" :alt="item.caption" :srcset="item.thumbnailSrcSet" :style="{objectFit}">
           </picture>
+
+          <iframe
+            v-if="item.video && shouldShowActiveState(i) && isMobileView()"
+            :src="item.video"
+            class="gallery-carousel__video"
+            frameborder="0"
+          />
         </div>
       </flickity>
       <div class="gallery-carousel__pager">
@@ -43,6 +50,7 @@
           v-model="currentIndex"
         />
       </div>
+      <div v-if="mobileCounterBadge" class="gallery-carousel__info">{{ `${value + 1}/${items.length}` }}</div>
     </div>
   </div>
 </template>
@@ -69,6 +77,10 @@ export default {
       default: () => [],
     },
     pagerInside: {
+      type: Boolean,
+      default: false,
+    },
+    mobileCounterBadge: {
       type: Boolean,
       default: false,
     },
@@ -212,6 +224,11 @@ export default {
 
       this.$refs.flickity.select(targetSlide);
     },
+    isMobileView() {
+      const slidesCount = this.$refs.flickity.slides().length;
+      const cellsCount = this.$refs.flickity.cells().length;
+      return slidesCount === cellsCount;
+    },
   },
 };
 </script>
@@ -252,6 +269,23 @@ export default {
     }
   }
 
+  &__info {
+    position: absolute;
+    right: $sp-xs;
+    top: $sp-xs;
+    padding-right: $sp-s;
+    padding-left: $sp-s;
+    background-color: rgba(0, 0, 0, 0.8);
+    @include font('text-xsmall');
+    font-weight: 600;
+    color: $white;
+    border-radius: 2px;
+
+    @media (min-width: $break-tablet) {
+      display: none;
+    }
+  }
+
   &__item {
     position: relative;
     width: 100%;
@@ -286,7 +320,7 @@ export default {
     }
   }
 
-  &__picture {
+  &__picture, &__video {
     position: absolute;
     top: 0;
     right: 0;
@@ -301,6 +335,11 @@ export default {
       width: 100%;
       height: 100%;
     }
+  }
+
+  &__video {
+    width: 100%;
+    height: 100%;
   }
 }
 </style>

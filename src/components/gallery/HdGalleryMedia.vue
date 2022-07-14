@@ -5,7 +5,7 @@
 
       <!-- the item.image field is used as default value for the item image -->
       <!-- IE11 uses this value only because do not support the picture element -->
-      <picture class="gallery-media__object-picture">
+      <picture v-if="!item.video" class="gallery-media__object-picture">
         <source
           v-for="(source, media) in item.pictureSources"
           :key="media"
@@ -21,12 +21,15 @@
         />
       </picture>
 
+      <iframe v-else class="gallery-media__object-video" :src="item.video" frameborder="0" @load="hideThumbnail" />
+
       <div
         v-if="hasThumbnail"
         class="gallery-media__object-thumbnail"
         :class="{ 'isVisible': showThumbnail }"
         :style="{ 'background-image': `url('${item.thumbnail}')` }"
       />
+
     </div>
   </div>
 </template>
@@ -91,13 +94,24 @@ export default {
     cursor: pointer;
 
     &-thumbnail,
-    &-picture {
+    &-picture,
+    &-video {
       position: absolute;
       top: 0;
       right: 0;
       bottom: 0;
       left: 0;
       z-index: 1;
+    }
+
+    &-picture,
+    &-video {
+      z-index: 2;
+    }
+
+    &-video {
+      width: 100%;
+      height: 100%;
     }
 
     &-picture {
