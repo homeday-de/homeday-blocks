@@ -20,9 +20,10 @@ export default [
     thumbnailSrcSet: 'https://dummyimage.com/308x172?text=2+thumb+DPR2x 2x, https://dummyimage.com/462x258?text=2+thumb+DPR3x 3x',
   },
   {
-    caption: 'Image 3',
-    image: 'https://dummyimage.com/1536x364?text=3',
-    thumbnail: 'https://dummyimage.com/154x86?text=3+thumb',
+    caption: 'Video 3',
+    image: 'https://dummyimage.com/1536x364?text=Video+3',
+    video: 'https://www.youtube-nocookie.com/embed/QwyOS8DSkYc?rel=0&start=18&end=51',
+    thumbnail: 'https://dummyimage.com/154x86?text=video+3+thumb',
   },
   {
     caption: 'Image 4',

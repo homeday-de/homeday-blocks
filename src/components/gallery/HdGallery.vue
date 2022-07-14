@@ -68,6 +68,7 @@
       :aspect-ratio="aspectRatio"
       :disable-key-events="disableKeyEvents"
       :object-fit="carouselObjectFit"
+      :mobile-counter-badge="mobileCounterBadge"
       class="gallery__carousel"
       @itemClick="onCarouselItemClick"
     />
@@ -90,12 +91,17 @@ export default {
     HdGalleryPlaceholder,
     HdIcon,
   },
+  inheritAttrs: false,
   props: {
     items: {
       type: Array,
       default: () => [],
     },
     pagerInside: {
+      type: Boolean,
+      default: false,
+    },
+    mobileCounterBadge: {
       type: Boolean,
       default: false,
     },
