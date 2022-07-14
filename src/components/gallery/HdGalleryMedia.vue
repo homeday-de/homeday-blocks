@@ -105,6 +105,11 @@ export default {
       z-index: 1;
     }
 
+    &-picture,
+    &-video {
+      z-index: 2;
+    }
+
     &-video {
       width: 100%;
       height: 100%;
