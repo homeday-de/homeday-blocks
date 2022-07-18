@@ -301,6 +301,7 @@ export default {
     font-weight: 600;
     color: $white;
     border-radius: 2px;
+    z-index: 2;
   }
 
   &__carousel {
