@@ -95,11 +95,6 @@ export function scrollToEl({ el, offset = 0, onlyIfNotVisible = true }) {
     return;
   }
 
-  if (typeof document.documentElement.scrollIntoView === 'function') {
-    el.scrollIntoView({ behavior: 'smooth' });
-    return;
-  }
-
   toScroll.forEach((toScrollEl) => {
     toScrollEl.scrollTo({
       top: elOffset(el).top - offset,
