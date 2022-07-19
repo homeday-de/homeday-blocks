@@ -173,7 +173,7 @@ export default {
 
       // If we are showing one item per slide, we update the index on slide change
       if (slides.length === cells.length) {
-        this.$emit('input', itemIndex);
+        this.$emit('input', itemIndex || 0);
       }
     },
     onStaticClick(event, pointer, cellElement, cellIndex) {
