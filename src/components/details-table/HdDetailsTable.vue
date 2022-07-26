@@ -24,6 +24,10 @@ export default {
       type: Boolean,
       default: true,
     },
+    ref: {
+      type: String,
+      default: '',
+    },
   },
 };
 </script>
