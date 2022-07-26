@@ -24,7 +24,7 @@ export default {
       type: Boolean,
       default: true,
     },
-    ref: {
+    reference: {
       type: String,
       default: '',
     },
