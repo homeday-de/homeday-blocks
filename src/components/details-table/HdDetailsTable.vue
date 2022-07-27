@@ -26,7 +26,8 @@ export default {
     },
     reference: {
       type: String,
-      default: '',
+      required: false,
+      default: undefined,
     },
   },
 };
