@@ -278,4 +278,10 @@ export default {
     }
   }
 }
+
+// with-infobox is being added in TextFieldBase.vue via ":class"
+.with-infobox .field__input-right {
+  pointer-events: auto;
+  cursor: pointer;
+}
 </style>

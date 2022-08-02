@@ -2,6 +2,7 @@
   <FieldBase
     v-bind="$attrs"
     class="text-field"
+    :class="{ 'with-infobox': withInfoBox }"
     @focusin.native="onFieldFocusIn"
     @focusout.native="onFieldFocusOut"
   >
@@ -18,6 +19,13 @@
         height="24"
         class="text-field__status-icon text-field__status-icon--valid"
         @click.native="$emit('status-click')"
+      />
+      <HdIcon
+        v-else-if="withInfoBox"
+        :src="infoIcon"
+        width="24"
+        height="24"
+        @click.native="openModal"
       />
       <button
         v-else-if="isClearButtonVisible"
@@ -42,15 +50,30 @@
         @click.native="$emit('status-click')"
       />
     </template>
+    <hd-modal
+      v-if="isModalShown"
+      :is-close-button-visible="true"
+      @close="closeModal"
+    >
+      <template #title>
+        {{ $attrs.label }}
+      </template>
+      <template #body>
+        <p class="hd-modal__paragraph"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, vero impedit saepe quasi ipsa illum odio quam eum dolor nam aliquam voluptate corporis nobis incidunt, veniam consequuntur ipsum, cupiditate ex. </p>
+      </template>
+    </hd-modal>
   </FieldBase>
 </template>
 
 <script>
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
+import HdModal from 'homeday-blocks/src/components/HdModal.vue';
+
 import {
   close as closeIcon,
   error as errorIcon,
   check as checkIcon,
+  info as infoIcon,
 } from 'homeday-assets';
 import FieldBase from './FieldBase.vue';
 
@@ -60,9 +83,14 @@ export default {
   components: {
     FieldBase,
     HdIcon,
+    HdModal,
   },
   props: {
     withValidationCheck: {
+      type: Boolean,
+      default: false,
+    },
+    withInfoBox: {
       type: Boolean,
       default: false,
     },
@@ -71,9 +99,11 @@ export default {
     return {
       hasFocus: false,
       isButtonFocused: false,
+      isModalShown: false,
       closeIcon,
       errorIcon,
       checkIcon,
+      infoIcon,
     };
   },
   computed: {
@@ -106,6 +136,12 @@ export default {
     },
     onClearButtonBlur() {
       this.isButtonFocused = false;
+    },
+    openModal() {
+      this.isModalShown = true;
+    },
+    closeModal() {
+      this.isModalShown = false;
     },
   },
 };
@@ -167,6 +203,12 @@ export default {
     &--valid {
       color: $success-color;
     }
+  }
+}
+
+.with-infobox .field__input-right {
+  svg path {
+    fill: getShade($secondary-color, 110);
   }
 }
 </style>
