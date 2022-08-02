@@ -7,7 +7,8 @@ exports[`HdDynamicForm renders slots 1`] = `
     <div class="field text-field dynamicForm__line__item field--filled">
       <!---->
       <div class="field__body">
-        <div class="field__main"><input autocomplete="on" type="email" id="email" name="email" placeholder="" required="required" data-lpignore="true" label="E-Mail-Adresse" class="input"> <label for="email" id="email-label" class="field__label">
+        <div class="field__main"><input autocomplete="on" type="email" id="email" name="email" placeholder="" required="required" data-lpignore="true" label="E-Mail-Adresse" class="input">
+          <!----> <label for="email" id="email-label" class="field__label">
             E-Mail-Adresse
           </label>
           <div class="field__input-right"></div>
@@ -21,7 +22,8 @@ exports[`HdDynamicForm renders slots 1`] = `
     <div class="field text-field password-input dynamicForm__line__item">
       <!---->
       <div class="field__body">
-        <div class="field__main"><input autocomplete="on" type="password" id="password" name="password" placeholder="" required="required" data-lpignore="true" label="Passwort" class="input"> <label for="password" id="password-label" class="field__label">
+        <div class="field__main"><input autocomplete="on" type="password" id="password" name="password" placeholder="" required="required" data-lpignore="true" label="Passwort" class="input">
+          <!----> <label for="password" id="password-label" class="field__label">
             Passwort
           </label>
           <div class="field__input-right"></div>
