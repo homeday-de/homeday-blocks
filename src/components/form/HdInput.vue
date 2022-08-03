@@ -8,6 +8,7 @@
     :filled="isFilled"
     :valid="isValid"
     :disabled="disabled"
+    :withInfoMessage="withInfoMessage"
     @clear-click="clearInput"
     @status-click="focusInput"
   >
@@ -95,6 +96,10 @@ export default {
       default: () => ({}),
     },
     disabled: {
+      type: Boolean,
+      default: false,
+    },
+    withInfoBox: {
       type: Boolean,
       default: false,
     },

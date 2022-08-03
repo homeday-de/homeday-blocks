@@ -127,6 +127,28 @@ storiesOf('Components/Form/HdInput', module)
       },
     },
   }))
+  .add('with infobox', () => ({
+    components: { HdInput },
+    template: `
+      <HdInput
+        v-model="value"
+        :withInfoMessage="Message here"
+        :required="true"
+        name="test"
+        label="Label"
+        placeholder="Placeholder..."
+      />`,
+    data() {
+      return {
+        value: '',
+      };
+    },
+    watch: {
+      value(value) {
+        action('input')(value);
+      },
+    },
+  }))
   .add('disabled', () => ({
     components: { HdInput },
     template: `

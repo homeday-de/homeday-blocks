@@ -1254,7 +1254,8 @@ exports[`HdInputPhone is rendered as expected 1`] = `
   <div class="field text-field phone-input__field field--filled" placeholder="+49 555 555 5555" label="Telefonnummer" custom-rules="[object Object],[object Object],[object Object]">
     <!---->
     <div class="field__body">
-      <div class="field__main"><input autocomplete="on" type="text" id="phoneNumber" name="phoneNumber" placeholder="" data-lpignore="true" label="Telefonnummer" class="input"> <label for="phoneNumber" id="phone-number-label" class="field__label">
+      <div class="field__main"><input autocomplete="on" type="text" id="phoneNumber" name="phoneNumber" placeholder="" data-lpignore="true" label="Telefonnummer" class="input">
+        <!----> <label for="phoneNumber" id="phone-number-label" class="field__label">
           Telefonnummer
         </label>
         <div class="field__input-right"></div>
