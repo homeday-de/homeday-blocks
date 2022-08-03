@@ -2,7 +2,7 @@
   <FieldBase
     v-bind="$attrs"
     class="text-field"
-    :class="{ 'with-infobox': withInfoBox }"
+    :class="{ 'with-infobox': withInfoMessage }"
     @focusin.native="onFieldFocusIn"
     @focusout.native="onFieldFocusOut"
   >
@@ -21,7 +21,7 @@
         @click.native="$emit('status-click')"
       />
       <HdIcon
-        v-else-if="withInfoBox"
+        v-else-if="withInfoMessage"
         :src="infoIcon"
         width="24"
         height="24"
@@ -59,7 +59,7 @@
         {{ $attrs.label }}
       </template>
       <template #body>
-        <p class="hd-modal__paragraph"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, vero impedit saepe quasi ipsa illum odio quam eum dolor nam aliquam voluptate corporis nobis incidunt, veniam consequuntur ipsum, cupiditate ex. </p>
+        <p class="hd-modal__paragraph"> {{ withInfoMessage }} </p>
       </template>
     </hd-modal>
   </FieldBase>
@@ -90,9 +90,9 @@ export default {
       type: Boolean,
       default: false,
     },
-    withInfoBox: {
-      type: Boolean,
-      default: false,
+    withInfoMessage: {
+      type: String,
+      default: () => undefined,
     },
   },
   data() {

@@ -8,7 +8,7 @@
     :filled="isFilled"
     :valid="isValid"
     :disabled="disabled"
-    :withInfoBox="withInfoBox"
+    :withInfoMessage="withInfoMessage"
     @clear-click="clearInput"
     @status-click="focusInput"
   >

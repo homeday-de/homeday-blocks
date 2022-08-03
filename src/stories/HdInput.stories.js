@@ -132,13 +132,12 @@ storiesOf('Components/Form/HdInput', module)
     template: `
       <HdInput
         v-model="value"
-        :withInfoBox="true"
+        :withInfoMessage="Message here"
         :required="true"
         name="test"
         label="Label"
         placeholder="Placeholder..."
-      />
-    `,
+      />`,
     data() {
       return {
         value: '',
