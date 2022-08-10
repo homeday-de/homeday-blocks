@@ -1,5 +1,5 @@
 <template>
-  <div class="gallery-media">
+  <component :is="component" :to="to" class="gallery-media">
     <div class="gallery-media__object">
       <div :style="sizerStyles" />
 
@@ -32,7 +32,7 @@
       />
 
     </div>
-  </div>
+  </component>
 </template>
 
 <script>
@@ -47,6 +47,10 @@ export default {
       type: Number,
       default: 16 / 9,
     },
+    to: {
+      type: Object,
+      default: undefined,
+    },
   },
   data() {
     return {
@@ -54,6 +58,9 @@ export default {
     };
   },
   computed: {
+    component() {
+      return this.to ? 'router-link' : 'div';
+    },
     hasThumbnail() {
       return typeof this.item.thumbnail === 'string' && this.item.thumbnail;
     },
