@@ -139,6 +139,11 @@ export default {
     to: {
       type: Object,
       default: undefined,
+      validator(value) {
+        // object with path or named route
+        // https://router.vuejs.org/guide/essentials/navigation.html
+        return value.path || value.name;
+      },
     },
   },
   data() {
