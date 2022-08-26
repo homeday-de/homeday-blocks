@@ -1,6 +1,6 @@
 {
   "name": "homeday-blocks",
-  "version": "18.8.6",
+  "version": "18.9.1",
   "description": "A Vue component library built by Homeday's frontend team.",
   "scripts": {
     "lint": "vue-cli-service lint",
