@@ -1,4 +1,3 @@
-import naturalScroll from 'natural-scroll';
 import {
   disableBodyScroll,
   enableBodyScroll,
@@ -97,7 +96,10 @@ export function scrollToEl({ el, offset = 0, onlyIfNotVisible = true }) {
   }
 
   toScroll.forEach((toScrollEl) => {
-    naturalScroll.scrollTop(toScrollEl, elOffset(el).top - offset);
+    toScrollEl.scrollTo({
+      top: elOffset(el).top - offset,
+      behavior: 'smooth',
+    });
   });
 }
 

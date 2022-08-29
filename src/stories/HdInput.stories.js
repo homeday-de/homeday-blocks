@@ -2,7 +2,7 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import { text } from '@storybook/addon-knobs';
-import { HdInput } from 'homeday-blocks';
+import HdInput from 'homeday-blocks/src/components/form/HdInput.vue';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 import icon from './assets/ic_user.svg';
 

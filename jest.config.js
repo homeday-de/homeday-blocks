@@ -2,7 +2,7 @@
  * NOTE: hd-blocks mapper is needed to solve hd-blocks path in the components
  */
 module.exports = {
-  preset: '@vue/cli-plugin-unit-jest',
+  preset: '@vue/cli-plugin-unit-jest/presets/typescript-and-babel',
   globalSetup: '<rootDir>/tests/unit/globalSetup.js',
   setupFilesAfterEnv: ['<rootDir>/tests/unit/setup.js'],
   collectCoverageFrom: [

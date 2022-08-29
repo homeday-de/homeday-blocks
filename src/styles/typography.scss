@@ -8,12 +8,16 @@
 
 @mixin font($style) {
   @if ($style == "DS-60") {
-    font-size: rem-calc(12);
+    font-size: rem-calc(8);
     line-height: 1.5;
   }
   @else if ($style == "DS-80") {
     font-size: rem-calc(12);
     line-height: 1.334;
+  }
+  @else if ($style == "DS-90") {
+    font-size: rem-calc(14);
+    line-height: 1.5;
   }
   @else if ($style == "DS-100") {
     font-size: rem-calc(16);

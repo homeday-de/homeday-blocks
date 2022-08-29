@@ -44,16 +44,9 @@
 </template>
 
 <script>
-import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import { chevron as chevronIcon } from 'homeday-assets';
-
-export const TYPES = {
-  DEFAULT: '',
-  PRIMARY: 'primary',
-  SECONDARY: 'secondary',
-  TERTIARY: 'tertiary',
-  DISABLED: 'disabled',
-};
+import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
+import TYPES from 'homeday-blocks/src/components/HdBadgeTypes';
 
 export default {
   name: 'HdBadge',
@@ -118,7 +111,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
 
 .badge{
@@ -143,12 +136,12 @@ export default {
       margin-left: $sp-m;
       margin-right: $sp-s;
 
-      &::v-deep path {
+      path {
         fill: currentColor;
       }
     }
 
-    ::v-deep  &__icon{
+    &__icon{
       width: 14px;
       height: 14px;
       margin-right: $sp-s;

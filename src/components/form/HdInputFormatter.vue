@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { HdInput } from 'homeday-blocks';
+import HdInput from './HdInput.vue';
 import formField from './formFieldMixin';
 
 const defaultInputType = 'text';

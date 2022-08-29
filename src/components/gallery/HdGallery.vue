@@ -68,6 +68,7 @@
       :aspect-ratio="aspectRatio"
       :disable-key-events="disableKeyEvents"
       :object-fit="carouselObjectFit"
+      :mobile-counter-badge="mobileCounterBadge"
       class="gallery__carousel"
       @itemClick="onCarouselItemClick"
     />
@@ -90,12 +91,17 @@ export default {
     HdGalleryPlaceholder,
     HdIcon,
   },
+  inheritAttrs: false,
   props: {
     items: {
       type: Array,
       default: () => [],
     },
     pagerInside: {
+      type: Boolean,
+      default: false,
+    },
+    mobileCounterBadge: {
       type: Boolean,
       default: false,
     },
@@ -189,7 +195,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import 'homeday-blocks/src/styles/mixins.scss';
 
 .gallery {
@@ -295,6 +301,7 @@ export default {
     font-weight: 600;
     color: $white;
     border-radius: 2px;
+    z-index: 2;
   }
 
   &__carousel {

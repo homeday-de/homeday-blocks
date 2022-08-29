@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.com/homeday-de/homeday-blocks.svg?token=rxKqgsBkMR5FqNpvxBcx&branch=master)](https://travis-ci.com/homeday-de/homeday-blocks)
+[![Release and publish](https://github.com/homeday-de/homeday-blocks/actions/workflows/release.yml/badge.svg)](https://github.com/homeday-de/homeday-blocks/actions/workflows/release.yml)
+[![Storybook deployment](https://github.com/homeday-de/homeday-blocks/actions/workflows/deploy-storybook.yml/badge.svg)](https://github.com/homeday-de/homeday-blocks/actions/workflows/deploy-storybook.yml)
 [![Coverage Status](https://coveralls.io/repos/github/homeday-de/homeday-blocks/badge.svg?t=Kbz7Vb)](https://coveralls.io/github/homeday-de/homeday-blocks)
 [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/Homeday/homeday-blocks)
 
@@ -17,7 +18,7 @@ $ git remote add upstream git@github.com:homeday-de/homeday-blocks.git
 
 ## Prerequisites
 
-Homeday Blocks requires [Node.js](https://nodejs.org/) version 10.22.0 (.nvmrc). It's recommended to manage multiple versions of Node on the same machine with [nvm](https://github.com/nvm-sh/nvm) or [nvm-windows](https://github.com/coreybutler/nvm-windows).
+Homeday Blocks requires [Node.js](https://nodejs.org/) version 14.17.0 ([.nvmrc](.nvmrc)). It's recommended to manage multiple versions of Node on the same machine with [nvm](https://github.com/nvm-sh/nvm) or [nvm-windows](https://github.com/coreybutler/nvm-windows).
 
 Don't forget to setup the [deeper shell integration](https://github.com/nvm-sh/nvm#deeper-shell-integration) in your console to take full advantage of `nvm`. You can achieve this by adding the following alias into your `~/.bashrc`, or `~/.zshrc` file:
 
@@ -55,10 +56,11 @@ npm run serve:storybook
 ```
 npm run build:storybook
 ```
-### Build as a library
+### Build the library
 ```
-npm run build:lib
+npm run build
 ```
+For a brief explanation of how the library is built, checkout [this documentation](/docs/BUILD.md).
 
 ## Testing
 
@@ -92,6 +94,8 @@ You can also follow build statuses in https://percy.io/Homeday/homeday-blocks
 #### Gotchas
 - `tests/` is an alias for `<rootDir>/tests/`
 
+## TypeScript
+For a basic explanation of what it is and how to use it, please read [TypeScript.md](/docs/TypeScript.md).
 ## Generators
 
 We use [Hygen](https://www.hygen.io/) as a code generator tool to save time when we need to scaffold some structure.
@@ -107,7 +111,7 @@ And follow the wizzard in order to generate a base component structure or a serv
 
 ## Contribution guide
 
-This project follows [forking workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow). See [project setup](#project-setup) to get started locally. That means that all code changes enter the project by PR to `master` branch. Once you open the PR with suggested changes, the checks for `build` and `coverage` will run. If those fail, your PR needs some more work. :) 
+This project follows [Git Feature Branch Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow). See [project setup](#project-setup) to get started locally. That means that all code changes enter the project by PR to `master` branch. Once you open the PR with suggested changes, the checks for `build` and `coverage` will run. If those fail, your PR needs some more work. :) 
 
 Each PR should be reviewed by at least two team members. Once reviewed and approved, it can be merged. Please follow the following convention when merging the PR: 
 
@@ -135,7 +139,7 @@ It is important to follow this convention, because our automated releases are ba
 
 Releasing a new version is as easy as pushing your changes to `master` 😎
 
-- [Travis](https://travis-ci.com/homeday-de/homeday-blocks) will automatically deploy the storybook to our [showcase env](https://blocks.homeday.dev).
+- [Github Actions](/.github/workflows/deploy-storybook.yml) will automatically deploy the storybook to our [showcase env](https://blocks.homeday.dev).
 - And this [Github workflow](https://github.com/homeday-de/homeday-blocks/tree/master/.github/workflows/release.yml) will automatically create a [release on Github](https://github.com/homeday-de/homeday-blocks/releases) and publish a new [version to NPM](https://www.npmjs.com/package/homeday-blocks?activeTab=versions). 
 
 ## Consuming in other projects
@@ -149,3 +153,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Services
 Together with the components, Homeday Blocks also provides useful services that can be reused across projects. You can read more about them in the services [documentation](https://github.com/homeday-de/homeday-blocks/tree/master/src/services).
+
+## Infrastructure
+Homeday Blocks has its own infrastructure repository: [blocks-infra](https://github.com/homeday-de/blocks-infra).
+Whenever changes need to be made, you can do it in the repository and "deploy". If it is an emergency, you can also use AWS Console but your next step is to update it in the repository to avoid future inconsistencies.

@@ -84,6 +84,7 @@ export default {
     },
     addField(fieldToAdd) {
       if (_isNil(fieldToAdd.name)) {
+        // eslint-disable-next-line no-console
         console.warn('The field must have a `name` property to be added to the HdForm', fieldToAdd);
         return;
       }

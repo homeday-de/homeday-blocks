@@ -2,6 +2,7 @@
   <div class="calendar">
     <header class="calendar__header">
       <button
+        type="button"
         class="calendar__button calendar__header__button calendar__button--prev"
         :class="{'calendar__button--disabled': selectedWeekIndexTail - cycleLengthWeeks < 0}"
         @click="setWeekIndexTail(-cycleLengthWeeks)"
@@ -19,6 +20,7 @@
         </template>
       </span>
       <button
+        type="button"
         class="calendar__button calendar__header__button calendar__button--next"
         :class="{'calendar__button--disabled': selectedWeekIndexTail + cycleLengthWeeks >= availableWeeks.length}"
         @click="setWeekIndexTail(cycleLengthWeeks)"
@@ -164,7 +166,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
 
 // Transitions
@@ -319,7 +321,7 @@ export default {
       cursor: not-allowed;
     }
 
-    ::v-deep path {
+    path {
       fill: $quaternary-color;
     }
 

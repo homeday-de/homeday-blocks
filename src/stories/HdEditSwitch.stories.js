@@ -1,7 +1,5 @@
-import {
-  HdEditSwitch,
-  HdInput,
-} from 'homeday-blocks';
+import HdEditSwitch from 'homeday-blocks/src/components/HdEditSwitch.vue';
+import HdInput from 'homeday-blocks/src/components/form/HdInput.vue';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 
 export default {

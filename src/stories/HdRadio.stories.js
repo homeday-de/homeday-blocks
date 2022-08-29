@@ -1,4 +1,5 @@
-import { HdRadio, HdButton } from 'homeday-blocks';
+import HdRadio from 'homeday-blocks/src/components/form/HdRadio.vue';
+import HdButton from 'homeday-blocks/src/components/buttons/HdButton.vue';
 import ITEMS from './mocks/FORM_ITEMS';
 
 export default {

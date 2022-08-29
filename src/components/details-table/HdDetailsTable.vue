@@ -24,6 +24,11 @@ export default {
       type: Boolean,
       default: true,
     },
+    reference: {
+      type: String,
+      required: false,
+      default: undefined,
+    },
   },
 };
 </script>

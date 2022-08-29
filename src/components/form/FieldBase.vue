@@ -117,23 +117,14 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
-
-@mixin typography-regular {
-  font-size: 16px;
-  line-height: 24px;
-}
-@mixin typography-small {
-  font-size: 12px;
-  line-height: 16px;
-}
 
 .field {
   $root: &;
   display: flex;
   align-items: flex-start;
-  @include typography-regular;
+  @include font("DS-100");
 
   &__icon {
     margin-top: $sp-m;
@@ -141,7 +132,7 @@ export default {
     flex: 0 0 24px;
 
     #{$root}--disabled & {
-      ::v-deep path {
+      path {
         fill: getShade($quaternary-color, 70);
       }
     }
@@ -151,19 +142,12 @@ export default {
     position: relative;
 
     #{$root}--grouped:not(#{$root}--unlabelled) & {
-      padding-top: $sp-m;
-      margin-top: $sp-s;
+      padding-top: #{$sp-m + $sp-xs};
+      margin-top: $sp-xs;
     }
   }
   &:not(#{$root}--grouped) &__main {
     position: relative;
-
-    & > :first-child {
-      width: 100%;
-      background: $secondary-bg;
-      border-radius: 4px 4px 0 0;
-      overflow: hidden;
-    }
 
     input, textarea, select {
       padding-top: $sp-l - $sp-s;
@@ -183,9 +167,22 @@ export default {
         color: getShade($quaternary-color, 60);
       }
     }
+
+    & > {
+      .split-input,
+      input[type]:not([type="checkbox"]):not([type="radio"]),
+      textarea,
+      select {
+        width: 100%;
+        background: $secondary-bg;
+        border-radius: 4px 4px 0 0;
+      }
+    }
   }
+
   &__label {
     position: absolute;
+    z-index: 2;
     top: $sp-m;
     left: $sp-m;
     transform-origin: left;
@@ -265,14 +262,14 @@ export default {
     right: $sp-m;
     pointer-events: none;
 
-    > ::v-deep * {
+    @at-root .password-input & {
       pointer-events: all;
     }
   }
   &__helper {
     width: 100%;
     color: getShade($quaternary-color, 80);
-    @include typography-small;
+    @include font("DS-80");
     padding-right: $sp-m;
     padding-left: $sp-m;
 

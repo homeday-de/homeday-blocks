@@ -86,7 +86,7 @@ export default {
       default: () => [],
     },
     value: {
-      type: [String, Number],
+      type: [String, Number, Boolean],
       default: '',
     },
     required: {
@@ -236,6 +236,11 @@ export default {
 <style lang="scss" scoped>
 @import 'homeday-blocks/src/styles/mixins.scss';
 
+.field ::v-deep .field__helper {
+  margin-top: $sp-xs;
+  padding-left: 0;
+}
+
 .radio-wrapper {
   position: relative;
   flex: 1;
@@ -286,7 +291,7 @@ export default {
     padding-left: $sp-s;
     cursor: pointer;
     text-align: left;
-    @include font("text-small");
+    @include font("DS-100");
   }
 }
 </style>
