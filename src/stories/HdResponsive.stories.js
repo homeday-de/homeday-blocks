@@ -1,4 +1,4 @@
-import { HdResponsive } from 'homeday-blocks';
+import HdResponsive from 'homeday-blocks/src/components/HdResponsive.vue';
 import HdResponsiveNote from '../notes/HdResponsive.md';
 
 export default {

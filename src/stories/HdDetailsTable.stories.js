@@ -1,49 +1,52 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import { storiesOf } from '@storybook/vue';
-import { boolean } from '@storybook/addon-knobs';
-import {
-  HdDetailsTable,
-  HdDetailsTableRow,
-} from 'homeday-blocks';
+import HdDetailsTable from 'homeday-blocks/src/components/details-table/HdDetailsTable.vue';
+import HdDetailsTableRow from 'homeday-blocks/src/components/details-table/HdDetailsTableRow.vue';
 
-storiesOf('Components/HdDetailsTable', module)
-  .add('default 🎛', () => ({
-    components: {
-      HdDetailsTable,
-      HdDetailsTableRow,
+export default {
+  title: 'Components/HdDetailsTable',
+  component: HdDetailsTable,
+  argTypes: {
+    withDivider: {
+      control: 'boolean',
+      description: 'Shows a divider underneath the table.',
     },
-    props: {
-      withDivider: {
-        type: Boolean,
-        default: boolean('With Divider', true),
-      },
-      forceSingleColumn: {
-        type: Boolean,
-        default: boolean('Single Column', false),
-      },
+    reference: {
+      control: 'string',
+      description: 'Used as a selector for parent components when using an attribute is not possible',
     },
-    template: `
-      <div style="max-width: 800px; margin: auto;">
-        <HdDetailsTable :with-divider="withDivider">
-          <HdDetailsTableRow
-            :force-single-column="forceSingleColumn"
-            label="First Name"
-          >
-            Chuck
-          </HdDetailsTableRow>
-          <HdDetailsTableRow
-            :force-single-column="forceSingleColumn"
-            label="Last Name"
-          >
-            Norris
-          </HdDetailsTableRow>
-          <HdDetailsTableRow
-            :force-single-column="forceSingleColumn"
-            label="Age"
-          >
-            79
-          </HdDetailsTableRow>
-        </HdDetailsTable>
-      </div>
-    `,
-  }));
+  },
+  args: {
+    withDivider: false,
+    reference: 'test',
+  },
+};
+
+const Template = (args, { argTypes }) => ({
+  components: {
+    HdDetailsTable,
+    HdDetailsTableRow,
+  },
+  props: Object.keys(argTypes),
+  template: `
+    <div style="max-width: 800px; margin: auto;">
+    <HdDetailsTable :with-divider="withDivider">
+      <HdDetailsTableRow
+        label="First Name"
+      >
+        Chuck
+      </HdDetailsTableRow>
+      <HdDetailsTableRow
+        label="Last Name"
+      >
+        Norris
+      </HdDetailsTableRow>
+      <HdDetailsTableRow
+        label="Age"
+      >
+        79
+      </HdDetailsTableRow>
+    </HdDetailsTable>
+    </div>
+  `,
+});
+
+export const Default = Template.bind({});

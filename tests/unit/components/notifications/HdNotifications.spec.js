@@ -1,6 +1,7 @@
 import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import HdNotifications from '@/components/notifications/HdNotifications.vue';
-import HdNotification, { TYPES } from '@/components/notifications/HdNotification.vue';
+import HdNotification from '@/components/notifications/HdNotification.vue';
+import TYPES from '@/components/notifications/HdNotificationsTypes';
 
 const wrapperFactory = wrapperFactoryBuilder(HdNotifications);
 

@@ -27,12 +27,27 @@
           <!-- the item.thumbnail field is used as default value for the item image -->
           <!-- IE11 uses this value only because do not support the picture element -->
           <picture class="gallery-carousel__picture">
-            <source v-for="(source, media) in item.thumbnailPictureSources"
-                    :key="media"
-                    :media="`(${media})`" :srcset="source"
+            <source
+              v-for="(source, media) in item.thumbnailPictureSources"
+              :key="media"
+              :media="`(${media})`"
+              :srcset="source"
             >
-            <img :src="item.thumbnail" :alt="item.caption" :srcset="item.thumbnailSrcSet" :style="{objectFit}">
+            <img
+              :src="item.thumbnail"
+              :alt="item.caption"
+              :srcset="item.thumbnailSrcSet"
+              :style="{objectFit}"
+              loading="lazy"
+            >
           </picture>
+
+          <iframe
+            v-if="item.video && shouldShowActiveState(i) && isMobileView()"
+            :src="item.video"
+            class="gallery-carousel__video"
+            frameborder="0"
+          />
         </div>
       </flickity>
       <div class="gallery-carousel__pager">
@@ -43,6 +58,7 @@
           v-model="currentIndex"
         />
       </div>
+      <div v-if="mobileCounterBadge" class="gallery-carousel__info">{{ `${value + 1}/${items.length}` }}</div>
     </div>
   </div>
 </template>
@@ -69,6 +85,10 @@ export default {
       default: () => [],
     },
     pagerInside: {
+      type: Boolean,
+      default: false,
+    },
+    mobileCounterBadge: {
       type: Boolean,
       default: false,
     },
@@ -122,9 +142,11 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      this.updatePagerItemsCount();
-      this.$refs.flickity.on('change', this.updateCurrentIndex);
-      this.$refs.flickity.on('staticClick', this.onStaticClick);
+      if (this.$refs.flickity) {
+        this.updatePagerItemsCount();
+        this.$refs.flickity.on('change', this.updateCurrentIndex);
+        this.$refs.flickity.on('staticClick', this.onStaticClick);
+      }
     });
     this.addResizeEvents();
   },
@@ -151,7 +173,7 @@ export default {
 
       // If we are showing one item per slide, we update the index on slide change
       if (slides.length === cells.length) {
-        this.$emit('input', itemIndex);
+        this.$emit('input', itemIndex || 0);
       }
     },
     onStaticClick(event, pointer, cellElement, cellIndex) {
@@ -212,11 +234,16 @@ export default {
 
       this.$refs.flickity.select(targetSlide);
     },
+    isMobileView() {
+      const slidesCount = this.$refs.flickity.slides().length;
+      const cellsCount = this.$refs.flickity.cells().length;
+      return slidesCount === cellsCount;
+    },
   },
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "homeday-blocks/src/styles/mixins.scss";
 
 .gallery-carousel {
@@ -230,7 +257,7 @@ export default {
       padding: $sp-m 0;
     }
 
-    .flickity-viewport {
+    ::v-deep .flickity-viewport {
       overflow: visible;
     }
   }
@@ -249,6 +276,23 @@ export default {
       @media (min-width: $break-tablet) {
         display: none;
       }
+    }
+  }
+
+  &__info {
+    position: absolute;
+    right: $sp-xs;
+    top: $sp-xs;
+    padding-right: $sp-s;
+    padding-left: $sp-s;
+    background-color: rgba(0, 0, 0, 0.8);
+    @include font('text-xsmall');
+    font-weight: 600;
+    color: $white;
+    border-radius: 2px;
+
+    @media (min-width: $break-tablet) {
+      display: none;
     }
   }
 
@@ -286,7 +330,7 @@ export default {
     }
   }
 
-  &__picture {
+  &__picture, &__video {
     position: absolute;
     top: 0;
     right: 0;
@@ -301,6 +345,11 @@ export default {
       width: 100%;
       height: 100%;
     }
+  }
+
+  &__video {
+    width: 100%;
+    height: 100%;
   }
 }
 </style>

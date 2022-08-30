@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { OnResizeService } from 'homeday-blocks';
+import OnResizeService from 'homeday-blocks/src/services/on-resize';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import { chevron as chevronIcon } from 'homeday-assets';
 
@@ -190,7 +190,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
 
 $_controlIconSize: 32px;

@@ -19,7 +19,10 @@ describe('HdGallery', () => {
       nextButton: () => wrapper.find('.gallery__controls-next'),
       previousButton: () => wrapper.find('.gallery__controls-prev'),
       selectedPicture: () => wrapper.find('.gallery-media__object-picture'),
-      selectedPictureImg: () => wrapper.find('.gallery-media__object-picture').find('img'),
+      selectedPictureImg: () => wrapper.find('.gallery-media__object-picture').exists()
+        && wrapper.find('.gallery-media__object-picture').find('img'),
+      selectedVideo: () => wrapper.find('.gallery-media__object').exists()
+        && wrapper.find('.gallery-media__object').find('iframe'),
       selectedPictureInfo: () => wrapper.find('.gallery__info'),
       carousel: () => wrapper.findAll('.gallery__carousel'),
       carouselWrap: () => wrapper.findAll('.gallery-carousel__wrap'),
@@ -41,14 +44,20 @@ describe('HdGallery', () => {
       nextButton,
       previousButton,
       selectedPictureImg,
+      selectedVideo,
       carouselWrap,
       selectedPictureInfo,
     } = build({ items });
 
     function assetPictureIsSelected(index) {
       expect(caption().text()).toContain(items[index].caption);
-      expect(selectedPictureImg().attributes().src).toEqual(items[index].image);
-      expect(selectedPictureImg().attributes().alt).toEqual(items[index].caption);
+      if (selectedPictureImg()) {
+        expect(selectedPictureImg().attributes().src).toEqual(items[index].image);
+        expect(selectedPictureImg().attributes().alt).toEqual(items[index].caption);
+      } else {
+        expect(selectedVideo().attributes().src).toEqual(items[index].video);
+      }
+
       expect(selectedPictureInfo().text()).toContain(`${index + 1}/${items.length}`);
     }
 
@@ -104,7 +113,7 @@ describe('HdGallery', () => {
 
   it('starts the gallery at specific index', () => {
     const items = ITEMS;
-    const expectedIndex = 2;
+    const expectedIndex = 3;
     const { selectedPictureImg } = build({ items, startIndex: expectedIndex });
 
     expect(selectedPictureImg().attributes().src).toEqual(items[expectedIndex].image);

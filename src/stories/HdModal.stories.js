@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { HdModal } from 'homeday-blocks';
+import HdModal from 'homeday-blocks/src/components/HdModal.vue';
 import { checkCircle as checkCircleIcon } from 'homeday-assets/M';
 import { bank } from 'homeday-assets';
 

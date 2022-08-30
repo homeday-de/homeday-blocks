@@ -38,7 +38,7 @@ describe('HdResponsive', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  it('provides "matches" object as part of a scoped slot', () => {
+  it('provides "matches" object as part of a scoped slot', async () => {
     setBreakpoints(BREAKPOINTS);
 
     const wrapper = wrapperBuilder({
@@ -46,6 +46,8 @@ describe('HdResponsive', () => {
         default: '<div>{{Object.keys(props.matches)}}</div>',
       },
     });
+
+    await wrapper.vm.$nextTick();
 
     expect(wrapper.html()).toMatchSnapshot();
   });
@@ -62,7 +64,7 @@ describe('HdResponsive', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  it('breakpoint changes are managed', () => {
+  it('breakpoints set and change are managed', async () => {
     setBreakpoints(BREAKPOINTS);
 
     const mockedSetListeners = jest.fn();
@@ -77,11 +79,17 @@ describe('HdResponsive', () => {
       },
     });
 
+    // first at the mount...
+    expect(mockedSetListeners).toHaveBeenCalledTimes(1);
+
     const modifiedBreakpoints = BREAKPOINTS;
     delete modifiedBreakpoints.s;
 
     wrapper.setProps({ breakpoints: modifiedBreakpoints });
 
-    expect(mockedSetListeners).toHaveBeenCalled();
+    await wrapper.vm.$nextTick();
+
+    // ...then by the watch
+    expect(mockedSetListeners).toHaveBeenCalledTimes(2);
   });
 });

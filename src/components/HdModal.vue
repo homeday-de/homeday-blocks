@@ -49,6 +49,7 @@
 
           <button
             v-if="isCloseButtonVisible"
+            type="button"
             class="hd-modal__close-button"
             @click="onClose()"
           >
@@ -98,6 +99,7 @@ export default {
         const indexOfActionMissingName = actions.findIndex((action) => typeof action.name !== 'string');
 
         if (indexOfActionMissingName >= 0) {
+          // eslint-disable-next-line no-console
           console.warn(`The attribute "name" is required on actions[${indexOfActionMissingName}]`);
           return false;
         }
@@ -127,7 +129,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
 $mobile-browser-footer-buffer: 75px;
 

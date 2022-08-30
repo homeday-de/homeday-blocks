@@ -1,7 +1,5 @@
-import {
-  HdAlert,
-  HdAlertTypes as TYPES,
-} from 'homeday-blocks';
+import HdAlert from 'homeday-blocks/src/components/HdAlert.vue';
+import TYPES from 'homeday-blocks/src/components/HdAlertTypes';
 import DeprecatedWrapper from 'homeday-blocks/src/storiesWrappers/DeprecatedWrapper';
 
 export default {

@@ -1,0 +1,30 @@
+# This workflow takes care of cleaning up the pull request deploy for a clean S3 bucket.
+name: Post-PR cleanup
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - master
+
+env:
+  BUILD_DEST_DIR: ${{ github.event.repository.name }}/${{ github.event.pull_request.number }}
+  S3_BUCKET: ${{ secrets.AWS_S3_PR_DEPLOYMENT_BUCKET }}
+
+jobs:
+  post-pr-cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure AWS Credentials 🔧
+        uses: aws-actions/configure-aws-credentials@v1.6.1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-central-1
+      - name: Delete files 🗑
+        run: aws s3 rm s3://${{ env.S3_BUCKET }}/${{ env.BUILD_DEST_DIR }} --recursive
+      - name: Comment the deleted project 💬
+        uses: marocchino/sticky-pull-request-comment@v2.2.0
+        with:
+          message: |
+            🚮 The files previously deployed on /${{ env.BUILD_DEST_DIR }}/ were already removed.

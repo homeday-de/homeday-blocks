@@ -1,16 +1,16 @@
-<script>
-// @ts-check
+<script lang="ts">
+import Vue, { PropOptions, VNode } from 'vue';
 import deepmerge from 'deepmerge';
 import _getOr from 'lodash/fp/getOr';
-import { getMessages } from 'homeday-blocks/src/lang';
+import { customRules } from '@/@types/global';
+import { getMessages, Messages } from 'homeday-blocks/src/lang';
 import { cloneVNodeElement } from 'homeday-blocks/src/services/utils';
-import { HdRadioCard } from 'homeday-blocks/main';
+import { name as HdRadioCardName } from 'homeday-blocks/src/components/form/HdRadioCard.vue';
 import formFieldMixin from './formFieldMixin';
 
-/** @type {(vnode: import('vue').VNode) => <T = unknown>(defaultValue: T, field: string) => T} */
-const getPropsDataFor = (vnode) => (defaultValue, field) => _getOr(defaultValue, `componentOptions.propsData.${field}`, vnode);
+const getPropsDataFor = (vnode: VNode) => <T extends unknown>(defaultValue: T, field: string): T => _getOr(defaultValue, `componentOptions.propsData.${field}`, vnode);
 
-export default {
+export default Vue.extend({
   name: 'HdRadioCardGroup',
   mixins: [formFieldMixin],
   props: {
@@ -39,18 +39,18 @@ export default {
       type: String,
       default: 'de',
     },
-    /** @type {import('vue').PropOptions<{ validate: (value: unknown) => boolean, errorMessage: string }[]>} */
     customRules: {
       type: Array,
       default: () => [],
       validator: (rulesProvided) => rulesProvided.every(
         ({ validate, errorMessage }) => typeof validate === 'function' && typeof errorMessage === 'string',
       ),
-    },
+    } as PropOptions<customRules>,
   },
-  data() {
+  data(): {
+    error: null | string;
+    } {
     return {
-      /** @type {string?} */
       error: null,
     };
   },
@@ -66,25 +66,18 @@ export default {
     },
   },
   computed: {
-    /** @returns {import('homeday-blocks/src/lang').Messages} */
-    t() {
+    t(): Messages {
       return deepmerge(getMessages(this.lang), this.texts);
     },
-    /** @returns {boolean} */
-    hasValidationErrors() {
+    hasValidationErrors(): boolean {
       return Boolean(this.error);
     },
   },
   methods: {
-    /**
-     * @param {Event & { target: HTMLInputElement }} e
-     * @returns {void}
-     */
-    inputChanged(e) {
+    inputChanged(e: Event & { target: HTMLInputElement }): void {
       this.$emit('input', e.target.value);
     },
-    /** @returns {string?} */
-    validateForm() {
+    validateForm(): string | null {
       if (this.required && !this.value) return this.t.FORM.VALIDATION.SELECT_ONE_OPTION;
 
       const firstFailingRule = this.customRules.find(
@@ -100,22 +93,19 @@ export default {
      * invoked by HdForm.
      *
      * By surrounding HdRadioCard with a HdRadioCardGroup
-     * this function is automatically overriden.
+     * this function is automatically overridden.
      *
-     * @returns {boolean}
      */
-    validate() {
+    validate(): boolean {
       this.error = this.validateForm();
       return !this.hasValidationErrors;
     },
   },
   render(h) {
-    /** @type {import('vue').VNode[]} */
-    const children = this.$slots.default || [];
+    const children: VNode[] = this.$slots.default || [];
 
-    /** @type {import('vue').VNode[]} */
-    const clones = children
-      .filter(({ tag, componentOptions }) => Boolean(tag) && componentOptions?.tag === HdRadioCard.name)
+    const clones: VNode[] = children
+      .filter(({ tag, componentOptions }) => Boolean(tag) && componentOptions?.tag === HdRadioCardName)
       .map((vnode) => {
         const getPropsData = getPropsDataFor(vnode);
         const clone = cloneVNodeElement(
@@ -140,15 +130,14 @@ export default {
         return h('div', {}, [clone]);
       });
 
-    /** @type {import('vue').VNode} */
-    const errorVdom = this.hasValidationErrors ? h('div', { class: 'radio-group__error' }, this.error) : h();
+    const errorVdom: VNode = this.hasValidationErrors ? h('div', { class: 'radio-group__error' }, this.error) : h();
 
     return h('div', { class: 'radio-group' }, [
       clones,
       errorVdom,
     ]);
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>
