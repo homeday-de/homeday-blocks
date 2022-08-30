@@ -57,7 +57,7 @@ export default {
     alignment: {
       type: String,
       default: 'left',
-      validator: (value) => ['left', 'right', 'center'].includes(value)
+      validator: (value) => ['left', 'right', 'center'].includes(value),
     },
   },
   data() {
