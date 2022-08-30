@@ -54,10 +54,10 @@ export default {
       type: Boolean,
       default: false,
     },
-    // Available options: left, right, center
     alignment: {
       type: String,
       default: 'left',
+      validator: (value) => ['left', 'right', 'center'].includes(value)
     },
   },
   data() {
