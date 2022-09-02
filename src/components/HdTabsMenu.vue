@@ -54,13 +54,18 @@ export default {
       type: Boolean,
       default: false,
     },
+    alignment: {
+      type: String,
+      default: 'left',
+      validator: (value) => ['left', 'right', 'center'].includes(value),
+    },
   },
   data() {
     return {
       flickityOptions: {
         prevNextButtons: true,
         pageDots: false,
-        cellAlign: 'center',
+        cellAlign: this.alignment,
         freeScroll: true,
         contain: true,
         initialIndex: this.items.findIndex((item) => item.value === this.value),
@@ -132,10 +137,6 @@ export default {
     &.isActive::after {
       border-color: getShade($secondary-color, 110);
     }
-  }
-
-  .flickity--no-controls .flickity-slider {
-    transform: none !important;
   }
 
   svg.flickity-button-icon {
