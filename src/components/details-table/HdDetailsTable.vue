@@ -12,6 +12,12 @@
       <div class="details-table__rows">
         <slot/>
       </div>
+      <div
+        v-if="$slots.after"
+        class="details-table__after"
+      >
+        <slot name="after"/>
+      </div>
     </dl>
   </div>
 </template>
@@ -69,6 +75,13 @@ export default {
       display: flex;
       flex-flow: row wrap;
       align-items: flex-start;
+    }
+  }
+
+  &__after {
+
+    @media (min-width: $break-desktop) {
+      margin-top: $sp-s;
     }
   }
 }
