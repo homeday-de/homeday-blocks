@@ -14,7 +14,9 @@
         ref="flickity"
         :options="flickityOptions"
       >
-        <div
+        <component
+          :is="component"
+          :to="to"
           class="gallery-carousel__item"
           v-for="(item, i) in items"
           :key="i"
@@ -48,7 +50,7 @@
             class="gallery-carousel__video"
             frameborder="0"
           />
-        </div>
+        </component>
       </flickity>
       <div class="gallery-carousel__pager">
         <HdPager
@@ -104,6 +106,10 @@ export default {
       type: String,
       default: 'cover',
     },
+    to: {
+      type: Object,
+      default: undefined,
+    },
   },
   data() {
     return {
@@ -120,6 +126,9 @@ export default {
     };
   },
   computed: {
+    component() {
+      return this.to ? 'router-link' : 'div';
+    },
     sizerStyles() {
       return {
         paddingTop: `${100 / this.aspectRatio}%`,

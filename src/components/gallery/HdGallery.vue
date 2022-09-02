@@ -20,6 +20,7 @@
           <HdGalleryMedia
             :item="currentItem"
             :aspect-ratio="aspectRatio"
+            :to="to"
           />
         </div>
         <div
@@ -69,6 +70,7 @@
       :disable-key-events="disableKeyEvents"
       :object-fit="carouselObjectFit"
       :mobile-counter-badge="mobileCounterBadge"
+      :to="to"
       class="gallery__carousel"
       @itemClick="onCarouselItemClick"
     />
@@ -133,6 +135,15 @@ export default {
       type: String,
       default: 'cover',
       validator: (value) => ['cover', 'contain', 'fill', 'scale-down', 'none'].includes(value),
+    },
+    to: {
+      type: Object,
+      default: undefined,
+      validator(value) {
+        // object with path or named route
+        // https://router.vuejs.org/guide/essentials/navigation.html
+        return value.path || value.name;
+      },
     },
   },
   data() {

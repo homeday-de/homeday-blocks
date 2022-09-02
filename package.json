@@ -95,6 +95,7 @@
     "svg-url-loader": "^7.1.1",
     "typescript": "~4.1.5",
     "vue-code-highlight": "^0.7.8",
+    "vue-router": "^3.5.4",
     "vue-template-compiler": "2.6.14"
   },
   "bugs": {
