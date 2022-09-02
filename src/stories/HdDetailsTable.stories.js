@@ -1,3 +1,4 @@
+import HdButton from 'homeday-blocks/src/components/buttons/HdButton.vue';
 import HdDetailsTable from 'homeday-blocks/src/components/details-table/HdDetailsTable.vue';
 import HdDetailsTableRow from 'homeday-blocks/src/components/details-table/HdDetailsTableRow.vue';
 
@@ -22,6 +23,7 @@ export default {
 
 const Template = (args, { argTypes }) => ({
   components: {
+    HdButton,
     HdDetailsTable,
     HdDetailsTableRow,
   },
@@ -29,6 +31,8 @@ const Template = (args, { argTypes }) => ({
   template: `
     <div style="max-width: 800px; margin: auto;">
     <HdDetailsTable :with-divider="withDivider">
+      <template #before><h3>American martial artist</h3></template>
+
       <HdDetailsTableRow
         label="First Name"
       >
@@ -44,6 +48,8 @@ const Template = (args, { argTypes }) => ({
       >
         79
       </HdDetailsTableRow>
+
+      <template #after><HdButton>Follow</HdButton></template>
     </HdDetailsTable>
     </div>
   `,
