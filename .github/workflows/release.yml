@@ -7,6 +7,7 @@ on:
   push:
     branches:
       - master
+      - beta
 
 jobs:
   release-and-publish:
@@ -26,7 +27,7 @@ jobs:
 
       - name: Install dependencies ⚙️
         run: npm ci
-      
+
       - name: Compile TypeScript
         run: npm run build:tsc
 
