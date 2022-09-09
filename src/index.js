@@ -1,4 +1,6 @@
-// Types
+// This barrel module has been used to export all the non-compiled/raw components and services to be used in Nuxt SSR/SSG projects.
+
+// Namespaces
 export { default as HdLinkTypes } from './components/HdLinkTypes';
 export { default as HdAlertTypes } from './components/HdAlertTypes';
 export { default as HdBadgeTypes } from './components/HdBadgeTypes';
@@ -78,8 +80,8 @@ export { default as HdInputPhone } from './components/form/HdInputPhone.vue';
 
 // Services
 export { default as onResizeService } from './services/on-resize';
-export { default as breakpointsService } from './services/breakpoints';
 export { default as EventEmitter } from './services/event-emitter';
+export * from './services/breakpoints';
 export * from './services/date';
 export * from './services/flickity';
 export * from './services/formValidation';

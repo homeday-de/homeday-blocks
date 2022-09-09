@@ -34,7 +34,7 @@
     "src/lang/*",
     "src/services/*",
     "src/styles/*",
-    "src/index.ts",
+    "src/index.js",
     "*.json",
     "*.js"
   ],
