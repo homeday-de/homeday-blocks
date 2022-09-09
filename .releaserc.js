@@ -14,6 +14,7 @@ const commitTemplate = readFileSync(
 ).toString();
 
 module.exports = {
+  branches: ['master', { name: 'beta', prerelease: true }],
   plugins: [
     [
       'semantic-release-gitmoji', {
