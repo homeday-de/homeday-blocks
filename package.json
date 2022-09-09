@@ -28,7 +28,13 @@
   ],
   "files": [
     "dist/*",
+    "src/@types/*",
+    "src/assets/*",
+    "src/components/*",
+    "src/lang/*",
+    "src/services/*",
     "src/styles/*",
+    "src/index.js",
     "*.json",
     "*.js"
   ],
