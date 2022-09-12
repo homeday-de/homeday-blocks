@@ -1,15 +1,17 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { mount } from '@vue/test-utils';
 import deepmerge from 'deepmerge';
 import HdRadioCardGroup from 'homeday-blocks/src/components/form/HdRadioCardGroup.vue';
 import HdRadioCard from 'homeday-blocks/src/components/form/HdRadioCard.vue';
-import { getMessages } from 'homeday-blocks/src/lang';
+import { getMessages, Language } from 'homeday-blocks/src/lang';
 
 describe('HdRadioCardGroup', () => {
   const build = (overrideProps = {}, overrideSlots = {}) => {
     const propsData = deepmerge({ name: 'property', value: 'house' }, overrideProps);
 
     const slots = {
-      default: [`
+      default: [
+        `
         <HdRadioCard native-value="apartment">
           <template #icon>
             <HdIcon src="apartmentCommercialIcon" />
@@ -33,7 +35,8 @@ describe('HdRadioCardGroup', () => {
 
           Space
         </HdRadioCard>
-        `],
+        `,
+      ],
       ...overrideSlots,
     };
 
@@ -52,7 +55,7 @@ describe('HdRadioCardGroup', () => {
       inputChecked: () => view.find('input[type="radio"]:checked'),
       labels: () => view.findAll('label'),
       error: () => view.find('.radio-group__error'),
-      t: (lang = 'de') => getMessages(lang),
+      t: (lang: Language = 'de') => getMessages(lang),
     };
   };
 
@@ -63,7 +66,8 @@ describe('HdRadioCardGroup', () => {
 
   it('renders only radio cards', () => {
     const slots = {
-      default: [`
+      default: [
+        `
       <HdRadioCard native-value="apartment">
         <template #icon>
           <HdIcon src="apartmentCommercialIcon" />
@@ -73,7 +77,8 @@ describe('HdRadioCardGroup', () => {
       </HdRadioCard>
 
       <h1>This element should not appear</h1>
-      `],
+      `,
+      ],
     };
     const { view, inputs } = build({}, slots);
 
@@ -117,11 +122,11 @@ describe('HdRadioCardGroup', () => {
   it('displays validation error for custom validation rules', async () => {
     const customRules = [
       {
-        validate: (value) => value.length > 1,
+        validate: (value: string) => value.length > 1,
         errorMessage: 'Value must be greater than 1',
       },
       {
-        validate: (value) => value.length < 3,
+        validate: (value: string) => value.length < 3,
         errorMessage: 'Value must be less than 3',
       },
     ];

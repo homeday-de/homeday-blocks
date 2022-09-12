@@ -36,7 +36,8 @@ describe('HdDashedList', () => {
       const actual = stripSpaces(item.text());
 
       return {
-        toContain: (matcher) => expect(actual).toEqual(stripSpaces(Object.values(matcher).join(''))),
+        toContain: (matcher) =>
+          expect(actual).toEqual(stripSpaces(Object.values(matcher).join(''))),
       };
     };
 

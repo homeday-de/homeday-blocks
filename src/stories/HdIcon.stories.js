@@ -24,11 +24,13 @@ export default {
   },
 };
 
-const Template = (template) => (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
-  components: { HdIcon },
-  template,
-});
+const Template =
+  (template) =>
+  (args, { argTypes }) => ({
+    props: Object.keys(argTypes),
+    components: { HdIcon },
+    template,
+  });
 
 export const Default = Template(`
   <div>

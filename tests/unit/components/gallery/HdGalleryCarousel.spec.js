@@ -56,9 +56,7 @@ describe('HdGalleryCarousel', () => {
 
   it('should change selected gallery item when user types directional keys', async () => {
     const items = [ITEMS[3], ITEMS[4]];
-    const {
-      wrapper, activeThumbnail, activeThumbnailImg, wrap,
-    } = build({
+    const { wrapper, activeThumbnail, activeThumbnailImg, wrap } = build({
       items,
     });
 

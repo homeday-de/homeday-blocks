@@ -8,7 +8,9 @@
     <tbody>
       <tr v-for="(tr, i) in body" :key="`row-${i}`">
         <td v-for="(value, name) in tr" :key="`cell-${name}`">
-          <slot :name="name" :value="value" :row-context="tr"><span>{{ value }}</span></slot>
+          <slot :name="name" :value="value" :row-context="tr"
+            ><span>{{ value }}</span></slot
+          >
         </td>
       </tr>
     </tbody>
@@ -53,7 +55,8 @@ export default {
   width: 100%;
   z-index: -1;
   text-align: center;
-  th, td {
+  th,
+  td {
     padding: $sp-s;
     border-top: 1px solid getShade($quaternary-color, 60);
     color: $quaternary-color;
@@ -99,7 +102,8 @@ export default {
     }
   }
   &.left {
-    th, td {
+    th,
+    td {
       text-align: left;
     }
   }

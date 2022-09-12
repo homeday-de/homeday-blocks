@@ -3,7 +3,8 @@
     :class="{
       'zoomer-gallery': true,
       isZoomed,
-  }">
+    }"
+  >
     <p class="zoomer-gallery__caption">{{ currentItemCaption || '&#8203;' }}</p>
     <v-zoomer-gallery
       :list="images"
@@ -80,7 +81,7 @@ export default {
   &__caption {
     margin-bottom: $sp-s;
     margin-left: $sp-m;
-    transition: opacity .5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
 
     #{$_root}.isZoomed & {
       opacity: 0;
@@ -98,7 +99,7 @@ export default {
     font-weight: 600;
     color: $white;
     border-radius: 2px;
-    transition: opacity .5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
 
     #{$_root}.isZoomed & {
       opacity: 0;

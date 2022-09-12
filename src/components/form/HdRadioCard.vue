@@ -96,14 +96,16 @@ export default Vue.extend({
     customRules: {
       type: Array,
       default: () => [],
-      validator: (rulesProvided) => rulesProvided.every(
-        ({ validate, errorMessage }) => typeof validate === 'function' && typeof errorMessage === 'string',
-      ),
+      validator: (rulesProvided) =>
+        rulesProvided.every(
+          ({ validate, errorMessage }) =>
+            typeof validate === 'function' && typeof errorMessage === 'string'
+        ),
     } as PropOptions<customRules>,
   },
   data(): {
     error: null | string;
-    } {
+  } {
     return {
       error: null,
     };
@@ -160,13 +162,13 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-@import "homeday-blocks/src/styles/mixins.scss";
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 ::v-deep path {
   transition: fill ($time-s * 2);
 }
 
-input[type="radio"] {
+input[type='radio'] {
   display: none;
 }
 
@@ -224,7 +226,7 @@ label:focus > .card:not(.card--disabled) > .card__border {
   border-color: getShade($dodger-blue, 110);
 }
 
-label:active > .card:not(.card--disabled)  > .card__border {
+label:active > .card:not(.card--disabled) > .card__border {
   border-width: 2px;
   border-color: getShade($dodger-blue, 110);
 }
@@ -232,7 +234,7 @@ label:active > .card:not(.card--disabled)  > .card__border {
 .card__control-label {
   margin-top: $sp-xs;
   color: $primary-color;
-  @include font("DS-100");
+  @include font('DS-100');
 }
 
 .card__indicator {
@@ -270,6 +272,6 @@ label:active > .card:not(.card--disabled)  > .card__border {
   display: block;
   margin-top: $sp-s;
   color: $error-color;
-  @include font("DS-100");
+  @include font('DS-100');
 }
 </style>

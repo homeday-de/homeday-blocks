@@ -25,8 +25,12 @@ describe('HdRadioButton', () => {
   it('the component is rendered', () => {
     const wrapper = wrapperBuilder();
 
-    expect(wrapper.find(ICON_SELECTOR).attributes().style).toEqual(expect.stringContaining(desktopIcon));
-    expect(wrapper.find(ICON_HOVER_SELECTOR).attributes().style).toEqual(expect.stringContaining(desktopIconHover));
+    expect(wrapper.find(ICON_SELECTOR).attributes().style).toEqual(
+      expect.stringContaining(desktopIcon)
+    );
+    expect(wrapper.find(ICON_HOVER_SELECTOR).attributes().style).toEqual(
+      expect.stringContaining(desktopIconHover)
+    );
     expect(wrapper.html()).toMatchSnapshot();
   });
 

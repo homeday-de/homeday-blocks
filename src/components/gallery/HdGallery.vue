@@ -5,45 +5,29 @@
       'gallery--has-single-item': hasSingleItem,
     }"
   >
-    <figure
-      v-if="hasImages"
-      class="gallery__figure"
-    >
-      <figcaption
-        v-if="showCaption"
-        class="gallery__caption">{{ currentItemCaption || '&#8203;' }}</figcaption>
+    <figure v-if="hasImages" class="gallery__figure">
+      <figcaption v-if="showCaption" class="gallery__caption">
+        {{ currentItemCaption || '&#8203;' }}
+      </figcaption>
       <div class="gallery__main">
-        <div
-          class="gallery__image"
-          @click="onCurrentItemClick"
-        >
-          <HdGalleryMedia
-            :item="currentItem"
-            :aspect-ratio="aspectRatio"
-            :to="to"
-          />
+        <div class="gallery__image" @click="onCurrentItemClick">
+          <HdGalleryMedia :item="currentItem" :aspect-ratio="aspectRatio" :to="to" />
         </div>
-        <div
-          v-if="items.length > 1"
-          class="gallery__controls"
-        >
+        <div v-if="items.length > 1" class="gallery__controls">
           <button
             class="gallery__controls-prev"
             :class="{
-              'isDisabled': isFirstItem,
+              isDisabled: isFirstItem,
             }"
             type="button"
             @click="goPrev"
           >
-            <HdIcon
-              :src="chevronIcon"
-              transform="rotate(180)"
-            />
+            <HdIcon :src="chevronIcon" transform="rotate(180)" />
           </button>
           <button
             class="gallery__controls-next"
             :class="{
-              'isDisabled': isLastItem,
+              isDisabled: isLastItem,
             }"
             type="button"
             @click="goNext"
@@ -60,7 +44,7 @@
       :icon="placeholderIcon"
       :text="placeholderText"
     />
-    <slot name="middle"/>
+    <slot name="middle" />
     <HdGalleryCarousel
       v-if="hasImages"
       :items="items"

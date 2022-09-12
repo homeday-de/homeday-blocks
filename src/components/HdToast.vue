@@ -1,25 +1,25 @@
 <template>
-<div class="toast" :class="computedClasses">
-  <p class="toast__text" >
-    <slot></slot>
-  </p>
-  <section v-if="hasLabels" class="toast__controls">
-    <button
-      v-if="secondaryLabel"
-      type="button"
-      class="toast__control toast__control--secondary"
-      @click="secondaryClick"
-      v-text="secondaryLabel"
-    />
-    <button
-      v-if="primaryLabel"
-      type="button"
-      class="toast__control toast__control--primary"
-      @click="primaryClick"
-      v-text="primaryLabel"
-    />
-  </section>
-</div>
+  <div class="toast" :class="computedClasses">
+    <p class="toast__text">
+      <slot></slot>
+    </p>
+    <section v-if="hasLabels" class="toast__controls">
+      <button
+        v-if="secondaryLabel"
+        type="button"
+        class="toast__control toast__control--secondary"
+        @click="secondaryClick"
+        v-text="secondaryLabel"
+      />
+      <button
+        v-if="primaryLabel"
+        type="button"
+        class="toast__control toast__control--primary"
+        @click="primaryClick"
+        v-text="primaryLabel"
+      />
+    </section>
+  </div>
 </template>
 
 <script>
@@ -102,21 +102,21 @@ $toastWidth: 288px;
   width: $toastWidth;
   background: $white;
   border-radius: $default-border-radius;
-  border: 1px solid #E1E1E1;
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.25);
+  border: 1px solid #e1e1e1;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
   @include font('xsheadline');
 
   &--isOpen {
     display: block;
-    animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-in-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   }
   &--isClosing {
-    animation: slide-out-top 0.45s cubic-bezier(0.755, 0.050, 0.855, 0.060) both;
+    animation: slide-out-top 0.45s cubic-bezier(0.755, 0.05, 0.855, 0.06) both;
   }
   &__text {
     padding: $sp-s $sp-m;
 
-    border-bottom: 1px solid #E1E1E1;
+    border-bottom: 1px solid #e1e1e1;
   }
   &__controls {
     display: flex;
@@ -141,7 +141,7 @@ $toastWidth: 288px;
 
       // Fake the blue border
       &:after {
-        content: "";
+        content: '';
         background: transparent;
         width: 100%;
         position: absolute;
@@ -182,7 +182,7 @@ $toastWidth: 288px;
  * animation slide-in-elliptic-top-fwd
  * ----------------------------------------
  */
- @keyframes slide-in-top {
+@keyframes slide-in-top {
   0% {
     transform: translateY(-1000px);
     opacity: 0;

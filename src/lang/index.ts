@@ -1,9 +1,10 @@
 import de from './de.json';
 import en from './en.json';
 
-export type Messages = { [key in keyof typeof de]: typeof de[key] };
+export type Language = 'de' | 'en';
+export type Messages = typeof de | typeof en;
 
-const langs = {
+const langs: { [key in Language]: Messages } = {
   de,
   en,
 };
@@ -11,7 +12,7 @@ const langs = {
 /**
  * Get static Homeday Blocks translation files
  */
-export function getMessages(lang: string): Messages {
+export function getMessages(lang: keyof typeof langs): Messages {
   return langs[lang] || langs.de;
 }
 

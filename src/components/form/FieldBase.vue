@@ -11,38 +11,21 @@
       ['field--unlabelled']: unlabelled,
     }"
   >
-    <div
-      v-if="icon"
-      class="field__icon"
-    >
-      <HdIcon
-        :src="icon"
-        role="presentation"
-      />
+    <div v-if="icon" class="field__icon">
+      <HdIcon :src="icon" role="presentation" />
     </div>
     <div class="field__body">
       <div class="field__main">
         <slot v-bind="{ hasError, labelId }" />
-        <label
-          v-if="label"
-          :for="name"
-          :id="labelId"
-          class="field__label"
-        >
+        <label v-if="label" :for="name" :id="labelId" class="field__label">
           {{ label }}
         </label>
         <div class="field__input-right">
-          <slot name="input-right"/>
+          <slot name="input-right" />
         </div>
-        <div
-          v-if="!grouped"
-          class="field__border"
-        />
+        <div v-if="!grouped" class="field__border" />
       </div>
-      <p
-        class="field__helper"
-        v-html="helperText"
-      />
+      <p class="field__helper" v-html="helperText" />
     </div>
   </div>
 </template>
@@ -124,7 +107,7 @@ export default {
   $root: &;
   display: flex;
   align-items: flex-start;
-  @include font("DS-100");
+  @include font('DS-100');
 
   &__icon {
     margin-top: $sp-m;
@@ -149,7 +132,9 @@ export default {
   &:not(#{$root}--grouped) &__main {
     position: relative;
 
-    input, textarea, select {
+    input,
+    textarea,
+    select {
       padding-top: $sp-l - $sp-s;
       padding-right: $sp-s;
       padding-bottom: $sp-s;
@@ -170,7 +155,7 @@ export default {
 
     & > {
       .split-input,
-      input[type]:not([type="checkbox"]):not([type="radio"]),
+      input[type]:not([type='checkbox']):not([type='radio']),
       textarea,
       select {
         width: 100%;
@@ -186,7 +171,7 @@ export default {
     top: $sp-m;
     left: $sp-m;
     transform-origin: left;
-    transition: transform .3s, color .2s;
+    transition: transform 0.3s, color 0.2s;
     pointer-events: none;
 
     #{$root}--grouped & {
@@ -247,8 +232,8 @@ export default {
       left: 0;
       background-color: getShade($secondary-color, 110);
       transform: scaleX(0);
-      opacity: .1;
-      transition: transform .2s, opacity .2s;
+      opacity: 0.1;
+      transition: transform 0.2s, opacity 0.2s;
 
       #{$root}--active & {
         transform: scaleX(1);
@@ -269,7 +254,7 @@ export default {
   &__helper {
     width: 100%;
     color: getShade($quaternary-color, 80);
-    @include font("DS-80");
+    @include font('DS-80');
     padding-right: $sp-m;
     padding-left: $sp-m;
 

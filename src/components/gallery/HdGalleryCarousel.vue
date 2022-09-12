@@ -5,15 +5,8 @@
       'gallery-carousel--with-pager-inside': pagerInside,
     }"
   >
-    <div
-      class="gallery-carousel__wrap"
-      tabindex="0"
-      @keydown.self="maybeSelectItem"
-    >
-      <flickity
-        ref="flickity"
-        :options="flickityOptions"
-      >
+    <div class="gallery-carousel__wrap" tabindex="0" @keydown.self="maybeSelectItem">
+      <flickity ref="flickity" :options="flickityOptions">
         <component
           :is="component"
           :to="to"
@@ -22,7 +15,7 @@
           :key="i"
           :class="{
             'is-active': shouldShowActiveState(i),
-          } "
+          }"
         >
           <div :style="sizerStyles" />
 
@@ -34,14 +27,14 @@
               :key="media"
               :media="`(${media})`"
               :srcset="source"
-            >
+            />
             <img
               :src="item.thumbnail"
               :alt="item.caption"
               :srcset="item.thumbnailSrcSet"
-              :style="{objectFit}"
+              :style="{ objectFit }"
               loading="lazy"
-            >
+            />
           </picture>
 
           <iframe
@@ -60,7 +53,9 @@
           v-model="currentIndex"
         />
       </div>
-      <div v-if="mobileCounterBadge" class="gallery-carousel__info">{{ `${value + 1}/${items.length}` }}</div>
+      <div v-if="mobileCounterBadge" class="gallery-carousel__info">
+        {{ `${value + 1}/${items.length}` }}
+      </div>
     </div>
   </div>
 </template>
@@ -253,7 +248,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "homeday-blocks/src/styles/mixins.scss";
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .gallery-carousel {
   $_root: &;
@@ -280,7 +275,11 @@ export default {
       position: absolute;
       bottom: 0px;
       width: 100%;
-      background: linear-gradient(to top, rgba($quaternary-color, .45), rgba($quaternary-color, 0));
+      background: linear-gradient(
+        to top,
+        rgba($quaternary-color, 0.45),
+        rgba($quaternary-color, 0)
+      );
 
       @media (min-width: $break-tablet) {
         display: none;
@@ -339,7 +338,8 @@ export default {
     }
   }
 
-  &__picture, &__video {
+  &__picture,
+  &__video {
     position: absolute;
     top: 0;
     right: 0;

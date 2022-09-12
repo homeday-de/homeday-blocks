@@ -14,7 +14,7 @@ export function wrapperFactoryBuilder(
     provide: defaultProvide,
     methods: defaultMethods,
     shallow: defaultShallow = false,
-  } = {},
+  } = {}
 ) {
   return function innerHandler({
     data,

@@ -1,22 +1,14 @@
 <template>
-  <section
-    ref="wrapper"
-    class="tags-selector">
+  <section ref="wrapper" class="tags-selector">
     <section class="tags-selector__selected-tags">
       <div
         v-for="(tag, index) in selectedTags"
         :key="tag.value"
-        class="tags-selector__selected-tags__tag">
+        class="tags-selector__selected-tags__tag"
+      >
         <div class="tags-selector__selected-tags__tag__label">{{ tag.label }}</div>
-        <button
-          class="tags-selector__selected-tags__tag__remove"
-          @click="removeTag(index)"
-        >
-          <HdIcon
-            :src="closeIcon"
-            width="70%"
-            height="70%"
-          />
+        <button class="tags-selector__selected-tags__tag__remove" @click="removeTag(index)">
+          <HdIcon :src="closeIcon" width="70%" height="70%" />
         </button>
       </div>
       <button
@@ -25,23 +17,17 @@
         class="tags-selector__selected-tags__panel-toggle"
         @click="togglePanel"
       >
-        <HdIcon
-          :src="plusCircleIcon"
-          width="100%"
-          height="100%"
-        />
+        <HdIcon :src="plusCircleIcon" width="100%" height="100%" />
       </button>
     </section>
-    <section
-      ref="panel"
-      :class="panelClasses"
-      class="tags-selector__panel">
+    <section ref="panel" :class="panelClasses" class="tags-selector__panel">
       <div
         v-for="tag in items"
         :key="tag.value"
         :class="getTagClasses(tag)"
         class="tags-selector__panel__tag"
-        @click="toggleTag(tag)">
+        @click="toggleTag(tag)"
+      >
         {{ tag.label }}
       </div>
     </section>
@@ -55,9 +41,7 @@ import formField from './formFieldMixin';
 
 export default {
   name: 'HdTagsSelector',
-  mixins: [
-    formField,
-  ],
+  mixins: [formField],
   components: {
     HdIcon,
   },
@@ -160,8 +144,8 @@ export default {
           const panelToggleRect = panelToggle.getBoundingClientRect();
           const panelRect = panel.getBoundingClientRect();
 
-          const left = (panelToggleRect.left + (panelToggleRect.width / 2)) - wrapperRect.left;
-          const leftOverflow = (left + panelRect.width) - wrapperRect.width;
+          const left = panelToggleRect.left + panelToggleRect.width / 2 - wrapperRect.left;
+          const leftOverflow = left + panelRect.width - wrapperRect.width;
 
           if (leftOverflow > 0) {
             panel.style.left = 'auto';
@@ -182,8 +166,9 @@ export default {
     },
     getTagClasses(tag) {
       return {
-        'tags-selector__panel__tag--isSelected':
-          this.selectedTags.some((item) => item.value === tag.value),
+        'tags-selector__panel__tag--isSelected': this.selectedTags.some(
+          (item) => item.value === tag.value
+        ),
       };
     },
   },
@@ -223,7 +208,7 @@ export default {
 
         transition: background-color $time-s;
         &:hover {
-          background-color: rgba(0,0,0, .1);
+          background-color: rgba(0, 0, 0, 0.1);
         }
       }
     }
@@ -255,7 +240,7 @@ export default {
     background-color: $secondary-bg;
     border-radius: 3px;
     padding: $sp-xs;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.23);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.23);
     opacity: 0;
     z-index: 5;
     transition: left $time-s ease-out;
@@ -278,8 +263,12 @@ export default {
     }
   }
   @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 }
 </style>

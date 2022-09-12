@@ -14,11 +14,13 @@ export function getGoogleAPI(key) {
     if (window?.google) {
       resolve();
     } else {
-      loadScript({ url }).then(() => {
-        resolve(window.google);
-      }).catch(() => {
-        mapsApiPromise = null;
-      });
+      loadScript({ url })
+        .then(() => {
+          resolve(window.google);
+        })
+        .catch(() => {
+          mapsApiPromise = null;
+        });
     }
   });
   return mapsApiPromise;
