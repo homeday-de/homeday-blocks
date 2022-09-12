@@ -107,7 +107,7 @@ describe('HdBadge', () => {
     expect(wrapper.classes()).toContain(BADGE_COLLAPSED_CLASS);
   });
 
-  it('should not render details if a slot wasn\'t provided', () => {
+  it("should not render details if a slot wasn't provided", () => {
     const wrapper = wrapperBuilder({
       slots: {
         default: '',

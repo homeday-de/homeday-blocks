@@ -9,10 +9,7 @@ module.exports = ({ custom = {} } = {}) => {
   const mergedAlias = { ...startAlias, ...custom };
 
   return Object.keys(mergedAlias).reduce((alias, currentKey) => {
-    const calculatedPath = path.join(
-      __dirname,
-      mergedAlias[currentKey],
-    );
+    const calculatedPath = path.join(__dirname, mergedAlias[currentKey]);
 
     return { ...alias, [currentKey]: calculatedPath };
   }, {});

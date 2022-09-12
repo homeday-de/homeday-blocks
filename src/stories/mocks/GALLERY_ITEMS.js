@@ -15,9 +15,11 @@ export default [
   {
     caption: 'Image 2',
     image: 'https://dummyimage.com/1536x364?text=2',
-    imageSrcSet: 'https://dummyimage.com/3072x726?text=2+DPR2x 2x, https://dummyimage.com/4608x1092?text=2+DPR3x 3x',
+    imageSrcSet:
+      'https://dummyimage.com/3072x726?text=2+DPR2x 2x, https://dummyimage.com/4608x1092?text=2+DPR3x 3x',
     thumbnail: 'https://dummyimage.com/154x86?text=2+thumb',
-    thumbnailSrcSet: 'https://dummyimage.com/308x172?text=2+thumb+DPR2x 2x, https://dummyimage.com/462x258?text=2+thumb+DPR3x 3x',
+    thumbnailSrcSet:
+      'https://dummyimage.com/308x172?text=2+thumb+DPR2x 2x, https://dummyimage.com/462x258?text=2+thumb+DPR3x 3x',
   },
   {
     caption: 'Video 3',

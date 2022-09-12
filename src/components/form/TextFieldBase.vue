@@ -7,10 +7,7 @@
   >
     <slot />
     <template #input-right>
-      <slot
-        v-if="$slots['input-right']"
-        name="input-right"
-      />
+      <slot v-if="$slots['input-right']" name="input-right" />
       <HdIcon
         v-else-if="isValidationCheckVisible"
         :src="checkIcon"
@@ -27,11 +24,7 @@
         @focus="onClearButtonFocus"
         @blur="onClearButtonBlur"
       >
-        <HdIcon
-          :src="closeIcon"
-          width="20"
-          height="20"
-        />
+        <HdIcon :src="closeIcon" width="20" height="20" />
       </button>
       <HdIcon
         v-else-if="isErrorStatusVisible"
@@ -47,11 +40,7 @@
 
 <script>
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
-import {
-  close as closeIcon,
-  error as errorIcon,
-  check as checkIcon,
-} from 'homeday-assets';
+import { close as closeIcon, error as errorIcon, check as checkIcon } from 'homeday-assets';
 import FieldBase from './FieldBase.vue';
 
 export default {
@@ -84,9 +73,7 @@ export default {
       return this.hasError && !this.$attrs.active;
     },
     isValidationCheckVisible() {
-      return this.withValidationCheck
-        && this.$attrs.valid
-        && this.$attrs.filled;
+      return this.withValidationCheck && this.$attrs.valid && this.$attrs.filled;
     },
     hasError() {
       return Boolean(this.$attrs.error);
@@ -133,14 +120,16 @@ export default {
       right: 0;
       bottom: 0;
       left: 0;
-      background-color: rgba(0,0,0,.07);
+      background-color: rgba(0, 0, 0, 0.07);
       border-radius: 50%;
       transform: scale(0);
-      opacity: .5;
-      transition: transform .2s, opacity .2s;
+      opacity: 0.5;
+      transition: transform 0.2s, opacity 0.2s;
     }
 
-    &:hover, &:focus, &:active {
+    &:hover,
+    &:focus,
+    &:active {
       &::before {
         transform: scale(1);
         opacity: 1;
@@ -148,7 +137,7 @@ export default {
     }
     &:active {
       &::before {
-        background-color: rgba(0,0,0,.1);
+        background-color: rgba(0, 0, 0, 0.1);
       }
     }
 

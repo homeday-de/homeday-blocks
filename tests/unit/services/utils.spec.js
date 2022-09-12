@@ -20,7 +20,7 @@ const SNAKE_CASE_DATA = {
       a_ridiculously_deep_object: {
         now_you_are_pulling_my_leg: 'well yes, just a little bit',
         seriously_gone_too_far_this_time: {
-          what_do_you_have_to_say_for_yourself: 'ok i\'ll back off a touch',
+          what_do_you_have_to_say_for_yourself: "ok i'll back off a touch",
         },
       },
       must_rid_me_of_this_snake_case: 'okie dokie - whatever you ask',
@@ -99,7 +99,10 @@ describe('Utils service', () => {
 
     it('appends a script tag in the head of html', () => {
       loadScript({
-        url: '/example', attributes: { id: 10, 'data-test': 20 }, head: true, first: true,
+        url: '/example',
+        attributes: { id: 10, 'data-test': 20 },
+        head: true,
+        first: true,
       });
 
       const scriptTag = document.querySelector('[data-test="20"]');
@@ -113,7 +116,7 @@ describe('Utils service', () => {
   describe('cloneVNodeElement', () => {
     it('creates a clone of a vue dom element', () => {
       /** @type {Vue.Component<Vue>} */
-      const HeaderComponent = ({
+      const HeaderComponent = {
         props: ['name'],
         data: () => ({ greeting: 'Hello' }),
         computed: {
@@ -133,10 +136,10 @@ describe('Utils service', () => {
             <span>The sum is: {{ sumComputedProperty() }}</span>
           </div>
         `,
-      });
+      };
 
       /** @type {Vue.Component<Vue>} */
-      const MyComponent = ({
+      const MyComponent = {
         render(h) {
           /** @type {import('vue').VNode[]} */
           const children = this.$slots.default || [];
@@ -150,17 +153,14 @@ describe('Utils service', () => {
                   name: 'Alexander',
                 },
               },
-              h,
+              h
             );
             return h('div', {}, [clone]);
           });
 
-          return h('div', {}, [
-            clones,
-            children,
-          ]);
+          return h('div', {}, [clones, children]);
         },
-      });
+      };
 
       const wrapper = mount(MyComponent, {
         slots: {

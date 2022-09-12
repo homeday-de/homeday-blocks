@@ -8,7 +8,10 @@ import { cloneVNodeElement } from 'homeday-blocks/src/services/utils';
 import { name as HdCheckboxCardName } from 'homeday-blocks/src/components/form/HdCheckboxCard.vue';
 import formFieldMixin from './formFieldMixin';
 
-const getPropsDataFor = (vnode: VNode) => <T extends unknown>(defaultValue: T, field: string): T => _getOr(defaultValue, `componentOptions.propsData.${field}`, vnode);
+const getPropsDataFor =
+  (vnode: VNode) =>
+  <T extends unknown>(defaultValue: T, field: string): T =>
+    _getOr(defaultValue, `componentOptions.propsData.${field}`, vnode);
 
 export default Vue.extend({
   name: 'HdCheckboxCardGroup',
@@ -43,15 +46,17 @@ export default Vue.extend({
     customRules: {
       type: Array,
       default: () => [],
-      validator: (rulesProvided) => rulesProvided.every(
-        ({ validate, errorMessage }) => typeof validate === 'function' && typeof errorMessage === 'string',
-      ),
+      validator: (rulesProvided) =>
+        rulesProvided.every(
+          ({ validate, errorMessage }) =>
+            typeof validate === 'function' && typeof errorMessage === 'string'
+        ),
     } as PropOptions<customRules>,
   },
   data(): {
     error: null | string;
     internalValue: string | number | boolean | unknown[];
-    } {
+  } {
     return {
       error: null,
       internalValue: this.value,
@@ -83,7 +88,8 @@ export default Vue.extend({
     },
     validateForm(): string | null {
       if (this.required && !this.value) return this.t.FORM.VALIDATION.SELECT_ONE_OPTION;
-      if (this.required && Array.isArray(this.value) && this.value.length <= 0) return this.t.FORM.VALIDATION.SELECT_ONE_OPTION;
+      if (this.required && Array.isArray(this.value) && this.value.length <= 0)
+        return this.t.FORM.VALIDATION.SELECT_ONE_OPTION;
 
       const firstFailingRule = this.customRules.find(({ validate }) => !validate(this.value));
       if (firstFailingRule) return firstFailingRule.errorMessage;
@@ -108,7 +114,9 @@ export default Vue.extend({
     const children: VNode[] = this.$slots.default || [];
 
     const clones: VNode[] = children
-      .filter(({ tag, componentOptions }) => Boolean(tag) && componentOptions?.tag === HdCheckboxCardName)
+      .filter(
+        ({ tag, componentOptions }) => Boolean(tag) && componentOptions?.tag === HdCheckboxCardName
+      )
       .map((vnode) => {
         const getPropsData = getPropsDataFor(vnode);
         const clone = cloneVNodeElement(
@@ -131,23 +139,22 @@ export default Vue.extend({
               input: this.inputChanged,
             },
           },
-          h,
+          h
         );
         return h('div', {}, [clone]);
       });
 
-    const errorVdom: VNode = this.hasValidationErrors ? h('div', { class: 'checkbox-group__error' }, this.error) : h();
+    const errorVdom: VNode = this.hasValidationErrors
+      ? h('div', { class: 'checkbox-group__error' }, this.error)
+      : h();
 
-    return h('div', { class: 'checkbox-group' }, [
-      clones,
-      errorVdom,
-    ]);
+    return h('div', { class: 'checkbox-group' }, [clones, errorVdom]);
   },
 });
 </script>
 
 <style lang="scss" scoped>
-@import "homeday-blocks/src/styles/mixins.scss";
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .checkbox-group {
   width: 100%;
@@ -161,6 +168,6 @@ export default Vue.extend({
   display: block;
   margin-top: -$sp-s;
   color: $error-color;
-  @include font("DS-100");
+  @include font('DS-100');
 }
 </style>

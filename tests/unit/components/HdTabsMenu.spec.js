@@ -33,7 +33,7 @@ describe('HdTabsMenu', () => {
     expect(wrapper.findAll(ACTIVE_MENU_ITEM_SELECTOR).length).toBe(1);
   });
 
-  it('Rendered selected menu items without BEM modifier \'--focus\'', () => {
+  it("Rendered selected menu items without BEM modifier '--focus'", () => {
     const wrapper = wrapperBuilder({
       props: {
         removeFocus: true,

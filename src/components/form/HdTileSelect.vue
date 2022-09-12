@@ -49,9 +49,7 @@ import formField from './formFieldMixin';
 export default {
   name: 'HdTileSelect',
   inheritAttrs: false,
-  mixins: [
-    formField,
-  ],
+  mixins: [formField],
   components: {
     HdTileSelectItem,
     HdTileSelectEditableItem,
@@ -83,7 +81,7 @@ export default {
     },
     formatter: {
       type: Function,
-      default: (value) => (String(value)),
+      default: (value) => String(value),
     },
     acceptNewValue: {
       type: Boolean,
@@ -152,7 +150,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "homeday-blocks/src/styles/mixins.scss";
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 $item-min-size: 100px;
 $border-width: 1px;

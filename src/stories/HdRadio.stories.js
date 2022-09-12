@@ -25,13 +25,15 @@ export default {
       control: { type: 'boolean' },
     },
     texts: {
-      description: `For now the only text used is the required validation field. <code lang="javascript">${JSON.stringify({
-        FORM: {
-          VALIDATION: {
-            REQUIRED: 'Dies ist ein Pflichtfeld.',
+      description: `For now the only text used is the required validation field. <code lang="javascript">${JSON.stringify(
+        {
+          FORM: {
+            VALIDATION: {
+              REQUIRED: 'Dies ist ein Pflichtfeld.',
+            },
           },
-        },
-      })}</code>`,
+        }
+      )}</code>`,
       control: {
         type: 'object',
       },

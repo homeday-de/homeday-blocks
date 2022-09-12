@@ -38,19 +38,21 @@ describe('HdButton', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  Object.values(TYPES).filter((modifier) => modifier).forEach((modifier) => {
-    it(`should render component with btn--${modifier} class`, () => {
-      const className = `btn--${modifier}`;
-      const wrapper = wrapperBuilder({
-        props: {
-          modifier,
-        },
-      });
+  Object.values(TYPES)
+    .filter((modifier) => modifier)
+    .forEach((modifier) => {
+      it(`should render component with btn--${modifier} class`, () => {
+        const className = `btn--${modifier}`;
+        const wrapper = wrapperBuilder({
+          props: {
+            modifier,
+          },
+        });
 
-      expect(wrapper.classes()).toContain(className);
-      expect(wrapper.html()).toMatchSnapshot();
+        expect(wrapper.classes()).toContain(className);
+        expect(wrapper.html()).toMatchSnapshot();
+      });
     });
-  });
 
   it('should render component with btn--dark-background class if prop isInDarkBackground is true', () => {
     const className = 'btn--dark-background';

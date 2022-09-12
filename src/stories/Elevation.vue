@@ -3,17 +3,13 @@
     <h1>Elevation</h1>
 
     <h3>Usage:</h3>
-    The available elevation levels are from <b>0</b> to <b>{{ numberOfLevels - 1 }}</b>.<br>
-    Elevation can  be used either with classes:
-    <VueCodeHighlight class="elevation-story__code">{{
-      codeExampleClasses
-    }}</VueCodeHighlight>
+    The available elevation levels are from <b>0</b> to <b>{{ numberOfLevels - 1 }}</b
+    >.<br />
+    Elevation can be used either with classes:
+    <VueCodeHighlight class="elevation-story__code">{{ codeExampleClasses }}</VueCodeHighlight>
 
     Or with the sass mixin:
-    <VueCodeHighlight
-      language="css"
-      class="elevation-story__code"
-    >{{
+    <VueCodeHighlight language="css" class="elevation-story__code">{{
       codeExampleMixin
     }}</VueCodeHighlight>
 
@@ -21,10 +17,10 @@
     <div class="elevated-blocks">
       <div
         v-for="i in numberOfLevels"
-        :key="i-1"
-        :class="['elevated-block', `elevation-${i-1}`]"
+        :key="i - 1"
+        :class="['elevated-block', `elevation-${i - 1}`]"
       >
-        <p class="elevated-block__label">Level {{ i-1 }}</p>
+        <p class="elevated-block__label">Level {{ i - 1 }}</p>
       </div>
     </div>
   </section>
@@ -55,7 +51,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import '~homeday-blocks/src/styles/mixins.scss';
-@import "~vue-code-highlight/themes/prism.css";
+@import '~vue-code-highlight/themes/prism.css';
 
 .elevation-story {
   max-width: 800px;

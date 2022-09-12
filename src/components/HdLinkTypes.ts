@@ -1,4 +1,1 @@
-export default [
-  'primary',
-  'secondary',
-];
+export default ['primary', 'secondary'];

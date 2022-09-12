@@ -19,10 +19,12 @@ describe('HdGallery', () => {
       nextButton: () => wrapper.find('.gallery__controls-next'),
       previousButton: () => wrapper.find('.gallery__controls-prev'),
       selectedPicture: () => wrapper.find('.gallery-media__object-picture'),
-      selectedPictureImg: () => wrapper.find('.gallery-media__object-picture').exists()
-        && wrapper.find('.gallery-media__object-picture').find('img'),
-      selectedVideo: () => wrapper.find('.gallery-media__object').exists()
-        && wrapper.find('.gallery-media__object').find('iframe'),
+      selectedPictureImg: () =>
+        wrapper.find('.gallery-media__object-picture').exists() &&
+        wrapper.find('.gallery-media__object-picture').find('img'),
+      selectedVideo: () =>
+        wrapper.find('.gallery-media__object').exists() &&
+        wrapper.find('.gallery-media__object').find('iframe'),
       selectedPictureInfo: () => wrapper.find('.gallery__info'),
       carousel: () => wrapper.findAll('.gallery__carousel'),
       carouselWrap: () => wrapper.findAll('.gallery-carousel__wrap'),
@@ -86,12 +88,7 @@ describe('HdGallery', () => {
   it('displays a placeholder', () => {
     const expectedPlaceholderText = 'Little Stranger - Styles & Dynamics';
     const expectedPlaceholderIcon = 'static/media/ic_pictures.b82fd409.svg';
-    const {
-      placeholder,
-      caption,
-      selectedPicture,
-      carouselWrap,
-    } = build({
+    const { placeholder, caption, selectedPicture, carouselWrap } = build({
       items: [],
       placeholderText: expectedPlaceholderText,
       placeholderIcon: expectedPlaceholderIcon,

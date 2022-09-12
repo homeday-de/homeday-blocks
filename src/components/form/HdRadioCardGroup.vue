@@ -8,7 +8,10 @@ import { cloneVNodeElement } from 'homeday-blocks/src/services/utils';
 import { name as HdRadioCardName } from 'homeday-blocks/src/components/form/HdRadioCard.vue';
 import formFieldMixin from './formFieldMixin';
 
-const getPropsDataFor = (vnode: VNode) => <T extends unknown>(defaultValue: T, field: string): T => _getOr(defaultValue, `componentOptions.propsData.${field}`, vnode);
+const getPropsDataFor =
+  (vnode: VNode) =>
+  <T extends unknown>(defaultValue: T, field: string): T =>
+    _getOr(defaultValue, `componentOptions.propsData.${field}`, vnode);
 
 export default Vue.extend({
   name: 'HdRadioCardGroup',
@@ -42,14 +45,16 @@ export default Vue.extend({
     customRules: {
       type: Array,
       default: () => [],
-      validator: (rulesProvided) => rulesProvided.every(
-        ({ validate, errorMessage }) => typeof validate === 'function' && typeof errorMessage === 'string',
-      ),
+      validator: (rulesProvided) =>
+        rulesProvided.every(
+          ({ validate, errorMessage }) =>
+            typeof validate === 'function' && typeof errorMessage === 'string'
+        ),
     } as PropOptions<customRules>,
   },
   data(): {
     error: null | string;
-    } {
+  } {
     return {
       error: null,
     };
@@ -80,9 +85,7 @@ export default Vue.extend({
     validateForm(): string | null {
       if (this.required && !this.value) return this.t.FORM.VALIDATION.SELECT_ONE_OPTION;
 
-      const firstFailingRule = this.customRules.find(
-        ({ validate }) => !validate(this.value),
-      );
+      const firstFailingRule = this.customRules.find(({ validate }) => !validate(this.value));
       if (firstFailingRule) return firstFailingRule.errorMessage;
 
       return null;
@@ -105,7 +108,9 @@ export default Vue.extend({
     const children: VNode[] = this.$slots.default || [];
 
     const clones: VNode[] = children
-      .filter(({ tag, componentOptions }) => Boolean(tag) && componentOptions?.tag === HdRadioCardName)
+      .filter(
+        ({ tag, componentOptions }) => Boolean(tag) && componentOptions?.tag === HdRadioCardName
+      )
       .map((vnode) => {
         const getPropsData = getPropsDataFor(vnode);
         const clone = cloneVNodeElement(
@@ -125,23 +130,22 @@ export default Vue.extend({
               input: this.inputChanged,
             },
           },
-          h,
+          h
         );
         return h('div', {}, [clone]);
       });
 
-    const errorVdom: VNode = this.hasValidationErrors ? h('div', { class: 'radio-group__error' }, this.error) : h();
+    const errorVdom: VNode = this.hasValidationErrors
+      ? h('div', { class: 'radio-group__error' }, this.error)
+      : h();
 
-    return h('div', { class: 'radio-group' }, [
-      clones,
-      errorVdom,
-    ]);
+    return h('div', { class: 'radio-group' }, [clones, errorVdom]);
   },
 });
 </script>
 
 <style lang="scss" scoped>
-@import "homeday-blocks/src/styles/mixins.scss";
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .radio-group {
   width: 100%;
@@ -155,6 +159,6 @@ export default Vue.extend({
   display: block;
   margin-top: -$sp-s;
   color: $error-color;
-  @include font("DS-100");
+  @include font('DS-100');
 }
 </style>

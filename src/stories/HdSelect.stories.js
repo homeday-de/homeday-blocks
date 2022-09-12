@@ -9,9 +9,11 @@ import icon from './assets/ic_user.svg';
 
 storiesOf('Components/Form/HdSelect', module)
   .addDecorator(FormWrapper)
-  .add('required', () => ({
-    components: { HdSelect },
-    template: `
+  .add(
+    'required',
+    () => ({
+      components: { HdSelect },
+      template: `
       <div>
         <hd-select
           v-model="value"
@@ -26,29 +28,31 @@ storiesOf('Components/Form/HdSelect', module)
         </button>
       </div>
     `,
-    data() {
-      return {
-        value: '',
-        ITEMS,
-      };
-    },
-    watch: {
-      value(value) {
-        action('input')(value);
+      data() {
+        return {
+          value: '',
+          ITEMS,
+        };
       },
-    },
-    methods: {
-      validate() {
-        const isValid = this.$refs.myRadio.validate();
+      watch: {
+        value(value) {
+          action('input')(value);
+        },
+      },
+      methods: {
+        validate() {
+          const isValid = this.$refs.myRadio.validate();
 
-        if (!isValid) {
-          console.log('Not Valid');
-        } else {
-          console.log(`Valid! You selected: ${this.value}`);
-        }
+          if (!isValid) {
+            console.log('Not Valid');
+          } else {
+            console.log(`Valid! You selected: ${this.value}`);
+          }
+        },
       },
-    },
-  }), { percy: { skip: true } })
+    }),
+    { percy: { skip: true } }
+  )
   .add('preselected', () => ({
     components: { HdSelect },
     template: `

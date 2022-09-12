@@ -7,7 +7,7 @@
     <p class="welcome__paragraph">
       1- Install the library:
       <vue-code-highlight class="welcome__code">{{
-        "npm install homeday-de/homeday-blocks --save"
+        'npm install homeday-de/homeday-blocks --save'
       }}</vue-code-highlight>
       2- Consume the components
       <vue-code-highlight class="welcome__code">{{
@@ -20,16 +20,27 @@
     </p>
 
     <h3 class="welcome__subtitle">How to use our storybook?</h3>
-    <h4>You don't have to check all the tabs to see if something is available. We use some suffixes in the story's title:</h4>
-    <p class="welcome__paragraph">
+    <h4>
+      You don't have to check all the tabs to see if something is available. We use some suffixes in
+      the story's title:
+    </h4>
+    <div class="welcome__paragraph">
       <ul class="text-small margin-top-s margin-left-m">
         <li>🎛 : Check the knobs tab to play around with the component's props</li>
-        <li>📝 : Check the notes tab for more information about the component, how to use it or code snippets</li>
+        <li>
+          📝 : Check the notes tab for more information about the component, how to use it or code
+          snippets
+        </li>
       </ul>
-    </p>
+    </div>
     <h3 class="welcome__subtitle">Contributing :)</h3>
     <p class="welcome__paragraph">
-      Check out our <a class="link" href="https://github.com/homeday-de/homeday-blocks" target="_blank">Github repository</a> for more details.</p>
+      Check out our
+      <a class="link" href="https://github.com/homeday-de/homeday-blocks" target="_blank"
+        >Github repository</a
+      >
+      for more details.
+    </p>
   </div>
 </template>
 
@@ -47,7 +58,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '~homeday-blocks/src/styles/mixins.scss';
-@import "~vue-code-highlight/themes/prism.css";
+@import '~vue-code-highlight/themes/prism.css';
 
 .welcome {
   padding-top: $sp-m;

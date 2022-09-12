@@ -18,7 +18,7 @@ describe('HdCalendar', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  it('as a user I\'m able to change week', () => {
+  it("as a user I'm able to change week", () => {
     const setWeekIndexTailMock = jest.fn();
     const wrapper = wrapperBuilder({
       methods: {
@@ -33,7 +33,7 @@ describe('HdCalendar', () => {
     expect(setWeekIndexTailMock).toHaveBeenCalledTimes(2);
   });
 
-  it('as a user I\'m able to change week and the first available day gets selected', () => {
+  it("as a user I'm able to change week and the first available day gets selected", () => {
     jest.useFakeTimers();
 
     const selectDateMock = jest.fn();
@@ -49,7 +49,7 @@ describe('HdCalendar', () => {
     expect(selectDateMock).toHaveBeenCalled();
   });
 
-  it('as a user I\'m able to select a day', async () => {
+  it("as a user I'm able to select a day", async () => {
     const wrapper = wrapperBuilder();
 
     await wrapper.vm.$nextTick();

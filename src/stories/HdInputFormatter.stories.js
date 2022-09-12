@@ -68,8 +68,7 @@ storiesOf('Components/Form/HdInputFormatter', module)
     },
     methods: {
       formatter(value) {
-        return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' })
-          .format(value);
+        return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(value);
       },
     },
   }));

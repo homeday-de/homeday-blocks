@@ -78,10 +78,16 @@ describe('HdGoogleAutocomplete', () => {
 
   describe('Supports custom rules with error message', () => {
     const atLeastTenCharsErrorMessage = 'should be at least ten characters long';
-    const atLeastTenChars = { validate: (value) => value.length >= 10, errorMessage: atLeastTenCharsErrorMessage };
+    const atLeastTenChars = {
+      validate: (value) => value.length >= 10,
+      errorMessage: atLeastTenCharsErrorMessage,
+    };
 
     const startsWithSpaceErrorMessage = 'should start with empty space';
-    const startsWithSpace = { validate: (value) => value[0] === ' ', errorMessage: startsWithSpaceErrorMessage };
+    const startsWithSpace = {
+      validate: (value) => value[0] === ' ',
+      errorMessage: startsWithSpaceErrorMessage,
+    };
 
     it('Simple case', async () => {
       // invalid

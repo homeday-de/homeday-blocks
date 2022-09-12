@@ -86,16 +86,12 @@ DefaultWithLink.args = {
 
 export const OnePhoto = Template.bind({});
 OnePhoto.args = {
-  items: [
-    ITEMS[0],
-  ],
+  items: [ITEMS[0]],
 };
 
 export const OnePhotoWithLink = Template.bind({});
 OnePhotoWithLink.args = {
-  items: [
-    ITEMS[0],
-  ],
+  items: [ITEMS[0]],
   to: {
     path: '/expose/YP1O2APN',
   },
