@@ -51,10 +51,10 @@
 </template>
 
 <script lang="ts">
-import Vue, { PropOptions } from 'vue';
+import Vue, { PropOptions, PropType } from 'vue';
 import _isBoolean from 'lodash/fp/isBoolean';
 import deepmerge from 'deepmerge';
-import { getMessages, Messages } from 'homeday-blocks/src/lang';
+import { getMessages, Language, Messages } from 'homeday-blocks/src/lang';
 import { customRules } from '@/@types/global';
 import formFieldMixin from './formFieldMixin';
 import HdCheckboxIndicator from './HdCheckboxIndicator.vue';
@@ -101,7 +101,7 @@ export default Vue.extend({
       default: () => ({}),
     },
     lang: {
-      type: String,
+      type: String as PropType<Language>,
       default: 'de',
     },
     customRules: {
@@ -135,7 +135,7 @@ export default Vue.extend({
   },
   computed: {
     t(): Messages {
-      return deepmerge(getMessages(this.lang), this.texts);
+      return deepmerge(getMessages(this.lang as Language), this.texts);
     },
     isChecked(): boolean {
       if (Array.isArray(this.value) && this.nativeValue) return this.value.includes(this.nativeValue);

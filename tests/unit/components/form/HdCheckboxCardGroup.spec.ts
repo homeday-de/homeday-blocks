@@ -1,8 +1,9 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { mount } from '@vue/test-utils';
 import deepmerge from 'deepmerge';
 import HdCheckboxCardGroup from 'homeday-blocks/src/components/form/HdCheckboxCardGroup.vue';
 import HdCheckboxCard from 'homeday-blocks/src/components/form/HdCheckboxCard.vue';
-import { getMessages } from 'homeday-blocks/src/lang';
+import { getMessages, Language } from 'homeday-blocks/src/lang';
 
 describe('HdCheckboxCardGroup', () => {
   const build = (overrideProps = {}, overrideSlots = {}) => {
@@ -52,7 +53,7 @@ describe('HdCheckboxCardGroup', () => {
       inputChecked: () => view.find('input[type="checkbox"]:checked'),
       labels: () => view.findAll('label'),
       error: () => view.find('.checkbox-group__error'),
-      t: (lang = 'de') => getMessages(lang),
+      t: (lang: Language = 'de') => getMessages(lang),
     };
   };
 
@@ -117,11 +118,11 @@ describe('HdCheckboxCardGroup', () => {
   it('displays validation error for custom validation rules', async () => {
     const customRules = [
       {
-        validate: (value) => value.length > 1,
+        validate: (value: string) => value.length > 1,
         errorMessage: 'Value must be greater than 1',
       },
       {
-        validate: (value) => value.length < 3,
+        validate: (value: string) => value.length < 3,
         errorMessage: 'Value must be less than 3',
       },
     ];
