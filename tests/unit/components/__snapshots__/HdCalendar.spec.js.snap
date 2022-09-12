@@ -11,13 +11,27 @@ exports[`HdCalendar renders component 1`] = `
     </button></header>
   <section class="calendar__body">
     <header class="calendar__days calendar__row">
-      <div class="calendar__row__item calendar__day">Do</div>
-      <div class="calendar__row__item calendar__day">Fr</div>
-      <div class="calendar__row__item calendar__day">Sa</div>
-      <div class="calendar__row__item calendar__day">So</div>
-      <div class="calendar__row__item calendar__day">Mo</div>
-      <div class="calendar__row__item calendar__day">Di</div>
-      <div class="calendar__row__item calendar__day">Mi</div>
+      <div class="calendar__row__item calendar__day">
+        Do
+      </div>
+      <div class="calendar__row__item calendar__day">
+        Fr
+      </div>
+      <div class="calendar__row__item calendar__day">
+        Sa
+      </div>
+      <div class="calendar__row__item calendar__day">
+        So
+      </div>
+      <div class="calendar__row__item calendar__day">
+        Mo
+      </div>
+      <div class="calendar__row__item calendar__day">
+        Di
+      </div>
+      <div class="calendar__row__item calendar__day">
+        Mi
+      </div>
     </header>
     <div class="calendar__body__inner">
       <transition-stub name="calendar-right">
