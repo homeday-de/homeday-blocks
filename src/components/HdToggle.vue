@@ -8,18 +8,10 @@
     @keydown="setUsingMouse(false)"
     @mousedown="setUsingMouse(true)"
   >
-    <button
-      :disabled="!canBeToggled"
-      class="hd-toggle__control"
-      type="button"
-      @click="toggleOpen"
-    >
+    <button :disabled="!canBeToggled" class="hd-toggle__control" type="button" @click="toggleOpen">
       {{ title }}
 
-      <HdIcon
-        :src="chevronIcon"
-        class="hd-toggle__control-icon"
-      />
+      <HdIcon :src="chevronIcon" class="hd-toggle__control-icon" />
     </button>
     <div
       ref="body"
@@ -137,9 +129,7 @@ export default {
         return;
       }
 
-      const $innerFocusableElements = this.$refs.body.querySelectorAll(
-        'a, button, [tabindex]',
-      );
+      const $innerFocusableElements = this.$refs.body.querySelectorAll('a, button, [tabindex]');
 
       if (!$innerFocusableElements.length) {
         return;
@@ -163,7 +153,7 @@ export default {
       }
 
       const $innerFocusableElements = this.$refs.body.querySelectorAll(
-        `[${TABINDEX_BACKUP_ATTRIBUTE}]`,
+        `[${TABINDEX_BACKUP_ATTRIBUTE}]`
       );
 
       if (!$innerFocusableElements.length) {

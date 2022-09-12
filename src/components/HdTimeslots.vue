@@ -5,11 +5,14 @@
       <HdArrowButton @click.native="flipPage(1)" direction="right" :isDisabled="nextPageDisabled" />
     </div>
     <div class="timeslots__inner">
-      <transition :name="`timeslots-transition-${animationDirection}`" >
+      <transition :name="`timeslots-transition-${animationDirection}`">
         <div class="timeslots__slots" :key="currentPageIndex">
           <span
             class="timeslots__slot"
-            :class="{'timeslots__slot--isUnavailable': timeslot.isAvailable === false, 'timeslots__slot--isSelected': timeslot.time === selectedTime}"
+            :class="{
+              'timeslots__slot--isUnavailable': timeslot.isAvailable === false,
+              'timeslots__slot--isSelected': timeslot.time === selectedTime,
+            }"
             v-for="timeslot in activeTimeslotPage"
             :key="timeslot.time"
             @click="selectTimeslot(timeslot)"
@@ -22,7 +25,7 @@
         <p class="timeslots__legend__indicator timeslots__legend__indicator--isUnavailable">
           NOT_AVAILABLE
         </p>
-        <p class="timeslots__legend__indicator  timeslots__legend__indicator--isAvailable">
+        <p class="timeslots__legend__indicator timeslots__legend__indicator--isAvailable">
           AVAILABLE
         </p>
       </div>
@@ -76,8 +79,9 @@ export default {
   methods: {
     selectFirstAvialable() {
       this.currentPageIndex = 0;
-      const firstAvialableTimeslot = this.activeTimeslotPage
-        .find((timeslot) => timeslot.isAvailable);
+      const firstAvialableTimeslot = this.activeTimeslotPage.find(
+        (timeslot) => timeslot.isAvailable
+      );
 
       this.selectTimeslot(firstAvialableTimeslot);
     },
@@ -109,13 +113,15 @@ export default {
 @import 'homeday-blocks/src/styles/mixins.scss';
 
 .timeslots-transition {
-  &-left, &-right {
-    &-leave-active, &-enter-active {
+  &-left,
+  &-right {
+    &-leave-active,
+    &-enter-active {
       position: absolute;
       height: 100%;
       width: 100%;
       left: 0;
-      transition: transform 300ms cubic-bezier(0.250, 0.460, 0.450, 0.940);
+      transition: transform 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
       backface-visibility: hidden;
     }
   }
@@ -123,7 +129,7 @@ export default {
     &-enter {
       transform: translateX(-100%);
     }
-    &-leave-to{
+    &-leave-to {
       transform: translateX(100%);
     }
   }
@@ -156,7 +162,6 @@ export default {
     @media (min-width: $break-mobile) {
       margin-top: -$sp-m;
     }
-
   }
   &__inner {
     width: calc(100% - #{$sp-xl});
@@ -215,7 +220,7 @@ export default {
       transform: translateY(-2px);
     }
     &:not(&--isSelected):not(&--isUnavailable) {
-      box-shadow: 3px 1px 4px 0px rgba(0,0,0,0.35);
+      box-shadow: 3px 1px 4px 0px rgba(0, 0, 0, 0.35);
     }
   }
 
@@ -233,7 +238,7 @@ export default {
     &__indicator {
       position: relative;
       &:before {
-        content: "";
+        content: '';
         display: inline-block;
         vertical-align: middle;
         height: 10px;

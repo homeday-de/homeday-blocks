@@ -5,12 +5,10 @@
       'details-table__row--single-column': forceSingleColumn,
     }"
   >
-    <dt class="details-table__row__label">
-      {{ label }}:
-    </dt>
+    <dt class="details-table__row__label">{{ label }}:</dt>
     <dd class="details-table__row__content">
       <div class="details-table__row__content__inside">
-        <slot/>
+        <slot />
       </div>
     </dd>
   </div>
@@ -87,14 +85,12 @@ export default {
   }
 
   &:not(&--single-column):nth-child(odd) #{&}__content {
-
     @media (min-width: $break-desktop) {
       margin-right: $sp-xs;
     }
   }
 
   &:not(&--single-column):nth-child(even) #{&}__label {
-
     @media (min-width: $break-desktop) {
       margin-left: $sp-xs;
     }

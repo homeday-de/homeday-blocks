@@ -10,7 +10,8 @@ describe('HdRadioCardGroup', () => {
     const propsData = deepmerge({ name: 'property', value: 'house' }, overrideProps);
 
     const slots = {
-      default: [`
+      default: [
+        `
         <HdRadioCard native-value="apartment">
           <template #icon>
             <HdIcon src="apartmentCommercialIcon" />
@@ -34,7 +35,8 @@ describe('HdRadioCardGroup', () => {
 
           Space
         </HdRadioCard>
-        `],
+        `,
+      ],
       ...overrideSlots,
     };
 
@@ -64,7 +66,8 @@ describe('HdRadioCardGroup', () => {
 
   it('renders only radio cards', () => {
     const slots = {
-      default: [`
+      default: [
+        `
       <HdRadioCard native-value="apartment">
         <template #icon>
           <HdIcon src="apartmentCommercialIcon" />
@@ -74,7 +77,8 @@ describe('HdRadioCardGroup', () => {
       </HdRadioCard>
 
       <h1>This element should not appear</h1>
-      `],
+      `,
+      ],
     };
     const { view, inputs } = build({}, slots);
 

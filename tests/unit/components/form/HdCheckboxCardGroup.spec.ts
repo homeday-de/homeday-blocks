@@ -10,7 +10,8 @@ describe('HdCheckboxCardGroup', () => {
     const propsData = deepmerge({ name: 'property', value: 'house' }, overrideProps);
 
     const slots = {
-      default: [`
+      default: [
+        `
         <HdCheckboxCard native-value="apartment">
           <template #icon>
             <HdIcon src="apartmentCommercialIcon" />
@@ -34,7 +35,8 @@ describe('HdCheckboxCardGroup', () => {
 
           Space
         </HdCheckboxCard>
-        `],
+        `,
+      ],
       ...overrideSlots,
     };
 
@@ -64,7 +66,8 @@ describe('HdCheckboxCardGroup', () => {
 
   it('renders only checkbox cards', () => {
     const slots = {
-      default: [`
+      default: [
+        `
       <HdCheckboxCard native-value="apartment">
         <template #icon>
           <HdIcon src="apartmentCommercialIcon" />
@@ -74,7 +77,8 @@ describe('HdCheckboxCardGroup', () => {
       </HdCheckboxCard>
 
       <h1>This element should not appear</h1>
-      `],
+      `,
+      ],
     };
     const { view, inputs } = build({}, slots);
 

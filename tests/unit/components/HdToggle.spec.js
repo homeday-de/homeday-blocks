@@ -59,7 +59,7 @@ describe('HdToggle', () => {
     expect(wrapper.emitted().toggle).toBeTruthy();
   });
 
-  it('won\'t toggle if the prop `canBeToggled` is set to false', async () => {
+  it("won't toggle if the prop `canBeToggled` is set to false", async () => {
     const wrapper = wrapperBuilder();
 
     expect(wrapper.find(TOGGLE_CONTROL_SELECTOR).attributes().disabled).toBeFalsy();

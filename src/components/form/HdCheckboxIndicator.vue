@@ -52,7 +52,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "homeday-blocks/src/styles/mixins.scss";
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .checkbox-indicator {
   position: relative;
@@ -123,7 +123,7 @@ export default {
 }
 
 .checkbox-indicator--disabled.checkbox-indicator--selected > .checkbox-indicator__box,
-.checkbox-indicator--disabled.checkbox-indicator--indeterminate> .checkbox-indicator__box {
+.checkbox-indicator--disabled.checkbox-indicator--indeterminate > .checkbox-indicator__box {
   border-width: 2px;
   border-color: getShade($neutral-gray, 70);
   background-color: transparent;

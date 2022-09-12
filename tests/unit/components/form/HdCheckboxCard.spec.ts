@@ -8,10 +8,13 @@ describe('HdCheckboxCard', () => {
   const build = (overrideProps = {}, overrideSlots = {}) => {
     const propsData = deepmerge({ name: 'property', nativeValue: 'house' }, overrideProps);
 
-    const slots = deepmerge({
-      default: ['House'],
-      icon: ['<HdIcon src="house-icon" />'],
-    }, overrideSlots);
+    const slots = deepmerge(
+      {
+        default: ['House'],
+        icon: ['<HdIcon src="house-icon" />'],
+      },
+      overrideSlots
+    );
 
     const view = mount(HdCheckboxCard, {
       propsData,
@@ -128,7 +131,10 @@ describe('HdCheckboxCard', () => {
 
     it('for custom false-value', async () => {
       const { view, input } = build({
-        nativeValue: null, value: 'on', trueValue: 'on', falseValue: 'off',
+        nativeValue: null,
+        value: 'on',
+        trueValue: 'on',
+        falseValue: 'off',
       });
 
       await input().setChecked(false);

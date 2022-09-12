@@ -18,10 +18,7 @@ export default {
   computed: {
     computedClasses() {
       const baseClass = 'hd-link';
-      const classes = [
-        baseClass,
-        `${baseClass}--${this.modifier}`,
-      ];
+      const classes = [baseClass, `${baseClass}--${this.modifier}`];
 
       return classes;
     },
@@ -38,15 +35,11 @@ export default {
       };
     }
 
-    return createElement(
-      tag,
-      data,
-      this.$slots.default,
-    );
+    return createElement(tag, data, this.$slots.default);
   },
 };
 </script>
 
 <style lang="scss" scoped>
-@import "../styles/typography";
+@import '../styles/typography';
 </style>

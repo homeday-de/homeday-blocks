@@ -1,10 +1,5 @@
 export default {
-  header: [
-    'Title',
-    'Year',
-    'Rating',
-    'Stars',
-  ],
+  header: ['Title', 'Year', 'Rating', 'Stars'],
   body: [
     {
       title: 'The Shawshank Redemption',

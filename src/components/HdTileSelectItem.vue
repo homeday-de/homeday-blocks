@@ -46,7 +46,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "homeday-blocks/src/styles/mixins.scss";
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .tile-select-item {
   cursor: pointer;
@@ -61,14 +61,14 @@ export default {
 
   &:hover {
     color: $secondary-color;
-    box-shadow: 0 0 5px 1px rgba(0, 0, 0, .4);
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.4);
     z-index: 2;
   }
 
   &--selected {
     background-color: getShade($secondary-color, 110);
     color: white;
-    box-shadow: 0 0 5px 1px rgba(0, 0, 0, .4);
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.4);
     z-index: 1;
 
     &:hover {

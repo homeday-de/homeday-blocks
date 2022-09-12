@@ -159,7 +159,7 @@ describe('Date service', () => {
     const DAYS_IN_WEEK = 7;
     const dateCycles = generateDateCycles(cycleLengthWeeks, amountOfCycles, startDateOffset);
     expect(dateCycles.length).toBe(cycleLengthWeeks * amountOfCycles * DAYS_IN_WEEK);
-    expect(dateCycles[0].toString()).toBe((resetDateTime(new Date()).toString()));
+    expect(dateCycles[0].toString()).toBe(resetDateTime(new Date()).toString());
   });
 
   it('generateDateCycles returns the list if N weeks, from specific start date', () => {
@@ -167,7 +167,12 @@ describe('Date service', () => {
     const cycleLengthWeeks = 2;
     const amountOfCycles = 2;
     const startDateOffset = 0;
-    const dateCycles = generateDateCycles(cycleLengthWeeks, amountOfCycles, startDateOffset, specificDate);
+    const dateCycles = generateDateCycles(
+      cycleLengthWeeks,
+      amountOfCycles,
+      startDateOffset,
+      specificDate
+    );
     expect(dateCycles[0].toString()).toBe(specificDate.toString());
   });
 });

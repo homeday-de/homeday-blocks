@@ -33,10 +33,7 @@
       @blur="handleBlur"
       @input="handleInput"
     />
-    <span
-      v-if="isMaxlengthIndicatorVisible"
-      class="maxlength-indicator"
-    >
+    <span v-if="isMaxlengthIndicatorVisible" class="maxlength-indicator">
       {{ maxlengthIndicator }}
     </span>
     <!-- `data-gramm_editor` attribute is used to control Grammarly (chrome extension) -->
@@ -51,9 +48,7 @@ import formField from './formFieldMixin';
 
 export default {
   name: 'HdTextarea',
-  mixins: [
-    formField,
-  ],
+  mixins: [formField],
   components: {
     TextFieldBase,
   },
@@ -205,7 +200,7 @@ $distanceFromTextareaToIndicator: -18px;
   position: absolute;
   right: 0;
   bottom: $distanceFromTextareaToIndicator;
-  @include font("DS-60");
+  @include font('DS-60');
   padding: 0px $sp-s;
   color: getShade($quaternary-color, 70);
 }
@@ -227,5 +222,4 @@ $distanceFromTextareaToIndicator: -18px;
     background-color: $secondary-bg;
   }
 }
-
 </style>

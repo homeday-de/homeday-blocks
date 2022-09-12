@@ -8,10 +8,13 @@ describe('HdRadioCard', () => {
   const build = (overrideProps = {}, overrideSlots = {}) => {
     const propsData = deepmerge({ name: 'property', nativeValue: 'house' }, overrideProps);
 
-    const slots = deepmerge({
-      default: ['House'],
-      icon: ['<HdIcon src="house-icon" />'],
-    }, overrideSlots);
+    const slots = deepmerge(
+      {
+        default: ['House'],
+        icon: ['<HdIcon src="house-icon" />'],
+      },
+      overrideSlots
+    );
 
     const view = mount(HdRadioCard, {
       propsData,

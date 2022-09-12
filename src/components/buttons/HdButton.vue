@@ -1,26 +1,13 @@
-// Apparently there is a bug on Storybook actions with `$listeners`
-// This will throw the error `method "toJSON" is not defined` on JS console 🙇‍♂️
-// https://github.com/storybookjs/storybook/issues/14933
-// This error appeared when bumping node from v12 to v14
+// Apparently there is a bug on Storybook actions with `$listeners` // This will throw the error
+`method "toJSON" is not defined` on JS console 🙇‍♂️ //
+https://github.com/storybookjs/storybook/issues/14933 // This error appeared when bumping node from
+v12 to v14
 <template>
-  <button
-    v-on="$listeners"
-    :class="computedClasses"
-  >
-    <span
-      v-if="iconSrc"
-      class="btn__icon"
-    >
-      <HdIcon
-        :src="iconSrc"
-        width="100%"
-        height="100%"
-      />
+  <button v-on="$listeners" :class="computedClasses">
+    <span v-if="iconSrc" class="btn__icon">
+      <HdIcon :src="iconSrc" width="100%" height="100%" />
     </span>
-    <span
-      ref="content"
-      class="btn__content"
-    >
+    <span ref="content" class="btn__content">
       <slot />
     </span>
   </button>

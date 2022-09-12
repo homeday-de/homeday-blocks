@@ -63,10 +63,13 @@ describe('HdDynamicForm', () => {
 
   it('sets the initial values', () => {
     const wrapper = wrapperBuilder();
-    const formData = LOGIN_FORM.reduce((data, { name, initialValue }) => ({
-      ...data,
-      [name]: initialValue,
-    }), {});
+    const formData = LOGIN_FORM.reduce(
+      (data, { name, initialValue }) => ({
+        ...data,
+        [name]: initialValue,
+      }),
+      {}
+    );
 
     expect(wrapper.vm.formData).toEqual(formData);
   });
@@ -130,13 +133,15 @@ describe('HdDynamicForm', () => {
     const TEST_NAME = 'test';
     const wrapper = wrapperBuilder({
       props: {
-        items: [{
-          type: 'input',
-          name: TEST_NAME,
-          props: {
-            required: true,
+        items: [
+          {
+            type: 'input',
+            name: TEST_NAME,
+            props: {
+              required: true,
+            },
           },
-        }],
+        ],
       },
     });
 

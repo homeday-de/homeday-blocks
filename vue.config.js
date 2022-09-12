@@ -6,9 +6,7 @@ module.exports = {
   configureWebpack: webpackConfig,
   chainWebpack: (config) => {
     // Reset svg defualt config
-    config.module
-      .rule('svg')
-      .uses.clear();
+    config.module.rule('svg').uses.clear();
 
     // Embed svgs
     config.module
@@ -19,12 +17,9 @@ module.exports = {
       .end();
 
     // Enabled auto-fix for eslint
-    config.module
-      .rule('eslint')
-      .use('eslint-loader')
-      .options({
-        fix: true,
-      });
+    config.module.rule('eslint').use('eslint-loader').options({
+      fix: true,
+    });
   },
   transpileDependencies: ['vue-zoomer'],
   css: {

@@ -6,72 +6,49 @@
       'edit-switch--loading': loading,
     }"
   >
-    <div
-      v-if="loading"
-      class="edit-switch__loading-indicator"
-    >
-      <span class="edit-switch__loading-indicator__icon"/>
+    <div v-if="loading" class="edit-switch__loading-indicator">
+      <span class="edit-switch__loading-indicator__icon" />
       <span class="edit-switch__loading-indicator__label">
         {{ t.GENERAL.SAVING }}
       </span>
     </div>
-    <div
-      v-else-if="isEditMode && editingAllowed"
-      class="edit-switch__actions"
-    >
+    <div v-else-if="isEditMode && editingAllowed" class="edit-switch__actions">
       <button
         class="btn edit-switch__actions__button edit-switch__actions__button--cancel"
-        @click="cancel">
-        <HdIcon
-          :src="BUTTONS.cancel.icon"
-          class="edit-switch__actions__button__icon"
-        />
+        @click="cancel"
+      >
+        <HdIcon :src="BUTTONS.cancel.icon" class="edit-switch__actions__button__icon" />
         <p class="edit-switch__actions__button__label">{{ t.GENERAL.CANCEL }}</p>
       </button>
       <button
         class="btn edit-switch__actions__button edit-switch__actions__button--save"
-        @click="save">
-        <HdIcon
-          :src="BUTTONS.save.icon"
-          class="edit-switch__actions__button__icon"
-        />
+        @click="save"
+      >
+        <HdIcon :src="BUTTONS.save.icon" class="edit-switch__actions__button__icon" />
         <p class="edit-switch__actions__button__label">{{ t.GENERAL.SAVE }}</p>
       </button>
     </div>
-    <div
-      v-else-if="!isEditMode && editingAllowed"
-      class="edit-switch__actions"
-    >
+    <div v-else-if="!isEditMode && editingAllowed" class="edit-switch__actions">
       <button
         class="btn edit-switch__actions__button edit-switch__actions__button--edit"
-        @click="edit">
-        <HdIcon
-          :src="BUTTONS.edit.icon"
-          class="edit-switch__actions__button__icon"
-        />
+        @click="edit"
+      >
+        <HdIcon :src="BUTTONS.edit.icon" class="edit-switch__actions__button__icon" />
         <p class="edit-switch__actions__button__label">{{ t.GENERAL.EDIT }}</p>
       </button>
     </div>
-    <div
-      v-if="$slots.default"
-      ref="defaultSlot"
-      class="edit-switch__view"
-    >
-      <slot/>
+    <div v-if="$slots.default" ref="defaultSlot" class="edit-switch__view">
+      <slot />
     </div>
     <div
       v-if="$slots.edit && isEditMode && editingAllowed"
       ref="editSlot"
       class="edit-switch__edit"
     >
-      <slot name="edit"/>
+      <slot name="edit" />
     </div>
-    <div
-      v-else-if="$slots.view"
-      ref="viewSlot"
-      class="edit-switch__view"
-    >
-      <slot name="view"/>
+    <div v-else-if="$slots.view" ref="viewSlot" class="edit-switch__view">
+      <slot name="view" />
     </div>
   </section>
 </template>
@@ -80,11 +57,7 @@
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import merge from 'lodash/merge';
 import { getMessages } from 'homeday-blocks/src/lang';
-import {
-  edit as editIcon,
-  check as checkIcon,
-  close as closeIcon,
-} from 'homeday-assets';
+import { edit as editIcon, check as checkIcon, close as closeIcon } from 'homeday-assets';
 
 const BUTTONS = {
   edit: {
@@ -241,7 +214,11 @@ export default {
 }
 
 @keyframes edit-switch-loading-indicator-spin {
-  from { transform: rotateZ(0deg); }
-  to { transform: rotateZ(360deg); }
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
 }
 </style>

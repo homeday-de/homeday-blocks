@@ -2,11 +2,7 @@
 import { storiesOf } from '@storybook/vue';
 import HdRange from 'homeday-blocks/src/components/form/HdRange.vue';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
-import {
-  number,
-  boolean,
-  text,
-} from '@storybook/addon-knobs';
+import { number, boolean, text } from '@storybook/addon-knobs';
 
 storiesOf('Components/Form/HdRange', module)
   .addDecorator(FormWrapper)
@@ -124,15 +120,9 @@ storiesOf('Components/Form/HdRange', module)
     },
     computed: {
       tooltipValue() {
-        return [
-          'Monday',
-          'Tuesday',
-          'Wednesday',
-          'Thursday',
-          'Friday',
-          'Saturday',
-          'Sunday',
-        ][this.currentValue];
+        return ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'][
+          this.currentValue
+        ];
       },
     },
   }))
@@ -153,15 +143,7 @@ storiesOf('Components/Form/HdRange', module)
     data() {
       return {
         currentValue: 0,
-        labels: [
-          'Mon.',
-          'Tue.',
-          'Wed.',
-          'Thu.',
-          'Fri.',
-          'Sat.',
-          'Sun.',
-        ],
+        labels: ['Mon.', 'Tue.', 'Wed.', 'Thu.', 'Fri.', 'Sat.', 'Sun.'],
       };
     },
   }))
@@ -182,7 +164,10 @@ storiesOf('Components/Form/HdRange', module)
     props: {
       trackBackground: {
         type: String,
-        default: text('track-background', 'radial-gradient(circle at center, #4CBA38, #FFE713, #E00016)'),
+        default: text(
+          'track-background',
+          'radial-gradient(circle at center, #4CBA38, #FFE713, #E00016)'
+        ),
       },
       progressBackground: {
         type: String,

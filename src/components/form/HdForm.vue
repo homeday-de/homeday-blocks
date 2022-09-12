@@ -49,10 +49,13 @@ export default {
   },
   methods: {
     getFormData() {
-      return this.fields.reduce((formData, field) => ({
-        ...formData,
-        [field.name]: field.value,
-      }), {});
+      return this.fields.reduce(
+        (formData, field) => ({
+          ...formData,
+          [field.name]: field.value,
+        }),
+        {}
+      );
     },
     getInvalidFields() {
       return this.fields.filter((field) => {

@@ -44,7 +44,9 @@
       </tbody>
     </table>
     <h3 class="font-DS-200">Usage examples:</h3>
-    <VueCodeHighlight language="css" class="spacing-story__code">{{ codeExample }}</VueCodeHighlight>
+    <VueCodeHighlight language="css" class="spacing-story__code">{{
+      codeExample
+    }}</VueCodeHighlight>
   </section>
 </template>
 
@@ -78,7 +80,8 @@ margin-bottom: $sp-xl;`,
     margin-top: $sp-l;
   }
 
-  h1, h3 {
+  h1,
+  h3 {
     font-weight: 900;
   }
 
@@ -98,15 +101,19 @@ margin-bottom: $sp-xl;`,
 .spacing-table {
   margin-top: $sp-m;
 
-  th, td {
+  th,
+  td {
     padding: $sp-s $sp-l;
   }
 
-  th, td, tr {
+  th,
+  td,
+  tr {
     border: 1px solid $quaternary-color;
   }
 
-  th, td:nth-child(1) {
+  th,
+  td:nth-child(1) {
     text-align: center;
     font-weight: 600;
   }

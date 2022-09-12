@@ -1,15 +1,6 @@
 <template>
-  <div
-    v-if="background"
-    ref="imageHolder"
-    :class="{ isLoaded: imageLoaded }"
-    class="lazy-image"
-  />
-  <img
-    v-else
-    ref="imageHolder"
-    :class="{ isLoaded: imageLoaded }"
-    class="lazy-image">
+  <div v-if="background" ref="imageHolder" :class="{ isLoaded: imageLoaded }" class="lazy-image" />
+  <img v-else ref="imageHolder" :class="{ isLoaded: imageLoaded }" class="lazy-image" />
 </template>
 
 <script>

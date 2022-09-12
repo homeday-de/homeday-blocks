@@ -58,13 +58,19 @@ export default {
 
         if (modifiers.left) {
           tooltipElm.classList.add('left');
-          tooltipElm.style.right = `${(parentRect.right - elRect.right) + elRect.width + SPACING_HORIZONTAL}px`;
+          tooltipElm.style.right = `${
+            parentRect.right - elRect.right + elRect.width + SPACING_HORIZONTAL
+          }px`;
           refreshTooltipRect();
-          tooltipElm.style.top = `${(elRect.top - parentRect.top - (tooltipRect.height / 2)) + (elRect.height / 2)}px`;
+          tooltipElm.style.top = `${
+            elRect.top - parentRect.top - tooltipRect.height / 2 + elRect.height / 2
+          }px`;
         } else {
           tooltipElm.classList.remove('left');
-          tooltipElm.style.top = `${(elRect.top - parentRect.top) + elRect.height + SPACING_VERTICAL}px`;
-          const left = (elRect.left - parentRect.left - (tooltipRect.width / 2)) + (elRect.width / 2);
+          tooltipElm.style.top = `${
+            elRect.top - parentRect.top + elRect.height + SPACING_VERTICAL
+          }px`;
+          const left = elRect.left - parentRect.left - tooltipRect.width / 2 + elRect.width / 2;
           tooltipElm.style.left = `${left}px`;
           // To void overflow
           if (left < 0) {

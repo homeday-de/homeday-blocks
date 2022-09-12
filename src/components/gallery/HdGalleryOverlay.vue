@@ -1,23 +1,12 @@
 <template>
-  <section
-    class="gallery-overlay"
-    @click="onOverlayClick"
-  >
-    <button
-      ref="closeBtn"
-      class="gallery-overlay__close"
-      @click="$emit('close')"
-    >
-      <HdIcon
-        :src="closeIcon"
-        width="100%"
-        height="100%"
-      />
+  <section class="gallery-overlay" @click="onOverlayClick">
+    <button ref="closeBtn" class="gallery-overlay__close" @click="$emit('close')">
+      <HdIcon :src="closeIcon" width="100%" height="100%" />
     </button>
     <HdGallery
       ref="gallery"
       :items="items"
-      :aspect-ratio="16/9"
+      :aspect-ratio="16 / 9"
       :disable-key-events="true"
       :start-index="startIndex"
       class="gallery-overlay__gallery"
@@ -31,10 +20,7 @@
 </template>
 
 <script>
-import {
-  freezeScrolling,
-  unfreezeScrolling,
-} from 'homeday-blocks/src/services/scrolling';
+import { freezeScrolling, unfreezeScrolling } from 'homeday-blocks/src/services/scrolling';
 import HdGallery from 'homeday-blocks/src/components/gallery/HdGallery.vue';
 import HdZoomerGallery from 'homeday-blocks/src/components/gallery/HdZoomerGallery.vue';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
@@ -107,8 +93,8 @@ export default {
   padding: $sp-m 0;
   overflow-x: hidden;
   overflow-y: auto;
-  background-color: rgba(white, .9);
-  animation: fadeIn .5s;
+  background-color: rgba(white, 0.9);
+  animation: fadeIn 0.5s;
 
   @media (min-width: $break-tablet) and (min-height: 800px) {
     padding: $sp-xl;
