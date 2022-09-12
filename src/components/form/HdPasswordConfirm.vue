@@ -7,11 +7,13 @@
       class="confirm-password__input"
       :icon="icon"
       :label="t.FORM.PASSWORD.LABEL"
-      :required="required"/>
+      :required="required"
+    />
 
-    <div class="confirmPassword__strengthMeter" :class="{isVisible: strengthBarVisible}">
-      <div class="confirmPassword__strengthMeter__text"
-      >{{ t.FORM.VALIDATION.PASSWORD_STRENGTH.LEVELS[strengthIndex] }}</div>
+    <div class="confirmPassword__strengthMeter" :class="{ isVisible: strengthBarVisible }">
+      <div class="confirmPassword__strengthMeter__text">
+        {{ t.FORM.VALIDATION.PASSWORD_STRENGTH.LEVELS[strengthIndex] }}
+      </div>
       <div class="confirmPassword__strengthMeter__gauge">
         <div class="confirmPassword__strengthMeter__gauge__bar" :class="barClasses"></div>
       </div>
@@ -24,7 +26,8 @@
       class="confirmPassword__input"
       :icon="icon"
       :label="t.FORM.PASSWORD.LABEL_CONFIRM"
-      :required="required"/>
+      :required="required"
+    />
   </div>
 </template>
 
@@ -37,9 +40,7 @@ import formField from './formFieldMixin';
 
 export default {
   name: 'hd-confirm-password',
-  mixins: [
-    formField,
-  ],
+  mixins: [formField],
   components: {
     HdInputPassword,
   },
@@ -150,12 +151,7 @@ export default {
       if (this.strengthBarStyle) {
         this.strengthBarVisible = true;
       } else {
-        const COLORS = [
-          'orange',
-          'goldenRod',
-          'limeGreen',
-          'green',
-        ];
+        const COLORS = ['orange', 'goldenRod', 'limeGreen', 'green'];
         const { TITLE, LEVELS } = this.t.FORM.VALIDATION.PASSWORD_STRENGTH;
         const msg = `${TITLE}: <span style='color: ${COLORS[this.strengthIndex]}'
         >${LEVELS[this.strengthIndex]}</span>`;
@@ -196,14 +192,14 @@ export default {
         background: grey;
         width: 0%;
         height: 100%;
-        transition: width .5s, background-image 1s;
+        transition: width 0.5s, background-image 1s;
         position: relative;
         overflow: hidden;
         &:after {
           content: '';
           height: 100%;
           width: 20px;
-          background-image: linear-gradient(to right, rgba($primary-bg, 0), rgba($primary-bg, .7));
+          background-image: linear-gradient(to right, rgba($primary-bg, 0), rgba($primary-bg, 0.7));
           position: absolute;
           right: -30px;
           top: 0;

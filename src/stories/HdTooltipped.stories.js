@@ -21,7 +21,8 @@ storiesOf('Components/Tooltipped', module)
   }))
   .add('left', () => ({
     components: { HdTooltipped, HdInput },
-    template: '<hd-tooltipped value="Hello from the other side" direction="left" :component="HdInput" :props="{label: \'You can pass props to the component 😉\', \'value\': \'valuuuuue\', name: \'test\'}" />',
+    template:
+      '<hd-tooltipped value="Hello from the other side" direction="left" :component="HdInput" :props="{label: \'You can pass props to the component 😉\', \'value\': \'valuuuuue\', name: \'test\'}" />',
     data() {
       return { HdInput };
     },

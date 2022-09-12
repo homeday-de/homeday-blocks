@@ -19,9 +19,7 @@ const defaultInputType = 'text';
 
 export default {
   name: 'HdInputFormatter',
-  mixins: [
-    formField,
-  ],
+  mixins: [formField],
   components: { HdInput },
   props: {
     value: {
@@ -50,9 +48,7 @@ export default {
   },
   computed: {
     valueToShow() {
-      return this.isFocused
-        ? this.boundValue
-        : this.formatter(this.boundValue);
+      return this.isFocused ? this.boundValue : this.formatter(this.boundValue);
     },
   },
   watch: {

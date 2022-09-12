@@ -41,11 +41,7 @@ describe('HdInputPhone', () => {
     });
 
     // The countries are going to be rendered in alphabetical order
-    const preferredCountriesNames = [
-      'Österreich',
-      'Belgien',
-      'Deutschland',
-    ];
+    const preferredCountriesNames = ['Österreich', 'Belgien', 'Deutschland'];
 
     const $listItems = wrapper.findAll('li');
     const firstItems = $listItems.wrappers.slice(0, preferredCountriesNames.length);

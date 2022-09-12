@@ -12,7 +12,8 @@ export default {
     },
     reference: {
       control: 'string',
-      description: 'Used as a selector for parent components when using an attribute is not possible',
+      description:
+        'Used as a selector for parent components when using an attribute is not possible',
     },
   },
   args: {

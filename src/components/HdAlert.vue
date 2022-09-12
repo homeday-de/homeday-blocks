@@ -6,14 +6,8 @@
       'alert--no-icon': noIcon,
     }"
   >
-    <HdIcon
-      v-if="!noIcon"
-      :src="iconSrc"
-      class="alert__icon"
-    />
-    <div
-      class="alert__message"
-    >
+    <HdIcon v-if="!noIcon" :src="iconSrc" class="alert__icon" />
+    <div class="alert__message">
       <slot />
     </div>
   </div>
@@ -68,7 +62,7 @@ export default {
   &--success {
     border-color: $success-color;
     color: $success-color;
-    background-color: rgba($success-color, .07);
+    background-color: rgba($success-color, 0.07);
 
     #{$root}__icon {
       fill: $success-color;
@@ -97,7 +91,7 @@ export default {
   &--error {
     border-color: $error-color;
     color: $error-color;
-    background-color: rgba($error-color, .07);
+    background-color: rgba($error-color, 0.07);
 
     #{$root}__icon {
       fill: $error-color;

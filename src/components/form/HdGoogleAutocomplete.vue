@@ -26,7 +26,7 @@
       @input="handleInput"
       @focus="handleFocus"
       @blur="handleBlur"
-    >
+    />
     <template #input-right>
       <slot name="input-right" />
     </template>
@@ -42,9 +42,7 @@ import formField from './formFieldMixin';
 
 export default {
   name: 'HdGoogleAutocomplete',
-  mixins: [
-    formField,
-  ],
+  mixins: [formField],
   components: {
     TextFieldBase,
   },
@@ -88,9 +86,11 @@ export default {
     customRules: {
       type: Array,
       default: () => [],
-      validator: (rulesProvided) => rulesProvided.every(
-        ({ validate, errorMessage }) => typeof validate === 'function' && typeof errorMessage === 'string',
-      ),
+      validator: (rulesProvided) =>
+        rulesProvided.every(
+          ({ validate, errorMessage }) =>
+            typeof validate === 'function' && typeof errorMessage === 'string'
+        ),
     },
   },
   data() {
@@ -135,7 +135,7 @@ export default {
 
       this.autocompleteInstance = new window.google.maps.places.Autocomplete(
         this.$refs.input,
-        autocompleteOptions,
+        autocompleteOptions
       );
 
       window.google.maps.event.addListener(this.autocompleteInstance, 'place_changed', () => {

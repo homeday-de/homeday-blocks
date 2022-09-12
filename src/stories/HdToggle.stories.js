@@ -1,10 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
-import {
-  text,
-  boolean,
-  number,
-} from '@storybook/addon-knobs';
+import { text, boolean, number } from '@storybook/addon-knobs';
 import HdToggle from 'homeday-blocks/src/components/HdToggle.vue';
 
 const stories = storiesOf('Components/HdToggle', module);
@@ -34,8 +30,9 @@ stories.add('Default', () => ({
   `,
 }));
 
-stories
-  .add('Playground 🎛', () => ({
+stories.add(
+  'Playground 🎛',
+  () => ({
     components: { HdToggle },
     props: {
       title: {
@@ -78,4 +75,6 @@ stories
         </HdToggle>
       </div>
     `,
-  }), { percy: { skip: true } });
+  }),
+  { percy: { skip: true } }
+);

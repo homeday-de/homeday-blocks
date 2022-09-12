@@ -1,8 +1,5 @@
 <script>
-import {
-  matchMediaAvailable,
-  getBreakpoints,
-} from 'homeday-blocks/src/services/breakpoints';
+import { matchMediaAvailable, getBreakpoints } from 'homeday-blocks/src/services/breakpoints';
 
 export default {
   name: 'HdResponsive',

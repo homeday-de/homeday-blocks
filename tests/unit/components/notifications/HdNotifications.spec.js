@@ -57,11 +57,13 @@ describe('HdNotifications', () => {
   });
 
   it('renders a slot message', () => {
-    const notifications = [{
-      text: 'Welcome to',
-      url: 'https://www.homeday.de',
-      urlLabel: 'Homeday',
-    }];
+    const notifications = [
+      {
+        text: 'Welcome to',
+        url: 'https://www.homeday.de',
+        urlLabel: 'Homeday',
+      },
+    ];
     const { wrapper } = build({
       props: { notifications },
       scopedSlots: {

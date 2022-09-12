@@ -22,15 +22,20 @@
         />
       </picture>
 
-      <iframe v-else class="gallery-media__object-video" :src="item.video" frameborder="0" @load="hideThumbnail" />
+      <iframe
+        v-else
+        class="gallery-media__object-video"
+        :src="item.video"
+        frameborder="0"
+        @load="hideThumbnail"
+      />
 
       <div
         v-if="hasThumbnail"
         class="gallery-media__object-thumbnail"
-        :class="{ 'isVisible': showThumbnail }"
+        :class="{ isVisible: showThumbnail }"
         :style="{ 'background-image': `url('${item.thumbnail}')` }"
       />
-
     </div>
   </component>
 </template>

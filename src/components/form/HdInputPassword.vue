@@ -8,9 +8,10 @@
     class="password-input"
   >
     <template #input-right>
-      <button v-if="isVisibilityToggleVisible"
+      <button
+        v-if="isVisibilityToggleVisible"
         class="password-input__visibility-toggle"
-        :class="{'password-input__visibility-toggle--visible': type === 'text'}"
+        :class="{ 'password-input__visibility-toggle--visible': type === 'text' }"
         @click="toggleVisibility"
         type="button"
       >
@@ -33,9 +34,7 @@ import formField from './formFieldMixin';
 
 export default {
   name: 'HdInputPassword',
-  mixins: [
-    formField,
-  ],
+  mixins: [formField],
   inheritAttrs: false,
   components: {
     HdInput,
@@ -59,7 +58,9 @@ export default {
   },
   computed: {
     computedValue: {
-      get() { return this.value; },
+      get() {
+        return this.value;
+      },
       set(value) {
         this.$emit('input', value);
       },
@@ -113,7 +114,7 @@ $icon-color: $quaternary-color;
       border-top: 1px solid $secondary-bg;
       transform-origin: left;
       transform: rotateZ(45deg) scaleX(1);
-      transition: transform .3s;
+      transition: transform 0.3s;
     }
     &--visible {
       &:after {
