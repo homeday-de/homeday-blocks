@@ -1,15 +1,7 @@
 <template>
   <div class="notifications">
-    <transition
-      name="notifications-slide-down"
-      tag="div"
-      appear
-    >
-      <HdNotification
-        v-if="notification"
-        v-bind="notification"
-        :key="notification.id"
-      >
+    <transition name="notifications-slide-down" tag="div" appear>
+      <HdNotification v-if="notification" v-bind="notification" :key="notification.id">
         <slot :notification="notification" />
       </HdNotification>
     </transition>
@@ -48,11 +40,13 @@ export default {
   height: auto;
 }
 
-.notifications-slide-down-enter-active, .notifications-slide-down-leave-active {
+.notifications-slide-down-enter-active,
+.notifications-slide-down-leave-active {
   transition: all ($time-s * 2) ease-in-out;
 }
 
-.notifications-slide-down-enter, .notifications-slide-down-leave-to {
+.notifications-slide-down-enter,
+.notifications-slide-down-leave-to {
   position: absolute;
   top: 0;
   right: 0;

@@ -1,16 +1,10 @@
 <template>
-  <div
-    class="notification"
-    :class="[`notification--${type}`]"
-  >
-    <HdIcon
-      :src="icon"
-      class="notification__icon"
-    />
+  <div class="notification" :class="[`notification--${type}`]">
+    <HdIcon :src="icon" class="notification__icon" />
     <div
       class="notification__content"
       :class="{
-        'notification__content--centered': centered
+        'notification__content--centered': centered,
       }"
     >
       <slot>

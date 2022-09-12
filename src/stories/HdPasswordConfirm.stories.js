@@ -1,11 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
-import {
-  number,
-  boolean,
-  text,
-} from '@storybook/addon-knobs';
+import { number, boolean, text } from '@storybook/addon-knobs';
 import HdPasswordConfirm from 'homeday-blocks/src/components/form/HdPasswordConfirm.vue';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 import icon from './assets/ic_lock.svg';
@@ -19,15 +15,17 @@ storiesOf('Components/Form/HdPasswordConfirm', module)
     `,
     methods: { onDataChange: action('dataChange') },
   }))
-  .add('with validity check 🎛', () => ({
-    components: { HdPasswordConfirm },
-    props: {
-      min: {
-        type: Number,
-        default: number('min', 5),
+  .add(
+    'with validity check 🎛',
+    () => ({
+      components: { HdPasswordConfirm },
+      props: {
+        min: {
+          type: Number,
+          default: number('min', 5),
+        },
       },
-    },
-    template: `
+      template: `
       <div>
         <hd-password-confirm
           ref="password"
@@ -38,21 +36,25 @@ storiesOf('Components/Form/HdPasswordConfirm', module)
         <p style="margin-top: 8px">Is valid: {{ valid }}</p>
       </div>
     `,
-    methods: {
-      check() {
-        this.valid = this.$refs.password.validate();
+      methods: {
+        check() {
+          this.valid = this.$refs.password.validate();
+        },
       },
-    },
-    data() {
-      return {
-        password: '',
-        valid: false,
-      };
-    },
-  }), { percy: { skip: true } })
-  .add('with strength bar style 🎛', () => ({
-    components: { HdPasswordConfirm },
-    template: `
+      data() {
+        return {
+          password: '',
+          valid: false,
+        };
+      },
+    }),
+    { percy: { skip: true } }
+  )
+  .add(
+    'with strength bar style 🎛',
+    () => ({
+      components: { HdPasswordConfirm },
+      template: `
     <hd-password-confirm
       @dataChange="onDataChange"
       :min="6"
@@ -60,20 +62,22 @@ storiesOf('Components/Form/HdPasswordConfirm', module)
       :withStrength="withStrength"
     />
     `,
-    methods: { onDataChange: action('dataChange') },
-    props: {
-      withStrength: {
-        type: Boolean,
-        default: boolean('withStrength', true),
+      methods: { onDataChange: action('dataChange') },
+      props: {
+        withStrength: {
+          type: Boolean,
+          default: boolean('withStrength', true),
+        },
       },
-    },
-    watch: {
-
-    },
-  }), { percy: { skip: true } })
-  .add('without strength 🎛', () => ({
-    components: { HdPasswordConfirm },
-    template: `
+      watch: {},
+    }),
+    { percy: { skip: true } }
+  )
+  .add(
+    'without strength 🎛',
+    () => ({
+      components: { HdPasswordConfirm },
+      template: `
     <hd-password-confirm
       @dataChange="onDataChange"
       :min="6"
@@ -81,14 +85,16 @@ storiesOf('Components/Form/HdPasswordConfirm', module)
       :withStrength="withStrength"
     />
     `,
-    methods: { onDataChange: action('dataChange') },
-    props: {
-      withStrength: {
-        type: Boolean,
-        default: boolean('withStrength', false),
+      methods: { onDataChange: action('dataChange') },
+      props: {
+        withStrength: {
+          type: Boolean,
+          default: boolean('withStrength', false),
+        },
       },
-    },
-  }), { percy: { skip: true } })
+    }),
+    { percy: { skip: true } }
+  )
   .add('with icon 🎛', () => ({
     components: { HdPasswordConfirm },
     template: `

@@ -1,5 +1,5 @@
 <template>
-  <div class="gallery-media">
+  <component :is="component" :to="to" class="gallery-media">
     <div class="gallery-media__object">
       <div :style="sizerStyles" />
 
@@ -22,17 +22,22 @@
         />
       </picture>
 
-      <iframe v-else class="gallery-media__object-video" :src="item.video" frameborder="0" @load="hideThumbnail" />
+      <iframe
+        v-else
+        class="gallery-media__object-video"
+        :src="item.video"
+        frameborder="0"
+        @load="hideThumbnail"
+      />
 
       <div
         v-if="hasThumbnail"
         class="gallery-media__object-thumbnail"
-        :class="{ 'isVisible': showThumbnail }"
+        :class="{ isVisible: showThumbnail }"
         :style="{ 'background-image': `url('${item.thumbnail}')` }"
       />
-
     </div>
-  </div>
+  </component>
 </template>
 
 <script>
@@ -47,6 +52,10 @@ export default {
       type: Number,
       default: 16 / 9,
     },
+    to: {
+      type: Object,
+      default: undefined,
+    },
   },
   data() {
     return {
@@ -54,6 +63,9 @@ export default {
     };
   },
   computed: {
+    component() {
+      return this.to ? 'router-link' : 'div';
+    },
     hasThumbnail() {
       return typeof this.item.thumbnail === 'string' && this.item.thumbnail;
     },

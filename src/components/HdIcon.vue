@@ -1,11 +1,5 @@
 <template>
-  <inline-svg
-    :src="src"
-    :id="id"
-    :title="title"
-    :transform-source="transform"
-    v-bind="$attrs"
-  />
+  <inline-svg :src="src" :id="id" :title="title" :transform-source="transform" v-bind="$attrs" />
 </template>
 
 <script>
@@ -93,7 +87,7 @@ export default {
 
       const classNameMatches = _intersection(
         (classNames || '').split(' '),
-        Object.keys(this.fillFromClass),
+        Object.keys(this.fillFromClass)
       );
 
       return this.fillFromClass[classNameMatches[0]];

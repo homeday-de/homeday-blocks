@@ -36,7 +36,8 @@ storiesOf('Components/HdTable', module)
   }))
   .add('no-wrap (fixed, left-aligned)', () => ({
     components: { HdTable },
-    template: '<hd-table :header="header" :body="body" align="left" :fixed="true" :no-wrap="true"></hd-table>',
+    template:
+      '<hd-table :header="header" :body="body" align="left" :fixed="true" :no-wrap="true"></hd-table>',
     data() {
       return {
         ...MOVIES_TABLE,
@@ -62,9 +63,7 @@ storiesOf('Components/HdTable', module)
     data() {
       return {
         header: MOVIES_TABLE.header,
-        body: MOVIES_TABLE.body.map(({
-          title, year, rating, stars,
-        }) => ({
+        body: MOVIES_TABLE.body.map(({ title, year, rating, stars }) => ({
           title,
           year,
           rating,

@@ -1,6 +1,6 @@
 <template>
   <form class="dynamicForm" @submit.prevent="submit" novalidate>
-    <slot name="before"/>
+    <slot name="before" />
     <div v-for="(line, i) in lines" class="dynamicForm__line" :key="`line-${i}`">
       <component
         v-for="item in getItemsArray(line)"
@@ -17,11 +17,7 @@
       />
     </div>
     <slot name="before-button" />
-    <HdButton
-      v-if="submitLabel"
-      modifier="primary"
-      class="dynamicForm__submit"
-    >
+    <HdButton v-if="submitLabel" modifier="primary" class="dynamicForm__submit">
       {{ submitLabel }}
     </HdButton>
     <slot name="after" />
@@ -84,11 +80,11 @@ export default Vue.extend({
     },
   },
   methods: {
-    initializeFormData(array: any[]): void {
-      const flattenedArray = array.reduce((flatArray, item) => [
-        ...flatArray,
-        ...this.getItemsArray(item),
-      ], []);
+    initializeFormData(array) {
+      const flattenedArray = array.reduce(
+        (flatArray, item) => [...flatArray, ...this.getItemsArray(item)],
+        []
+      );
       flattenedArray.forEach((item) => {
         this.$set(this.formData, item.name, item.initialValue);
       });

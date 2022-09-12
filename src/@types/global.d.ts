@@ -1,1 +1,1 @@
-export type customRules = { validate: (value: unknown) => boolean, errorMessage: string }[];
+export type customRules = { validate: (value: unknown) => boolean; errorMessage: string }[];

@@ -10,15 +10,23 @@ const debouncedResize = debounce(() => {
 }, 300);
 
 function addEventListener() {
-  window.addEventListener('resize', () => {
-    throttledResize();
-    debouncedResize();
-  }, false);
+  window.addEventListener(
+    'resize',
+    () => {
+      throttledResize();
+      debouncedResize();
+    },
+    false
+  );
 
-  window.addEventListener('orientationchange', () => {
-    throttledResize();
-    debouncedResize();
-  }, false);
+  window.addEventListener(
+    'orientationchange',
+    () => {
+      throttledResize();
+      debouncedResize();
+    },
+    false
+  );
 }
 
 if (typeof window === 'object') {

@@ -8,6 +8,7 @@ module.exports = {
     '@vue/airbnb',
     '@vue/typescript/recommended',
     'plugin:import/typescript',
+    'plugin:prettier/recommended',
   ],
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',

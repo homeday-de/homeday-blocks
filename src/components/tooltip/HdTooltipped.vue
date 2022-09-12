@@ -1,8 +1,10 @@
 <template>
-  <div v-if="component !== undefined"
+  <div
+    v-if="component !== undefined"
     v-hd-tooltip="{ value, direction }"
     :is="component"
-    v-bind="props"></div>
+    v-bind="props"
+  ></div>
   <span v-else>
     <slot></slot>
   </span>
@@ -17,7 +19,6 @@ export default {
     component: Object,
     props: Object,
   },
-  computed: {
-  },
+  computed: {},
 };
 </script>

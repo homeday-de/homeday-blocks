@@ -1,18 +1,14 @@
 <template>
   <button
     :class="{
-      'arrowButton': true,
+      arrowButton: true,
       [`arrowButton--${direction}`]: true,
     }"
     autocomplete="off"
     :disabled="disabled"
     type="button"
   >
-    <HdIcon
-      :src="chevronIcon"
-      :transform="`rotate(${rotation})`"
-      class="arrowButton__icon"
-    />
+    <HdIcon :src="chevronIcon" :transform="`rotate(${rotation})`" class="arrowButton__icon" />
   </button>
 </template>
 
