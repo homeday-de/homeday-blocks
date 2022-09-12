@@ -28,7 +28,8 @@
   </form>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue';
 import HdInput from 'homeday-blocks/src/components/form/HdInput.vue';
 import HdCheckbox from 'homeday-blocks/src/components/form/HdCheckbox.vue';
 import HdRadio from 'homeday-blocks/src/components/form/HdRadio.vue';
@@ -42,7 +43,7 @@ import HdGoogleAutocomplete from 'homeday-blocks/src/components/form/HdGoogleAut
 import HdInputFormatter from 'homeday-blocks/src/components/form/HdInputFormatter.vue';
 import HdButton from 'homeday-blocks/src/components/buttons/HdButton.vue';
 
-export default {
+export default Vue.extend({
   name: 'HdDynamicForm',
   components: {
     HdButton,
@@ -61,7 +62,7 @@ export default {
       default: undefined,
     },
   },
-  data() {
+  data(): { formData: any } {
     return {
       formData: {},
     };
@@ -69,21 +70,21 @@ export default {
   watch: {
     formData: {
       deep: true,
-      handler(formData) {
+      handler(formData): void {
         this.$emit('input', formData);
       },
     },
   },
-  created() {
+  created(): void {
     this.initializeFormData(this.items);
   },
   computed: {
-    lines() {
+    lines(): any[] {
       return this.items;
     },
   },
   methods: {
-    initializeFormData(array) {
+    initializeFormData(array: any[]): void {
       const flattenedArray = array.reduce((flatArray, item) => [
         ...flatArray,
         ...this.getItemsArray(item),
@@ -92,34 +93,34 @@ export default {
         this.$set(this.formData, item.name, item.initialValue);
       });
     },
-    getInvalidFields() {
-      return this.$refs.fields.filter((field) => {
+    getInvalidFields(): any[] | undefined {
+      return (this.$refs.fields as Vue[]).filter((field: any) => {
         if (field.validate) {
           return !field.validate();
         }
         return false;
       });
     },
-    validate() {
-      return this.getInvalidFields().length === 0;
+    validate(): boolean {
+      return this.getInvalidFields()?.length === 0;
     },
-    submit() {
+    submit(): void {
       const invalidFields = this.getInvalidFields();
 
       this.$emit('submit', {
         data: this.formData,
-        isValid: invalidFields.length === 0,
+        isValid: invalidFields?.length === 0,
         invalidFields,
       });
     },
     // Return an array with one item if the current line is an object and not an array
-    getItemsArray(line) {
+    getItemsArray(line: any): any[] {
       if (Array.isArray(line)) {
         return line;
       }
       return [line];
     },
-    getComponent(type) {
+    getComponent(type: string): any | null {
       switch (type) {
         case 'input':
           return HdInput;
@@ -147,14 +148,14 @@ export default {
           return null;
       }
     },
-    handleBlur(item) {
+    handleBlur(item: any): void {
       this.$emit('blur', item);
     },
-    handleFocus(item) {
+    handleFocus(item: any): void {
       this.$emit('focus', item);
     },
   },
-};
+});
 </script>
 
 <style lang="scss">
