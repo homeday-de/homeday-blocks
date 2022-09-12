@@ -202,6 +202,7 @@ export default {
               lng: null,
               name: this.value,
             });
+            return;
           }
 
           this.lastLocation = {
