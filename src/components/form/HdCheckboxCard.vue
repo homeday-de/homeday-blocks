@@ -51,7 +51,7 @@
 </template>
 
 <script lang="ts">
-import Vue, { PropOptions, PropType } from 'vue';
+import Vue, { PropOptions, PropType, VueConstructor } from 'vue';
 import _isBoolean from 'lodash/fp/isBoolean';
 import deepmerge from 'deepmerge';
 import { getMessages, Language, Messages } from 'homeday-blocks/src/lang';
@@ -61,7 +61,16 @@ import HdCheckboxIndicator from './HdCheckboxIndicator.vue';
 
 export const name = 'HdCheckboxCard';
 
-export default Vue.extend({
+type VueInstance = VueConstructor<
+  Vue & {
+    $refs: {
+      checkbox: HTMLElement;
+      label: HTMLElement;
+    };
+  }
+>;
+
+export default (Vue as VueInstance).extend({
   name,
   mixins: [formFieldMixin],
   components: {
