@@ -1,9 +1,9 @@
 <script lang="ts">
-import Vue, { PropOptions, VNode } from 'vue';
+import Vue, { PropOptions, PropType, VNode } from 'vue';
 import deepmerge from 'deepmerge';
 import _getOr from 'lodash/fp/getOr';
 import { customRules } from '@/@types/global';
-import { getMessages, Messages } from 'homeday-blocks/src/lang';
+import { getMessages, Language, Messages } from 'homeday-blocks/src/lang';
 import { cloneVNodeElement } from 'homeday-blocks/src/services/utils';
 import { name as HdRadioCardName } from 'homeday-blocks/src/components/form/HdRadioCard.vue';
 import formFieldMixin from './formFieldMixin';
@@ -39,7 +39,7 @@ export default Vue.extend({
       default: () => ({}),
     },
     lang: {
-      type: String,
+      type: String as PropType<Language>,
       default: 'de',
     },
     customRules: {
@@ -72,7 +72,7 @@ export default Vue.extend({
   },
   computed: {
     t(): Messages {
-      return deepmerge(getMessages(this.lang), this.texts);
+      return deepmerge(getMessages(this.lang as Language), this.texts);
     },
     hasValidationErrors(): boolean {
       return Boolean(this.error);
