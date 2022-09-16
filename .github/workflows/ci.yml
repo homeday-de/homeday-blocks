@@ -20,6 +20,8 @@ jobs:
           cache: npm
       - name: Install dependencies ⬇️
         run: npm ci
+      - name: Check Types 🆗
+        run: npm run type-check
       - name: Run lint 👀
         run: npm run lint:ci
 

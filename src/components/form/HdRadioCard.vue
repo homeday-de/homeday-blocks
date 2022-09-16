@@ -47,16 +47,25 @@
 </template>
 
 <script lang="ts">
-import Vue, { PropOptions } from 'vue';
+import Vue, { PropOptions, PropType, VueConstructor } from 'vue';
 import deepmerge from 'deepmerge';
 import { customRules } from '@/@types/global';
-import { getMessages, Messages } from 'homeday-blocks/src/lang';
+import { getMessages, Language, Messages } from 'homeday-blocks/src/lang';
 import formFieldMixin from './formFieldMixin';
 import HdRadioIndicator from './HdRadioIndicator.vue';
 
+type VueInstance = VueConstructor<
+  Vue & {
+    $refs: {
+      radio: HTMLElement;
+      label: HTMLElement;
+    };
+  }
+>;
+
 export const name = 'HdRadioCard';
 
-export default Vue.extend({
+export default (Vue as VueInstance).extend({
   name,
   mixins: [formFieldMixin],
   components: {
@@ -90,7 +99,7 @@ export default Vue.extend({
       default: () => ({}),
     },
     lang: {
-      type: String,
+      type: String as PropType<Language>,
       default: 'de',
     },
     customRules: {
@@ -123,7 +132,7 @@ export default Vue.extend({
   },
   computed: {
     t(): Messages {
-      return deepmerge(getMessages(this.lang), this.texts);
+      return deepmerge(getMessages(this.lang as Language), this.texts);
     },
     isChecked(): boolean {
       return this.nativeValue === this.value;
