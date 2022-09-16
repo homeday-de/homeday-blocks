@@ -111,7 +111,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
 
 .text-field {

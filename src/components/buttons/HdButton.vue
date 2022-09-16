@@ -105,7 +105,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import 'homeday-blocks/src/styles/_variables.scss';
 
 .btn {
