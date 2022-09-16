@@ -118,7 +118,9 @@ export default {
     },
   },
   created() {
-    this.initAutocomplete();
+    if (typeof window !== 'undefined') {
+      this.initAutocomplete();
+    }
   },
   methods: {
     async initAutocomplete() {
