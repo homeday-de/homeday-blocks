@@ -1,16 +1,12 @@
 <template>
   <dl class="dashed-list">
     <template v-for="(item, index) in items">
-      <h4
-        v-if="item.title"
-        :key="index"
-        class="dashed-list__title"
-      >
+      <h4 v-if="item.title" :key="index" class="dashed-list__title">
         {{ item.title }}
       </h4>
 
       <div
-        v-for="({ label, value, secondaryValue }, subIndex) in (item.items || [item])"
+        v-for="({ label, value, secondaryValue }, subIndex) in item.items || [item]"
         :key="`${index}${subIndex}`"
         class="dashed-list__item"
         :class="{
@@ -67,7 +63,7 @@ $leaders-border: 1px dashed getShade($neutral-gray, 50);
     flex: 1;
     display: inline-flex;
     border-bottom: $leaders-border;
-    margin-bottom: .47em;
+    margin-bottom: 0.47em;
     margin-left: 0.1em;
     margin-right: 0.1em;
   }
@@ -115,7 +111,7 @@ $leaders-border: 1px dashed getShade($neutral-gray, 50);
       margin-right: 0.1em;
 
       > span::after {
-        content: "";
+        content: '';
         position: absolute;
         border-bottom: $leaders-border;
         width: 100%;

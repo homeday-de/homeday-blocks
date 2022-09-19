@@ -1,4 +1,4 @@
-import { HdCheckbox } from 'homeday-blocks';
+import HdCheckbox from 'homeday-blocks/src/components/form/HdCheckbox.vue';
 
 export default {
   title: 'Components/Form/HdCheckbox',

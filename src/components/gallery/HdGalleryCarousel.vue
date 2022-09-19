@@ -5,35 +5,45 @@
       'gallery-carousel--with-pager-inside': pagerInside,
     }"
   >
-    <div
-      class="gallery-carousel__wrap"
-      tabindex="0"
-      @keydown.self="maybeSelectItem"
-    >
-      <flickity
-        ref="flickity"
-        :options="flickityOptions"
-      >
-        <div
+    <div class="gallery-carousel__wrap" tabindex="0" @keydown.self="maybeSelectItem">
+      <flickity ref="flickity" :options="flickityOptions">
+        <component
+          :is="component"
+          :to="to"
           class="gallery-carousel__item"
           v-for="(item, i) in items"
           :key="i"
           :class="{
             'is-active': shouldShowActiveState(i),
-          } "
+          }"
         >
           <div :style="sizerStyles" />
 
           <!-- the item.thumbnail field is used as default value for the item image -->
           <!-- IE11 uses this value only because do not support the picture element -->
           <picture class="gallery-carousel__picture">
-            <source v-for="(source, media) in item.thumbnailPictureSources"
-                    :key="media"
-                    :media="`(${media})`" :srcset="source"
-            >
-            <img :src="item.thumbnail" :alt="item.caption" :srcset="item.thumbnailSrcSet" :style="{objectFit}">
+            <source
+              v-for="(source, media) in item.thumbnailPictureSources"
+              :key="media"
+              :media="`(${media})`"
+              :srcset="source"
+            />
+            <img
+              :src="item.thumbnail"
+              :alt="item.caption"
+              :srcset="item.thumbnailSrcSet"
+              :style="{ objectFit }"
+              loading="lazy"
+            />
           </picture>
-        </div>
+
+          <iframe
+            v-if="item.video && shouldShowActiveState(i) && isMobileView()"
+            :src="item.video"
+            class="gallery-carousel__video"
+            frameborder="0"
+          />
+        </component>
       </flickity>
       <div class="gallery-carousel__pager">
         <HdPager
@@ -42,6 +52,9 @@
           :white="pagerInside"
           v-model="currentIndex"
         />
+      </div>
+      <div v-if="mobileCounterBadge" class="gallery-carousel__info">
+        {{ `${value + 1}/${items.length}` }}
       </div>
     </div>
   </div>
@@ -72,6 +85,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    mobileCounterBadge: {
+      type: Boolean,
+      default: false,
+    },
     aspectRatio: {
       type: Number,
       default: 16 / 9,
@@ -83,6 +100,10 @@ export default {
     objectFit: {
       type: String,
       default: 'cover',
+    },
+    to: {
+      type: Object,
+      default: undefined,
     },
   },
   data() {
@@ -100,6 +121,9 @@ export default {
     };
   },
   computed: {
+    component() {
+      return this.to ? 'router-link' : 'div';
+    },
     sizerStyles() {
       return {
         paddingTop: `${100 / this.aspectRatio}%`,
@@ -122,9 +146,11 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      this.updatePagerItemsCount();
-      this.$refs.flickity.on('change', this.updateCurrentIndex);
-      this.$refs.flickity.on('staticClick', this.onStaticClick);
+      if (this.$refs.flickity) {
+        this.updatePagerItemsCount();
+        this.$refs.flickity.on('change', this.updateCurrentIndex);
+        this.$refs.flickity.on('staticClick', this.onStaticClick);
+      }
     });
     this.addResizeEvents();
   },
@@ -151,7 +177,7 @@ export default {
 
       // If we are showing one item per slide, we update the index on slide change
       if (slides.length === cells.length) {
-        this.$emit('input', itemIndex);
+        this.$emit('input', itemIndex || 0);
       }
     },
     onStaticClick(event, pointer, cellElement, cellIndex) {
@@ -212,6 +238,11 @@ export default {
 
       this.$refs.flickity.select(targetSlide);
     },
+    isMobileView() {
+      const slidesCount = this.$refs.flickity.slides().length;
+      const cellsCount = this.$refs.flickity.cells().length;
+      return slidesCount === cellsCount;
+    },
   },
 };
 </script>
@@ -244,11 +275,32 @@ export default {
       position: absolute;
       bottom: 0px;
       width: 100%;
-      background: linear-gradient(to top, rgba($quaternary-color, .45), rgba($quaternary-color, 0));
+      background: linear-gradient(
+        to top,
+        rgba($quaternary-color, 0.45),
+        rgba($quaternary-color, 0)
+      );
 
       @media (min-width: $break-tablet) {
         display: none;
       }
+    }
+  }
+
+  &__info {
+    position: absolute;
+    right: $sp-xs;
+    top: $sp-xs;
+    padding-right: $sp-s;
+    padding-left: $sp-s;
+    background-color: rgba(0, 0, 0, 0.8);
+    @include font('text-xsmall');
+    font-weight: 600;
+    color: $white;
+    border-radius: 2px;
+
+    @media (min-width: $break-tablet) {
+      display: none;
     }
   }
 
@@ -286,7 +338,8 @@ export default {
     }
   }
 
-  &__picture {
+  &__picture,
+  &__video {
     position: absolute;
     top: 0;
     right: 0;
@@ -301,6 +354,11 @@ export default {
       width: 100%;
       height: 100%;
     }
+  }
+
+  &__video {
+    width: 100%;
+    height: 100%;
   }
 }
 </style>

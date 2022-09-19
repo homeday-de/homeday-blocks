@@ -1,5 +1,5 @@
 <template>
-  <span ref="tooltip" class='hd-tooltip'></span>
+  <span ref="tooltip" class="hd-tooltip"></span>
 </template>
 
 <script>
@@ -11,7 +11,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
 
@@ -29,20 +28,32 @@ export default {
   pointer-events: none;
   opacity: 0;
   z-index: 1000;
-  box-shadow: 0 2px 5px 0 rgba(0,0,0,.2);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
   &.show {
-    animation: fadeInBottom .4s ease-in-out forwards;
+    animation: fadeInBottom 0.4s ease-in-out forwards;
     &.left {
-      animation: fadeInLeft .4s ease-in-out forwards;
+      animation: fadeInLeft 0.4s ease-in-out forwards;
     }
   }
   @keyframes fadeInBottom {
-    from { opacity: 0; transform: translateY(-4px); }
-    to { opacity: 1; transform: translateY(0px); }
+    from {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0px);
+    }
   }
   @keyframes fadeInLeft {
-    from { opacity: 0; transform: translateX(4px); }
-    to { opacity: 1; transform: translateX(0px); }
+    from {
+      opacity: 0;
+      transform: translateX(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0px);
+    }
   }
 }
 </style>

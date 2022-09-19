@@ -1,14 +1,8 @@
 <template>
   <div class="gallery-placeholder">
-    <div
-      :style="sizerStyles"
-      class="gallery-placeholder__sizer"
-    />
+    <div :style="sizerStyles" class="gallery-placeholder__sizer" />
     <div class="gallery-placeholder__content">
-      <img
-        :src="icon"
-        class="gallery-placeholder__content-icon"
-      >
+      <img :src="icon" class="gallery-placeholder__content-icon" />
       <p class="gallery-placeholder__content-text">
         {{ text }}
       </p>

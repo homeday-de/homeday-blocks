@@ -48,7 +48,9 @@ describe('HdPasswordConfirm', () => {
   it('shows password strength as a bar if the prop `strengthBarStyle` is set to true', async () => {
     const wrapper = wrapperBuilder();
 
-    expect(wrapper.find(STRENGTH_METER_SELECTOR).classes()).not.toContain(STRENGTH_BAR_VISIBLE_CLASS);
+    expect(wrapper.find(STRENGTH_METER_SELECTOR).classes()).not.toContain(
+      STRENGTH_BAR_VISIBLE_CLASS
+    );
 
     await wrapper.setProps({ strengthBarStyle: true });
 

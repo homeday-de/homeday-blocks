@@ -1,4 +1,5 @@
-import { HdRadio, HdButton } from 'homeday-blocks';
+import HdRadio from 'homeday-blocks/src/components/form/HdRadio.vue';
+import HdButton from 'homeday-blocks/src/components/buttons/HdButton.vue';
 import ITEMS from './mocks/FORM_ITEMS';
 
 export default {
@@ -24,13 +25,15 @@ export default {
       control: { type: 'boolean' },
     },
     texts: {
-      description: `For now the only text used is the required validation field. <code lang="javascript">${JSON.stringify({
-        FORM: {
-          VALIDATION: {
-            REQUIRED: 'Dies ist ein Pflichtfeld.',
+      description: `For now the only text used is the required validation field. <code lang="javascript">${JSON.stringify(
+        {
+          FORM: {
+            VALIDATION: {
+              REQUIRED: 'Dies ist ein Pflichtfeld.',
+            },
           },
-        },
-      })}</code>`,
+        }
+      )}</code>`,
       control: {
         type: 'object',
       },

@@ -49,10 +49,7 @@ describe('HdInputPassword', () => {
   it('check if the input type is "password"', () => {
     const wrapper = wrapperBuilder();
 
-    expect(wrapper
-      .find('input')
-      .attributes()
-      .type).toBe('password');
+    expect(wrapper.find('input').attributes().type).toBe('password');
   });
 
   it('shows the visibility toggle', () => {
@@ -61,7 +58,7 @@ describe('HdInputPassword', () => {
     expect(wrapper.find(VISIBILITY_TOGGLE_SELECTOR).exists()).toBe(true);
   });
 
-  it('toggles the password\'s visibility', async () => {
+  it("toggles the password's visibility", async () => {
     const wrapper = wrapperBuilder();
     const toggle = wrapper.find(VISIBILITY_TOGGLE_SELECTOR);
 
@@ -80,7 +77,7 @@ describe('HdInputPassword', () => {
     expect(toggle.classes()).not.toContain(PASSWORD_VISIBLE_CLASS);
   });
 
-  it('doesn\'t show visibility toggle if empty', () => {
+  it("doesn't show visibility toggle if empty", () => {
     const wrapper = wrapperBuilder({
       props: {
         value: '',

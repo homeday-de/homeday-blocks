@@ -1,7 +1,4 @@
-import {
-  wrapperFactoryBuilder,
-  getLastEventPayload,
-} from 'tests/unit/helpers';
+import { wrapperFactoryBuilder, getLastEventPayload } from 'tests/unit/helpers';
 import HdRange from '@/components/form/HdRange.vue';
 
 const TRACK_SELECTOR = '.range__track';
@@ -228,7 +225,9 @@ describe('HdRange', () => {
     });
 
     expect(wrapper.find(TRACK_SELECTOR).attributes().style).toMatch(`background: ${TEST_COLOR1}`);
-    expect(wrapper.find(PROGRESS_SELECTOR).attributes().style).toMatch(`background: ${TEST_COLOR2}`);
+    expect(wrapper.find(PROGRESS_SELECTOR).attributes().style).toMatch(
+      `background: ${TEST_COLOR2}`
+    );
   });
 
   it('calls `updateUI` on resize', () => {

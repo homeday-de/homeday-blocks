@@ -6,17 +6,17 @@ const { gitmojis } = require('gitmojis');
 
 const TEMPLATE_DIR = './.semantic-release/templates';
 
-const template = readFileSync(
-  join(__dirname, TEMPLATE_DIR, 'default-template.hbs'),
-).toString();
+const template = readFileSync(join(__dirname, TEMPLATE_DIR, 'default-template.hbs')).toString();
 const commitTemplate = readFileSync(
-  join(__dirname, TEMPLATE_DIR, 'commit-template.hbs'),
+  join(__dirname, TEMPLATE_DIR, 'commit-template.hbs')
 ).toString();
 
 module.exports = {
+  branches: ['master', { name: 'beta', prerelease: true }],
   plugins: [
     [
-      'semantic-release-gitmoji', {
+      'semantic-release-gitmoji',
+      {
         releaseRules: {
           major: gitmojis.filter(({ semver }) => semver === 'major').map(({ code }) => code),
           minor: gitmojis.filter(({ semver }) => semver === 'minor').map(({ code }) => code),
@@ -36,7 +36,9 @@ module.exports = {
               allCommits
                 .filter((commit) => commit !== undefined)
                 .forEach((commit) => {
-                  const gitmoji = gitmojis.find(({ emoji }) => emoji.localeCompare(commit.gitmoji) === 0);
+                  const gitmoji = gitmojis.find(
+                    ({ emoji }) => emoji.localeCompare(commit.gitmoji) === 0
+                  );
 
                   if (gitmoji === undefined) {
                     return;
@@ -44,10 +46,7 @@ module.exports = {
 
                   groupedCommits = {
                     ...groupedCommits,
-                    [gitmoji.semver]: [
-                      ...groupedCommits[gitmoji.semver] || [],
-                      commit,
-                    ],
+                    [gitmoji.semver]: [...(groupedCommits[gitmoji.semver] || []), commit],
                   };
                 });
 

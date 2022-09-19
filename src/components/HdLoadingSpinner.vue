@@ -1,9 +1,5 @@
 <template>
-  <svg
-    class="loading-spinner"
-    viewBox="0 0 66 66"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+  <svg class="loading-spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
     <circle
       class="loading-spinner__path"
       fill="none"

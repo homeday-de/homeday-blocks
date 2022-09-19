@@ -1,8 +1,5 @@
 <script>
-export const TYPES = [
-  'primary',
-  'secondary',
-];
+import TYPES from 'homeday-blocks/src/components/HdLinkTypes';
 
 export default {
   name: 'HdLink',
@@ -21,10 +18,7 @@ export default {
   computed: {
     computedClasses() {
       const baseClass = 'hd-link';
-      const classes = [
-        baseClass,
-        `${baseClass}--${this.modifier}`,
-      ];
+      const classes = [baseClass, `${baseClass}--${this.modifier}`];
 
       return classes;
     },
@@ -41,11 +35,7 @@ export default {
       };
     }
 
-    return createElement(
-      tag,
-      data,
-      this.$slots.default,
-    );
+    return createElement(tag, data, this.$slots.default);
   },
 };
 </script>

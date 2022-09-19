@@ -1,19 +1,11 @@
 <template>
   <transition name="modal">
-    <article
-      ref="hd-modal"
-      class="hd-modal"
-      :class="{ 'hd-modal--with-icon': withIcon }"
-    >
+    <article ref="hd-modal" class="hd-modal" :class="{ 'hd-modal--with-icon': withIcon }">
       <div class="hd-modal__overlay" @click="onClose" />
       <slot>
         <div class="hd-modal__container">
           <header class="hd-modal__header">
-            <hd-icon
-              v-if="withIcon"
-              :src="iconSrc"
-              class="hd-modal__modal-icon"
-            />
+            <hd-icon v-if="withIcon" :src="iconSrc" class="hd-modal__modal-icon" />
             <h3 class="hd-modal__title">
               <slot name="title" />
             </h3>
@@ -25,16 +17,12 @@
 
           <footer
             :class="{
-            'hd-modal__footer': !isCustomFooter,
-            'hd-modal__footer--wide': isWide && !isCustomFooter,
-          }"
+              'hd-modal__footer': !isCustomFooter,
+              'hd-modal__footer--wide': isWide && !isCustomFooter,
+            }"
           >
             <slot name="footer">
-              <slot
-                v-for="(button, name) in actions"
-                :name="name"
-                :value="button"
-              >
+              <slot v-for="(button, name) in actions" :name="name" :value="button">
                 <hd-button
                   :key="`action-${name}`"
                   v-bind="button"
@@ -53,10 +41,7 @@
             class="hd-modal__close-button"
             @click="onClose()"
           >
-            <hd-icon
-              :src="closeIcon"
-              class="hd-modal__close-icon"
-            />
+            <hd-icon :src="closeIcon" class="hd-modal__close-icon" />
           </button>
         </div>
       </slot>
@@ -96,9 +81,12 @@ export default {
       type: Array,
       default: () => [],
       validator: (actions) => {
-        const indexOfActionMissingName = actions.findIndex((action) => typeof action.name !== 'string');
+        const indexOfActionMissingName = actions.findIndex(
+          (action) => typeof action.name !== 'string'
+        );
 
         if (indexOfActionMissingName >= 0) {
+          // eslint-disable-next-line no-console
           console.warn(`The attribute "name" is required on actions[${indexOfActionMissingName}]`);
           return false;
         }

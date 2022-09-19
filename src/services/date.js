@@ -28,21 +28,24 @@ export const getDaysDateRange = (startDate, endDate) => {
 };
 
 // Returns array of unique date strings from original array
-export const getIntlDateString = (locale, datesArray, localStringArgs) => datesArray.reduce((accumulator, currentItem) => {
-  const currentDay = new Date(currentItem).toLocaleString(
-    locale,
-    localStringArgs,
-  );
-  if (accumulator.indexOf(currentDay) === -1) accumulator.push(currentDay);
+export const getIntlDateString = (locale, datesArray, localStringArgs) =>
+  datesArray.reduce((accumulator, currentItem) => {
+    const currentDay = new Date(currentItem).toLocaleString(locale, localStringArgs);
+    if (accumulator.indexOf(currentDay) === -1) accumulator.push(currentDay);
 
-  return accumulator;
-}, []);
+    return accumulator;
+  }, []);
 
-export const generateDateCycles = (cycleLengthWeeks, amountOfCycles, startDateOffset, startDate = new Date()) => {
+export const generateDateCycles = (
+  cycleLengthWeeks,
+  amountOfCycles,
+  startDateOffset,
+  startDate = new Date()
+) => {
   const WEEK_DAYS = 7;
   const cycleLengthDays = cycleLengthWeeks * WEEK_DAYS;
   const calculatedStartDate = getNDaysFromDate(startDate, startDateOffset);
-  const endDate = getNDaysFromDate(startDate, (cycleLengthDays * amountOfCycles) + startDateOffset);
+  const endDate = getNDaysFromDate(startDate, cycleLengthDays * amountOfCycles + startDateOffset);
 
   return getDaysDateRange(calculatedStartDate, endDate);
 };

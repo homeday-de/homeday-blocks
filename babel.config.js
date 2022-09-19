@@ -1,10 +1,13 @@
 module.exports = {
   presets: [
-    ['@vue/cli-plugin-babel/preset', {
-      corejs: {
-        version: 3,
+    [
+      '@vue/cli-plugin-babel/preset',
+      {
+        corejs: {
+          version: 3,
+        },
       },
-    }],
+    ],
   ],
   plugins: [
     ['@babel/plugin-proposal-class-properties', { loose: true }],

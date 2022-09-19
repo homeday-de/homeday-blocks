@@ -49,10 +49,7 @@
           :disabled="disabled"
           :invalid="hasError"
         />
-        <label
-          :for="getItemName(item)"
-          class="radio__label"
-        >
+        <label :for="getItemName(item)" class="radio__label">
           {{ item.label }}
         </label>
       </div>
@@ -69,9 +66,7 @@ import HdRadioIndicator from './HdRadioIndicator.vue';
 
 export default {
   name: 'HdRadio',
-  mixins: [
-    formField,
-  ],
+  mixins: [formField],
   components: {
     FieldBase,
     HdRadioIndicator,
@@ -86,7 +81,7 @@ export default {
       default: () => [],
     },
     value: {
-      type: [String, Number],
+      type: [String, Number, Boolean],
       default: '',
     },
     required: {
@@ -164,9 +159,7 @@ export default {
           return;
         }
 
-        const currentIndex = this.items.findIndex(
-          (item) => item.value === this.value,
-        );
+        const currentIndex = this.items.findIndex((item) => item.value === this.value);
 
         if (currentIndex === -1 || currentIndex === this.items.length - 1) {
           this.$emit('input', this.items[0].value);
@@ -183,9 +176,7 @@ export default {
           return;
         }
 
-        const currentIndex = this.items.findIndex(
-          (item) => item.value === this.value,
-        );
+        const currentIndex = this.items.findIndex((item) => item.value === this.value);
 
         if (currentIndex === -1 || currentIndex === 0) {
           this.$emit('input', this.items[this.items.length - 1].value);
@@ -282,7 +273,7 @@ export default {
     margin-left: $sp-m;
   }
 
-  > input[type="radio"] {
+  > input[type='radio'] {
     display: none;
   }
 
@@ -291,7 +282,7 @@ export default {
     padding-left: $sp-s;
     cursor: pointer;
     text-align: left;
-    @include font("DS-100");
+    @include font('DS-100');
   }
 }
 </style>

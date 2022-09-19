@@ -33,11 +33,9 @@ describe('HdEditSwitch', () => {
     });
 
     expect(wrapper.vm.$refs.defaultSlot).not.toBeUndefined();
-    expect(
-      createWrapper(
-        wrapper.vm.$refs.defaultSlot,
-      ).html().includes(DEFAULT_SLOT_CONTENT),
-    ).toBe(true);
+    expect(createWrapper(wrapper.vm.$refs.defaultSlot).html().includes(DEFAULT_SLOT_CONTENT)).toBe(
+      true
+    );
   });
 
   it('In the default state, edit slot is not present, and view is', () => {
@@ -45,11 +43,7 @@ describe('HdEditSwitch', () => {
 
     expect(wrapper.vm.$refs.editSlot).toBeUndefined();
     expect(wrapper.vm.$refs.viewSlot).not.toBeUndefined();
-    expect(
-      createWrapper(
-        wrapper.vm.$refs.viewSlot,
-      ).html().includes(VIEW_SLOT_CONTENT),
-    ).toBe(true);
+    expect(createWrapper(wrapper.vm.$refs.viewSlot).html().includes(VIEW_SLOT_CONTENT)).toBe(true);
   });
 
   it('In the editing state, edit slot is present, and view is not', () => {
@@ -60,11 +54,7 @@ describe('HdEditSwitch', () => {
     });
 
     expect(wrapper.vm.$refs.editSlot).not.toBeUndefined();
-    expect(
-      createWrapper(
-        wrapper.vm.$refs.editSlot,
-      ).html().includes(EDIT_SLOT_CONTENT),
-    ).toBe(true);
+    expect(createWrapper(wrapper.vm.$refs.editSlot).html().includes(EDIT_SLOT_CONTENT)).toBe(true);
     expect(wrapper.vm.$refs.viewSlot).toBeUndefined();
   });
 

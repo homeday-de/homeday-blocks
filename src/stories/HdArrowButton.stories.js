@@ -1,9 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
-import {
-  withKnobs, select, boolean,
-} from '@storybook/addon-knobs';
-import { HdArrowButton } from 'homeday-blocks';
+import { withKnobs, select, boolean } from '@storybook/addon-knobs';
+import HdArrowButton from 'homeday-blocks/src/components/buttons/HdArrowButton.vue';
 
 storiesOf('Components/HdArrowButton', module)
   .addDecorator(withKnobs)
@@ -42,18 +40,22 @@ storiesOf('Components/HdArrowButton', module)
       :disabled=disabled
     />`,
   }))
-  .add('playground 🎛', () => ({
-    components: { HdArrowButton },
-    props: {
-      direction: {
-        default: select('Arrow direction', ['right', 'left'], 'right'),
+  .add(
+    'playground 🎛',
+    () => ({
+      components: { HdArrowButton },
+      props: {
+        direction: {
+          default: select('Arrow direction', ['right', 'left'], 'right'),
+        },
+        disabled: {
+          default: boolean('Button disabled state', false),
+        },
       },
-      disabled: {
-        default: boolean('Button disabled state', false),
-      },
-    },
-    template: `<hd-arrow-button
+      template: `<hd-arrow-button
       :direction="direction"
       :disabled="disabled"
     />`,
-  }), { percy: { skip: true } });
+    }),
+    { percy: { skip: true } }
+  );

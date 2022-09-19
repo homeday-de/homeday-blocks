@@ -8,12 +8,7 @@
       :aria-activedescendant="activeCountryCodeAndName"
     >
       <span :class="selectedFlagClassNames"></span>
-      <HdIcon
-        width="24px"
-        height="24px"
-        :src="icons.smallArrowIcon"
-        :class="arrowClassNames"
-      />
+      <HdIcon width="24px" height="24px" :src="icons.smallArrowIcon" :class="arrowClassNames" />
     </button>
     <ul
       tabindex="-1"
@@ -35,11 +30,14 @@
           <button @click="selectCountry(country)" class="option">
             <span :class="getOptionFlagClassNames(country.code)"></span>
             <p>
-              <span class="option__name">{{t.COUNTRIES[country.code]}}</span>
-              <span class="option__dial-code">{{country.dial_code}}</span>
+              <span class="option__name">{{ t.COUNTRIES[country.code] }}</span>
+              <span class="option__dial-code">{{ country.dial_code }}</span>
             </p>
           </button>
-          <hr v-if="index === preferredCountries.length - 1" class="phone-input__dropdown__divider" />
+          <hr
+            v-if="index === preferredCountries.length - 1"
+            class="phone-input__dropdown__divider"
+          />
         </li>
       </template>
     </ul>
@@ -60,7 +58,6 @@
 
 <script>
 /* eslint-disable import/no-extraneous-dependencies */
-import { action } from '@storybook/addon-actions';
 import HdInputFormatter from 'homeday-blocks/src/components/form/HdInputFormatter.vue';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import { getMessages } from 'homeday-blocks/src/lang';
@@ -69,8 +66,10 @@ import countryCodes from 'country-codes-list';
 import PhoneNumber from 'awesome-phonenumber';
 import formField from './formFieldMixin';
 
-const COUNTRY_PHONE_CODES = countryCodes
-  .customArray({ code: '{countryCode}', dial_code: '+{countryCallingCode}' });
+const COUNTRY_PHONE_CODES = countryCodes.customArray({
+  code: '{countryCode}',
+  dial_code: '+{countryCallingCode}',
+});
 
 const MAX_DIGITS_DIAL_CODE = 5;
 const ARROW_UP_KEY_CODE = 38;
@@ -88,9 +87,7 @@ const isAlphabetKey = (key) => {
 
 export default {
   name: 'HdInputPhone',
-  mixins: [
-    formField,
-  ],
+  mixins: [formField],
   inheritAttrs: false,
   components: {
     HdInputFormatter,
@@ -103,7 +100,7 @@ export default {
     },
     preferredCountries: {
       type: Array,
-      default: () => ([]),
+      default: () => [],
     },
     value: {
       type: String,
@@ -121,7 +118,8 @@ export default {
   data() {
     return {
       showDropdown: false,
-      phoneNumber: COUNTRY_PHONE_CODES.find((country) => country.code === this.defaultCountry)?.dial_code,
+      phoneNumber: COUNTRY_PHONE_CODES.find((country) => country.code === this.defaultCountry)
+        ?.dial_code,
       selectedCountry: COUNTRY_PHONE_CODES.find((country) => country.code === this.defaultCountry),
       focusedCountry: null,
     };
@@ -132,16 +130,24 @@ export default {
       if (this.preferredCountries.length) {
         return COUNTRY_PHONE_CODES.sort((a, b) => {
           // Alphabetical order on preferred countries
-          if (this.preferredCountries.includes(a.code) && this.preferredCountries.includes(b.code)) {
+          if (
+            this.preferredCountries.includes(a.code) &&
+            this.preferredCountries.includes(b.code)
+          ) {
             return this.t.COUNTRIES[a.code] > this.t.COUNTRIES[b.code];
           }
           if (this.preferredCountries.includes(a.code)) {
             return -1;
-          } if (this.preferredCountries.includes(b.code)) {
+          }
+          if (this.preferredCountries.includes(b.code)) {
             return 1;
-          // Alphabetical order on rest of countries
-          } if (!this.preferredCountries.includes(a.code) && !this.preferredCountries.includes(b.code)) {
-            return (this.t.COUNTRIES[a.code] > this.t.COUNTRIES[b.code]) ? 1 : -1;
+            // Alphabetical order on rest of countries
+          }
+          if (
+            !this.preferredCountries.includes(a.code) &&
+            !this.preferredCountries.includes(b.code)
+          ) {
+            return this.t.COUNTRIES[a.code] > this.t.COUNTRIES[b.code] ? 1 : -1;
           }
           return 0;
         });
@@ -153,7 +159,9 @@ export default {
     },
     arrowClassNames() {
       const baseClass = 'phone-input__selector__arrow';
-      const directionClass = this.showDropdown ? 'phone-input__selector__arrow--down' : 'phone-input__selector__arrow--up';
+      const directionClass = this.showDropdown
+        ? 'phone-input__selector__arrow--down'
+        : 'phone-input__selector__arrow--up';
       return [baseClass, directionClass];
     },
     selectedFlagClassNames() {
@@ -204,10 +212,11 @@ export default {
     phoneNumber(newPhoneNumber) {
       const phoneNumber = new PhoneNumber(newPhoneNumber);
       const phoneCountryCode = `+${phoneNumber.getCountryCode()}`;
-      const newSelectedCountry = COUNTRY_PHONE_CODES.find((country) => country.dial_code === phoneCountryCode);
+      const newSelectedCountry = COUNTRY_PHONE_CODES.find(
+        (country) => country.dial_code === phoneCountryCode
+      );
 
       if (newSelectedCountry) this.selectedCountry = newSelectedCountry;
-      action('input')(newPhoneNumber);
     },
     selectedCountry(newCountry, prevCountry) {
       if (this.phoneNumber.length >= MAX_DIGITS_DIAL_CODE) {
@@ -261,23 +270,27 @@ export default {
       };
 
       if (keyCode === ARROW_DOWN_KEY_CODE) {
-        if (this.focusedCountry === null) { // If there is no focus yet, focus first option
+        if (this.focusedCountry === null) {
+          // If there is no focus yet, focus first option
           [countryNode] = this.$refs[firstCountryCode];
-        } else if (this.focusedCountry !== lastCountryCode) { // If there is, focus next option
+        } else if (this.focusedCountry !== lastCountryCode) {
+          // If there is, focus next option
           countryNode = this.$refs[this.focusedCountry][0]?.nextSibling;
         }
         focusCountryCode();
       } else if (keyCode === ARROW_UP_KEY_CODE) {
-        if (this.focusedCountry === null) { // If there is no focus yet, focus last option
+        if (this.focusedCountry === null) {
+          // If there is no focus yet, focus last option
           [countryNode] = this.$refs[lastCountryCode];
-        } else if (this.focusedCountry !== firstCountryCode) { // If there is, focus prev option
+        } else if (this.focusedCountry !== firstCountryCode) {
+          // If there is, focus prev option
           countryNode = this.$refs[this.focusedCountry][0]?.previousSibling;
         }
         focusCountryCode();
       } else if (isAlphabetKey(keyCode)) {
         const keyString = event.key.toUpperCase();
         const firstMatchingCountryCode = this.sortedCountriesList.find(
-          (country) => this.t.COUNTRIES[country.code].charAt(0) === keyString,
+          (country) => this.t.COUNTRIES[country.code].charAt(0) === keyString
         )?.code;
         if (firstMatchingCountryCode) {
           [countryNode] = this.$refs[firstMatchingCountryCode];
@@ -393,10 +406,10 @@ $dropdown-button-height: 55px;
           margin-right: $sp-s;
         }
         &__name {
-          @include font("DS-100");
+          @include font('DS-100');
         }
         &__dial-code {
-          @include font("DS-100");
+          @include font('DS-100');
           color: getShade($neutral-gray, 85);
         }
       }
@@ -406,5 +419,4 @@ $dropdown-button-height: 55px;
     }
   }
 }
-
 </style>

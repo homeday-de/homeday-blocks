@@ -28,10 +28,7 @@
       :height="`${buttonHeight}px`"
       class="loaderButton__svg loaderButton__svg--progressCircle"
     >
-      <path
-        :d="circlePath"
-        :style="{strokeWidth: `${loadingCircleStrokeWidth}px`}"
-      />
+      <path :d="circlePath" :style="{ strokeWidth: `${loadingCircleStrokeWidth}px` }" />
     </svg>
 
     <svg
@@ -41,26 +38,15 @@
       height="46px"
     >
       <!-- Checkmark -->
-      <g
-        :style="scaledPath"
-        stroke="#2988FF"
-      >
+      <g :style="scaledPath" stroke="#2988FF">
         <path d="m11.066433,23.18223l8.364397,7.766946" />
         <path d="m34.933565,15.050822l-15.180095,15.533867" />
       </g>
     </svg>
 
     <!-- Error cross -->
-    <svg
-      ref="cross"
-      class="loaderButton__svg loaderButton__svg--cross"
-      width="46px"
-      height="46px"
-    >
-      <g
-        :style="scaledPath"
-        stroke="#2988FF"
-      >
+    <svg ref="cross" class="loaderButton__svg loaderButton__svg--cross" width="46px" height="46px">
+      <g :style="scaledPath" stroke="#2988FF">
         <path d="m23,23l-10.3,-10.3" />
         <path d="m23,23l10.3,10.3" />
         <path d="m23,23l-10.3,10.3" />
@@ -89,9 +75,7 @@ export default {
     loadingState: {
       type: String,
       default: LOADING_STATE.IDLE,
-      validator: (val) => Object.values(
-        omit(LOADING_STATE, 'LOADING'),
-      ).indexOf(val) !== -1,
+      validator: (val) => Object.values(omit(LOADING_STATE, 'LOADING')).indexOf(val) !== -1,
     },
     label: {
       type: String,
@@ -210,12 +194,15 @@ export default {
       this.transitionsQue.push(method);
     },
     setIdleState({ immediate = false } = {}) {
-      setTimeout(() => {
-        this.$emit(this.state);
-        this.undrawAll();
-        this.state = LOADING_STATE.IDLE;
-        this.loadedAmount = 0;
-      }, immediate ? 0 : this.idleResetTime);
+      setTimeout(
+        () => {
+          this.$emit(this.state);
+          this.undrawAll();
+          this.state = LOADING_STATE.IDLE;
+          this.loadedAmount = 0;
+        },
+        immediate ? 0 : this.idleResetTime
+      );
     },
     setSuccessState() {
       this.addToTransitionQue(this.draw.bind(this, this.$refs.check));
@@ -303,12 +290,8 @@ export default {
     width: 100%;
     height: 46px;
     padding: 0;
-    transition:
-      background-color 0.3s,
-      color 0.3s,
-      width 0.3s cubic-bezier(0.25, 0.25, 0.4, 1.6),
-      border-width 0.3s,
-      border-color 0.3s;
+    transition: background-color 0.3s, color 0.3s, width 0.3s cubic-bezier(0.25, 0.25, 0.4, 1.6),
+      border-width 0.3s, border-color 0.3s;
 
     #{$lB}.isUsingMouse & {
       outline: 0;
@@ -324,12 +307,8 @@ export default {
       border-radius: 30px;
       background-color: transparent;
       color: $white;
-      transition:
-        background-color 0.3s,
-        color 0.3s,
-        width 0.3s cubic-bezier(0.6, -0.6, 0.75, 0.75),
-        border-width 0.3s,
-        border-color 0.3s;
+      transition: background-color 0.3s, color 0.3s, width 0.3s cubic-bezier(0.6, -0.6, 0.75, 0.75),
+        border-width 0.3s, border-color 0.3s;
     }
 
     #{$lB}--success &,
@@ -393,7 +372,8 @@ export default {
       }
     }
 
-    &--checkmark path, &--cross path {
+    &--checkmark path,
+    &--cross path {
       stroke: $white;
       stroke-linecap: round;
       stroke-width: 3;
@@ -410,6 +390,5 @@ export default {
       }
     }
   }
-
 }
 </style>

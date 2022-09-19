@@ -1,23 +1,18 @@
-// @ts-check
 import de from './de.json';
 import en from './en.json';
 
-/**
- * @typedef {{ [key in keyof de]: de[key] }} Messages
- */
+export type Language = 'de' | 'en';
+export type Messages = typeof de | typeof en;
 
-const langs = {
+const langs: { [key in Language]: Messages } = {
   de,
   en,
 };
 
 /**
  * Get static Homeday Blocks translation files
- *
- * @param {string} lang
- * @returns {Messages}
  */
-export function getMessages(lang) {
+export function getMessages(lang: keyof typeof langs): Messages {
   return langs[lang] || langs.de;
 }
 

@@ -1,7 +1,4 @@
-import {
-  wrapperFactoryBuilder,
-  getLastEventPayload,
-} from 'tests/unit/helpers';
+import { wrapperFactoryBuilder, getLastEventPayload } from 'tests/unit/helpers';
 import HdRadio from '@/components/form/HdRadio.vue';
 // reusing items from the stories
 import ITEMS from '@/stories/mocks/FORM_ITEMS';
@@ -63,8 +60,7 @@ describe('HdRadio', () => {
         key,
       });
       const payload = getLastInputEventPayload();
-      expect(payload)
-        .toEqual(ITEMS[INITIAL_ITEM_INDEX + 1].value);
+      expect(payload).toEqual(ITEMS[INITIAL_ITEM_INDEX + 1].value);
     });
 
     // We test the "previous" keys
@@ -73,8 +69,7 @@ describe('HdRadio', () => {
         key,
       });
       const payload = getLastInputEventPayload();
-      expect(payload)
-        .toEqual(ITEMS[INITIAL_ITEM_INDEX - 1].value);
+      expect(payload).toEqual(ITEMS[INITIAL_ITEM_INDEX - 1].value);
     });
 
     // We test the handling of the items' array bounds
@@ -84,8 +79,7 @@ describe('HdRadio', () => {
         key,
       });
       const payload = getLastInputEventPayload();
-      expect(payload)
-        .toEqual(ITEMS[0].value);
+      expect(payload).toEqual(ITEMS[0].value);
     });
 
     await wrapper.vm.$nextTick();
@@ -96,8 +90,7 @@ describe('HdRadio', () => {
         key,
       });
       const payload = getLastInputEventPayload();
-      expect(payload)
-        .toEqual(ITEMS[ITEMS.length - 1].value);
+      expect(payload).toEqual(ITEMS[ITEMS.length - 1].value);
     });
   });
 

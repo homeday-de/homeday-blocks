@@ -49,9 +49,7 @@ import formField from './formFieldMixin';
 export default {
   name: 'HdTileSelect',
   inheritAttrs: false,
-  mixins: [
-    formField,
-  ],
+  mixins: [formField],
   components: {
     HdTileSelectItem,
     HdTileSelectEditableItem,
@@ -83,7 +81,7 @@ export default {
     },
     formatter: {
       type: Function,
-      default: (value) => (String(value)),
+      default: (value) => String(value),
     },
     acceptNewValue: {
       type: Boolean,

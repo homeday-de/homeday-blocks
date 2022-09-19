@@ -5,10 +5,11 @@
         v-for="(photo, i) in items.slice(0, limit)"
         :key="photo.image"
         class="gallery-tile"
-        :class="{ 'gallery-tile--img': ! background }"
+        :class="{ 'gallery-tile--img': !background }"
         tabindex="0"
         @keydown.enter.space.prevent="$emit('itemClick', i)"
-        @click="$emit('itemClick', i)">
+        @click="$emit('itemClick', i)"
+      >
         <HdLazyImage
           :src="photo.image"
           :src-small="photo.thumbnail"
@@ -17,10 +18,9 @@
         />
       </div>
     </section>
-    <button
-      class="btn gallery-tile__more-photos"
-      @click="$emit('itemClick', 0)"
-    >{{ t.GALLERY_TILES.MORE_PHOTOS }}</button>
+    <button class="btn gallery-tile__more-photos" @click="$emit('itemClick', 0)">
+      {{ t.GALLERY_TILES.MORE_PHOTOS }}
+    </button>
   </div>
 </template>
 
@@ -87,10 +87,9 @@ export default {
     }
 
     &:hover .gallery-tile:not(:hover)::after {
-      opacity: .4;
+      opacity: 0.4;
     }
   }
-
 }
 
 .gallery-tile {
@@ -153,7 +152,7 @@ export default {
 
       @media (min-width: $break-desktop) {
         -ms-grid-column: 4;
-        }
+      }
 
       @media (min-width: $break-desktop-wide) {
         -ms-grid-column: 3;
@@ -191,7 +190,6 @@ export default {
         grid-row: 1 / 3;
       }
     }
-
   }
 
   &:nth-child(4) {
@@ -234,7 +232,7 @@ export default {
     left: 0;
     background: $primary-color;
     opacity: 0;
-    transition: opacity .2s;
+    transition: opacity 0.2s;
   }
 
   &__image {
@@ -242,7 +240,7 @@ export default {
     height: 100%;
     background-size: cover;
     background-position: center;
-    transition: transform .3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
 
     #{$_tile}:hover & {
       transform: scale(1.05);
@@ -259,9 +257,7 @@ export default {
     font-weight: bold;
     border: 0;
     border-radius: 4px;
-    box-shadow:
-      0px 1px 3px rgba(0, 0, 0, 0.24),
-      0px 0px 2px rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);
     cursor: pointer;
 
     @media (min-width: $break-tablet) {

@@ -1,26 +1,13 @@
-// Apparently there is a bug on Storybook actions with `$listeners`
-// This will throw the error `method "toJSON" is not defined` on JS console 🙇‍♂️
-// https://github.com/storybookjs/storybook/issues/14933
-// This error appeared when bumping node from v12 to v14
+// Apparently there is a bug on Storybook actions with `$listeners` // This will throw the error
+`method "toJSON" is not defined` on JS console 🙇‍♂️ //
+https://github.com/storybookjs/storybook/issues/14933 // This error appeared when bumping node from
+v12 to v14
 <template>
-  <button
-    v-on="$listeners"
-    :class="computedClasses"
-  >
-    <span
-      v-if="iconSrc"
-      class="btn__icon"
-    >
-      <HdIcon
-        :src="iconSrc"
-        width="100%"
-        height="100%"
-      />
+  <button v-on="$listeners" :class="computedClasses">
+    <span v-if="iconSrc" class="btn__icon">
+      <HdIcon :src="iconSrc" width="100%" height="100%" />
     </span>
-    <span
-      ref="content"
-      class="btn__content"
-    >
+    <span ref="content" class="btn__content">
       <slot />
     </span>
   </button>
@@ -28,14 +15,7 @@
 
 <script>
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
-
-export const TYPES = {
-  PRIMARY: 'primary',
-  SECONDARY: 'secondary',
-  TERTIARY: 'tertiary',
-  FLAT: 'flat',
-  GHOST: 'ghost',
-};
+import TYPES from 'homeday-blocks/src/components/buttons/HdButtonTypes';
 
 export default {
   name: 'HdButton',
@@ -109,7 +89,9 @@ export default {
 @import 'homeday-blocks/src/styles/_variables.scss';
 
 .btn {
-  &--icon-button {
+  $root: &;
+
+  &#{$root}--icon-button {
     padding: $sp-s;
   }
 
@@ -118,13 +100,13 @@ export default {
     height: 24px;
     margin-right: $sp-xs;
 
-    .btn--icon-button & {
+    #{$root}--icon-button & {
       width: 28px;
       height: 28px;
       margin-right: 0;
     }
 
-    ::v-deep path {
+    path {
       fill: currentColor;
     }
   }

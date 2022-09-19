@@ -1,22 +1,25 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { HdModal } from 'homeday-blocks';
+import HdModal from 'homeday-blocks/src/components/HdModal.vue';
 import { checkCircle as checkCircleIcon } from 'homeday-assets/M';
 import { bank } from 'homeday-assets';
 
-const actionList = [{
-  name: 'saveData',
-  modifier: 'tertiary',
-  text: 'Save Data',
-  isInDarkBackground: false,
-  disabled: false,
-  iconSrc: bank,
-}, {
-  name: 'refreshPage',
-  modifier: 'primary',
-  text: 'Refresh Page',
-  isInDarkBackground: false,
-  disabled: false,
-}];
+const actionList = [
+  {
+    name: 'saveData',
+    modifier: 'tertiary',
+    text: 'Save Data',
+    isInDarkBackground: false,
+    disabled: false,
+    iconSrc: bank,
+  },
+  {
+    name: 'refreshPage',
+    modifier: 'primary',
+    text: 'Refresh Page',
+    isInDarkBackground: false,
+    disabled: false,
+  },
+];
 
 export default {
   title: 'Components/HdModal',

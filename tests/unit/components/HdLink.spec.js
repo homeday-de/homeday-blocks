@@ -1,6 +1,7 @@
 import { RouterLinkStub } from '@vue/test-utils';
 import { wrapperFactoryBuilder } from 'tests/unit/helpers';
-import HdLink, { TYPES } from '@/components/HdLink.vue';
+import HdLink from '@/components/HdLink.vue';
+import TYPES from '@/components/HdLinkTypes';
 
 const wrapperBuilder = wrapperFactoryBuilder(HdLink, {
   slots: {

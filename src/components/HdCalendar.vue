@@ -4,15 +4,10 @@
       <button
         type="button"
         class="calendar__button calendar__header__button calendar__button--prev"
-        :class="{'calendar__button--disabled': selectedWeekIndexTail - cycleLengthWeeks < 0}"
+        :class="{ 'calendar__button--disabled': selectedWeekIndexTail - cycleLengthWeeks < 0 }"
         @click="setWeekIndexTail(-cycleLengthWeeks)"
       >
-        <HdIcon
-          :src="chevronIcon"
-          transform="rotate(180)"
-          width="100%"
-          height="100%"
-      />
+        <HdIcon :src="chevronIcon" transform="rotate(180)" width="100%" height="100%" />
       </button>
       <span class="calendar__header__month">
         <template v-for="(month, index) in activeMonths">
@@ -22,19 +17,20 @@
       <button
         type="button"
         class="calendar__button calendar__header__button calendar__button--next"
-        :class="{'calendar__button--disabled': selectedWeekIndexTail + cycleLengthWeeks >= availableWeeks.length}"
+        :class="{
+          'calendar__button--disabled':
+            selectedWeekIndexTail + cycleLengthWeeks >= availableWeeks.length,
+        }"
         @click="setWeekIndexTail(cycleLengthWeeks)"
       >
-        <HdIcon
-          :src="chevronIcon"
-          width="100%"
-          height="100%"
-      />
+        <HdIcon :src="chevronIcon" width="100%" height="100%" />
       </button>
     </header>
     <section class="calendar__body">
       <header class="calendar__days calendar__row">
-        <div v-for="day in weekdays" :key="day" class="calendar__row__item calendar__day">{{day}}</div>
+        <div v-for="day in weekdays" :key="day" class="calendar__row__item calendar__day">
+          {{ day }}
+        </div>
       </header>
       <div class="calendar__body__inner">
         <transition :name="'calendar-' + animationDirection">
@@ -47,7 +43,10 @@
               <div
                 v-for="(date, index) in displayWeek"
                 class="calendar__date calendar__row__item"
-                :class="{'calendar__date--disabled': isDisabled(date, index), 'calendar__date--selected': isSelectedDate(date)}"
+                :class="{
+                  'calendar__date--disabled': isDisabled(date, index),
+                  'calendar__date--selected': isSelectedDate(date),
+                }"
                 :key="date.getDate()"
                 @click="selectDate(date)"
                 @touchstart="selectDate(date)"
@@ -80,7 +79,8 @@ export default {
       type: Array,
       required: true,
       // Check if passed array contains only valid dates
-      validator: (dates) => dates.filter((d) => typeof d.getMonth === 'function').length === dates.length,
+      validator: (dates) =>
+        dates.filter((d) => typeof d.getMonth === 'function').length === dates.length,
     },
     disabledDates: {
       type: Array,
@@ -115,7 +115,10 @@ export default {
   },
   computed: {
     displayedWeeks() {
-      return this.availableWeeks.slice(this.selectedWeekIndexTail, this.selectedWeekIndexTail + this.cycleLengthWeeks);
+      return this.availableWeeks.slice(
+        this.selectedWeekIndexTail,
+        this.selectedWeekIndexTail + this.cycleLengthWeeks
+      );
     },
     activeMonths() {
       return getIntlDateString(this.locale, flatten(this.displayedWeeks), { month: 'long' });
@@ -128,8 +131,9 @@ export default {
   },
   methods: {
     selectFirstAvailable() {
-      const firstAvialableDay = this.displayedWeeks[0]
-        .find((day) => this.isDisabled(day) === false);
+      const firstAvialableDay = this.displayedWeeks[0].find(
+        (day) => this.isDisabled(day) === false
+      );
 
       this.selectDate(firstAvialableDay);
     },
@@ -172,19 +176,23 @@ export default {
 // Transitions
 .calendar {
   &-left {
-    &-leave-active, &-enter-active {
+    &-leave-active,
+    &-enter-active {
       transition: transform 200ms ease;
     }
-    &-enter, &-leave-to {
+    &-enter,
+    &-leave-to {
       transform: translate(-100%, 0);
       opacity: 0;
     }
   }
   &-right {
-    &-leave-active, &-enter-active {
+    &-leave-active,
+    &-enter-active {
       transition: transform 200ms ease;
     }
-    &-enter, &-leave-to {
+    &-enter,
+    &-leave-to {
       transform: translate(100%, 0);
       opacity: 0;
     }
@@ -266,7 +274,7 @@ export default {
       cursor: not-allowed;
     }
     &:after {
-      content: "";
+      content: '';
       width: 16px;
       height: 16px;
       background: getShade($secondary-color, 110);
@@ -321,7 +329,7 @@ export default {
       cursor: not-allowed;
     }
 
-    ::v-deep path {
+    path {
       fill: $quaternary-color;
     }
 

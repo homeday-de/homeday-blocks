@@ -22,22 +22,24 @@
         ['checkbox--indeterminate']: boundIndeterminate,
         ['checkout--use-mouse']: isUsingMouse,
       }"
-      :key="name+error+isChecked"
+      :key="name + error + isChecked"
     >
       <input
         class="checkbox__input"
         type="checkbox"
+        role="checkbox"
         :name="name"
         :disabled="disabled"
-        v-model="isChecked"/>
+        v-model="isChecked"
+      />
       <div
         :ref="name"
         :aria-checked="isChecked"
         :aria-labelledby="labelId"
         :tabindex="disabled ? -1 : 0"
         class="checkbox__inner"
-        role="checkbox"
         @click="toggle"
+        role="checkbox"
         @keydown.space.enter.prevent="toggle"
         @focus="handleFocus"
         @blur="handleBlur"
@@ -49,11 +51,7 @@
           :indeterminated="boundIndeterminate"
         />
 
-        <p
-          v-if="innerLabel"
-          v-html="innerLabel"
-          class="checkbox__description"
-        />
+        <p v-if="innerLabel" v-html="innerLabel" class="checkbox__description" />
       </div>
     </div>
   </FieldBase>
@@ -68,9 +66,7 @@ import HdCheckboxIndicator from './HdCheckboxIndicator.vue';
 
 export default {
   name: 'HdCheckbox',
-  mixins: [
-    formField,
-  ],
+  mixins: [formField],
   components: {
     FieldBase,
     HdCheckboxIndicator,
@@ -193,7 +189,9 @@ $checkbox-width: 20px;
   position: relative;
   cursor: default;
 
-  &:hover, &:focus, &.checkbox--active {
+  &:hover,
+  &:focus,
+  &.checkbox--active {
     outline: 0;
   }
 
@@ -210,7 +208,7 @@ $checkbox-width: 20px;
     flex: 1;
     margin: 0 0 0 $sp-s;
     text-align: left;
-    @include font("DS-100");
+    @include font('DS-100');
   }
 
   &__use-mouse {

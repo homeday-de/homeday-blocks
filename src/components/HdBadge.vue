@@ -1,59 +1,27 @@
 <template>
   <!-- collapsible badge component could have been structured in a semantic way using
   html5 <details> & <summary> tags but unfortunately IE doesn't support them -->
-  <div
-    :class="computedClasses"
-  >
-    <span
-      class="badge__label"
-      @click.capture="collapse"
-    >
+  <div :class="computedClasses">
+    <span class="badge__label" @click.capture="collapse">
       <template v-if="showIconBefore">
-        <img
-          v-if="icon"
-          :src="icon"
-          class="badge__icon"
-        >
-        <svg
-          v-else
-          class="badge__icon"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle
-            cx="7"
-            cy="7"
-            r="7"
-            fill="currentColor"
-          />
+        <img v-if="icon" :src="icon" class="badge__icon" />
+        <svg v-else class="badge__icon" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="7" cy="7" r="7" fill="currentColor" />
         </svg>
       </template>
       {{ label }}
-      <HdIcon
-        :src="chevronIcon"
-        transform="rotate(90)"
-        class="badge__chevron"
-      />
+      <HdIcon :src="chevronIcon" transform="rotate(90)" class="badge__chevron" />
     </span>
-    <p
-      v-if="hasDetails"
-      class="badge__details"
-    >
+    <p v-if="hasDetails" class="badge__details">
       <slot />
     </p>
   </div>
 </template>
 
 <script>
-import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import { chevron as chevronIcon } from 'homeday-assets';
-
-export const TYPES = {
-  DEFAULT: '',
-  PRIMARY: 'primary',
-  SECONDARY: 'secondary',
-  TERTIARY: 'tertiary',
-  DISABLED: 'disabled',
-};
+import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
+import TYPES from 'homeday-blocks/src/components/HdBadgeTypes';
 
 export default {
   name: 'HdBadge',
@@ -121,115 +89,119 @@ export default {
 <style lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
 
-.badge{
-    display: flex;
-    justify-content: flex-start;
+.badge {
+  display: flex;
+  justify-content: flex-start;
 
-    &__label{
-      display: flex;
-      align-items: center;
-      font-weight: bold;
-      font-size: 18px;
-      line-height: 28px;
-      border-radius: 4px;
-      padding: $sp-xs $sp-s;
-      cursor: default;
+  &__label {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 28px;
+    border-radius: 4px;
+    padding: $sp-xs $sp-s;
+    cursor: default;
+  }
+
+  &__chevron {
+    display: none;
+    width: 24px;
+    height: 24px;
+    margin-left: $sp-m;
+    margin-right: $sp-s;
+
+    path {
+      fill: currentColor;
+    }
+  }
+
+  &__icon {
+    width: 14px;
+    height: 14px;
+    margin-right: $sp-s;
+  }
+
+  &__details {
+    visibility: hidden;
+    width: 170px;
+    white-space: nowrap;
+    overflow: hidden;
+
+    padding: $sp-s;
+    padding-top: 0;
+    border-bottom-left-radius: $sp-xs;
+    border-bottom-right-radius: $sp-xs;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  &--primary {
+    color: $success-color;
+
+    .badge__label,
+    .badge__details {
+      background: rgba($success-color, 0.15);
+    }
+  }
+
+  &--secondary {
+    color: getShade($secondary-color, 110);
+
+    .badge__label,
+    .badge__details {
+      background: getShade($secondary-color, 70);
+    }
+  }
+
+  &--tertiary {
+    color: $tertiary-color;
+
+    .badge__label,
+    .badge__details {
+      background: getShade($tertiary-color, 60);
+    }
+  }
+
+  &--disabled {
+    color: $quaternary-color;
+
+    .badge__label,
+    .badge__details {
+      background: getShade($quaternary-color, 40);
+    }
+  }
+
+  &--with-details & {
+    &__label {
+      cursor: pointer;
     }
 
     &__chevron {
-      display: none;
-      width: 24px;
-      height: 24px;
-      margin-left: $sp-m;
-      margin-right: $sp-s;
-
-      &::v-deep path {
-        fill: currentColor;
-      }
-    }
-
-    ::v-deep  &__icon{
-      width: 14px;
-      height: 14px;
-      margin-right: $sp-s;
-    }
-
-    &__details{
-      visibility: hidden;
-      width: 170px;
-      white-space: nowrap;
-      overflow: hidden;
-
-      padding: $sp-s;
-      padding-top: 0;
-      border-bottom-left-radius: $sp-xs;
-      border-bottom-right-radius: $sp-xs;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-      font-weight: normal;
-      font-size: 18px;
-      line-height: 28px;
-    }
-
-    &--primary{
-        color: $success-color;
-
-        .badge__label, .badge__details{
-          background: rgba($success-color, 0.15);
-        }
-    }
-
-    &--secondary{
-        color: getShade($secondary-color, 110);
-
-        .badge__label, .badge__details{
-          background: getShade($secondary-color, 70);
-        }
-    }
-
-    &--tertiary{
-        color: $tertiary-color;
-
-        .badge__label, .badge__details{
-          background: getShade($tertiary-color, 60);
-        }
-    }
-
-    &--disabled{
-        color: $quaternary-color;
-
-        .badge__label, .badge__details{
-          background: getShade($quaternary-color, 40);
-        }
-    }
-
-    &--with-details & {
-      &__label{
-        cursor: pointer;
-      }
-
-      &__chevron{
-        display: block;
-      }
-    }
-
-    &--collapsed {
       display: block;
     }
+  }
 
-    &--collapsed > &__label {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-    }
+  &--collapsed {
+    display: block;
+  }
 
-    &--collapsed &__chevron {
-      transform: rotateZ(270deg);
-    }
+  &--collapsed > &__label {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
 
-    &--collapsed > &__details {
-      visibility: visible;
-      width: 100%;
-      white-space: normal;
-    }
+  &--collapsed &__chevron {
+    transform: rotateZ(270deg);
+  }
+
+  &--collapsed > &__details {
+    visibility: visible;
+    width: 100%;
+    white-space: normal;
+  }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <hd-tile-select-item
-    v-if='!isEditing'
+    v-if="!isEditing"
     class="tile-select-editable-item"
     :class="{
       'tile-select-editable-item--selected': isSelected,
@@ -22,7 +22,7 @@
     @focus="enableEditing"
     @blur="disableEditing"
     @keydown.enter.prevent.stop="disableEditing"
-  >
+  />
 </template>
 
 <script>
@@ -67,7 +67,6 @@ export default {
 
 <style lang="scss">
 @import "homeday-blocks/src/styles/mixins.scss";
-
 .tile-select-editable-item {
   background-color: getShade($quaternary-color, 40);
 
@@ -76,7 +75,7 @@ export default {
     color: white;
   }
 
-  &--input{
+  &--input {
     height: 100%;
     width: 100%;
     border: 0;
