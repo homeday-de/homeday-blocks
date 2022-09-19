@@ -1,6 +1,6 @@
 {
   "name": "homeday-blocks",
-  "version": "18.8.6",
+  "version": "0.0.0-development",
   "description": "A Vue component library built by Homeday's frontend team.",
   "scripts": {
     "type-check": "vue-tsc --noEmit",
