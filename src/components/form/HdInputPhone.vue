@@ -309,7 +309,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
 
 $flag-icons-path: '~flag-icons-svg/svg';
