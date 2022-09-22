@@ -170,7 +170,7 @@ export default (Vue as VueInstance).extend({
 });
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
 
 ::v-deep path {
