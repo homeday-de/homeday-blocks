@@ -32,7 +32,9 @@ describe('HdTimeslots', () => {
       },
     });
     const displayedTimeslots = getDisplayedTimeslots(wrapper);
-    const randomTimeslot = displayedTimeslots.at(Math.floor(Math.random() * displayedTimeslots.length));
+    const randomTimeslot = displayedTimeslots.at(
+      Math.floor(Math.random() * displayedTimeslots.length)
+    );
 
     randomTimeslot.trigger('click');
 
@@ -42,7 +44,9 @@ describe('HdTimeslots', () => {
   it('clicking on a timeslot, the timeslot is selected', async () => {
     const wrapper = wrapperBuilder();
     const displayedTimeslots = getDisplayedTimeslots(wrapper);
-    const randomTimeslot = displayedTimeslots.at(Math.floor(Math.random() * displayedTimeslots.length));
+    const randomTimeslot = displayedTimeslots.at(
+      Math.floor(Math.random() * displayedTimeslots.length)
+    );
 
     randomTimeslot.trigger('click');
 

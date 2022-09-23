@@ -1,5 +1,5 @@
 import './styles/HdIcon.css';
-import { HdIcon } from 'homeday-blocks';
+import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import { apartmentFloor as bigIcon } from 'homeday-assets/L';
 import multiColorIcon from './assets/ic_multi-color.svg';
 import multiColorIconWithClasses from './assets/ic_multi-color--with-classes.svg';
@@ -24,11 +24,13 @@ export default {
   },
 };
 
-const Template = (template) => (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
-  components: { HdIcon },
-  template,
-});
+const Template =
+  (template) =>
+  (args, { argTypes }) => ({
+    props: Object.keys(argTypes),
+    components: { HdIcon },
+    template,
+  });
 
 export const Default = Template(`
   <div>

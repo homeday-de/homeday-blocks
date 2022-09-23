@@ -21,21 +21,12 @@
       @focus="handleFocus"
       @blur="handleBlur"
     >
-      <option
-        v-for="option in options"
-        :key="option.value"
-        :value="option.value"
-      >
+      <option v-for="option in options" :key="option.value" :value="option.value">
         {{ option.label }}
       </option>
     </select>
     <template #input-right>
-      <HdIcon
-        :src="smallArrowIcon"
-        width="24px"
-        height="24px"
-        class="select__arrow"
-      />
+      <HdIcon :src="smallArrowIcon" width="24px" height="24px" class="select__arrow" />
     </template>
   </FieldBase>
 </template>
@@ -50,9 +41,7 @@ import formField from './formFieldMixin';
 
 export default {
   name: 'HdSelect',
-  mixins: [
-    formField,
-  ],
+  mixins: [formField],
   components: {
     FieldBase,
     HdIcon,
@@ -152,7 +141,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
 
 .select {

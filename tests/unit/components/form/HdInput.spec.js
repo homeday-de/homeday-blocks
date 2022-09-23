@@ -95,10 +95,7 @@ describe('HdInput', () => {
     it('sets the input type to "email"', () => {
       const wrapper = emailWrapperBuilder();
 
-      expect(wrapper
-        .find('input')
-        .attributes()
-        .type).toBe('email');
+      expect(wrapper.find('input').attributes().type).toBe('email');
     });
 
     it('validates email', async () => {
@@ -130,10 +127,7 @@ describe('HdInput', () => {
     it('sets the input type to "date"', () => {
       const wrapper = dateWrapperBuilder();
 
-      expect(wrapper
-        .find('input')
-        .attributes()
-        .type).toBe('date');
+      expect(wrapper.find('input').attributes().type).toBe('date');
     });
 
     it('validates date', async () => {
@@ -165,10 +159,7 @@ describe('HdInput', () => {
     it('sets the input type to "number"', () => {
       const wrapper = numberWrapperBuilder();
 
-      expect(wrapper
-        .find('input')
-        .attributes()
-        .type).toBe('number');
+      expect(wrapper.find('input').attributes().type).toBe('number');
     });
 
     it('parses to Number', () => {
@@ -230,17 +221,16 @@ describe('HdInput', () => {
   it('ignores LastPass auto fill', () => {
     const wrapper = wrapperBuilder();
 
-    expect(wrapper
-      .find('input')
-      .attributes()['data-lpignore'])
-      .toBe('true');
+    expect(wrapper.find('input').attributes()['data-lpignore']).toBe('true');
   });
 
   it('custom validation prop validation', () => {
     const wrapper = wrapperBuilder();
 
     expect(wrapper.vm.$options.props.customRules.validator([1])).toBeFalsy();
-    expect(wrapper.vm.$options.props.customRules.validator([{ validate: () => true, errorMessage: '' }])).toBeTruthy();
+    expect(
+      wrapper.vm.$options.props.customRules.validator([{ validate: () => true, errorMessage: '' }])
+    ).toBeTruthy();
   });
 
   it('custom validation error message', async () => {
@@ -249,10 +239,12 @@ describe('HdInput', () => {
     const customKeyword = 'custom';
     const wrapper = wrapperBuilder({
       props: {
-        customRules: [{
-          validate: (value) => value === 'custom',
-          errorMessage: errorMsg,
-        }],
+        customRules: [
+          {
+            validate: (value) => value === 'custom',
+            errorMessage: errorMsg,
+          },
+        ],
         value: customKeyword,
       },
     });

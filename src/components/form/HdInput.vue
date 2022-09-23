@@ -47,9 +47,7 @@ import formField from './formFieldMixin';
 export default {
   name: 'HdInput',
   inheritAttrs: false,
-  mixins: [
-    formField,
-  ],
+  mixins: [formField],
   components: {
     TextFieldBase,
   },
@@ -101,9 +99,11 @@ export default {
     customRules: {
       type: Array,
       default: () => [],
-      validator: (rulesProvided) => rulesProvided.every(
-        ({ validate, errorMessage }) => typeof validate === 'function' && typeof errorMessage === 'string',
-      ),
+      validator: (rulesProvided) =>
+        rulesProvided.every(
+          ({ validate, errorMessage }) =>
+            typeof validate === 'function' && typeof errorMessage === 'string'
+        ),
     },
   },
   data() {
@@ -229,7 +229,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .input {
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {

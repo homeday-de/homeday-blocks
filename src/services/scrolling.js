@@ -1,8 +1,4 @@
-import naturalScroll from 'natural-scroll';
-import {
-  disableBodyScroll,
-  enableBodyScroll,
-} from 'body-scroll-lock';
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
 export function elOffset(el) {
   const box = el.getBoundingClientRect();
@@ -21,9 +17,12 @@ export function elOffset(el) {
 
 export function getDocumentHeight() {
   return Math.max(
-    document.body.scrollHeight, document.documentElement.scrollHeight,
-    document.body.offsetHeight, document.documentElement.offsetHeight,
-    document.body.clientHeight, document.documentElement.clientHeight,
+    document.body.scrollHeight,
+    document.documentElement.scrollHeight,
+    document.body.offsetHeight,
+    document.documentElement.offsetHeight,
+    document.body.clientHeight,
+    document.documentElement.clientHeight
   );
 }
 
@@ -87,17 +86,17 @@ export function isScrolledPastElBottom({
 }
 
 export function scrollToEl({ el, offset = 0, onlyIfNotVisible = true }) {
-  const toScroll = [
-    document.documentElement,
-    document.body,
-  ];
+  const toScroll = [document.documentElement, document.body];
 
   if (el == null || (onlyIfNotVisible && isElVisible({ el, offset }))) {
     return;
   }
 
   toScroll.forEach((toScrollEl) => {
-    naturalScroll.scrollTop(toScrollEl, elOffset(el).top - offset);
+    toScrollEl.scrollTo({
+      top: elOffset(el).top - offset,
+      behavior: 'smooth',
+    });
   });
 }
 

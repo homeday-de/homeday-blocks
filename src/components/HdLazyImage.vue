@@ -1,15 +1,6 @@
 <template>
-  <div
-    v-if="background"
-    ref="imageHolder"
-    :class="{ isLoaded: imageLoaded }"
-    class="lazy-image"
-  />
-  <img
-    v-else
-    ref="imageHolder"
-    :class="{ isLoaded: imageLoaded }"
-    class="lazy-image">
+  <div v-if="background" ref="imageHolder" :class="{ isLoaded: imageLoaded }" class="lazy-image" />
+  <img v-else ref="imageHolder" :class="{ isLoaded: imageLoaded }" class="lazy-image" />
 </template>
 
 <script>
@@ -79,7 +70,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .lazy-image {
   width: 100%;
   filter: blur(4px);

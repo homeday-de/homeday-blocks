@@ -10,7 +10,7 @@ exports[`HdGalleryTiles renders component 1`] = `
       <div class="lazy-image gallery-tile__image" style="background-image: url(https://dummyimage.com/154x86?text=2+thumb);"></div>
     </div>
     <div tabindex="0" class="gallery-tile">
-      <div class="lazy-image gallery-tile__image" style="background-image: url(https://dummyimage.com/154x86?text=3+thumb);"></div>
+      <div class="lazy-image gallery-tile__image" style="background-image: url(https://dummyimage.com/154x86?text=video+3+thumb);"></div>
     </div>
     <div tabindex="0" class="gallery-tile">
       <div class="lazy-image gallery-tile__image" style="background-image: url(https://dummyimage.com/154x86?text=4+thumb);"></div>
@@ -18,6 +18,8 @@ exports[`HdGalleryTiles renders component 1`] = `
     <div tabindex="0" class="gallery-tile">
       <div class="lazy-image gallery-tile__image" style="background-image: url(https://dummyimage.com/154x86?text=5+thumb);"></div>
     </div>
-  </section> <button class="btn gallery-tile__more-photos">Weitere Fotos</button>
+  </section> <button class="btn gallery-tile__more-photos">
+    Weitere Fotos
+  </button>
 </div>
 `;

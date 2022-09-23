@@ -11,8 +11,7 @@
     minimized-label
   >
     <div class="split-input">
-      <template
-        v-for="(field, index) in fields">
+      <template v-for="(field, index) in fields">
         <input
           ref="inputs"
           :key="`split-input-${index}`"
@@ -21,14 +20,14 @@
           :disabled="disabled"
           class="split-input__input"
           @focus="handleFocus(field)"
-          @blur="handleBlur(field)">
+          @blur="handleBlur(field)"
+        />
         <div
           v-if="index < fields.length - 1"
           :key="`split-input-separator-${index}`"
-          class="split-input__separator">
-          <div
-            class="split-input__separator-symbol"
-            v-text="separator"/>
+          class="split-input__separator"
+        >
+          <div class="split-input__separator-symbol" v-text="separator" />
         </div>
       </template>
     </div>
@@ -43,9 +42,7 @@ import formField from './formFieldMixin';
 
 export default {
   name: 'HdSplitInput',
-  mixins: [
-    formField,
-  ],
+  mixins: [formField],
   components: {
     FieldBase,
   },
@@ -53,14 +50,15 @@ export default {
     fields: {
       type: Array,
       default: () => [],
-      validator: (fields) => fields.every(({ name }) => {
-        if (name === undefined || name === null) {
-          // eslint-disable-next-line no-console
-          console.warn('All fields must have a non-null `name` property');
-          return false;
-        }
-        return true;
-      }),
+      validator: (fields) =>
+        fields.every(({ name }) => {
+          if (name === undefined || name === null) {
+            // eslint-disable-next-line no-console
+            console.warn('All fields must have a non-null `name` property');
+            return false;
+          }
+          return true;
+        }),
     },
     value: {
       type: Object,
@@ -109,8 +107,9 @@ export default {
       return merge(getMessages(this.lang), this.texts);
     },
     isFilled() {
-      return Object.values(this.fieldsValues || {})
-        .some((value) => value !== null && value !== undefined && value !== '');
+      return Object.values(this.fieldsValues || {}).some(
+        (value) => value !== null && value !== undefined && value !== ''
+      );
     },
   },
   watch: {
@@ -157,20 +156,24 @@ export default {
       return !this.error;
     },
     getFieldsValues() {
-      return this.fields.reduce((values, { name }) => ({
-        ...values,
-        [name]: this.value[name],
-      }), {});
+      return this.fields.reduce(
+        (values, { name }) => ({
+          ...values,
+          [name]: this.value[name],
+        }),
+        {}
+      );
     },
   },
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
 
 .split-input {
   display: flex;
+  overflow: hidden;
 
   &__input {
     width: 100%;

@@ -1,7 +1,8 @@
 import { wrapperFactoryBuilder } from 'tests/unit/helpers';
-import {
-  HdForm, HdInput, HdInputFormatter, HdCheckbox,
-} from 'homeday-blocks';
+import HdForm from 'homeday-blocks/src/components/form/HdForm.vue';
+import HdInput from 'homeday-blocks/src/components/form/HdInput.vue';
+import HdCheckbox from 'homeday-blocks/src/components/form/HdCheckbox.vue';
+import HdInputFormatter from 'homeday-blocks/src/components/form/HdInputFormatter.vue';
 import { scrollToEl } from 'homeday-blocks/src/services/scrolling';
 
 jest.mock('homeday-blocks/src/services/scrolling');
@@ -21,7 +22,11 @@ describe('HdForm', () => {
     props: {},
     selectors: {},
     build() {
-      this.wrapper = wrapperFactory({ slots: this.slots, props: this.props, listeners: this.listeners });
+      this.wrapper = wrapperFactory({
+        slots: this.slots,
+        props: this.props,
+        listeners: this.listeners,
+      });
       return {
         wrapper: this.wrapper,
         selectors: this.selectors,
@@ -73,9 +78,7 @@ describe('HdForm', () => {
   });
 
   test('a user can submit a form successfully', async () => {
-    const { wrapper, selectors } = hdFormFactory()
-      .withSampleForm()
-      .build();
+    const { wrapper, selectors } = hdFormFactory().withSampleForm().build();
 
     expect(selectors.firstName().exists()).toBe(true);
     expect(selectors.age().exists()).toBe(true);
@@ -100,9 +103,7 @@ describe('HdForm', () => {
   });
 
   test('a user can submit a invalid form', async () => {
-    const { wrapper, selectors } = hdFormFactory()
-      .withSampleForm()
-      .build();
+    const { wrapper, selectors } = hdFormFactory().withSampleForm().build();
 
     await selectors.firstName().setValue('Dave Grohl');
     await selectors.age().setValue('51');
@@ -123,14 +124,12 @@ describe('HdForm', () => {
         },
         hasChanged: true,
         isValid: false,
-      }),
+      })
     );
   });
 
   test('a HdForm detects changes in child inputs on submit', async () => {
-    const { wrapper, selectors } = hdFormFactory()
-      .withSampleForm()
-      .build();
+    const { wrapper, selectors } = hdFormFactory().withSampleForm().build();
 
     await selectors.submit().trigger('submit');
 
@@ -175,7 +174,6 @@ describe('HdForm', () => {
               <button type="submit">Submit</button>
             </div>
           `,
-
       })
       .build();
 
@@ -236,7 +234,6 @@ describe('HdForm', () => {
             <button type="submit">Submit</button>
           </div>
         `,
-
       })
       .build();
 

@@ -36,7 +36,7 @@
           v-for="item in items"
           :key="item.value"
           :class="{
-            'pager__items__item': true,
+            pager__items__item: true,
             [`pager__items__item--size-${item.size}`]: true,
             isActive: item.active,
           }"
@@ -45,7 +45,10 @@
             width: `${dotSize}px`,
           }"
           :aria-current="item.active ? 'true' : 'false'"
-          @click="triggerRippleEffect(); $emit('input', item.value)"
+          @click="
+            triggerRippleEffect();
+            $emit('input', item.value);
+          "
         >
           <span class="pager__items__item__text">
             {{ item.value + 1 }}
@@ -95,29 +98,31 @@ export default {
     return {
       dotSize: DOT_SIZE,
       hasRippleEffect: false,
-      trackOffset: this.count > this.maxVisible
-        ? DOT_SIZE
-        : 0,
+      trackOffset: this.count > this.maxVisible ? DOT_SIZE : 0,
       isUsingMouse: false,
     };
   },
   computed: {
     outOfRangeItemsOffset() {
-      return getArrayOfSize(this.count).reduce((acc, current) => {
-        const paddingCount = this.maxVisible - 1;
-        const position = current;
-        if (position < (this.value + (paddingCount * -1))) {
-          return acc + 1;
-        }
-        return acc;
-      }, 0) * DOT_SIZE;
+      return (
+        getArrayOfSize(this.count).reduce((acc, current) => {
+          const paddingCount = this.maxVisible - 1;
+          const position = current;
+          if (position < this.value + paddingCount * -1) {
+            return acc + 1;
+          }
+          return acc;
+        }, 0) * DOT_SIZE
+      );
     },
     items() {
       return getArrayOfSize(this.count).reduce((acc, current) => {
         const paddingCount = this.maxVisible - 1;
         const position = current;
-        if (position < (this.value + (paddingCount * -1))
-        || position > this.value + this.maxVisible + paddingCount) {
+        if (
+          position < this.value + paddingCount * -1 ||
+          position > this.value + this.maxVisible + paddingCount
+        ) {
           // This item is out of range
           return acc;
         }
@@ -158,18 +163,17 @@ export default {
         return 'small';
       }
       const offset = position * DOT_SIZE;
-      const isFirstVisible = (offset + this.trackOffset) === 0;
-      const isLastVisible = (offset + this.trackOffset)
-        - ((this.maxVisible - 1) * DOT_SIZE) === 0;
+      const isFirstVisible = offset + this.trackOffset === 0;
+      const isLastVisible = offset + this.trackOffset - (this.maxVisible - 1) * DOT_SIZE === 0;
       if (isFirstVisible || isLastVisible) {
         return 'tiny';
       }
       if (this.maxVisible < 7) {
         return 'regular';
       }
-      const isImmediatelyAfterFirstVisible = (offset + this.trackOffset) === DOT_SIZE;
-      const isImmediatelyBeforeLastVisible = (offset + this.trackOffset)
-        - ((this.maxVisible - 1) * DOT_SIZE) === DOT_SIZE * -1;
+      const isImmediatelyAfterFirstVisible = offset + this.trackOffset === DOT_SIZE;
+      const isImmediatelyBeforeLastVisible =
+        offset + this.trackOffset - (this.maxVisible - 1) * DOT_SIZE === DOT_SIZE * -1;
       if (this.isOutOfBoundsLeft(position) || this.isOutOfBoundsRight(position)) {
         return 'tiny';
       }
@@ -184,7 +188,7 @@ export default {
     },
     isOutOfBoundsRight(position) {
       const offset = position * DOT_SIZE;
-      return (offset + this.trackOffset) - ((this.maxVisible - 1) * DOT_SIZE) > 0;
+      return offset + this.trackOffset - (this.maxVisible - 1) * DOT_SIZE > 0;
     },
     triggerRippleEffect() {
       this.hasRippleEffect = false;
@@ -203,9 +207,8 @@ export default {
       }
       const currentOffset = this.trackOffset;
       const valueOffset = this.value * DOT_SIZE;
-      const isFirstVisible = (valueOffset + currentOffset) === 0;
-      const isLastVisible = (valueOffset + currentOffset)
-        - ((this.maxVisible - 1) * DOT_SIZE) === 0;
+      const isFirstVisible = valueOffset + currentOffset === 0;
+      const isLastVisible = valueOffset + currentOffset - (this.maxVisible - 1) * DOT_SIZE === 0;
       if (isFirstVisible) {
         this.trackOffset += DOT_SIZE;
         return;
@@ -214,12 +217,12 @@ export default {
         this.trackOffset -= DOT_SIZE;
       }
       if (valueOffset + currentOffset < 0) {
-        this.trackOffset = (valueOffset * -1) + DOT_SIZE;
+        this.trackOffset = valueOffset * -1 + DOT_SIZE;
       }
-      if ((valueOffset + currentOffset) - ((this.maxVisible - 1) * DOT_SIZE) > 0) {
+      if (valueOffset + currentOffset - (this.maxVisible - 1) * DOT_SIZE > 0) {
         this.trackOffset = Math.max(
-          (valueOffset - ((this.maxVisible - 2) * DOT_SIZE)) * -1,
-          ((this.count * DOT_SIZE) - ((this.maxVisible - 1) * DOT_SIZE)) * -1,
+          (valueOffset - (this.maxVisible - 2) * DOT_SIZE) * -1,
+          (this.count * DOT_SIZE - (this.maxVisible - 1) * DOT_SIZE) * -1
         );
       }
     },
@@ -253,7 +256,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
 
 @keyframes pager-ripple {
@@ -306,9 +309,7 @@ export default {
         content: '';
         background-color: getShade($quaternary-color, 60);
         border-radius: 50%;
-        transition:
-          height $time-s ease-in-out,
-          width $time-s ease-in-out;
+        transition: height $time-s ease-in-out, width $time-s ease-in-out;
         z-index: 2;
 
         #{$_root}.isWhite & {

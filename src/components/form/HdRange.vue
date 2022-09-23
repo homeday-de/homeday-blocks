@@ -1,9 +1,7 @@
 <template>
-  <div
-    :class="fieldClasses"
-    class="range field"
-  >
-    <input type="range"
+  <div :class="fieldClasses" class="range field">
+    <input
+      type="range"
       v-model.number="computedValue"
       :id="name"
       :name="name"
@@ -14,7 +12,7 @@
       :step="step"
       @focus="focusHandler"
       @blur="blurHandler"
-    >
+    />
     <div
       ref="track"
       :style="{
@@ -38,18 +36,11 @@
         class="range__step"
         @click="onStepClick(stepIndex)"
       >
-        <p
-          v-if="labels[stepIndex]"
-          class="range__step-label"
-          v-html="labels[stepIndex]"
-        />
+        <p v-if="labels[stepIndex]" class="range__step-label" v-html="labels[stepIndex]" />
       </button>
     </div>
     <div class="range__thumb" ref="thumb">
-      <div
-        v-if="displayTooltip"
-        class="range__tooltip"
-      >
+      <div v-if="displayTooltip" class="range__tooltip">
         {{ tooltipValue || value }}
       </div>
       <div class="range__thumb__inner" ref="thumbInner">
@@ -65,9 +56,7 @@ import formField from './formFieldMixin';
 
 export default {
   name: 'HdRange',
-  mixins: [
-    formField,
-  ],
+  mixins: [formField],
   props: {
     name: {
       type: String,
@@ -194,7 +183,7 @@ export default {
       this.$refs.thumb.style.transform = `translateX(${valuePercentageInputWidthPixels}px)`;
     },
     onStepClick(stepIndex) {
-      this.computedValue = this.min + (stepIndex * this.step);
+      this.computedValue = this.min + stepIndex * this.step;
     },
     onResize() {
       this.trackWidth = this.$refs.track.offsetWidth;
@@ -210,7 +199,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
 
 .range {
@@ -228,7 +217,7 @@ export default {
     margin-top: $sp-xl;
   }
 
-  input[type=range] {
+  input[type='range'] {
     -moz-appearance: none;
     -webkit-appearance: none;
     background: transparent;
@@ -267,7 +256,6 @@ export default {
       border: 0;
       color: transparent;
       cursor: pointer;
-
     }
 
     &::-webkit-slider-thumb {
@@ -300,7 +288,7 @@ export default {
   &__track {
     position: absolute;
     top: 50%;
-    margin-top: - 3px;
+    margin-top: -3px;
     width: 100%;
     height: $range-bar-height;
     border-radius: $range-bar-height;
@@ -308,7 +296,7 @@ export default {
     z-index: 0;
     overflow: hidden;
 
-    &:focus{
+    &:focus {
       box-shadow: none;
     }
   }
@@ -332,10 +320,10 @@ export default {
     border: 0;
 
     &:after {
-      content: "";
+      content: '';
       display: block;
-      margin-left: - $steps-size / 2;
-      margin-top: - $steps-size / 2;
+      margin-left: -$steps-size / 2;
+      margin-top: -$steps-size / 2;
       height: $steps-size - ($steps-border-size * 2);
       width: $steps-size - ($steps-border-size * 2);
       border-radius: $steps-size / 2;
@@ -357,7 +345,7 @@ export default {
     display: block;
     width: 0;
     height: 0;
-    transition: transform .3s;
+    transition: transform 0.3s;
 
     &__inner {
       cursor: grab;
@@ -370,8 +358,8 @@ export default {
       position: absolute;
       background: $white;
       left: 0;
-      margin-top: - $range-thumb-tot-size / 2;
-      margin-left: - $range-thumb-tot-size / 2;
+      margin-top: -$range-thumb-tot-size / 2;
+      margin-left: -$range-thumb-tot-size / 2;
       z-index: 1;
       display: flex;
       align-items: center;
@@ -392,10 +380,10 @@ export default {
       max-width: $range-thumb-inner-bullet-size;
 
       border-radius: $sp-m;
-      transition: transform .1s ease-in-out;
+      transition: transform 0.1s ease-in-out;
       transform-origin: center center;
 
-      #{$range}:not(.field--disabled):hover &{
+      #{$range}:not(.field--disabled):hover & {
         background-color: $activeColor;
         transform: scale(1.25);
       }
@@ -403,8 +391,8 @@ export default {
       @include only-ie {
         top: 50%;
         left: 50%;
-        margin-left: - $range-thumb-inner-bullet-size / 2;
-        margin-top: - $range-thumb-inner-bullet-size / 2;
+        margin-left: -$range-thumb-inner-bullet-size / 2;
+        margin-top: -$range-thumb-inner-bullet-size / 2;
       }
     }
   }
@@ -415,7 +403,7 @@ export default {
     width: 100%;
     transform-origin: 0 center;
     transform: scaleX(0);
-    transition: transform .3s;
+    transition: transform 0.3s;
 
     .field--disabled & {
       background-color: $disabledColor;

@@ -6,14 +6,8 @@
       'alert--no-icon': noIcon,
     }"
   >
-    <HdIcon
-      v-if="!noIcon"
-      :src="iconSrc"
-      class="alert__icon"
-    />
-    <div
-      class="alert__message"
-    >
+    <HdIcon v-if="!noIcon" :src="iconSrc" class="alert__icon" />
+    <div class="alert__message">
       <slot />
     </div>
   </div>
@@ -21,28 +15,7 @@
 
 <script>
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
-import {
-  checkCircle as successIcon,
-  info as infoIcon,
-  warning as warningIcon,
-  error as errorIcon,
-} from 'homeday-assets';
-
-// The first item is the default
-export const TYPES = {
-  info: {
-    icon: infoIcon,
-  },
-  success: {
-    icon: successIcon,
-  },
-  warning: {
-    icon: warningIcon,
-  },
-  error: {
-    icon: errorIcon,
-  },
-};
+import TYPES from 'homeday-blocks/src/components/HdAlertTypes';
 
 export default {
   name: 'HdAlert',
@@ -74,7 +47,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
 
 .alert {
@@ -89,24 +62,40 @@ export default {
   &--success {
     border-color: $success-color;
     color: $success-color;
-    background-color: rgba($success-color, .07);
+    background-color: rgba($success-color, 0.07);
+
+    #{$root}__icon {
+      fill: $success-color;
+    }
   }
 
   &--info {
     border-color: getShade($quaternary-color, 60);
     color: $quaternary-color;
+
+    #{$root}__icon {
+      fill: $secondary-color;
+    }
   }
 
   &--warning {
     border-color: $tertiary-color;
     color: $tertiary-color;
     background-color: getShade($tertiary-color, 60);
+
+    #{$root}__icon {
+      fill: $tertiary-color;
+    }
   }
 
   &--error {
     border-color: $error-color;
     color: $error-color;
-    background-color: rgba($error-color, .07);
+    background-color: rgba($error-color, 0.07);
+
+    #{$root}__icon {
+      fill: $error-color;
+    }
   }
 
   &--no-icon {
@@ -120,19 +109,8 @@ export default {
     margin-top: $sp-xxs;
     margin-right: $sp-s;
 
-    ::v-deep path {
-      #{$root}--success & {
-        fill: $success-color;
-      }
-      #{$root}--info & {
-        fill: $secondary-color;
-      }
-      #{$root}--warning & {
-        fill: $tertiary-color;
-      }
-      #{$root}--error & {
-        fill: $error-color;
-      }
+    path {
+      fill: currentColor;
     }
   }
 }

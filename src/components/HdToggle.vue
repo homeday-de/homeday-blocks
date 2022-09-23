@@ -8,18 +8,10 @@
     @keydown="setUsingMouse(false)"
     @mousedown="setUsingMouse(true)"
   >
-    <button
-      :disabled="!canBeToggled"
-      class="hd-toggle__control"
-      type="button"
-      @click="toggleOpen"
-    >
+    <button :disabled="!canBeToggled" class="hd-toggle__control" type="button" @click="toggleOpen">
       {{ title }}
 
-      <HdIcon
-        :src="chevronIcon"
-        class="hd-toggle__control-icon"
-      />
+      <HdIcon :src="chevronIcon" class="hd-toggle__control-icon" />
     </button>
     <div
       ref="body"
@@ -35,7 +27,7 @@
 </template>
 
 <script>
-import { OnResizeService } from 'homeday-blocks';
+import OnResizeService from 'homeday-blocks/src/services/on-resize';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import { chevron as chevronIcon } from 'homeday-assets';
 
@@ -137,9 +129,7 @@ export default {
         return;
       }
 
-      const $innerFocusableElements = this.$refs.body.querySelectorAll(
-        'a, button, [tabindex]',
-      );
+      const $innerFocusableElements = this.$refs.body.querySelectorAll('a, button, [tabindex]');
 
       if (!$innerFocusableElements.length) {
         return;
@@ -163,7 +153,7 @@ export default {
       }
 
       const $innerFocusableElements = this.$refs.body.querySelectorAll(
-        `[${TABINDEX_BACKUP_ATTRIBUTE}]`,
+        `[${TABINDEX_BACKUP_ATTRIBUTE}]`
       );
 
       if (!$innerFocusableElements.length) {
@@ -190,7 +180,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
 
 $_controlIconSize: 32px;

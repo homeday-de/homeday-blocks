@@ -29,15 +29,11 @@
       :disabled="disabled"
       :maxlength="maxlength"
       class="textarea"
-      data-gramm_editor="false"
       @focus="handleFocus"
       @blur="handleBlur"
       @input="handleInput"
     />
-    <span
-      v-if="isMaxlengthIndicatorVisible"
-      class="maxlength-indicator"
-    >
+    <span v-if="isMaxlengthIndicatorVisible" class="maxlength-indicator">
       {{ maxlengthIndicator }}
     </span>
     <!-- `data-gramm_editor` attribute is used to control Grammarly (chrome extension) -->
@@ -52,9 +48,7 @@ import formField from './formFieldMixin';
 
 export default {
   name: 'HdTextarea',
-  mixins: [
-    formField,
-  ],
+  mixins: [formField],
   components: {
     TextFieldBase,
   },
@@ -194,7 +188,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
 $distanceFromTextareaToIndicator: -18px;
 
@@ -206,31 +200,26 @@ $distanceFromTextareaToIndicator: -18px;
   position: absolute;
   right: 0;
   bottom: $distanceFromTextareaToIndicator;
-  @include font("DS-60");
+  @include font('DS-60');
   padding: 0px $sp-s;
   color: getShade($quaternary-color, 70);
 }
 .field--maxlength-indicator-visible {
-  ::v-deep {
-    .field__helper {
-      padding-right: $sp-xl;
-    }
+  .field__helper {
+    padding-right: $sp-xl;
   }
 }
 
 .field--label-background-visible {
-  ::v-deep {
-    .field__main::after {
-      content: '';
-      position: absolute;
-      z-index: 1;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: $sp-l - $sp-s; // Same as the padding top from the textarea, defined on FieldBase
-      background-color: $secondary-bg;
-    }
+  .field__main::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $sp-l - $sp-s; // Same as the padding top from the textarea, defined on FieldBase
+    background-color: $secondary-bg;
   }
 }
-
 </style>

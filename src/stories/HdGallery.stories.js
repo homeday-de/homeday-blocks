@@ -1,6 +1,11 @@
-import { HdGallery } from 'homeday-blocks';
+import Vue from 'vue';
+/* eslint-disable import/no-extraneous-dependencies */
+import VueRouter from 'vue-router';
+import HdGallery from 'homeday-blocks/src/components/gallery/HdGallery.vue';
 import { pictures as picturesIcon } from 'homeday-assets/L';
 import ITEMS from './mocks/GALLERY_ITEMS';
+
+Vue.use(VueRouter);
 
 export default {
   title: 'Components/Gallery/HdGallery',
@@ -38,6 +43,9 @@ export default {
     input: {
       action: 'input',
     },
+    to: {
+      action: 'to',
+    },
   },
   args: {
     items: ITEMS,
@@ -45,6 +53,8 @@ export default {
     disableKeyEvents: false,
     showCaption: true,
     startIndex: 0,
+    mobileCounterBadge: false,
+    to: undefined,
   },
   parameters: { percy: { widths: [375] } },
 };
@@ -55,21 +65,11 @@ const Template = (args, { argTypes }) => ({
   template: `
     <div style="max-width: 800px; padding-left: 16px; padding-right: 16px; margin: auto;">
     <HdGallery
-      :items="items"
-      :pager-inside="pagerInside"
-      :aspect-ratio="aspectRatio"
-      :disable-key-events="disableKeyEvents"
-      :start-index="startIndex"
-      :show-caption="showCaption"
-      :placeholder-icon="placeholderIcon"
-      :placeholder-text="placeholderText"
-      :carousel-object-fit="carouselObjectFit"
-      @carouselItemClick="carouselItemClick"
-      @currentItemClick="currentItemClick"
-      @input="input"
+      v-bind="$props"
     />
     </div>
   `,
+  router: new VueRouter({ mode: 'history' }),
 });
 
 export const Default = Template.bind({});
@@ -77,11 +77,24 @@ Default.args = {
   carouselObjectFit: 'cover',
 };
 
+export const DefaultWithLink = Template.bind({});
+DefaultWithLink.args = {
+  to: {
+    path: '/expose/YP1O2APN',
+  },
+};
+
 export const OnePhoto = Template.bind({});
 OnePhoto.args = {
-  items: [
-    ITEMS[0],
-  ],
+  items: [ITEMS[0]],
+};
+
+export const OnePhotoWithLink = Template.bind({});
+OnePhotoWithLink.args = {
+  items: [ITEMS[0]],
+  to: {
+    path: '/expose/YP1O2APN',
+  },
 };
 
 export const NoPhotos = Template.bind({});
@@ -95,4 +108,9 @@ export const WithPagerInside = Template.bind({});
 WithPagerInside.args = {
   pagerInside: true,
   showCaption: false,
+};
+
+export const WithMobileCounterBadge = Template.bind({});
+WithMobileCounterBadge.args = {
+  mobileCounterBadge: true,
 };

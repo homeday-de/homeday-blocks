@@ -1,19 +1,16 @@
 /* eslint-disable import/no-extraneous-dependencies, no-console */
 import { storiesOf } from '@storybook/vue';
-import {
-  HdDynamicForm,
-  UtilsService,
-} from 'homeday-blocks';
+import { formatNestedData } from 'homeday-blocks/src/services/utils';
+import HdDynamicForm from 'homeday-blocks/src/components/form/HdDynamicForm.vue';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 import CONFIG from './mocks/forms';
-
-const { formatNestedData } = UtilsService;
 
 storiesOf('Components/Form/HdDynamicForm', module)
   .addDecorator(FormWrapper)
   .add('profile', () => ({
     components: { HdDynamicForm },
-    template: '<hd-dynamic-form :items="config" submitLabel="Submit Label" @submit="onSubmit" @blur="onBlur" @focus="onFocus"/>',
+    template:
+      '<hd-dynamic-form :items="config" submitLabel="Submit Label" @submit="onSubmit" @blur="onBlur" @focus="onFocus"/>',
     data() {
       return {
         config: CONFIG.PROFILE,
@@ -24,10 +21,7 @@ storiesOf('Components/Form/HdDynamicForm', module)
         console.log('invalidFields', invalidFields);
         console.log('isValid', isValid);
         console.log('data', data);
-        console.log(
-          'Nested data',
-          formatNestedData(data),
-        );
+        console.log('Nested data', formatNestedData(data));
       },
       onBlur(item) {
         console.log('blur', item);
@@ -39,7 +33,8 @@ storiesOf('Components/Form/HdDynamicForm', module)
   }))
   .add('signup', () => ({
     components: { HdDynamicForm },
-    template: '<hd-dynamic-form :items="config" submitLabel="Submit Label" @submit="onSubmit" @blur="onBlur" @focus="onFocus"/>',
+    template:
+      '<hd-dynamic-form :items="config" submitLabel="Submit Label" @submit="onSubmit" @blur="onBlur" @focus="onFocus"/>',
     data() {
       return {
         config: CONFIG.SIGNUP,
@@ -50,10 +45,7 @@ storiesOf('Components/Form/HdDynamicForm', module)
         console.log('invalidFields', invalidFields);
         console.log('isValid', isValid);
         console.log('data', data);
-        console.log(
-          'Nested data',
-          formatNestedData(data),
-        );
+        console.log('Nested data', formatNestedData(data));
       },
       onBlur(item) {
         console.log('blur', item);
@@ -65,7 +57,8 @@ storiesOf('Components/Form/HdDynamicForm', module)
   }))
   .add('login', () => ({
     components: { HdDynamicForm },
-    template: '<hd-dynamic-form :items="config" submitLabel="Submit Label" @submit="onSubmit" @blur="onBlur" @focus="onFocus"/>',
+    template:
+      '<hd-dynamic-form :items="config" submitLabel="Submit Label" @submit="onSubmit" @blur="onBlur" @focus="onFocus"/>',
     data() {
       return {
         config: CONFIG.LOGIN,
@@ -76,10 +69,7 @@ storiesOf('Components/Form/HdDynamicForm', module)
         console.log('invalidFields', invalidFields);
         console.log('isValid', isValid);
         console.log('data', data);
-        console.log(
-          'Nested data',
-          formatNestedData(data),
-        );
+        console.log('Nested data', formatNestedData(data));
       },
       onBlur(item) {
         console.log('blur', item);
@@ -91,7 +81,8 @@ storiesOf('Components/Form/HdDynamicForm', module)
   }))
   .add('specified language', () => ({
     components: { HdDynamicForm },
-    template: '<hd-dynamic-form :items="config" submitLabel="Submit Label" lang="en" @submit="onSubmit" @blur="onBlur" @focus="onFocus"/>',
+    template:
+      '<hd-dynamic-form :items="config" submitLabel="Submit Label" lang="en" @submit="onSubmit" @blur="onBlur" @focus="onFocus"/>',
     data() {
       return {
         config: CONFIG.LOGIN_EN,
@@ -102,10 +93,7 @@ storiesOf('Components/Form/HdDynamicForm', module)
         console.log('invalidFields', invalidFields);
         console.log('isValid', isValid);
         console.log('data', data);
-        console.log(
-          'Nested data',
-          formatNestedData(data),
-        );
+        console.log('Nested data', formatNestedData(data));
       },
       onBlur(item) {
         console.log('blur', item);

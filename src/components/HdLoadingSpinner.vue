@@ -1,9 +1,5 @@
 <template>
-  <svg
-    class="loading-spinner"
-    viewBox="0 0 66 66"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+  <svg class="loading-spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
     <circle
       class="loading-spinner__path"
       fill="none"
@@ -22,8 +18,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-@import "homeday-blocks/src/styles/mixins.scss";
+<style lang="scss">
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 .loading-spinner {
   width: 40px;

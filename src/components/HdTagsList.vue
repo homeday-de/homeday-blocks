@@ -1,9 +1,6 @@
 <template>
   <section class="tags-list">
-    <div
-      v-for="item in items"
-      :key="item"
-      class="tags-list__tag">
+    <div v-for="item in items" :key="item" class="tags-list__tag">
       {{ item }}
     </div>
   </section>
@@ -22,7 +19,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
 
 .tags-list {

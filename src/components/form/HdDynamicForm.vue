@@ -1,6 +1,6 @@
 <template>
   <form class="dynamicForm" @submit.prevent="submit" novalidate>
-    <slot name="before"/>
+    <slot name="before" />
     <div v-for="(line, i) in lines" class="dynamicForm__line" :key="`line-${i}`">
       <component
         v-for="item in getItemsArray(line)"
@@ -17,11 +17,7 @@
       />
     </div>
     <slot name="before-button" />
-    <HdButton
-      v-if="submitLabel"
-      modifier="primary"
-      class="dynamicForm__submit"
-    >
+    <HdButton v-if="submitLabel" modifier="primary" class="dynamicForm__submit">
       {{ submitLabel }}
     </HdButton>
     <slot name="after" />
@@ -39,6 +35,7 @@ import HdSelect from 'homeday-blocks/src/components/form/HdSelect.vue';
 import HdTagsSelector from 'homeday-blocks/src/components/form/HdTagsSelector.vue';
 import HdSplitInput from 'homeday-blocks/src/components/form/HdSplitInput.vue';
 import HdGoogleAutocomplete from 'homeday-blocks/src/components/form/HdGoogleAutocomplete.vue';
+import HdInputFormatter from 'homeday-blocks/src/components/form/HdInputFormatter.vue';
 import HdButton from 'homeday-blocks/src/components/buttons/HdButton.vue';
 
 export default {
@@ -83,10 +80,10 @@ export default {
   },
   methods: {
     initializeFormData(array) {
-      const flattenedArray = array.reduce((flatArray, item) => [
-        ...flatArray,
-        ...this.getItemsArray(item),
-      ], []);
+      const flattenedArray = array.reduce(
+        (flatArray, item) => [...flatArray, ...this.getItemsArray(item)],
+        []
+      );
       flattenedArray.forEach((item) => {
         this.$set(this.formData, item.name, item.initialValue);
       });
@@ -124,6 +121,8 @@ export default {
           return HdInput;
         case 'inputPassword':
           return HdInputPassword;
+        case 'inputFormatter':
+          return HdInputFormatter;
         case 'checkbox':
           return HdCheckbox;
         case 'radio':
@@ -154,7 +153,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
 
 .dynamicForm {

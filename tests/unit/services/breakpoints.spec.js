@@ -1,7 +1,4 @@
-import {
-  setBreakpoints,
-  getBreakpoints,
-} from '@/services/breakpoints';
+import { setBreakpoints, getBreakpoints } from '@/services/breakpoints';
 
 const BREAKPOINTS = {
   s: '(max-width:599px)',

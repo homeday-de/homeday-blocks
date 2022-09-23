@@ -42,14 +42,13 @@ describe('HdExpandText', () => {
   it('display partial content', () => {
     const wrapper = wrapperBuilder();
 
-    scrollHeightSpy = jest.spyOn(wrapper.vm, 'getScrollHeight')
-      .mockImplementation((el) => {
-        if (el === wrapper.vm.$refs.sample) return 32;
+    scrollHeightSpy = jest.spyOn(wrapper.vm, 'getScrollHeight').mockImplementation((el) => {
+      if (el === wrapper.vm.$refs.sample) return 32;
 
-        if (el === wrapper.vm.$refs.wrapper) return 5000;
+      if (el === wrapper.vm.$refs.wrapper) return 5000;
 
-        return 0;
-      });
+      return 0;
+    });
 
     wrapper.vm.resizeWrapper();
 
@@ -59,14 +58,13 @@ describe('HdExpandText', () => {
   it('display the full content with no toggle', () => {
     const wrapper = wrapperBuilder();
 
-    scrollHeightSpy = jest.spyOn(wrapper.vm, 'getScrollHeight')
-      .mockImplementation((el) => {
-        if (el === wrapper.vm.$refs.sample) return 1000;
+    scrollHeightSpy = jest.spyOn(wrapper.vm, 'getScrollHeight').mockImplementation((el) => {
+      if (el === wrapper.vm.$refs.sample) return 1000;
 
-        if (el === wrapper.vm.$refs.wrapper) return 100;
+      if (el === wrapper.vm.$refs.wrapper) return 100;
 
-        return 0;
-      });
+      return 0;
+    });
 
     wrapper.vm.resizeWrapper();
 
@@ -76,14 +74,13 @@ describe('HdExpandText', () => {
   it('the content is expandable and shrinkable', async () => {
     const wrapper = wrapperBuilder();
 
-    scrollHeightSpy = jest.spyOn(wrapper.vm, 'getScrollHeight')
-      .mockImplementation((el) => {
-        if (el === wrapper.vm.$refs.sample) return 32;
+    scrollHeightSpy = jest.spyOn(wrapper.vm, 'getScrollHeight').mockImplementation((el) => {
+      if (el === wrapper.vm.$refs.sample) return 32;
 
-        if (el === wrapper.vm.$refs.wrapper) return 5000;
+      if (el === wrapper.vm.$refs.wrapper) return 5000;
 
-        return 0;
-      });
+      return 0;
+    });
 
     wrapper.vm.resizeWrapper();
     expect(wrapper.vm.isExpanded).toBe(false);
@@ -110,15 +107,14 @@ describe('HdExpandText', () => {
       },
     });
 
-    scrollHeightSpy = jest.spyOn(wrapper.vm, 'getScrollHeight')
-      .mockImplementation((el) => {
-        if (el === wrapper.vm.$refs.sample) return sampleHeight;
+    scrollHeightSpy = jest.spyOn(wrapper.vm, 'getScrollHeight').mockImplementation((el) => {
+      if (el === wrapper.vm.$refs.sample) return sampleHeight;
 
-        return 0;
-      });
+      return 0;
+    });
 
     wrapper.vm.resizeWrapper();
 
-    expect(wrapper.vm.$refs.wrapper.style.maxHeight).toBe(`${(sampleHeight * lines) + marginTop}px`);
+    expect(wrapper.vm.$refs.wrapper.style.maxHeight).toBe(`${sampleHeight * lines + marginTop}px`);
   });
 });

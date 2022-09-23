@@ -1,18 +1,20 @@
-// @ts-check
-
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { mount } from '@vue/test-utils';
 import deepmerge from 'deepmerge';
-import { HdCheckboxCard } from 'homeday-blocks/main';
-import { getMessages } from 'homeday-blocks/src/lang';
+import HdCheckboxCard from 'homeday-blocks/src/components/form/HdCheckboxCard.vue';
+import { getMessages, Language } from 'homeday-blocks/src/lang';
 
 describe('HdCheckboxCard', () => {
   const build = (overrideProps = {}, overrideSlots = {}) => {
     const propsData = deepmerge({ name: 'property', nativeValue: 'house' }, overrideProps);
 
-    const slots = deepmerge({
-      default: ['House'],
-      icon: ['<HdIcon src="house-icon" />'],
-    }, overrideSlots);
+    const slots = deepmerge(
+      {
+        default: ['House'],
+        icon: ['<HdIcon src="house-icon" />'],
+      },
+      overrideSlots
+    );
 
     const view = mount(HdCheckboxCard, {
       propsData,
@@ -27,8 +29,7 @@ describe('HdCheckboxCard', () => {
       input: () => view.find('input[type="checkbox"]'),
       label: () => view.find('label'),
       error: () => view.find('.error'),
-      /** @returns {import('homeday-blocks/src/lang').Messages} */
-      t: (lang = 'de') => getMessages(lang),
+      t: (lang: Language = 'de') => getMessages(lang),
     };
   };
 
@@ -72,11 +73,11 @@ describe('HdCheckboxCard', () => {
   it('displays validation error for custom validation rules', async () => {
     const customRules = [
       {
-        validate: (value) => value.length > 1,
+        validate: (value: string) => value.length > 1,
         errorMessage: 'Value must be greater than 1',
       },
       {
-        validate: (value) => value.length < 3,
+        validate: (value: string) => value.length < 3,
         errorMessage: 'Value must be less than 3',
       },
     ];
@@ -130,7 +131,10 @@ describe('HdCheckboxCard', () => {
 
     it('for custom false-value', async () => {
       const { view, input } = build({
-        nativeValue: null, value: 'on', trueValue: 'on', falseValue: 'off',
+        nativeValue: null,
+        value: 'on',
+        trueValue: 'on',
+        falseValue: 'off',
       });
 
       await input().setChecked(false);

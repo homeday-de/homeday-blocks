@@ -1,60 +1,61 @@
-// @ts-check
-
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { mount } from '@vue/test-utils';
 import deepmerge from 'deepmerge';
-import { HdRadioCardGroup, HdRadioCard } from 'homeday-blocks/main';
-import { getMessages } from 'homeday-blocks/src/lang';
+import HdCheckboxCardGroup from 'homeday-blocks/src/components/form/HdCheckboxCardGroup.vue';
+import HdCheckboxCard from 'homeday-blocks/src/components/form/HdCheckboxCard.vue';
+import { getMessages, Language } from 'homeday-blocks/src/lang';
 
-describe('HdRadioCardGroup', () => {
+describe('HdCheckboxCardGroup', () => {
   const build = (overrideProps = {}, overrideSlots = {}) => {
     const propsData = deepmerge({ name: 'property', value: 'house' }, overrideProps);
 
     const slots = {
-      default: [`
-        <HdRadioCard native-value="apartment">
+      default: [
+        `
+        <HdCheckboxCard native-value="apartment">
           <template #icon>
             <HdIcon src="apartmentCommercialIcon" />
           </template>
 
           Apartment
-        </HdRadioCard>
+        </HdCheckboxCard>
 
-        <HdRadioCard native-value="castle">
+        <HdCheckboxCard native-value="castle">
           <template #icon>
             <HdIcon src="houseCastleIcon" />
           </template>
 
           Castle
-        </HdRadioCard>
+        </HdCheckboxCard>
 
-        <HdRadioCard native-value="space">
+        <HdCheckboxCard native-value="space">
           <template #icon>
             <HdIcon src="rocketIcon" />
           </template>
 
           Space
-        </HdRadioCard>
-        `],
+        </HdCheckboxCard>
+        `,
+      ],
       ...overrideSlots,
     };
 
-    const view = mount(HdRadioCardGroup, {
+    const view = mount(HdCheckboxCardGroup, {
       propsData,
       slots,
       stubs: {
         HdIcon: true,
-        HdRadioCard,
+        HdCheckboxCard,
       },
     });
 
     return {
       view,
-      inputs: () => view.findAll('input[type="radio"]'),
-      inputChecked: () => view.find('input[type="radio"]:checked'),
+      inputs: () => view.findAll('input[type="checkbox"]'),
+      inputChecked: () => view.find('input[type="checkbox"]:checked'),
       labels: () => view.findAll('label'),
-      error: () => view.find('.radio-group__error'),
-      /** @returns {import('homeday-blocks/src/lang').Messages} */
-      t: (lang = 'de') => getMessages(lang),
+      error: () => view.find('.checkbox-group__error'),
+      t: (lang: Language = 'de') => getMessages(lang),
     };
   };
 
@@ -63,19 +64,21 @@ describe('HdRadioCardGroup', () => {
     expect(view.html()).toMatchSnapshot();
   });
 
-  it('renders only radio cards', () => {
+  it('renders only checkbox cards', () => {
     const slots = {
-      default: [`
-      <HdRadioCard native-value="apartment">
+      default: [
+        `
+      <HdCheckboxCard native-value="apartment">
         <template #icon>
           <HdIcon src="apartmentCommercialIcon" />
         </template>
 
         Apartment
-      </HdRadioCard>
+      </HdCheckboxCard>
 
       <h1>This element should not appear</h1>
-      `],
+      `,
+      ],
     };
     const { view, inputs } = build({}, slots);
 
@@ -83,7 +86,7 @@ describe('HdRadioCardGroup', () => {
     expect(view.find('h1').exists()).toBeFalsy();
   });
 
-  it('displays disabled radios', async () => {
+  it('displays disabled checkboxs', async () => {
     const { view, inputs } = build({ disabled: true });
 
     await inputs().at(0).setChecked();
@@ -92,13 +95,13 @@ describe('HdRadioCardGroup', () => {
     expect(view.emitted().input).toBeFalsy();
   });
 
-  it('displays a radio with a checked state', () => {
-    const { inputChecked } = build({ value: 'apartment' });
+  it('displays a checkbox with a checked state', () => {
+    const { inputChecked } = build({ value: ['apartment'] });
     expect(inputChecked().element).toBeChecked();
   });
 
-  it('displays a radio with an unchecked state', () => {
-    const { inputs } = build({ value: 'anotherValue' });
+  it('displays a checkbox with an unchecked state', () => {
+    const { inputs } = build({ value: ['anotherValue'] });
 
     inputs().wrappers.forEach((input) => expect(input.element).not.toBeChecked());
   });
@@ -119,11 +122,11 @@ describe('HdRadioCardGroup', () => {
   it('displays validation error for custom validation rules', async () => {
     const customRules = [
       {
-        validate: (value) => value.length > 1,
+        validate: (value: string) => value.length > 1,
         errorMessage: 'Value must be greater than 1',
       },
       {
-        validate: (value) => value.length < 3,
+        validate: (value: string) => value.length < 3,
         errorMessage: 'Value must be less than 3',
       },
     ];
@@ -146,17 +149,17 @@ describe('HdRadioCardGroup', () => {
     expect(error().text()).toContain(customRules[1].errorMessage);
   });
 
-  describe('emits input event when', () => {
-    it('input is checked', async () => {
-      const { view, inputs } = build({ value: 'house' });
+  describe('emits input event', () => {
+    it('when input is checked', async () => {
+      const { view, inputs } = build({ value: ['house'] });
 
-      await inputs().at(1).trigger('input');
+      await inputs().at(1).trigger('change');
 
       expect(view.emitted().input).toBeTruthy();
       expect(view.emitted().input).toHaveLength(1);
     });
 
-    it('user press space in label', async () => {
+    it('when user press space in label', async () => {
       const { view, labels } = build();
 
       await labels().at(1).trigger('keydown.space');

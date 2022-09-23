@@ -2,20 +2,17 @@
   <div class="tabs-menu">
     <div class="tabs-menu__wrap">
       <div class="tabs-menu__wrap__inner">
-        <flickity
-          ref="flickity"
-          :options="flickityOptions"
-        >
+        <flickity ref="flickity" :options="flickityOptions">
           <button
             v-for="(item, i) in items"
             :key="i"
             :class="{
               'tabs-menu__item': true,
               'tabs-menu__item--focus': !removeFocus,
-              'btn': true,
+              btn: true,
               'btn--flat': true,
               'js-tabs-menu-item': true,
-              'isActive': item.value === value
+              isActive: item.value === value,
             }"
             :data-index="i"
             type="button"
@@ -54,13 +51,18 @@ export default {
       type: Boolean,
       default: false,
     },
+    alignment: {
+      type: String,
+      default: 'left',
+      validator: (value) => ['left', 'right', 'center'].includes(value),
+    },
   },
   data() {
     return {
       flickityOptions: {
         prevNextButtons: true,
         pageDots: false,
-        cellAlign: 'center',
+        cellAlign: this.alignment,
         freeScroll: true,
         contain: true,
         initialIndex: this.items.findIndex((item) => item.value === this.value),
@@ -91,18 +93,10 @@ export default {
       this.$refs.flickity.select(parseInt(event.target.getAttribute('data-index'), 10));
     },
     addFocusEvents() {
-      this.$el.addEventListener(
-        'focus',
-        this.bringCellIntoViewOnFocus,
-        true,
-      );
+      this.$el.addEventListener('focus', this.bringCellIntoViewOnFocus, true);
     },
     removeFocusEvents() {
-      this.$el.removeEventListener(
-        'focus',
-        this.bringCellIntoViewOnFocus,
-        true,
-      );
+      this.$el.removeEventListener('focus', this.bringCellIntoViewOnFocus, true);
     },
   },
 };
@@ -132,10 +126,6 @@ export default {
     &.isActive::after {
       border-color: getShade($secondary-color, 110);
     }
-  }
-
-  .flickity--no-controls .flickity-slider {
-    transform: none !important;
   }
 
   svg.flickity-button-icon {
@@ -184,11 +174,7 @@ export default {
       right: 24px;
       width: 16px;
       height: 100%;
-      background-image: linear-gradient(
-        -90deg,
-        $primary-bg,
-        rgba($primary-bg, 0)
-      );
+      background-image: linear-gradient(-90deg, $primary-bg, rgba($primary-bg, 0));
       content: '';
     }
 

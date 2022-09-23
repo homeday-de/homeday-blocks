@@ -1,9 +1,7 @@
-import {
-  HdNotifications,
-  HdNotification,
-  HdNotificationsTypes as TYPES,
-  HdButton,
-} from 'homeday-blocks';
+import HdButton from 'homeday-blocks/src/components/buttons/HdButton.vue';
+import HdNotifications from 'homeday-blocks/src/components/notifications/HdNotifications.vue';
+import HdNotification from 'homeday-blocks/src/components/notifications/HdNotification.vue';
+import TYPES from 'homeday-blocks/src/components/notifications/HdNotificationsTypes';
 
 export default {
   title: 'Components/Notifications/HdNotifications',
@@ -26,7 +24,8 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: "Use Notifications at the top of your application's screen to display critical messages about the loss of data, features, notes, prompts, or important information that could affect the user's ability to use the product.",
+        component:
+          "Use Notifications at the top of your application's screen to display critical messages about the loss of data, features, notes, prompts, or important information that could affect the user's ability to use the product.",
       },
       source: {
         code: `

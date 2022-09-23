@@ -1,16 +1,10 @@
 <template>
-  <div
-    class="notification"
-    :class="[`notification--${type}`]"
-  >
-    <HdIcon
-      :src="icon"
-      class="notification__icon"
-    />
+  <div class="notification" :class="[`notification--${type}`]">
+    <HdIcon :src="icon" class="notification__icon" />
     <div
       class="notification__content"
       :class="{
-        'notification__content--centered': centered
+        'notification__content--centered': centered,
       }"
     >
       <slot>
@@ -22,19 +16,13 @@
 
 <script>
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
+import TYPES from 'homeday-blocks/src/components/notifications/HdNotificationsTypes';
 import {
   error as errorIcon,
   bell as bellIcon,
   info as infoIcon,
   checkCircle as checkCircleIcon,
 } from 'homeday-assets';
-
-export const TYPES = {
-  ERROR: 'error',
-  NOTIFICATION: 'notification',
-  INFO: 'info',
-  SUCCESS: 'success',
-};
 
 export default {
   name: 'HdNotification',

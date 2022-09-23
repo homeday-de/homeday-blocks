@@ -1,5 +1,6 @@
 import { wrapperFactoryBuilder } from 'tests/unit/helpers';
-import HdBadge, { TYPES } from '@/components/HdBadge.vue';
+import HdBadge from '@/components/HdBadge.vue';
+import TYPES from '@/components/HdBadgeTypes';
 
 const LABEL_SELECTOR = '.badge__label';
 const DETAILS_SELECTOR = '.badge__details';
@@ -106,7 +107,7 @@ describe('HdBadge', () => {
     expect(wrapper.classes()).toContain(BADGE_COLLAPSED_CLASS);
   });
 
-  it('should not render details if a slot wasn\'t provided', () => {
+  it("should not render details if a slot wasn't provided", () => {
     const wrapper = wrapperBuilder({
       slots: {
         default: '',

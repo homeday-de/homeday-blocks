@@ -1,7 +1,8 @@
 import _merge from 'lodash/merge';
 import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import InlineSvg from 'vue-inline-svg';
-import HdButton, { TYPES } from '@/components/buttons/HdButton.vue';
+import HdButton from '@/components/buttons/HdButton.vue';
+import TYPES from '@/components/buttons/HdButtonTypes';
 
 const ICON_BUTTON_CLASS = 'btn--icon-button';
 const ICON_CONTENT = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="222 126 53 53" width="50" height="50">
@@ -37,19 +38,21 @@ describe('HdButton', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  Object.values(TYPES).filter((modifier) => modifier).forEach((modifier) => {
-    it(`should render component with btn--${modifier} class`, () => {
-      const className = `btn--${modifier}`;
-      const wrapper = wrapperBuilder({
-        props: {
-          modifier,
-        },
-      });
+  Object.values(TYPES)
+    .filter((modifier) => modifier)
+    .forEach((modifier) => {
+      it(`should render component with btn--${modifier} class`, () => {
+        const className = `btn--${modifier}`;
+        const wrapper = wrapperBuilder({
+          props: {
+            modifier,
+          },
+        });
 
-      expect(wrapper.classes()).toContain(className);
-      expect(wrapper.html()).toMatchSnapshot();
+        expect(wrapper.classes()).toContain(className);
+        expect(wrapper.html()).toMatchSnapshot();
+      });
     });
-  });
 
   it('should render component with btn--dark-background class if prop isInDarkBackground is true', () => {
     const className = 'btn--dark-background';

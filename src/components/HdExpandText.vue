@@ -2,7 +2,7 @@
   <div
     :class="{
       'expand-text': true,
-      'isExpanded': isExpanded,
+      isExpanded: isExpanded,
     }"
   >
     <div
@@ -12,11 +12,8 @@
       }"
       class="expand-text__wrapper"
     >
-      <slot/>
-      <p
-        ref="sample"
-        class="expand-text__wrapper__sample"
-      >&nbsp;</p>
+      <slot />
+      <p ref="sample" class="expand-text__wrapper__sample">&nbsp;</p>
     </div>
     <button
       v-if="isToggleVisible"
@@ -25,11 +22,7 @@
       @click="toggleExpanded"
     >
       {{ toggleText }}
-      <HdIcon
-        :src="chevronIcon"
-        transform="rotate(90)"
-        class="expand-text__toggle__icon"
-      />
+      <HdIcon :src="chevronIcon" transform="rotate(90)" class="expand-text__toggle__icon" />
     </button>
   </div>
 </template>
@@ -164,7 +157,7 @@ export default {
       const lineHeight = this.$refs.sample
         ? this.getScrollHeight(this.$refs.sample)
         : this.approximateLineHeight;
-      const linesHeight = (lineHeight * lines) + this.marginTop;
+      const linesHeight = lineHeight * lines + this.marginTop;
 
       if (linesHeight + this.marginBottom >= this.fullHeight) {
         this.isToggleVisible = false;
@@ -214,7 +207,7 @@ export default {
       visibility: hidden;
 
       &::before {
-        content: '\2800'
+        content: '\2800';
       }
     }
   }

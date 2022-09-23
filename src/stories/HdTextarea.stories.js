@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
-import { HdTextarea } from 'homeday-blocks';
+import HdTextarea from 'homeday-blocks/src/components/form/HdTextarea.vue';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 import icon from './assets/ic_user.svg';
 
@@ -50,9 +50,11 @@ storiesOf('Components/Form/HdTextarea', module)
       },
     },
   }))
-  .add('custom translation', () => ({
-    components: { HdTextarea },
-    template: `
+  .add(
+    'custom translation',
+    () => ({
+      components: { HdTextarea },
+      template: `
       <HdTextarea
         v-model="value"
         :required="true"
@@ -62,24 +64,26 @@ storiesOf('Components/Form/HdTextarea', module)
         placeholder="Placeholder..."
       />
     `,
-    data() {
-      return {
-        value: '',
-        texts: {
-          FORM: {
-            VALIDATION: {
-              REQUIRED: 'Hey you, yeah you! Fill it out!',
+      data() {
+        return {
+          value: '',
+          texts: {
+            FORM: {
+              VALIDATION: {
+                REQUIRED: 'Hey you, yeah you! Fill it out!',
+              },
             },
           },
-        },
-      };
-    },
-    watch: {
-      value(value) {
-        action('input')(value);
+        };
       },
-    },
-  }), { percy: { skip: true } })
+      watch: {
+        value(value) {
+          action('input')(value);
+        },
+      },
+    }),
+    { percy: { skip: true } }
+  )
   .add('disabled', () => ({
     components: { HdTextarea },
     template: `

@@ -2,7 +2,7 @@
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import { text } from '@storybook/addon-knobs';
-import { HdSplitInput } from 'homeday-blocks';
+import HdSplitInput from 'homeday-blocks/src/components/form/HdSplitInput.vue';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 import icon from './assets/ic_user.svg';
 
@@ -81,7 +81,7 @@ storiesOf('Components/Form/HdSplitInput', module)
       <HdSplitInput
         v-model="value"
         :fields="fields"
-        icon="fake/icon.svg"
+        :icon="icon"
         name="test"
         label="Label"
       />

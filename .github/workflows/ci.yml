@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  pull_request_target:
+    branches:
+      - master
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Set node version 🏗
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Install dependencies ⬇️
+        run: npm ci
+      - name: Check Types 🆗
+        run: npm run type-check
+      - name: Run lint 👀
+        run: npm run lint:ci
+
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Set node version 🏗
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Install dependencies ⬇️
+        run: npm ci
+      - name: Run unit tests ✅
+        run: npm run test:unit

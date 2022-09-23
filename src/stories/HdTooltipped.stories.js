@@ -1,10 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
-import {
-  HdTooltipped,
-  HdInput,
-} from 'homeday-blocks';
+import HdTooltipped from 'homeday-blocks/src/components/tooltip/HdTooltipped.vue';
+import HdInput from 'homeday-blocks/src/components/form/HdInput.vue';
 
 storiesOf('Components/Tooltipped', module)
   .addParameters({ percy: { skip: true } })
@@ -23,7 +21,8 @@ storiesOf('Components/Tooltipped', module)
   }))
   .add('left', () => ({
     components: { HdTooltipped, HdInput },
-    template: '<hd-tooltipped value="Hello from the other side" direction="left" :component="HdInput" :props="{label: \'You can pass props to the component 😉\', \'value\': \'valuuuuue\', name: \'test\'}" />',
+    template:
+      '<hd-tooltipped value="Hello from the other side" direction="left" :component="HdInput" :props="{label: \'You can pass props to the component 😉\', \'value\': \'valuuuuue\', name: \'test\'}" />',
     data() {
       return { HdInput };
     },

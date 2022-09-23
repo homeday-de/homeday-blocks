@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
-import { HdTileSelect } from 'homeday-blocks';
+import HdTileSelect from 'homeday-blocks/src/components/form/HdTileSelect.vue';
 
 const stories = storiesOf('Components/Form/HdTileSelect', module);
 const watch = {
@@ -75,7 +75,7 @@ stories.add('Custom formatter', () => ({
     return {
       items: [1, 2, 3],
       value: 0,
-      formatter: (value) => (`Formatted ${value}`),
+      formatter: (value) => `Formatted ${value}`,
     };
   },
   watch,

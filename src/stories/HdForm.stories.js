@@ -1,9 +1,7 @@
-import {
-  HdForm,
-  HdInput,
-  HdInputFormatter,
-  HdCheckbox,
-} from 'homeday-blocks';
+import HdForm from 'homeday-blocks/src/components/form/HdForm.vue';
+import HdInput from 'homeday-blocks/src/components/form/HdInput.vue';
+import HdCheckbox from 'homeday-blocks/src/components/form/HdCheckbox.vue';
+import HdInputFormatter from 'homeday-blocks/src/components/form/HdInputFormatter.vue';
 
 export default {
   title: 'Components/Form/HdForm',
@@ -11,7 +9,8 @@ export default {
   argTypes: {
     scrollToInvalidField: {
       control: 'boolean',
-      description: 'If set to true and the form is invalid, the window will scroll to the first invalid field when the form is submitted',
+      description:
+        'If set to true and the form is invalid, the window will scroll to the first invalid field when the form is submitted',
     },
   },
   args: {
@@ -70,7 +69,8 @@ const Template = (args, { argTypes }) => ({
       // eslint-disable-next-line no-param-reassign
       params.invalidFields = params.invalidFields.map((field) => ({
         name: field.name,
-        '...': 'the other Vue component attributes were suppressed as Storybook struggles to stringify objects with circular references',
+        '...':
+          'the other Vue component attributes were suppressed as Storybook struggles to stringify objects with circular references',
       }));
       console.log('submitted', params);
     },

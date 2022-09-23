@@ -46,15 +46,27 @@
   </label>
 </template>
 
-<script>
-// @ts-check
+<script lang="ts">
+import Vue, { PropOptions, PropType, VueConstructor } from 'vue';
 import deepmerge from 'deepmerge';
-import { getMessages } from 'homeday-blocks/src/lang';
+import { customRules } from '@/@types/global';
+import { getMessages, Language, Messages } from 'homeday-blocks/src/lang';
 import formFieldMixin from './formFieldMixin';
 import HdRadioIndicator from './HdRadioIndicator.vue';
 
-export default {
-  name: 'HdRadioCard',
+type VueInstance = VueConstructor<
+  Vue & {
+    $refs: {
+      radio: HTMLElement;
+      label: HTMLElement;
+    };
+  }
+>;
+
+export const name = 'HdRadioCard';
+
+export default (Vue as VueInstance).extend({
+  name,
   mixins: [formFieldMixin],
   components: {
     HdRadioIndicator,
@@ -87,21 +99,23 @@ export default {
       default: () => ({}),
     },
     lang: {
-      type: String,
+      type: String as PropType<Language>,
       default: 'de',
     },
-    /** @type {import('vue').PropOptions<{ validate: (value: unknown) => boolean, errorMessage: string }[]>} */
     customRules: {
       type: Array,
       default: () => [],
-      validator: (rulesProvided) => rulesProvided.every(
-        ({ validate, errorMessage }) => typeof validate === 'function' && typeof errorMessage === 'string',
-      ),
-    },
+      validator: (rulesProvided) =>
+        rulesProvided.every(
+          ({ validate, errorMessage }) =>
+            typeof validate === 'function' && typeof errorMessage === 'string'
+        ),
+    } as PropOptions<customRules>,
   },
-  data() {
+  data(): {
+    error: null | string;
+  } {
     return {
-    /** @type {string?} */
       error: null,
     };
   },
@@ -117,20 +131,16 @@ export default {
     },
   },
   computed: {
-    /** @returns {import('homeday-blocks/src/lang').Messages} */
-    t() {
-      return deepmerge(getMessages(this.lang), this.texts);
+    t(): Messages {
+      return deepmerge(getMessages(this.lang as Language), this.texts);
     },
-    /** @returns {boolean} */
-    isChecked() {
+    isChecked(): boolean {
       return this.nativeValue === this.value;
     },
-    /** @returns {boolean} */
-    hasValidationErrors() {
+    hasValidationErrors(): boolean {
       return Boolean(this.error);
     },
-    /** @returns {string} */
-    inputName() {
+    inputName(): string {
       return `${this.name}-${this.nativeValue}`;
     },
   },
@@ -149,26 +159,25 @@ export default {
      * invoked by HdForm.
      *
      * By surrounding HdRadioCard with a HdRadioCardGroup
-     * this function is automatically overriden.
+     * this function is automatically overridden.
      *
-     * @returns {boolean}
      */
-    validate() {
+    validate(): boolean {
       this.error = this.validateForm();
       return !this.hasValidationErrors;
     },
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>
-@import "homeday-blocks/src/styles/mixins.scss";
+@import 'homeday-blocks/src/styles/mixins.scss';
 
 ::v-deep path {
   transition: fill ($time-s * 2);
 }
 
-input[type="radio"] {
+input[type='radio'] {
   display: none;
 }
 
@@ -226,7 +235,7 @@ label:focus > .card:not(.card--disabled) > .card__border {
   border-color: getShade($dodger-blue, 110);
 }
 
-label:active > .card:not(.card--disabled)  > .card__border {
+label:active > .card:not(.card--disabled) > .card__border {
   border-width: 2px;
   border-color: getShade($dodger-blue, 110);
 }
@@ -234,7 +243,7 @@ label:active > .card:not(.card--disabled)  > .card__border {
 .card__control-label {
   margin-top: $sp-xs;
   color: $primary-color;
-  @include font("DS-100");
+  @include font('DS-100');
 }
 
 .card__indicator {
@@ -272,6 +281,6 @@ label:active > .card:not(.card--disabled)  > .card__border {
   display: block;
   margin-top: $sp-s;
   color: $error-color;
-  @include font("DS-100");
+  @include font('DS-100');
 }
 </style>
