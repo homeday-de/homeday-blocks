@@ -1,5 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
-const dateFormat = require('dateformat');
+import dateFormat from 'dateformat';
+
 const { readFileSync } = require('fs');
 const { join } = require('path');
 const { gitmojis } = require('gitmojis');
