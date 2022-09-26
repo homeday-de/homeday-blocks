@@ -12,3 +12,5 @@ updates:
   - bot
   commit-message:
     prefix: "⬆️"
+  ignore:
+  - dependency-name: dateformat
