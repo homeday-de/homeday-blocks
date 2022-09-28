@@ -156,7 +156,7 @@ $item-min-size: 100px;
 $border-width: 1px;
 
 .tile-select {
-  @include font('text-xsmall');
+  @include font('DS-150');
 
   &__items {
     display: grid;

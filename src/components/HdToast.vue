@@ -104,7 +104,9 @@ $toastWidth: 288px;
   border-radius: $default-border-radius;
   border: 1px solid #e1e1e1;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
-  @include font('xsheadline');
+  @include font('DS-90');
+  font-weight: 600;
+  color: $quaternary-color;
 
   &--isOpen {
     display: block;

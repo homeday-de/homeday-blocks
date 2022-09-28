@@ -253,7 +253,7 @@ export default {
     right: $sp-m;
     background-color: $primary-bg;
     padding: $sp-s;
-    @include font('text-xsmall');
+    @include font('DS-150');
     font-weight: bold;
     border: 0;
     border-radius: 4px;

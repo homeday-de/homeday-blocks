@@ -88,7 +88,8 @@ export default {
   }
 
   &__subtitle {
-    @include font('title');
+    @include font('DS-200');
+    font-weight: 900;
     margin-top: $sp-l;
   }
 

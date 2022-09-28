@@ -294,7 +294,7 @@ export default {
     padding-right: $sp-s;
     padding-left: $sp-s;
     background-color: rgba(0, 0, 0, 0.8);
-    @include font('text-xsmall');
+    @include font('DS-150');
     font-weight: 600;
     color: $white;
     border-radius: 2px;

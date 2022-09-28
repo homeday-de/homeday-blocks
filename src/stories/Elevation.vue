@@ -59,10 +59,16 @@ export default {
   margin-left: auto;
 
   > h1 {
-    @include font('headline');
+    @include font('DS-300');
+    font-weight: 900;
+
+    @media (min-width: $break-tablet) {
+      @include font('DS-400');
+    }
   }
   > h3 {
-    @include font('title');
+    @include font('DS-200');
+    font-weight: 900;
     margin-top: $sp-l;
   }
 
@@ -95,7 +101,7 @@ export default {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    @include font('text-xsmall');
+    @include font('DS-150');
   }
 }
 </style>

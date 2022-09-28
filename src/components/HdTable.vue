@@ -50,7 +50,7 @@ export default {
 
 .hd-table {
   margin-top: $sp-s;
-  @include font('text-xsmall');
+  @include font('DS-150');
   border-collapse: collapse;
   width: 100%;
   z-index: -1;
