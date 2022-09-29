@@ -6,15 +6,15 @@ exports[`HdTabsMenu The component is rendered 1`] = `
     <div class="tabs-menu__wrap__inner">
       <div class="flickity-enabled flickity--no-controls" tabindex="0">
         <div class="flickity-viewport" style="height: 0px;">
-          <div class="flickity-slider" style="left: 0px; transform: translateX(NaN%);"><button data-index="0" type="button" class="tabs-menu__item tabs-menu__item--focus btn btn--flat js-tabs-menu-item" style="position: absolute;" aria-hidden="true">
+          <div class="flickity-slider" style="left: 0px; transform: translateX(NaN%);"><button data-index="0" type="button" class="tabs-menu__item tabs-menu__item--focus btn btn--flat js-tabs-menu-item" style="position: absolute; left: 0px; transform: translateX(NaN%);" aria-hidden="true">
               Jon "Snow"
-            </button><button data-index="1" type="button" class="tabs-menu__item tabs-menu__item--focus btn btn--flat js-tabs-menu-item isActive is-selected" style="position: absolute;">
+            </button><button data-index="1" type="button" class="tabs-menu__item tabs-menu__item--focus btn btn--flat js-tabs-menu-item isActive is-selected" style="position: absolute; left: 0px; transform: translateX(NaN%);">
               Daenerys
-            </button><button data-index="2" type="button" class="tabs-menu__item tabs-menu__item--focus btn btn--flat js-tabs-menu-item" style="position: absolute;" aria-hidden="true">
+            </button><button data-index="2" type="button" class="tabs-menu__item tabs-menu__item--focus btn btn--flat js-tabs-menu-item" style="position: absolute; left: 0px; transform: translateX(NaN%);" aria-hidden="true">
               The Night King
-            </button><button data-index="3" type="button" class="tabs-menu__item tabs-menu__item--focus btn btn--flat js-tabs-menu-item" style="position: absolute;" aria-hidden="true">
+            </button><button data-index="3" type="button" class="tabs-menu__item tabs-menu__item--focus btn btn--flat js-tabs-menu-item" style="position: absolute; left: 0px; transform: translateX(NaN%);" aria-hidden="true">
               Arya
-            </button><button data-index="4" type="button" class="tabs-menu__item tabs-menu__item--focus btn btn--flat js-tabs-menu-item" style="position: absolute;" aria-hidden="true">
+            </button><button data-index="4" type="button" class="tabs-menu__item tabs-menu__item--focus btn btn--flat js-tabs-menu-item" style="position: absolute; left: 0px; transform: translateX(NaN%);" aria-hidden="true">
               Cersei
             </button></div>
         </div><button class="flickity-button flickity-prev-next-button previous" type="button" aria-label="Previous"><svg class="flickity-button-icon" viewBox="0 0 100 100">
