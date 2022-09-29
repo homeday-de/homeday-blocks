@@ -10,6 +10,7 @@ const wrapperBuilder = wrapperFactoryBuilder(HdInputFormatter, {
     value: defaultValue,
     formatter: jest.fn(),
   },
+  attachToDocument: true,
 });
 
 describe('HdInputFormatter', () => {
