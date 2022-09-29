@@ -15,11 +15,6 @@ module.exports = {
       .use('svg-url-loader')
       .loader('svg-url-loader')
       .end();
-
-    // Enabled auto-fix for eslint
-    config.module.rule('eslint').use('eslint-loader').options({
-      fix: true,
-    });
   },
   transpileDependencies: ['vue-zoomer'],
   css: {
