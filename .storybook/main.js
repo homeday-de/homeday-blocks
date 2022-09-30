@@ -10,6 +10,9 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/addon-knobs",
   ],
+  core: {
+    builder: 'webpack5',
+  },
   webpackFinal: async (config) => {
     config.resolve.alias = generateWebpackAlias({
       custom: {
