@@ -10,7 +10,10 @@ describe('HdInputPhone', () => {
       name: 'phone-number',
     };
 
-    const wrapper = wrapperBuilder({ props });
+    const wrapper = wrapperBuilder({
+      props,
+      attachToDocument: true,
+    });
 
     return {
       wrapper,

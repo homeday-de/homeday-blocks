@@ -15,6 +15,7 @@ const wrapperBuilder = wrapperFactoryBuilder(HdCheckbox, {
   props: {
     name: 'Test checkbox',
   },
+  attachToDocument: true,
 });
 
 describe('HdCheckbox', () => {

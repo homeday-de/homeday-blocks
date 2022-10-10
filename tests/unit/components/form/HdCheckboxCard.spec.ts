@@ -4,34 +4,80 @@ import deepmerge from 'deepmerge';
 import HdCheckboxCard from 'homeday-blocks/src/components/form/HdCheckboxCard.vue';
 import { getMessages, Language } from 'homeday-blocks/src/lang';
 
+const build = (overrideProps = {}, overrideSlots = {}) => {
+  const propsData = deepmerge({ name: 'property', nativeValue: 'house' }, overrideProps);
+
+  const slots = deepmerge(
+    {
+      default: ['House'],
+      icon: ['<HdIcon src="house-icon" />'],
+    },
+    overrideSlots
+  );
+
+  const view = mount(HdCheckboxCard, {
+    propsData,
+    slots,
+    stubs: {
+      HdIcon: true,
+    },
+    attachToDocument: true,
+  });
+
+  return {
+    view,
+    input: () => view.find('input[type="checkbox"]'),
+    label: () => view.find('label'),
+    error: () => view.find('.error'),
+    t: (lang: Language = 'de') => getMessages(lang),
+  };
+};
+
 describe('HdCheckboxCard', () => {
-  const build = (overrideProps = {}, overrideSlots = {}) => {
-    const propsData = deepmerge({ name: 'property', nativeValue: 'house' }, overrideProps);
+  describe('emits input event', () => {
+    it('when user press space in label', async () => {
+      const { view, label } = build();
 
-    const slots = deepmerge(
-      {
-        default: ['House'],
-        icon: ['<HdIcon src="house-icon" />'],
-      },
-      overrideSlots
-    );
+      await label().trigger('keydown.space');
 
-    const view = mount(HdCheckboxCard, {
-      propsData,
-      slots,
-      stubs: {
-        HdIcon: true,
-      },
+      expect(view.emitted().input).toBeTruthy();
+      expect(view.emitted().input).toHaveLength(1);
     });
 
-    return {
-      view,
-      input: () => view.find('input[type="checkbox"]'),
-      label: () => view.find('label'),
-      error: () => view.find('.error'),
-      t: (lang: Language = 'de') => getMessages(lang),
-    };
-  };
+    it('when input is checked', async () => {
+      const { view, input } = build();
+
+      await input().setChecked();
+
+      expect(view.emitted().input).toBeTruthy();
+      expect(view.emitted().input).toHaveLength(1);
+    });
+
+    it('for custom true-value', async () => {
+      const { view, input } = build({ nativeValue: null, trueValue: 'on' });
+
+      await input().setChecked();
+
+      expect(view.emitted().input).toBeTruthy();
+      expect(view.emitted().input).toHaveLength(1);
+      expect(view.emitted().input).toEqual([['on']]);
+    });
+
+    it('for custom false-value', async () => {
+      const { view, input } = build({
+        nativeValue: null,
+        value: 'on',
+        trueValue: 'on',
+        falseValue: 'off',
+      });
+
+      await input().setChecked(false);
+
+      expect(view.emitted().input).toBeTruthy();
+      expect(view.emitted().input).toHaveLength(1);
+      expect(view.emitted().input).toEqual([['off']]);
+    });
+  });
 
   it('renders correctly', () => {
     const { view } = build();
@@ -98,50 +144,5 @@ describe('HdCheckboxCard', () => {
 
     expect(error().exists()).toBeTruthy();
     expect(error().text()).toContain(customRules[1].errorMessage);
-  });
-
-  describe('emits input event', () => {
-    it('when input is checked', async () => {
-      const { view, input } = build();
-
-      await input().setChecked();
-
-      expect(view.emitted().input).toBeTruthy();
-      expect(view.emitted().input).toHaveLength(1);
-    });
-
-    it('when user press space in label', async () => {
-      const { view, label } = build();
-
-      await label().trigger('keydown.space');
-
-      expect(view.emitted().input).toBeTruthy();
-      expect(view.emitted().input).toHaveLength(1);
-    });
-
-    it('for custom true-value', async () => {
-      const { view, input } = build({ nativeValue: null, trueValue: 'on' });
-
-      await input().setChecked();
-
-      expect(view.emitted().input).toBeTruthy();
-      expect(view.emitted().input).toHaveLength(1);
-      expect(view.emitted().input).toEqual([['on']]);
-    });
-
-    it('for custom false-value', async () => {
-      const { view, input } = build({
-        nativeValue: null,
-        value: 'on',
-        trueValue: 'on',
-        falseValue: 'off',
-      });
-
-      await input().setChecked(false);
-
-      expect(view.emitted().input).toBeTruthy();
-      expect(view.emitted().input).toHaveLength(1);
-      expect(view.emitted().input).toEqual([['off']]);
-    });
   });
 });

@@ -24,6 +24,7 @@ const wrapperBuilder = wrapperFactoryBuilder(HdSplitInput, {
     label: 'test label',
     fields: TEST_FIELDS,
   },
+  attachToDocument: true,
 });
 
 describe('HdSplitInput', () => {

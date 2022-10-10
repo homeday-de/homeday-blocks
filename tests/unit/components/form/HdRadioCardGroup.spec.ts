@@ -47,6 +47,7 @@ describe('HdRadioCardGroup', () => {
         HdIcon: true,
         HdRadioCard,
       },
+      attachToDocument: true,
     });
 
     return {
@@ -58,6 +59,26 @@ describe('HdRadioCardGroup', () => {
       t: (lang: Language = 'de') => getMessages(lang),
     };
   };
+
+  describe('emits input event when', () => {
+    it('user press space in label', async () => {
+      const { view, labels } = build();
+
+      await labels().at(1).trigger('keydown.space');
+
+      expect(view.emitted().input).toBeTruthy();
+      expect(view.emitted().input).toHaveLength(1);
+    });
+
+    it('input is checked', async () => {
+      const { view, inputs } = build({ value: 'house' });
+
+      await inputs().at(1).trigger('input');
+
+      expect(view.emitted().input).toBeTruthy();
+      expect(view.emitted().input).toHaveLength(1);
+    });
+  });
 
   it('renders correctly', () => {
     const { view } = build();
@@ -147,25 +168,5 @@ describe('HdRadioCardGroup', () => {
 
     expect(error().exists()).toBeTruthy();
     expect(error().text()).toContain(customRules[1].errorMessage);
-  });
-
-  describe('emits input event when', () => {
-    it('input is checked', async () => {
-      const { view, inputs } = build({ value: 'house' });
-
-      await inputs().at(1).trigger('input');
-
-      expect(view.emitted().input).toBeTruthy();
-      expect(view.emitted().input).toHaveLength(1);
-    });
-
-    it('user press space in label', async () => {
-      const { view, labels } = build();
-
-      await labels().at(1).trigger('keydown.space');
-
-      expect(view.emitted().input).toBeTruthy();
-      expect(view.emitted().input).toHaveLength(1);
-    });
   });
 });

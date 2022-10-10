@@ -47,6 +47,7 @@ describe('HdCheckboxCardGroup', () => {
         HdIcon: true,
         HdCheckboxCard,
       },
+      attachToDocument: true,
     });
 
     return {
@@ -58,6 +59,26 @@ describe('HdCheckboxCardGroup', () => {
       t: (lang: Language = 'de') => getMessages(lang),
     };
   };
+
+  describe('emits input event', () => {
+    it('when user press space in label', async () => {
+      const { view, labels } = build();
+
+      await labels().at(1).trigger('keydown.space');
+
+      expect(view.emitted().input).toBeTruthy();
+      expect(view.emitted().input).toHaveLength(1);
+    });
+
+    it('when input is checked', async () => {
+      const { view, inputs } = build({ value: ['house'] });
+
+      await inputs().at(1).trigger('change');
+
+      expect(view.emitted().input).toBeTruthy();
+      expect(view.emitted().input).toHaveLength(1);
+    });
+  });
 
   it('renders correctly', () => {
     const { view } = build();
@@ -147,25 +168,5 @@ describe('HdCheckboxCardGroup', () => {
 
     expect(error().exists()).toBeTruthy();
     expect(error().text()).toContain(customRules[1].errorMessage);
-  });
-
-  describe('emits input event', () => {
-    it('when input is checked', async () => {
-      const { view, inputs } = build({ value: ['house'] });
-
-      await inputs().at(1).trigger('change');
-
-      expect(view.emitted().input).toBeTruthy();
-      expect(view.emitted().input).toHaveLength(1);
-    });
-
-    it('when user press space in label', async () => {
-      const { view, labels } = build();
-
-      await labels().at(1).trigger('keydown.space');
-
-      expect(view.emitted().input).toBeTruthy();
-      expect(view.emitted().input).toHaveLength(1);
-    });
   });
 });

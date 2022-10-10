@@ -21,6 +21,7 @@ const wrapperBuilder = wrapperFactoryBuilder(HdRange, {
     value: initialValue,
     displayStepBullets: true,
   },
+  attachToDocument: true,
 });
 
 describe('HdRange', () => {

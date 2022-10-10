@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom';
+import '@testing-library/jest-dom/extend-expect';
 import { config } from '@vue/test-utils';
 
 config.showDeprecationWarnings = false;
