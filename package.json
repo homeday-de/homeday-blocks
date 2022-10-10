@@ -40,7 +40,7 @@
     "*.js"
   ],
   "dependencies": {
-    "awesome-phonenumber": "^2.64.0",
+    "awesome-phonenumber": "^3.4.0",
     "body-scroll-lock": "3.1.5",
     "country-codes-list": "^1.6.8",
     "deepmerge": "^4.2.2",
@@ -49,7 +49,7 @@
     "lodash": "4.17.21",
     "vue": "2.6.14",
     "vue-flickity": "1.2.1",
-    "vue-inline-svg": "2.0.0",
+    "vue-inline-svg": "2.1.0",
     "vue-zoomer": "git+https://git@github.com/homeday-de/vue-zoomer#0.5.0"
   },
   "devDependencies": {
@@ -57,14 +57,16 @@
     "@babel/eslint-parser": "^7.14.5",
     "@babel/runtime": "^7.14.6",
     "@percy/storybook": "3.3.1",
-    "@storybook/addon-actions": "6.2.9",
+    "@storybook/addon-actions": "6.5.12",
     "@storybook/addon-console": "1.2.3",
-    "@storybook/addon-essentials": "6.2.9",
-    "@storybook/addon-knobs": "6.2.9",
-    "@storybook/addon-links": "6.2.9",
-    "@storybook/addon-viewport": "6.2.9",
-    "@storybook/theming": "6.2.9",
-    "@storybook/vue": "6.2.9",
+    "@storybook/addon-essentials": "6.5.12",
+    "@storybook/addon-knobs": "6.4.0",
+    "@storybook/addon-links": "6.5.12",
+    "@storybook/addon-viewport": "6.5.12",
+    "@storybook/builder-webpack5": "^6.5.12",
+    "@storybook/manager-webpack5": "^6.5.12",
+    "@storybook/theming": "6.5.12",
+    "@storybook/vue": "6.5.12",
     "@testing-library/jest-dom": "^5.16.5",
     "@types/jest": "^24.0.19",
     "@types/lodash": "^4.14.171",
@@ -94,7 +96,7 @@
     "husky": "7.0.2",
     "hygen": "^6.1.0",
     "jest": "^27.1.0",
-    "node-sass": "^5.0.0",
+    "node-sass": "6.0.1",
     "p-limit": "3.1.0",
     "postcss": "^8.4.16",
     "prettier": "^2.7.1",
@@ -110,7 +112,8 @@
     "vue-loader": "^15.9.8",
     "vue-router": "^3.5.4",
     "vue-template-compiler": "2.6.14",
-    "vue-tsc": "0.2.2"
+    "vue-tsc": "0.2.2",
+    "webpack": "^5.74.0"
   },
   "bugs": {
     "url": "https://github.com/homeday-de/homeday-blocks/issues"
