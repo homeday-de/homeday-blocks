@@ -28,12 +28,12 @@ export default Vue.extend({
     mode: {
       type: String,
       default: 'card',
-      validator: (value) => ['card', 'tile'].includes(value),
+      validator: (value: string) => ['card', 'tile'].includes(value),
     },
     direction: {
       type: String,
       default: 'row',
-      validator: (value) => ['row', 'col'].includes(value),
+      validator: (value: string) => ['row', 'col'].includes(value),
     },
     texts: {
       type: Object,
@@ -46,7 +46,7 @@ export default Vue.extend({
     customRules: {
       type: Array,
       default: () => [],
-      validator: (rulesProvided) =>
+      validator: (rulesProvided: customRules) =>
         rulesProvided.every(
           ({ validate, errorMessage }) =>
             typeof validate === 'function' && typeof errorMessage === 'string'
