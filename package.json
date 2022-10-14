@@ -111,7 +111,7 @@
     "vue-code-highlight": "^0.7.8",
     "vue-loader": "^15.9.8",
     "vue-router": "^3.5.4",
-    "vue-template-compiler": "2.6.14",
+    "vue-template-compiler": "^2.7.13",
     "vue-tsc": "0.2.2",
     "webpack": "^5.74.0"
   },
