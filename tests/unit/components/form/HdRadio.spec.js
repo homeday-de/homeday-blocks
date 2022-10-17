@@ -130,4 +130,13 @@ describe('HdRadio', () => {
 
     expect(wrapper.find('input').attributes().disabled).toBe('disabled');
   });
+
+  it('Accepts boolean values', () => {
+    const wrapper = wrapperBuilder();
+    const dataType = typeof ITEMS[5].value;
+
+    wrapper.findAll(ITEM_SELECTOR).at(5).trigger('click');
+
+    expect(typeof wrapper.emitted('input')[0][0]).toEqual(dataType);
+  });
 });

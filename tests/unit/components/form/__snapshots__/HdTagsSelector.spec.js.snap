@@ -32,6 +32,9 @@ exports[`HdTagsSelector The component is rendered 1`] = `
     <div class="tags-selector__panel__tag">
       Cersei
     </div>
+    <div class="tags-selector__panel__tag">
+      Is Batman?
+    </div>
   </section>
 </section>
 `;

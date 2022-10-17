@@ -20,6 +20,9 @@ exports[`HdSelect is rendered as expected 1`] = `
         <option value="cersei">
           Cersei
         </option>
+        <option value="true">
+          Is Batman?
+        </option>
       </select> <label for="testSelect" id="test-select-label" class="field__label">
         test select label
       </label>

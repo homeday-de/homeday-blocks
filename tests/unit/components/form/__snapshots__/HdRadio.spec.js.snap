@@ -31,6 +31,11 @@ exports[`HdRadio is rendered as expected 1`] = `
             Cersei
           </label>
         </div>
+        <div aria-checked="false" tabindex="-1" class="radio"><input id="testRadio-true" name="testRadio-true" type="radio" value="true">
+          <div class="radio-indicator"></div> <label for="testRadio-true" class="radio__label">
+            Is Batman?
+          </label>
+        </div>
       </div> <label for="testRadio" id="test-radio-label" class="field__label">
         test radio label
       </label>

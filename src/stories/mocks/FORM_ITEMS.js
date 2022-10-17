@@ -19,4 +19,8 @@ export default [
     label: 'Cersei',
     value: 'cersei',
   },
+  {
+    label: 'Is Batman?',
+    value: true,
+  },
 ];
