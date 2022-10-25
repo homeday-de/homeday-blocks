@@ -12,7 +12,8 @@
 
 @function strip-unit($number) {
   @if type-of($number) == 'number' and not unitless($number) {
-    @return $number / ($number * 0 + 1);
+    $divisor: $number * 0 + 1;
+    @return calc($number / $divisor);
   }
 
   @return $number;

@@ -264,7 +264,7 @@ export default {
     opacity: 1;
   }
   20% {
-    transform: translate(-50%, -50%) scale((20 / 8));
+    transform: translate(-50%, -50%) scale(calc(20 / 8));
   }
   100% {
     opacity: 0;

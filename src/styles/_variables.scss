@@ -33,7 +33,7 @@ $range-bar-height: 6px;
 $range-thumb-border: 2px;
 $activeColor: getShade($secondary-color, 110);
 $disabledColor: getShade($quaternary-color, 60);
-$range-thumb-inner-bullet-size : $range-thumb-size / 2;
+$range-thumb-inner-bullet-size : calc($range-thumb-size / 2);
 $range-thumb-tot-size: $range-thumb-size + $range-thumb-border + $range-thumb-border;
 //visualy, includes the border size
 $steps-size: 20px;

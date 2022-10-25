@@ -2,7 +2,7 @@
 @import './deprecated_font';
 
 @function rem-calc($size) {
-  $remSize: $size / 16;
+  $remSize: calc($size / 16);
   @return #{$remSize}rem;
 }
 
