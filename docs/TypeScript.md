@@ -51,7 +51,7 @@ if you are using Composition API, then use the `defineComponent` method
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from '@vue/composition-api';
+import { defineComponent, PropType } from 'vue';
 import type { SpecialType } from '.....';
 
 export default defineComponent({
@@ -85,7 +85,7 @@ Then you can use TS normally, e.g:
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api';
+import { defineComponent } from 'vue';
 
 type State = {
   numberVar: number;
@@ -142,7 +142,7 @@ export default Vue.extend({
 
 ```vue
 <script lang="ts">
-import { defineComponent, PropType } from '@vue/composition-api';  // <-------- `PropType` imported from @vue/composition-api
+import { defineComponent, PropType } from 'vue';
 import type { SpecialType } from '.....';
 
 export default defineComponent({
@@ -163,7 +163,7 @@ Well, this is a weird limitation from Vetur, apparently you are supposed to expl
 
 ```vue
 <script lang="ts">
-import { defineComponent, PropType } from '@vue/composition-api';
+import { defineComponent, PropType } from 'vue';
 
 export default defineComponent({
   computed: {
