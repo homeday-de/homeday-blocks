@@ -3,7 +3,7 @@
 
 @function rem-calc($size) {
   $remSize: calc(#{$size} / 16);
-  @return #{$remSize}rem;
+  @return calc(#{$remSize} * 1rem);
 }
 
 @mixin font($style) {
