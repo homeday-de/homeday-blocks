@@ -5,13 +5,13 @@ module.exports = {
   productionSourceMap: false,
   configureWebpack: webpackConfig,
   chainWebpack: (config) => {
-    // Reset svg defualt config
-    config.module.rule('svg').uses.clear();
+    // Reset svg default config
+    config.module.rules.delete('svg');
 
     // Embed svgs
     config.module
       .rule('svg')
-      .test(/\.svg$/)
+      .test(/\.(svg)(\?.*)?$/)
       .use('svg-url-loader')
       .loader('svg-url-loader')
       .end();
