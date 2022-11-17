@@ -52,6 +52,9 @@
     "vue-inline-svg": "2.1.0",
     "vue-zoomer": "git+https://git@github.com/homeday-de/vue-zoomer#0.5.0"
   },
+  "peerDependencies": {
+    "vue": "2.7.13"
+  },
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@babel/eslint-parser": "^7.14.5",
