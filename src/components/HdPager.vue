@@ -1,12 +1,7 @@
 <template>
   <div
     v-if="count > 1"
-    :class="{
-      pager: true,
-      isRippleEffectActive: hasRippleEffect,
-      isUsingMouse: isUsingMouse,
-      isWhite: white,
-    }"
+    :class="customClasses"
     @keydown="setUsingMouse(false)"
     @mousedown="setUsingMouse(true)"
   >
@@ -63,11 +58,23 @@
 import Vue, { PropType } from 'vue';
 import { getArrayOfSize } from 'homeday-blocks/src/services/utils';
 
+export enum HdPagerSizeEnum {
+  REGULAR = 'regular',
+  SMALL = 'small',
+  TINY = 'tiny',
+}
+
+export enum HdPagerModifierEnum {
+  WIDE = 'wide',
+  CONDENSED = 'condensed',
+}
+
 export interface HdPagerProps {
   value: number;
   count: number;
   maxVisible: number;
   white: boolean;
+  modifier: HdPagerModifierEnum;
 }
 
 export interface HdPagerItem {
@@ -76,12 +83,6 @@ export interface HdPagerItem {
   offset: number;
   size: string;
   active: boolean;
-}
-
-export enum HdPagerSizeEnum {
-  REGULAR = 'regular',
-  SMALL = 'small',
-  TINY = 'tiny',
 }
 
 const DOT_SIZE = 40;
@@ -115,6 +116,11 @@ export default Vue.extend({
       type: Boolean as PropType<HdPagerProps['white']>,
       default: false,
     },
+    modifier: {
+      type: String as PropType<HdPagerProps['modifier']>,
+      required: false,
+      default: HdPagerModifierEnum.WIDE,
+    },
   },
   data(): {
     dotSize: number;
@@ -130,6 +136,15 @@ export default Vue.extend({
     };
   },
   computed: {
+    customClasses(): { [key: string]: boolean } {
+      return {
+        pager: true,
+        [`pager--${this.modifier}`]: true,
+        isRippleEffectActive: this.hasRippleEffect,
+        isUsingMouse: this.isUsingMouse,
+        isWhite: this.white,
+      };
+    },
     outOfRangeItemsOffset(): number {
       return (
         getArrayOfSize(this.count).reduce((acc: number, current: number) => {
@@ -301,6 +316,7 @@ export default Vue.extend({
   $_root: &;
   display: flex;
   justify-content: center;
+
   &__items {
     display: flex;
     justify-content: center;
@@ -343,8 +359,11 @@ export default Vue.extend({
           background-color: $primary-bg;
         }
       }
-      &.isActive::before {
+      #{root}--wide &.isActive::before {
         background-color: getShade($secondary-color, 110);
+      }
+      #{root}--condensed &.isActive::before {
+        background-color: red;
       }
       &--size-regular::before {
         width: 8px;
@@ -382,7 +401,7 @@ export default Vue.extend({
         opacity: 0;
 
         #{$_root}.isWhite & {
-          background-color: rgba(white, 0.3);
+          background-color: rgba($white, 0.3);
         }
       }
       &.isActive::after,

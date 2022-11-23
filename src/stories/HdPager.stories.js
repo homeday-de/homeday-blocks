@@ -1,41 +1,82 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import { storiesOf } from '@storybook/vue';
-import { action } from '@storybook/addon-actions';
-import { number } from '@storybook/addon-knobs';
-import HdPager from 'homeday-blocks/src/components/HdPager.vue';
+import HdPager, { HdPagerModifierEnum } from 'homeday-blocks/src/components/HdPager.vue';
 
-storiesOf('Components/HdPager', module).add('default 🎛', () => ({
-  components: { HdPager },
-  props: {
+export default {
+  title: 'Components/HdPager',
+  component: HdPager,
+  argTypes: {
+    value: {
+      control: 'number',
+      description: 'Current position of the pager',
+    },
     count: {
-      type: Number,
-      default: number('Count', 10),
+      control: 'number',
+      description: 'Number of bullets',
     },
     maxVisible: {
-      type: Number,
-      default: number('Max Visible', 7, {
-        range: true,
-        min: 3,
-        max: 20,
-        step: 1,
-      }),
+      control: 'number',
+      description: 'Maximum number of visible bullets',
+    },
+    white: {
+      control: 'boolean',
+      description: 'White color, used for black backgrounds',
+    },
+    modifier: {
+      control: { type: 'select', options: Object.values(HdPagerModifierEnum) },
     },
   },
+  args: {
+    value: 1,
+    count: 10,
+    maxVisible: 6,
+    white: false,
+    modifier: HdPagerModifierEnum.WIDE,
+  },
+};
+
+const Template = (_args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { HdPager },
   template: `
-      <HdPager
-        v-model="page"
-        :count="count"
-        :max-visible="maxVisible"
-      />
-    `,
+      <div :style="backgroundColorStyle">
+        <HdPager
+          v-bind="$props"
+          v-model="page"
+        />
+      </div>
+      `,
   data() {
     return {
       page: 0,
     };
   },
-  watch: {
-    page(page) {
-      action('input')(page);
+  computed: {
+    backgroundColorStyle() {
+      return {
+        backgroundColor: this.$props.white ? 'black' : 'white',
+      };
     },
   },
-}));
+  watch: {
+    page(newPage) {
+      console.log('Page changed: ', newPage);
+    },
+  },
+});
+
+export const Wide = Template.bind({});
+Wide.args = {
+  modifier: HdPagerModifierEnum.WIDE,
+};
+
+export const White = Template.bind({});
+White.args = {
+  white: true,
+};
+
+export const Condensed = Template.bind({});
+Condensed.args = {
+  white: false,
+  value: 2,
+  count: 3,
+  modifier: HdPagerModifierEnum.CONDENSED,
+};
