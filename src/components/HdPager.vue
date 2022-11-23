@@ -59,42 +59,69 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue, { PropType } from 'vue';
 import { getArrayOfSize } from 'homeday-blocks/src/services/utils';
 
-const DOT_SIZE = 40;
-let rippleTimeout;
+export interface HdPagerProps {
+  value: number;
+  count: number;
+  maxVisible: number;
+  white: boolean;
+}
 
-export default {
+export interface HdPagerItem {
+  value: number;
+  position: number;
+  offset: number;
+  size: string;
+  active: boolean;
+}
+
+export enum HdPagerSizeEnum {
+  REGULAR = 'regular',
+  SMALL = 'small',
+  TINY = 'tiny',
+}
+
+const DOT_SIZE = 40;
+let rippleTimeout: ReturnType<typeof setTimeout>;
+
+export default Vue.extend({
   name: 'HdPager',
   props: {
     value: {
-      type: Number,
+      type: Number as PropType<HdPagerProps['value']>,
       default: 0,
       validator(value) {
         return value >= 0;
       },
     },
     count: {
-      type: Number,
+      type: Number as PropType<HdPagerProps['count']>,
       default: 1,
-      validator(count) {
+      validator(count: number) {
         return count >= 1;
       },
     },
     maxVisible: {
-      type: Number,
+      type: Number as PropType<HdPagerProps['maxVisible']>,
       default: 7,
-      validator(maxVisible) {
+      validator(maxVisible: number) {
         return maxVisible > 3;
       },
     },
     white: {
-      type: Boolean,
+      type: Boolean as PropType<HdPagerProps['white']>,
       default: false,
     },
   },
-  data() {
+  data(): {
+    dotSize: number;
+    hasRippleEffect: boolean;
+    trackOffset: number;
+    isUsingMouse: boolean;
+  } {
     return {
       dotSize: DOT_SIZE,
       hasRippleEffect: false,
@@ -103,30 +130,30 @@ export default {
     };
   },
   computed: {
-    outOfRangeItemsOffset() {
+    outOfRangeItemsOffset(): number {
       return (
-        getArrayOfSize(this.count).reduce((acc, current) => {
-          const paddingCount = this.maxVisible - 1;
+        getArrayOfSize(this.count).reduce((acc: number, current: number) => {
+          const paddingCount = (this.maxVisible as number) - 1;
           const position = current;
-          if (position < this.value + paddingCount * -1) {
+          if (position < (this.value as number) + paddingCount * -1) {
             return acc + 1;
           }
           return acc;
         }, 0) * DOT_SIZE
       );
     },
-    items() {
-      return getArrayOfSize(this.count).reduce((acc, current) => {
-        const paddingCount = this.maxVisible - 1;
+    items(): HdPagerItem[] {
+      return getArrayOfSize(this.count).reduce((acc: HdPagerItem[], current: number) => {
+        const paddingCount = (this.maxVisible as number) - 1;
         const position = current;
         if (
-          position < this.value + paddingCount * -1 ||
-          position > this.value + this.maxVisible + paddingCount
+          position < (this.value as number) + paddingCount * -1 ||
+          position > (this.value as number) + (this.maxVisible as number) + paddingCount
         ) {
           // This item is out of range
           return acc;
         }
-        const newItem = {
+        const newItem: HdPagerItem = {
           value: current,
           position,
           offset: position * DOT_SIZE,
@@ -138,59 +165,59 @@ export default {
     },
   },
   watch: {
-    value() {
+    value(): void {
       this.$nextTick(() => {
         this.calculateTrackOffset();
       });
     },
-    maxVisible() {
+    maxVisible(): void {
       this.$nextTick(() => {
         this.calculateTrackOffset();
       });
     },
-    count() {
+    count(): void {
       this.$nextTick(() => {
         this.calculateTrackOffset();
       });
     },
   },
   methods: {
-    getSize(position) {
+    getSize(position: number): HdPagerSizeEnum {
       if (this.count <= this.maxVisible) {
-        return 'regular';
+        return HdPagerSizeEnum.REGULAR;
       }
       if (this.maxVisible === 3) {
-        return 'small';
+        return HdPagerSizeEnum.SMALL;
       }
       const offset = position * DOT_SIZE;
       const isFirstVisible = offset + this.trackOffset === 0;
       const isLastVisible = offset + this.trackOffset - (this.maxVisible - 1) * DOT_SIZE === 0;
       if (isFirstVisible || isLastVisible) {
-        return 'tiny';
+        return HdPagerSizeEnum.TINY;
       }
       if (this.maxVisible < 7) {
-        return 'regular';
+        return HdPagerSizeEnum.REGULAR;
       }
       const isImmediatelyAfterFirstVisible = offset + this.trackOffset === DOT_SIZE;
       const isImmediatelyBeforeLastVisible =
         offset + this.trackOffset - (this.maxVisible - 1) * DOT_SIZE === DOT_SIZE * -1;
       if (this.isOutOfBoundsLeft(position) || this.isOutOfBoundsRight(position)) {
-        return 'tiny';
+        return HdPagerSizeEnum.TINY;
       }
       if (isImmediatelyAfterFirstVisible || isImmediatelyBeforeLastVisible) {
-        return 'small';
+        return HdPagerSizeEnum.SMALL;
       }
-      return 'regular';
+      return HdPagerSizeEnum.REGULAR;
     },
-    isOutOfBoundsLeft(position) {
+    isOutOfBoundsLeft(position: number): boolean {
       const offset = position * DOT_SIZE;
       return offset + this.trackOffset < 0;
     },
-    isOutOfBoundsRight(position) {
+    isOutOfBoundsRight(position: number): boolean {
       const offset = position * DOT_SIZE;
       return offset + this.trackOffset - (this.maxVisible - 1) * DOT_SIZE > 0;
     },
-    triggerRippleEffect() {
+    triggerRippleEffect(): void {
       this.hasRippleEffect = false;
       this.$nextTick(() => {
         this.hasRippleEffect = true;
@@ -200,7 +227,7 @@ export default {
         }, 550);
       });
     },
-    calculateTrackOffset() {
+    calculateTrackOffset(): void {
       if (this.count < this.maxVisible) {
         this.trackOffset = 0;
         return;
@@ -226,7 +253,7 @@ export default {
         );
       }
     },
-    maybeSelectItem(e) {
+    maybeSelectItem(e: KeyboardEvent): void {
       const keyNames = {
         left: ['ArrowLeft', 'Left'],
         right: ['ArrowRight', 'Right'],
@@ -249,11 +276,11 @@ export default {
         this.$emit('input', currentIndex - 1);
       }
     },
-    setUsingMouse(usingMouse) {
+    setUsingMouse(usingMouse: boolean): void {
       this.isUsingMouse = usingMouse;
     },
   },
-};
+});
 </script>
 
 <style lang="scss">
