@@ -355,15 +355,20 @@ export default Vue.extend({
         transition: height $time-s ease-in-out, width $time-s ease-in-out;
         z-index: 2;
 
-        #{$_root}.isWhite & {
+        .pager--wide.isWhite & {
           background-color: $primary-bg;
         }
+        .pager--condensed & {
+          background-color: getShade($quaternary-color, 60);
+        }
       }
-      #{root}--wide &.isActive::before {
+      #{$_root}--wide &.isActive::before {
         background-color: getShade($secondary-color, 110);
       }
-      #{root}--condensed &.isActive::before {
-        background-color: red;
+      #{$_root}--condensed &.isActive::before {
+        background-color: getShade($neutral-gray, 90);
+        width: 20px;
+        border-radius: 15px;
       }
       &--size-regular::before {
         width: 8px;
@@ -377,17 +382,17 @@ export default Vue.extend({
         width: 4px;
         height: 4px;
       }
-      &--size-regular.isActive::before,
-      &--size-small.isActive::before,
-      &--size-tiny.isActive::before,
-      &--size-regular:hover::before,
-      &--size-small:hover::before,
-      &--size-tiny:hover::before {
+      #{$_root}--wide &--size-regular.isActive::before,
+      #{$_root}--wide &--size-small.isActive::before,
+      #{$_root}--wide &--size-tiny.isActive::before,
+      #{$_root}--wide &--size-regular:hover::before,
+      #{$_root}--wide &--size-small:hover::before,
+      #{$_root}--wide &--size-tiny:hover::before {
         width: 12px;
         height: 12px;
         background-color: getShade($secondary-color, 110);
       }
-      &::after {
+      #{$_root}--wide &::after {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -399,10 +404,9 @@ export default Vue.extend({
         background-color: getShade($secondary-color, 80);
         border-radius: 50%;
         opacity: 0;
-
-        #{$_root}.isWhite & {
-          background-color: rgba($white, 0.3);
-        }
+      }
+      .pager--wide.isWhite &::after {
+        background-color: rgba($white, 0.3);
       }
       &.isActive::after,
       #{$_root}.isRippleEffectActive &.isActive::after {
