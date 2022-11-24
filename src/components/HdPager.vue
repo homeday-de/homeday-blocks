@@ -94,7 +94,7 @@ export default Vue.extend({
     value: {
       type: Number as PropType<HdPagerProps['value']>,
       default: 0,
-      validator(value) {
+      validator(value: number) {
         return value >= 0;
       },
     },
