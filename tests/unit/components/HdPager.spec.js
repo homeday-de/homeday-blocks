@@ -107,4 +107,11 @@ describe('HdPager', () => {
     });
     expect(wrapper.html()).toMatchSnapshot();
   });
+
+  it('should render the pager with disabled click', () => {
+    const wrapper = wrapperBuilder({
+      props: Condensed.args,
+    });
+    expect(wrapper.html()).toMatchSnapshot();
+  });
 });

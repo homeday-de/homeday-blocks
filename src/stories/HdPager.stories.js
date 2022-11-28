@@ -76,7 +76,51 @@ White.args = {
 export const Condensed = Template.bind({});
 Condensed.args = {
   white: false,
-  value: 2,
-  count: 3,
+  count: 5,
+  modifier: HdPagerModifierEnum.CONDENSED,
+};
+
+export const Disabled = (_args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { HdPager },
+  template: `
+      <div @touchstart="registerStart" @touchend="registerEnd">
+        <p>Clicking on the pager won't change a thing, but you can swipe left/right.</p>
+        <p>Make sure you're in mobile mode to enable swiping.</p>
+        <HdPager
+          v-bind="$props"
+          v-model="page"
+        />
+      </div>
+      `,
+  data() {
+    return {
+      page: 0,
+      touchstartX: 0,
+      touchendX: 0,
+    };
+  },
+  watch: {
+    page(newPage) {
+      console.log('Page changed: ', newPage);
+    },
+  },
+  methods: {
+    handleGesture() {
+      if (this.touchstartX > this.touchendX) this.page += 1;
+      else this.page -= 1;
+    },
+    registerStart(event) {
+      this.touchstartX = event.changedTouches[0].screenX;
+    },
+    registerEnd(event) {
+      this.touchendX = event.changedTouches[0].screenX;
+      this.handleGesture();
+    },
+  },
+});
+Disabled.args = {
+  disabled: true,
+  count: 5,
   modifier: HdPagerModifierEnum.CONDENSED,
 };

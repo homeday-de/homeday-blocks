@@ -6,10 +6,7 @@
     @mousedown="setUsingMouse(true)"
   >
     <nav
-      :style="{
-        height: `${dotSize}px`,
-        width: `${maxVisible * dotSize}px`,
-      }"
+      :style="customNavStyles"
       class="pager__items"
       tabindex="0"
       @keydown.stop.self="maybeSelectItem"
@@ -22,6 +19,7 @@
         class="pager__items__track"
       >
         <div
+          v-if="modifier === 'wide'"
           :style="{
             'flex-basis': `${outOfRangeItemsOffset}px`,
           }"
@@ -30,20 +28,10 @@
         <li
           v-for="item in items"
           :key="item.value"
-          :class="{
-            pager__items__item: true,
-            [`pager__items__item--size-${item.size}`]: true,
-            isActive: item.active,
-          }"
-          :style="{
-            height: `${dotSize}px`,
-            width: `${dotSize}px`,
-          }"
+          :class="customListClass(item)"
+          :style="customListStyle"
           :aria-current="item.active ? 'true' : 'false'"
-          @click="
-            triggerRippleEffect();
-            $emit('input', item.value);
-          "
+          @click="selectPage(item)"
         >
           <span class="pager__items__item__text">
             {{ item.value + 1 }}
@@ -75,6 +63,7 @@ export interface HdPagerProps {
   maxVisible: number;
   white: boolean;
   modifier: HdPagerModifierEnum;
+  disabled: boolean;
 }
 
 export interface HdPagerItem {
@@ -121,6 +110,11 @@ export default Vue.extend({
       required: false,
       default: HdPagerModifierEnum.WIDE,
     },
+    disabled: {
+      type: Boolean as PropType<HdPagerProps['disabled']>,
+      required: false,
+      default: false,
+    },
   },
   data(): {
     dotSize: number;
@@ -136,13 +130,29 @@ export default Vue.extend({
     };
   },
   computed: {
+    customNavStyles(): { [key: string]: string } {
+      return this.modifier === HdPagerModifierEnum.WIDE
+        ? {
+            height: `${this.dotSize}px`,
+            width: `${this.maxVisible * this.dotSize}px`,
+          }
+        : {};
+    },
     customClasses(): { [key: string]: boolean } {
       return {
         pager: true,
         [`pager--${this.modifier}`]: true,
+        [`pager--disabled`]: this.disabled,
         isRippleEffectActive: this.hasRippleEffect,
         isUsingMouse: this.isUsingMouse,
         isWhite: this.white,
+      };
+    },
+    customListStyle(): { [key: string]: string } {
+      if (this.modifier === HdPagerModifierEnum.CONDENSED) return {};
+      return {
+        height: `${this.dotSize}px`,
+        width: `${this.dotSize}px`,
       };
     },
     outOfRangeItemsOffset(): number {
@@ -197,8 +207,13 @@ export default Vue.extend({
     },
   },
   methods: {
+    selectPage(item: HdPagerItem): void {
+      if (this.disabled) return;
+      this.triggerRippleEffect();
+      this.$emit('input', item.value);
+    },
     getSize(position: number): HdPagerSizeEnum {
-      if (this.count <= this.maxVisible) {
+      if (this.count <= this.maxVisible || this.modifier === HdPagerModifierEnum.CONDENSED) {
         return HdPagerSizeEnum.REGULAR;
       }
       if (this.maxVisible === 3) {
@@ -269,6 +284,7 @@ export default Vue.extend({
       }
     },
     maybeSelectItem(e: KeyboardEvent): void {
+      if (this.disabled) return;
       const keyNames = {
         left: ['ArrowLeft', 'Left'],
         right: ['ArrowRight', 'Right'],
@@ -294,6 +310,13 @@ export default Vue.extend({
     setUsingMouse(usingMouse: boolean): void {
       this.isUsingMouse = usingMouse;
     },
+    customListClass(item: HdPagerItem) {
+      return {
+        pager__items__item: true,
+        [`pager__items__item--size-${item.size}`]: true,
+        isActive: item.active,
+      };
+    },
   },
 });
 </script>
@@ -312,6 +335,7 @@ export default Vue.extend({
     opacity: 0;
   }
 }
+
 .pager {
   $_root: &;
   display: flex;
@@ -332,6 +356,13 @@ export default Vue.extend({
       flex: 0 1 auto;
       max-width: 100%;
       transition: transform ($time-s * 2) ease-in-out;
+
+      .pager--condensed & {
+        transform: translateY(-50%);
+        overflow: hidden;
+        margin: 0 auto;
+        padding-inline-start: 0;
+      }
     }
     &__offset {
       flex-shrink: 0;
@@ -343,11 +374,15 @@ export default Vue.extend({
       cursor: pointer;
       user-select: none;
       -webkit-tap-highlight-color: transparent;
+
+      #{$_root}--disabled & {
+        cursor: default;
+      }
+
       &::before {
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
         display: block;
         content: '';
         background-color: getShade($quaternary-color, 60);
@@ -355,11 +390,16 @@ export default Vue.extend({
         transition: height $time-s ease-in-out, width $time-s ease-in-out;
         z-index: 2;
 
+        .pager--wide & {
+          transform: translate(-50%, -50%);
+        }
         .pager--wide.isWhite & {
+          transform: translate(-50%, -50%);
           background-color: $primary-bg;
         }
         .pager--condensed & {
           background-color: getShade($quaternary-color, 60);
+          left: 0;
         }
       }
       #{$_root}--wide &.isActive::before {
@@ -409,7 +449,7 @@ export default Vue.extend({
         background-color: rgba($white, 0.3);
       }
       &.isActive::after,
-      #{$_root}.isRippleEffectActive &.isActive::after {
+      #{$_root}--wide.isRippleEffectActive &.isActive::after {
         animation: 500ms pager-ripple ease-in-out;
       }
       &__text {
@@ -423,6 +463,27 @@ export default Vue.extend({
         position: absolute;
         width: 1px;
         word-wrap: normal !important;
+      }
+    }
+  }
+
+  &--condensed {
+    .pager__items {
+      height: 50px;
+
+      &__item {
+        width: 12px;
+        margin-right: $sp-xs + $sp-s;
+        transition: 0.3s ease width;
+        float: left;
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+        &.isActive {
+          width: 24px;
+        }
       }
     }
   }
