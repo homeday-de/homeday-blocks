@@ -43,7 +43,7 @@ exports[`HdPager The component is rendered 1`] = `
 exports[`HdPager should render the condensed pager 1`] = `
 <div class="pager pager--condensed">
   <nav tabindex="0" class="pager__items">
-    <ul class="pager__items__track" style="transform: translateX(0px);">
+    <ul class="pager__items__track">
       <!---->
       <li aria-current="true" class="pager__items__item pager__items__item--size-regular isActive"><span class="pager__items__item__text">
           1
@@ -59,6 +59,21 @@ exports[`HdPager should render the condensed pager 1`] = `
         </span></li>
       <li aria-current="false" class="pager__items__item pager__items__item--size-regular"><span class="pager__items__item__text">
           5
+        </span></li>
+      <li aria-current="false" class="pager__items__item pager__items__item--size-regular"><span class="pager__items__item__text">
+          6
+        </span></li>
+      <li aria-current="false" class="pager__items__item pager__items__item--size-regular"><span class="pager__items__item__text">
+          7
+        </span></li>
+      <li aria-current="false" class="pager__items__item pager__items__item--size-regular"><span class="pager__items__item__text">
+          8
+        </span></li>
+      <li aria-current="false" class="pager__items__item pager__items__item--size-regular"><span class="pager__items__item__text">
+          9
+        </span></li>
+      <li aria-current="false" class="pager__items__item pager__items__item--size-regular"><span class="pager__items__item__text">
+          10
         </span></li>
     </ul>
   </nav>
@@ -68,7 +83,7 @@ exports[`HdPager should render the condensed pager 1`] = `
 exports[`HdPager should render the pager with disabled click 1`] = `
 <div class="pager pager--condensed">
   <nav tabindex="0" class="pager__items">
-    <ul class="pager__items__track" style="transform: translateX(0px);">
+    <ul class="pager__items__track">
       <!---->
       <li aria-current="true" class="pager__items__item pager__items__item--size-regular isActive"><span class="pager__items__item__text">
           1
@@ -84,6 +99,21 @@ exports[`HdPager should render the pager with disabled click 1`] = `
         </span></li>
       <li aria-current="false" class="pager__items__item pager__items__item--size-regular"><span class="pager__items__item__text">
           5
+        </span></li>
+      <li aria-current="false" class="pager__items__item pager__items__item--size-regular"><span class="pager__items__item__text">
+          6
+        </span></li>
+      <li aria-current="false" class="pager__items__item pager__items__item--size-regular"><span class="pager__items__item__text">
+          7
+        </span></li>
+      <li aria-current="false" class="pager__items__item pager__items__item--size-regular"><span class="pager__items__item__text">
+          8
+        </span></li>
+      <li aria-current="false" class="pager__items__item pager__items__item--size-regular"><span class="pager__items__item__text">
+          9
+        </span></li>
+      <li aria-current="false" class="pager__items__item pager__items__item--size-regular"><span class="pager__items__item__text">
+          10
         </span></li>
     </ul>
   </nav>

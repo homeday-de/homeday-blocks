@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="count > 1"
-    :class="customClasses"
+    :class="customMainDivClasses"
     @keydown="setUsingMouse(false)"
     @mousedown="setUsingMouse(true)"
   >
@@ -12,14 +12,9 @@
       @keydown.stop.self="maybeSelectItem"
       @blur="setUsingMouse(false)"
     >
-      <ul
-        :style="{
-          transform: `translateX(${trackOffset}px)`,
-        }"
-        class="pager__items__track"
-      >
+      <ul :style="customUnorderedListStyle" class="pager__items__track">
         <div
-          v-if="modifier === 'wide'"
+          v-if="isWide"
           :style="{
             'flex-basis': `${outOfRangeItemsOffset}px`,
           }"
@@ -130,6 +125,9 @@ export default Vue.extend({
     };
   },
   computed: {
+    isWide() {
+      return this.modifier === HdPagerModifierEnum.WIDE;
+    },
     customNavStyles(): { [key: string]: string } {
       return this.modifier === HdPagerModifierEnum.WIDE
         ? {
@@ -138,7 +136,13 @@ export default Vue.extend({
           }
         : {};
     },
-    customClasses(): { [key: string]: boolean } {
+    customUnorderedListStyle(): { [key: string]: string } {
+      if (!this.isWide) return {};
+      return {
+        transform: `translateX(${this.trackOffset}px)`,
+      };
+    },
+    customMainDivClasses(): { [key: string]: boolean } {
       return {
         pager: true,
         [`pager--${this.modifier}`]: true,
@@ -158,9 +162,9 @@ export default Vue.extend({
     outOfRangeItemsOffset(): number {
       return (
         getArrayOfSize(this.count).reduce((acc: number, current: number) => {
-          const paddingCount = (this.maxVisible as number) - 1;
+          const paddingCount = this.maxVisible - 1;
           const position = current;
-          if (position < (this.value as number) + paddingCount * -1) {
+          if (position < this.value + paddingCount * -1) {
             return acc + 1;
           }
           return acc;
@@ -169,11 +173,12 @@ export default Vue.extend({
     },
     items(): HdPagerItem[] {
       return getArrayOfSize(this.count).reduce((acc: HdPagerItem[], current: number) => {
-        const paddingCount = (this.maxVisible as number) - 1;
+        const paddingCount = this.maxVisible - 1;
         const position = current;
         if (
-          position < (this.value as number) + paddingCount * -1 ||
-          position > (this.value as number) + (this.maxVisible as number) + paddingCount
+          this.isWide &&
+          (position < this.value + paddingCount * -1 ||
+            position > this.value + this.maxVisible + paddingCount)
         ) {
           // This item is out of range
           return acc;

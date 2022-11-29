@@ -76,7 +76,7 @@ White.args = {
 export const Condensed = Template.bind({});
 Condensed.args = {
   white: false,
-  count: 5,
+  count: 10,
   modifier: HdPagerModifierEnum.CONDENSED,
 };
 
@@ -87,6 +87,7 @@ export const Disabled = (_args, { argTypes }) => ({
       <div @touchstart="registerStart" @touchend="registerEnd">
         <p>Clicking on the pager won't change a thing, but you can swipe left/right.</p>
         <p>Make sure you're in mobile mode to enable swiping.</p>
+        <br />
         <HdPager
           v-bind="$props"
           v-model="page"
