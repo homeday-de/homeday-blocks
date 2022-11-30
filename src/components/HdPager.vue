@@ -1,32 +1,20 @@
 <template>
   <div
     v-if="count > 1"
-    :class="{
-      pager: true,
-      isRippleEffectActive: hasRippleEffect,
-      isUsingMouse: isUsingMouse,
-      isWhite: white,
-    }"
+    :class="customMainDivClasses"
     @keydown="setUsingMouse(false)"
     @mousedown="setUsingMouse(true)"
   >
     <nav
-      :style="{
-        height: `${dotSize}px`,
-        width: `${maxVisible * dotSize}px`,
-      }"
+      :style="customNavStyles"
       class="pager__items"
       tabindex="0"
       @keydown.stop.self="maybeSelectItem"
       @blur="setUsingMouse(false)"
     >
-      <ul
-        :style="{
-          transform: `translateX(${trackOffset}px)`,
-        }"
-        class="pager__items__track"
-      >
+      <ul :style="customUnorderedListStyle" class="pager__items__track">
         <div
+          v-if="isWide"
           :style="{
             'flex-basis': `${outOfRangeItemsOffset}px`,
           }"
@@ -35,20 +23,10 @@
         <li
           v-for="item in items"
           :key="item.value"
-          :class="{
-            pager__items__item: true,
-            [`pager__items__item--size-${item.size}`]: true,
-            isActive: item.active,
-          }"
-          :style="{
-            height: `${dotSize}px`,
-            width: `${dotSize}px`,
-          }"
+          :class="customListClass(item)"
+          :style="customListStyle"
           :aria-current="item.active ? 'true' : 'false'"
-          @click="
-            triggerRippleEffect();
-            $emit('input', item.value);
-          "
+          @click="selectPage(item)"
         >
           <span class="pager__items__item__text">
             {{ item.value + 1 }}
@@ -59,42 +37,86 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue, { PropType } from 'vue';
 import { getArrayOfSize } from 'homeday-blocks/src/services/utils';
 
-const DOT_SIZE = 40;
-let rippleTimeout;
+export enum HdPagerSizeEnum {
+  REGULAR = 'regular',
+  SMALL = 'small',
+  TINY = 'tiny',
+}
 
-export default {
+export enum HdPagerModifierEnum {
+  WIDE = 'wide',
+  CONDENSED = 'condensed',
+}
+
+export interface HdPagerProps {
+  value: number;
+  count: number;
+  maxVisible: number;
+  white: boolean;
+  modifier: HdPagerModifierEnum;
+  disabled: boolean;
+}
+
+export interface HdPagerItem {
+  value: number;
+  position: number;
+  offset: number;
+  size: string;
+  active: boolean;
+}
+
+const DOT_SIZE = 40;
+let rippleTimeout: ReturnType<typeof setTimeout>;
+
+export default Vue.extend({
   name: 'HdPager',
   props: {
     value: {
-      type: Number,
+      type: Number as PropType<HdPagerProps['value']>,
       default: 0,
-      validator(value) {
+      validator(value: number) {
         return value >= 0;
       },
     },
     count: {
-      type: Number,
+      type: Number as PropType<HdPagerProps['count']>,
       default: 1,
-      validator(count) {
+      validator(count: number) {
         return count >= 1;
       },
     },
     maxVisible: {
-      type: Number,
+      type: Number as PropType<HdPagerProps['maxVisible']>,
       default: 7,
-      validator(maxVisible) {
+      validator(maxVisible: number) {
         return maxVisible > 3;
       },
     },
     white: {
-      type: Boolean,
+      type: Boolean as PropType<HdPagerProps['white']>,
+      default: false,
+    },
+    modifier: {
+      type: String as PropType<HdPagerProps['modifier']>,
+      required: false,
+      default: HdPagerModifierEnum.WIDE,
+    },
+    disabled: {
+      type: Boolean as PropType<HdPagerProps['disabled']>,
+      required: false,
       default: false,
     },
   },
-  data() {
+  data(): {
+    dotSize: number;
+    hasRippleEffect: boolean;
+    trackOffset: number;
+    isUsingMouse: boolean;
+  } {
     return {
       dotSize: DOT_SIZE,
       hasRippleEffect: false,
@@ -103,9 +125,43 @@ export default {
     };
   },
   computed: {
-    outOfRangeItemsOffset() {
+    isWide() {
+      return this.modifier === HdPagerModifierEnum.WIDE;
+    },
+    customNavStyles(): { [key: string]: string } {
+      return this.modifier === HdPagerModifierEnum.WIDE
+        ? {
+            height: `${this.dotSize}px`,
+            width: `${this.maxVisible * this.dotSize}px`,
+          }
+        : {};
+    },
+    customUnorderedListStyle(): { [key: string]: string } {
+      if (!this.isWide) return {};
+      return {
+        transform: `translateX(${this.trackOffset}px)`,
+      };
+    },
+    customMainDivClasses(): { [key: string]: boolean } {
+      return {
+        pager: true,
+        [`pager--${this.modifier}`]: true,
+        [`pager--disabled`]: this.disabled,
+        isRippleEffectActive: this.hasRippleEffect,
+        isUsingMouse: this.isUsingMouse,
+        isWhite: this.white,
+      };
+    },
+    customListStyle(): { [key: string]: string } {
+      if (this.modifier === HdPagerModifierEnum.CONDENSED) return {};
+      return {
+        height: `${this.dotSize}px`,
+        width: `${this.dotSize}px`,
+      };
+    },
+    outOfRangeItemsOffset(): number {
       return (
-        getArrayOfSize(this.count).reduce((acc, current) => {
+        getArrayOfSize(this.count).reduce((acc: number, current: number) => {
           const paddingCount = this.maxVisible - 1;
           const position = current;
           if (position < this.value + paddingCount * -1) {
@@ -115,18 +171,19 @@ export default {
         }, 0) * DOT_SIZE
       );
     },
-    items() {
-      return getArrayOfSize(this.count).reduce((acc, current) => {
+    items(): HdPagerItem[] {
+      return getArrayOfSize(this.count).reduce((acc: HdPagerItem[], current: number) => {
         const paddingCount = this.maxVisible - 1;
         const position = current;
         if (
-          position < this.value + paddingCount * -1 ||
-          position > this.value + this.maxVisible + paddingCount
+          this.isWide &&
+          (position < this.value + paddingCount * -1 ||
+            position > this.value + this.maxVisible + paddingCount)
         ) {
           // This item is out of range
           return acc;
         }
-        const newItem = {
+        const newItem: HdPagerItem = {
           value: current,
           position,
           offset: position * DOT_SIZE,
@@ -138,59 +195,64 @@ export default {
     },
   },
   watch: {
-    value() {
+    value(): void {
       this.$nextTick(() => {
         this.calculateTrackOffset();
       });
     },
-    maxVisible() {
+    maxVisible(): void {
       this.$nextTick(() => {
         this.calculateTrackOffset();
       });
     },
-    count() {
+    count(): void {
       this.$nextTick(() => {
         this.calculateTrackOffset();
       });
     },
   },
   methods: {
-    getSize(position) {
-      if (this.count <= this.maxVisible) {
-        return 'regular';
+    selectPage(item: HdPagerItem): void {
+      if (this.disabled) return;
+      this.triggerRippleEffect();
+      this.$emit('input', item.value);
+    },
+    getSize(position: number): HdPagerSizeEnum {
+      if (this.count <= this.maxVisible || this.modifier === HdPagerModifierEnum.CONDENSED) {
+        return HdPagerSizeEnum.REGULAR;
       }
       if (this.maxVisible === 3) {
-        return 'small';
+        return HdPagerSizeEnum.SMALL;
       }
       const offset = position * DOT_SIZE;
       const isFirstVisible = offset + this.trackOffset === 0;
       const isLastVisible = offset + this.trackOffset - (this.maxVisible - 1) * DOT_SIZE === 0;
       if (isFirstVisible || isLastVisible) {
-        return 'tiny';
+        return HdPagerSizeEnum.TINY;
       }
       if (this.maxVisible < 7) {
-        return 'regular';
+        return HdPagerSizeEnum.REGULAR;
       }
       const isImmediatelyAfterFirstVisible = offset + this.trackOffset === DOT_SIZE;
       const isImmediatelyBeforeLastVisible =
         offset + this.trackOffset - (this.maxVisible - 1) * DOT_SIZE === DOT_SIZE * -1;
       if (this.isOutOfBoundsLeft(position) || this.isOutOfBoundsRight(position)) {
-        return 'tiny';
+        return HdPagerSizeEnum.TINY;
       }
       if (isImmediatelyAfterFirstVisible || isImmediatelyBeforeLastVisible) {
-        return 'small';
+        return HdPagerSizeEnum.SMALL;
       }
-      return 'regular';
+      return HdPagerSizeEnum.REGULAR;
     },
-    isOutOfBoundsLeft(position) {
+    isOutOfBoundsLeft(position: number): boolean {
       const offset = position * DOT_SIZE;
       return offset + this.trackOffset < 0;
     },
-    isOutOfBoundsRight(position) {
+    isOutOfBoundsRight(position: number): boolean {
       const offset = position * DOT_SIZE;
       return offset + this.trackOffset - (this.maxVisible - 1) * DOT_SIZE > 0;
     },
-    triggerRippleEffect() {
+    triggerRippleEffect(): void {
       this.hasRippleEffect = false;
       this.$nextTick(() => {
         this.hasRippleEffect = true;
@@ -200,7 +262,7 @@ export default {
         }, 550);
       });
     },
-    calculateTrackOffset() {
+    calculateTrackOffset(): void {
       if (this.count < this.maxVisible) {
         this.trackOffset = 0;
         return;
@@ -226,7 +288,8 @@ export default {
         );
       }
     },
-    maybeSelectItem(e) {
+    maybeSelectItem(e: KeyboardEvent): void {
+      if (this.disabled) return;
       const keyNames = {
         left: ['ArrowLeft', 'Left'],
         right: ['ArrowRight', 'Right'],
@@ -249,11 +312,18 @@ export default {
         this.$emit('input', currentIndex - 1);
       }
     },
-    setUsingMouse(usingMouse) {
+    setUsingMouse(usingMouse: boolean): void {
       this.isUsingMouse = usingMouse;
     },
+    customListClass(item: HdPagerItem) {
+      return {
+        pager__items__item: true,
+        [`pager__items__item--size-${item.size}`]: true,
+        isActive: item.active,
+      };
+    },
   },
-};
+});
 </script>
 
 <style lang="scss">
@@ -270,10 +340,12 @@ export default {
     opacity: 0;
   }
 }
+
 .pager {
   $_root: &;
   display: flex;
   justify-content: center;
+
   &__items {
     display: flex;
     justify-content: center;
@@ -289,6 +361,13 @@ export default {
       flex: 0 1 auto;
       max-width: 100%;
       transition: transform ($time-s * 2) ease-in-out;
+
+      .pager--condensed & {
+        transform: translateY(-50%);
+        overflow: hidden;
+        margin: 0 auto;
+        padding-inline-start: 0;
+      }
     }
     &__offset {
       flex-shrink: 0;
@@ -300,11 +379,15 @@ export default {
       cursor: pointer;
       user-select: none;
       -webkit-tap-highlight-color: transparent;
+
+      #{$_root}--disabled & {
+        cursor: default;
+      }
+
       &::before {
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
         display: block;
         content: '';
         background-color: getShade($quaternary-color, 60);
@@ -312,12 +395,25 @@ export default {
         transition: height $time-s ease-in-out, width $time-s ease-in-out;
         z-index: 2;
 
-        #{$_root}.isWhite & {
+        .pager--wide & {
+          transform: translate(-50%, -50%);
+        }
+        .pager--wide.isWhite & {
+          transform: translate(-50%, -50%);
           background-color: $primary-bg;
         }
+        .pager--condensed & {
+          background-color: getShade($quaternary-color, 60);
+          left: 0;
+        }
       }
-      &.isActive::before {
+      #{$_root}--wide &.isActive::before {
         background-color: getShade($secondary-color, 110);
+      }
+      #{$_root}--condensed &.isActive::before {
+        background-color: getShade($neutral-gray, 90);
+        width: 20px;
+        border-radius: 15px;
       }
       &--size-regular::before {
         width: 8px;
@@ -331,17 +427,17 @@ export default {
         width: 4px;
         height: 4px;
       }
-      &--size-regular.isActive::before,
-      &--size-small.isActive::before,
-      &--size-tiny.isActive::before,
-      &--size-regular:hover::before,
-      &--size-small:hover::before,
-      &--size-tiny:hover::before {
+      #{$_root}--wide &--size-regular.isActive::before,
+      #{$_root}--wide &--size-small.isActive::before,
+      #{$_root}--wide &--size-tiny.isActive::before,
+      #{$_root}--wide &--size-regular:hover::before,
+      #{$_root}--wide &--size-small:hover::before,
+      #{$_root}--wide &--size-tiny:hover::before {
         width: 12px;
         height: 12px;
         background-color: getShade($secondary-color, 110);
       }
-      &::after {
+      #{$_root}--wide &::after {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -353,13 +449,12 @@ export default {
         background-color: getShade($secondary-color, 80);
         border-radius: 50%;
         opacity: 0;
-
-        #{$_root}.isWhite & {
-          background-color: rgba(white, 0.3);
-        }
+      }
+      .pager--wide.isWhite &::after {
+        background-color: rgba($white, 0.3);
       }
       &.isActive::after,
-      #{$_root}.isRippleEffectActive &.isActive::after {
+      #{$_root}--wide.isRippleEffectActive &.isActive::after {
         animation: 500ms pager-ripple ease-in-out;
       }
       &__text {
@@ -373,6 +468,27 @@ export default {
         position: absolute;
         width: 1px;
         word-wrap: normal !important;
+      }
+    }
+  }
+
+  &--condensed {
+    .pager__items {
+      height: 50px;
+
+      &__item {
+        width: 12px;
+        margin-right: $sp-xs + $sp-s;
+        transition: 0.3s ease width;
+        float: left;
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+        &.isActive {
+          width: 24px;
+        }
       }
     }
   }

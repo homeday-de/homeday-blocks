@@ -1,5 +1,6 @@
 import { wrapperFactoryBuilder } from 'tests/unit/helpers';
 import HdPager from '@/components/HdPager.vue';
+import { Wide, White, Condensed } from 'homeday-blocks/src/stories/HdPager.stories';
 
 const wrapperBuilder = wrapperFactoryBuilder(HdPager, {
   props: {
@@ -84,5 +85,33 @@ describe('HdPager', () => {
     // eslint-disable-next-line prefer-destructuring
     payload = wrapper.emitted('input')[3][0];
     expect(payload).toBe(4);
+  });
+
+  it('should render the wide pager', () => {
+    const wrapper = wrapperBuilder({
+      props: Wide.args,
+    });
+    expect(wrapper.html()).toMatchSnapshot();
+  });
+
+  it('should render the wide pager with white color', () => {
+    const wrapper = wrapperBuilder({
+      props: White.args,
+    });
+    expect(wrapper.html()).toMatchSnapshot();
+  });
+
+  it('should render the condensed pager', () => {
+    const wrapper = wrapperBuilder({
+      props: Condensed.args,
+    });
+    expect(wrapper.html()).toMatchSnapshot();
+  });
+
+  it('should render the pager with disabled click', () => {
+    const wrapper = wrapperBuilder({
+      props: Condensed.args,
+    });
+    expect(wrapper.html()).toMatchSnapshot();
   });
 });
