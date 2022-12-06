@@ -322,11 +322,11 @@ export default {
     &:after {
       content: '';
       display: block;
-      margin-left: calc(-1 * $steps-size / 2);
-      margin-top: calc(-1 * $steps-size / 2);
-      height: $steps-size - ($steps-border-size * 2);
-      width: $steps-size - ($steps-border-size * 2);
-      border-radius: calc($steps-size / 2);
+      margin-left: calc(-1 * #{$steps-size / 2});
+      margin-top: calc(-1 * #{$steps-size / 2});
+      height: #{$steps-size} - #{($steps-border-size * 2)};
+      width: #{$steps-size} - #{($steps-border-size * 2)};
+      border-radius: calc(#{$steps-size} / 2);
       background: $primary-bg;
       border: $steps-border-size solid $quaternary-color;
       border-radius: 50%;
@@ -358,8 +358,8 @@ export default {
       position: absolute;
       background: $white;
       left: 0;
-      margin-top: calc(-1 * $range-thumb-tot-size / 2);
-      margin-left: calc(-1 * $range-thumb-tot-size / 2);
+      margin-top: calc(-1 * #{$range-thumb-tot-size / 2});
+      margin-left: calc(-1 * #{$range-thumb-tot-size / 2});
       z-index: 1;
       display: flex;
       align-items: center;
@@ -391,8 +391,8 @@ export default {
       @include only-ie {
         top: 50%;
         left: 50%;
-        margin-left: calc(-1 * $range-thumb-inner-bullet-size / 2);
-        margin-top: calc(-1 * $range-thumb-inner-bullet-size / 2);
+        margin-left: calc(-1 * #{$range-thumb-inner-bullet-size / 2});
+        margin-top: calc(-1 * #{$range-thumb-inner-bullet-size / 2});
       }
     }
   }
