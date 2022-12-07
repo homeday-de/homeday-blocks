@@ -324,8 +324,8 @@ export default {
       display: block;
       margin-left: calc(-1 * #{$steps-size / 2});
       margin-top: calc(-1 * #{$steps-size / 2});
-      height: #{$steps-size} - #{($steps-border-size * 2)};
-      width: #{$steps-size} - #{($steps-border-size * 2)};
+      height: $steps-size - ($steps-border-size * 2);
+      width: $steps-size - ($steps-border-size * 2);
       border-radius: calc(#{$steps-size} / 2);
       background: $primary-bg;
       border: $steps-border-size solid $quaternary-color;
