@@ -4,6 +4,6 @@ enum HdBadgeTypes {
   SECONDARY = 'secondary',
   TERTIARY = 'tertiary',
   DISABLED = 'disabled',
-};
+}
 
 export default HdBadgeTypes;
