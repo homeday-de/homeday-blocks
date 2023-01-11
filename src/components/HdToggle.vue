@@ -14,7 +14,7 @@
         <ul
           class="hd-toggle__control-actions-menu"
           :class="{ 'hd-toggle__control-actions-menu--is-open': isActionsMenuOpen }"
-          v-if="actions.length > 1"
+          v-if="actions.length && !hasSignleAction"
         >
           <li v-for="action in actions" :key="action.name" @click.stop="executeAction(action.name)">
             <HdIcon :src="action.icon" class="hd-toggle__control-actions-icon" />
@@ -97,8 +97,11 @@ export default {
     };
   },
   computed: {
+    hasSignleAction() {
+      return this.actions.length === 1;
+    },
     actionMenuIcon() {
-      return this.actions.length === 1 ? this.actions[0].icon : kebabMenuIcon;
+      return this.hasSignleAction ? this.actions[0].icon : kebabMenuIcon;
     },
     maxHeight() {
       if (this.open) {
@@ -140,7 +143,7 @@ export default {
       this.isActionsMenuOpen = !this.isActionsMenuOpen;
     },
     onClickActionsMenu() {
-      if (this.actions.length === 1) {
+      if (this.hasSignleAction) {
         this.$emit(this.actions[0].name);
       } else {
         this.toggleActionsMenu();
