@@ -18,7 +18,7 @@
         >
           <li v-for="action in actions" :key="action.name" @click.stop="executeAction(action.name)">
             <HdIcon :src="action.icon" class="hd-toggle__control-actions-icon" />
-            {{ action.name }}
+            {{ action.label }}
           </li>
         </ul>
         <HdButton
@@ -75,6 +75,10 @@ export default {
       type: Number,
       default: 300,
     },
+    /**
+     * Additional actions
+     * @type Array<{ name: String, label: String, icon: String }>
+     */
     actions: {
       type: Array,
       default: () => [],
