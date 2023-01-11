@@ -13,7 +13,7 @@
       <div class="hd-toggle__control-icon-wrapper">
         <ul
           class="hd-toggle__control-actions-menu"
-          :class="{ 'hd-toggle__control-actions-menu--is-open': actionsMenuIsOpen }"
+          :class="{ 'hd-toggle__control-actions-menu--is-open': isActionsMenuOpen }"
           v-if="actions.length > 1"
         >
           <li v-for="action in actions" :key="action.name" @click.stop="executeAction(action.name)">
@@ -93,7 +93,7 @@ export default {
       internalFocusRemoved: false,
       chevronIcon,
       kebabMenuIcon,
-      actionsMenuIsOpen: false,
+      isActionsMenuOpen: false,
     };
   },
   computed: {
@@ -137,7 +137,7 @@ export default {
       return el.scrollHeight;
     },
     toggleActionsMenu() {
-      this.actionsMenuIsOpen = !this.actionsMenuIsOpen;
+      this.isActionsMenuOpen = !this.isActionsMenuOpen;
     },
     onClickActionsMenu() {
       if (this.actions.length === 1) {
