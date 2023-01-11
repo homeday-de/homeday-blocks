@@ -10,8 +10,25 @@
   >
     <button :disabled="!canBeToggled" class="hd-toggle__control" type="button" @click="toggleOpen">
       {{ title }}
-
-      <HdIcon :src="chevronIcon" class="hd-toggle__control-icon" />
+      <div class="hd-toggle__control-icon-wrapper">
+        <ul
+          class="hd-toggle__control-actions-menu"
+          :class="{ 'hd-toggle__control-actions-menu--is-open': actionsMenuIsOpen }"
+          v-if="actions.length > 1"
+        >
+          <li v-for="action in actions" :key="action.name" @click.stop="executeAction(action.name)">
+            <HdIcon :src="action.icon" class="hd-toggle__control-actions-icon" />
+            {{ action.name }}
+          </li>
+        </ul>
+        <HdButton
+          v-if="actions.length"
+          class="hd-toggle__control-actions"
+          :icon-src="actionMenuIcon"
+          @click.stop="onClickActionsMenu"
+        />
+        <HdIcon :src="chevronIcon" class="hd-toggle__control-icon" />
+      </div>
     </button>
     <div
       ref="body"
@@ -29,13 +46,16 @@
 <script>
 import OnResizeService from 'homeday-blocks/src/services/on-resize';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
+import HdButton from 'homeday-blocks/src/components/buttons/HdButton.vue';
 import { chevron as chevronIcon } from 'homeday-assets';
+import kebabMenuIcon from '@/assets/kebab-menu.svg';
 
 export const TABINDEX_BACKUP_ATTRIBUTE = 'data-hd-tabindex-backup';
 
 export default {
   name: 'HdToggle',
   components: {
+    HdButton,
     HdIcon,
   },
   props: {
@@ -55,6 +75,10 @@ export default {
       type: Number,
       default: 300,
     },
+    actions: {
+      type: Array,
+      default: () => [],
+    },
   },
   data() {
     return {
@@ -64,9 +88,14 @@ export default {
       isUsingMouse: false,
       internalFocusRemoved: false,
       chevronIcon,
+      kebabMenuIcon,
+      actionsMenuIsOpen: false,
     };
   },
   computed: {
+    actionMenuIcon() {
+      return this.actions.length === 1 ? this.actions[0].icon : kebabMenuIcon;
+    },
     maxHeight() {
       if (this.open) {
         return this.bodyHeight;
@@ -102,6 +131,20 @@ export default {
     // Encapsulated in a method to be able to mock it in the tests
     getScrollHeight(el) {
       return el.scrollHeight;
+    },
+    toggleActionsMenu() {
+      this.actionsMenuIsOpen = !this.actionsMenuIsOpen;
+    },
+    onClickActionsMenu() {
+      if (this.actions.length === 1) {
+        this.executeAction(this.actions[0].name);
+      } else {
+        this.toggleActionsMenu();
+      }
+    },
+    executeAction(action) {
+      this.$emit(action);
+      this.toggleActionsMenu();
     },
     toggleOpen() {
       if (this.canBeToggled === false) {
@@ -215,11 +258,15 @@ $_controlIconSize: 32px;
     }
   }
 
-  &__control-icon {
-    display: block;
+  &__control-icon-wrapper {
+    align-items: center;
+    display: flex;
     position: absolute;
     top: 0;
     right: 0;
+  }
+
+  &__control-icon {
     width: $_controlIconSize;
     height: $_controlIconSize;
     transform: rotate(90deg);
@@ -227,6 +274,50 @@ $_controlIconSize: 32px;
 
     #{$_root}--is-open & {
       transform: rotate(-90deg);
+    }
+  }
+
+  &__control-actions {
+    background-color: transparent;
+    box-shadow: none;
+    color: $primary-color;
+
+    &:focus,
+    &:hover {
+      box-shadow: none;
+    }
+
+    &:active {
+      background-color: transparent;
+    }
+  }
+
+  &__control-actions-menu {
+    @include font('DS-90');
+    background-color: $primary-bg;
+    border: 1px solid $primary-color;
+    display: none;
+    font-weight: 600;
+    left: calc(#{-$sp-l - $sp-s});
+    position: absolute;
+    top: $sp-l;
+
+    li {
+      align-items: center;
+      display: flex;
+      padding: $sp-s;
+    }
+
+    li:not(:last-child) {
+      border-bottom: 1px solid getShade($quaternary-color, 50);
+    }
+
+    li:hover {
+      background-color: getShade($quaternary-color, 40);
+    }
+
+    &--is-open {
+      display: block;
     }
   }
 
