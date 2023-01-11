@@ -18,47 +18,58 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue, { PropType } from 'vue';
 import { chevron as chevronIcon } from 'homeday-assets';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import TYPES from 'homeday-blocks/src/components/HdBadgeTypes';
 
-export default {
+export interface HdBadgeProps {
+  modifier: TYPES;
+  label?: string;
+  showIconBefore?: boolean;
+  icon?: string;
+}
+
+export default Vue.extend({
   name: 'HdBadge',
   components: {
     HdIcon,
   },
   props: {
     modifier: {
-      type: String,
+      type: String as PropType<HdBadgeProps['modifier']>,
       default: TYPES.DEFAULT,
-      validator(value) {
+      validator(value: string): boolean {
         const allTypes = Object.values(TYPES);
 
-        return allTypes.includes(value);
+        return allTypes.includes(value as TYPES);
       },
     },
     label: {
-      type: String,
+      type: String as PropType<HdBadgeProps['label']>,
       default: '',
     },
     showIconBefore: {
-      type: Boolean,
+      type: Boolean as PropType<HdBadgeProps['showIconBefore']>,
       default: true,
     },
     icon: {
-      type: String,
+      type: String as PropType<HdBadgeProps['icon']>,
       default: '',
     },
   },
-  data() {
+  data(): {
+    collapsed: boolean;
+    chevronIcon: string;
+  } {
     return {
       collapsed: false,
       chevronIcon,
     };
   },
   computed: {
-    computedClasses() {
+    computedClasses(): string[] {
       const baseClass = 'badge';
       const classes = [baseClass];
 
@@ -74,16 +85,16 @@ export default {
 
       return classes;
     },
-    hasDetails() {
+    hasDetails(): boolean {
       return !!this.$slots.default;
     },
   },
   methods: {
-    collapse() {
+    collapse(): void {
       if (this.hasDetails) this.collapsed = !this.collapsed;
     },
   },
-};
+});
 </script>
 
 <style lang="scss">
