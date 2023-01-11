@@ -84,6 +84,8 @@ export default {
     actions: {
       type: Array,
       default: () => [],
+      validator: (actions) =>
+        actions.every((action) => ['name', 'label', 'icon'].every((key) => key in action)),
     },
   },
   data() {
