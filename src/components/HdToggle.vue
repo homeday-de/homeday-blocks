@@ -137,7 +137,7 @@ export default {
     },
     onClickActionsMenu() {
       if (this.actions.length === 1) {
-        this.executeAction(this.actions[0].name);
+        this.$emit(this.actions[0].name);
       } else {
         this.toggleActionsMenu();
       }
