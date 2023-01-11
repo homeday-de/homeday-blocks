@@ -1,10 +1,10 @@
 <template>
   <div
     :class="{
+      'hd-toggle': true,
       'hd-toggle--is-open': open,
       'hd-toggle--is-using-mouse': isUsingMouse,
     }"
-    class="hd-toggle"
     @keydown="setUsingMouse(false)"
     @mousedown="setUsingMouse(true)"
   >
@@ -12,9 +12,11 @@
       {{ title }}
       <div class="hd-toggle__control-icon-wrapper">
         <ul
-          class="hd-toggle__control-actions-menu"
-          :class="{ 'hd-toggle__control-actions-menu--is-open': isActionsMenuOpen }"
           v-if="actions.length && !hasSignleAction"
+          :class="{
+            'hd-toggle__control-actions-menu': true,
+            'hd-toggle__control-actions-menu--is-open': isActionsMenuOpen,
+          }"
         >
           <li v-for="action in actions" :key="action.name" @click.stop="executeAction(action.name)">
             <HdIcon :src="action.icon" class="hd-toggle__control-actions-icon" />
