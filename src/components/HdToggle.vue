@@ -12,7 +12,7 @@
       {{ title }}
       <div class="hd-toggle__control-icon-wrapper">
         <ul
-          v-if="actions.length && !hasSignleAction"
+          v-if="actions.length && !hasSingleAction"
           :class="{
             'hd-toggle__control-actions-menu': true,
             'hd-toggle__control-actions-menu--is-open': isActionsMenuOpen,
@@ -20,16 +20,16 @@
         >
           <li v-for="action in actions" :key="action.name" @click.stop="executeAction(action.name)">
             <HdIcon :src="action.icon" class="hd-toggle__control-actions-icon" />
-            {{ action.label }}
+            <span class="hd-toggle__control-actions-label">{{ action.label }}</span>
           </li>
         </ul>
+        <HdIcon :src="chevronIcon" class="hd-toggle__control-icon" />
         <HdButton
           v-if="actions.length"
           class="hd-toggle__control-actions"
           :icon-src="actionMenuIcon"
           @click.stop="onClickActionsMenu"
         />
-        <HdIcon :src="chevronIcon" class="hd-toggle__control-icon" />
       </div>
     </button>
     <div
@@ -101,11 +101,11 @@ export default {
     };
   },
   computed: {
-    hasSignleAction() {
+    hasSingleAction() {
       return this.actions.length === 1;
     },
     actionMenuIcon() {
-      return this.hasSignleAction ? this.actions[0].icon : kebabMenuIcon;
+      return this.hasSingleAction ? this.actions[0].icon : kebabMenuIcon;
     },
     maxHeight() {
       if (this.open) {
@@ -147,7 +147,7 @@ export default {
       this.isActionsMenuOpen = !this.isActionsMenuOpen;
     },
     onClickActionsMenu() {
-      if (this.hasSignleAction) {
+      if (this.hasSingleAction) {
         this.$emit(this.actions[0].name);
       } else {
         this.toggleActionsMenu();
@@ -304,11 +304,12 @@ $_controlIconSize: 32px;
   }
 
   &__control-actions-menu {
-    @include font('DS-90');
+    @include font('DS-100');
     background-color: $primary-bg;
-    border: 1px solid $primary-color;
+    border-radius: 4px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.14);
     display: none;
-    font-weight: 600;
+    font-weight: 400;
     left: calc(#{-$sp-l - $sp-s});
     position: absolute;
     top: $sp-l;
@@ -316,7 +317,7 @@ $_controlIconSize: 32px;
     li {
       align-items: center;
       display: flex;
-      padding: $sp-s;
+      padding: calc(#{$sp-s + $sp-xs}) calc(#{$sp-m + $sp-xs});
     }
 
     li:not(:last-child) {
@@ -330,6 +331,10 @@ $_controlIconSize: 32px;
     &--is-open {
       display: block;
     }
+  }
+
+  &__control-actions-label {
+    padding-left: $sp-s;
   }
 
   &__body {
