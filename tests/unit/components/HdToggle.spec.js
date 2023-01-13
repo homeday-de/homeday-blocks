@@ -5,6 +5,8 @@ const TOGGLE_BODY_SELECTOR = '.hd-toggle__body';
 const TOGGLE_OPEN_SELECTOR = '.hd-toggle--is-open';
 const TOGGLE_CONTROL_SELECTOR = '.hd-toggle__control';
 
+const TEST_SVG =
+  '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><circle cx="12" cy="6" r="2" fill="#1C3553"/><circle cx="12" cy="12" r="2" fill="#1C3553"/><circle cx="12" cy="18" r="2" fill="#1C3553"/></svg>';
 const TEST_CONTENT = '<b>This is the HdToggle body.</b>';
 const TEST_PROPS = {
   title: 'HdToggle',
@@ -57,6 +59,29 @@ describe('HdToggle', () => {
     wrapper.vm.toggleOpen();
 
     expect(wrapper.emitted().toggle).toBeTruthy();
+  });
+
+  it('renders actions menu when provided props', async () => {
+    const wrapper = wrapperBuilder();
+
+    wrapper.setProps({
+      actions: [
+        {
+          name: 'delete',
+          label: 'Delete',
+          icon: TEST_SVG,
+        },
+        {
+          name: 'edit',
+          label: 'Edit',
+          icon: TEST_SVG,
+        },
+      ],
+    });
+
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
   it("won't toggle if the prop `canBeToggled` is set to false", async () => {
