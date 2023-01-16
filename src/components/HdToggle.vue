@@ -50,7 +50,7 @@ import OnResizeService from 'homeday-blocks/src/services/on-resize';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import HdButton from 'homeday-blocks/src/components/buttons/HdButton.vue';
 import { chevron as chevronIcon } from 'homeday-assets';
-import kebabMenuIcon from '@/assets/kebab-menu.svg';
+import { kebabMenu as kebabMenuIcon } from 'homeday-assets';
 
 export const TABINDEX_BACKUP_ATTRIBUTE = 'data-hd-tabindex-backup';
 
