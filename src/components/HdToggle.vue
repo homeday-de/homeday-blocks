@@ -18,7 +18,12 @@
             'hd-toggle__control-actions-menu--is-open': isActionsMenuOpen,
           }"
         >
-          <li v-for="action in actions" :key="action.name" @click.stop="executeAction(action.name)">
+          <li
+            class="hd-toggle__control-actions-menu-item"
+            v-for="action in actions"
+            :key="action.name"
+            @click.stop="executeAction(action.name)"
+          >
             <HdIcon :src="action.icon" class="hd-toggle__control-actions-icon" />
             <span class="hd-toggle__control-actions-label">{{ action.label }}</span>
           </li>
@@ -314,17 +319,17 @@ $_controlIconSize: 32px;
     position: absolute;
     top: $sp-l;
 
-    li {
+    &-item {
       align-items: center;
       display: flex;
       padding: calc(#{$sp-s + $sp-xs}) calc(#{$sp-m + $sp-xs});
     }
 
-    li:not(:last-child) {
+    &-item:not(:last-child) {
       border-bottom: 1px solid getShade($quaternary-color, 50);
     }
 
-    li:hover {
+    &-item:hover {
       background-color: getShade($quaternary-color, 40);
     }
 

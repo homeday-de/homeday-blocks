@@ -1,25 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HdToggle renders actions menu when provided props 1`] = `
-<div class="hd-toggle"><button type="button" class="hd-toggle__control">
-    HdToggle
-    <div class="hd-toggle__control-icon-wrapper">
-      <ul class="hd-toggle__control-actions-menu">
-        <li>
-          <hdicon-stub src="<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; fill=&quot;none&quot;><circle cx=&quot;12&quot; cy=&quot;6&quot; r=&quot;2&quot; fill=&quot;#1C3553&quot;/><circle cx=&quot;12&quot; cy=&quot;12&quot; r=&quot;2&quot; fill=&quot;#1C3553&quot;/><circle cx=&quot;12&quot; cy=&quot;18&quot; r=&quot;2&quot; fill=&quot;#1C3553&quot;/></svg>" class="hd-toggle__control-actions-icon"></hdicon-stub> <span class="hd-toggle__control-actions-label">Delete</span>
-        </li>
-        <li>
-          <hdicon-stub src="<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; fill=&quot;none&quot;><circle cx=&quot;12&quot; cy=&quot;6&quot; r=&quot;2&quot; fill=&quot;#1C3553&quot;/><circle cx=&quot;12&quot; cy=&quot;12&quot; r=&quot;2&quot; fill=&quot;#1C3553&quot;/><circle cx=&quot;12&quot; cy=&quot;18&quot; r=&quot;2&quot; fill=&quot;#1C3553&quot;/></svg>" class="hd-toggle__control-actions-icon"></hdicon-stub> <span class="hd-toggle__control-actions-label">Edit</span>
-        </li>
-      </ul>
-      <hdicon-stub src="" class="hd-toggle__control-icon"></hdicon-stub>
-      <hdbutton-stub modifier="primary" iconsrc="" class="hd-toggle__control-actions"></hdbutton-stub>
-    </div>
-  </button>
-  <div class="hd-toggle__body" style="max-height: 0px; transition-duration: 300ms;"><b>This is the HdToggle body.</b></div>
-</div>
-`;
-
 exports[`HdToggle renders the component 1`] = `
 <div class="hd-toggle"><button type="button" class="hd-toggle__control">
     HdToggle
