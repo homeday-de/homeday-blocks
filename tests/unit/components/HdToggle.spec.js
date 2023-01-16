@@ -4,7 +4,7 @@ import HdToggle from '@/components/HdToggle.vue';
 const TOGGLE_BODY_SELECTOR = '.hd-toggle__body';
 const TOGGLE_OPEN_SELECTOR = '.hd-toggle--is-open';
 const TOGGLE_CONTROL_SELECTOR = '.hd-toggle__control';
-const ACTIONS_MENU_ITEM = '.hd-toggle__control-actions-menu-item';
+const ACTIONS_MENU_ITEM_SELECTOR = '.hd-toggle__control-actions-menu-item';
 
 const TEST_SVG =
   '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><circle cx="12" cy="6" r="2" fill="#1C3553"/><circle cx="12" cy="12" r="2" fill="#1C3553"/><circle cx="12" cy="18" r="2" fill="#1C3553"/></svg>';
@@ -82,7 +82,7 @@ describe('HdToggle', () => {
 
     await wrapper.vm.$nextTick();
 
-    const actionMenuItems = wrapper.findAll(ACTIONS_MENU_ITEM);
+    const actionMenuItems = wrapper.findAll(ACTIONS_MENU_ITEM_SELECTOR);
 
     expect(actionMenuItems.length).toBe(actions.length);
 
