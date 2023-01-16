@@ -78,9 +78,7 @@ describe('HdToggle', () => {
       },
     ];
 
-    wrapper.setProps({ actions });
-
-    await wrapper.vm.$nextTick();
+    await wrapper.setProps({ actions });
 
     const actionMenuItems = wrapper.findAll(ACTIONS_MENU_ITEM_SELECTOR);
 
