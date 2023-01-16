@@ -1,17 +1,41 @@
 <template>
   <div
     :class="{
+      'hd-toggle': true,
       'hd-toggle--is-open': open,
       'hd-toggle--is-using-mouse': isUsingMouse,
     }"
-    class="hd-toggle"
     @keydown="setUsingMouse(false)"
     @mousedown="setUsingMouse(true)"
   >
     <button :disabled="!canBeToggled" class="hd-toggle__control" type="button" @click="toggleOpen">
       {{ title }}
-
-      <HdIcon :src="chevronIcon" class="hd-toggle__control-icon" />
+      <div class="hd-toggle__control-icon-wrapper">
+        <ul
+          v-if="actions.length && !hasSingleAction"
+          :class="{
+            'hd-toggle__control-actions-menu': true,
+            'hd-toggle__control-actions-menu--is-open': isActionsMenuOpen,
+          }"
+        >
+          <li
+            class="hd-toggle__control-actions-menu-item"
+            v-for="action in actions"
+            :key="action.name"
+            @click.stop="executeAction(action.name)"
+          >
+            <HdIcon :src="action.icon" class="hd-toggle__control-actions-icon" />
+            <span class="hd-toggle__control-actions-label">{{ action.label }}</span>
+          </li>
+        </ul>
+        <HdIcon :src="chevronIcon" class="hd-toggle__control-icon" />
+        <HdButton
+          v-if="actions.length"
+          class="hd-toggle__control-actions"
+          :icon-src="actionMenuIcon"
+          @click.stop="onClickActionsMenu"
+        />
+      </div>
     </button>
     <div
       ref="body"
@@ -29,13 +53,16 @@
 <script>
 import OnResizeService from 'homeday-blocks/src/services/on-resize';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
+import HdButton from 'homeday-blocks/src/components/buttons/HdButton.vue';
 import { chevron as chevronIcon } from 'homeday-assets';
+import { kebabMenu as kebabMenuIcon } from 'homeday-assets';
 
 export const TABINDEX_BACKUP_ATTRIBUTE = 'data-hd-tabindex-backup';
 
 export default {
   name: 'HdToggle',
   components: {
+    HdButton,
     HdIcon,
   },
   props: {
@@ -55,6 +82,16 @@ export default {
       type: Number,
       default: 300,
     },
+    /**
+     * Additional actions
+     * @type Array<{ name: String, label: String, icon: String }>
+     */
+    actions: {
+      type: Array,
+      default: () => [],
+      validator: (actions) =>
+        actions.every((action) => ['name', 'label', 'icon'].every((key) => key in action)),
+    },
   },
   data() {
     return {
@@ -64,9 +101,17 @@ export default {
       isUsingMouse: false,
       internalFocusRemoved: false,
       chevronIcon,
+      kebabMenuIcon,
+      isActionsMenuOpen: false,
     };
   },
   computed: {
+    hasSingleAction() {
+      return this.actions.length === 1;
+    },
+    actionMenuIcon() {
+      return this.hasSingleAction ? this.actions[0].icon : kebabMenuIcon;
+    },
     maxHeight() {
       if (this.open) {
         return this.bodyHeight;
@@ -102,6 +147,20 @@ export default {
     // Encapsulated in a method to be able to mock it in the tests
     getScrollHeight(el) {
       return el.scrollHeight;
+    },
+    toggleActionsMenu() {
+      this.isActionsMenuOpen = !this.isActionsMenuOpen;
+    },
+    onClickActionsMenu() {
+      if (this.hasSingleAction) {
+        this.$emit(this.actions[0].name);
+      } else {
+        this.toggleActionsMenu();
+      }
+    },
+    executeAction(action) {
+      this.$emit(action);
+      this.toggleActionsMenu();
     },
     toggleOpen() {
       if (this.canBeToggled === false) {
@@ -215,11 +274,15 @@ $_controlIconSize: 32px;
     }
   }
 
-  &__control-icon {
-    display: block;
+  &__control-icon-wrapper {
+    align-items: center;
+    display: flex;
     position: absolute;
     top: 0;
     right: 0;
+  }
+
+  &__control-icon {
     width: $_controlIconSize;
     height: $_controlIconSize;
     transform: rotate(90deg);
@@ -228,6 +291,55 @@ $_controlIconSize: 32px;
     #{$_root}--is-open & {
       transform: rotate(-90deg);
     }
+  }
+
+  &__control-actions {
+    background-color: transparent;
+    box-shadow: none;
+    color: $primary-color;
+
+    &:focus,
+    &:hover {
+      box-shadow: none;
+    }
+
+    &:active {
+      background-color: transparent;
+    }
+  }
+
+  &__control-actions-menu {
+    @include font('DS-100');
+    background-color: $primary-bg;
+    border-radius: 4px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.14);
+    display: none;
+    font-weight: 400;
+    left: calc(#{-$sp-l - $sp-s});
+    position: absolute;
+    top: $sp-l;
+
+    &-item {
+      align-items: center;
+      display: flex;
+      padding: calc(#{$sp-s + $sp-xs}) calc(#{$sp-m + $sp-xs});
+    }
+
+    &-item:not(:last-child) {
+      border-bottom: 1px solid getShade($quaternary-color, 50);
+    }
+
+    &-item:hover {
+      background-color: getShade($quaternary-color, 40);
+    }
+
+    &--is-open {
+      display: block;
+    }
+  }
+
+  &__control-actions-label {
+    padding-left: $sp-s;
   }
 
   &__body {
