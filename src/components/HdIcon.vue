@@ -2,11 +2,21 @@
   <inline-svg :src="src" :id="id" :title="title" :transform-source="transform" v-bind="$attrs" />
 </template>
 
-<script>
+<script lang="ts">
 import _intersection from 'lodash/intersection';
 import InlineSvg from 'vue-inline-svg';
+import Vue, { PropType } from 'vue';
 
-export default {
+export interface HdIconProps {
+  src: string;
+  title?: string;
+  id?: string;
+  description: string | null;
+  fillFromClass?: { [key: string]: string };
+  classFromFill?: { [key: string]: string };
+}
+
+export default Vue.extend({
   name: 'HdIcon',
   inheritAttrs: false,
   components: {
@@ -14,36 +24,39 @@ export default {
   },
   props: {
     src: {
-      type: String,
+      type: String as PropType<HdIconProps['src']>,
       required: true,
     },
     title: {
-      type: String,
+      type: String as PropType<HdIconProps['title']>,
     },
     id: {
-      type: String,
+      type: String as PropType<HdIconProps['id']>,
     },
     description: {
-      type: String,
+      type: String as PropType<HdIconProps['description']>,
+      default: null,
     },
     // to set a fill based on the path's class
     fillFromClass: {
-      type: Object,
+      type: Object as PropType<HdIconProps['fillFromClass']>,
       default: null,
     },
     // To add class based on the path's fill
     classFromFill: {
-      type: Object,
+      type: Object as PropType<HdIconProps['classFromFill']>,
       default: null,
     },
   },
-  data() {
+  data(): {
+    hasAddedAccessibilityTags: boolean;
+  } {
     return {
       hasAddedAccessibilityTags: false,
     };
   },
   methods: {
-    transform(svg) {
+    transform(svg: HTMLElement): HTMLElement {
       this.addAccessibilityTags(svg);
 
       if (!this.fillFromClass && !this.classFromFill) {
@@ -65,14 +78,14 @@ export default {
 
       return svg;
     },
-    addAccessibilityTags(svg) {
+    addAccessibilityTags(svg: HTMLElement): void {
       if (!this.hasAddedAccessibilityTags) {
         const randId = Math.floor(Math.random() * 1000);
         if (this.description) this.addDescTag(svg, randId);
         this.hasAddedAccessibilityTags = true;
       }
     },
-    addDescTag(svg, randId) {
+    addDescTag(svg: HTMLElement, randId: number): void {
       const descId = `${this.id || randId}-desc`;
       const descTag = document.createElementNS('http://www.w3.org/2000/svg', 'desc');
       descTag.id = descId;
@@ -80,7 +93,7 @@ export default {
       svg.appendChild(descTag);
       svg.setAttribute('aria-describedby', descId);
     },
-    getFillFromClassNames(classNames) {
+    getFillFromClassNames(classNames: string | null): string | null {
       if (!classNames || !this.fillFromClass) {
         return null;
       }
@@ -92,7 +105,7 @@ export default {
 
       return this.fillFromClass[classNameMatches[0]];
     },
-    getClassNameFromFill(fill) {
+    getClassNameFromFill(fill: string | null): string {
       if (!fill || !this.classFromFill) {
         return '';
       }
@@ -100,5 +113,5 @@ export default {
       return this.classFromFill[fill];
     },
   },
-};
+});
 </script>
