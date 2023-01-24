@@ -38,6 +38,9 @@ export default {
         type: 'object',
       },
     },
+    uncheck: {
+      control: { type: 'boolean' },
+    },
   },
   args: {
     label: 'Label',
@@ -49,6 +52,7 @@ export default {
     vertical: false,
     texts: null,
     value: null,
+    uncheck: false,
   },
   parameters: {
     docs: {
@@ -65,6 +69,7 @@ export default {
     :lang="lang"
     :disabled="disabled"
     :texts="texts"
+    :uncheck="uncheck"
   />
 </template>
         `,
@@ -91,6 +96,7 @@ const Template = (args, { argTypes }) => ({
         :lang="lang"
         :disabled="disabled"
         :texts="texts"
+        :uncheck="uncheck"
         ref="myRadio"
         />
 
@@ -233,6 +239,21 @@ Unlabelled.parameters = {
   />
 </template>
       `,
+    },
+  },
+};
+
+export const Uncheck = Template.bind({});
+Uncheck.args = {
+  uncheck: true,
+};
+Uncheck.parameters = {
+  docs: {
+    description: {
+      story: '',
+    },
+    source: {
+      code: '',
     },
   },
 };
