@@ -181,7 +181,7 @@ export default {
       visibility: visible;
     }
     &__text {
-      @include font('text-xxsmall');
+      @include font('DS-80');
       color: getShade($quaternary-color, 80);
       width: 65px;
     }

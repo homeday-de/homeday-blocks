@@ -337,7 +337,7 @@ export default {
     position: absolute;
     top: #{$sp-l + $sp-s};
     transform: translateX(-50%);
-    @include font('text-xsmall');
+    @include font('DS-150');
     color: getShade($quaternary-color, 80);
   }
 

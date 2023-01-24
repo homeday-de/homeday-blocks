@@ -23,6 +23,10 @@
     font-size: rem-calc(16);
     line-height: 1.5;
   }
+  @else if ($style == "DS-150") {
+    font-size: rem-calc(18);
+    line-height: 1.55;
+  }
   @else if ($style == "DS-200") {
     font-size: rem-calc(20);
     line-height: 1.6;

@@ -257,7 +257,8 @@ $_controlIconSize: 32px;
     border: 0;
     background-color: transparent;
     box-shadow: none;
-    @include font('subtitle');
+    @include font('DS-150');
+    font-weight: bold;
     text-align: left;
     transition: outline $time-s ease-in-out;
 

@@ -54,7 +54,7 @@ export default {
   $root: &;
   display: flex;
   padding: $sp-s;
-  @include font('text-small');
+  @include font('DS-150');
   border-width: 1px;
   border-style: solid;
   border-radius: 3px;
