@@ -12,7 +12,7 @@
       <p v-html="title" />
       <div class="hd-toggle__control-icon-wrapper">
         <ul
-          v-if="actions.length && !hasSingleAction"
+          v-if="hasActions && !hasSingleAction"
           :class="{
             'hd-toggle__control-actions-menu': true,
             'hd-toggle__control-actions-menu--is-open': isActionsMenuOpen,
@@ -30,7 +30,7 @@
         </ul>
         <HdIcon :src="chevronIcon" class="hd-toggle__control-icon" />
         <HdButton
-          v-if="actions.length"
+          v-if="hasActions"
           class="hd-toggle__control-actions"
           :icon-src="actionMenuIcon"
           @click.stop="onClickActionsMenu"
@@ -107,7 +107,7 @@ export default (
     actions: {
       type: Array as PropType<HdToggleProps['actions']>,
       default: () => [],
-      validator: (actions: HdToggleProps['actions']) =>
+      validator: (actions: HdToggleProps['actions'] = []) =>
         actions.every((action) => ['name', 'label', 'icon'].every((key) => key in action)),
     },
   },
@@ -131,11 +131,14 @@ export default (
     };
   },
   computed: {
+    hasActions(): boolean {
+      return !!this.actions?.length;
+    },
     hasSingleAction(): boolean {
-      return this.actions.length === 1;
+      return this.actions?.length === 1;
     },
     actionMenuIcon(): string {
-      return this.hasSingleAction ? this.actions[0].icon : kebabMenuIcon;
+      return this.hasSingleAction ? this.actions?.[0].icon : kebabMenuIcon;
     },
     maxHeight(): number {
       if (this.open) {
@@ -178,7 +181,8 @@ export default (
     },
     onClickActionsMenu(): void {
       if (this.hasSingleAction) {
-        this.$emit(this.actions[0].name);
+        const actionName = this.actions?.[0]?.name;
+        if (actionName) this.$emit(actionName);
       } else {
         this.toggleActionsMenu();
       }
