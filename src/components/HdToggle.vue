@@ -66,11 +66,11 @@ export interface HdToggleAction {
 }
 
 export interface HdToggleProps {
-  title: string;
-  canBeToggled: boolean;
-  open: boolean;
-  transitionDuration: number;
-  actions: HdToggleAction[];
+  title?: string;
+  canBeToggled?: boolean;
+  open?: boolean;
+  transitionDuration?: number;
+  actions?: HdToggleAction[];
 }
 
 export default (
