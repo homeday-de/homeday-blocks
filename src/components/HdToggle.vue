@@ -9,7 +9,7 @@
     @mousedown="setUsingMouse(true)"
   >
     <button :disabled="!canBeToggled" class="hd-toggle__control" type="button" @click="toggleOpen">
-      {{ title }}
+      <p v-html="title" />
       <div class="hd-toggle__control-icon-wrapper">
         <ul
           v-if="actions.length && !hasSingleAction"
