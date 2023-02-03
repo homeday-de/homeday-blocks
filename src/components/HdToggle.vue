@@ -9,10 +9,10 @@
     @mousedown="setUsingMouse(true)"
   >
     <button :disabled="!canBeToggled" class="hd-toggle__control" type="button" @click="toggleOpen">
-      {{ title }}
+      <p v-html="title" />
       <div class="hd-toggle__control-icon-wrapper">
         <ul
-          v-if="actions.length && !hasSingleAction"
+          v-if="hasActions && !hasSingleAction"
           :class="{
             'hd-toggle__control-actions-menu': true,
             'hd-toggle__control-actions-menu--is-open': isActionsMenuOpen,
@@ -30,7 +30,7 @@
         </ul>
         <HdIcon :src="chevronIcon" class="hd-toggle__control-icon" />
         <HdButton
-          v-if="actions.length"
+          v-if="hasActions"
           class="hd-toggle__control-actions"
           :icon-src="actionMenuIcon"
           @click.stop="onClickActionsMenu"
@@ -50,16 +50,38 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue, { VueConstructor, PropType } from 'vue';
 import OnResizeService from 'homeday-blocks/src/services/on-resize';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import HdButton from 'homeday-blocks/src/components/buttons/HdButton.vue';
-import { chevron as chevronIcon } from 'homeday-assets';
-import { kebabMenu as kebabMenuIcon } from 'homeday-assets';
+import { chevron as chevronIcon, kebabMenu as kebabMenuIcon } from 'homeday-assets';
 
 export const TABINDEX_BACKUP_ATTRIBUTE = 'data-hd-tabindex-backup';
 
-export default {
+export interface HdToggleAction {
+  name: string;
+  label: string;
+  icon: string;
+}
+
+export interface HdToggleProps {
+  title?: string;
+  canBeToggled?: boolean;
+  open?: boolean;
+  transitionDuration?: number;
+  actions?: HdToggleAction[];
+}
+
+export default (
+  Vue as VueConstructor<
+    Vue & {
+      $refs: {
+        body: HTMLElement;
+      };
+    }
+  >
+).extend({
   name: 'HdToggle',
   components: {
     HdButton,
@@ -67,52 +89,58 @@ export default {
   },
   props: {
     title: {
-      type: String,
+      type: String as PropType<HdToggleProps['title']>,
       default: '',
     },
     canBeToggled: {
-      type: Boolean,
+      type: Boolean as PropType<HdToggleProps['canBeToggled']>,
       default: true,
     },
     open: {
-      type: Boolean,
+      type: Boolean as PropType<HdToggleProps['open']>,
       default: true,
     },
     transitionDuration: {
-      type: Number,
+      type: Number as PropType<HdToggleProps['transitionDuration']>,
       default: 300,
     },
-    /**
-     * Additional actions
-     * @type Array<{ name: String, label: String, icon: String }>
-     */
     actions: {
-      type: Array,
+      type: Array as PropType<HdToggleProps['actions']>,
       default: () => [],
-      validator: (actions) =>
+      validator: (actions: HdToggleProps['actions'] = []) =>
         actions.every((action) => ['name', 'label', 'icon'].every((key) => key in action)),
     },
   },
-  data() {
+  data(): {
+    bodyHeight: number;
+    isUsingMouse: boolean;
+    internalFocusRemoved: boolean;
+    isActionsMenuOpen: boolean;
+    chevronIcon: string;
+    kebabMenuIcon: string;
+  } {
     return {
       // bodyHeight is a random big number only initially,
       // it will be calculated on mounted
       bodyHeight: 10000,
       isUsingMouse: false,
       internalFocusRemoved: false,
+      isActionsMenuOpen: false,
       chevronIcon,
       kebabMenuIcon,
-      isActionsMenuOpen: false,
     };
   },
   computed: {
-    hasSingleAction() {
-      return this.actions.length === 1;
+    hasActions(): boolean {
+      return !!this.actions?.length;
     },
-    actionMenuIcon() {
-      return this.hasSingleAction ? this.actions[0].icon : kebabMenuIcon;
+    hasSingleAction(): boolean {
+      return this.actions?.length === 1;
     },
-    maxHeight() {
+    actionMenuIcon(): string {
+      return this.hasSingleAction ? this.actions?.[0].icon : kebabMenuIcon;
+    },
+    maxHeight(): number {
       if (this.open) {
         return this.bodyHeight;
       }
@@ -145,45 +173,46 @@ export default {
   },
   methods: {
     // Encapsulated in a method to be able to mock it in the tests
-    getScrollHeight(el) {
+    getScrollHeight(el: HTMLElement): number {
       return el.scrollHeight;
     },
-    toggleActionsMenu() {
+    toggleActionsMenu(): void {
       this.isActionsMenuOpen = !this.isActionsMenuOpen;
     },
-    onClickActionsMenu() {
+    onClickActionsMenu(): void {
       if (this.hasSingleAction) {
-        this.$emit(this.actions[0].name);
+        const actionName = this.actions?.[0]?.name;
+        if (actionName) this.$emit(actionName);
       } else {
         this.toggleActionsMenu();
       }
     },
-    executeAction(action) {
+    executeAction(action: string): void {
       this.$emit(action);
       this.toggleActionsMenu();
     },
-    toggleOpen() {
+    toggleOpen(): void {
       if (this.canBeToggled === false) {
         return;
       }
 
       this.$emit('toggle', !this.open);
     },
-    calculateBodyHeight() {
+    calculateBodyHeight(): void {
       if (!this.$refs.body) {
         return;
       }
 
       this.bodyHeight = this.getScrollHeight(this.$refs.body);
     },
-    ensureBodyScrolledToTop() {
+    ensureBodyScrolledToTop(): void {
       if (!this.$refs.body) {
         return;
       }
 
       this.$refs.body.scrollTop = 0;
     },
-    disableInternalFocus() {
+    disableInternalFocus(): void {
       if (!this.$refs.body) {
         return;
       }
@@ -206,7 +235,7 @@ export default {
 
       this.internalFocusRemoved = true;
     },
-    enableInternalFocus() {
+    enableInternalFocus(): void {
       if (!this.$refs.body || this.internalFocusRemoved === false) {
         return;
       }
@@ -220,23 +249,23 @@ export default {
       }
 
       $innerFocusableElements.forEach((el) => {
-        const oldTabIndex = el.getAttribute(TABINDEX_BACKUP_ATTRIBUTE);
+        const oldTabIndex = el.getAttribute(TABINDEX_BACKUP_ATTRIBUTE) ?? '';
 
         el.setAttribute('tabindex', oldTabIndex);
         el.removeAttribute(TABINDEX_BACKUP_ATTRIBUTE);
       });
     },
-    addResizeEvents() {
+    addResizeEvents(): void {
       OnResizeService.onDebounced(this.calculateBodyHeight);
     },
-    removeResizeEvents() {
+    removeResizeEvents(): void {
       OnResizeService.offDebounced(this.calculateBodyHeight);
     },
-    setUsingMouse(usingMouse) {
+    setUsingMouse(usingMouse: boolean): void {
       this.isUsingMouse = usingMouse;
     },
   },
-};
+});
 </script>
 
 <style lang="scss">

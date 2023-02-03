@@ -2,7 +2,7 @@
 
 exports[`HdToggle renders the component 1`] = `
 <div class="hd-toggle"><button type="button" class="hd-toggle__control">
-    HdToggle
+    <p>HdToggle</p>
     <div class="hd-toggle__control-icon-wrapper">
       <!---->
       <hdicon-stub src="" class="hd-toggle__control-icon"></hdicon-stub>
