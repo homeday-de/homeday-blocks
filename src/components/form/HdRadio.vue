@@ -49,9 +49,7 @@
           :disabled="disabled"
           :invalid="hasError"
         />
-        <label :for="getItemName(item)" class="radio__label">
-          {{ item.label }}
-        </label>
+        <label :for="getItemName(item)" class="radio__label" v-html="item.label" />
       </div>
     </div>
   </FieldBase>
