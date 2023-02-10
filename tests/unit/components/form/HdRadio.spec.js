@@ -130,4 +130,19 @@ describe('HdRadio', () => {
 
     expect(wrapper.find('input').attributes().disabled).toBe('disabled');
   });
+
+  it('Supports raw html', () => {
+    const wrapper = wrapperBuilder({
+      props: {
+        items: [
+          {
+            value: 'EXAMPLE',
+            label: 'This is a <b>Bold</b> text.',
+          },
+        ],
+      },
+    });
+
+    expect(wrapper.find('b').exists()).toBe(true);
+  });
 });

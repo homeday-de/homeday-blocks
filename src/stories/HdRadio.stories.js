@@ -236,3 +236,35 @@ Unlabelled.parameters = {
     },
   },
 };
+
+export const RawHTML = Template.bind({});
+RawHTML.args = {
+  items: [
+    {
+      value: 'EXAMPLE',
+      label: 'This is a <b>Bold</b> text.',
+    },
+  ],
+};
+RawHTML.parameters = {
+  docs: {
+    description: {
+      story: `You can also send raw HTML to the label as a string, for example to have bold words.`,
+    },
+    source: {
+      code: `
+<template>
+  <HdRadio
+    v-model="myDataProperty"
+    :name="name"
+    :items="[{
+      value: 'EXAMPLE',
+      label: 'This is a <b>Bold</b> text.'
+    }]"
+    label=""
+  />
+</template>
+      `,
+    },
+  },
+};
