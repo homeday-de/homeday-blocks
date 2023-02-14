@@ -219,6 +219,7 @@ export default Vue.extend({
 
       return true;
     },
+    // @ts-ignore
     validate(value: string | number = this.value): boolean {
       if (this.required && !this.isFilled) {
         return this.showError(this.t.FORM.VALIDATION.REQUIRED);
@@ -240,6 +241,7 @@ export default Vue.extend({
 
       return this.hideError();
     },
+    // @ts-ignore
     validateCustomRules(value: string | number = this.value): boolean {
       const firstFailingRule = this.customRules.find(({ validate }) => !validate(value));
 
