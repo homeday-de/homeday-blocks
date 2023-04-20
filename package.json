@@ -66,7 +66,7 @@
     "@storybook/builder-webpack5": "^6.5.12",
     "@storybook/manager-webpack5": "^6.5.12",
     "@storybook/theming": "6.5.12",
-    "@storybook/vue": "6.5.12",
+    "@storybook/vue": "7.0.6",
     "@testing-library/jest-dom": "^5.16.5",
     "@types/jest": "^24.0.19",
     "@types/lodash": "^4.14.171",
