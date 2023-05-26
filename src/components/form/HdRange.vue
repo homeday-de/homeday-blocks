@@ -41,7 +41,8 @@
     </div>
     <div class="range__thumb" ref="thumb">
       <div v-if="displayTooltip" class="range__tooltip">
-        {{ tooltipValue || value }}
+        <img :src="tooltipBackground" class="range__tooltip__background" />
+        <span class="range__tooltip__content">{{ tooltipValue || value }}</span>
       </div>
       <div class="range__thumb__inner" ref="thumbInner">
         <div class="range__thumb__bullet" />
@@ -52,6 +53,7 @@
 
 <script>
 import onResize from 'homeday-blocks/src/services/on-resize';
+import tooltipBackground from 'homeday-blocks/src/assets/tooltip.svg';
 import formField from './formFieldMixin';
 
 export default {
@@ -115,6 +117,7 @@ export default {
     return {
       isActive: null,
       trackWidth: 0,
+      tooltipBackground,
     };
   },
   computed: {
@@ -415,10 +418,22 @@ export default {
     bottom: $sp-m;
     transform: translateX(-50%);
     color: $white;
-    background: url('~homeday-blocks/src/assets/tooltip.svg') no-repeat;
-    background-size: 100% 100%;
     padding: $sp-s $sp-m #{$sp-m + $sp-s};
     pointer-events: none;
+
+    &__background {
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+
+    &__content {
+      z-index: 2;
+      position: relative;
+    }
   }
 }
 </style>
