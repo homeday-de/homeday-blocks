@@ -166,4 +166,20 @@ storiesOf('Components/Form/HdInput', module)
         value: '',
       };
     },
+  }))
+  .add('with type date', () => ({
+    components: { HdInput },
+    template: `
+      <HdInput
+        v-model="value"
+        name="test"
+        label="Label"
+        type="date"
+      />
+    `,
+    data() {
+      return {
+        value: '',
+      };
+    },
   }));
