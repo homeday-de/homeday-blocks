@@ -61,7 +61,7 @@ export default {
       default: 'text',
     },
     value: {
-      type: [String, Number],
+      type: [String, Number, Date],
       default: '',
     },
     placeholder: {

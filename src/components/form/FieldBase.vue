@@ -186,12 +186,16 @@ export default {
       transform: translateY(-50%) scale(0.75);
     }
 
+    [type='date'] ~ & {
+      @include minimized;
+    }
+
     #{$root}--active &,
     #{$root}--filled &,
     #{$root}--minimized-label & {
       @include minimized;
     }
-    // We are seperating this declaration from the block above
+    // We are separating this declaration from the block above
     // because non-webkit engines will ignore the whole block, e.g. Gecko
     input:-webkit-autofill + & {
       @include minimized;
