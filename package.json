@@ -63,7 +63,7 @@
     "@storybook/addon-knobs": "6.4.0",
     "@storybook/addon-links": "6.5.12",
     "@storybook/addon-viewport": "6.5.12",
-    "@storybook/builder-webpack5": "^6.5.12",
+    "@storybook/builder-webpack5": "^7.2.1",
     "@storybook/manager-webpack5": "^6.5.12",
     "@storybook/theming": "6.5.12",
     "@storybook/vue": "6.5.12",
