@@ -98,11 +98,14 @@ describe('HdToast', () => {
       it("sets 'isClosing' to true before timers then sets 'isOpen' and 'isClosing' to false and emits 'close'", () => {
         jest.useFakeTimers();
         jest.spyOn(global, 'setTimeout');
+        const spyClose = jest.spyOn(HdToast.methods, 'close');
 
         const wrapper = wrapperBuilder();
         const { vm } = wrapper;
 
-        vm.close();
+        vm.$emit('close');
+
+        expect(spyClose).toBeCalled();
 
         expect(vm.isClosing).toBe(true);
 
