@@ -15,8 +15,14 @@ storiesOf('Components/HdToast', module)
       }),
       template: `
       <div>
-        <hd-toast primaryLabel="Primary" @primaryClick="primaryClick" ref="toast">{{text}}</hd-toast>
+        <hd-toast
+          primaryLabel="Primary"
+          @primaryClick="primaryClick"
+          ref="toast">
+          {{text}}
+        </hd-toast>
         <button @click="$refs.toast.$emit('open')" class="btn btn--primary">Show Toast!</button>
+        <button @click="$refs.toast.$emit('close')" class="btn btn--tertiary">Hide Toast!</button>
       </div>
     `,
       methods: {
@@ -38,8 +44,15 @@ storiesOf('Components/HdToast', module)
       }),
       template: `
       <div>
-        <hd-toast @close="onClose" @secondaryClick="secondaryClick" secondaryLabel="Secondary" ref="toast">{{text}}</hd-toast>
+        <hd-toast
+          @afterClose="onClose"
+          @secondaryClick="secondaryClick"
+          secondaryLabel="Secondary"
+          ref="toast">
+          {{text}}
+        </hd-toast>
         <button @click="$refs.toast.$emit('open')" class="btn btn--primary">Show Toast!</button>
+        <button @click="$refs.toast.$emit('close')" class="btn btn--tertiary">Hide Toast!</button>
       </div>
     `,
       methods: {
@@ -63,8 +76,17 @@ storiesOf('Components/HdToast', module)
       }),
       template: `
       <div>
-        <hd-toast primaryLabel="Primary" @close="onClose" @primaryClick="primaryClick" @secondaryClick="secondaryClick" secondaryLabel="Secondary" ref="toast">{{text}}</hd-toast>
+        <hd-toast
+          ref="toast"
+          primaryLabel="Primary"
+          secondaryLabel="Secondary"
+          @primaryClick="primaryClick"
+          @secondaryClick="secondaryClick"
+          @afterClose="onClose">
+          {{text}}
+        </hd-toast>
         <button @click="$refs.toast.$emit('open')" class="btn btn--primary">Show Toast!</button>
+        <button @click="$refs.toast.$emit('close')" class="btn btn--tertiary">Hide Toast!</button>
       </div>
     `,
       methods: {

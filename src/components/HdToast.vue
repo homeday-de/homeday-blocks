@@ -35,6 +35,11 @@ export default {
   }),
   mounted() {
     this.$on('open', this.open);
+    this.$on('close', this.close);
+  },
+  beforeDestroy() {
+    this.$off('open', this.open);
+    this.$off('close', this.close);
   },
   computed: {
     hasLabels() {
@@ -56,7 +61,7 @@ export default {
       setTimeout(() => {
         this.isOpen = false;
         this.isClosing = false;
-        this.$emit('close');
+        this.$emit('afterClose');
       }, 500);
     },
     primaryClick() {
