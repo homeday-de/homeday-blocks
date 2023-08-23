@@ -114,8 +114,8 @@ describe('HdToast', () => {
         expect(vm.isOpen).toBe(false);
         expect(vm.isClosing).toBe(false);
 
-        expect(wrapper.emitted().close).toBeTruthy();
-        expect(wrapper.emitted().close.length).toBe(1);
+        expect(wrapper.emitted().afterClose).toBeTruthy();
+        expect(wrapper.emitted().afterClose.length).toBe(1);
       });
     });
   });
