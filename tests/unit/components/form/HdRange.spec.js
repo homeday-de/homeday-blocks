@@ -243,4 +243,31 @@ describe('HdRange', () => {
 
     expect(mockedUpdateUI).toHaveBeenCalledTimes(2);
   });
+
+  describe('Custom step bullets', () => {
+    const VISIBLE_STEP_BULLETS_SELECTOR = '.range__step';
+    const stepBulletsWrapperBuilder = wrapperFactoryBuilder(HdRange, {
+      props: {
+        name: 'storybook',
+        min: 1,
+        max: 100,
+        step: 1,
+        value: 50,
+        labels: [],
+        displayStepBullets: false,
+        stepBullets: [1, 10, 50, 60, 100],
+      },
+    });
+
+    it('renders custom step bullets', () => {
+      const wrapper = stepBulletsWrapperBuilder();
+      expect(wrapper.findAll(VISIBLE_STEP_BULLETS_SELECTOR).length).toBe(5);
+    });
+    it('updates value to closest step bullet', async () => {
+      const wrapper = stepBulletsWrapperBuilder();
+      wrapper.setProps({ value: 90 });
+      await wrapper.vm.$nextTick();
+      expect(wrapper.emitted().input[0][0]).toBe(100);
+    });
+  });
 });
