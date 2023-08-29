@@ -28,16 +28,19 @@
         class="range__progress"
       />
     </div>
-    <div v-if="displayStepBullets" class="range__steps">
-      <button
-        v-for="(_, stepIndex) in stepsAmount"
-        :key="stepIndex"
-        type="button"
-        class="range__step"
-        @click="onStepClick(stepIndex)"
-      >
-        <p v-if="labels[stepIndex]" class="range__step-label" v-html="labels[stepIndex]" />
-      </button>
+    <div v-if="displayStepBullets || stepBullets.length" class="range__steps">
+      <template v-for="(stepValue, stepIndex) in stepsAmount">
+        <button
+          v-if="displayStepBullets || isStepBulletVisible(stepValue)"
+          :key="stepIndex"
+          type="button"
+          class="range__step"
+          @click="onStepClick(stepIndex)"
+          :style="customStepBulletOffset(stepValue)"
+        >
+          <p v-if="labels[stepIndex]" class="range__step-label" v-html="labels[stepIndex]" />
+        </button>
+      </template>
     </div>
     <div class="range__thumb" ref="thumb">
       <div v-if="displayTooltip" class="range__tooltip">
@@ -59,6 +62,7 @@ import formField from './formFieldMixin';
 export default {
   name: 'HdRange',
   mixins: [formField],
+  inheritAttrs: false,
   props: {
     name: {
       type: String,
@@ -112,6 +116,12 @@ export default {
       type: String,
       default: '', // falls back to the internal styles
     },
+    stepBullets: {
+      type: Array,
+      required: false,
+      default: () => [],
+      validator: (steps) => steps.filter((s) => typeof s === 'number').length === steps.length,
+    },
   },
   data() {
     return {
@@ -153,6 +163,7 @@ export default {
       this.updateUI();
     },
     value() {
+      this.updateToClosestValue();
       this.adjustValue();
       this.updateUI();
     },
@@ -197,6 +208,37 @@ export default {
     },
     blurHandler() {
       this.isActive = false;
+    },
+    isStepBulletVisible(value) {
+      return this.stepBullets.includes(value);
+    },
+    customStepBulletOffset(value) {
+      if (!this.stepBullets.length) return {}; // Early return standard bullets
+      const stepPosition = this.stepBullets.indexOf(value);
+      const valuePercentage = (value - this.min) / (this.max - this.min);
+      let valuePercentageInputWidthPixels = this.trackWidth * valuePercentage;
+
+      if (stepPosition > 0) {
+        const previousValue = this.stepBullets[stepPosition - 1];
+        const previousValuePercentage = (previousValue - this.min) / (this.max - this.min);
+        const previousPercentageInputWidthPixels = this.trackWidth * previousValuePercentage;
+        valuePercentageInputWidthPixels -= previousPercentageInputWidthPixels;
+      }
+
+      return {
+        paddingLeft: `${valuePercentageInputWidthPixels}px`,
+      };
+    },
+    getClosestValueInStepBullets(value) {
+      return this.stepBullets.reduce((currentClosest, currentValue) => {
+        const currentClosestDiff = Math.abs(currentClosest - value);
+        const currentValueDiff = Math.abs(currentValue - value);
+        return currentClosestDiff > currentValueDiff ? currentValue : currentClosest;
+      }, 0);
+    },
+    updateToClosestValue() {
+      if (!this.stepBullets.length) return;
+      this.computedValue = this.getClosestValueInStepBullets(this.computedValue);
     },
   },
 };
