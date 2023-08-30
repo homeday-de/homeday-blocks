@@ -224,21 +224,16 @@ export default {
       this.isActive = false;
     },
     customStepBulletOffset(value) {
-      console.log('--------------');
       if (!this.stepBullets.length) return {}; // Early return standard bullets
       const stepPosition = this.stepBullets.indexOf(value);
       const valuePercentage = (value - this.min) / (this.max - this.min);
       let valuePercentageInputWidthPixels = this.trackWidth * valuePercentage;
-
-      console.log('----------------', value);
-      console.log('%', valuePercentage);
 
       if (stepPosition > 0) {
         const previousValue = this.stepBullets[stepPosition - 1];
         const previousValuePercentage = (previousValue - this.min) / (this.max - this.min);
         const previousPercentageInputWidthPixels = this.trackWidth * previousValuePercentage;
         valuePercentageInputWidthPixels -= previousPercentageInputWidthPixels;
-        console.log('-', previousValuePercentage);
       }
 
       return {
