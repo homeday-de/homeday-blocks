@@ -141,3 +141,26 @@ export const WithCustomStepBullets = (_, { argTypes }) => ({
     };
   },
 });
+
+export const WithCustomStepBullets2 = (_, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { HdRange },
+  template: `
+    <div style="margin: 64px auto; max-width: 360px;">
+      <HdRange 
+        v-bind="$props"
+        :min="8"
+        :max="12"
+        :step="0.5"
+        :step-bullets="[8, 9, 9.5, 10, 11, 12]"
+        v-model="currentValue"
+      />
+      <p style="margin-top: 50px;">Value: {{ currentValue }}</p>
+    </div>
+  `,
+  data() {
+    return {
+      currentValue: 9.5,
+    };
+  },
+});

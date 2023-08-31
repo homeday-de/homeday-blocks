@@ -50,7 +50,6 @@
           class="range__step"
           @click="onStepClick(stepIndex)"
           :style="customStepBulletOffset(stepValue)"
-          :data-value="stepIndex"
         >
           <p v-if="labels[stepIndex]" class="range__step-label" v-html="labels[stepIndex]" />
         </button>
