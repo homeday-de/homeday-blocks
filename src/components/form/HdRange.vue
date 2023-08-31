@@ -28,11 +28,24 @@
         class="range__progress"
       />
     </div>
-    <div v-if="displayStepBullets || stepBullets.length" class="range__steps">
-      <template v-for="(stepValue, stepIndex) in stepsAmount">
+    <template v-if="displayStepBullets">
+      <div class="range__steps">
         <button
-          v-if="displayStepBullets || isStepBulletVisible(stepValue)"
+          v-for="(_, stepIndex) in stepsAmount"
           :key="stepIndex"
+          type="button"
+          class="range__step"
+          @click="onStepClick(stepIndex)"
+        >
+          <p v-if="labels[stepIndex]" class="range__step-label" v-html="labels[stepIndex]" />
+        </button>
+      </div>
+    </template>
+    <template v-else-if="stepBullets.length">
+      <div class="range__steps">
+        <button
+          v-for="(stepValue, stepIndex) in stepBullets"
+          :key="stepValue"
           type="button"
           class="range__step"
           @click="onStepClick(stepIndex)"
@@ -40,8 +53,8 @@
         >
           <p v-if="labels[stepIndex]" class="range__step-label" v-html="labels[stepIndex]" />
         </button>
-      </template>
-    </div>
+      </div>
+    </template>
     <div class="range__thumb" ref="thumb">
       <div v-if="displayTooltip" class="range__tooltip">
         <img :src="tooltipBackground" class="range__tooltip__background" />
@@ -208,9 +221,6 @@ export default {
     },
     blurHandler() {
       this.isActive = false;
-    },
-    isStepBulletVisible(value) {
-      return this.stepBullets.includes(value);
     },
     customStepBulletOffset(value) {
       if (!this.stepBullets.length) return {}; // Early return standard bullets

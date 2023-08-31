@@ -260,8 +260,22 @@ describe('HdRange', () => {
     });
 
     it('renders custom step bullets', () => {
-      const wrapper = stepBulletsWrapperBuilder();
+      let wrapper = stepBulletsWrapperBuilder();
       expect(wrapper.findAll(VISIBLE_STEP_BULLETS_SELECTOR).length).toBe(5);
+
+      wrapper = stepBulletsWrapperBuilder({
+        props: {
+          name: 'storybook',
+          min: 8,
+          max: 12,
+          step: 0.5,
+          value: 9.5,
+          labels: [],
+          displayStepBullets: false,
+          stepBullets: [8, 9, 9.5, 10, 11, 12],
+        },
+      });
+      expect(wrapper.findAll(VISIBLE_STEP_BULLETS_SELECTOR).length).toBe(6);
     });
     it('updates value to closest step bullet', async () => {
       const wrapper = stepBulletsWrapperBuilder();
