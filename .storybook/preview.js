@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import 'homeday-blocks/src/styles/main.scss';
+
 import '@storybook/addon-console';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import HdTooltipInstaller from 'homeday-blocks/src/components/tooltip/HdTooltipInstaller';
@@ -7,15 +8,11 @@ import HdTooltipInstaller from 'homeday-blocks/src/components/tooltip/HdTooltipI
 Vue.use(HdTooltipInstaller);
 
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
+  actions: { argTypesRegex: '^on[A-Z].*' },
   options: {
     storySort: {
       method: 'alphabetical',
-      order: [
-        'Introduction',
-        'Tokens',
-        'Components',
-      ]
+      order: ['Introduction', 'Welcome', 'Guidelines', 'Components', 'Directives', 'Services'],
     },
     showPanel: true,
     isToolshown: true,
@@ -23,4 +20,7 @@ export const parameters = {
   viewport: {
     viewports: INITIAL_VIEWPORTS,
   },
-}
+  features: {
+    previewMdx2: true,
+  },
+};
