@@ -1,9 +1,9 @@
 import Vue from 'vue';
-import 'homeday-blocks/src/styles/main.scss';
-
 import '@storybook/addon-console';
-import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
+import 'homeday-blocks/src/styles/main.scss';
+import HdTheme from './themes/HdTheme';
 import HdTooltipInstaller from 'homeday-blocks/src/components/tooltip/HdTooltipInstaller';
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 
 Vue.use(HdTooltipInstaller);
 
@@ -22,5 +22,10 @@ export const parameters = {
   },
   features: {
     previewMdx2: true,
+  },
+  parameters: {
+    docs: {
+      theme: HdTheme,
+    },
   },
 };
