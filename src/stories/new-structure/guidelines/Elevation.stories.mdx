@@ -1,0 +1,44 @@
+import { Meta, Canvas } from '@storybook/addon-docs';
+import 'homeday-blocks/src/stories/styles/Elevation.css';
+
+<Meta title="Guidelines/Elevation" />
+
+# Elevation
+
+## Usage:
+
+The available elevation levels are from 0 to 10.
+
+Elevation can be used either with classes:
+
+```js
+<div class="elevation-8">My elevated block</div>
+```
+
+Or with the Sass mixin:
+
+```css
+@import '~homeday-blocks/src/styles/mixins.scss';
+
+.my-elevated-block {
+  @include elevation(8);
+}
+```
+
+## Levels:
+
+<Canvas>
+  <div className="elevated-blocks">
+    <div className="elevated-block elevation-0">Level 0</div>
+    <div className="elevated-block elevation-1">Level 1</div>
+    <div className="elevated-block elevation-2">Level 2</div>
+    <div className="elevated-block elevation-3">Level 3</div>
+    <div className="elevated-block elevation-4">Level 4</div>
+    <div className="elevated-block elevation-5">Level 5</div>
+    <div className="elevated-block elevation-6">Level 6</div>
+    <div className="elevated-block elevation-7">Level 7</div>
+    <div className="elevated-block elevation-8">Level 8</div>
+    <div className="elevated-block elevation-9">Level 9</div>
+    <div className="elevated-block elevation-10">Level 10</div>
+  </div>
+</Canvas>
