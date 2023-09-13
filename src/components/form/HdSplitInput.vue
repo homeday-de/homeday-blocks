@@ -175,6 +175,7 @@ export default {
       } else {
         this.hideError();
       }
+      return !this.error;
     },
     getFieldsValues() {
       return this.fields.reduce(
