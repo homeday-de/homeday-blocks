@@ -148,12 +148,33 @@ export default {
       this.error = null;
     },
     validate() {
-      if (this.required && !this.isFilled) {
-        this.showError(this.t.FORM.VALIDATION.REQUIRED);
+      let errorToShow = null;
+
+      const areAllFieldsValid = this.fields.every((field) => {
+        const value = this.value[field.name];
+        const isNumber = field.type === 'number';
+        const isFilled = value !== null && value !== undefined && value !== '';
+        const hasMinAndMax = field.min !== undefined && field.max !== undefined;
+        const isInsideRange = value >= field.min && value <= field.max;
+
+        if (this.required && !isFilled) {
+          errorToShow = this.t.FORM.VALIDATION.REQUIRED;
+          return false;
+        }
+        if (isFilled) {
+          if (isNumber && hasMinAndMax && !isInsideRange) {
+            errorToShow = this.t.FORM.VALIDATION.INVALID_RANGE;
+            return false;
+          }
+        }
+        return true;
+      });
+
+      if (!areAllFieldsValid) {
+        this.showError(errorToShow);
       } else {
         this.hideError();
       }
-      return !this.error;
     },
     getFieldsValues() {
       return this.fields.reduce(
