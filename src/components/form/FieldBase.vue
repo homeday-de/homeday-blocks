@@ -226,6 +226,10 @@ export default {
       background-color: $error-color;
     }
 
+    #{$root} .input:not(:focus):not(:placeholder-shown):invalid ~ & {
+      background-color: $error-color;
+    }
+
     &::after {
       content: '';
       display: block;
