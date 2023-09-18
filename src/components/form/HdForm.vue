@@ -1,5 +1,5 @@
 <template>
-  <form class="form" @submit.prevent="submit" novalidate>
+  <form ref="form" class="form" @submit.prevent="submit" novalidate>
     <slot />
   </form>
 </template>
@@ -44,7 +44,8 @@ export default {
       const formData = formatNestedData(this.getFormData());
       const initialFormData = formatNestedData(this.initialFormData);
       const hasChanged = !_isEqual(formData, initialFormData);
-      this.$emit('change', { hasChanged });
+      const areAllFieldsValid = this.$refs.form.checkValidity() && this.validate();
+      this.$emit('change', { hasChanged, areAllFieldsValid });
     },
   },
   methods: {

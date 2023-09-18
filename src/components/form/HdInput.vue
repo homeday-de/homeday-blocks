@@ -96,6 +96,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    customErrorMessage: {
+      type: String,
+      default: null,
+    },
     customRules: {
       type: Array,
       default: () => [],
@@ -196,6 +200,10 @@ export default {
       return true;
     },
     validate(value = this.value) {
+      if (!this.$refs.input.checkValidity()) {
+        this.showError(this.customErrorMessage || this.t.FORM.VALIDATION.GENERAL);
+      }
+
       if (this.required && !this.isFilled) {
         return this.showError(this.t.FORM.VALIDATION.REQUIRED);
       }
