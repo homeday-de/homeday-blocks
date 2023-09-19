@@ -269,6 +269,9 @@ export default {
     #{$root}--errored:not(#{$root}--active) & {
       color: $error-color;
     }
+    #{$root} .input:not(:focus):not(:placeholder-shown):invalid ~ & {
+      color: $error-color;
+    }
   }
 }
 </style>

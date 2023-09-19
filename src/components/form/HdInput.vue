@@ -201,7 +201,7 @@ export default {
     },
     validate(value = this.value) {
       if (!this.$refs.input.checkValidity()) {
-        this.showError(this.customErrorMessage || this.t.FORM.VALIDATION.GENERAL);
+        return this.showError(this.customErrorMessage || this.t.FORM.VALIDATION.GENERAL);
       }
 
       if (this.required && !this.isFilled) {
