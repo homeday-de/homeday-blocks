@@ -199,8 +199,7 @@ export default {
 
       return true;
     },
-    validate(value = this.value)  {
-
+    validate(value = this.value) {
       if (this.required && !this.isFilled) {
         return this.showError(this.t.FORM.VALIDATION.REQUIRED);
       }
