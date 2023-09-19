@@ -200,10 +200,6 @@ export default {
       return true;
     },
     validate(value = this.value) {
-      if (!this.$refs.input.checkValidity()) {
-        return this.showError(this.customErrorMessage || this.t.FORM.VALIDATION.GENERAL);
-      }
-
       if (this.required && !this.isFilled) {
         return this.showError(this.t.FORM.VALIDATION.REQUIRED);
       }
@@ -219,6 +215,10 @@ export default {
 
         if (this.customRules.length) {
           return this.validateCustomRules(value);
+        }
+
+        if (!this.$refs.input.checkValidity()) {
+          return this.showError(this.customErrorMessage || this.t.FORM.VALIDATION.GENERAL);
         }
       }
 
