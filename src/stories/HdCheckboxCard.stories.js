@@ -1,4 +1,3 @@
-import './styles/HdCheckboxCard.scss';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import HdButton from 'homeday-blocks/src/components/buttons/HdButton.vue';
 import HdForm from 'homeday-blocks/src/components/form/HdForm.vue';
@@ -126,7 +125,7 @@ export const Default = (args, { argTypes }) => ({
     },
   },
   template: `
-  <div>
+  <div class="hd-checkbox-card">
     <h4>Selected value: <b>{{ propertyType }}</b></h4>
 
     <HdForm @submit="onSubmit" class="grid">
@@ -293,7 +292,7 @@ export const Boolean = (args, { argTypes }) => ({
     },
   },
   template: `
-  <div>
+  <div class="hd-checkbox-card">
     <h4>Selected value: <b>{{ booleanValue }}</b></h4>
 
     <HdForm @submit="onSubmit" class="small">
@@ -376,7 +375,7 @@ export const CustomTrueFalse = (args, { argTypes }) => ({
     },
   },
   template: `
-  <div>
+  <div class="hd-checkbox-card">
     <h4>Selected value: <b>{{ customTrueFalse }}</b></h4>
 
     <HdForm @submit="onSubmit" class="small">
@@ -469,7 +468,7 @@ export const Group = (args, { argTypes }) => ({
     },
   },
   template: `
-  <div>
+  <div class="hd-checkbox-card">
     <h4>
       Selected value: <b>{{ propertyType }}</b>
     </h4>

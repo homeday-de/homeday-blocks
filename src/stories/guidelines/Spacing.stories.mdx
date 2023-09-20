@@ -1,0 +1,25 @@
+import { Meta, Canvas } from '@storybook/addon-docs';
+
+<Meta title="Guidelines/Spacing" />
+
+# Spacing
+
+Spacing values range from 2px to 64px and all of them are defined as SASS variables.
+
+|     | Value | Variable |
+| --- | ----- | -------- |
+| XXS | 2px   | $sp-xxs  |
+| XS  | 4px   | $sp-xs   |
+| S   | 8px   | $sp-s    |
+| M   | 16px  | $sp-m    |
+| L   | 32px  | $sp-l    |
+| XL  | 64px  | $sp-xl   |
+
+### Usage examples:
+
+```css
+.homeday-block {
+  padding: $sp-s $sp-l;
+  margin-bottom: $sp-xl;
+}
+```

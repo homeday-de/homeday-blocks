@@ -1,4 +1,3 @@
-import './styles/HdIcon.css';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import { apartmentFloor as bigIcon } from 'homeday-assets/L';
 import multiColorIcon from './assets/ic_multi-color.svg';
