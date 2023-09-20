@@ -1,7 +1,7 @@
 import HdExpandText from 'homeday-blocks/src/components/HdExpandText.vue';
 
 export default {
-  title: 'Components/HdExpandText',
+  title: 'Components/Content/HdExpandText',
   component: HdExpandText,
   argTypes: {
     lines: {

@@ -5,7 +5,7 @@ import MOVIES_TABLE from 'homeday-blocks/src/stories/mocks/tables/movies';
 import HdTable from 'homeday-blocks/src/components/HdTable.vue';
 import HdTagsList from 'homeday-blocks/src/components/HdTagsList.vue';
 
-storiesOf('Components/HdTable', module)
+storiesOf('Components/Content/HdTable', module)
   .addDecorator(TableWrapper)
   .add('default', () => ({
     components: { HdTable },

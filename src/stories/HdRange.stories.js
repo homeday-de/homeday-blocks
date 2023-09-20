@@ -3,7 +3,7 @@ import HdRange from 'homeday-blocks/src/components/form/HdRange.vue';
 import { text } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Components/Form/HdRange',
+  title: 'Components/Selection Controls/HdRange',
   component: HdRange,
   args: {
     name: 'storybook',
@@ -28,9 +28,9 @@ const Template = (_, { argTypes }) => ({
   components: { HdRange },
   template: `
     <div style="margin: 64px auto; max-width: 360px;">
-      <HdRange 
+      <HdRange
         v-bind="$props"
-        v-model="currentValue" 
+        v-model="currentValue"
       />
       <p style="margin-top: 50px;">Value: {{ currentValue }}</p>
     </div>
@@ -60,9 +60,9 @@ export const WithLabels = (_, { argTypes }) => ({
   components: { HdRange },
   template: `
     <div style="margin: 64px auto; max-width: 360px;">
-      <HdRange 
+      <HdRange
         v-bind="$props"
-        v-model="currentValue" 
+        v-model="currentValue"
       />
       <p style="margin-top: 50px;">Value: {{ currentValue }}</p>
     </div>
@@ -94,10 +94,10 @@ export const WithCustomTooltipValue = (_, { argTypes }) => ({
   components: { HdRange },
   template: `
     <div style="margin: 64px auto; max-width: 360px;">
-      <HdRange 
+      <HdRange
         v-bind="$props"
         :tooltipValue="tooltipVal"
-        v-model="currentValue" 
+        v-model="currentValue"
       />
       <p style="margin-top: 50px;">Value: {{ currentValue }}</p>
     </div>
@@ -125,7 +125,7 @@ export const WithCustomStepBullets = (_, { argTypes }) => ({
   components: { HdRange },
   template: `
     <div style="margin: 64px auto; max-width: 360px;">
-      <HdRange 
+      <HdRange
         v-bind="$props"
         :min="1"
         :max="100"

@@ -22,7 +22,7 @@ const actionList = [
 ];
 
 export default {
-  title: 'Components/HdModal',
+  title: 'Components/Overlays/HdModal',
   component: HdModal,
   argTypes: {
     withIcon: {

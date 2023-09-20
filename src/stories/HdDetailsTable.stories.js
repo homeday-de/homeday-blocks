@@ -3,7 +3,7 @@ import HdDetailsTable from 'homeday-blocks/src/components/details-table/HdDetail
 import HdDetailsTableRow from 'homeday-blocks/src/components/details-table/HdDetailsTableRow.vue';
 
 export default {
-  title: 'Components/HdDetailsTable',
+  title: 'Components/Content/HdDetailsTable',
   component: HdDetailsTable,
   argTypes: {
     withDivider: {

@@ -3,7 +3,7 @@ import TYPES from 'homeday-blocks/src/components/HdLinkTypes';
 import HdLinkNote from '../notes/HdLink.md';
 
 export default {
-  title: 'Components/HdLink',
+  title: 'Components/Actions/HdLink',
   component: HdLink,
   argTypes: {
     href: {

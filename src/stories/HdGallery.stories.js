@@ -8,7 +8,7 @@ import ITEMS from './mocks/GALLERY_ITEMS';
 Vue.use(VueRouter);
 
 export default {
-  title: 'Components/Gallery/HdGallery',
+  title: 'Components/Images/HdGallery',
   component: HdGallery,
   argTypes: {
     items: {

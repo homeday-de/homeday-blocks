@@ -5,7 +5,7 @@ import HdDynamicForm from 'homeday-blocks/src/components/form/HdDynamicForm.vue'
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 import CONFIG from './mocks/forms';
 
-storiesOf('Components/Form/HdDynamicForm', module)
+storiesOf('Components/Forms/HdDynamicForm', module)
   .addDecorator(FormWrapper)
   .add('profile', () => ({
     components: { HdDynamicForm },

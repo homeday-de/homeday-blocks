@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import HdTagsSelector from 'homeday-blocks/src/components/form/HdTagsSelector.vue';
 import ITEMS from './mocks/FORM_ITEMS';
 
-storiesOf('Components/Form/HdTagsSelector', module).add('prefilled', () => ({
+storiesOf('Components/Selection Controls/HdTagsSelector', module).add('prefilled', () => ({
   components: { HdTagsSelector },
   template: `
       <hd-tags-selector

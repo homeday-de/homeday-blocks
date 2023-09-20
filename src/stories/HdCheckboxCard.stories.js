@@ -15,7 +15,7 @@ import {
 } from 'homeday-assets/M';
 
 export default {
-  title: 'Components/Form/HdCheckboxCard',
+  title: 'Components/Selection Controls/HdCheckboxCard',
   component: HdCheckboxCard,
   subcomponents: { HdCheckboxCardGroup },
   argTypes: {

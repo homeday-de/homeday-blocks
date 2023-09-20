@@ -2,7 +2,7 @@ import HdNotification from 'homeday-blocks/src/components/notifications/HdNotifi
 import TYPES from 'homeday-blocks/src/components/notifications/HdNotificationsTypes';
 
 export default {
-  title: 'Components/Notifications/HdNotification',
+  title: 'Components/Indicators/HdNotification',
   component: HdNotification,
   argTypes: {
     type: {

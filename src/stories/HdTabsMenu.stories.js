@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import HdTabsMenu from 'homeday-blocks/src/components/HdTabsMenu.vue';
 import ITEMS from './mocks/MENU_ITEMS';
 
-storiesOf('Components/HdTabsMenu', module).add('default', () => ({
+storiesOf('Components/Navigation/HdTabsMenu', module).add('default', () => ({
   components: { HdTabsMenu },
   template: `
       <div style="max-width: 800px; margin: auto;">

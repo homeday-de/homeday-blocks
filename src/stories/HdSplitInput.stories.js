@@ -6,7 +6,7 @@ import HdSplitInput from 'homeday-blocks/src/components/form/HdSplitInput.vue';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 import icon from './assets/ic_user.svg';
 
-storiesOf('Components/Form/HdSplitInput', module)
+storiesOf('Components/Forms/HdSplitInput', module)
   .addDecorator(FormWrapper)
   .add('required', () => ({
     components: { HdSplitInput },

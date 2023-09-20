@@ -5,7 +5,7 @@ import TimeslotsWrapper from 'homeday-blocks/src/storiesWrappers/TimeslotsWrappe
 import HdTimeslots from 'homeday-blocks/src/components/HdTimeslots.vue';
 import generateSlots from './mocks/generateTimeSlots';
 
-storiesOf('Components/HdTimeslots', module)
+storiesOf('Components/Selection Controls/HdTimeslots', module)
   .addParameters({ percy: { skip: true } })
   .addDecorator(TimeslotsWrapper)
   .add('base', () => ({

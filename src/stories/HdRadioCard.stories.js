@@ -15,7 +15,7 @@ import {
 } from 'homeday-assets/M';
 
 export default {
-  title: 'Components/Form/HdRadioCard',
+  title: 'Components/Selection Controls/HdRadioCard',
   component: HdRadioCard,
   subcomponents: { HdRadioCardGroup },
   argTypes: {

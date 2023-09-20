@@ -6,7 +6,7 @@ import classFromFillNote from '../notes/HdIconClassFromFill.md';
 import fillFromClassNote from '../notes/HdIconFillFromClass.md';
 
 export default {
-  title: 'Components/HdIcon',
+  title: 'Components/Images/HdIcon',
   component: HdIcon,
   parameters: {
     percy: {
