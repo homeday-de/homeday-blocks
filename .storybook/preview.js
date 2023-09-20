@@ -32,9 +32,6 @@ export const parameters = {
   viewport: {
     viewports: INITIAL_VIEWPORTS,
   },
-  features: {
-    previewMdx2: true,
-  },
   parameters: {
     docs: {
       theme: HdTheme,

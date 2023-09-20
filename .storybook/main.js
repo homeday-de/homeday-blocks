@@ -3,15 +3,7 @@ const generateWebpackAlias = require('../webpack-alias');
 
 module.exports = {
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
-  addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-knobs',
-    {
-      name: '@storybook/addon-docs',
-      options: { transcludeMarkdown: true },
-    },
-  ],
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-knobs'],
   core: {
     builder: 'webpack5',
   },
