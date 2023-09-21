@@ -3,7 +3,7 @@ import TYPES from 'homeday-blocks/src/components/HdAlertTypes';
 import DeprecatedWrapper from 'homeday-blocks/src/storiesWrappers/DeprecatedWrapper';
 
 export default {
-  title: 'Components/HdAlert (Deprecated)',
+  title: 'Deprecated/HdAlert',
   component: HdAlert,
   argTypes: {
     type: {

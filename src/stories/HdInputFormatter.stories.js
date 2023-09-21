@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import HdInputFormatter from 'homeday-blocks/src/components/form/HdInputFormatter.vue';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 
-storiesOf('Components/Form/HdInputFormatter', module)
+storiesOf('Components/Forms/HdInputFormatter', module)
   .addParameters({ percy: { skip: true } })
   .addDecorator(FormWrapper)
   .add('simple', () => ({

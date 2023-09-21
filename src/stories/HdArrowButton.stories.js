@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/vue';
 import { withKnobs, select, boolean } from '@storybook/addon-knobs';
 import HdArrowButton from 'homeday-blocks/src/components/buttons/HdArrowButton.vue';
 
-storiesOf('Components/HdArrowButton', module)
+storiesOf('Components/Actions/HdArrowButton', module)
   .addDecorator(withKnobs)
   .add('right', () => ({
     components: { HdArrowButton },

@@ -2,7 +2,7 @@
 import { storiesOf } from '@storybook/vue';
 import HdLazyImage from 'homeday-blocks/src/components/HdLazyImage.vue';
 
-storiesOf('Components/HdLazyImage', module)
+storiesOf('Components/Images/HdLazyImage', module)
   .addParameters({ percy: { skip: true } })
   .add('default', () => ({
     components: { HdLazyImage },

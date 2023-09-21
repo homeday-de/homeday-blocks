@@ -4,7 +4,7 @@ import { text, boolean, number } from '@storybook/addon-knobs';
 import { edit as editIcon, delete as deleteIcon } from 'homeday-assets';
 import HdToggle from 'homeday-blocks/src/components/HdToggle.vue';
 
-const stories = storiesOf('Components/HdToggle', module);
+const stories = storiesOf('Components/Content/HdToggle', module);
 
 stories.add('Default', () => ({
   components: { HdToggle },

@@ -1,0 +1,58 @@
+@import './containers';
+@import './deprecated-wrapper';
+@import './elevation';
+@import './typography';
+
+@import '~vue-code-highlight/themes/prism.css';
+@import 'homeday-blocks/src/styles/mixins.scss';
+@import 'homeday-blocks/src/styles/variables.scss';
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.sb-show-main { /* Storybook class */
+  padding: 8px;
+}
+
+/* Override MDX fonts */
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-primary !important;
+  color: $primary-color !important;
+}
+
+@media only percy {
+  .hide-in-percy {
+    display: none;
+  }
+}
+
+.hd-checkbox-card,
+.hd-radio-card {
+  h4 {
+    text-align: center;
+    margin-bottom: $sp-m;
+  }
+
+  form {
+    max-width: 980px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: $sp-m;
+  }
+
+  form.small {
+    max-width: 293px;
+  }
+
+  form.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(263px, 1fr));
+  }
+
+  button {
+    grid-column: 1 / -1;
+  }
+}

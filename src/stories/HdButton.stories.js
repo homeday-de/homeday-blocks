@@ -3,7 +3,7 @@ import TYPES from 'homeday-blocks/src/components/buttons/HdButtonTypes';
 import { plus as plusIcon } from 'homeday-assets';
 
 export default {
-  title: 'Components/HdButton',
+  title: 'Components/Actions/HdButton',
   component: HdButton,
   argTypes: {
     text: {

@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { text } from '@storybook/addon-knobs';
 import HdRadioButton from 'homeday-blocks/src/components/buttons/HdRadioButton.vue';
 
-storiesOf('Components/HdRadioButton', module).add('base 🎛', () => ({
+storiesOf('Components/Selection Controls/HdRadioButton', module).add('base 🎛', () => ({
   components: { HdRadioButton },
   template: `<HdRadioButton
       @select="action"

@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { text } from '@storybook/addon-knobs';
 import HdToast from 'homeday-blocks/src/components/HdToast.vue';
 
-storiesOf('Components/HdToast', module)
+storiesOf('Components/Indicators/HdToast', module)
   .addParameters({ percy: { skip: true } })
   .add(
     'Primary only 🎛',

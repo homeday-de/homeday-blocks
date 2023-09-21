@@ -1,4 +1,3 @@
-import './styles/HdIcon.css';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import { apartmentFloor as bigIcon } from 'homeday-assets/L';
 import multiColorIcon from './assets/ic_multi-color.svg';
@@ -7,7 +6,7 @@ import classFromFillNote from '../notes/HdIconClassFromFill.md';
 import fillFromClassNote from '../notes/HdIconFillFromClass.md';
 
 export default {
-  title: 'Components/HdIcon',
+  title: 'Components/Images/HdIcon',
   component: HdIcon,
   parameters: {
     percy: {

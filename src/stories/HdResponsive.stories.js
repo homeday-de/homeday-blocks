@@ -2,7 +2,7 @@ import HdResponsive from 'homeday-blocks/src/components/HdResponsive.vue';
 import HdResponsiveNote from '../notes/HdResponsive.md';
 
 export default {
-  title: 'Components/HdResponsive',
+  title: 'Components/Content/HdResponsive',
   component: HdResponsive,
   args: {
     breakpoints: {

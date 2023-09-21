@@ -4,7 +4,7 @@ import HdCheckbox from 'homeday-blocks/src/components/form/HdCheckbox.vue';
 import HdInputFormatter from 'homeday-blocks/src/components/form/HdInputFormatter.vue';
 
 export default {
-  title: 'Components/Form/HdForm',
+  title: 'Components/Forms/HdForm',
   component: HdForm,
   argTypes: {
     scrollToInvalidField: {
