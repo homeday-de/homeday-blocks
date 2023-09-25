@@ -186,12 +186,16 @@ export default {
       transform: translateY(-50%) scale(0.75);
     }
 
+    [type='date'] ~ & {
+      @include minimized;
+    }
+
     #{$root}--active &,
     #{$root}--filled &,
     #{$root}--minimized-label & {
       @include minimized;
     }
-    // We are seperating this declaration from the block above
+    // We are separating this declaration from the block above
     // because non-webkit engines will ignore the whole block, e.g. Gecko
     input:-webkit-autofill + & {
       @include minimized;
@@ -219,6 +223,10 @@ export default {
     }
 
     #{$root}--errored & {
+      background-color: $error-color;
+    }
+
+    #{$root} .input:not(:focus):not(:placeholder-shown):invalid ~ & {
       background-color: $error-color;
     }
 
@@ -259,6 +267,9 @@ export default {
     padding-left: $sp-m;
 
     #{$root}--errored:not(#{$root}--active) & {
+      color: $error-color;
+    }
+    #{$root} .input:not(:focus):not(:placeholder-shown):invalid ~ & {
       color: $error-color;
     }
   }

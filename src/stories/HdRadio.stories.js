@@ -3,7 +3,7 @@ import HdButton from 'homeday-blocks/src/components/buttons/HdButton.vue';
 import ITEMS from './mocks/FORM_ITEMS';
 
 export default {
-  title: 'Components/Form/HdRadio',
+  title: 'Components/Selection Controls/HdRadio',
   component: HdRadio,
   argTypes: {
     label: {

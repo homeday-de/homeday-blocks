@@ -2,7 +2,7 @@ import HdDashedList from 'homeday-blocks/src/components/HdDashedList.vue';
 import ITEMS from './mocks/DASHED_LIST_ITEMS';
 
 export default {
-  title: 'Components/HdDashedList',
+  title: 'Components/Content/HdDashedList',
   component: HdDashedList,
   argTypes: {
     items: {

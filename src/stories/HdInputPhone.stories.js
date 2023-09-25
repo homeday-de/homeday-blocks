@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 
-storiesOf('Components/Form/HdInputPhone', module)
+storiesOf('Components/Forms/HdInputPhone', module)
   .addParameters({ options: { enableShortcuts: false } })
   .addDecorator(FormWrapper)
   .add('simple', () => ({

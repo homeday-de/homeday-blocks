@@ -1,7 +1,7 @@
 import HdPager, { HdPagerModifierEnum } from 'homeday-blocks/src/components/HdPager.vue';
 
 export default {
-  title: 'Components/HdPager',
+  title: 'Components/Navigation/HdPager',
   component: HdPager,
   argTypes: {
     value: {

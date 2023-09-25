@@ -1,7 +1,7 @@
 import HdCheckbox from 'homeday-blocks/src/components/form/HdCheckbox.vue';
 
 export default {
-  title: 'Components/Form/HdCheckbox',
+  title: 'Components/Selection Controls/HdCheckbox',
   component: HdCheckbox,
   args: {
     name: 'test',

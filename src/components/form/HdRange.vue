@@ -28,20 +28,37 @@
         class="range__progress"
       />
     </div>
-    <div v-if="displayStepBullets" class="range__steps">
-      <button
-        v-for="(_, stepIndex) in stepsAmount"
-        :key="stepIndex"
-        type="button"
-        class="range__step"
-        @click="onStepClick(stepIndex)"
-      >
-        <p v-if="labels[stepIndex]" class="range__step-label" v-html="labels[stepIndex]" />
-      </button>
-    </div>
+    <template v-if="displayStepBullets">
+      <div class="range__steps">
+        <button
+          v-for="(_, stepIndex) in stepsAmount"
+          :key="stepIndex"
+          type="button"
+          class="range__step"
+          @click="onStepClick(stepIndex)"
+        >
+          <p v-if="labels[stepIndex]" class="range__step-label" v-html="labels[stepIndex]" />
+        </button>
+      </div>
+    </template>
+    <template v-else-if="stepBullets.length">
+      <div class="range__steps">
+        <button
+          v-for="(stepValue, stepIndex) in stepBullets"
+          :key="stepValue"
+          type="button"
+          class="range__step"
+          @click="onStepClick(stepIndex)"
+          :style="customStepBulletOffset(stepValue)"
+        >
+          <p v-if="labels[stepIndex]" class="range__step-label" v-html="labels[stepIndex]" />
+        </button>
+      </div>
+    </template>
     <div class="range__thumb" ref="thumb">
       <div v-if="displayTooltip" class="range__tooltip">
-        {{ tooltipValue || value }}
+        <img :src="tooltipBackground" class="range__tooltip__background" />
+        <span class="range__tooltip__content">{{ tooltipValue || value }}</span>
       </div>
       <div class="range__thumb__inner" ref="thumbInner">
         <div class="range__thumb__bullet" />
@@ -52,11 +69,13 @@
 
 <script>
 import onResize from 'homeday-blocks/src/services/on-resize';
+import tooltipBackground from 'homeday-blocks/src/assets/tooltip.svg';
 import formField from './formFieldMixin';
 
 export default {
   name: 'HdRange',
   mixins: [formField],
+  inheritAttrs: false,
   props: {
     name: {
       type: String,
@@ -110,11 +129,18 @@ export default {
       type: String,
       default: '', // falls back to the internal styles
     },
+    stepBullets: {
+      type: Array,
+      required: false,
+      default: () => [],
+      validator: (steps) => steps.filter((s) => typeof s === 'number').length === steps.length,
+    },
   },
   data() {
     return {
       isActive: null,
       trackWidth: 0,
+      tooltipBackground,
     };
   },
   computed: {
@@ -150,6 +176,7 @@ export default {
       this.updateUI();
     },
     value() {
+      this.updateToClosestValue();
       this.adjustValue();
       this.updateUI();
     },
@@ -194,6 +221,34 @@ export default {
     },
     blurHandler() {
       this.isActive = false;
+    },
+    customStepBulletOffset(value) {
+      if (!this.stepBullets.length) return {}; // Early return standard bullets
+      const stepPosition = this.stepBullets.indexOf(value);
+      const valuePercentage = (value - this.min) / (this.max - this.min);
+      let valuePercentageInputWidthPixels = this.trackWidth * valuePercentage;
+
+      if (stepPosition > 0) {
+        const previousValue = this.stepBullets[stepPosition - 1];
+        const previousValuePercentage = (previousValue - this.min) / (this.max - this.min);
+        const previousPercentageInputWidthPixels = this.trackWidth * previousValuePercentage;
+        valuePercentageInputWidthPixels -= previousPercentageInputWidthPixels;
+      }
+
+      return {
+        paddingLeft: `${valuePercentageInputWidthPixels}px`,
+      };
+    },
+    getClosestValueInStepBullets(value) {
+      return this.stepBullets.reduce((currentClosest, currentValue) => {
+        const currentClosestDiff = Math.abs(currentClosest - value);
+        const currentValueDiff = Math.abs(currentValue - value);
+        return currentClosestDiff > currentValueDiff ? currentValue : currentClosest;
+      }, 0);
+    },
+    updateToClosestValue() {
+      if (!this.stepBullets.length) return;
+      this.computedValue = this.getClosestValueInStepBullets(this.computedValue);
     },
   },
 };
@@ -415,10 +470,22 @@ export default {
     bottom: $sp-m;
     transform: translateX(-50%);
     color: $white;
-    background: url('~homeday-blocks/src/assets/tooltip.svg') no-repeat;
-    background-size: 100% 100%;
     padding: $sp-s $sp-m #{$sp-m + $sp-s};
     pointer-events: none;
+
+    &__background {
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+
+    &__content {
+      z-index: 2;
+      position: relative;
+    }
   }
 }
 </style>

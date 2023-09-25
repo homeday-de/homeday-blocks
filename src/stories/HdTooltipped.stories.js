@@ -4,7 +4,7 @@ import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 import HdTooltipped from 'homeday-blocks/src/components/tooltip/HdTooltipped.vue';
 import HdInput from 'homeday-blocks/src/components/form/HdInput.vue';
 
-storiesOf('Components/Tooltipped', module)
+storiesOf('Components/Content/Tooltipped', module)
   .addParameters({ percy: { skip: true } })
   .addDecorator(FormWrapper)
   .add('default', () => ({

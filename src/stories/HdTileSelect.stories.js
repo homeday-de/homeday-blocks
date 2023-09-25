@@ -2,7 +2,7 @@
 import { storiesOf } from '@storybook/vue';
 import HdTileSelect from 'homeday-blocks/src/components/form/HdTileSelect.vue';
 
-const stories = storiesOf('Components/Form/HdTileSelect', module);
+const stories = storiesOf('Components/Selection Controls/HdTileSelect', module);
 const watch = {
   value(newValue) {
     console.log(`Selected value: ${newValue}`);

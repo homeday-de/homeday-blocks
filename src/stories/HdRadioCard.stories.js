@@ -1,4 +1,3 @@
-import './styles/HdRadioCard.scss';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import HdButton from 'homeday-blocks/src/components/buttons/HdButton.vue';
 import HdForm from 'homeday-blocks/src/components/form/HdForm.vue';
@@ -16,7 +15,7 @@ import {
 } from 'homeday-assets/M';
 
 export default {
-  title: 'Components/Form/HdRadioCard',
+  title: 'Components/Selection Controls/HdRadioCard',
   component: HdRadioCard,
   subcomponents: { HdRadioCardGroup },
   argTypes: {
@@ -124,7 +123,7 @@ export const Default = (args, { argTypes }) => ({
     },
   },
   template: `
-  <div>
+  <div class="hd-radio-card">
     <h4>Selected value: <b>{{ propertyType }}</b></h4>
 
     <HdForm @submit="onSubmit" class="grid">
@@ -272,7 +271,7 @@ export const Group = (args, { argTypes }) => ({
     },
   },
   template: `
-  <div>
+  <div class="hd-radio-card">
     <h4>
       Selected value: <b>{{ propertyType }}</b>
     </h4>

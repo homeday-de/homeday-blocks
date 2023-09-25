@@ -2,7 +2,7 @@
 import { storiesOf } from '@storybook/vue';
 import HdLoadingSpinner from 'homeday-blocks/src/components/HdLoadingSpinner.vue';
 
-storiesOf('Components/HdLoadingSpinner', module).add('default', () => ({
+storiesOf('Components/Indicators/HdLoadingSpinner', module).add('default', () => ({
   components: { HdLoadingSpinner },
   template: '<HdLoadingSpinner />',
 }));

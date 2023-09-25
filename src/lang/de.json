@@ -16,6 +16,7 @@
       "LABEL_CONFIRM": "Bestätigen Sie Ihr Passwort"
     },
     "VALIDATION": {
+      "GENERAL": "Bitte geben Sie eine gültige Eingabe ein.",
       "REQUIRED": "Dies ist ein Pflichtfeld.",
       "INVALID_EMAIL": "Bitte geben Sie eine korrekte E-Mail-Adresse ein.",
       "INVALID_DATE": "Bitte geben Sie ein Datum in diesem Format ein: JJJJ-MM-TT",
@@ -33,7 +34,8 @@
       "SELECT_ONE_OPTION": "Bitte wählen Sie (mindestens) eine Option aus",
       "INVALID_NUMBER": "Bitte geben Sie eine gültige Telefonnummer ein.",
       "NOT_MOBILE_NUMBER": "e.g. +55 555 555 5555",
-      "NOT_INTERNATIONAL_NUMBER": "Verwenden Sie das internationale Format."
+      "NOT_INTERNATIONAL_NUMBER": "Verwenden Sie das internationale Format.",
+      "INVALID_RANGE": "Bitte geben Sie eine Zahl innerhalb des Bereichs ein."
     },
     "PHONE": {
       "ARIA_LABEL": "Wählen Sie einen Ländercode:",

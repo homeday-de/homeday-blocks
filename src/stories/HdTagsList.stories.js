@@ -4,7 +4,7 @@ import { array } from '@storybook/addon-knobs';
 import HdTagsList from 'homeday-blocks/src/components/HdTagsList.vue';
 import ITEMS from './mocks/FORM_ITEMS';
 
-storiesOf('Components/HdTagsList', module).add('default 🎛', () => ({
+storiesOf('Components/Content/HdTagsList', module).add('default 🎛', () => ({
   components: { HdTagsList },
   template: `
       <hd-tags-list

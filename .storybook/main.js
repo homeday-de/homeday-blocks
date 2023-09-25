@@ -1,15 +1,9 @@
-const path = require('path')
+const path = require('path');
 const generateWebpackAlias = require('../webpack-alias');
 
 module.exports = {
-  "stories": [
-    "../src/**/*.stories.@(js|jsx|ts|tsx|mdx)",
-  ],
-  "addons": [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-knobs",
-  ],
+  stories: ['../src/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-knobs'],
   core: {
     builder: 'webpack5',
   },
@@ -29,4 +23,4 @@ module.exports = {
 
     return config;
   },
-}
+};

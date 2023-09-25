@@ -5,7 +5,7 @@ import HdTextarea from 'homeday-blocks/src/components/form/HdTextarea.vue';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 import icon from './assets/ic_user.svg';
 
-storiesOf('Components/Form/HdTextarea', module)
+storiesOf('Components/Forms/HdTextarea', module)
   .addDecorator(FormWrapper)
   .add('required', () => ({
     components: { HdTextarea },

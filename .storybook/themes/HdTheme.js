@@ -7,4 +7,7 @@ export default create({
   brandTitle: 'Homeday',
   brandUrl: 'https://www.homeday.de',
   brandImage: logo,
+
+  fontBase: '"Source Sans Pro", sans-serif',
+  fontCode: 'monospace',
 });

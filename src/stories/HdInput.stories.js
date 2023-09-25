@@ -6,7 +6,7 @@ import HdInput from 'homeday-blocks/src/components/form/HdInput.vue';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 import icon from './assets/ic_user.svg';
 
-storiesOf('Components/Form/HdInput', module)
+storiesOf('Components/Forms/HdInput', module)
   .addDecorator(FormWrapper)
   .add('required', () => ({
     components: { HdInput },
@@ -161,6 +161,22 @@ storiesOf('Components/Form/HdInput', module)
         default: text('icon', icon),
       },
     },
+    data() {
+      return {
+        value: '',
+      };
+    },
+  }))
+  .add('with type date', () => ({
+    components: { HdInput },
+    template: `
+      <HdInput
+        v-model="value"
+        name="test"
+        label="Label"
+        type="date"
+      />
+    `,
     data() {
       return {
         value: '',

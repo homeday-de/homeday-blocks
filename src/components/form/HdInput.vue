@@ -79,7 +79,7 @@ export default Vue.extend({
       default: 'text',
     },
     value: {
-      type: [String, Number] as PropType<HdInputProps['value']>,
+      type: [String, Number, Date] as PropType<HdInputProps['value']>,
       default: '',
     },
     placeholder: {
@@ -113,6 +113,10 @@ export default Vue.extend({
     disabled: {
       type: Boolean as PropType<HdInputProps['disabled']>,
       default: false,
+    },
+    customErrorMessage: {
+      type: String,
+      default: null,
     },
     customRules: {
       type: Array as PropType<HdInputProps['customRules']>,
@@ -236,6 +240,10 @@ export default Vue.extend({
 
         if (this.customRules.length) {
           return this.validateCustomRules(value);
+        }
+
+        if (!this.$refs.input.checkValidity()) {
+          return this.showError(this.customErrorMessage || this.t.FORM.VALIDATION.GENERAL);
         }
       }
 

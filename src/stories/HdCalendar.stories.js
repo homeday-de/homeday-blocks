@@ -2,7 +2,7 @@ import { generateDateCycles } from 'homeday-blocks/src/services/date';
 import HdCalendar from 'homeday-blocks/src/components/HdCalendar.vue';
 
 export default {
-  title: 'Components/HdCalendar',
+  title: 'Components/Selection Controls/HdCalendar',
   component: HdCalendar,
   argTypes: {
     dateSelected: {

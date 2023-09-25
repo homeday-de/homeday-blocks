@@ -2,7 +2,7 @@ import HdLoaderButton from 'homeday-blocks/src/components/buttons/HdLoaderButton
 import hdLoaderButtonNote from '../notes/HdLoaderButton.md';
 
 export default {
-  title: 'Components/HdLoaderButton',
+  title: 'Components/Actions/HdLoaderButton',
   component: HdLoaderButton,
   argTypes: {
     click: {
