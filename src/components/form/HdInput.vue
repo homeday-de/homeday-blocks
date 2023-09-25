@@ -34,17 +34,35 @@
   </TextFieldBase>
 </template>
 
-<script>
+<script lang="ts">
+import { customRules as customRulesType } from '@/@types/global';
+import { Messages, Language } from '@/lang/index';
 import merge from 'lodash/merge';
 import { getMessages } from 'homeday-blocks/src/lang';
 import {
   email as validateEmail,
   date as validateDate,
 } from 'homeday-blocks/src/services/formValidation';
+import Vue, { PropType, PropOptions } from 'vue';
 import TextFieldBase from './TextFieldBase.vue';
 import formField from './formFieldMixin';
 
-export default {
+interface HdInputProps {
+  name: string;
+  type?: string;
+  value?: string | number;
+  placeholder?: string;
+  required: boolean;
+  autocomplete?: string;
+  min?: number;
+  max?: number;
+  lang?: Language;
+  texts?: { [key: string]: string };
+  disabled: boolean;
+  customRules?: (() => boolean)[];
+}
+
+export default Vue.extend({
   name: 'HdInput',
   inheritAttrs: false,
   mixins: [formField],
@@ -53,47 +71,47 @@ export default {
   },
   props: {
     name: {
-      type: String,
+      type: String as PropType<HdInputProps['name']>,
       required: true,
     },
     type: {
-      type: String,
+      type: String as PropType<HdInputProps['type']>,
       default: 'text',
     },
     value: {
-      type: [String, Number, Date],
+      type: [String, Number, Date] as PropType<HdInputProps['value']>,
       default: '',
     },
     placeholder: {
-      type: String,
+      type: String as PropType<HdInputProps['placeholder']>,
       default: '',
     },
     required: {
-      type: Boolean,
+      type: Boolean as PropType<HdInputProps['required']>,
       default: false,
     },
     autocomplete: {
-      type: String,
+      type: String as PropType<HdInputProps['autocomplete']>,
       default: 'on',
     },
     min: {
-      type: Number,
+      type: Number as PropType<HdInputProps['min']>,
       default: undefined,
     },
     max: {
-      type: Number,
+      type: Number as PropType<HdInputProps['max']>,
       default: undefined,
     },
     lang: {
-      type: String,
+      type: String as PropType<HdInputProps['lang']>,
       default: 'de',
     },
     texts: {
-      type: Object,
+      type: Object as PropType<HdInputProps['texts']>,
       default: () => ({}),
     },
     disabled: {
-      type: Boolean,
+      type: Boolean as PropType<HdInputProps['disabled']>,
       default: false,
     },
     customErrorMessage: {
@@ -101,16 +119,22 @@ export default {
       default: null,
     },
     customRules: {
-      type: Array,
+      type: Array as PropType<HdInputProps['customRules']>,
       default: () => [],
-      validator: (rulesProvided) =>
+      validator: (rulesProvided: customRulesType) =>
         rulesProvided.every(
           ({ validate, errorMessage }) =>
             typeof validate === 'function' && typeof errorMessage === 'string'
         ),
-    },
+    } as PropOptions<customRulesType>,
   },
-  data() {
+  data(): {
+    currentType: string;
+    isActive?: boolean;
+    isValid?: boolean;
+    error: string | null;
+    helper: string | null;
+  } {
     return {
       currentType: this.type || 'text',
       isActive: undefined,
@@ -120,46 +144,46 @@ export default {
     };
   },
   computed: {
-    t() {
-      return merge(getMessages(this.lang), this.texts);
+    t(): Messages {
+      return merge(getMessages(this.lang as Language), this.texts);
     },
-    isFilled() {
+    isFilled(): boolean {
       return this.value !== null && this.value !== undefined && this.value !== '';
     },
   },
   watch: {
-    value() {
+    value(): void {
       this.validate();
     },
-    type(type) {
+    type(type): void {
       this.currentType = type;
     },
-    required() {
+    required(): boolean | void {
       if (this.error) this.validate();
     },
-    customRules() {
+    customRules(): boolean | void {
       if (this.error) this.validate();
     },
   },
   methods: {
-    clearInput() {
+    clearInput(): void {
       this.focusInput();
       this.$emit('input', '');
     },
-    focusInput() {
-      this.$refs.input.focus();
+    focusInput(): void {
+      (this.$refs.input as HTMLInputElement).focus();
     },
-    handleFocus() {
+    handleFocus(): void {
       this.isActive = true;
       this.$emit('focus');
     },
-    handleBlur() {
+    handleBlur(): void {
       this.isActive = false;
       this.validate();
       this.$emit('blur');
     },
-    handleInput(e) {
-      let newValue = e.target.value;
+    handleInput(e: Event & { target: HTMLInputElement }): void {
+      let newValue: string | number = e.target.value;
 
       if (this.currentType === 'number' && newValue !== '') {
         newValue = parseFloat(newValue);
@@ -184,22 +208,23 @@ export default {
 
       this.$emit('input', newValue);
     },
-    showError(errorMessage) {
+    showError(errorMessage: string): boolean {
       this.error = errorMessage;
       this.isValid = false;
 
       return false;
     },
-    showHelper(message) {
+    showHelper(message: string): void {
       this.helper = message;
     },
-    hideError() {
+    hideError(): boolean {
       this.isValid = true;
       this.error = null;
 
       return true;
     },
-    validate(value = this.value) {
+    // @ts-ignore
+    validate(value: string | number = this.value): boolean {
       if (this.required && !this.isFilled) {
         return this.showError(this.t.FORM.VALIDATION.REQUIRED);
       }
@@ -217,14 +242,17 @@ export default {
           return this.validateCustomRules(value);
         }
 
+        // @ts-ignore
         if (!this.$refs.input.checkValidity()) {
+          // @ts-ignore
           return this.showError(this.customErrorMessage || this.t.FORM.VALIDATION.GENERAL);
         }
       }
 
       return this.hideError();
     },
-    validateCustomRules(value = this.value) {
+    // @ts-ignore
+    validateCustomRules(value: string | number = this.value): boolean {
       const firstFailingRule = this.customRules.find(({ validate }) => !validate(value));
 
       if (firstFailingRule) {
@@ -234,7 +262,7 @@ export default {
       return this.hideError();
     },
   },
-};
+});
 </script>
 
 <style lang="scss">
