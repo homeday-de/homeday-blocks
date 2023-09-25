@@ -242,7 +242,9 @@ export default Vue.extend({
           return this.validateCustomRules(value);
         }
 
+        // @ts-ignore
         if (!this.$refs.input.checkValidity()) {
+          // @ts-ignore
           return this.showError(this.customErrorMessage || this.t.FORM.VALIDATION.GENERAL);
         }
       }
