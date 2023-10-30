@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HdTagsList renders component 1`] = `
-<section class="tags-list">
+exports[`HdTagsList renders default component 1`] = `
+<section class="tags-list tags-list--primary">
+  <div class="tags-list__tag">
+    foo
+  </div>
+  <div class="tags-list__tag">
+    bar
+  </div>
+</section>
+`;
+
+exports[`HdTagsList renders secondary component 1`] = `
+<section class="tags-list tags-list--secondary">
   <div class="tags-list__tag">
     foo
   </div>

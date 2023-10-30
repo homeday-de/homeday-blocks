@@ -1,5 +1,5 @@
 <template>
-  <section class="tags-list">
+  <section class="tags-list" :class="customClasses">
     <div v-for="item in items" :key="item" class="tags-list__tag">
       {{ item }}
     </div>
@@ -15,6 +15,15 @@ export default {
       type: Array,
       default: () => [],
     },
+    modifier: {
+      type: String,
+      default: 'primary',
+    },
+  },
+  computed: {
+    customClasses() {
+      return [`tags-list--${this.modifier}`];
+    },
   },
 };
 </script>
@@ -23,18 +32,36 @@ export default {
 @import 'homeday-blocks/src/styles/mixins.scss';
 
 .tags-list {
+  $root: &;
   display: flex;
   flex-wrap: wrap;
   min-height: #{$sp-l + $sp-s};
   margin-bottom: $sp-m;
+
   &__tag {
     display: flex;
     align-items: center;
-    height: $sp-l;
-    background-color: getShade($quaternary-color, 50);
-    border-radius: 3px;
     padding: 0 $sp-s;
     margin: $sp-s $sp-s 0 0;
+  }
+
+  &--primary {
+    #{$root}__tag {
+      height: $sp-l;
+      background-color: getShade($quaternary-color, 50);
+      border-radius: 3px;
+    }
+  }
+  &--secondary {
+    #{$root}__tag {
+      height: $sp-m;
+      background-color: $primary-color;
+      border-radius: 12px;
+      color: $white;
+      font-weight: 600;
+      font-size: 10px;
+      line-height: 18px;
+    }
   }
 }
 </style>

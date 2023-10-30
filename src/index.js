@@ -5,6 +5,7 @@ export { default as HdLinkTypes } from './components/HdLinkTypes';
 export { default as HdAlertTypes } from './components/HdAlertTypes';
 export { default as HdBadgeTypes } from './components/HdBadgeTypes';
 export { default as HdButtonTypes } from './components/buttons/HdButtonTypes';
+export { default as HdTagTypes } from './components/HdTagTypes';
 export { default as HdNotificationsTypes } from './components/notifications/HdNotificationsTypes';
 
 // Components
