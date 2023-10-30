@@ -60,7 +60,7 @@ export default {
       color: $white;
       font-weight: 600;
       font-size: 10px;
-      line-height: 17px;
+      line-height: 18px;
     }
   }
 }
