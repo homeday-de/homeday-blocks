@@ -55,7 +55,7 @@ export default {
   &--secondary {
     #{$root}__tag {
       height: $sp-m;
-      background-color: $cello-blue;
+      background-color: $primary-color;
       border-radius: 12px;
       color: $white;
       font-weight: 600;
