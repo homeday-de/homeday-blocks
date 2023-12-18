@@ -460,6 +460,11 @@ exports[`HdInputPhone is rendered as expected 1`] = `
       </button>
       <!---->
     </li>
+    <li id="IO" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-io"></span>
+        <p><span class="option__name">Britisches Territorium im Indischen Ozean</span> <span class="option__dial-code">+246</span></p>
+      </button>
+      <!---->
+    </li>
     <li id="IQ" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-iq"></span>
         <p><span class="option__name">Irak</span> <span class="option__dial-code">+964</span></p>
       </button>
@@ -1241,12 +1246,22 @@ exports[`HdInputPhone is rendered as expected 1`] = `
       <!---->
     </li>
     <li id="UM" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-um"></span>
-        <p><span class="option__name">United States Minor Outlying Islands</span> <span class="option__dial-code">+246</span></p>
+        <p><span class="option__name">United States Minor Outlying Islands</span> <span class="option__dial-code">+1</span></p>
       </button>
       <!---->
     </li>
     <li id="VA" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-va"></span>
         <p><span class="option__name">Vatikanstadt</span> <span class="option__dial-code">+39</span></p>
+      </button>
+      <!---->
+    </li>
+    <li id="XK" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-xk"></span>
+        <p><span class="option__name">Kosovo</span> <span class="option__dial-code">+383</span></p>
+      </button>
+      <!---->
+    </li>
+    <li id="AN" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-an"></span>
+        <p><span class="option__name"></span> <span class="option__dial-code">+599</span></p>
       </button>
       <!---->
     </li>
