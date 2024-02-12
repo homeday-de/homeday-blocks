@@ -21,6 +21,7 @@ export default {
   name: 'HdInputFormatter',
   mixins: [formField],
   components: { HdInput },
+  inheritAttrs: false,
   props: {
     value: {
       type: [Number, String],

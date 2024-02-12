@@ -68,6 +68,26 @@ describe('HdInputPhone', () => {
     expect(wrapper.emitted('input')[0][0]).toBe(formattedValue);
   });
 
+  it('should validate for phone numbers', async () => {
+    const formattedValue = '+49 30 220440000';
+    const { wrapper } = build({
+      defaultCountry: 'DE',
+      mobileOnly: true,
+    });
+
+    const $input = wrapper.find('input');
+
+    $input.trigger('focus');
+    $input.setValue('+49030220440000');
+    $input.trigger('blur');
+
+    await wrapper.vm.$nextTick();
+
+    const input = wrapper.find('div.field');
+    expect(wrapper.emitted('input')[0][0]).toBe(formattedValue);
+    expect(input.classes()).toContain('field--errored');
+  });
+
   it('should update the input when selecting an option', async () => {
     const { wrapper } = build({
       defaultCountry: 'DE',
