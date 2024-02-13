@@ -2,5 +2,6 @@
 
 exports[`HdArrowButton renders component 1`] = `
 <button autocomplete="off" type="button" class="arrowButton arrowButton--right">
-  <!----></button>
+  <!---->
+</button>
 `;
