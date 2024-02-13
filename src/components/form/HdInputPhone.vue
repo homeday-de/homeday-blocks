@@ -20,7 +20,7 @@
       <template>
         <li
           v-for="(country, index) in sortedCountriesList"
-          :key="country.code"
+          :key="country.code + index"
           :id="country.code"
           class="phone-input__dropdown__option"
           role="option"
@@ -110,6 +110,11 @@ export default {
       type: String,
       required: true,
     },
+    mobileOnly: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
     lang: {
       type: String,
       default: 'de',
@@ -185,7 +190,7 @@ export default {
       return {
         validate: (value) => {
           const phoneNumber = new PhoneNumber(value);
-          return phoneNumber.isMobile();
+          return this.mobileOnly ? phoneNumber.isMobile() : true;
         },
         errorMessage: this.t.FORM.VALIDATION.NOT_MOBILE_NUMBER,
       };

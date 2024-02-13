@@ -9,44 +9,37 @@ exports[`HdButton can be used as an icon button 1`] = `
 
 exports[`HdButton should render component with \`btn\` class 1`] = `
 <button class="btn btn--primary">
-  <!----> <span class="btn__content"><span>Button text</span></span>
-</button>
+  <!----> <span class="btn__content"><span>Button text</span></span></button>
 `;
 
 exports[`HdButton should render component with btn--dark-background class if prop isInDarkBackground is true 1`] = `
 <button class="btn btn--primary btn--dark-background">
-  <!----> <span class="btn__content"><span>Button text</span></span>
-</button>
+  <!----> <span class="btn__content"><span>Button text</span></span></button>
 `;
 
 exports[`HdButton should render component with btn--flat class 1`] = `
 <button class="btn btn--flat">
-  <!----> <span class="btn__content"><span>Button text</span></span>
-</button>
+  <!----> <span class="btn__content"><span>Button text</span></span></button>
 `;
 
 exports[`HdButton should render component with btn--ghost class 1`] = `
 <button class="btn btn--ghost">
-  <!----> <span class="btn__content"><span>Button text</span></span>
-</button>
+  <!----> <span class="btn__content"><span>Button text</span></span></button>
 `;
 
 exports[`HdButton should render component with btn--primary class 1`] = `
 <button class="btn btn--primary">
-  <!----> <span class="btn__content"><span>Button text</span></span>
-</button>
+  <!----> <span class="btn__content"><span>Button text</span></span></button>
 `;
 
 exports[`HdButton should render component with btn--secondary class 1`] = `
 <button class="btn btn--secondary">
-  <!----> <span class="btn__content"><span>Button text</span></span>
-</button>
+  <!----> <span class="btn__content"><span>Button text</span></span></button>
 `;
 
 exports[`HdButton should render component with btn--tertiary class 1`] = `
 <button class="btn btn--tertiary">
-  <!----> <span class="btn__content"><span>Button text</span></span>
-</button>
+  <!----> <span class="btn__content"><span>Button text</span></span></button>
 `;
 
 exports[`HdButton should render the icon passed as prop 1`] = `

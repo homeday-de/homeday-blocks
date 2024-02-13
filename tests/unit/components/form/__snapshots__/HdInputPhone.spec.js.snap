@@ -2,8 +2,7 @@
 
 exports[`HdInputPhone is rendered as expected 1`] = `
 <div class="phone-input"><button aria-haspopup="listbox" aria-label="Wählen Sie einen Ländercode:" aria-activedescendant="+49, Deutschland" class="phone-input__selector"><span class="phone-input__selector__flag flag-icon flag-icon-de"></span>
-    <!---->
-  </button>
+    <!----></button>
   <ul tabindex="-1" role="listbox" aria-label="Telefonnummer" class="phone-input__dropdown" style="display: none;">
     <li id="AD" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ad"></span>
         <p><span class="option__name">Andorra</span> <span class="option__dial-code">+376</span></p>
@@ -1266,7 +1265,7 @@ exports[`HdInputPhone is rendered as expected 1`] = `
       <!---->
     </li>
   </ul>
-  <div class="field text-field phone-input__field field--filled" placeholder="+49 555 555 5555" label="Telefonnummer" custom-rules="[object Object],[object Object],[object Object]">
+  <div class="field text-field phone-input__field field--filled">
     <!---->
     <div class="field__body">
       <div class="field__main"><input autocomplete="on" type="text" id="phoneNumber" name="phoneNumber" placeholder="" data-lpignore="true" label="Telefonnummer" class="input"> <label for="phoneNumber" id="phone-number-label" class="field__label">
