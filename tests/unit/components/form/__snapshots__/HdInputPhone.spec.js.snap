@@ -2,8 +2,7 @@
 
 exports[`HdInputPhone is rendered as expected 1`] = `
 <div class="phone-input"><button aria-haspopup="listbox" aria-label="Wählen Sie einen Ländercode:" aria-activedescendant="+49, Deutschland" class="phone-input__selector"><span class="phone-input__selector__flag flag-icon flag-icon-de"></span>
-    <!---->
-  </button>
+    <!----></button>
   <ul tabindex="-1" role="listbox" aria-label="Telefonnummer" class="phone-input__dropdown" style="display: none;">
     <li id="AD" role="option" class="phone-input__dropdown__option"><button class="option"><span class="option__flag flag-icon flag-icon-ad"></span>
         <p><span class="option__name">Andorra</span> <span class="option__dial-code">+376</span></p>
