@@ -52,12 +52,12 @@
       :custom-rules="[isValidNumber, isMobileNumber, canBeInternationallyDialled]"
       :formatter="phoneFormatter"
       @input="handleInputEvent"
+      :required="required"
     />
   </div>
 </template>
 
 <script>
-/* eslint-disable import/no-extraneous-dependencies */
 import HdInputFormatter from 'homeday-blocks/src/components/form/HdInputFormatter.vue';
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import { getMessages } from 'homeday-blocks/src/lang';
@@ -111,6 +111,11 @@ export default {
       required: true,
     },
     mobileOnly: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    required: {
       type: Boolean,
       required: false,
       default: false,
@@ -194,6 +199,9 @@ export default {
         },
         errorMessage: this.t.FORM.VALIDATION.NOT_MOBILE_NUMBER,
       };
+    },
+    isValid() {
+      return this.$refs.input.$refs.input.isValid;
     },
     canBeInternationallyDialled() {
       return {
