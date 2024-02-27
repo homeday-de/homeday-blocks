@@ -47,7 +47,7 @@
     "deepmerge": "^4.2.2",
     "homeday-assets": "^4.66.1",
     "lodash": "4.17.21",
-    "vue": "2.7.13",
+    "vue": "3.4.20",
     "vue-flickity": "1.2.1",
     "vue-inline-svg": "2.1.0",
     "vue-zoomer": "git+https://git@github.com/homeday-de/vue-zoomer#0.5.0"
