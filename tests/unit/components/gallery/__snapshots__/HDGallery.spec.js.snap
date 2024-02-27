@@ -21,10 +21,8 @@ exports[`HdGallery renders the component 1`] = `
         </div>
       </div>
       <div class="gallery__controls"><button type="button" class="gallery__controls-prev isDisabled">
-          <!---->
-        </button> <button type="button" class="gallery__controls-next">
-          <!---->
-        </button></div>
+          <!----></button> <button type="button" class="gallery__controls-next">
+          <!----></button></div>
       <p class="gallery__info">1/10</p>
     </div>
   </figure>

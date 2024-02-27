@@ -317,9 +317,25 @@ export default {
 <style lang="scss" scoped>
 @import 'homeday-blocks/src/styles/mixins.scss';
 
-$flag-icons-path: '~flag-icons-svg/svg';
-@import '~flag-icons-svg/sass/_variables.scss';
-@import '~flag-icons-svg/sass/flag-icons.scss';
+$flag-icons-path: 'https://cdn.jsdelivr.net/npm/flag-icons-svg@0.0.3/svg';
+
+$flag-icons-countries: (
+  'ad' 'ae' 'af' 'ag' 'ai' 'al' 'am' 'ao' 'ar' 'as' 'at' 'au' 'aw' 'ax' 'az' 'ba' 'bb' 'bd' 'be'
+    'bf' 'bg' 'bh' 'bi' 'bj' 'bl' 'bm' 'bn' 'bo' 'br' 'bs' 'bt' 'bv' 'bw' 'by' 'bz' 'ca' 'cc' 'cd'
+    'cf' 'cg' 'ch' 'ci' 'ck' 'cl' 'cm' 'cn' 'co' 'cr' 'cu' 'cv' 'cw' 'cx' 'cy' 'cz' 'de' 'dj' 'dk'
+    'dm' 'do' 'dz' 'ec' 'ee' 'eg' 'er' 'es' 'et' 'eu' 'fi' 'fj' 'fk' 'fm' 'fo' 'fr' 'ga' 'gb-eng'
+    'gb-nir' 'gb-sct' 'gb-wls' 'gb-zet' 'gb' 'gd' 'ge' 'gf' 'gg' 'gh' 'gi' 'gl' 'gm' 'gn' 'gp' 'gq'
+    'gr' 'gs' 'gt' 'gu' 'gw' 'gy' 'hk' 'hm' 'hn' 'hr' 'ht' 'hu' 'id' 'ie' 'il' 'im' 'in' 'io' 'iq'
+    'ir' 'is' 'it' 'je' 'jm' 'jo' 'jp' 'ke' 'kg' 'kh' 'ki' 'km' 'kn' 'kp' 'kr' 'kw' 'ky' 'kz' 'la'
+    'lb' 'lc' 'li' 'lk' 'lr' 'ls' 'lt' 'lu' 'lv' 'ly' 'ma' 'mc' 'md' 'me' 'mf' 'mg' 'mh' 'mk' 'ml'
+    'mm' 'mn' 'mo' 'mp' 'mq' 'mr' 'ms' 'mt' 'mu' 'mv' 'mw' 'mx' 'my' 'mz' 'na' 'nc' 'ne' 'nf' 'ng'
+    'ni' 'nl' 'no' 'np' 'nr' 'nu' 'nz' 'om' 'pa' 'pe' 'pf' 'pg' 'ph' 'pk' 'pl' 'pm' 'pn' 'pr' 'ps'
+    'pt' 'pw' 'py' 'qa' 're' 'ro' 'rs' 'ru' 'rw' 'sa' 'sb' 'sc' 'sd' 'se' 'sg' 'sh' 'si' 'sj' 'sk'
+    'sl' 'sm' 'sn' 'so' 'sr' 'ss' 'st' 'sv' 'sx' 'sy' 'sz' 'tc' 'td' 'tf' 'tg' 'th' 'tj' 'tk' 'tl'
+    'tm' 'tn' 'to' 'tr' 'tt' 'tv' 'tw' 'tz' 'ua' 'ug' 'um' 'us-ca' 'us' 'uy' 'uz' 'va' 'vc' 've'
+    'vg' 'vi' 'vn' 'vu' 'wf' 'ws' 'xk' 'ye' 'yt' 'za' 'zm' 'zw'
+);
+$flag-icons-elements: join($flag-icons-countries, comma);
 
 $dropdown-button-width: 74px;
 $dropdown-button-height: 55px;
@@ -421,6 +437,29 @@ $dropdown-button-height: 55px;
     }
     &__divider {
       margin: 0;
+    }
+  }
+
+  span.flag-icon {
+    display: inline-block;
+    vertical-align: middle;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    line-height: 1em;
+    height: 1em;
+    width: (21 / 15) * 1em;
+    background-image: url(#{$flag-icons-path}/missing.svg);
+
+    &:before {
+      content: '\00a0';
+    }
+
+    // Flags
+    @each $element in $flag-icons-elements {
+      &.flag-icon-#{$element} {
+        background-image: url('#{$flag-icons-path}/#{$element}.svg');
+      }
     }
   }
 }
