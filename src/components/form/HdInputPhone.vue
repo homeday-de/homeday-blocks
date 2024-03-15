@@ -15,7 +15,7 @@
       role="listbox"
       v-show="showDropdown"
       class="phone-input__dropdown"
-      :aria-label="t.FORM.PHONE.LABEL"
+      :aria-label="label || t.FORM.PHONE.LABEL"
     >
       <template>
         <li
@@ -48,7 +48,7 @@
       v-model="phoneNumber"
       class="phone-input__field"
       :placeholder="placeholder"
-      :label="t.FORM.PHONE.LABEL"
+      :label="label || t.FORM.PHONE.LABEL"
       :custom-rules="[isValidNumber, isMobileNumber, canBeInternationallyDialled]"
       :formatter="phoneFormatter"
       @input="handleInputEvent"
@@ -123,6 +123,11 @@ export default {
     lang: {
       type: String,
       default: 'de',
+    },
+    label: {
+      type: String,
+      required: false,
+      default: '',
     },
   },
   data() {
