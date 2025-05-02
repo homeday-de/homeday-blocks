@@ -71,7 +71,7 @@
     "@storybook/vue": "6.5.12",
     "@testing-library/jest-dom": "^5.17.0",
     "@types/jest": "^24.9.1",
-    "@types/lodash": "^4.14.171",
+    "@types/lodash": "^4.17.16",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
     "@vue/cli-plugin-babel": "~5.0.8",
