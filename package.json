@@ -96,7 +96,7 @@
     "gitmoji-cli": "7.0.2",
     "gitmojis": "^3.4.0",
     "husky": "8.0.3",
-    "hygen": "^6.1.0",
+    "hygen": "^6.2.11",
     "jest": "^27.5.1",
     "p-limit": "3.1.0",
     "postcss": "^8.4.16",
