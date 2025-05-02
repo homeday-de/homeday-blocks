@@ -62,7 +62,7 @@ import HdInputFormatter from 'homeday-blocks/src/components/form/HdInputFormatte
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import { getMessages } from 'homeday-blocks/src/lang';
 import { smallArrow as smallArrowIcon } from 'homeday-assets';
-import countryCodes from 'country-codes-list';
+import * as countryCodes from 'country-codes-list';
 import PhoneNumber from 'awesome-phonenumber';
 import formField from './formFieldMixin';
 
