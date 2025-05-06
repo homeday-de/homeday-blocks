@@ -19,6 +19,7 @@
     "test:unit:coverage": "npm run test:unit -- --coverage && open coverage/lcov-report/index.html",
     "test:unit:snapshot": "vue-cli-service test:unit -u",
     "test:unit:watch": "vue-cli-service test:unit --watchAll",
+    "preinstall": "npx npm-force-resolutions",
     "prepack": "npm run build",
     "prepare": "husky install"
   },
@@ -115,7 +116,11 @@
     "vue-router": "^3.6.5",
     "vue-template-compiler": "2.7.16",
     "vue-tsc": "1.2.1",
-    "webpack": "^5.99.7"
+    "webpack": "^5.99.7",
+    "npm-force-resolutions": "0.0.10"
+  },
+  "resolutions": {
+    "proxy-agent": "6.5.0"
   },
   "bugs": {
     "url": "https://github.com/homeday-de/homeday-blocks/issues"
