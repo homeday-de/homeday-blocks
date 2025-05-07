@@ -116,7 +116,7 @@
     "vue-router": "^3.6.5",
     "vue-template-compiler": "2.7.16",
     "vue-tsc": "1.2.1",
-    "webpack": "^5.99.7",
+    "webpack": "^5.99.8",
     "npm-force-resolutions": "0.0.10"
   },
   "resolutions": {
