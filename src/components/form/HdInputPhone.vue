@@ -62,8 +62,8 @@ import HdInputFormatter from 'homeday-blocks/src/components/form/HdInputFormatte
 import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import { getMessages } from 'homeday-blocks/src/lang';
 import { smallArrow as smallArrowIcon } from 'homeday-assets';
-import countryCodes from 'country-codes-list';
-import PhoneNumber from 'awesome-phonenumber';
+import * as countryCodes from 'country-codes-list';
+import { parsePhoneNumber, getCountryCodeForRegionCode } from 'awesome-phonenumber';
 import formField from './formFieldMixin';
 
 const COUNTRY_PHONE_CODES = countryCodes.customArray({
@@ -190,8 +190,8 @@ export default {
     isValidNumber() {
       return {
         validate: (value) => {
-          const phoneNumber = new PhoneNumber(value);
-          return phoneNumber.isValid();
+          const phoneNumber = parsePhoneNumber(value);
+          return phoneNumber.valid;
         },
         errorMessage: this.t.FORM.VALIDATION.INVALID_NUMBER,
       };
@@ -199,8 +199,8 @@ export default {
     isMobileNumber() {
       return {
         validate: (value) => {
-          const phoneNumber = new PhoneNumber(value);
-          return this.mobileOnly ? phoneNumber.isMobile() : true;
+          const phoneNumber = parsePhoneNumber(value);
+          return this.mobileOnly ? phoneNumber?.typeIsMobile : true;
         },
         errorMessage: this.t.FORM.VALIDATION.NOT_MOBILE_NUMBER,
       };
@@ -211,8 +211,8 @@ export default {
     canBeInternationallyDialled() {
       return {
         validate: (value) => {
-          const phoneNumber = new PhoneNumber(value);
-          return phoneNumber.canBeInternationallyDialled();
+          const phoneNumber = parsePhoneNumber(value);
+          return phoneNumber?.canBeInternationallyDialled;
         },
         errorMessage: this.t.FORM.VALIDATION.NOT_INTERNATIONAL_NUMBER,
       };
@@ -228,8 +228,8 @@ export default {
   },
   watch: {
     phoneNumber(newPhoneNumber) {
-      const phoneNumber = new PhoneNumber(newPhoneNumber);
-      const phoneCountryCode = `+${phoneNumber.getCountryCode()}`;
+      const phoneNumber = parsePhoneNumber(newPhoneNumber);
+      const phoneCountryCode = `+${this.getPhoneNumberCountryCode(phoneNumber)}`;
       const newSelectedCountry = COUNTRY_PHONE_CODES.find(
         (country) => country.dial_code === phoneCountryCode
       );
@@ -264,15 +264,18 @@ export default {
       }
     },
     handleInputEvent(value) {
-      const phoneNumber = new PhoneNumber(value);
-      this.$emit('input', phoneNumber.getNumber('international'));
+      const phoneNumber = parsePhoneNumber(value);
+      this.$emit('input', phoneNumber.number.international);
+    },
+    getPhoneNumberCountryCode(phoneNumber) {
+      return phoneNumber.countryCode || getCountryCodeForRegionCode(phoneNumber.regionCode);
     },
     phoneFormatter(phone) {
-      const phoneNumber = new PhoneNumber(phone);
-      if (phone === `+${phoneNumber.getCountryCode()}`) {
+      const phoneNumber = parsePhoneNumber(phone);
+      if (phone === `+${this.getPhoneNumberCountryCode(phoneNumber)}`) {
         return phone;
       }
-      return phoneNumber.getNumber('international');
+      return phoneNumber.number.international;
     },
     keysHandler(event) {
       const { keyCode } = event;
