@@ -68,7 +68,7 @@
     "@storybook/manager-webpack5": "^6.5.12",
     "@storybook/mdx2-csf": "^0.0.3",
     "@storybook/theming": "6.5.12",
-    "@storybook/vue": "6.5.12",
+    "@storybook/vue": "7.6.20",
     "@testing-library/jest-dom": "^5.16.5",
     "@types/jest": "^24.0.19",
     "@types/lodash": "^4.14.171",
