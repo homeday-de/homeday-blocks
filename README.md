@@ -95,7 +95,7 @@ You can also follow build statuses in https://percy.io/Homeday/homeday-blocks
 - `tests/` is an alias for `<rootDir>/tests/`
 
 ## TypeScript
-For a basic explanation of what it is and how to use it, please read [TYPESCRIPT.md](/docs/TYPESCRIPT.md).
+For a basic explanation of what it is and how to use it, please read [TypeScript.md](/docs/TypeScript.md).
 ## Generators
 
 We use [Hygen](https://www.hygen.io/) as a code generator tool to save time when we need to scaffold some structure.

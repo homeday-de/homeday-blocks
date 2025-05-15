@@ -182,8 +182,8 @@ export default Vue.extend({
       this.validate();
       this.$emit('blur');
     },
-    handleInput(e: Event & { target: HTMLInputElement }): void {
-      let newValue: string | number = e.target.value;
+    handleInput(e: Event): void {
+      let newValue: string | number = (e.target as HTMLInputElement).value;
 
       if (this.currentType === 'number' && newValue !== '') {
         newValue = parseFloat(newValue);

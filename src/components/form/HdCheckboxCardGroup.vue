@@ -8,10 +8,11 @@ import { cloneVNodeElement } from 'homeday-blocks/src/services/utils';
 import { name as HdCheckboxCardName } from 'homeday-blocks/src/components/form/HdCheckboxCard.vue';
 import formFieldMixin from './formFieldMixin';
 
-const getPropsDataFor =
-  (vnode: VNode) =>
-  <T extends unknown>(defaultValue: T, field: string): T =>
-    _getOr(defaultValue, `componentOptions.propsData.${field}`, vnode);
+const getPropsDataFor = (vnode: VNode) => {
+  return function getPropsData<T>(defaultValue: T, field: string): T {
+    return _getOr(defaultValue, `componentOptions.propsData.${field}`, vnode);
+  };
+};
 
 export default Vue.extend({
   name: 'HdCheckboxCardGroup',

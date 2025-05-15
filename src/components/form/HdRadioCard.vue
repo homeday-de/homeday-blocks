@@ -18,7 +18,7 @@
       :disabled="disabled"
       :checked="isChecked"
       :value="nativeValue"
-      @change="$emit('input', $event.target.value)"
+      @change="handleChange"
     />
 
     <div
@@ -145,6 +145,9 @@ export default (Vue as VueInstance).extend({
     },
   },
   methods: {
+    handleChange($event: Event) {
+      this.$emit('input', ($event.target as HTMLInputElement).value);
+    },
     validateForm() {
       if (this.required && !this.value) return this.t.FORM.VALIDATION.SELECT_ONE_OPTION;
 
