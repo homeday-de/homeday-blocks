@@ -104,7 +104,7 @@
     "prettier": "^2.8.8",
     "raw-loader": "4.0.2",
     "sass": "^1.88.0",
-    "sass-loader": "10.5.2",
+    "sass-loader": "16.0.5",
     "semantic-release": "^19.0.5",
     "semantic-release-gitmoji": "^1.6.8",
     "svg-url-loader": "^8.0.0",
