@@ -2,7 +2,6 @@ import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import HdButton from 'homeday-blocks/src/components/buttons/HdButton.vue';
 import HdForm from 'homeday-blocks/src/components/form/HdForm.vue';
 import HdCheckboxCard from 'homeday-blocks/src/components/form/HdCheckboxCard.vue';
-import HdCheckboxCardGroup from 'homeday-blocks/src/components/form/HdCheckboxCardGroup.vue';
 import {
   apartmentCommercial as apartmentCommercialIcon,
   houseCastle as houseCastleIcon,
@@ -17,7 +16,6 @@ import {
 export default {
   title: 'Components/Selection Controls/HdCheckboxCard',
   component: HdCheckboxCard,
-  subcomponents: { HdCheckboxCardGroup },
   argTypes: {
     disabled: {
       control: { type: 'boolean' },
@@ -26,10 +24,12 @@ export default {
       control: { type: 'boolean' },
     },
     mode: {
-      control: { type: 'select', options: ['card', 'tile'] },
+      options: ['card', 'tile'],
+      control: { type: 'select' },
     },
     lang: {
-      control: { type: 'select', options: ['de', 'en'] },
+      options: ['de', 'en'],
+      control: { type: 'select' },
     },
     name: {
       description:
@@ -99,7 +99,7 @@ export default {
   },
 };
 
-export const Default = (args, { argTypes }) => ({
+export const Default = (_args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: {
     HdForm,
@@ -266,7 +266,7 @@ The component works on its own you can group it or use it as a standalone versio
   },
 };
 
-export const Boolean = (args, { argTypes }) => ({
+export const Boolean = (_args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: {
     HdForm,
@@ -349,7 +349,7 @@ Checkboxes can work with boolean values, just provide a \`null\` or \`boolean\` 
   },
 };
 
-export const CustomTrueFalse = (args, { argTypes }) => ({
+export const CustomTrueFalse = (_args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: {
     HdForm,
@@ -436,140 +436,6 @@ CustomTrueFalse.parameters = {
     description: {
       story: `
 You can also change the default value for true-false values by providing native checkbox attributes \`true-value\` and \`false-value\`
-      `,
-    },
-  },
-};
-
-export const Group = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
-  components: {
-    HdForm,
-    HdCheckboxCard,
-    HdCheckboxCardGroup,
-    HdIcon,
-    HdButton,
-  },
-  data: () => ({
-    propertyType: [],
-    apartmentCommercialIcon,
-    apartmentCommercialIconM,
-    houseCastleIcon,
-    houseCastleIconM,
-    rocketIcon,
-    rocketIconM,
-  }),
-  methods: {
-    onSubmit(result) {
-      console.log(result);
-    },
-    onClear() {
-      this.propertyType = [];
-    },
-  },
-  template: `
-  <div class="hd-checkbox-card">
-    <h4>
-      Selected value: <b>{{ propertyType }}</b>
-    </h4>
-
-    <HdForm @submit="onSubmit">
-      <HdCheckboxCardGroup
-        class="radio-group"
-        name="property-group"
-        v-model="propertyType"
-        :disabled="disabled"
-        :mode="mode"
-        :required="required"
-      >
-        <HdCheckboxCard native-value="apartment">
-          <template #icon>
-            <HdIcon :src="mode === 'card' ? apartmentCommercialIcon : apartmentCommercialIconM" />
-          </template>
-
-          Apartment
-        </HdCheckboxCard>
-
-        <HdCheckboxCard native-value="castle">
-          <template #icon>
-            <HdIcon :src="mode === 'card' ? houseCastleIcon : houseCastleIconM" />
-          </template>
-
-          Castle
-        </HdCheckboxCard>
-
-        <HdCheckboxCard native-value="space">
-          <template #icon>
-            <HdIcon :src="mode === 'card' ? rocketIcon : rocketIconM" />
-          </template>
-
-          Space
-        </HdCheckboxCard>
-      </HdCheckboxCardGroup>
-
-      <HdButton type="submit">Submit</HdButton>
-      <HdButton type="button" modifier="tertiary" @click="onClear">Reset</HdButton>
-    </HdForm>
-  </div>
-  `,
-});
-Group.storyName = 'HdCheckboxCardGroup';
-Group.parameters = {
-  docs: {
-    source: {
-      code: `
-<HdForm @submit="onSubmit">
-  <HdCheckboxCardGroup
-    class="radio-group"
-    name="property-group"
-    v-model="propertyType"
-    :disabled="disabled"
-    :mode="mode"
-    :required="required"
-    :indeterminate="indeterminate"
-  >
-    <HdCheckboxCard native-value="apartment">
-      <template #icon>
-        <HdIcon :src="mode === 'card' ? apartmentCommercialIcon : apartmentCommercialIconM" />
-      </template>
-
-      Apartment
-    </HdCheckboxCard>
-
-    <HdCheckboxCard native-value="castle">
-      <template #icon>
-        <HdIcon :src="mode === 'card' ? houseCastleIcon : houseCastleIconM" />
-      </template>
-
-      Castle
-    </HdCheckboxCard>
-
-    <HdCheckboxCard native-value="space">
-      <template #icon>
-        <HdIcon :src="mode === 'card' ? rocketIcon : rocketIconM" />
-      </template>
-
-      Space
-    </HdCheckboxCard>
-  </HdCheckboxCardGroup>
-
-  <HdButton type="submit">Submit</HdButton>
-  <HdButton type="button" modifier="tertiary" @click="onClear">Reset</HdButton>
-</HdForm>`,
-    },
-    description: {
-      story: `
-As the name suggests, \`HdCheckboxCardGroup\` allows you to work with groups of \`HdCheckboxCard\`.
-
-You don't need to use this component since you can pretty much do everything by just using \`HdCheckboxCard\`.
-
-This component can be used for:
-
-- Extract logic from \`HdCheckboxCards\`, since you just will define one time
-- It handles automatically the children positioning
-- Validation is handled as a **group** not **individual**
-
-> As a restriction, all children **must be** \`HdCheckboxCards\`
       `,
     },
   },

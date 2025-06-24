@@ -2,7 +2,6 @@ import HdIcon from 'homeday-blocks/src/components/HdIcon.vue';
 import HdButton from 'homeday-blocks/src/components/buttons/HdButton.vue';
 import HdForm from 'homeday-blocks/src/components/form/HdForm.vue';
 import HdRadioCard from 'homeday-blocks/src/components/form/HdRadioCard.vue';
-import HdRadioCardGroup from 'homeday-blocks/src/components/form/HdRadioCardGroup.vue';
 import {
   apartmentCommercial as apartmentCommercialIcon,
   houseCastle as houseCastleIcon,
@@ -17,7 +16,6 @@ import {
 export default {
   title: 'Components/Selection Controls/HdRadioCard',
   component: HdRadioCard,
-  subcomponents: { HdRadioCardGroup },
   argTypes: {
     disabled: {
       control: { type: 'boolean' },
@@ -26,10 +24,12 @@ export default {
       control: { type: 'boolean' },
     },
     mode: {
-      control: { type: 'select', options: ['card', 'tile'] },
+      options: ['card', 'tile'],
+      control: { type: 'select' },
     },
     lang: {
-      control: { type: 'select', options: ['de', 'en'] },
+      options: ['de', 'en'],
+      control: { type: 'select' },
     },
     name: {
       description:
@@ -96,7 +96,7 @@ export default {
   },
 };
 
-export const Default = (args, { argTypes }) => ({
+export const Default = (_args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: {
     HdForm,
@@ -239,139 +239,6 @@ A simple radio input that allows you to use a more intuitive way to pick from di
 This component has two modes, card, and tile. Just check the documentation and play with it.
 
 The component works on its own you can group it or use it as a standalone version, but if you need fancier formatting, you can wrap it in a \`HdRadioCardGroup\`
-      `,
-    },
-  },
-};
-
-export const Group = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
-  components: {
-    HdForm,
-    HdRadioCard,
-    HdRadioCardGroup,
-    HdIcon,
-    HdButton,
-  },
-  data: () => ({
-    propertyType: null,
-    apartmentCommercialIcon,
-    apartmentCommercialIconM,
-    houseCastleIcon,
-    houseCastleIconM,
-    rocketIcon,
-    rocketIconM,
-  }),
-  methods: {
-    onSubmit(result) {
-      console.log(result);
-    },
-    onClear() {
-      this.propertyType = null;
-    },
-  },
-  template: `
-  <div class="hd-radio-card">
-    <h4>
-      Selected value: <b>{{ propertyType }}</b>
-    </h4>
-
-    <HdForm @submit="onSubmit">
-      <HdRadioCardGroup
-        class="radio-group"
-        name="property-group"
-        v-model="propertyType"
-        :disabled="disabled"
-        :mode="mode"
-        :required="required"
-      >
-        <HdRadioCard native-value="apartment">
-          <template #icon>
-            <HdIcon :src="mode === 'card' ? apartmentCommercialIcon : apartmentCommercialIconM" />
-          </template>
-
-          Apartment
-        </HdRadioCard>
-
-        <HdRadioCard native-value="castle">
-          <template #icon>
-            <HdIcon :src="mode === 'card' ? houseCastleIcon : houseCastleIconM" />
-          </template>
-
-          Castle
-        </HdRadioCard>
-
-        <HdRadioCard native-value="space">
-          <template #icon>
-            <HdIcon :src="mode === 'card' ? rocketIcon : rocketIconM" />
-          </template>
-
-          Space
-        </HdRadioCard>
-      </HdRadioCardGroup>
-
-      <HdButton type="submit">Submit</HdButton>
-      <HdButton type="button" modifier="tertiary" @click="onClear">Reset</HdButton>
-    </HdForm>
-  </div>
-  `,
-});
-Group.storyName = 'HdRadioCardGroup';
-Group.parameters = {
-  docs: {
-    source: {
-      code: `
-<HdForm @submit="onSubmit">
-  <HdRadioCardGroup
-    class="radio-group"
-    name="property-group"
-    v-model="propertyType"
-    :disabled="disabled"
-    :mode="mode"
-    :required="required"
-  >
-    <HdRadioCard native-value="apartment">
-      <template #icon>
-        <HdIcon :src="apartmentCommercialIcon" />
-      </template>
-
-      Apartment
-    </HdRadioCard>
-
-    <HdRadioCard native-value="castle">
-      <template #icon>
-        <HdIcon :src="houseCastleIcon" />
-      </template>
-
-      Castle
-    </HdRadioCard>
-
-    <HdRadioCard native-value="space">
-      <template #icon>
-        <HdIcon :src="rocketIcon" />
-      </template>
-
-      Space
-    </HdRadioCard>
-  </HdRadioCardGroup>
-
-  <HdButton type="submit">Submit</HdButton>
-  <HdButton type="button" modifier="tertiary" @click="onClear">Reset</HdButton>
-</HdForm>`,
-    },
-    description: {
-      story: `
-As the name suggests, \`HdRadioCardGroup\` allows you to work with groups of \`HdRadioCard\`.
-
-You don't need to use this component since you can pretty much do everything by just using \`HdRadioCard\`.
-
-This component can be used for:
-
-- Extract logic from \`HdRadioCards\`, since you just will define one time
-- It handles automatically the children positioning
-- Validation is handled as a **group** not **individual**
-
-> ❗️ As a restriction, all children **must be** \`HdRadioCards\`
       `,
     },
   },
