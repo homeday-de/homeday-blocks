@@ -1,15 +1,16 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
-import { text } from '@storybook/addon-knobs';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 import HdGoogleAutocomplete from 'homeday-blocks/src/components/form/HdGoogleAutocomplete.vue';
 
 storiesOf('Components/Forms/HdGoogleAutocomplete', module)
   .addParameters({ percy: { skip: true } })
   .addDecorator(FormWrapper)
-  .add('required 🎛', () => ({
-    components: { HdGoogleAutocomplete },
-    template: `
+  .add(
+    'required 🎛',
+    (args) => ({
+      components: { HdGoogleAutocomplete },
+      template: `
       <p v-if="!apiKey">You have to enter a valid API key under "Knobs"</p>
       <HdGoogleAutocomplete
         v-else
@@ -22,21 +23,30 @@ storiesOf('Components/Forms/HdGoogleAutocomplete', module)
         placeholder="Placeholder..."
       />
     `,
-    data() {
-      return {
-        value: '',
-      };
-    },
-    props: {
-      apiKey: {
-        type: String,
-        default: text('API Key', ''),
+      data() {
+        return {
+          value: '',
+        };
       },
-    },
-  }))
-  .add('prefilled 🎛', () => ({
-    components: { HdGoogleAutocomplete },
-    template: `
+      props: Object.keys(args),
+    }),
+    {
+      args: {
+        apiKey: '',
+      },
+      argTypes: {
+        apiKey: {
+          name: 'API Key',
+          control: { type: 'text' },
+        },
+      },
+    }
+  )
+  .add(
+    'prefilled 🎛',
+    (args) => ({
+      components: { HdGoogleAutocomplete },
+      template: `
       <p v-if="!apiKey">You have to enter a valid API key under "Knobs"</p>
       <HdGoogleAutocomplete
         v-else
@@ -48,21 +58,30 @@ storiesOf('Components/Forms/HdGoogleAutocomplete', module)
         placeholder="Placeholder..."
       />
     `,
-    data() {
-      return {
-        value: 'Berlin',
-      };
-    },
-    props: {
-      apiKey: {
-        type: String,
-        default: text('API Key', ''),
+      data() {
+        return {
+          value: 'Berlin',
+        };
       },
-    },
-  }))
-  .add('custom translation 🎛', () => ({
-    components: { HdGoogleAutocomplete },
-    template: `
+      props: Object.keys(args),
+    }),
+    {
+      args: {
+        apiKey: '',
+      },
+      argTypes: {
+        apiKey: {
+          name: 'API Key',
+          control: { type: 'text' },
+        },
+      },
+    }
+  )
+  .add(
+    'custom translation 🎛',
+    (args) => ({
+      components: { HdGoogleAutocomplete },
+      template: `
       <p v-if="!apiKey">You have to enter a valid API key under "Knobs"</p>
       <HdGoogleAutocomplete
         v-else
@@ -76,28 +95,37 @@ storiesOf('Components/Forms/HdGoogleAutocomplete', module)
         placeholder="Placeholder..."
       />
     `,
-    data() {
-      return {
-        value: '',
-        texts: {
-          FORM: {
-            VALIDATION: {
-              REQUIRED: 'Hey you, yeah you! Fill it out!',
+      data() {
+        return {
+          value: '',
+          texts: {
+            FORM: {
+              VALIDATION: {
+                REQUIRED: 'Hey you, yeah you! Fill it out!',
+              },
             },
           },
-        },
-      };
-    },
-    props: {
-      apiKey: {
-        type: String,
-        default: text('API Key', ''),
+        };
       },
-    },
-  }))
-  .add('disabled 🎛', () => ({
-    components: { HdGoogleAutocomplete },
-    template: `
+      props: Object.keys(args),
+    }),
+    {
+      args: {
+        apiKey: '',
+      },
+      argTypes: {
+        apiKey: {
+          name: 'API Key',
+          control: { type: 'text' },
+        },
+      },
+    }
+  )
+  .add(
+    'disabled 🎛',
+    (args) => ({
+      components: { HdGoogleAutocomplete },
+      template: `
       <p v-if="!apiKey">You have to enter a valid API key under "Knobs"</p>
       <HdGoogleAutocomplete
         v-else
@@ -112,15 +140,22 @@ storiesOf('Components/Forms/HdGoogleAutocomplete', module)
         placeholder="Placeholder..."
       />
     `,
-    data() {
-      return {
-        value: '',
-      };
-    },
-    props: {
-      apiKey: {
-        type: String,
-        default: text('API Key', ''),
+      data() {
+        return {
+          value: '',
+        };
       },
-    },
-  }));
+      props: Object.keys(args),
+    }),
+    {
+      args: {
+        apiKey: '',
+      },
+      argTypes: {
+        apiKey: {
+          name: 'API Key',
+          control: { type: 'text' },
+        },
+      },
+    }
+  );

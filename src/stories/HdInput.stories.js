@@ -1,7 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
-import { text } from '@storybook/addon-knobs';
 import HdInput from 'homeday-blocks/src/components/form/HdInput.vue';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 import icon from './assets/ic_user.svg';
@@ -144,9 +143,11 @@ storiesOf('Components/Forms/HdInput', module)
       };
     },
   }))
-  .add('with icon 🎛', () => ({
-    components: { HdInput },
-    template: `
+  .add(
+    'with icon 🎛',
+    (args) => ({
+      components: { HdInput },
+      template: `
       <HdInput
         v-model="value"
         :icon="icon"
@@ -155,18 +156,25 @@ storiesOf('Components/Forms/HdInput', module)
         placeholder="Placeholder..."
       />
     `,
-    props: {
-      icon: {
-        type: String,
-        default: text('icon', icon),
+      props: Object.keys(args),
+      data() {
+        return {
+          value: '',
+        };
       },
-    },
-    data() {
-      return {
-        value: '',
-      };
-    },
-  }))
+    }),
+    {
+      args: {
+        icon,
+      },
+      argTypes: {
+        icon: {
+          name: 'Icon',
+          control: { type: 'text' },
+        },
+      },
+    }
+  )
   .add('with type date', () => ({
     components: { HdInput },
     template: `

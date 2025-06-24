@@ -1,6 +1,4 @@
 import HdRange from 'homeday-blocks/src/components/form/HdRange.vue';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { text } from '@storybook/addon-knobs';
 
 export default {
   title: 'Components/Selection Controls/HdRange',
@@ -82,11 +80,18 @@ WithLabels.args = {
 
 export const CustomBackgrounds = Template.bind({});
 CustomBackgrounds.args = {
-  trackBackground: text(
-    'track-background',
-    'radial-gradient(circle at center, #4CBA38, #FFE713, #E00016)'
-  ),
-  progressBackground: text('progress-background', 'transparent'),
+  trackBackground: 'radial-gradient(circle at center, #4CBA38, #FFE713, #E00016)',
+  progressBackground: 'transparent',
+};
+CustomBackgrounds.argTypes = {
+  'track-background': {
+    name: 'Track Background',
+    control: { type: 'text' },
+  },
+  'progress-background': {
+    name: 'Progress Background',
+    control: { type: 'text' },
+  },
 };
 
 export const WithCustomTooltipValue = (_, { argTypes }) => ({

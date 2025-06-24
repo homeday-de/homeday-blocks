@@ -1,6 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
-import { text, boolean, number } from '@storybook/addon-knobs';
 import { edit as editIcon, delete as deleteIcon } from 'homeday-assets';
 import HdToggle from 'homeday-blocks/src/components/HdToggle.vue';
 
@@ -116,26 +115,9 @@ stories.add('With multiple actions', () => ({
 
 stories.add(
   'Playground 🎛',
-  () => ({
+  (args) => ({
     components: { HdToggle },
-    props: {
-      title: {
-        type: String,
-        default: text('title', 'HdToggle Title'),
-      },
-      open: {
-        type: Boolean,
-        default: boolean('open', false),
-      },
-      canBeToggled: {
-        type: Boolean,
-        default: boolean('canBeToggled', true),
-      },
-      transitionDuration: {
-        type: Number,
-        default: number('transitionDuration', 300),
-      },
-    },
+    props: Object.keys(args),
     data() {
       return {
         toggleOpen: false,
@@ -160,5 +142,31 @@ stories.add(
       </div>
     `,
   }),
-  { percy: { skip: true } }
+  {
+    args: {
+      title: 'HdToggle Title',
+      open: false,
+      canBeToggled: true,
+      transitionDuration: 300,
+    },
+    argTypes: {
+      title: {
+        name: 'Title',
+        control: { type: 'text' },
+      },
+      open: {
+        name: 'Open',
+        control: { type: 'boolean' },
+      },
+      canBeToggled: {
+        name: 'Can be toggled',
+        control: { type: 'boolean' },
+      },
+      transitionDuration: {
+        name: 'Transition Duration (ms)',
+        control: { type: 'number' },
+      },
+    },
+    percy: { skip: true },
+  }
 );

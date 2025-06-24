@@ -1,7 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies, no-console */
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
-import { text } from '@storybook/addon-knobs';
 import HdSelect from 'homeday-blocks/src/components/form/HdSelect.vue';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 import ITEMS from './mocks/FORM_ITEMS';
@@ -97,9 +96,11 @@ storiesOf('Components/Selection Controls/HdSelect', module)
       };
     },
   }))
-  .add('with icon 🎛', () => ({
-    components: { HdSelect },
-    template: `
+  .add(
+    'with icon 🎛',
+    (args) => ({
+      components: { HdSelect },
+      template: `
       <div>
         <hd-select
           v-model="value"
@@ -110,16 +111,23 @@ storiesOf('Components/Selection Controls/HdSelect', module)
         />
       </div>
     `,
-    props: {
-      icon: {
-        type: String,
-        default: text('icon', icon),
+      props: Object.keys(args),
+      data() {
+        return {
+          value: ITEMS[2].value,
+          ITEMS,
+        };
       },
-    },
-    data() {
-      return {
-        value: ITEMS[2].value,
-        ITEMS,
-      };
-    },
-  }));
+    }),
+    {
+      args: {
+        icon,
+      },
+      argTypes: {
+        icon: {
+          name: 'Icon',
+          control: { type: 'text' },
+        },
+      },
+    }
+  );

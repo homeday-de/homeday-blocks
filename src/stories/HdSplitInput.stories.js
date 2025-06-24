@@ -1,7 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
-import { text } from '@storybook/addon-knobs';
 import HdSplitInput from 'homeday-blocks/src/components/form/HdSplitInput.vue';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 import icon from './assets/ic_user.svg';
@@ -75,9 +74,11 @@ storiesOf('Components/Forms/HdSplitInput', module)
       },
     },
   }))
-  .add('with icon 🎛', () => ({
-    components: { HdSplitInput },
-    template: `
+  .add(
+    'with icon 🎛',
+    (args) => ({
+      components: { HdSplitInput },
+      template: `
       <HdSplitInput
         v-model="value"
         :fields="fields"
@@ -86,35 +87,44 @@ storiesOf('Components/Forms/HdSplitInput', module)
         label="Label"
       />
     `,
-    props: {
-      icon: {
-        type: String,
-        default: text('icon', icon),
+      props: Object.keys(args),
+      data() {
+        return {
+          value: {},
+        };
       },
-    },
-    data() {
-      return {
-        value: {},
-      };
-    },
-    computed: {
-      fields() {
-        return [
-          {
-            placeholder: 'Input 1',
-            name: 'value1',
-          },
-          {
-            placeholder: 'Input 2',
-            name: 'value2',
-          },
-        ];
+      computed: {
+        fields() {
+          return [
+            {
+              placeholder: 'Input 1',
+              name: 'value1',
+            },
+            {
+              placeholder: 'Input 2',
+              name: 'value2',
+            },
+          ];
+        },
       },
-    },
-  }))
-  .add('Custom separator 🎛', () => ({
-    components: { HdSplitInput },
-    template: `
+    }),
+    {
+      args: {
+        icon,
+      },
+      argTypes: {
+        icon: {
+          name: 'Icon',
+          control: { type: 'text' },
+        },
+      },
+    }
+  )
+  .add(
+    'Custom separator 🎛',
+    (args) => ({
+      components: { HdSplitInput },
+      template: `
       <HdSplitInput
         v-model="value"
         :fields="fields"
@@ -123,52 +133,60 @@ storiesOf('Components/Forms/HdSplitInput', module)
         label="Date"
       />
     `,
-    props: {
-      separator: {
-        default: text('Separator', '/'),
+      props: Object.keys(args),
+      data() {
+        return {
+          value: {},
+        };
       },
-    },
-    data() {
-      return {
-        value: {},
-      };
-    },
-    computed: {
-      fields() {
-        return [
-          {
-            placeholder: 'Day',
-            name: 'day',
-            type: 'number',
-            min: 0,
-            max: 31,
-          },
-          {
-            placeholder: 'Month',
-            name: 'month',
-            type: 'number',
-            min: 0,
-            max: 12,
-          },
-          {
-            placeholder: 'Year',
-            name: 'year',
-            type: 'number',
-            min: 1900,
-            max: 2019,
-          },
-        ];
-      },
-    },
-    watch: {
-      value: {
-        deep: true,
-        handler(value) {
-          action('input')(value);
+      computed: {
+        fields() {
+          return [
+            {
+              placeholder: 'Day',
+              name: 'day',
+              type: 'number',
+              min: 0,
+              max: 31,
+            },
+            {
+              placeholder: 'Month',
+              name: 'month',
+              type: 'number',
+              min: 0,
+              max: 12,
+            },
+            {
+              placeholder: 'Year',
+              name: 'year',
+              type: 'number',
+              min: 1900,
+              max: 2019,
+            },
+          ];
         },
       },
-    },
-  }))
+      watch: {
+        value: {
+          deep: true,
+          handler(value) {
+            action('input')(value);
+          },
+        },
+      },
+    }),
+    {
+      args: {
+        separator: '/',
+      },
+      argTypes: {
+        separator: {
+          name: 'Separator',
+          control: { type: 'text' },
+        },
+      },
+    }
+  )
   .add('Dynamic example: Range', () => ({
     components: { HdSplitInput },
     template: `
