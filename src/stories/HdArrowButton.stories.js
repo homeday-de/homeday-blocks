@@ -1,9 +1,11 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import { storiesOf } from '@storybook/vue';
 import HdArrowButton from 'homeday-blocks/src/components/buttons/HdArrowButton.vue';
 
-storiesOf('Components/Actions/HdArrowButton', module)
-  .add('right', () => ({
+export default {
+  title: 'Components/Actions/HdArrowButton',
+};
+
+export const Right = {
+  render: () => ({
     components: { HdArrowButton },
     data() {
       return {
@@ -11,10 +13,15 @@ storiesOf('Components/Actions/HdArrowButton', module)
       };
     },
     template: `<hd-arrow-button
-      :direction=direction
-    />`,
-  }))
-  .add('left', () => ({
+        :direction=direction
+      />`,
+  }),
+
+  name: 'right',
+};
+
+export const Left = {
+  render: () => ({
     components: { HdArrowButton },
     data() {
       return {
@@ -22,10 +29,15 @@ storiesOf('Components/Actions/HdArrowButton', module)
       };
     },
     template: `<hd-arrow-button
-      :direction=direction
-    />`,
-  }))
-  .add('disabled', () => ({
+        :direction=direction
+      />`,
+  }),
+
+  name: 'left',
+};
+
+export const Disabled = {
+  render: () => ({
     components: { HdArrowButton },
     data() {
       return {
@@ -34,36 +46,41 @@ storiesOf('Components/Actions/HdArrowButton', module)
       };
     },
     template: `<hd-arrow-button
-      :direction=direction
-      :disabled=disabled
-    />`,
-  }))
-  .add(
-    'playground 🎛',
-    (args) => ({
-      components: { HdArrowButton },
-      props: Object.keys(args),
-      template: `<hd-arrow-button
         :direction=direction
         :disabled=disabled
       />`,
-    }),
-    {
-      args: {
-        direction: 'right',
-        disabled: false,
-      },
-      argTypes: {
-        direction: {
-          name: 'Arrow direction',
-          control: { type: 'select' },
-          options: ['right', 'left'],
-        },
-        disabled: {
-          name: 'Button disabled state',
-          control: { type: 'boolean' },
-        },
-      },
-      percy: { skip: true },
-    }
-  );
+  }),
+
+  name: 'disabled',
+};
+
+export const Playground = {
+  render: (_args, { argTypes }) => ({
+    components: { HdArrowButton },
+    props: Object.keys(argTypes),
+    template: `<hd-arrow-button
+      :direction=direction
+      :disabled=disabled
+    />`,
+  }),
+  args: {
+    direction: 'right',
+    disabled: false,
+  },
+  argTypes: {
+    direction: {
+      name: 'Arrow direction',
+      control: { type: 'select' },
+      options: ['right', 'left'],
+    },
+    disabled: {
+      name: 'Button disabled state',
+      control: { type: 'boolean' },
+    },
+  },
+  parameters: {
+    percy: { skip: true },
+  },
+
+  name: 'playground 🎛',
+};

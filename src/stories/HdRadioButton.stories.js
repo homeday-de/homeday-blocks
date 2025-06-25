@@ -1,11 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import HdRadioButton from 'homeday-blocks/src/components/buttons/HdRadioButton.vue';
 
-storiesOf('Components/Selection Controls/HdRadioButton', module).add(
-  'base 🎛',
-  (args) => ({
+export default {
+  title: 'Components/Selection Controls/HdRadioButton',
+};
+
+export const Base = {
+  render: (_args, { argTypes }) => ({
     components: { HdRadioButton },
     template: `<HdRadioButton
       @select="action"
@@ -16,43 +18,43 @@ storiesOf('Components/Selection Controls/HdRadioButton', module).add(
       :value="value"
       :name="name"
     />`,
-    props: Object.keys(args),
+    props: Object.keys(argTypes),
     methods: { action: action('clicked') },
   }),
-  {
-    args: {
-      label: 'Test Label',
-      desktopIcon: 'https://picsum.photos/id/237/96',
-      desktopIconHover: 'https://picsum.photos/id/237/96?grayscale',
-      mobileIcon: 'https://picsum.photos/id/237/48',
-      value: 'Value',
+  args: {
+    label: 'Test Label',
+    desktopIcon: 'https://picsum.photos/id/237/96',
+    desktopIconHover: 'https://picsum.photos/id/237/96?grayscale',
+    mobileIcon: 'https://picsum.photos/id/237/48',
+    value: 'Value',
+    name: 'Name',
+  },
+  argTypes: {
+    label: {
+      name: 'Label',
+      control: { type: 'text' },
+    },
+    desktopIcon: {
+      name: 'Desktop Icon',
+      control: { type: 'text' },
+    },
+    desktopIconHover: {
+      name: 'Desktop Icon Hover',
+      control: { type: 'text' },
+    },
+    mobileIcon: {
+      name: 'Mobile Icon',
+      control: { type: 'text' },
+    },
+    value: {
+      name: 'Value',
+      control: { type: 'text' },
+    },
+    name: {
       name: 'Name',
+      control: { type: 'text' },
     },
-    argTypes: {
-      label: {
-        name: 'Label',
-        control: { type: 'text' },
-      },
-      desktopIcon: {
-        name: 'Desktop Icon',
-        control: { type: 'text' },
-      },
-      desktopIconHover: {
-        name: 'Desktop Icon Hover',
-        control: { type: 'text' },
-      },
-      mobileIcon: {
-        name: 'Mobile Icon',
-        control: { type: 'text' },
-      },
-      value: {
-        name: 'Value',
-        control: { type: 'text' },
-      },
-      name: {
-        name: 'Name',
-        control: { type: 'text' },
-      },
-    },
-  }
-);
+  },
+
+  name: 'base 🎛',
+};

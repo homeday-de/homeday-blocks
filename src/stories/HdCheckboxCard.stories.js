@@ -99,344 +99,350 @@ export default {
   },
 };
 
-export const Default = (_args, { argTypes }) => ({
-  props: Object.keys(argTypes),
-  components: {
-    HdForm,
-    HdCheckboxCard,
-    HdIcon,
-    HdButton,
-  },
-  data: () => ({
-    propertyType: ['apartment'],
-    apartmentCommercialIcon,
-    apartmentCommercialIconM,
-    houseCastleIcon,
-    houseCastleIconM,
-    rocketIcon,
-    rocketIconM,
+export const Default = {
+  render: (_args, { argTypes }) => ({
+    props: Object.keys(argTypes),
+    components: {
+      HdForm,
+      HdCheckboxCard,
+      HdIcon,
+      HdButton,
+    },
+    data: () => ({
+      propertyType: ['apartment'],
+      apartmentCommercialIcon,
+      apartmentCommercialIconM,
+      houseCastleIcon,
+      houseCastleIconM,
+      rocketIcon,
+      rocketIconM,
+    }),
+    methods: {
+      onSubmit(result) {
+        console.log(result);
+      },
+      onClear() {
+        this.propertyType = [];
+      },
+    },
+    template: `
+    <div class="hd-checkbox-card">
+      <h4>Selected value: <b>{{ propertyType }}</b></h4>
+
+      <HdForm @submit="onSubmit" class="grid">
+        <HdCheckboxCard
+          name="property"
+          native-value="apartment"
+          v-model="propertyType"
+          :disabled="disabled"
+          :mode="mode"
+          :required="required"
+          :indeterminate="indeterminate"
+          :true-value="trueValue"
+          :false-value="falseValue"
+        >
+          <template #icon>
+            <HdIcon :src="mode === 'card' ? apartmentCommercialIcon : apartmentCommercialIconM" />
+          </template>
+
+          Apartment
+        </HdCheckboxCard>
+
+        <HdCheckboxCard
+          name="property"
+          native-value="castle"
+          v-model="propertyType"
+          :disabled="disabled"
+          :mode="mode"
+          :required="required"
+          :indeterminate="indeterminate"
+          :true-value="trueValue"
+          :false-value="falseValue"
+        >
+          <template #icon>
+            <HdIcon :src="mode === 'card' ? houseCastleIcon : houseCastleIconM" />
+          </template>
+
+          Castle
+        </HdCheckboxCard>
+
+        <HdCheckboxCard
+          name="property"
+          native-value="space"
+          v-model="propertyType"
+          :disabled="disabled"
+          :mode="mode"
+          :required="required"
+          :indeterminate="indeterminate"
+          :true-value="trueValue"
+          :false-value="falseValue"
+        >
+          <template #icon>
+            <HdIcon :src="mode === 'card' ? rocketIcon : rocketIconM" />
+          </template>
+
+          Space
+        </HdCheckboxCard>
+
+        <HdButton type="submit">Submit</HdButton>
+        <HdButton type="button" modifier="tertiary" @click="onClear">Reset</HdButton>
+      </HdForm>
+    </div>
+    `,
   }),
-  methods: {
-    onSubmit(result) {
-      console.log(result);
-    },
-    onClear() {
-      this.propertyType = [];
-    },
-  },
-  template: `
-  <div class="hd-checkbox-card">
-    <h4>Selected value: <b>{{ propertyType }}</b></h4>
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <HdForm @submit="onSubmit" class="grid">
+    <HdCheckboxCard
+      name="property"
+      native-value="apartment"
+      v-model="propertyType"
+      :disabled="disabled"
+      :mode="mode"
+      :required="required"
+      :indeterminate="indeterminate"
+      :true-value="trueValue"
+      :false-value="falseValue"
+    >
+      <template #icon>
+        <HdIcon :src="mode === 'card' ? apartmentCommercialIcon : apartmentCommercialIconM" />
+      </template>
 
-    <HdForm @submit="onSubmit" class="grid">
-      <HdCheckboxCard
-        name="property"
-        native-value="apartment"
-        v-model="propertyType"
-        :disabled="disabled"
-        :mode="mode"
-        :required="required"
-        :indeterminate="indeterminate"
-        :true-value="trueValue"
-        :false-value="falseValue"
-      >
-        <template #icon>
-          <HdIcon :src="mode === 'card' ? apartmentCommercialIcon : apartmentCommercialIconM" />
-        </template>
+      Apartment
+    </HdCheckboxCard>
 
-        Apartment
-      </HdCheckboxCard>
+    <HdCheckboxCard
+      name="property"
+      native-value="castle"
+      v-model="propertyType"
+      :disabled="disabled"
+      :mode="mode"
+      :required="required"
+      :indeterminate="indeterminate"
+      :true-value="trueValue"
+      :false-value="falseValue"
+    >
+      <template #icon>
+        <HdIcon :src="mode === 'card' ? houseCastleIcon : houseCastleIconM" />
+      </template>
 
-      <HdCheckboxCard
-        name="property"
-        native-value="castle"
-        v-model="propertyType"
-        :disabled="disabled"
-        :mode="mode"
-        :required="required"
-        :indeterminate="indeterminate"
-        :true-value="trueValue"
-        :false-value="falseValue"
-      >
-        <template #icon>
-          <HdIcon :src="mode === 'card' ? houseCastleIcon : houseCastleIconM" />
-        </template>
+      Castle
+    </HdCheckboxCard>
 
-        Castle
-      </HdCheckboxCard>
+    <HdCheckboxCard
+      name="property"
+      native-value="space"
+      v-model="propertyType"
+      :disabled="disabled"
+      :mode="mode"
+      :required="required"
+      :indeterminate="indeterminate"
+      :true-value="trueValue"
+      :false-value="falseValue"
+    >
+      <template #icon>
+        <HdIcon :src="mode === 'card' ? rocketIcon : rocketIconM" />
+      </template>
 
-      <HdCheckboxCard
-        name="property"
-        native-value="space"
-        v-model="propertyType"
-        :disabled="disabled"
-        :mode="mode"
-        :required="required"
-        :indeterminate="indeterminate"
-        :true-value="trueValue"
-        :false-value="falseValue"
-      >
-        <template #icon>
-          <HdIcon :src="mode === 'card' ? rocketIcon : rocketIconM" />
-        </template>
+      Space
+    </HdCheckboxCard>
 
-        Space
-      </HdCheckboxCard>
+    <HdButton type="submit">Submit</HdButton>
+    <HdButton type="button" modifier="tertiary" @click="onClear">Reset</HdButton>
+  </HdForm>`,
+      },
+      description: {
+        story: `
+  A simple checkbox that allows you to use a more intuitive way to pick from different options.
 
-      <HdButton type="submit">Submit</HdButton>
-      <HdButton type="button" modifier="tertiary" @click="onClear">Reset</HdButton>
-    </HdForm>
-  </div>
-  `,
-});
-Default.parameters = {
-  docs: {
-    source: {
-      code: `
-<HdForm @submit="onSubmit" class="grid">
-  <HdCheckboxCard
-    name="property"
-    native-value="apartment"
-    v-model="propertyType"
-    :disabled="disabled"
-    :mode="mode"
-    :required="required"
-    :indeterminate="indeterminate"
-    :true-value="trueValue"
-    :false-value="falseValue"
-  >
-    <template #icon>
-      <HdIcon :src="mode === 'card' ? apartmentCommercialIcon : apartmentCommercialIconM" />
-    </template>
+  If you want to group checkboxes, don't forget to provide a \`v-model\` with an array value, otherwise this component won't work
 
-    Apartment
-  </HdCheckboxCard>
+  This component has two modes, card, and tile. Just check the documentation and play with it.
 
-  <HdCheckboxCard
-    name="property"
-    native-value="castle"
-    v-model="propertyType"
-    :disabled="disabled"
-    :mode="mode"
-    :required="required"
-    :indeterminate="indeterminate"
-    :true-value="trueValue"
-    :false-value="falseValue"
-  >
-    <template #icon>
-      <HdIcon :src="mode === 'card' ? houseCastleIcon : houseCastleIconM" />
-    </template>
-
-    Castle
-  </HdCheckboxCard>
-
-  <HdCheckboxCard
-    name="property"
-    native-value="space"
-    v-model="propertyType"
-    :disabled="disabled"
-    :mode="mode"
-    :required="required"
-    :indeterminate="indeterminate"
-    :true-value="trueValue"
-    :false-value="falseValue"
-  >
-    <template #icon>
-      <HdIcon :src="mode === 'card' ? rocketIcon : rocketIconM" />
-    </template>
-
-    Space
-  </HdCheckboxCard>
-
-  <HdButton type="submit">Submit</HdButton>
-  <HdButton type="button" modifier="tertiary" @click="onClear">Reset</HdButton>
-</HdForm>`,
-    },
-    description: {
-      component: `
-A simple checkbox that allows you to use a more intuitive way to pick from different options.
-
-If you want to group checkboxes, don't forget to provide a \`v-model\` with an array value, otherwise this component won't work
-
-This component has two modes, card, and tile. Just check the documentation and play with it.
-
-The component works on its own you can group it or use it as a standalone version, but if you need fancier formatting, you can wrap it in a \`HdCheckboxCardGroup\`
-      `,
+  The component works on its own you can group it or use it as a standalone version, but if you need fancier formatting, you can wrap it in a \`HdCheckboxCardGroup\`
+        `,
+      },
     },
   },
 };
 
-export const Boolean = (_args, { argTypes }) => ({
-  props: Object.keys(argTypes),
-  components: {
-    HdForm,
-    HdCheckboxCard,
-    HdIcon,
-    HdButton,
-  },
-  data: () => ({
-    booleanValue: null,
-    apartmentCommercialIcon,
-    apartmentCommercialIconM,
-    houseCastleIcon,
-    houseCastleIconM,
-    rocketIcon,
-    rocketIconM,
+export const Boolean = {
+  render: (_args, { argTypes }) => ({
+    props: Object.keys(argTypes),
+    components: {
+      HdForm,
+      HdCheckboxCard,
+      HdIcon,
+      HdButton,
+    },
+    data: () => ({
+      booleanValue: null,
+      apartmentCommercialIcon,
+      apartmentCommercialIconM,
+      houseCastleIcon,
+      houseCastleIconM,
+      rocketIcon,
+      rocketIconM,
+    }),
+    methods: {
+      onSubmit(result) {
+        console.log(result);
+      },
+      onClear() {
+        this.propertyType = [];
+      },
+    },
+    template: `
+    <div class="hd-checkbox-card">
+      <h4>Selected value: <b>{{ booleanValue }}</b></h4>
+
+      <HdForm @submit="onSubmit" class="small">
+        <HdCheckboxCard
+          name="property"
+          v-model="booleanValue"
+          :disabled="disabled"
+          :mode="mode"
+          :required="required"
+          :indeterminate="indeterminate"
+        >
+          <template #icon>
+            <HdIcon :src="mode === 'card' ? apartmentCommercialIcon : apartmentCommercialIconM" />
+          </template>
+
+          Apartment
+        </HdCheckboxCard>
+
+        <HdButton type="submit">Submit</HdButton>
+        <HdButton type="button" modifier="tertiary" @click="onClear">Reset</HdButton>
+      </HdForm>
+    </div>
+    `,
   }),
-  methods: {
-    onSubmit(result) {
-      console.log(result);
-    },
-    onClear() {
-      this.propertyType = [];
-    },
-  },
-  template: `
-  <div class="hd-checkbox-card">
-    <h4>Selected value: <b>{{ booleanValue }}</b></h4>
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <HdForm @submit="onSubmit" class="small">
+    <HdCheckboxCard
+      name="property"
+      v-model="value"
+      :disabled="disabled"
+      :mode="mode"
+      :required="required"
+      :indeterminate="indeterminate"
+    >
+      <template #icon>
+        <HdIcon :src="mode === 'card' ? apartmentCommercialIcon : apartmentCommercialIconM" />
+      </template>
 
-    <HdForm @submit="onSubmit" class="small">
-      <HdCheckboxCard
-        name="property"
-        v-model="booleanValue"
-        :disabled="disabled"
-        :mode="mode"
-        :required="required"
-        :indeterminate="indeterminate"
-      >
-        <template #icon>
-          <HdIcon :src="mode === 'card' ? apartmentCommercialIcon : apartmentCommercialIconM" />
-        </template>
+      Apartment
+    </HdCheckboxCard>
 
-        Apartment
-      </HdCheckboxCard>
-
-      <HdButton type="submit">Submit</HdButton>
-      <HdButton type="button" modifier="tertiary" @click="onClear">Reset</HdButton>
-    </HdForm>
-  </div>
-  `,
-});
-Boolean.parameters = {
-  docs: {
-    source: {
-      code: `
-<HdForm @submit="onSubmit" class="small">
-  <HdCheckboxCard
-    name="property"
-    v-model="value"
-    :disabled="disabled"
-    :mode="mode"
-    :required="required"
-    :indeterminate="indeterminate"
-  >
-    <template #icon>
-      <HdIcon :src="mode === 'card' ? apartmentCommercialIcon : apartmentCommercialIconM" />
-    </template>
-
-    Apartment
-  </HdCheckboxCard>
-
-  <HdButton type="submit">Submit</HdButton>
-  <HdButton type="button" modifier="tertiary" @click="onClear">Reset</HdButton>
-</HdForm>`,
-    },
-    description: {
-      story: `
-Checkboxes can work with boolean values, just provide a \`null\` or \`boolean\` \`v-model\` for single checkboxes.
-      `,
+    <HdButton type="submit">Submit</HdButton>
+    <HdButton type="button" modifier="tertiary" @click="onClear">Reset</HdButton>
+  </HdForm>`,
+      },
+      description: {
+        story: `
+  Checkboxes can work with boolean values, just provide a \`null\` or \`boolean\` \`v-model\` for single checkboxes.
+        `,
+      },
     },
   },
 };
 
-export const CustomTrueFalse = (_args, { argTypes }) => ({
-  props: Object.keys(argTypes),
-  components: {
-    HdForm,
-    HdCheckboxCard,
-    HdIcon,
-    HdButton,
-  },
-  data: () => ({
-    customTrueFalse: null,
-    apartmentCommercialIcon,
-    apartmentCommercialIconM,
-    houseCastleIcon,
-    houseCastleIconM,
-    rocketIcon,
-    rocketIconM,
+export const CustomTrueFalse = {
+  render: (_args, { argTypes }) => ({
+    props: Object.keys(argTypes),
+    components: {
+      HdForm,
+      HdCheckboxCard,
+      HdIcon,
+      HdButton,
+    },
+    data: () => ({
+      customTrueFalse: null,
+      apartmentCommercialIcon,
+      apartmentCommercialIconM,
+      houseCastleIcon,
+      houseCastleIconM,
+      rocketIcon,
+      rocketIconM,
+    }),
+    methods: {
+      onSubmit(result) {
+        console.log(result);
+      },
+      onClear() {
+        this.propertyType = [];
+      },
+    },
+    template: `
+    <div class="hd-checkbox-card">
+      <h4>Selected value: <b>{{ customTrueFalse }}</b></h4>
+
+      <HdForm @submit="onSubmit" class="small">
+        <HdCheckboxCard
+          name="property"
+          v-model="customTrueFalse"
+          :disabled="disabled"
+          :mode="mode"
+          :required="required"
+          :indeterminate="indeterminate"
+          :true-value="trueValue"
+          :false-value="falseValue"
+        >
+          <template #icon>
+            <HdIcon :src="mode === 'card' ? apartmentCommercialIcon : apartmentCommercialIconM" />
+          </template>
+
+          Apartment
+        </HdCheckboxCard>
+
+        <HdButton type="submit">Submit</HdButton>
+        <HdButton type="button" modifier="tertiary" @click="onClear">Reset</HdButton>
+      </HdForm>
+    </div>
+    `,
   }),
-  methods: {
-    onSubmit(result) {
-      console.log(result);
-    },
-    onClear() {
-      this.propertyType = [];
-    },
+  args: {
+    trueValue: 'on',
+    falseValue: 'off',
   },
-  template: `
-  <div class="hd-checkbox-card">
-    <h4>Selected value: <b>{{ customTrueFalse }}</b></h4>
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <HdForm @submit="onSubmit" class="small">
+    <HdCheckboxCard
+      name="property"
+      native-value="apartment"
+      v-model="value"
+      :disabled="disabled"
+      :mode="mode"
+      :required="required"
+      :indeterminate="indeterminate"
+      true-value="on"
+      false-value="off"
+    >
+      <template #icon>
+        <HdIcon :src="mode === 'card' ? apartmentCommercialIcon : apartmentCommercialIconM" />
+      </template>
 
-    <HdForm @submit="onSubmit" class="small">
-      <HdCheckboxCard
-        name="property"
-        v-model="customTrueFalse"
-        :disabled="disabled"
-        :mode="mode"
-        :required="required"
-        :indeterminate="indeterminate"
-        :true-value="trueValue"
-        :false-value="falseValue"
-      >
-        <template #icon>
-          <HdIcon :src="mode === 'card' ? apartmentCommercialIcon : apartmentCommercialIconM" />
-        </template>
+      Apartment
+    </HdCheckboxCard>
 
-        Apartment
-      </HdCheckboxCard>
-
-      <HdButton type="submit">Submit</HdButton>
-      <HdButton type="button" modifier="tertiary" @click="onClear">Reset</HdButton>
-    </HdForm>
-  </div>
-  `,
-});
-CustomTrueFalse.args = {
-  trueValue: 'on',
-  falseValue: 'off',
-};
-CustomTrueFalse.parameters = {
-  docs: {
-    source: {
-      code: `
-<HdForm @submit="onSubmit" class="small">
-  <HdCheckboxCard
-    name="property"
-    native-value="apartment"
-    v-model="value"
-    :disabled="disabled"
-    :mode="mode"
-    :required="required"
-    :indeterminate="indeterminate"
-    true-value="on"
-    false-value="off"
-  >
-    <template #icon>
-      <HdIcon :src="mode === 'card' ? apartmentCommercialIcon : apartmentCommercialIconM" />
-    </template>
-
-    Apartment
-  </HdCheckboxCard>
-
-  <HdButton type="submit">Submit</HdButton>
-  <HdButton type="button" modifier="tertiary" @click="onClear">Reset</HdButton>
-</HdForm>`,
-    },
-    description: {
-      story: `
-You can also change the default value for true-false values by providing native checkbox attributes \`true-value\` and \`false-value\`
-      `,
+    <HdButton type="submit">Submit</HdButton>
+    <HdButton type="button" modifier="tertiary" @click="onClear">Reset</HdButton>
+  </HdForm>`,
+      },
+      description: {
+        story: `
+  You can also change the default value for true-false values by providing native checkbox attributes \`true-value\` and \`false-value\`
+        `,
+      },
     },
   },
 };

@@ -1,21 +1,25 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import { storiesOf } from '@storybook/vue';
 import HdLazyImage from 'homeday-blocks/src/components/HdLazyImage.vue';
 
-storiesOf('Components/Images/HdLazyImage', module)
-  .addParameters({ percy: { skip: true } })
-  .add('default', () => ({
+export default {
+  title: 'Components/Images/HdLazyImage',
+  parameters: {
+    percy: { skip: true },
+  },
+};
+
+export const Default = {
+  render: () => ({
     components: { HdLazyImage },
     template: `
-      <div>
-        <HdLazyImage
-          :src="src"
-          :src-small="srcSmall"
-          style="display: block; width: 500px; height: 500px;"
-        />
-        <button @click="change">Change</button>
-      </div>
-    `,
+        <div>
+          <HdLazyImage
+            :src="src"
+            :src-small="srcSmall"
+            style="display: block; width: 500px; height: 500px;"
+          />
+          <button @click="change">Change</button>
+        </div>
+      `,
     data() {
       return {
         src: 'https://picsum.photos/id/237/2000/2000',
@@ -29,20 +33,25 @@ storiesOf('Components/Images/HdLazyImage', module)
         this.srcSmall = `https://picsum.photos/id/${id}/100/100`;
       },
     },
-  }))
-  .add('as background', () => ({
+  }),
+
+  name: 'default',
+};
+
+export const AsBackground = {
+  render: () => ({
     components: { HdLazyImage },
     template: `
-      <div>
-        <HdLazyImage
-          :src="src"
-          :src-small="srcSmall"
-          :background="true"
-          style="width: 500px; height: 500px; background-size: contain;"
-        />
-        <button @click="change">Change</button>
-      </div>
-    `,
+        <div>
+          <HdLazyImage
+            :src="src"
+            :src-small="srcSmall"
+            :background="true"
+            style="width: 500px; height: 500px; background-size: contain;"
+          />
+          <button @click="change">Change</button>
+        </div>
+      `,
     data() {
       return {
         src: 'https://picsum.photos/id/237/2000/2000',
@@ -56,4 +65,7 @@ storiesOf('Components/Images/HdLazyImage', module)
         this.srcSmall = `https://picsum.photos/id/${id}/100/100`;
       },
     },
-  }));
+  }),
+
+  name: 'as background',
+};

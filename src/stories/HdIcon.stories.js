@@ -25,7 +25,7 @@ export default {
 
 const Template =
   (template) =>
-  (args, { argTypes }) => ({
+  (_args, { argTypes }) => ({
     props: Object.keys(argTypes),
     components: { HdIcon },
     template,

@@ -1,11 +1,11 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import { storiesOf } from '@storybook/vue';
 import { edit as editIcon, delete as deleteIcon } from 'homeday-assets';
 import HdToggle from 'homeday-blocks/src/components/HdToggle.vue';
 
-const stories = storiesOf('Components/Content/HdToggle', module);
+export default {
+  title: 'Components/Content/HdToggle',
+};
 
-stories.add('Default', () => ({
+export const Default = () => ({
   components: { HdToggle },
   data() {
     return {
@@ -28,96 +28,103 @@ stories.add('Default', () => ({
       </HdToggle>
     </div>
   `,
-}));
+});
 
-stories.add('With an action', () => ({
-  components: { HdToggle },
-  data() {
-    return {
-      toggleOpen: false,
-      actions: [
-        {
-          name: 'edit',
-          label: 'bearbeiten',
-          icon: editIcon,
-        },
-      ],
-    };
-  },
-  methods: {
-    toggle(state) {
-      this.toggleOpen = state;
-    },
-    edit() {
-      console.log('edit');
-    },
-  },
-  template: `
-    <div style="max-width:300px;">
-      <HdToggle
-        :open="toggleOpen"
-        :actions="actions"
-        title="HdToggle Title"
-        @toggle="toggle"
-        @edit="edit"
-      >
-        <b>This is the HdToggle body.</b>
-      </HdToggle>
-    </div>
-  `,
-}));
-
-stories.add('With multiple actions', () => ({
-  components: { HdToggle },
-  data() {
-    return {
-      toggleOpen: false,
-      actions: [
-        {
-          name: 'edit',
-          label: 'bearbeiten',
-          icon: editIcon,
-        },
-        {
-          name: 'remove',
-          label: 'löschen',
-          icon: deleteIcon,
-        },
-      ],
-    };
-  },
-  methods: {
-    toggle(state) {
-      this.toggleOpen = state;
-    },
-    edit() {
-      console.log('edit');
-    },
-    remove() {
-      console.log('remove');
-    },
-  },
-  template: `
-    <div style="max-width:300px;">
-      <HdToggle
-        :open="toggleOpen"
-        :actions="actions"
-        title="HdToggle Title"
-        @toggle="toggle"
-        @edit="edit"
-        @remove="remove"
-      >
-        <b>This is the HdToggle body.</b>
-      </HdToggle>
-    </div>
-  `,
-}));
-
-stories.add(
-  'Playground 🎛',
-  (args) => ({
+export const WithAnAction = {
+  render: () => ({
     components: { HdToggle },
-    props: Object.keys(args),
+    data() {
+      return {
+        toggleOpen: false,
+        actions: [
+          {
+            name: 'edit',
+            label: 'bearbeiten',
+            icon: editIcon,
+          },
+        ],
+      };
+    },
+    methods: {
+      toggle(state) {
+        this.toggleOpen = state;
+      },
+      edit() {
+        console.log('edit');
+      },
+    },
+    template: `
+      <div style="max-width:300px;">
+        <HdToggle
+          :open="toggleOpen"
+          :actions="actions"
+          title="HdToggle Title"
+          @toggle="toggle"
+          @edit="edit"
+        >
+          <b>This is the HdToggle body.</b>
+        </HdToggle>
+      </div>
+    `,
+  }),
+
+  name: 'With an action',
+};
+
+export const WithMultipleActions = {
+  render: () => ({
+    components: { HdToggle },
+    data() {
+      return {
+        toggleOpen: false,
+        actions: [
+          {
+            name: 'edit',
+            label: 'bearbeiten',
+            icon: editIcon,
+          },
+          {
+            name: 'remove',
+            label: 'löschen',
+            icon: deleteIcon,
+          },
+        ],
+      };
+    },
+    methods: {
+      toggle(state) {
+        this.toggleOpen = state;
+      },
+      edit() {
+        console.log('edit');
+      },
+      remove() {
+        console.log('remove');
+      },
+    },
+    template: `
+      <div style="max-width:300px;">
+        <HdToggle
+          :open="toggleOpen"
+          :actions="actions"
+          title="HdToggle Title"
+          @toggle="toggle"
+          @edit="edit"
+          @remove="remove"
+        >
+          <b>This is the HdToggle body.</b>
+        </HdToggle>
+      </div>
+    `,
+  }),
+
+  name: 'With multiple actions',
+};
+
+export const Playground = {
+  render: (_args, { argTypes }) => ({
+    components: { HdToggle },
+    props: Object.keys(argTypes),
     data() {
       return {
         toggleOpen: false,
@@ -142,31 +149,33 @@ stories.add(
       </div>
     `,
   }),
-  {
-    args: {
-      title: 'HdToggle Title',
-      open: false,
-      canBeToggled: true,
-      transitionDuration: 300,
+  args: {
+    title: 'HdToggle Title',
+    open: false,
+    canBeToggled: true,
+    transitionDuration: 300,
+  },
+  argTypes: {
+    title: {
+      name: 'Title',
+      control: { type: 'text' },
     },
-    argTypes: {
-      title: {
-        name: 'Title',
-        control: { type: 'text' },
-      },
-      open: {
-        name: 'Open',
-        control: { type: 'boolean' },
-      },
-      canBeToggled: {
-        name: 'Can be toggled',
-        control: { type: 'boolean' },
-      },
-      transitionDuration: {
-        name: 'Transition Duration (ms)',
-        control: { type: 'number' },
-      },
+    open: {
+      name: 'Open',
+      control: { type: 'boolean' },
     },
+    canBeToggled: {
+      name: 'Can be toggled',
+      control: { type: 'boolean' },
+    },
+    transitionDuration: {
+      name: 'Transition Duration (ms)',
+      control: { type: 'number' },
+    },
+  },
+  parameters: {
     percy: { skip: true },
-  }
-);
+  },
+
+  name: 'Playground 🎛',
+};

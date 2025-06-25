@@ -16,7 +16,8 @@ export default {
       control: { type: 'object' },
     },
     lang: {
-      control: { type: 'select', options: ['de', 'en'] },
+      control: { type: 'select' },
+      options: ['de', 'en'],
     },
     required: {
       control: { type: 'boolean' },
@@ -120,151 +121,161 @@ const Template = (args, { argTypes }) => ({
   },
 });
 
-export const Default = Template.bind({});
-
-export const Preselected = Template.bind({});
-Preselected.args = {
-  value: 'daenerys',
+export const Default = {
+  render: Template,
 };
-Preselected.parameters = {
-  docs: {
-    description: {
-      story: 'To pre-select a value, just set an "item" prop in the `v-model`.',
-    },
-    source: {
-      code: `
-<template>
-  <HdRadio
-    v-model="myDataProperty"
-    :name="name"
-    :items="items"
-  />
 
-  <HdButton @click.native="validate">Submit</HdButton>
-</template>
+export const Preselected = {
+  render: Template,
+  args: {
+    value: 'daenerys',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'To pre-select a value, just set an "item" prop in the `v-model`.',
+      },
+      source: {
+        code: `
+  <template>
+    <HdRadio
+      v-model="myDataProperty"
+      :name="name"
+      :items="items"
+    />
 
-<script>
-  export default {
-    data: () => ({
-      myDataProperty: 'option1'
-    }),
-    computed: {
-      items() {
-        return [
-          { label: 'Option 1', value: 'option1' },
-          { label: 'Option 2', value: 'option2' },
-        ]
+    <HdButton @click.native="validate">Submit</HdButton>
+  </template>
+
+  <script>
+    export default {
+      data: () => ({
+        myDataProperty: 'option1'
+      }),
+      computed: {
+        items() {
+          return [
+            { label: 'Option 1', value: 'option1' },
+            { label: 'Option 2', value: 'option2' },
+          ]
+        },
+      },
+    }
+  </script>
+        `,
       },
     },
-  }
-</script>
-      `,
-    },
   },
 };
 
-export const Validation = Template.bind({});
-Validation.args = {
-  required: true,
-};
-Validation.parameters = {
-  docs: {
-    description: {
-      story: `
-You must add the \`required\` prop in order to enable validation.
+export const Validation = {
+  render: Template,
+  args: {
+    required: true,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: `
+  You must add the \`required\` prop in order to enable validation.
 
-You can manually trigger the validation using a \`ref\` in the \`HdRadio\` component and triggering the method \`this.$refs.myRadioRef.validate()\`.
+  You can manually trigger the validation using a \`ref\` in the \`HdRadio\` component and triggering the method \`this.$refs.myRadioRef.validate()\`.
 
-Check the code bellow for a better example.
-      `,
-    },
-    source: {
-      code: `
-<template>
-  <HdRadio
-    v-model="myDataProperty"
-    :name="name"
-    :items="items"
-    required
-    ref="myRadio"
-  />
+  Check the code bellow for a better example.
+        `,
+      },
+      source: {
+        code: `
+  <template>
+    <HdRadio
+      v-model="myDataProperty"
+      :name="name"
+      :items="items"
+      required
+      ref="myRadio"
+    />
 
-  <HdButton @click.native="validate">Submit</HdButton>
-</template>
+    <HdButton @click.native="validate">Submit</HdButton>
+  </template>
 
-<script>
-  export default {
-    methods: {
-      validate() {
-        const isValid = this.$refs.myRadio.validate();
+  <script>
+    export default {
+      methods: {
+        validate() {
+          const isValid = this.$refs.myRadio.validate();
 
-        if (!isValid) {
-          console.log('Not Valid');
-        } else {
-          console.log('Valid');
-        }
+          if (!isValid) {
+            console.log('Not Valid');
+          } else {
+            console.log('Valid');
+          }
+        },
+      },
+    }
+  </script>
+        `,
       },
     },
-  }
-</script>
-      `,
+  },
+};
+
+export const Unlabelled = {
+  render: Template,
+  args: {
+    label: '',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: `If no value or an empty string is passed as the \`label\` prop,
+         the component trims the label area to avoid unneeded empty space`,
+      },
+      source: {
+        code: `
+  <template>
+    <HdRadio
+      v-model="myDataProperty"
+      :name="name"
+      :items="items"
+      label=""
+    />
+  </template>
+        `,
+      },
     },
   },
 };
 
-export const Unlabelled = Template.bind({});
-Unlabelled.args = {
-  label: '',
-};
-Unlabelled.parameters = {
-  docs: {
-    description: {
-      story: `If no value or an empty string is passed as the \`label\` prop,
-       the component trims the label area to avoid unneeded empty space`,
-    },
-    source: {
-      code: `
-<template>
-  <HdRadio
-    v-model="myDataProperty"
-    :name="name"
-    :items="items"
-    label=""
-  />
-</template>
-      `,
-    },
+export const RawHTML = {
+  render: Template,
+  args: {
+    items: [
+      {
+        value: 'EXAMPLE',
+        label: 'This is a <b>Bold</b> text.',
+      },
+    ],
   },
-};
-
-export const RawHTML = Template.bind({});
-RawHTML.args = {
-  items: [
-    {
-      value: 'EXAMPLE',
-      label: 'This is a <b>Bold</b> text.',
-    },
-  ],
-};
-RawHTML.parameters = {
-  docs: {
-    description: {
-      story: `You can also send raw HTML to the label as a string, for example to have bold words.`,
-    },
-    source: {
-      code: `
-<template>
-  <HdRadio
-    v-model="myDataProperty"
-    :name="name"
-    :items="[{
-      value: 'EXAMPLE',
-      label: 'This is a <b>Bold</b> text.'
-    }]"
-    label=""
-  />
-</template>
-      `,
+  parameters: {
+    docs: {
+      description: {
+        story: `You can also send raw HTML to the label as a string, for example to have bold words.`,
+      },
+      source: {
+        code: `
+  <template>
+    <HdRadio
+      v-model="myDataProperty"
+      :name="name"
+      :items="[{
+        value: 'EXAMPLE',
+        label: 'This is a <b>Bold</b> text.'
+      }]"
+      label=""
+    />
+  </template>
+        `,
+      },
     },
   },
 };

@@ -22,135 +22,138 @@ export default {
   args: { ...HdRadioCardStory.args },
 };
 
-export const Group = (_args, { argTypes }) => ({
-  props: Object.keys(argTypes),
-  components: {
-    HdForm,
-    HdRadioCard,
-    HdRadioCardGroup,
-    HdIcon,
-    HdButton,
-  },
-  data: () => ({
-    propertyType: null,
-    apartmentCommercialIcon,
-    apartmentCommercialIconM,
-    houseCastleIcon,
-    houseCastleIconM,
-    rocketIcon,
-    rocketIconM,
+export const Group = {
+  render: (_args, { argTypes }) => ({
+    props: Object.keys(argTypes),
+    components: {
+      HdForm,
+      HdRadioCard,
+      HdRadioCardGroup,
+      HdIcon,
+      HdButton,
+    },
+    data: () => ({
+      propertyType: null,
+      apartmentCommercialIcon,
+      apartmentCommercialIconM,
+      houseCastleIcon,
+      houseCastleIconM,
+      rocketIcon,
+      rocketIconM,
+    }),
+    methods: {
+      onSubmit(result) {
+        console.log(result);
+      },
+      onClear() {
+        this.propertyType = null;
+      },
+    },
+    template: `
+    <div class="hd-radio-card">
+      <h4>
+        Selected value: <b>{{ propertyType }}</b>
+      </h4>
+
+      <HdForm @submit="onSubmit">
+        <HdRadioCardGroup
+          class="radio-group"
+          name="property-group"
+          v-model="propertyType"
+          :disabled="disabled"
+          :mode="mode"
+          :required="required"
+        >
+          <HdRadioCard native-value="apartment">
+            <template #icon>
+              <HdIcon :src="mode === 'card' ? apartmentCommercialIcon : apartmentCommercialIconM" />
+            </template>
+
+            Apartment
+          </HdRadioCard>
+
+          <HdRadioCard native-value="castle">
+            <template #icon>
+              <HdIcon :src="mode === 'card' ? houseCastleIcon : houseCastleIconM" />
+            </template>
+
+            Castle
+          </HdRadioCard>
+
+          <HdRadioCard native-value="space">
+            <template #icon>
+              <HdIcon :src="mode === 'card' ? rocketIcon : rocketIconM" />
+            </template>
+
+            Space
+          </HdRadioCard>
+        </HdRadioCardGroup>
+
+        <HdButton type="submit">Submit</HdButton>
+        <HdButton type="button" modifier="tertiary" @click="onClear">Reset</HdButton>
+      </HdForm>
+    </div>
+    `,
   }),
-  methods: {
-    onSubmit(result) {
-      console.log(result);
-    },
-    onClear() {
-      this.propertyType = null;
-    },
-  },
-  template: `
-  <div class="hd-radio-card">
-    <h4>
-      Selected value: <b>{{ propertyType }}</b>
-    </h4>
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <HdForm @submit="onSubmit">
+    <HdRadioCardGroup
+      class="radio-group"
+      name="property-group"
+      v-model="propertyType"
+      :disabled="disabled"
+      :mode="mode"
+      :required="required"
+    >
+      <HdRadioCard native-value="apartment">
+        <template #icon>
+          <HdIcon :src="apartmentCommercialIcon" />
+        </template>
 
-    <HdForm @submit="onSubmit">
-      <HdRadioCardGroup
-        class="radio-group"
-        name="property-group"
-        v-model="propertyType"
-        :disabled="disabled"
-        :mode="mode"
-        :required="required"
-      >
-        <HdRadioCard native-value="apartment">
-          <template #icon>
-            <HdIcon :src="mode === 'card' ? apartmentCommercialIcon : apartmentCommercialIconM" />
-          </template>
+        Apartment
+      </HdRadioCard>
 
-          Apartment
-        </HdRadioCard>
+      <HdRadioCard native-value="castle">
+        <template #icon>
+          <HdIcon :src="houseCastleIcon" />
+        </template>
 
-        <HdRadioCard native-value="castle">
-          <template #icon>
-            <HdIcon :src="mode === 'card' ? houseCastleIcon : houseCastleIconM" />
-          </template>
+        Castle
+      </HdRadioCard>
 
-          Castle
-        </HdRadioCard>
+      <HdRadioCard native-value="space">
+        <template #icon>
+          <HdIcon :src="rocketIcon" />
+        </template>
 
-        <HdRadioCard native-value="space">
-          <template #icon>
-            <HdIcon :src="mode === 'card' ? rocketIcon : rocketIconM" />
-          </template>
+        Space
+      </HdRadioCard>
+    </HdRadioCardGroup>
 
-          Space
-        </HdRadioCard>
-      </HdRadioCardGroup>
+    <HdButton type="submit">Submit</HdButton>
+    <HdButton type="button" modifier="tertiary" @click="onClear">Reset</HdButton>
+  </HdForm>`,
+      },
+      description: {
+        story: `
+  As the name suggests, \`HdRadioCardGroup\` allows you to work with groups of \`HdRadioCard\`.
 
-      <HdButton type="submit">Submit</HdButton>
-      <HdButton type="button" modifier="tertiary" @click="onClear">Reset</HdButton>
-    </HdForm>
-  </div>
-  `,
-});
-Group.storyName = 'HdRadioCardGroup';
-Group.parameters = {
-  docs: {
-    source: {
-      code: `
-<HdForm @submit="onSubmit">
-  <HdRadioCardGroup
-    class="radio-group"
-    name="property-group"
-    v-model="propertyType"
-    :disabled="disabled"
-    :mode="mode"
-    :required="required"
-  >
-    <HdRadioCard native-value="apartment">
-      <template #icon>
-        <HdIcon :src="apartmentCommercialIcon" />
-      </template>
+  You don't need to use this component since you can pretty much do everything by just using \`HdRadioCard\`.
 
-      Apartment
-    </HdRadioCard>
+  This component can be used for:
 
-    <HdRadioCard native-value="castle">
-      <template #icon>
-        <HdIcon :src="houseCastleIcon" />
-      </template>
+  - Extract logic from \`HdRadioCards\`, since you just will define one time
+  - It handles automatically the children positioning
+  - Validation is handled as a **group** not **individual**
 
-      Castle
-    </HdRadioCard>
-
-    <HdRadioCard native-value="space">
-      <template #icon>
-        <HdIcon :src="rocketIcon" />
-      </template>
-
-      Space
-    </HdRadioCard>
-  </HdRadioCardGroup>
-
-  <HdButton type="submit">Submit</HdButton>
-  <HdButton type="button" modifier="tertiary" @click="onClear">Reset</HdButton>
-</HdForm>`,
-    },
-    description: {
-      story: `
-As the name suggests, \`HdRadioCardGroup\` allows you to work with groups of \`HdRadioCard\`.
-
-You don't need to use this component since you can pretty much do everything by just using \`HdRadioCard\`.
-
-This component can be used for:
-
-- Extract logic from \`HdRadioCards\`, since you just will define one time
-- It handles automatically the children positioning
-- Validation is handled as a **group** not **individual**
-
-> ❗️ As a restriction, all children **must be** \`HdRadioCards\`
-      `,
+  > ❗️ As a restriction, all children **must be** \`HdRadioCards\`
+        `,
+      },
     },
   },
+
+  name: 'HdRadioCardGroup',
 };

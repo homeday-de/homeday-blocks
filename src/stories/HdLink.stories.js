@@ -12,18 +12,15 @@ export default {
       },
     },
     modifier: {
-      control: {
-        type: 'select',
-        options: TYPES,
-      },
+      control: { type: 'select' },
+      options: TYPES,
     },
     container: {
-      control: {
-        type: 'select',
-        options: {
-          light: 'story-container--light',
-          dark: 'story-container--dark',
-        },
+      control: { type: 'select' },
+      options: ['light', 'dark'],
+      mapping: {
+        light: 'story-container--light',
+        dark: 'story-container--dark',
       },
     },
   },
@@ -34,7 +31,7 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
+const Template = (_args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { HdLink },
   computed: {
@@ -84,11 +81,14 @@ const Template = (args, { argTypes }) => ({
   `,
 });
 
-export const Default = Template.bind({});
-Default.parameters = {
-  docs: {
-    description: {
-      component: HdLinkNote,
+export const Default = {
+  render: Template,
+
+  parameters: {
+    docs: {
+      description: {
+        component: HdLinkNote,
+      },
     },
   },
 };

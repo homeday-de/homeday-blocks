@@ -18,7 +18,7 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
+const Template = (_args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { HdDashedList },
   template: `
@@ -29,4 +29,6 @@ const Template = (args, { argTypes }) => ({
   `,
 });
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
+};

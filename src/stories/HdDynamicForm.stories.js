@@ -1,13 +1,15 @@
-/* eslint-disable import/no-extraneous-dependencies, no-console */
-import { storiesOf } from '@storybook/vue';
 import { formatNestedData } from 'homeday-blocks/src/services/utils';
 import HdDynamicForm from 'homeday-blocks/src/components/form/HdDynamicForm.vue';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 import CONFIG from './mocks/forms';
 
-storiesOf('Components/Forms/HdDynamicForm', module)
-  .addDecorator(FormWrapper)
-  .add('profile', () => ({
+export default {
+  title: 'Components/Forms/HdDynamicForm',
+  decorators: [FormWrapper],
+};
+
+export const Profile = {
+  render: () => ({
     components: { HdDynamicForm },
     template:
       '<hd-dynamic-form :items="config" submitLabel="Submit Label" @submit="onSubmit" @blur="onBlur" @focus="onFocus"/>',
@@ -30,8 +32,13 @@ storiesOf('Components/Forms/HdDynamicForm', module)
         console.log('focus', item);
       },
     },
-  }))
-  .add('signup', () => ({
+  }),
+
+  name: 'profile',
+};
+
+export const Signup = {
+  render: () => ({
     components: { HdDynamicForm },
     template:
       '<hd-dynamic-form :items="config" submitLabel="Submit Label" @submit="onSubmit" @blur="onBlur" @focus="onFocus"/>',
@@ -54,8 +61,13 @@ storiesOf('Components/Forms/HdDynamicForm', module)
         console.log('focus', item);
       },
     },
-  }))
-  .add('login', () => ({
+  }),
+
+  name: 'signup',
+};
+
+export const Login = {
+  render: () => ({
     components: { HdDynamicForm },
     template:
       '<hd-dynamic-form :items="config" submitLabel="Submit Label" @submit="onSubmit" @blur="onBlur" @focus="onFocus"/>',
@@ -78,8 +90,13 @@ storiesOf('Components/Forms/HdDynamicForm', module)
         console.log('focus', item);
       },
     },
-  }))
-  .add('specified language', () => ({
+  }),
+
+  name: 'login',
+};
+
+export const SpecifiedLanguage = {
+  render: () => ({
     components: { HdDynamicForm },
     template:
       '<hd-dynamic-form :items="config" submitLabel="Submit Label" lang="en" @submit="onSubmit" @blur="onBlur" @focus="onFocus"/>',
@@ -102,4 +119,7 @@ storiesOf('Components/Forms/HdDynamicForm', module)
         console.log('focus', item);
       },
     },
-  }));
+  }),
+
+  name: 'specified language',
+};

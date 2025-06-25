@@ -6,7 +6,11 @@ export default {
   component: HdNotification,
   argTypes: {
     type: {
-      control: { type: 'select', options: Object.values(TYPES), default: TYPES.NOTIFICATION },
+      control: {
+        type: 'select',
+        options: Object.values(TYPES),
+        default: TYPES.NOTIFICATION,
+      },
       table: {
         defaultValue: { summary: TYPES.NOTIFICATION },
       },
@@ -46,7 +50,7 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
+const Template = (_args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { HdNotification },
   template: `
@@ -58,97 +62,112 @@ const Template = (args, { argTypes }) => ({
   `,
 });
 
-export const Default = Template.bind({});
-
-export const Error = Template.bind({});
-Error.args = {
-  type: TYPES.ERROR,
-  message: 'ERROR notification.',
+export const Default = {
+  render: Template,
 };
-Error.parameters = {
-  docs: {
-    source: {
-      code: `
-<HdNotification
-  type="error"
-  message="ERROR notification."
-/>
-      `,
+
+export const Error = {
+  render: Template,
+  args: {
+    type: TYPES.ERROR,
+    message: 'ERROR notification.',
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <HdNotification
+    type="error"
+    message="ERROR notification."
+  />
+        `,
+      },
     },
   },
 };
 
-export const Notification = Template.bind({});
-Notification.args = {
-  type: TYPES.NOTIFICATION,
-  message: 'NOTIFICATION notification.',
-};
-Notification.parameters = {
-  docs: {
-    source: {
-      code: `
-<HdNotification
-  type="notification"
-  message="NOTIFICATION notification."
-/>
-      `,
+export const Notification = {
+  render: Template,
+  args: {
+    type: TYPES.NOTIFICATION,
+    message: 'NOTIFICATION notification.',
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <HdNotification
+    type="notification"
+    message="NOTIFICATION notification."
+  />
+        `,
+      },
     },
   },
 };
 
-export const Info = Template.bind({});
-Info.args = {
-  type: TYPES.INFO,
-  message: 'INFO notification.',
-};
-Info.parameters = {
-  docs: {
-    source: {
-      code: `
-<HdNotification
-  type="info"
-  message="INFO notification."
-/>
-      `,
+export const Info = {
+  render: Template,
+  args: {
+    type: TYPES.INFO,
+    message: 'INFO notification.',
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <HdNotification
+    type="info"
+    message="INFO notification."
+  />
+        `,
+      },
     },
   },
 };
 
-export const Success = Template.bind({});
-Success.args = {
-  type: TYPES.SUCCESS,
-  message: 'SUCCESS notification.',
-};
-Success.parameters = {
-  docs: {
-    source: {
-      code: `
-<HdNotification
-  type="success"
-  message="SUCCESS notification."
-/>
-      `,
+export const Success = {
+  render: Template,
+  args: {
+    type: TYPES.SUCCESS,
+    message: 'SUCCESS notification.',
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <HdNotification
+    type="success"
+    message="SUCCESS notification."
+  />
+        `,
+      },
     },
   },
 };
 
-export const UsingScopedSlots = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
-  components: { HdNotification },
-  template: `
-    <HdNotification>
-      Custom value <b>HERE!</b>
-    </HdNotification>
-  `,
-});
-UsingScopedSlots.parameters = {
-  docs: {
-    source: {
-      code: `
-<HdNotification>
-  Custom value <b>HERE!</b>
-</HdNotification>
-      `,
+export const UsingScopedSlots = {
+  render: (_args, { argTypes }) => ({
+    props: Object.keys(argTypes),
+    components: { HdNotification },
+    template: `
+      <HdNotification>
+        Custom value <b>HERE!</b>
+      </HdNotification>
+    `,
+  }),
+  args: {
+    message: 'Custom value <b>HERE!</b>',
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <HdNotification>
+    Custom value <b>HERE!</b>
+  </HdNotification>
+        `,
+      },
     },
   },
 };

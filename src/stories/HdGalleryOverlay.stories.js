@@ -1,23 +1,28 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import { storiesOf } from '@storybook/vue';
 import HdGalleryOverlay from 'homeday-blocks/src/components/gallery/HdGalleryOverlay.vue';
 import ITEMS from './mocks/GALLERY_ITEMS';
 
-storiesOf('Components/Images/HdGalleryOverlay', module)
-  .addParameters({ percy: { skip: true } })
-  .add('default', () => ({
+export default {
+  title: 'Components/Images/HdGalleryOverlay',
+
+  parameters: {
+    percy: { skip: true },
+  },
+};
+
+export const Default = {
+  render: () => ({
     components: { HdGalleryOverlay },
     template: `
-      <div style="display: flex; height: calc(100vh - 16px); align-items: center; justify-content: center;">
-      <button @click="showOverlay">Show overlay</button>
-      <HdGalleryOverlay
-        v-if="visible"
-        :items="items"
-        :start-index="0"
-        @close="onClose"
-      />
-      </div>
-    `,
+        <div style="display: flex; height: calc(100vh - 16px); align-items: center; justify-content: center;">
+        <button @click="showOverlay">Show overlay</button>
+        <HdGalleryOverlay
+          v-if="visible"
+          :items="items"
+          :start-index="0"
+          @close="onClose"
+        />
+        </div>
+      `,
     data() {
       return {
         items: ITEMS,
@@ -32,4 +37,7 @@ storiesOf('Components/Images/HdGalleryOverlay', module)
         this.visible = false;
       },
     },
-  }));
+  }),
+
+  name: 'default',
+};

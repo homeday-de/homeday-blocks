@@ -17,7 +17,8 @@ export default {
       control: 'boolean',
     },
     modifier: {
-      control: { type: 'select', options: Object.values(TYPES) },
+      control: { type: 'select' },
+      options: Object.values(TYPES),
       table: {
         defaultValue: { summary: TYPES.PRIMARY },
       },
@@ -38,7 +39,7 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
+const Template = (_args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { HdButton },
   template: `
@@ -71,39 +72,57 @@ const Template = (args, { argTypes }) => ({
   },
 });
 
-export const Primary = Template.bind({});
-Primary.args = {
-  modifier: TYPES.PRIMARY,
-  text: 'Primary',
+export const Primary = {
+  render: Template,
+
+  args: {
+    modifier: TYPES.PRIMARY,
+    text: 'Primary',
+  },
 };
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-  modifier: TYPES.SECONDARY,
-  text: 'Secondary',
+export const Secondary = {
+  render: Template,
+
+  args: {
+    modifier: TYPES.SECONDARY,
+    text: 'Secondary',
+  },
 };
 
-export const Tertiary = Template.bind({});
-Tertiary.args = {
-  modifier: TYPES.TERTIARY,
-  text: 'Tertiary',
+export const Tertiary = {
+  render: Template,
+
+  args: {
+    modifier: TYPES.TERTIARY,
+    text: 'Tertiary',
+  },
 };
 
-export const IconButton = Template.bind({});
-IconButton.args = {
-  modifier: TYPES.PRIMARY,
-  text: '',
-  iconSrc: true,
+export const IconButton = {
+  render: Template,
+
+  args: {
+    modifier: TYPES.PRIMARY,
+    text: '',
+    iconSrc: true,
+  },
 };
 
-export const Flat = Template.bind({});
-Flat.args = {
-  modifier: TYPES.FLAT,
-  text: 'Flat',
+export const Flat = {
+  render: Template,
+
+  args: {
+    modifier: TYPES.FLAT,
+    text: 'Flat',
+  },
 };
 
-export const Ghost = Template.bind({});
-Ghost.args = {
-  modifier: TYPES.GHOST,
-  text: 'Ghost',
+export const Ghost = {
+  render: Template,
+
+  args: {
+    modifier: TYPES.GHOST,
+    text: 'Ghost',
+  },
 };

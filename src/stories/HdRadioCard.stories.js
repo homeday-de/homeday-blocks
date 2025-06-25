@@ -96,150 +96,152 @@ export default {
   },
 };
 
-export const Default = (_args, { argTypes }) => ({
-  props: Object.keys(argTypes),
-  components: {
-    HdForm,
-    HdRadioCard,
-    HdIcon,
-    HdButton,
-  },
-  data: () => ({
-    propertyType: null,
-    apartmentCommercialIcon,
-    apartmentCommercialIconM,
-    houseCastleIcon,
-    houseCastleIconM,
-    rocketIcon,
-    rocketIconM,
+export const Default = {
+  render: (_args, { argTypes }) => ({
+    props: Object.keys(argTypes),
+    components: {
+      HdForm,
+      HdRadioCard,
+      HdIcon,
+      HdButton,
+    },
+    data: () => ({
+      propertyType: null,
+      apartmentCommercialIcon,
+      apartmentCommercialIconM,
+      houseCastleIcon,
+      houseCastleIconM,
+      rocketIcon,
+      rocketIconM,
+    }),
+    methods: {
+      onSubmit(result) {
+        console.log(result);
+      },
+      onClear() {
+        this.propertyType = null;
+        this.formResult = null;
+      },
+    },
+    template: `
+    <div class="hd-radio-card">
+      <h4>Selected value: <b>{{ propertyType }}</b></h4>
+
+      <HdForm @submit="onSubmit" class="grid">
+        <HdRadioCard
+          name="property"
+          native-value="apartment"
+          v-model="propertyType"
+          :disabled="disabled"
+          :mode="mode"
+          :required="required"
+        >
+          <template #icon>
+            <HdIcon :src="mode === 'card' ? apartmentCommercialIcon : apartmentCommercialIconM" />
+          </template>
+
+          Apartment
+        </HdRadioCard>
+
+        <HdRadioCard
+          name="property"
+          native-value="castle"
+          v-model="propertyType"
+          :disabled="disabled"
+          :mode="mode"
+          :required="required"
+        >
+          <template #icon>
+            <HdIcon :src="mode === 'card' ? houseCastleIcon : houseCastleIconM" />
+          </template>
+
+          Castle
+        </HdRadioCard>
+
+        <HdRadioCard
+          name="property"
+          native-value="space"
+          v-model="propertyType"
+          :disabled="disabled"
+          :mode="mode"
+          :required="required"
+        >
+          <template #icon>
+            <HdIcon :src="mode === 'card' ? rocketIcon : rocketIconM" />
+          </template>
+
+          Space
+        </HdRadioCard>
+
+        <HdButton type="submit">Submit</HdButton>
+        <HdButton type="button" modifier="tertiary" @click="onClear">Reset</HdButton>
+      </HdForm>
+    </div>
+    `,
   }),
-  methods: {
-    onSubmit(result) {
-      console.log(result);
-    },
-    onClear() {
-      this.propertyType = null;
-      this.formResult = null;
-    },
-  },
-  template: `
-  <div class="hd-radio-card">
-    <h4>Selected value: <b>{{ propertyType }}</b></h4>
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <HdForm @submit="onSubmit">
+    <HdRadioCard
+      name="property"
+      native-value="apartment"
+      v-model="propertyType"
+      :disabled="disabled"
+      :mode="mode"
+      :required="required"
+    >
+      <template #icon>
+        <HdIcon :src="apartmentCommercialIcon" />
+      </template>
 
-    <HdForm @submit="onSubmit" class="grid">
-      <HdRadioCard
-        name="property"
-        native-value="apartment"
-        v-model="propertyType"
-        :disabled="disabled"
-        :mode="mode"
-        :required="required"
-      >
-        <template #icon>
-          <HdIcon :src="mode === 'card' ? apartmentCommercialIcon : apartmentCommercialIconM" />
-        </template>
+      Apartment
+    </HdRadioCard>
 
-        Apartment
-      </HdRadioCard>
+    <HdRadioCard
+      name="property"
+      native-value="castle"
+      v-model="propertyType"
+      :disabled="disabled"
+      :mode="mode"
+      :required="required"
+    >
+      <template #icon>
+        <HdIcon :src="houseCastleIcon" />
+      </template>
 
-      <HdRadioCard
-        name="property"
-        native-value="castle"
-        v-model="propertyType"
-        :disabled="disabled"
-        :mode="mode"
-        :required="required"
-      >
-        <template #icon>
-          <HdIcon :src="mode === 'card' ? houseCastleIcon : houseCastleIconM" />
-        </template>
+      Castle
+    </HdRadioCard>
 
-        Castle
-      </HdRadioCard>
+    <HdRadioCard
+      name="property"
+      native-value="space"
+      v-model="propertyType"
+      :disabled="disabled"
+      :mode="mode"
+      :required="required"
+    >
+      <template #icon>
+        <HdIcon :src="rocketIcon" />
+      </template>
 
-      <HdRadioCard
-        name="property"
-        native-value="space"
-        v-model="propertyType"
-        :disabled="disabled"
-        :mode="mode"
-        :required="required"
-      >
-        <template #icon>
-          <HdIcon :src="mode === 'card' ? rocketIcon : rocketIconM" />
-        </template>
+      Space
+    </HdRadioCard>
 
-        Space
-      </HdRadioCard>
+    <HdButton type="submit">Submit</HdButton>
+    <HdButton type="button" modifier="tertiary" @click="onClear">Reset</HdButton>
+  </HdForm>`,
+      },
+      description: {
+        story: `
+  A simple radio input that allows you to use a more intuitive way to pick from different options.
 
-      <HdButton type="submit">Submit</HdButton>
-      <HdButton type="button" modifier="tertiary" @click="onClear">Reset</HdButton>
-    </HdForm>
-  </div>
-  `,
-});
-Default.parameters = {
-  docs: {
-    source: {
-      code: `
-<HdForm @submit="onSubmit">
-  <HdRadioCard
-    name="property"
-    native-value="apartment"
-    v-model="propertyType"
-    :disabled="disabled"
-    :mode="mode"
-    :required="required"
-  >
-    <template #icon>
-      <HdIcon :src="apartmentCommercialIcon" />
-    </template>
+  This component has two modes, card, and tile. Just check the documentation and play with it.
 
-    Apartment
-  </HdRadioCard>
-
-  <HdRadioCard
-    name="property"
-    native-value="castle"
-    v-model="propertyType"
-    :disabled="disabled"
-    :mode="mode"
-    :required="required"
-  >
-    <template #icon>
-      <HdIcon :src="houseCastleIcon" />
-    </template>
-
-    Castle
-  </HdRadioCard>
-
-  <HdRadioCard
-    name="property"
-    native-value="space"
-    v-model="propertyType"
-    :disabled="disabled"
-    :mode="mode"
-    :required="required"
-  >
-    <template #icon>
-      <HdIcon :src="rocketIcon" />
-    </template>
-
-    Space
-  </HdRadioCard>
-
-  <HdButton type="submit">Submit</HdButton>
-  <HdButton type="button" modifier="tertiary" @click="onClear">Reset</HdButton>
-</HdForm>`,
-    },
-    description: {
-      component: `
-A simple radio input that allows you to use a more intuitive way to pick from different options.
-
-This component has two modes, card, and tile. Just check the documentation and play with it.
-
-The component works on its own you can group it or use it as a standalone version, but if you need fancier formatting, you can wrap it in a \`HdRadioCardGroup\`
-      `,
+  The component works on its own you can group it or use it as a standalone version, but if you need fancier formatting, you can wrap it in a \`HdRadioCardGroup\`
+        `,
+      },
     },
   },
 };

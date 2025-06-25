@@ -21,7 +21,8 @@ export default {
       description: 'White color, used for black backgrounds',
     },
     modifier: {
-      control: { type: 'select', options: Object.values(HdPagerModifierEnum) },
+      control: { type: 'select' },
+      options: Object.values(HdPagerModifierEnum),
     },
   },
   args: {
@@ -63,65 +64,73 @@ const Template = (_args, { argTypes }) => ({
   },
 });
 
-export const Wide = Template.bind({});
-Wide.args = {
-  modifier: HdPagerModifierEnum.WIDE,
+export const Wide = {
+  render: Template,
+  args: {
+    modifier: HdPagerModifierEnum.WIDE,
+  },
 };
 
-export const White = Template.bind({});
-White.args = {
-  white: true,
+export const White = {
+  render: Template,
+  args: {
+    white: true,
+  },
 };
 
-export const Condensed = Template.bind({});
-Condensed.args = {
-  white: false,
-  count: 10,
-  modifier: HdPagerModifierEnum.CONDENSED,
+export const Condensed = {
+  render: Template,
+  args: {
+    white: false,
+    count: 10,
+    modifier: HdPagerModifierEnum.CONDENSED,
+  },
 };
 
-export const Disabled = (_args, { argTypes }) => ({
-  props: Object.keys(argTypes),
-  components: { HdPager },
-  template: `
-      <div @touchstart="registerStart" @touchend="registerEnd">
-        <p>Clicking on the pager won't change a thing, but you can swipe left/right.</p>
-        <p>Make sure you're in mobile mode to enable swiping.</p>
-        <br />
-        <HdPager
-          v-bind="$props"
-          v-model="page"
-        />
-      </div>
-      `,
-  data() {
-    return {
-      page: 0,
-      touchstartX: 0,
-      touchendX: 0,
-    };
+export const Disabled = {
+  render: (_args, { argTypes }) => ({
+    props: Object.keys(argTypes),
+    components: { HdPager },
+    template: `
+        <div @touchstart="registerStart" @touchend="registerEnd">
+          <p>Clicking on the pager won't change a thing, but you can swipe left/right.</p>
+          <p>Make sure you're in mobile mode to enable swiping.</p>
+          <br />
+          <HdPager
+            v-bind="$props"
+            v-model="page"
+          />
+        </div>
+        `,
+    data() {
+      return {
+        page: 0,
+        touchstartX: 0,
+        touchendX: 0,
+      };
+    },
+    watch: {
+      page(newPage) {
+        console.log('Page changed: ', newPage);
+      },
+    },
+    methods: {
+      handleGesture() {
+        if (this.touchstartX > this.touchendX) this.page += 1;
+        else this.page -= 1;
+      },
+      registerStart(event) {
+        this.touchstartX = event.changedTouches[0].screenX;
+      },
+      registerEnd(event) {
+        this.touchendX = event.changedTouches[0].screenX;
+        this.handleGesture();
+      },
+    },
+  }),
+  args: {
+    disabled: true,
+    count: 5,
+    modifier: HdPagerModifierEnum.CONDENSED,
   },
-  watch: {
-    page(newPage) {
-      console.log('Page changed: ', newPage);
-    },
-  },
-  methods: {
-    handleGesture() {
-      if (this.touchstartX > this.touchendX) this.page += 1;
-      else this.page -= 1;
-    },
-    registerStart(event) {
-      this.touchstartX = event.changedTouches[0].screenX;
-    },
-    registerEnd(event) {
-      this.touchendX = event.changedTouches[0].screenX;
-      this.handleGesture();
-    },
-  },
-});
-Disabled.args = {
-  disabled: true,
-  count: 5,
-  modifier: HdPagerModifierEnum.CONDENSED,
 };

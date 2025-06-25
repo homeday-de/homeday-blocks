@@ -22,136 +22,139 @@ export default {
   args: { ...HdCheckboxCardStory.args },
 };
 
-export const Default = (_args, { argTypes }) => ({
-  props: Object.keys(argTypes),
-  components: {
-    HdForm,
-    HdCheckboxCard,
-    HdCheckboxCardGroup,
-    HdIcon,
-    HdButton,
-  },
-  data: () => ({
-    propertyType: [],
-    apartmentCommercialIcon,
-    apartmentCommercialIconM,
-    houseCastleIcon,
-    houseCastleIconM,
-    rocketIcon,
-    rocketIconM,
+export const Default = {
+  render: (_args, { argTypes }) => ({
+    props: Object.keys(argTypes),
+    components: {
+      HdForm,
+      HdCheckboxCard,
+      HdCheckboxCardGroup,
+      HdIcon,
+      HdButton,
+    },
+    data: () => ({
+      propertyType: [],
+      apartmentCommercialIcon,
+      apartmentCommercialIconM,
+      houseCastleIcon,
+      houseCastleIconM,
+      rocketIcon,
+      rocketIconM,
+    }),
+    methods: {
+      onSubmit(result) {
+        console.log(result);
+      },
+      onClear() {
+        this.propertyType = [];
+      },
+    },
+    template: `
+    <div class="hd-checkbox-card">
+      <h4>
+        Selected value: <b>{{ propertyType }}</b>
+      </h4>
+
+      <HdForm @submit="onSubmit">
+        <HdCheckboxCardGroup
+          class="radio-group"
+          name="property-group"
+          v-model="propertyType"
+          :disabled="disabled"
+          :mode="mode"
+          :required="required"
+        >
+          <HdCheckboxCard native-value="apartment">
+            <template #icon>
+              <HdIcon :src="mode === 'card' ? apartmentCommercialIcon : apartmentCommercialIconM" />
+            </template>
+
+            Apartment
+          </HdCheckboxCard>
+
+          <HdCheckboxCard native-value="castle">
+            <template #icon>
+              <HdIcon :src="mode === 'card' ? houseCastleIcon : houseCastleIconM" />
+            </template>
+
+            Castle
+          </HdCheckboxCard>
+
+          <HdCheckboxCard native-value="space">
+            <template #icon>
+              <HdIcon :src="mode === 'card' ? rocketIcon : rocketIconM" />
+            </template>
+
+            Space
+          </HdCheckboxCard>
+        </HdCheckboxCardGroup>
+
+        <HdButton type="submit">Submit</HdButton>
+        <HdButton type="button" modifier="tertiary" @click="onClear">Reset</HdButton>
+      </HdForm>
+    </div>
+    `,
   }),
-  methods: {
-    onSubmit(result) {
-      console.log(result);
-    },
-    onClear() {
-      this.propertyType = [];
-    },
-  },
-  template: `
-  <div class="hd-checkbox-card">
-    <h4>
-      Selected value: <b>{{ propertyType }}</b>
-    </h4>
+  parameters: {
+    docs: {
+      source: {
+        code: `
+  <HdForm @submit="onSubmit">
+    <HdCheckboxCardGroup
+      class="radio-group"
+      name="property-group"
+      v-model="propertyType"
+      :disabled="disabled"
+      :mode="mode"
+      :required="required"
+      :indeterminate="indeterminate"
+    >
+      <HdCheckboxCard native-value="apartment">
+        <template #icon>
+          <HdIcon :src="mode === 'card' ? apartmentCommercialIcon : apartmentCommercialIconM" />
+        </template>
 
-    <HdForm @submit="onSubmit">
-      <HdCheckboxCardGroup
-        class="radio-group"
-        name="property-group"
-        v-model="propertyType"
-        :disabled="disabled"
-        :mode="mode"
-        :required="required"
-      >
-        <HdCheckboxCard native-value="apartment">
-          <template #icon>
-            <HdIcon :src="mode === 'card' ? apartmentCommercialIcon : apartmentCommercialIconM" />
-          </template>
+        Apartment
+      </HdCheckboxCard>
 
-          Apartment
-        </HdCheckboxCard>
+      <HdCheckboxCard native-value="castle">
+        <template #icon>
+          <HdIcon :src="mode === 'card' ? houseCastleIcon : houseCastleIconM" />
+        </template>
 
-        <HdCheckboxCard native-value="castle">
-          <template #icon>
-            <HdIcon :src="mode === 'card' ? houseCastleIcon : houseCastleIconM" />
-          </template>
+        Castle
+      </HdCheckboxCard>
 
-          Castle
-        </HdCheckboxCard>
+      <HdCheckboxCard native-value="space">
+        <template #icon>
+          <HdIcon :src="mode === 'card' ? rocketIcon : rocketIconM" />
+        </template>
 
-        <HdCheckboxCard native-value="space">
-          <template #icon>
-            <HdIcon :src="mode === 'card' ? rocketIcon : rocketIconM" />
-          </template>
+        Space
+      </HdCheckboxCard>
+    </HdCheckboxCardGroup>
 
-          Space
-        </HdCheckboxCard>
-      </HdCheckboxCardGroup>
+    <HdButton type="submit">Submit</HdButton>
+    <HdButton type="button" modifier="tertiary" @click="onClear">Reset</HdButton>
+  </HdForm>`,
+      },
+      description: {
+        story: `
+  As the name suggests, \`HdCheckboxCardGroup\` allows you to work with groups of \`HdCheckboxCard\`.
 
-      <HdButton type="submit">Submit</HdButton>
-      <HdButton type="button" modifier="tertiary" @click="onClear">Reset</HdButton>
-    </HdForm>
-  </div>
-  `,
-});
-Default.storyName = 'HdCheckboxCardGroup';
-Default.parameters = {
-  docs: {
-    source: {
-      code: `
-<HdForm @submit="onSubmit">
-  <HdCheckboxCardGroup
-    class="radio-group"
-    name="property-group"
-    v-model="propertyType"
-    :disabled="disabled"
-    :mode="mode"
-    :required="required"
-    :indeterminate="indeterminate"
-  >
-    <HdCheckboxCard native-value="apartment">
-      <template #icon>
-        <HdIcon :src="mode === 'card' ? apartmentCommercialIcon : apartmentCommercialIconM" />
-      </template>
+  You don't need to use this component since you can pretty much do everything by just using \`HdCheckboxCard\`.
 
-      Apartment
-    </HdCheckboxCard>
+  This component can be used for:
 
-    <HdCheckboxCard native-value="castle">
-      <template #icon>
-        <HdIcon :src="mode === 'card' ? houseCastleIcon : houseCastleIconM" />
-      </template>
+  - Extract logic from \`HdCheckboxCards\`, since you just will define one time
+  - It handles automatically the children positioning
+  - Validation is handled as a **group** not **individual**
 
-      Castle
-    </HdCheckboxCard>
-
-    <HdCheckboxCard native-value="space">
-      <template #icon>
-        <HdIcon :src="mode === 'card' ? rocketIcon : rocketIconM" />
-      </template>
-
-      Space
-    </HdCheckboxCard>
-  </HdCheckboxCardGroup>
-
-  <HdButton type="submit">Submit</HdButton>
-  <HdButton type="button" modifier="tertiary" @click="onClear">Reset</HdButton>
-</HdForm>`,
-    },
-    description: {
-      story: `
-As the name suggests, \`HdCheckboxCardGroup\` allows you to work with groups of \`HdCheckboxCard\`.
-
-You don't need to use this component since you can pretty much do everything by just using \`HdCheckboxCard\`.
-
-This component can be used for:
-
-- Extract logic from \`HdCheckboxCards\`, since you just will define one time
-- It handles automatically the children positioning
-- Validation is handled as a **group** not **individual**
-
-> As a restriction, all children **must be** \`HdCheckboxCards\`
-      `,
+  > As a restriction, all children **must be** \`HdCheckboxCards\`
+        `,
+      },
     },
   },
+
+  name: 'HdCheckboxCardGroup',
 };

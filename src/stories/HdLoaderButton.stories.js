@@ -37,7 +37,7 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
+const Template = (_args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { HdLoaderButton },
   template: `
@@ -56,11 +56,14 @@ const Template = (args, { argTypes }) => ({
   `,
 });
 
-export const Default = Template.bind({});
-Default.parameters = {
-  docs: {
-    description: {
-      component: hdLoaderButtonNote,
+export const Default = {
+  render: Template,
+
+  parameters: {
+    docs: {
+      description: {
+        story: hdLoaderButtonNote,
+      },
     },
   },
 };

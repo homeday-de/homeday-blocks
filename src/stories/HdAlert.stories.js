@@ -7,7 +7,8 @@ export default {
   component: HdAlert,
   argTypes: {
     type: {
-      control: { type: 'select', options: Object.keys(TYPES) },
+      control: { type: 'select' },
+      options: Object.keys(TYPES),
       table: {
         defaultValue: { summary: 'info' },
       },
@@ -43,7 +44,7 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
+const Template = (_args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { HdAlert },
   template: `
@@ -57,28 +58,42 @@ const Template = (args, { argTypes }) => ({
   `,
 });
 
-export const Default = Template.bind({});
-
-export const Info = Template.bind({});
-Info.args = {
-  type: 'info',
-  text: 'A message with type: info',
+export const Default = {
+  render: Template,
 };
 
-export const Success = Template.bind({});
-Success.args = {
-  type: 'success',
-  text: 'A message with type: success',
+export const Info = {
+  render: Template,
+
+  args: {
+    type: 'info',
+    text: 'A message with type: info',
+  },
 };
 
-export const Warning = Template.bind({});
-Warning.args = {
-  type: 'warning',
-  text: 'A message with type: warning',
+export const Success = {
+  render: Template,
+
+  args: {
+    type: 'success',
+    text: 'A message with type: success',
+  },
 };
 
-export const Error = Template.bind({});
-Error.args = {
-  type: 'error',
-  text: 'A message with type: error',
+export const Warning = {
+  render: Template,
+
+  args: {
+    type: 'warning',
+    text: 'A message with type: warning',
+  },
+};
+
+export const Error = {
+  render: Template,
+
+  args: {
+    type: 'error',
+    text: 'A message with type: error',
+  },
 };
