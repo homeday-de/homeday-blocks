@@ -1,0 +1,59 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Guidelines/Spacing" />
+
+# Spacing
+
+Spacing values range from 2px to 64px and all of them are defined as SASS variables.
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Value</th>
+      <th>Variable</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Extra extra small</td>
+      <td>2px</td>
+      <td>$sp-xxs</td>
+    </tr>
+    <tr>
+      <td>Extra small</td>
+      <td>4px</td>
+      <td>$sp-xs</td>
+    </tr>
+    <tr>
+      <td>Small</td>
+      <td>8px</td>
+      <td>$sp-s</td>
+    </tr>
+    <tr>
+      <td>Medium</td>
+      <td>16px</td>
+      <td>$sp-m</td>
+    </tr>
+    <tr>
+      <td>Large</td>
+      <td>32px</td>
+      <td>$sp-l</td>
+    </tr>
+    <tr>
+      <td>Extra large</td>
+      <td>64px</td>
+      <td>$sp-xl</td>
+    </tr>
+  </tbody>
+</table>
+<br />
+
+### Usage examples:
+
+```css
+.homeday-block {
+  padding: $sp-s $sp-l;
+  margin-bottom: $sp-xl;
+}
+```
