@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🚪
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           persist-credentials: false
 
@@ -21,7 +21,7 @@ jobs:
         id: nvm
 
       - name: Set up the right node version 📌
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
 
@@ -42,7 +42,7 @@ jobs:
           SOURCE_DIR: 'dist'
 
       - name: Add comment 💬
-        uses: marocchino/sticky-pull-request-comment@v2.2.0
+        uses: marocchino/sticky-pull-request-comment@v2
         with:
           message: |
             🚀 This PR has been deployed here: https://frontend-pulls.homeday.de/${{ env.REPO_NAME }}/${{ env.PR_NUMBER }}/
