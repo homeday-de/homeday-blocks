@@ -87,7 +87,7 @@ export const Default = {
   parameters: {
     docs: {
       description: {
-        component: HdLinkNote,
+        story: HdLinkNote,
       },
     },
   },
