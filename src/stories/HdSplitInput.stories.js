@@ -1,24 +1,26 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
-import { text } from '@storybook/addon-knobs';
 import HdSplitInput from 'homeday-blocks/src/components/form/HdSplitInput.vue';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 import icon from './assets/ic_user.svg';
 
-storiesOf('Components/Forms/HdSplitInput', module)
-  .addDecorator(FormWrapper)
-  .add('required', () => ({
+export default {
+  title: 'Components/Forms/HdSplitInput',
+  decorators: [FormWrapper],
+};
+
+export const Required = {
+  render: () => ({
     components: { HdSplitInput },
     template: `
-      <HdSplitInput
-        v-model="value"
-        :fields="fields"
-        :required="true"
-        name="test"
-        label="Label"
-      />
-    `,
+        <HdSplitInput
+          v-model="value"
+          :fields="fields"
+          :required="true"
+          name="test"
+          label="Label"
+        />
+      `,
     data() {
       return {
         value: {},
@@ -43,18 +45,23 @@ storiesOf('Components/Forms/HdSplitInput', module)
         action('input')(value);
       },
     },
-  }))
-  .add('disabled', () => ({
+  }),
+
+  name: 'required',
+};
+
+export const Disabled = {
+  render: () => ({
     components: { HdSplitInput },
     template: `
-      <HdSplitInput
-        v-model="value"
-        :fields="fields"
-        :disabled="true"
-        name="test"
-        label="Label"
-      />
-    `,
+        <HdSplitInput
+          v-model="value"
+          :fields="fields"
+          :disabled="true"
+          name="test"
+          label="Label"
+        />
+      `,
     data() {
       return {
         value: {},
@@ -74,24 +81,24 @@ storiesOf('Components/Forms/HdSplitInput', module)
         ];
       },
     },
-  }))
-  .add('with icon 🎛', () => ({
+  }),
+
+  name: 'disabled',
+};
+
+export const WithIcon = {
+  render: (_args, { argTypes }) => ({
     components: { HdSplitInput },
     template: `
-      <HdSplitInput
-        v-model="value"
-        :fields="fields"
-        :icon="icon"
-        name="test"
-        label="Label"
-      />
-    `,
-    props: {
-      icon: {
-        type: String,
-        default: text('icon', icon),
-      },
-    },
+    <HdSplitInput
+      v-model="value"
+      :fields="fields"
+      :icon="icon"
+      name="test"
+      label="Label"
+    />
+  `,
+    props: Object.keys(argTypes),
     data() {
       return {
         value: {},
@@ -111,23 +118,33 @@ storiesOf('Components/Forms/HdSplitInput', module)
         ];
       },
     },
-  }))
-  .add('Custom separator 🎛', () => ({
+  }),
+  args: {
+    icon,
+  },
+  argTypes: {
+    icon: {
+      name: 'Icon',
+      control: { type: 'text' },
+    },
+  },
+
+  name: 'with icon 🎛',
+};
+
+export const CustomSeparator = {
+  render: (_args, { argTypes }) => ({
     components: { HdSplitInput },
     template: `
-      <HdSplitInput
-        v-model="value"
-        :fields="fields"
-        :separator="separator"
-        name="test"
-        label="Date"
-      />
-    `,
-    props: {
-      separator: {
-        default: text('Separator', '/'),
-      },
-    },
+    <HdSplitInput
+      v-model="value"
+      :fields="fields"
+      :separator="separator"
+      name="test"
+      label="Date"
+    />
+  `,
+    props: Object.keys(argTypes),
     data() {
       return {
         value: {},
@@ -168,19 +185,33 @@ storiesOf('Components/Forms/HdSplitInput', module)
         },
       },
     },
-  }))
-  .add('Dynamic example: Range', () => ({
+  }),
+  args: {
+    separator: '/',
+  },
+  argTypes: {
+    separator: {
+      name: 'Separator',
+      control: { type: 'text' },
+    },
+  },
+
+  name: 'Custom separator 🎛',
+};
+
+export const DynamicExampleRange = {
+  render: () => ({
     components: { HdSplitInput },
     template: `
-      <HdSplitInput
-        v-model="value"
-        :fields="fields"
-        :required="true"
-        name="test"
-        label="Range"
-        @fieldBlur="onFieldBlur"
-      />
-    `,
+        <HdSplitInput
+          v-model="value"
+          :fields="fields"
+          :required="true"
+          name="test"
+          label="Range"
+          @fieldBlur="onFieldBlur"
+        />
+      `,
     data() {
       return {
         value: {
@@ -236,4 +267,7 @@ storiesOf('Components/Forms/HdSplitInput', module)
         this.value.max = newMax;
       },
     },
-  }));
+  }),
+
+  name: 'Dynamic example: Range',
+};

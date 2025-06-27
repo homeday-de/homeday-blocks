@@ -173,7 +173,7 @@ export default {
     width: 100%;
     padding-left: $sp-s;
     position: absolute;
-    top: 66px; // input height + margin
+    top: 58px; // input height + margin
     display: flex;
     align-items: center;
     visibility: hidden;

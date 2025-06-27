@@ -16,7 +16,7 @@ export default {
   parameters: { percy: { skip: true } },
 };
 
-const Template = (args, { argTypes }) => ({
+const Template = (_args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { HdCalendar },
   template: `
@@ -28,9 +28,13 @@ const Template = (args, { argTypes }) => ({
   `,
 });
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
+};
 
-export const WithDisabledIndexes = Template.bind({});
-WithDisabledIndexes.args = {
-  disabledIndexes: [1, 6, 2, 5],
+export const WithDisabledIndexes = {
+  render: Template,
+  args: {
+    disabledIndexes: [1, 6, 2, 5],
+  },
 };

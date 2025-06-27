@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import HdModal from 'homeday-blocks/src/components/HdModal.vue';
 import { checkCircle as checkCircleIcon } from 'homeday-assets/M';
 import { bank } from 'homeday-assets';
@@ -47,7 +46,7 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
+const Template = (_args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { HdModal },
   template: `
@@ -103,7 +102,7 @@ const Template = (args, { argTypes }) => ({
   },
 });
 
-const TemplateWithCustomFooter = (args, { argTypes }) => ({
+const TemplateWithCustomFooter = (_args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { HdModal },
   template: `
@@ -143,7 +142,7 @@ const TemplateWithCustomFooter = (args, { argTypes }) => ({
   },
 });
 
-const TemplateWithOverrideDefaultSlot = (args, { argTypes }) => ({
+const TemplateWithOverrideDefaultSlot = (_args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { HdModal },
   template: `
@@ -176,23 +175,35 @@ const TemplateWithOverrideDefaultSlot = (args, { argTypes }) => ({
   },
 });
 
-export const Default = Template.bind({});
-
-export const WithIcon = Template.bind({});
-WithIcon.args = {
-  withIcon: true,
+export const Default = {
+  render: Template,
 };
 
-export const WideButtons = Template.bind({});
-WideButtons.args = {
-  isWide: true,
+export const WithIcon = {
+  render: Template,
+  args: {
+    withIcon: true,
+  },
 };
 
-export const WithoutCloseButton = Template.bind({});
-WithoutCloseButton.args = {
-  isCloseButtonVisible: false,
+export const WideButtons = {
+  render: Template,
+  args: {
+    isWide: true,
+  },
 };
 
-export const WithOverrideDefaultSlot = TemplateWithOverrideDefaultSlot.bind({});
+export const WithoutCloseButton = {
+  render: Template,
+  args: {
+    isCloseButtonVisible: false,
+  },
+};
 
-export const WithCustomFooter = TemplateWithCustomFooter.bind({});
+export const WithOverrideDefaultSlot = {
+  render: TemplateWithOverrideDefaultSlot,
+};
+
+export const WithCustomFooter = {
+  render: TemplateWithCustomFooter,
+};

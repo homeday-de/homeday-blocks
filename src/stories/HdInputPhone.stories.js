@@ -1,22 +1,27 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import HdInputPhone from 'homeday-blocks/src/components/form/HdInputPhone.vue';
-import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
+import HdInputPhone from 'homeday-blocks/src/components/form/HdInputPhone.vue';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 
-storiesOf('Components/Forms/HdInputPhone', module)
-  .addParameters({ options: { enableShortcuts: false } })
-  .addDecorator(FormWrapper)
-  .add('simple', () => ({
+export default {
+  title: 'Components/Forms/HdInputPhone',
+  decorators: [FormWrapper],
+  parameters: {
+    options: { enableShortcuts: false },
+  },
+};
+
+export const Simple = {
+  render: () => ({
     components: { HdInputPhone },
     template: `
-      <HdInputPhone
-        v-model="value"
-        name="test"
-        lang="de"
-        :preferredCountries="['DE', 'AT', 'BE']"
-      />
-    `,
+        <HdInputPhone
+          v-model="value"
+          name="test"
+          lang="de"
+          :preferredCountries="['DE', 'AT', 'BE']"
+        />
+      `,
     data() {
       return {
         value: '',
@@ -27,4 +32,7 @@ storiesOf('Components/Forms/HdInputPhone', module)
         action('input')(value);
       },
     },
-  }));
+  }),
+
+  name: 'simple',
+};

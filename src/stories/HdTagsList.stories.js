@@ -7,7 +7,8 @@ export default {
   component: HdTagsList,
   argTypes: {
     modifier: {
-      control: { type: 'select', options: Object.values(TYPES) },
+      control: { type: 'select' },
+      options: Object.values(TYPES),
     },
   },
   args: {
@@ -16,8 +17,12 @@ export default {
   },
 };
 
-export const DEFAULT = (_, { argTypes }) => ({
-  props: Object.keys(argTypes),
-  components: { HdTagsList },
-  template: '<hd-tags-list v-bind="$props" />',
-});
+export const DEFAULT = {
+  render: (_, { argTypes }) => ({
+    props: Object.keys(argTypes),
+    components: { HdTagsList },
+    template: '<hd-tags-list v-bind="$props" />',
+  }),
+
+  name: 'default',
+};

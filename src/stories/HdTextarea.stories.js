@@ -1,23 +1,26 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import HdTextarea from 'homeday-blocks/src/components/form/HdTextarea.vue';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 import icon from './assets/ic_user.svg';
 
-storiesOf('Components/Forms/HdTextarea', module)
-  .addDecorator(FormWrapper)
-  .add('required', () => ({
+export default {
+  title: 'Components/Forms/HdTextarea',
+  decorators: [FormWrapper],
+};
+
+export const Required = {
+  render: () => ({
     components: { HdTextarea },
     template: `
-      <HdTextarea
-        v-model="value"
-        :required="true"
-        name="test"
-        label="Label"
-        placeholder="Placeholder..."
-      />
-    `,
+        <HdTextarea
+          v-model="value"
+          :required="true"
+          name="test"
+          label="Label"
+          placeholder="Placeholder..."
+        />
+      `,
     data() {
       return {
         value: '',
@@ -28,17 +31,22 @@ storiesOf('Components/Forms/HdTextarea', module)
         action('input')(value);
       },
     },
-  }))
-  .add('prefilled', () => ({
+  }),
+
+  name: 'required',
+};
+
+export const Prefilled = {
+  render: () => ({
     components: { HdTextarea },
     template: `
-      <HdTextarea
-        v-model="value"
-        name="test"
-        label="Label"
-        placeholder="Placeholder..."
-      />
-    `,
+        <HdTextarea
+          v-model="value"
+          name="test"
+          label="Label"
+          placeholder="Placeholder..."
+        />
+      `,
     data() {
       return {
         value: 'Your default value goes here',
@@ -49,90 +57,110 @@ storiesOf('Components/Forms/HdTextarea', module)
         action('input')(value);
       },
     },
-  }))
-  .add(
-    'custom translation',
-    () => ({
-      components: { HdTextarea },
-      template: `
-      <HdTextarea
-        v-model="value"
-        :required="true"
-        :texts="texts"
-        name="test"
-        label="Label"
-        placeholder="Placeholder..."
-      />
-    `,
-      data() {
-        return {
-          value: '',
-          texts: {
-            FORM: {
-              VALIDATION: {
-                REQUIRED: 'Hey you, yeah you! Fill it out!',
-              },
+  }),
+
+  name: 'prefilled',
+};
+
+export const CustomTranslation = {
+  render: () => ({
+    components: { HdTextarea },
+    template: `
+    <HdTextarea
+      v-model="value"
+      :required="true"
+      :texts="texts"
+      name="test"
+      label="Label"
+      placeholder="Placeholder..."
+    />
+  `,
+    data() {
+      return {
+        value: '',
+        texts: {
+          FORM: {
+            VALIDATION: {
+              REQUIRED: 'Hey you, yeah you! Fill it out!',
             },
           },
-        };
-      },
-      watch: {
-        value(value) {
-          action('input')(value);
         },
+      };
+    },
+    watch: {
+      value(value) {
+        action('input')(value);
       },
-    }),
-    { percy: { skip: true } }
-  )
-  .add('disabled', () => ({
+    },
+  }),
+  parameters: { percy: { skip: true } },
+
+  name: 'custom translation',
+};
+
+export const Disabled = {
+  render: () => ({
     components: { HdTextarea },
     template: `
-      <HdTextarea
-        v-model="value"
-        :disabled="true"
-        name="test"
-        label="Label"
-        placeholder="Placeholder..."
-      />
-    `,
+        <HdTextarea
+          v-model="value"
+          :disabled="true"
+          name="test"
+          label="Label"
+          placeholder="Placeholder..."
+        />
+      `,
     data() {
       return {
         value: '',
       };
     },
-  }))
-  .add('maxlength', () => ({
+  }),
+
+  name: 'disabled',
+};
+
+export const Maxlength = {
+  render: () => ({
     components: { HdTextarea },
     template: `
-      <HdTextarea
-        v-model="value"
-        :maxlength="500"
-        name="test"
-        label="Label"
-        placeholder="Placeholder..."
-      />
-    `,
+        <HdTextarea
+          v-model="value"
+          :maxlength="500"
+          name="test"
+          label="Label"
+          placeholder="Placeholder..."
+        />
+      `,
     data() {
       return {
         value: '',
       };
     },
-  }))
-  .add('with icon', () => ({
+  }),
+
+  name: 'maxlength',
+};
+
+export const WithIcon = {
+  render: () => ({
     components: { HdTextarea },
     template: `
-      <HdTextarea
-        v-model="value"
-        :icon="icon"
-        name="test"
-        label="Label"
-        placeholder="Placeholder..."
-      />
-    `,
+        <HdTextarea
+          v-model="value"
+          :icon="icon"
+          name="test"
+          label="Label"
+          placeholder="Placeholder..."
+        />
+      `,
     data() {
       return {
         value: '',
         icon,
       };
     },
-  }));
+  }),
+
+  name: 'with icon',
+};

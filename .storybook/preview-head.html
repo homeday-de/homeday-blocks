@@ -1,2 +1,11 @@
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,900" rel="stylesheet" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css" rel="stylesheet" />
+
+<style>
+  /* insane selector to hide empty argstables */
+  .sbdocs-content
+    div.sb-anchor:has(+ div:not(.sb-anchor))
+    + div:not(:has(table)) {
+    display: none;
+  }
+</style>

@@ -261,8 +261,8 @@ export default {
   $range: &;
   height: $sp-l;
   position: relative;
-  display: flex;
-  align-items: center;
+  display: flex !important;
+  align-items: center !important;
 
   &:focus {
     outline: none;

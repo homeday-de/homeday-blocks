@@ -1,12 +1,15 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
-import { text } from '@storybook/addon-knobs';
 import HdRadioButton from 'homeday-blocks/src/components/buttons/HdRadioButton.vue';
 
-storiesOf('Components/Selection Controls/HdRadioButton', module).add('base 🎛', () => ({
-  components: { HdRadioButton },
-  template: `<HdRadioButton
+export default {
+  title: 'Components/Selection Controls/HdRadioButton',
+};
+
+export const Base = {
+  render: (_args, { argTypes }) => ({
+    components: { HdRadioButton },
+    template: `<HdRadioButton
       @select="action"
       :desktopIcon="desktopIcon"
       :desktopIconHover="desktopIconHover"
@@ -15,31 +18,43 @@ storiesOf('Components/Selection Controls/HdRadioButton', module).add('base 🎛'
       :value="value"
       :name="name"
     />`,
-  props: {
+    props: Object.keys(argTypes),
+    methods: { action: action('clicked') },
+  }),
+  args: {
+    label: 'Test Label',
+    desktopIcon: 'https://picsum.photos/id/237/96',
+    desktopIconHover: 'https://picsum.photos/id/237/96?grayscale',
+    mobileIcon: 'https://picsum.photos/id/237/48',
+    value: 'Value',
+    name: 'Name',
+  },
+  argTypes: {
     label: {
-      type: String,
-      default: text('label', 'Test Label'),
+      name: 'Label',
+      control: { type: 'text' },
     },
     desktopIcon: {
-      type: String,
-      default: text('desktopIcon', 'https://via.placeholder.com/96'),
+      name: 'Desktop Icon',
+      control: { type: 'text' },
     },
     desktopIconHover: {
-      type: String,
-      default: text('desktopIconHover', 'https://via.placeholder.com/96?text=Hover'),
+      name: 'Desktop Icon Hover',
+      control: { type: 'text' },
     },
     mobileIcon: {
-      type: String,
-      default: text('mobileIcon', 'https://via.placeholder.com/96'),
+      name: 'Mobile Icon',
+      control: { type: 'text' },
     },
     value: {
-      type: String,
-      default: text('value', 'Value'),
+      name: 'Value',
+      control: { type: 'text' },
     },
     name: {
-      type: String,
-      default: text('name', 'Name'),
+      name: 'Name',
+      control: { type: 'text' },
     },
   },
-  methods: { action: action('clicked') },
-}));
+
+  name: 'base 🎛',
+};

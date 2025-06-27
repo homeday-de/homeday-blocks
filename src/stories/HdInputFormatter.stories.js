@@ -1,23 +1,28 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import HdInputFormatter from 'homeday-blocks/src/components/form/HdInputFormatter.vue';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 
-storiesOf('Components/Forms/HdInputFormatter', module)
-  .addParameters({ percy: { skip: true } })
-  .addDecorator(FormWrapper)
-  .add('simple', () => ({
+export default {
+  title: 'Components/Forms/HdInputFormatter',
+  decorators: [FormWrapper],
+  parameters: {
+    percy: { skip: true },
+  },
+};
+
+export const Simple = {
+  render: () => ({
     components: { HdInputFormatter },
     template: `
-      <HdInputFormatter
-        v-model="value"
-        :formatter="formatter"
-        name="test"
-        label="Currency formatter"
-        type="number"
-      />
-    `,
+        <HdInputFormatter
+          v-model="value"
+          :formatter="formatter"
+          name="test"
+          label="Currency formatter"
+          type="number"
+        />
+      `,
     data() {
       return {
         value: 123,
@@ -37,24 +42,29 @@ storiesOf('Components/Forms/HdInputFormatter', module)
         action('input')(value);
       },
     },
-  }))
-  .add('with validation', () => ({
+  }),
+
+  name: 'simple',
+};
+
+export const WithValidation = {
+  render: () => ({
     components: { HdInputFormatter },
     template: `
-      <div class="text-xsmall">
-        <p>Try a value lower than 1.000.000</p><br>
-        <HdInputFormatter
-          v-model="value"
-          :formatter="formatter"
-          name="test"
-          label="Currency formatter"
-          type="number"
-          :custom-rules="[rule]"
-        />
-        <p>As you can see, the validation is done on the original value, and not the formatted one
-        (which contain some dots htat make parsing hard)</p>
-      </div>
-    `,
+        <div class="text-xsmall">
+          <p>Try a value lower than 1.000.000</p><br>
+          <HdInputFormatter
+            v-model="value"
+            :formatter="formatter"
+            name="test"
+            label="Currency formatter"
+            type="number"
+            :custom-rules="[rule]"
+          />
+          <p>As you can see, the validation is done on the original value, and not the formatted one
+          (which contain some dots htat make parsing hard)</p>
+        </div>
+      `,
     data() {
       return {
         value: 50,
@@ -68,7 +78,13 @@ storiesOf('Components/Forms/HdInputFormatter', module)
     },
     methods: {
       formatter(value) {
-        return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(value);
+        return new Intl.NumberFormat('de-DE', {
+          style: 'currency',
+          currency: 'EUR',
+        }).format(value);
       },
     },
-  }));
+  }),
+
+  name: 'with validation',
+};

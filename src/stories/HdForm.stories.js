@@ -18,7 +18,7 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
+const Template = (_args, { argTypes }) => ({
   components: {
     HdForm,
     HdInput,
@@ -32,13 +32,13 @@ const Template = (args, { argTypes }) => ({
       @change="onFormChange"
       v-bind="$props"
     >
-      <h2><b>Personal data:</b></h2>
+      <h2><b>Personal data:</b></h2><br />
       <HdInput label="First name" name="firstName" v-model="firstName" />
       <HdInputFormatter label="Age*" name="age" v-model="age" :formatter="(a) => a+' years old'" required />
       <HdInput label="Last name*" name="lastName" v-model="lastName" required />
       <br>
-      <h2><b>Address:</b></h2>
-      <p>Unlike HdDynamicForm, HdForm uses slots, which allows us to customize our form the way we want.</p>
+      <h2><b>Address:</b></h2><br />
+      <p>Unlike HdDynamicForm, HdForm uses slots, which allows us to customize our form the way we want.</p><br />
       <div style="display: flex">
         <HdInput style="width: 70%; margin-right: 16px" label="Street*" name="address.street" v-model="address.street" required />
         <HdInput style="flex: 1" label="House Nr.*" name="address.houseNumber" v-model="address.houseNumber" required />
@@ -47,9 +47,9 @@ const Template = (args, { argTypes }) => ({
       <br><br>
       <HdCheckbox inner-label="I'm not a bot*" name="isNotRobot" v-model="isNotRobot" required />
       <button>Submit</button>
-      <br>
+      <br /><br />
       Submitted data (check the Actions tab bellow for the full payload):
-      <pre style="background-color: #f5f5f5; border-radius: 5px">{{ submittedDataString }}</pre>
+      <pre style="background-color: #f5f5f5; border-radius: 5px; margin-top: 8px;">{{ submittedDataString }}</pre>
     </HdForm>
   `,
   data() {
@@ -81,4 +81,6 @@ const Template = (args, { argTypes }) => ({
   },
 });
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
+};

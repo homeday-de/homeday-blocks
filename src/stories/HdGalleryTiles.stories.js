@@ -1,21 +1,24 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import SizedContainerWrapper from 'homeday-blocks/src/storiesWrappers/SizedContainerWrapper';
 import HdGalleryTiles from 'homeday-blocks/src/components/gallery/HdGalleryTiles.vue';
 import ITEMS from './mocks/GALLERY_ITEMS';
 
-storiesOf('Components/Images/HdGalleryTiles', module)
-  .addDecorator(SizedContainerWrapper)
-  .add('default', () => ({
+export default {
+  title: 'Components/Images/HdGalleryTiles',
+  decorators: [SizedContainerWrapper],
+};
+
+export const Default = {
+  render: () => ({
     components: { HdGalleryTiles },
     template: `
-    <HdGalleryTiles
-      :items="items"
-      class="expose__gallery expose__gallery--tiles"
-      @itemClick="onItemClick"
-    />
-  `,
+      <HdGalleryTiles
+        :items="items"
+        class="expose__gallery expose__gallery--tiles"
+        @itemClick="onItemClick"
+      />
+    `,
     data() {
       return {
         items: ITEMS,
@@ -27,16 +30,21 @@ storiesOf('Components/Images/HdGalleryTiles', module)
         action('itemClicked')(itemIndex);
       },
     },
-  }))
-  .add('3 images', () => ({
+  }),
+
+  name: 'default',
+};
+
+export const ThreeImages = {
+  render: () => ({
     components: { HdGalleryTiles },
     template: `
-    <HdGalleryTiles
-      :items="items"
-      class="expose__gallery expose__gallery--tiles"
-      @itemClick="onItemClick"
-    />
-  `,
+      <HdGalleryTiles
+        :items="items"
+        class="expose__gallery expose__gallery--tiles"
+        @itemClick="onItemClick"
+      />
+    `,
     data() {
       return {
         items: ITEMS.slice(0, 3),
@@ -48,16 +56,21 @@ storiesOf('Components/Images/HdGalleryTiles', module)
         action('itemClicked')(itemIndex);
       },
     },
-  }))
-  .add('2 images', () => ({
+  }),
+
+  name: '3 images',
+};
+
+export const TwoImages = {
+  render: () => ({
     components: { HdGalleryTiles },
     template: `
-    <HdGalleryTiles
-      :items="items"
-      class="expose__gallery expose__gallery--tiles"
-      @itemClick="onItemClick"
-    />
-  `,
+      <HdGalleryTiles
+        :items="items"
+        class="expose__gallery expose__gallery--tiles"
+        @itemClick="onItemClick"
+      />
+    `,
     data() {
       return {
         items: ITEMS.slice(0, 2),
@@ -69,17 +82,22 @@ storiesOf('Components/Images/HdGalleryTiles', module)
         action('itemClicked')(itemIndex);
       },
     },
-  }))
-  .add('default with image elements', () => ({
+  }),
+
+  name: '2 images',
+};
+
+export const DefaultWithImageElements = {
+  render: () => ({
     components: { HdGalleryTiles },
     template: `
-    <HdGalleryTiles
-      :items="items"
-      class="expose__gallery expose__gallery--tiles"
-      @itemClick="onItemClick"
-      :background="false"
-    />
-  `,
+      <HdGalleryTiles
+        :items="items"
+        class="expose__gallery expose__gallery--tiles"
+        @itemClick="onItemClick"
+        :background="false"
+      />
+    `,
     data() {
       return {
         items: ITEMS,
@@ -91,4 +109,7 @@ storiesOf('Components/Images/HdGalleryTiles', module)
         action('itemClicked')(itemIndex);
       },
     },
-  }));
+  }),
+
+  name: 'default with image elements',
+};
