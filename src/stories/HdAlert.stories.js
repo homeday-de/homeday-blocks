@@ -64,7 +64,6 @@ export const Default = {
 
 export const Info = {
   render: Template,
-
   args: {
     type: 'info',
     text: 'A message with type: info',
@@ -73,7 +72,6 @@ export const Info = {
 
 export const Success = {
   render: Template,
-
   args: {
     type: 'success',
     text: 'A message with type: success',
@@ -82,7 +80,6 @@ export const Success = {
 
 export const Warning = {
   render: Template,
-
   args: {
     type: 'warning',
     text: 'A message with type: warning',
@@ -91,7 +88,6 @@ export const Warning = {
 
 export const Error = {
   render: Template,
-
   args: {
     type: 'error',
     text: 'A message with type: error',

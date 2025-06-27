@@ -6,7 +6,6 @@ import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 export default {
   title: 'Components/Forms/HdInputFormatter',
   decorators: [FormWrapper],
-
   parameters: {
     percy: { skip: true },
   },

@@ -34,7 +34,6 @@ export const Default = {
 
 export const WithDisabledIndexes = {
   render: Template,
-
   args: {
     disabledIndexes: [1, 6, 2, 5],
   },

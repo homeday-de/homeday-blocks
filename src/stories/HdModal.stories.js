@@ -181,7 +181,6 @@ export const Default = {
 
 export const WithIcon = {
   render: Template,
-
   args: {
     withIcon: true,
   },

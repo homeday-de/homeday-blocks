@@ -74,7 +74,6 @@ const Template = (_args, { argTypes }) => ({
 
 export const Primary = {
   render: Template,
-
   args: {
     modifier: TYPES.PRIMARY,
     text: 'Primary',
@@ -83,7 +82,6 @@ export const Primary = {
 
 export const Secondary = {
   render: Template,
-
   args: {
     modifier: TYPES.SECONDARY,
     text: 'Secondary',
@@ -92,7 +90,6 @@ export const Secondary = {
 
 export const Tertiary = {
   render: Template,
-
   args: {
     modifier: TYPES.TERTIARY,
     text: 'Tertiary',
@@ -101,7 +98,6 @@ export const Tertiary = {
 
 export const IconButton = {
   render: Template,
-
   args: {
     modifier: TYPES.PRIMARY,
     text: '',
@@ -111,7 +107,6 @@ export const IconButton = {
 
 export const Flat = {
   render: Template,
-
   args: {
     modifier: TYPES.FLAT,
     text: 'Flat',
@@ -120,7 +115,6 @@ export const Flat = {
 
 export const Ghost = {
   render: Template,
-
   args: {
     modifier: TYPES.GHOST,
     text: 'Ghost',

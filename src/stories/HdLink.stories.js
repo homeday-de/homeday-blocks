@@ -83,7 +83,6 @@ const Template = (_args, { argTypes }) => ({
 
 export const Default = {
   render: Template,
-
   parameters: {
     docs: {
       description: {

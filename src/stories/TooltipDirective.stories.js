@@ -1,6 +1,5 @@
 export default {
   title: 'Directives/v-hd-tooltip',
-
   parameters: {
     percy: { skip: true },
   },
