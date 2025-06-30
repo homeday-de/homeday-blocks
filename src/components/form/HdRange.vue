@@ -257,12 +257,13 @@ export default {
 <style lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
 
-.range {
+.range,
+.range.field {
   $range: &;
   height: $sp-l;
   position: relative;
-  display: flex !important;
-  align-items: center !important;
+  display: flex;
+  align-items: center;
 
   &:focus {
     outline: none;
