@@ -19,7 +19,6 @@
     "test:unit:coverage": "npm run test:unit -- --coverage && open coverage/lcov-report/index.html",
     "test:unit:snapshot": "vue-cli-service test:unit -u",
     "test:unit:watch": "vue-cli-service test:unit --watchAll",
-    "preinstall": "npx npm-force-resolutions",
     "prepack": "npm run build",
     "prepare": "husky"
   },
