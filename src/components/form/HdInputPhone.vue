@@ -265,7 +265,7 @@ export default {
     },
     handleInputEvent(value) {
       const phoneNumber = parsePhoneNumber(value);
-      this.$emit('input', phoneNumber.number.international);
+      this.$emit('input', phoneNumber.valid ? phoneNumber.number.international : value);
     },
     getPhoneNumberCountryCode(phoneNumber) {
       return phoneNumber.countryCode || getCountryCodeForRegionCode(phoneNumber.regionCode);
