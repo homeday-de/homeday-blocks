@@ -1,81 +1,102 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import { storiesOf } from '@storybook/vue';
-import { text } from '@storybook/addon-knobs';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 import HdGoogleAutocomplete from 'homeday-blocks/src/components/form/HdGoogleAutocomplete.vue';
 
-storiesOf('Components/Forms/HdGoogleAutocomplete', module)
-  .addParameters({ percy: { skip: true } })
-  .addDecorator(FormWrapper)
-  .add('required 🎛', () => ({
+export default {
+  title: 'Components/Forms/HdGoogleAutocomplete',
+  decorators: [FormWrapper],
+  parameters: {
+    percy: { skip: true },
+  },
+};
+
+export const Required = {
+  render: (_args, { argTypes }) => ({
     components: { HdGoogleAutocomplete },
     template: `
-      <p v-if="!apiKey">You have to enter a valid API key under "Knobs"</p>
-      <HdGoogleAutocomplete
-        v-else
-        :key="apiKey"
-        v-model="value"
-        :required="true"
-        :apiKey="apiKey"
-        name="test"
-        label="Label"
-        placeholder="Placeholder..."
-      />
-    `,
+    <p v-if="!apiKey">You have to enter a valid API key under "Controls"</p>
+    <HdGoogleAutocomplete
+      v-else
+      :key="apiKey"
+      v-model="value"
+      :required="true"
+      :apiKey="apiKey"
+      name="test"
+      label="Label"
+      placeholder="Placeholder..."
+    />
+  `,
     data() {
       return {
         value: '',
       };
     },
-    props: {
-      apiKey: {
-        type: String,
-        default: text('API Key', ''),
-      },
+    props: Object.keys(argTypes),
+  }),
+  args: {
+    apiKey: '',
+  },
+  argTypes: {
+    apiKey: {
+      name: 'API Key',
+      control: { type: 'text' },
     },
-  }))
-  .add('prefilled 🎛', () => ({
+  },
+
+  name: 'required 🎛',
+};
+
+export const Prefilled = {
+  render: (_args, { argTypes }) => ({
     components: { HdGoogleAutocomplete },
     template: `
-      <p v-if="!apiKey">You have to enter a valid API key under "Knobs"</p>
-      <HdGoogleAutocomplete
-        v-else
-        :key="apiKey"
-        v-model="value"
-        :apiKey="apiKey"
-        name="test"
-        label="Label"
-        placeholder="Placeholder..."
-      />
-    `,
+    <p v-if="!apiKey">You have to enter a valid API key under "Controls"</p>
+    <HdGoogleAutocomplete
+      v-else
+      :key="apiKey"
+      v-model="value"
+      :apiKey="apiKey"
+      name="test"
+      label="Label"
+      placeholder="Placeholder..."
+    />
+  `,
     data() {
       return {
         value: 'Berlin',
       };
     },
-    props: {
-      apiKey: {
-        type: String,
-        default: text('API Key', ''),
-      },
+    props: Object.keys(argTypes),
+  }),
+  args: {
+    apiKey: '',
+  },
+  argTypes: {
+    apiKey: {
+      name: 'API Key',
+      control: { type: 'text' },
     },
-  }))
-  .add('custom translation 🎛', () => ({
+  },
+
+  name: 'prefilled 🎛',
+};
+
+export const CustomTranslation = {
+  render: (_args, { argTypes }) => ({
     components: { HdGoogleAutocomplete },
     template: `
-      <p v-if="!apiKey">You have to enter a valid API key under "Knobs"</p>
-      <HdGoogleAutocomplete
-        v-else
-        :key="apiKey"
-        v-model="value"
-        :required="true"
-        :texts="texts"
-        :apiKey="apiKey"
-        name="test"
-        label="Label"
-        placeholder="Placeholder..."
-      />
-    `,
+    <p v-if="!apiKey">You have to enter a valid API key under "Controls"</p>
+    <HdGoogleAutocomplete
+      v-else
+      :key="apiKey"
+      v-model="value"
+      :required="true"
+      :texts="texts"
+      :apiKey="apiKey"
+      name="test"
+      label="Label"
+      placeholder="Placeholder..."
+    />
+  `,
     data() {
       return {
         value: '',
@@ -88,39 +109,55 @@ storiesOf('Components/Forms/HdGoogleAutocomplete', module)
         },
       };
     },
-    props: {
-      apiKey: {
-        type: String,
-        default: text('API Key', ''),
-      },
+    props: Object.keys(argTypes),
+  }),
+  args: {
+    apiKey: '',
+  },
+  argTypes: {
+    apiKey: {
+      name: 'API Key',
+      control: { type: 'text' },
     },
-  }))
-  .add('disabled 🎛', () => ({
+  },
+
+  name: 'custom translation 🎛',
+};
+
+export const Disabled = {
+  render: (_args, { argTypes }) => ({
     components: { HdGoogleAutocomplete },
     template: `
-      <p v-if="!apiKey">You have to enter a valid API key under "Knobs"</p>
-      <HdGoogleAutocomplete
-        v-else
-        :key="apiKey"
-        v-model="value"
-        :required="true"
-        :texts="texts"
-        :apiKey="apiKey"
-        :disabled="true"
-        name="test"
-        label="Label"
-        placeholder="Placeholder..."
-      />
-    `,
+    <p v-if="!apiKey">You have to enter a valid API key under "Controls"</p>
+    <HdGoogleAutocomplete
+      v-else
+      :key="apiKey"
+      v-model="value"
+      :required="true"
+      :texts="texts"
+      :apiKey="apiKey"
+      :disabled="true"
+      name="test"
+      label="Label"
+      placeholder="Placeholder..."
+    />
+  `,
     data() {
       return {
         value: '',
       };
     },
-    props: {
-      apiKey: {
-        type: String,
-        default: text('API Key', ''),
-      },
+    props: Object.keys(argTypes),
+  }),
+  args: {
+    apiKey: '',
+  },
+  argTypes: {
+    apiKey: {
+      name: 'API Key',
+      control: { type: 'text' },
     },
-  }));
+  },
+
+  name: 'disabled 🎛',
+};

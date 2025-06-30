@@ -19,14 +19,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎
-        uses: actions/checkout@v2.4.0
-      
+        uses: actions/checkout@v4
+
       - name: Set node version 🏗
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
           cache: npm
-      
+
       - name: Install dependencies ⬇️
         run: npm ci
 
@@ -35,19 +35,19 @@ jobs:
 
       - name: Unit test 🧪
         run: npm run test:unit:ci
-      
+
       - name: Build Storybook 📦
         run: npm run build:storybook
-      
+
       - name: Configure AWS Credentials 🔧
-        uses: aws-actions/configure-aws-credentials@v1.6.1
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_SB }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_SB }}
           aws-region: eu-central-1
-      
+
       - name: Deploy assets 📄
         run: aws s3 cp storybook-static/ s3://${{ env.S3_BUCKET }} --recursive --exclude "*.html"
-      
+
       - name: Deploy index 📄
         run: aws s3 cp storybook-static/ s3://${{ env.S3_BUCKET }} --recursive --exclude "*" --include "*.html"

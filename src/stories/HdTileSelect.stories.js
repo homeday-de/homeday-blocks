@@ -1,15 +1,16 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import { storiesOf } from '@storybook/vue';
 import HdTileSelect from 'homeday-blocks/src/components/form/HdTileSelect.vue';
 
-const stories = storiesOf('Components/Selection Controls/HdTileSelect', module);
 const watch = {
   value(newValue) {
     console.log(`Selected value: ${newValue}`);
   },
 };
 
-stories.add('Simple', () => ({
+export default {
+  title: 'Components/Selection Controls/HdTileSelect',
+};
+
+export const Simple = () => ({
   components: { HdTileSelect },
   template: `
     <HdTileSelect
@@ -28,81 +29,93 @@ stories.add('Simple', () => ({
     };
   },
   watch,
-}));
+});
 
-stories.add('Simple with Object items', () => ({
-  components: { HdTileSelect },
-  template: `
-    <HdTileSelect
-      v-model="value"
-      :items="items"
-      name="myTileSelect"
-    >
-      {{ value }}
-    </HdTileSelect>
-  `,
-  data() {
-    return {
-      items: [
-        {
-          value: true,
-          text: 'Yes',
-        },
-        {
-          value: false,
-          text: 'No',
-        },
-      ],
-      value: '',
-    };
-  },
-  watch,
-}));
+export const SimpleWithObjectItems = {
+  render: () => ({
+    components: { HdTileSelect },
+    template: `
+      <HdTileSelect
+        v-model="value"
+        :items="items"
+        name="myTileSelect"
+      >
+        {{ value }}
+      </HdTileSelect>
+    `,
+    data() {
+      return {
+        items: [
+          {
+            value: true,
+            text: 'Yes',
+          },
+          {
+            value: false,
+            text: 'No',
+          },
+        ],
+        value: '',
+      };
+    },
+    watch,
+  }),
 
-stories.add('Custom formatter', () => ({
-  components: { HdTileSelect },
-  template: `
-    <HdTileSelect
-      v-model="value"
-      :items="items"
-      :formatter="formatter"
-      name="myTileSelect"
-    >
-      {{ value }}
-    </HdTileSelect>
-  `,
-  data() {
-    return {
-      items: [1, 2, 3],
-      value: 0,
-      formatter: (value) => `Formatted ${value}`,
-    };
-  },
-  watch,
-}));
+  name: 'Simple with Object items',
+};
 
-stories.add('Accept new value', () => ({
-  components: { HdTileSelect },
-  template: `
-    <HdTileSelect
-      v-model="value"
-      :items="items"
-      accept-new-value
-      name="myTileSelect"
-    >
-      {{ value }}
-    </HdTileSelect>
-  `,
-  data() {
-    return {
-      items: [1, 2, 3],
-      value: 0,
-    };
-  },
-  watch,
-}));
+export const CustomFormatter = {
+  render: () => ({
+    components: { HdTileSelect },
+    template: `
+      <HdTileSelect
+        v-model="value"
+        :items="items"
+        :formatter="formatter"
+        name="myTileSelect"
+      >
+        {{ value }}
+      </HdTileSelect>
+    `,
+    data() {
+      return {
+        items: [1, 2, 3],
+        value: 0,
+        formatter: (value) => `Formatted ${value}`,
+      };
+    },
+    watch,
+  }),
 
-stories.add('Required', () => ({
+  name: 'Custom formatter',
+};
+
+export const AcceptNewValue = {
+  render: () => ({
+    components: { HdTileSelect },
+    template: `
+      <HdTileSelect
+        v-model="value"
+        :items="items"
+        accept-new-value
+        name="myTileSelect"
+      >
+        {{ value }}
+      </HdTileSelect>
+    `,
+    data() {
+      return {
+        items: [1, 2, 3],
+        value: 0,
+      };
+    },
+    watch,
+  }),
+
+  name: 'Accept new value',
+};
+
+export const Required = () => ({
   components: { HdTileSelect },
   template: `
     <div>
@@ -132,4 +145,4 @@ stories.add('Required', () => ({
       console.log('isValid', isValid);
     },
   },
-}));
+});

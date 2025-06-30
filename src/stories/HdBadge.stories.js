@@ -6,7 +6,8 @@ export default {
   component: HdBadge,
   argTypes: {
     modifier: {
-      control: { type: 'select', options: Object.values(TYPES) },
+      control: { type: 'select' },
+      options: Object.values(TYPES),
       table: {
         defaultValue: { summary: TYPES.DEFAULT },
       },
@@ -41,7 +42,7 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
+const Template = (_args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { HdBadge },
   template: `
@@ -56,9 +57,13 @@ const Template = (args, { argTypes }) => ({
   `,
 });
 
-export const WithoutDetails = Template.bind({});
+export const WithoutDetails = {
+  render: Template,
+};
 
-export const WithDetails = Template.bind({});
-WithDetails.args = {
-  details: 'test badge details!',
+export const WithDetails = {
+  render: Template,
+  args: {
+    details: 'test badge details!',
+  },
 };

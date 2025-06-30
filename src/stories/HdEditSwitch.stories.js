@@ -12,7 +12,7 @@ export default {
   decorators: [FormWrapper],
 };
 
-const Template = (args, { argTypes }) => ({
+const Template = (_args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { HdEditSwitch, HdInput },
   template: `
@@ -82,4 +82,6 @@ const Template = (args, { argTypes }) => ({
   },
 });
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
+};

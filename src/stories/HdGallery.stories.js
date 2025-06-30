@@ -1,5 +1,5 @@
-import Vue from 'vue';
 /* eslint-disable import/no-extraneous-dependencies */
+import Vue from 'vue';
 import VueRouter from 'vue-router';
 import HdGallery from 'homeday-blocks/src/components/gallery/HdGallery.vue';
 import { pictures as picturesIcon } from 'homeday-assets/L';
@@ -59,7 +59,7 @@ export default {
   parameters: { percy: { widths: [375] } },
 };
 
-const Template = (args, { argTypes }) => ({
+const Template = (_args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { HdGallery },
   template: `
@@ -72,45 +72,59 @@ const Template = (args, { argTypes }) => ({
   router: new VueRouter({ mode: 'history' }),
 });
 
-export const Default = Template.bind({});
-Default.args = {
-  carouselObjectFit: 'cover',
-};
-
-export const DefaultWithLink = Template.bind({});
-DefaultWithLink.args = {
-  to: {
-    path: '/expose/YP1O2APN',
+export const Default = {
+  render: Template,
+  args: {
+    carouselObjectFit: 'cover',
   },
 };
 
-export const OnePhoto = Template.bind({});
-OnePhoto.args = {
-  items: [ITEMS[0]],
-};
-
-export const OnePhotoWithLink = Template.bind({});
-OnePhotoWithLink.args = {
-  items: [ITEMS[0]],
-  to: {
-    path: '/expose/YP1O2APN',
+export const DefaultWithLink = {
+  render: Template,
+  args: {
+    to: {
+      path: '/expose/YP1O2APN',
+    },
   },
 };
 
-export const NoPhotos = Template.bind({});
-NoPhotos.args = {
-  items: [],
-  placeholderText: 'No photos',
-  placeholderIcon: picturesIcon,
+export const OnePhoto = {
+  render: Template,
+  args: {
+    items: [ITEMS[0]],
+  },
 };
 
-export const WithPagerInside = Template.bind({});
-WithPagerInside.args = {
-  pagerInside: true,
-  showCaption: false,
+export const OnePhotoWithLink = {
+  render: Template,
+  args: {
+    items: [ITEMS[0]],
+    to: {
+      path: '/expose/YP1O2APN',
+    },
+  },
 };
 
-export const WithMobileCounterBadge = Template.bind({});
-WithMobileCounterBadge.args = {
-  mobileCounterBadge: true,
+export const NoPhotos = {
+  render: Template,
+  args: {
+    items: [],
+    placeholderText: 'No photos',
+    placeholderIcon: picturesIcon,
+  },
+};
+
+export const WithPagerInside = {
+  render: Template,
+  args: {
+    pagerInside: true,
+    showCaption: false,
+  },
+};
+
+export const WithMobileCounterBadge = {
+  render: Template,
+  args: {
+    mobileCounterBadge: true,
+  },
 };

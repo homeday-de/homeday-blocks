@@ -1,21 +1,24 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { storiesOf } from '@storybook/vue';
 import { action } from '@storybook/addon-actions';
 import FormWrapper from 'homeday-blocks/src/storiesWrappers/FormWrapper';
 import HdInputPassword from 'homeday-blocks/src/components/form/HdInputPassword.vue';
 
-storiesOf('Components/Forms/HdInputPassword', module)
-  .addDecorator(FormWrapper)
-  .add('simple', () => ({
+export default {
+  title: 'Components/Forms/HdInputPassword',
+  decorators: [FormWrapper],
+};
+
+export const Simple = {
+  render: () => ({
     components: { HdInputPassword },
     template: `
-      <HdInputPassword
-        v-model="value"
-        :required="true"
-        name="test"
-        label="Ihr Passwort"
-      />
-    `,
+        <HdInputPassword
+          v-model="value"
+          :required="true"
+          name="test"
+          label="Ihr Passwort"
+        />
+      `,
     data() {
       return {
         value: '',
@@ -26,4 +29,7 @@ storiesOf('Components/Forms/HdInputPassword', module)
         action('input')(value);
       },
     },
-  }));
+  }),
+
+  name: 'simple',
+};

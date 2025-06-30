@@ -22,7 +22,7 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
+const Template = (_args, { argTypes }) => ({
   components: {
     HdButton,
     HdDetailsTable,
@@ -56,4 +56,6 @@ const Template = (args, { argTypes }) => ({
   `,
 });
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
+};

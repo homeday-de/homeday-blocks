@@ -1,11 +1,12 @@
 const path = require('path');
 const generateWebpackAlias = require('../webpack-alias');
 
-module.exports = {
-  stories: ['../src/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
-  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-knobs'],
-  core: {
-    builder: 'webpack5',
+const config = {
+  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-controls'],
+  framework: '@storybook/vue-webpack5',
+  docs: {
+    autodocs: true,
   },
   webpackFinal: async (config) => {
     config.resolve.alias = generateWebpackAlias({
@@ -24,3 +25,5 @@ module.exports = {
     return config;
   },
 };
+
+export default config;

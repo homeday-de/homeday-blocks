@@ -11,10 +11,8 @@ export default {
       },
     },
     lang: {
-      control: {
-        type: 'select',
-        options: ['de', 'en'],
-      },
+      control: { type: 'select' },
+      options: ['de', 'en'],
     },
     texts: {
       table: {
@@ -41,7 +39,7 @@ export default {
   },
 };
 
-const Template = (args, { argTypes }) => ({
+const Template = (_args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { HdExpandText },
   template: `
@@ -69,15 +67,19 @@ const Template = (args, { argTypes }) => ({
   `,
 });
 
-export const Default = Template.bind({});
+export const Default = {
+  render: Template,
+};
 
-export const CustomTranslation = Template.bind({});
-CustomTranslation.args = {
-  texts: {
-    EXPAND_TEXT: {
-      TOGGLE: {
-        SHOW_MORE: 'I need more!',
-        SHOW_LESS: 'Ughh... Close it please',
+export const CustomTranslation = {
+  render: Template,
+  args: {
+    texts: {
+      EXPAND_TEXT: {
+        TOGGLE: {
+          SHOW_MORE: 'I need more!',
+          SHOW_LESS: 'Ughh... Close it please',
+        },
       },
     },
   },

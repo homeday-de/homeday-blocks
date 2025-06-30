@@ -257,7 +257,8 @@ export default {
 <style lang="scss">
 @import 'homeday-blocks/src/styles/mixins.scss';
 
-.range {
+.range,
+.range.field {
   $range: &;
   height: $sp-l;
   position: relative;
