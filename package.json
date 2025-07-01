@@ -75,7 +75,7 @@
     "@storybook/theming": "7.6.20",
     "@storybook/vue": "7.6.20",
     "@storybook/vue-webpack5": "7.6.20",
-    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/jest-dom": "^6.6.3",
     "@types/jest": "^27.5.2",
     "@types/lodash": "^4.17.19",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
