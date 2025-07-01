@@ -110,7 +110,7 @@
     "raw-loader": "4.0.2",
     "sass": "^1.89.2",
     "sass-loader": "16.0.5",
-    "semantic-release": "^19.0.5",
+    "semantic-release": "^24.2.6",
     "semantic-release-gitmoji": "^1.6.8",
     "svg-url-loader": "^8.0.0",
     "ts-jest": "^27.1.5",
