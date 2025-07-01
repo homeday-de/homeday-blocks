@@ -18,7 +18,7 @@ $ git remote add upstream git@github.com:homeday-de/homeday-blocks.git
 
 ## Prerequisites
 
-Homeday Blocks requires [Node.js](https://nodejs.org/) version 18 ([.nvmrc](.nvmrc)). It's recommended to manage multiple versions of Node on the same machine with [nvm](https://github.com/nvm-sh/nvm) or [nvm-windows](https://github.com/coreybutler/nvm-windows).
+Homeday Blocks requires [Node.js](https://nodejs.org/) version 22 ([.nvmrc](.nvmrc)). It's recommended to manage multiple versions of Node on the same machine with [nvm](https://github.com/nvm-sh/nvm) or [nvm-windows](https://github.com/coreybutler/nvm-windows).
 
 Don't forget to setup the [deeper shell integration](https://github.com/nvm-sh/nvm#deeper-shell-integration) in your console to take full advantage of `nvm`. You can achieve this by adding the following alias into your `~/.bashrc`, or `~/.zshrc` file:
 
@@ -111,20 +111,20 @@ And follow the wizzard in order to generate a base component structure or a serv
 
 ## Contribution guide
 
-This project follows [Git Feature Branch Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow). See [project setup](#project-setup) to get started locally. That means that all code changes enter the project by PR to `master` branch. Once you open the PR with suggested changes, the checks for `build` and `coverage` will run. If those fail, your PR needs some more work. :) 
+This project follows [Git Feature Branch Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow). See [project setup](#project-setup) to get started locally. That means that all code changes enter the project by PR to `master` branch. Once you open the PR with suggested changes, the checks for `build` and `coverage` will run. If those fail, your PR needs some more work. :)
 
-Each PR should be reviewed by at least two team members. Once reviewed and approved, it can be merged. Please follow the following convention when merging the PR: 
+Each PR should be reviewed by at least two team members. Once reviewed and approved, it can be merged. Please follow the following convention when merging the PR:
 
-1) Use "Squash and merge" to merge the PR. 
-2) Use a meaningful title when merging your PR. 
-3) Give title a semantic meaning through [emojis](https://gitmoji.carloscuesta.me/). Please use emoji first, then the text. 
-4) **:boom: - marks breaking changes (MAJOR version change)** 
+1) Use "Squash and merge" to merge the PR.
+2) Use a meaningful title when merging your PR.
+3) Give title a semantic meaning through [emojis](https://gitmoji.carloscuesta.me/). Please use emoji first, then the text.
+4) **:boom: - marks breaking changes (MAJOR version change)**
 5) **:sparkles: - marks new feature (MINOR version change)**
 6) The other gitmojis are either a **patch** or have no effect at all.
 
 It is important to follow this convention, because our automated releases are based on it.
 
-#### Examples 
+#### Examples
 
 ##### Major change
 :boom: Removed HdNotNeeded component
@@ -140,7 +140,7 @@ It is important to follow this convention, because our automated releases are ba
 Releasing a new version is as easy as pushing your changes to `master` 😎
 
 - [Github Actions](/.github/workflows/deploy-storybook.yml) will automatically deploy the storybook to our [showcase env](https://blocks.homeday.dev).
-- And this [Github workflow](https://github.com/homeday-de/homeday-blocks/tree/master/.github/workflows/release.yml) will automatically create a [release on Github](https://github.com/homeday-de/homeday-blocks/releases) and publish a new [version to NPM](https://www.npmjs.com/package/homeday-blocks?activeTab=versions). 
+- And this [Github workflow](https://github.com/homeday-de/homeday-blocks/tree/master/.github/workflows/release.yml) will automatically create a [release on Github](https://github.com/homeday-de/homeday-blocks/releases) and publish a new [version to NPM](https://www.npmjs.com/package/homeday-blocks?activeTab=versions).
 
 ## Consuming in other projects
 
