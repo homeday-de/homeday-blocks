@@ -60,7 +60,7 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/runtime": "^7.27.6",
     "@percy/cli": "^1.31.0",
-    "@percy/storybook": "5.0.3",
+    "@percy/storybook": "^6.0.4",
     "@storybook/addon-actions": "7.6.20",
     "@storybook/addon-console": "3.0.0",
     "@storybook/addon-controls": "7.6.20",
