@@ -120,7 +120,7 @@
     "vue-router": "^3.6.5",
     "vue-template-compiler": "2.7.16",
     "vue-tsc": "1.6.0",
-    "webpack": "^5.99.9"
+    "webpack": "^5.100.0"
   },
   "volta": {
     "node": "22"
