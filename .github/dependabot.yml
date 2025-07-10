@@ -3,14 +3,41 @@ updates:
 - package-ecosystem: npm
   directory: "/"
   schedule:
-    interval: weekly
+    interval: monthly
     time: "10:00"
     timezone: Europe/Berlin
   open-pull-requests-limit: 10
   target-branch: master
+  groups:
+    tests:
+      patterns: ["*"]
+      update-types: ["minor", "patch"]
   labels:
   - bot
   commit-message:
     prefix: "⬆️"
   ignore:
-  - dependency-name: dateformat
+    - dependency-name: vue
+    - dependency-name: vue-tsc
+    - dependency-name: vue-loader
+    - dependency-name: vue-router
+    - dependency-name: vue-inline-svg
+    - dependency-name: "@vue/test-utils"
+    - dependency-name: "@vue/vue2-jest"
+    - dependency-name: eslint
+    - dependency-name: typescript
+    - dependency-name: dateformat
+    - dependency-name: p-limit
+    - dependency-name: prettier
+    - dependency-name: jest
+    - dependency-name: ts-jest
+    - dependency-name: babel-jest
+    - dependency-name: babel-loader
+    - dependency-name: "@types/jest"
+    - dependency-name: eslint-import-resolver-typescript
+    - dependency-name: eslint-plugin-prettier
+    - dependency-name: eslint-plugin-vue
+    - dependency-name: "@typescript-eslint/eslint-plugin"
+    - dependency-name: "@typescript-eslint/parser"
+    - dependency-name: "@vue/eslint-config-airbnb"
+    - dependency-name: "@vue/eslint-config-typescript"
