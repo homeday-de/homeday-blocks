@@ -102,6 +102,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    uncheck: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -147,6 +151,10 @@ export default {
       return item.value === this.value ? 0 : -1;
     },
     radioSelect(value) {
+      if (!this.required && this.uncheck && this.value === value) {
+        this.$emit('input', null);
+        return;
+      }
       this.$emit('input', value);
     },
     maybeRadioSelect(e) {
