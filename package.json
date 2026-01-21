@@ -46,7 +46,7 @@
     "country-codes-list": "^2.0.0",
     "deepmerge": "^4.3.1",
     "homeday-assets": "^4.66.1",
-    "lodash": "4.17.21",
+    "lodash": "4.17.23",
     "vue": "2.7.16",
     "vue-flickity": "1.2.1",
     "vue-inline-svg": "2.1.4",
